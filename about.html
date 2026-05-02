@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>W2b — About</title>
+  <meta name="description" content="W2b — Guillaume Delye, photographer based in Medellín. Studio practice in film. Available for exhibitions, residencies, and acquisitions.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation">
+    <a class="nav-logo" href="index.html" aria-label="W2b Art — Home">
+      <svg viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="78" height="42" rx="2" stroke="#C41E3A" stroke-width="0.8" fill="none"/>
+        <rect x="4"  y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="4"  y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <text x="14" y="29" font-family="'Space Mono', monospace" font-size="18" font-weight="700"
+              fill="#E8E4DF" letter-spacing="-0.5">W2b</text>
+        <line x1="14" y1="32" x2="66" y2="32" stroke="#C41E3A" stroke-width="0.8" opacity="0.7"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"        data-i18n="nav_home">Home</a></li>
+      <li><a href="index.html#galleries" data-i18n="nav_galleries">Galleries</a></li>
+      <li><a href="about.html"        data-i18n="nav_about">About</a></li>
+      <li><a href="../pro/index.html" data-i18n="nav_pro">Commercial ↗</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- About Page Content -->
+  <main class="about-page" aria-label="About W2b">
+
+    <p class="about-page-eyebrow" data-i18n="about_lead">Medellín — film, hand-printed.</p>
+    <h1 class="about-page-title" data-i18n="about_title">Guillaume Delye</h1>
+
+    <!-- Portrait -->
+    <div class="about-portrait-wrap">
+      <img src="images/ui/portrait.jpg" alt="W2b — Guillaume Delye, portrait, Medellín">
+      <div class="about-portrait-frame" aria-hidden="true"></div>
+    </div>
+
+    <!-- Bio paragraphs -->
+    <div class="about-bio reveal">
+      <p data-i18n="about_full_p1">
+        I'm Guillaume Delye, a French photographer based in Medellín, Colombia. I shoot 35mm and medium format. Black and white is processed by hand; colour is scanned and printed on cotton rag.
+      </p>
+      <p data-i18n="about_full_p2">
+        The work asks the same three questions — how a place holds memory, how a body sits in light, how an image earns the right to exist. The series come slowly, and they stay.
+      </p>
+      <p data-i18n="about_full_p3">
+        Open to exhibitions, residencies, and acquisitions. Editorial and commercial commissions are handled on the commercial site.
+      </p>
+    </div>
+
+    <!-- Studio metadata -->
+    <dl class="about-meta reveal">
+      <dt data-i18n="about_currently_label">In progress</dt>
+      <dd data-i18n="about_currently"><em>Medellín</em> — long-form documentary, since 2024.</dd>
+
+      <dt data-i18n="about_practice_label">Practice</dt>
+      <dd data-i18n="about_practice">35mm and medium format film · Hand-developed black &amp; white · Archival pigment prints on cotton rag</dd>
+
+      <dt data-i18n="about_locations_label">Based</dt>
+      <dd data-i18n="about_locations">Medellín, Colombia · available internationally</dd>
+
+      <dt data-i18n="about_prints_label">Editions</dt>
+      <dd>
+        <span data-i18n="about_prints">Editions of 7 + 2 AP · signed and numbered · pricing on request.</span>
+        <a href="mailto:prints@guillaumedelye.com?subject=Print%20inquiry" class="about-meta-link">prints@guillaumedelye.com</a>
+      </dd>
+    </dl>
+
+    <!-- Available for / Press -->
+    <section class="about-list reveal" aria-labelledby="exhibitions-heading">
+      <h2 id="exhibitions-heading" data-i18n="about_exhibitions_label">Available for</h2>
+      <ul>
+        <li data-i18n="about_avail_1">Solo and group exhibitions</li>
+        <li data-i18n="about_avail_2">Residencies and assignments</li>
+        <li data-i18n="about_avail_3">Acquisitions — institutional and private</li>
+      </ul>
+    </section>
+
+    <section class="about-list reveal" aria-labelledby="publications-heading">
+      <h2 id="publications-heading" data-i18n="about_publications_label">Press &amp; selected features</h2>
+      <ul>
+        <li data-i18n="about_press_line">For press, features and review copies — <a href="mailto:press@guillaumedelye.com">press@guillaumedelye.com</a></li>
+      </ul>
+    </section>
+
+    <!-- Signature -->
+    <div class="signature reveal">Guillaume Delye</div>
+
+    <!-- Action links -->
+    <div class="about-actions reveal">
+      <a class="btn" href="index.html#galleries" data-i18n="nav_galleries">Galleries</a>
+      <a class="btn btn-ghost" href="../pro/index.html" data-i18n="nav_pro">Commercial ↗</a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <nav class="footer-social" aria-label="Contact and social">
+      <a href="https://www.instagram.com/YOUR_HANDLE" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:prints@guillaumedelye.com">Inquire</a>
+    </nav>
+    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye — All rights reserved</p>
+  </footer>
+
+  <script src="js/gallery-data.js"></script>
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
