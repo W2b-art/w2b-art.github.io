@@ -259,10 +259,20 @@ function renderHomepageGalleries() {
       </button>`;
   }).join('');
 
-  /* Click handlers on each wheel segment */
+  /* Click handlers on each wheel segment.
+     On mobile the LCD/wheel chrome is hidden — segments are presented
+     as a stacked card list, so tapping navigates directly. */
   wheel.querySelectorAll('.wheel-segment').forEach(seg => {
     seg.addEventListener('click', () => {
-      selectGallery(parseInt(seg.dataset.index, 10));
+      const idx = parseInt(seg.dataset.index, 10);
+      if (window.matchMedia('(max-width: 900px)').matches) {
+        const gid = seg.dataset.gallery;
+        const data = GALLERY_DATA[gid];
+        const url = (data && data.url) || `gallery-${gid}.html`;
+        window.location.href = url;
+        return;
+      }
+      selectGallery(idx);
     });
   });
 
@@ -525,7 +535,7 @@ function updateLightbox() {
       <span class="lightbox-caption-alt">${altText}</span>
       <span class="lightbox-caption-meta">${galleryTitle} &middot; ${current} / ${total}</span>
       <span class="lightbox-caption-edition">${editionLine}</span>
-      <a class="lightbox-inquire" href="mailto:prints@guillaumedelye.com?subject=${subject}&body=${body}">${inquireLabel} →</a>
+      <a class="lightbox-inquire" href="mailto:w2bphoto+prints@gmail.com?subject=${subject}&body=${body}">${inquireLabel} →</a>
     `;
   }
 }

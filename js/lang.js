@@ -83,7 +83,7 @@ const TRANSLATIONS = {
     about_avail_2:            "Residencies and assignments",
     about_avail_3:            "Acquisitions — institutional and private",
     about_publications_label: "Press &amp; selected features",
-    about_press_line:         "For press, features and review copies — <a href=\"mailto:press@guillaumedelye.com\">press@guillaumedelye.com</a>",
+    about_press_line:         "For press, features and review copies — <a href=\"mailto:w2bphoto+press@gmail.com\">w2bphoto@gmail.com</a>",
 
     /* Scroll hint */
     scroll_hint:    "Scroll to explore",
@@ -157,7 +157,7 @@ const TRANSLATIONS = {
     about_avail_2:            "Résidences et missions",
     about_avail_3:            "Acquisitions — institutionnelles et privées",
     about_publications_label: "Presse &amp; publications",
-    about_press_line:         "Pour la presse, articles et exemplaires de critique — <a href=\"mailto:press@guillaumedelye.com\">press@guillaumedelye.com</a>",
+    about_press_line:         "Pour la presse, articles et exemplaires de critique — <a href=\"mailto:w2bphoto+press@gmail.com\">w2bphoto@gmail.com</a>",
 
     scroll_hint:    "Défiler pour explorer",
     tap_open:       "▼ Glissez, défilez ou cliquez sur une vignette",
@@ -230,7 +230,7 @@ const TRANSLATIONS = {
     about_avail_2:            "Residencias y encargos",
     about_avail_3:            "Adquisiciones — institucionales y privadas",
     about_publications_label: "Prensa y publicaciones",
-    about_press_line:         "Para prensa, artículos y ejemplares de crítica — <a href=\"mailto:press@guillaumedelye.com\">press@guillaumedelye.com</a>",
+    about_press_line:         "Para prensa, artículos y ejemplares de crítica — <a href=\"mailto:w2bphoto+press@gmail.com\">w2bphoto@gmail.com</a>",
 
     scroll_hint:    "Desplácese para explorar",
     tap_open:       "▼ Desliza, navega o toca una viñeta",
