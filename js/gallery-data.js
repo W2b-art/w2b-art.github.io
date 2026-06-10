@@ -664,9 +664,9 @@ const GALLERY_DATA = {
     folder: "images/boudoir/",
     coverIndex: 0,
     title: {
-      en: "Eye Catchers",
-      fr: "Eye Catchers",
-      es: "Eye Catchers"
+      en: "Dark Desire",
+      fr: "Désir Obscur",
+      es: "Deseo Oscuro"
     },
     description: {
       en: "A darker register — latex, masks, and red light. Fetish portraiture and bold colour boudoir.",
