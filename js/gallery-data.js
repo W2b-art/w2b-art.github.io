@@ -18,7 +18,7 @@ const GALLERY_DATA = {
   "best-of": {
     id: "best-of",
     folder: "images/best-of/",
-    coverIndex: 0,
+    coverIndex: 11,
     title: {
       en: "Selected Works",
       fr: "Œuvres choisies",
@@ -535,6 +535,250 @@ const GALLERY_DATA = {
         }
       }
     ]
+  },
+
+  "nude": {
+    id: "nude",
+    folder: "images/nude/",
+    coverIndex: 0,
+    title: {
+      en: "Nude",
+      fr: "Nu",
+      es: "Desnudo"
+    },
+    description: {
+      en: "Fine-art nude and boudoir — the body as landscape, studied in low-key black and white.",
+      fr: "Nu d'art et boudoir — le corps comme paysage, étudié en noir et blanc clair-obscur.",
+      es: "Desnudo artístico y boudoir — el cuerpo como paisaje, estudiado en blanco y negro de bajo perfil."
+    },
+    images: [
+      {
+        file: "fine-art-nude-torso-sculptural-light-black-white-03-w2b.jpg",
+        alt: {
+          en: "Sculptural fine-art nude torso shaped by directional light, low-key black and white photography",
+          fr: "Torse nu sculptural modelé par une lumière directionnelle, photographie noir et blanc clair-obscur",
+          es: "Torso desnudo escultural modelado por luz direccional, fotografía en blanco y negro de bajo perfil"
+        }
+      },
+      {
+        file: "fine-art-nude-back-curve-shadow-black-white-02-w2b.jpg",
+        alt: {
+          en: "Fine-art nude study of a curved back and shoulder in deep shadow, black and white",
+          fr: "Étude de nu d'art, courbe du dos et de l'épaule dans une ombre profonde, noir et blanc",
+          es: "Estudio de desnudo artístico, curva de la espalda y el hombro en sombra profunda, blanco y negro"
+        }
+      },
+      {
+        file: "fine-art-nude-side-light-contour-black-white-05-w2b.jpg",
+        alt: {
+          en: "Side-lit nude contour tracing hip and waist, minimalist black and white form study",
+          fr: "Contour de nu en lumière latérale soulignant la hanche et la taille, étude de forme minimaliste noir et blanc",
+          es: "Contorno de desnudo con luz lateral que traza cadera y cintura, estudio de forma minimalista en blanco y negro"
+        }
+      },
+      {
+        file: "fine-art-nude-reclining-soft-light-black-white-04-w2b.jpg",
+        alt: {
+          en: "Reclining nude bathed in soft low light, intimate black and white photography",
+          fr: "Nu allongé baigné d'une lumière douce et tamisée, photographie intime noir et blanc",
+          es: "Desnudo reclinado bañado en luz suave y tenue, fotografía íntima en blanco y negro"
+        }
+      },
+      {
+        file: "fine-art-nude-study-low-key-black-white-01-w2b.jpg",
+        alt: {
+          en: "Low-key nude study, the body emerging from darkness in black and white",
+          fr: "Étude de nu en clair-obscur, le corps émergeant de l'obscurité en noir et blanc",
+          es: "Estudio de desnudo en bajo perfil, el cuerpo emergiendo de la oscuridad en blanco y negro"
+        }
+      },
+      {
+        file: "fine-art-nude-silhouette-minimal-black-white-07-w2b.jpg",
+        alt: {
+          en: "Minimal nude silhouette against deep shadow, black and white fine-art photography",
+          fr: "Silhouette de nu minimaliste sur ombre profonde, photographie d'art noir et blanc",
+          es: "Silueta de desnudo minimalista contra sombra profunda, fotografía artística en blanco y negro"
+        }
+      },
+      {
+        file: "fine-art-nude-form-study-shadow-black-white-06-w2b.jpg",
+        alt: {
+          en: "Intimate portrait of a model with eyes closed in soft light, black and white fine-art nude study",
+          fr: "Portrait intime d'une modèle aux yeux fermés en lumière douce, étude de nu d'art noir et blanc",
+          es: "Retrato íntimo de una modelo con los ojos cerrados en luz suave, estudio de desnudo artístico en blanco y negro"
+        }
+      },
+      {
+        file: "boudoir-lingerie-low-key-black-white-08-w2b.jpg",
+        alt: {
+          en: "Boudoir portrait in delicate lace lingerie reclining on a bed, low-key black and white",
+          fr: "Portrait boudoir en lingerie de dentelle délicate, allongée sur un lit, noir et blanc clair-obscur",
+          es: "Retrato boudoir en lencería de encaje delicada recostada en una cama, blanco y negro de bajo perfil"
+        }
+      },
+      {
+        file: "boudoir-intimate-pose-black-white-10-w2b.jpg",
+        alt: {
+          en: "Intimate boudoir pose seen from behind with lace detail, black and white photography",
+          fr: "Pose boudoir intime vue de dos avec détail de dentelle, photographie noir et blanc",
+          es: "Pose boudoir íntima vista de espaldas con detalle de encaje, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "boudoir-fishnet-stockings-black-white-09-w2b.jpg",
+        alt: {
+          en: "Boudoir study in fishnet stockings, kneeling figure in low-key black and white",
+          fr: "Étude boudoir en bas résille, silhouette agenouillée en noir et blanc clair-obscur",
+          es: "Estudio boudoir con medias de red, figura arrodillada en blanco y negro de bajo perfil"
+        }
+      },
+      {
+        file: "boudoir-figure-shadow-black-white-11-w2b.jpg",
+        alt: {
+          en: "Nude figure softly lit on a bed, shadow and skin in black and white",
+          fr: "Silhouette nue doucement éclairée sur un lit, ombre et peau en noir et blanc",
+          es: "Figura desnuda suavemente iluminada en una cama, sombra y piel en blanco y negro"
+        }
+      },
+      {
+        file: "boudoir-soft-light-black-white-13-w2b.jpg",
+        alt: {
+          en: "Intimate scene in soft low light, tender black and white boudoir photography",
+          fr: "Scène intime en lumière douce et tamisée, photographie boudoir tendre noir et blanc",
+          es: "Escena íntima en luz suave y tenue, fotografía boudoir tierna en blanco y negro"
+        }
+      },
+      {
+        file: "boudoir-warm-light-figure-colour-12-w2b.jpg",
+        alt: {
+          en: "Reclining figure in warm ambient light, intimate boudoir photography",
+          fr: "Silhouette allongée dans une lumière chaude ambiante, photographie boudoir intime",
+          es: "Figura reclinada en cálida luz ambiente, fotografía boudoir íntima"
+        }
+      }
+    ]
+  },
+
+  "boudoir": {
+    id: "boudoir",
+    folder: "images/boudoir/",
+    coverIndex: 0,
+    title: {
+      en: "Eye Catchers",
+      fr: "Eye Catchers",
+      es: "Eye Catchers"
+    },
+    description: {
+      en: "A darker register — latex, masks, and red light. Fetish portraiture and bold colour boudoir.",
+      fr: "Un registre plus sombre — latex, masques et lumière rouge. Portrait fétichiste et boudoir couleur affirmé.",
+      es: "Un registro más oscuro — látex, máscaras y luz roja. Retrato fetichista y boudoir a color audaz."
+    },
+    images: [
+      {
+        file: "fetish-latex-mask-red-light-01-w2b.jpg",
+        alt: {
+          en: "Figure in a black latex hood under deep red light, fetish portrait photography",
+          fr: "Silhouette en cagoule de latex noir sous une lumière rouge profonde, photographie de portrait fétichiste",
+          es: "Figura con capucha de látex negro bajo luz roja profunda, fotografía de retrato fetichista"
+        }
+      },
+      {
+        file: "fetish-latex-mask-red-light-02-w2b.jpg",
+        alt: {
+          en: "Masked figure in latex under dramatic red light, fetish art photography",
+          fr: "Silhouette masquée en latex sous une lumière rouge dramatique, photographie d'art fétichiste",
+          es: "Figura enmascarada en látex bajo luz roja dramática, fotografía artística fetichista"
+        }
+      },
+      {
+        file: "fetish-latex-mask-red-light-04-w2b.jpg",
+        alt: {
+          en: "Latex-hooded figure with hands together under red light, fetish portrait",
+          fr: "Silhouette en cagoule de latex, mains jointes sous lumière rouge, portrait fétichiste",
+          es: "Figura con capucha de látex y manos juntas bajo luz roja, retrato fetichista"
+        }
+      },
+      {
+        file: "fetish-latex-mask-red-light-06-w2b.jpg",
+        alt: {
+          en: "Masked latex figure emerging from red-lit darkness, fetish art photography",
+          fr: "Silhouette masquée en latex émergeant d'une obscurité rouge, photographie d'art fétichiste",
+          es: "Figura enmascarada en látex emergiendo de la oscuridad roja, fotografía artística fetichista"
+        }
+      },
+      {
+        file: "fetish-latex-mask-red-light-08-w2b.jpg",
+        alt: {
+          en: "Latex mask lit in dual red tones, bold fetish portrait photography",
+          fr: "Masque de latex éclairé en doubles tons rouges, portrait fétichiste affirmé",
+          es: "Máscara de látex iluminada en dobles tonos rojos, retrato fetichista audaz"
+        }
+      },
+      {
+        file: "fetish-latex-mask-red-light-10-w2b.jpg",
+        alt: {
+          en: "Standing figure in a latex catsuit and hood under red light, fetish photography",
+          fr: "Silhouette debout en combinaison et cagoule de latex sous lumière rouge, photographie fétichiste",
+          es: "Figura de pie en mono y capucha de látex bajo luz roja, fotografía fetichista"
+        }
+      },
+      {
+        file: "fetish-latex-mask-dramatic-shadow-07-w2b.jpg",
+        alt: {
+          en: "Masked latex figure in dramatic chiaroscuro shadow, fetish art photography",
+          fr: "Silhouette masquée en latex dans un clair-obscur dramatique, photographie d'art fétichiste",
+          es: "Figura enmascarada en látex en claroscuro dramático, fotografía artística fetichista"
+        }
+      },
+      {
+        file: "fetish-latex-mask-low-key-03-w2b.jpg",
+        alt: {
+          en: "Latex-hooded figure raising a blade into red light, low-key fetish portrait",
+          fr: "Silhouette en cagoule de latex levant une lame dans la lumière rouge, portrait fétichiste clair-obscur",
+          es: "Figura con capucha de látex levantando una hoja hacia la luz roja, retrato fetichista de bajo perfil"
+        }
+      },
+      {
+        file: "fetish-latex-mask-low-key-05-w2b.jpg",
+        alt: {
+          en: "Tattooed arm and latex mask with a blade, low-key red fetish photography",
+          fr: "Bras tatoué et masque de latex avec une lame, photographie fétichiste rouge clair-obscur",
+          es: "Brazo tatuado y máscara de látex con una hoja, fotografía fetichista roja de bajo perfil"
+        }
+      },
+      {
+        file: "fetish-latex-mask-low-key-09-w2b.jpg",
+        alt: {
+          en: "Latex mask barely emerging from near-total darkness, atmospheric fetish photography",
+          fr: "Masque de latex émergeant à peine d'une obscurité quasi totale, photographie fétichiste atmosphérique",
+          es: "Máscara de látex apenas emergiendo de una oscuridad casi total, fotografía fetichista atmosférica"
+        }
+      },
+      {
+        file: "fetish-latex-mask-portrait-11-w2b.jpg",
+        alt: {
+          en: "Close fetish portrait, latex hood and gloved hands framing the face in red light",
+          fr: "Portrait fétichiste rapproché, cagoule de latex et mains gantées encadrant le visage en lumière rouge",
+          es: "Retrato fetichista cercano, capucha de látex y manos enguantadas enmarcando el rostro en luz roja"
+        }
+      },
+      {
+        file: "boudoir-nude-warm-light-colour-12-w2b.jpg",
+        alt: {
+          en: "Colour boudoir nude seen from behind in warm ambient light, fine-art photography",
+          fr: "Nu boudoir couleur vu de dos dans une lumière chaude ambiante, photographie d'art",
+          es: "Desnudo boudoir a color visto de espaldas en cálida luz ambiente, fotografía artística"
+        }
+      },
+      {
+        file: "boudoir-nude-warm-light-colour-13-w2b.jpg",
+        alt: {
+          en: "Warm-toned colour boudoir nude study, fine-art photography",
+          fr: "Étude de nu boudoir couleur aux tons chauds, photographie d'art",
+          es: "Estudio de desnudo boudoir a color de tonos cálidos, fotografía artística"
+        }
+      }
+    ]
   }
 
 };
@@ -545,7 +789,9 @@ const GALLERY_ORDER = [
   "work-in-progress",
   "series-1",
   "series-2",
-  "series-3"
+  "series-3",
+  "nude",
+  "boudoir"
 ];
 
 /* Extra non-gallery frames appended to the film strip on the homepage.
