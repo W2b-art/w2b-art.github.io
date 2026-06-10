@@ -659,7 +659,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   background: var(--film-tan);
   position: relative;
   width: max-content;
-  max-width: 100%;
+  /* No max-width here: the strip must keep its full max-content width so the
+     perforation rails span every frame. The .film-strip-container caps width
+     and scrolls (overflow-x:auto), so the page never overflows. */
 }
 
 /* Perforation rails (top + bottom in horizontal mode) */
