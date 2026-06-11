@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collaborate — W2b</title>
+  <meta name="description" content="Artist collaborations and private fine-art boudoir / Dark Desire commissions by Guillaume Delye. By application, consent-forward, made as art.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .collab-page { max-width: 720px; margin: 0 auto; padding: 7rem 1.5rem 5rem; }
+    .collab-head { margin-bottom: 3.5rem; }
+    .collab-eyebrow {
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--accent-warm-dim); margin-bottom: 1rem;
+    }
+    .collab-h1 {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: clamp(2.4rem, 7vw, 3.6rem); line-height: 1.05; color: var(--text);
+    }
+    .collab-intro { color: var(--text-muted); margin-top: 1rem; font-size: 1.05rem; }
+    .collab-section { margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+    .collab-label {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--crimson); margin-bottom: 0.75rem;
+    }
+    .collab-h2 {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: clamp(1.7rem, 4.5vw, 2.2rem); color: var(--text); margin-bottom: 1rem;
+    }
+    .collab-body { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
+    .collab-terms {
+      font-size: 0.9rem; color: var(--text-muted); font-style: italic;
+      border-left: 2px solid var(--crimson-dim); padding-left: 1rem; margin: 1.5rem 0;
+    }
+    .collab-form { margin-top: 1.75rem; display: flex; flex-direction: column; gap: 1.1rem; }
+    .field label {
+      display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.45rem;
+    }
+    .field input[type=text], .field input[type=email], .field input[type=url], .field textarea {
+      width: 100%; background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: 4px; color: var(--text); font-family: var(--font-body); font-size: 0.95rem;
+      padding: 0.7rem 0.8rem; outline: none; transition: border-color 0.2s;
+    }
+    .field input:focus, .field textarea:focus { border-color: var(--crimson); }
+    .field textarea { resize: vertical; min-height: 90px; }
+    .consent-row {
+      display: flex; gap: 0.7rem; align-items: flex-start;
+      background: var(--bg-2); border: 1px solid var(--border-red); border-radius: 4px;
+      padding: 0.9rem 1rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;
+    }
+    .consent-row input { margin-top: 0.2rem; width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--crimson); }
+    .collab-submit {
+      align-self: flex-start; margin-top: 0.4rem;
+      background: none; border: 1px solid var(--crimson); color: var(--text);
+      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.8rem 1.6rem; border-radius: 4px; cursor: pointer; transition: all 0.2s;
+    }
+    .collab-submit:hover { background: var(--crimson); color: #fff; }
+    .collab-note { font-size: 0.82rem; color: var(--accent-warm-dim); margin-top: 0.9rem; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" role="navigation">
+    <a class="nav-logo" href="index.html" aria-label="W2b Art — Home">
+      <svg viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="78" height="42" rx="2" stroke="#C41E3A" stroke-width="0.8" fill="none"/>
+        <rect x="4"  y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="4"  y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <text x="14" y="29" font-family="'Space Mono', monospace" font-size="18" font-weight="700"
+              fill="#E8E4DF" letter-spacing="-0.5">W2b</text>
+        <line x1="14" y1="32" x2="66" y2="32" stroke="#C41E3A" stroke-width="0.8" opacity="0.7"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"           data-i18n="nav_home">Home</a></li>
+      <li><a href="index.html#galleries" data-i18n="nav_galleries">Galleries</a></li>
+      <li><a href="about.html"           data-i18n="nav_about">About</a></li>
+      <li><a href="https://w2b-art.github.io/w2b-pro/"    data-i18n="nav_pro">Commercial ↗</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="collab-page">
+    <header class="collab-head">
+      <p class="collab-eyebrow" data-i18n="collab_lead">Collaboration &amp; Commissions</p>
+      <h1 class="collab-h1" data-i18n="collab_title">Work together</h1>
+      <p class="collab-intro" data-i18n="collab_intro">Two ways in — a collaboration between artists, or a private commission.</p>
+    </header>
+
+    <!-- 01 — Collaborations -->
+    <section class="collab-section">
+      <p class="collab-label" data-i18n="collab_c_label">01 — Collaborations</p>
+      <h2 class="collab-h2" data-i18n="collab_c_title">For artists &amp; makers</h2>
+      <p class="collab-body" data-i18n="collab_c_body">I work with models, stylists, dancers and other artists on shared projects — series, exhibitions, ideas that need more than one pair of hands. I bring the eye and the film; you bring what you make. If our work might belong in the same frame, tell me what you're building.</p>
+
+      <form class="collab-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
+        <input type="hidden" name="_subject" value="Collaboration proposal — w2b art">
+        <div class="field">
+          <label for="c-name" data-i18n="collab_c_name">Name</label>
+          <input type="text" id="c-name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="c-discipline" data-i18n="collab_c_discipline">Discipline or medium</label>
+          <input type="text" id="c-discipline" name="discipline">
+        </div>
+        <div class="field">
+          <label for="c-idea" data-i18n="collab_c_idea">What you're working on</label>
+          <textarea id="c-idea" name="idea" rows="4" required></textarea>
+        </div>
+        <div class="field">
+          <label for="c-link" data-i18n="collab_c_link">Portfolio or Instagram</label>
+          <input type="text" id="c-link" name="portfolio">
+        </div>
+        <div class="field">
+          <label for="c-email" data-i18n="collab_c_email">Email</label>
+          <input type="email" id="c-email" name="email" required>
+        </div>
+        <button type="submit" class="collab-submit" data-i18n="collab_c_submit">Send proposal</button>
+      </form>
+    </section>
+
+    <!-- 02 — Commissions: Boudoir / Dark Desire -->
+    <section class="collab-section" id="commissions">
+      <p class="collab-label" data-i18n="collab_b_label">02 — Commissions</p>
+      <h2 class="collab-h2" data-i18n="collab_b_title">Boudoir &amp; Dark Desire</h2>
+      <p class="collab-body" data-i18n="collab_b_body1">A few private commissions each year, in the language of the Nude and Dark Desire series — fine-art boudoir and fetish portraiture, made as art, in a lineage that runs from Bellocq and Newton to Nan Goldin.</p>
+      <p class="collab-body" data-i18n="collab_b_body2">How it works: we talk first, at length, before any camera. You see references, we agree the frame together, and nothing is made that you haven't approved. The images are reviewed with you — they are yours, at your pace, and you decide what exists and what doesn't. Closed set in Medellín, full discretion.</p>
+      <p class="collab-terms" data-i18n="collab_b_terms">By application. Adults only (18+). Not every request is accepted — this work is made slowly and with care.</p>
+
+      <form class="collab-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
+        <input type="hidden" name="_subject" value="Commission inquiry — Dark Desire">
+        <div class="field">
+          <label for="b-name" data-i18n="collab_b_name">Name</label>
+          <input type="text" id="b-name" name="name" required>
+        </div>
+        <div class="field">
+          <label for="b-email" data-i18n="collab_b_email">Email</label>
+          <input type="email" id="b-email" name="email" required>
+        </div>
+        <div class="field">
+          <label for="b-note" data-i18n="collab_b_note">A few words about what draws you to the work</label>
+          <textarea id="b-note" name="note" rows="3" data-i18n-placeholder="collab_b_note_ph" placeholder="No need for detail here — just a sense of why."></textarea>
+        </div>
+        <label class="consent-row">
+          <input type="checkbox" name="consent" required>
+          <span data-i18n="collab_b_consent">I am 18 or older, and I understand this is an inquiry, not a booking.</span>
+        </label>
+        <button type="submit" class="collab-submit" data-i18n="collab_b_submit">Send inquiry</button>
+      </form>
+
+      <p class="collab-note">
+        <span data-i18n="collab_response">Replies within about a week.</span>
+        <span data-i18n="collab_discretion">Every inquiry is handled privately and in confidence.</span>
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <nav class="footer-social" aria-label="Contact and social">
+      <a href="https://www.instagram.com/w2b.film" target="_blank" rel="noopener">Instagram</a>
+      <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
+      <a href="mailto:w2bphoto+prints@gmail.com">Inquire</a>
+    </nav>
+    <p class="footer-copy" data-i18n="footer_copy">© W2b — All rights reserved</p>
+  </footer>
+
+  <script src="js/gallery-data.js"></script>
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
