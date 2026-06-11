@@ -1151,6 +1151,144 @@ const GALLERY_DATA = {
         }
       }
     ]
+  },
+
+  "contemplations": {
+    id: "contemplations",
+    folder: "images/contemplations/",
+    coverIndex: 5,
+    title: {
+      en: "Contemplations",
+      fr: "Contemplations",
+      es: "Contemplaciones"
+    },
+    description: {
+      en: "Slower pictures, made on medium-format film — the sea, the road, the quiet hours. A growing series about stillness, introspection, and the pleasure of the journey.",
+      fr: "Des images plus lentes, en moyen format argentique — la mer, la route, les heures calmes. Une série en cours sur le silence, l'introspection et le plaisir du voyage.",
+      es: "Imágenes más lentas, en película de formato medio — el mar, el camino, las horas quietas. Una serie en crecimiento sobre la calma, la introspección y el placer del viaje."
+    },
+    images: [
+      {
+        file: "contemplations-two-figures-walking-road-horizon-black-white-medium-format-w2b.jpg",
+        alt: {
+          en: "Two figures walking a road toward the horizon, black and white medium-format film",
+          fr: "Deux silhouettes marchant sur une route vers l'horizon, moyen format argentique noir et blanc",
+          es: "Dos figuras caminando por un camino hacia el horizonte, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "contemplations-vast-empty-plain-distant-mountains-black-white-medium-format-w2b.jpg",
+        alt: {
+          en: "A vast empty plain stretching to distant mountains, black and white medium-format film",
+          fr: "Une vaste plaine vide s'étendant vers des montagnes lointaines, moyen format argentique noir et blanc",
+          es: "Una vasta llanura vacía que se extiende hacia montañas lejanas, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "contemplations-ruined-house-sea-view-window-medium-format-w2b.jpg",
+        alt: {
+          en: "The sea seen through the window of a ruined house, medium-format film",
+          fr: "La mer vue par la fenêtre d'une maison en ruine, moyen format argentique",
+          es: "El mar visto a través de la ventana de una casa en ruinas, película de formato medio"
+        }
+      },
+      {
+        file: "contemplations-cliff-ruin-against-sky-black-white-medium-format-w2b.jpg",
+        alt: {
+          en: "A solitary ruin on a cliff against the sky, black and white medium-format film",
+          fr: "Une ruine solitaire sur une falaise se découpant sur le ciel, moyen format argentique noir et blanc",
+          es: "Una ruina solitaria en un acantilado recortada contra el cielo, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "contemplations-lone-cabin-cliff-overlooking-sea-medium-format-w2b.jpg",
+        alt: {
+          en: "A lone cabin on a cliff overlooking the sea, medium-format film",
+          fr: "Une cabane solitaire sur une falaise dominant la mer, moyen format argentique",
+          es: "Una cabaña solitaria en un acantilado sobre el mar, película de formato medio"
+        }
+      },
+      {
+        file: "contemplations-lone-figure-looking-out-to-sea-black-white-medium-format-w2b.jpg",
+        alt: {
+          en: "A lone figure seen from behind, looking out to sea, black and white medium-format film",
+          fr: "Une silhouette solitaire vue de dos, contemplant la mer, moyen format argentique noir et blanc",
+          es: "Una figura solitaria vista de espaldas, contemplando el mar, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "contemplations-long-pier-into-sea-black-white-medium-format-w2b.jpg",
+        alt: {
+          en: "A long pier reaching out into the sea, black and white medium-format film",
+          fr: "Une longue jetée s'avançant dans la mer, moyen format argentique noir et blanc",
+          es: "Un largo muelle adentrándose en el mar, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "contemplations-minimal-sea-horizon-black-white-medium-format-w2b.jpg",
+        alt: {
+          en: "A minimal sea horizon under a pale sky, black and white medium-format film",
+          fr: "Un horizon marin minimaliste sous un ciel pâle, moyen format argentique noir et blanc",
+          es: "Un horizonte marino minimalista bajo un cielo pálido, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "contemplations-dark-sea-storm-cloud-black-white-medium-format-w2b.jpg",
+        alt: {
+          en: "A dark sea beneath a heavy storm cloud, black and white medium-format film",
+          fr: "Une mer sombre sous un lourd nuage d'orage, moyen format argentique noir et blanc",
+          es: "Un mar oscuro bajo una pesada nube de tormenta, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "contemplations-fog-dissolving-seascape-black-white-medium-format-w2b.jpg",
+        alt: {
+          en: "A seascape dissolving into fog, black and white medium-format film",
+          fr: "Un paysage marin se dissolvant dans la brume, moyen format argentique noir et blanc",
+          es: "Un paisaje marino disolviéndose en la niebla, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "contemplations-misty-mountain-water-minimal-medium-format-w2b.jpg",
+        alt: {
+          en: "Mist over still water below a mountain, medium-format film",
+          fr: "Brume sur une eau calme au pied d'une montagne, moyen format argentique",
+          es: "Niebla sobre agua quieta al pie de una montaña, película de formato medio"
+        }
+      },
+      {
+        file: "contemplations-golden-light-shimmering-water-medium-format-w2b.jpg",
+        alt: {
+          en: "Golden light shimmering across the water, medium-format film",
+          fr: "Lumière dorée scintillant sur l'eau, moyen format argentique",
+          es: "Luz dorada brillando sobre el agua, película de formato medio"
+        }
+      },
+      {
+        file: "contemplations-misty-beach-pavilion-quiet-medium-format-w2b.jpg",
+        alt: {
+          en: "A quiet pavilion on a misty beach, medium-format film",
+          fr: "Un pavillon tranquille sur une plage brumeuse, moyen format argentique",
+          es: "Un pabellón tranquilo en una playa con niebla, película de formato medio"
+        }
+      },
+      {
+        file: "contemplations-calm-bay-still-water-medium-format-w2b.jpg",
+        alt: {
+          en: "A calm bay of still water, medium-format film",
+          fr: "Une baie calme aux eaux immobiles, moyen format argentique",
+          es: "Una bahía tranquila de aguas inmóviles, película de formato medio"
+        }
+      },
+      {
+        file: "contemplations-two-people-seated-watching-view-medium-format-w2b.jpg",
+        alt: {
+          en: "Two people seated together, watching the view, medium-format film",
+          fr: "Deux personnes assises ensemble, contemplant le paysage, moyen format argentique",
+          es: "Dos personas sentadas juntas, contemplando el paisaje, película de formato medio"
+        }
+      }
+    ]
   }
 
 };
@@ -1163,6 +1301,7 @@ const GALLERY_ORDER = [
   "series-2",
   "series-3",
   "argentina",
+  "contemplations",
   "nude",
   "boudoir",
   "blackout"
