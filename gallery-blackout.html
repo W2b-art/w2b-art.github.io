@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colombian Blackout — W2b</title>
+  <meta name="description" content="Colombian Blackout — Afro-Colombian portraits on a Medellín rooftop during a solar eclipse, golden hour to night. A collaboration by Guillaume Delye.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <nav class="nav" role="navigation">
+    <a class="nav-logo" href="index.html" aria-label="W2b Art — Home">
+      <svg viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="78" height="42" rx="2" stroke="#C41E3A" stroke-width="0.8" fill="none"/>
+        <rect x="4"  y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="4"  y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <text x="14" y="29" font-family="'Space Mono', monospace" font-size="18" font-weight="700"
+              fill="#E8E4DF" letter-spacing="-0.5">W2b</text>
+        <line x1="14" y1="32" x2="66" y2="32" stroke="#C41E3A" stroke-width="0.8" opacity="0.7"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"           data-i18n="nav_home">Home</a></li>
+      <li><a href="index.html#galleries" data-i18n="nav_galleries">Galleries</a></li>
+      <li><a href="shop.html"            data-i18n="nav_shop">Prints</a></li>
+      <li><a href="about.html"           data-i18n="nav_about">About</a></li>
+      <li><a href="https://w2b-art.github.io/w2b-pro/"    data-i18n="nav_pro">Commercial ↗</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Gallery Hero -->
+  <header class="gallery-page-hero" aria-label="Gallery header">
+    <div class="gallery-page-hero-content">
+      <a class="gallery-back" href="index.html#galleries" data-i18n="back_home">← Back</a>
+      <h1 class="gallery-page-title" id="gallery-page-title">Gallery</h1>
+      <p  class="gallery-page-desc"  id="gallery-page-desc"></p>
+    </div>
+  </header>
+
+  <!-- Photo Grid -->
+  <main>
+    <div class="photo-grid" id="photo-grid" role="list" aria-label="Photo gallery"></div>
+  </main>
+
+  <!-- Bridge -->
+  <div class="pro-bridge" style="margin-top:2rem;">
+    <p class="bridge-text" data-i18n="bridge_text">Also working on editorial and commercial commissions.</p>
+    <a class="bridge-link" href="https://w2b-art.github.io/w2b-pro/">
+      <span data-i18n="bridge_link">Visit the commercial portfolio ↗</span>
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <footer class="footer">
+    <nav class="footer-social" aria-label="Contact and social">
+      <a href="https://www.instagram.com/w2b.film" target="_blank" rel="noopener">Instagram</a>
+      <a href="shop.html" data-i18n="nav_shop">Prints</a>
+      <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
+      <a href="mailto:w2bphoto+prints@gmail.com">Inquire</a>
+    </nav>
+    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye — All rights reserved</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+    <button id="lightbox-close" class="lightbox-close">✕ Close</button>
+    <button id="lightbox-prev"  class="lightbox-nav lightbox-prev">‹</button>
+    <img    id="lightbox-img"   class="lightbox-img" src="" alt="">
+    <button id="lightbox-next"  class="lightbox-nav lightbox-next">›</button>
+    <div    id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
+  <script src="js/gallery-data.js"></script>
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderGalleryPage('blackout');
+    });
+  </script>
+</body>
+</html>

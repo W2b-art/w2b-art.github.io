@@ -295,6 +295,70 @@ const GALLERY_DATA = {
           fr: "Femme de dos dans les bancs d'une église de Medellín, grand tatouage d'ailes d'ange et croix dans le dos, documentaire couleur",
           es: "Mujer de espaldas en un banco de iglesia en Medellín, gran tatuaje de alas de ángel y cruz en la espalda, documental color"
         }
+      },
+      {
+        file: "medellin-market-vendor-resting-grain-sacks-black-white-documentary-colombia-w2b.jpg",
+        alt: {
+          en: "Market vendor resting among stacked sacks of grain in a Medellín marketplace, black and white documentary photography",
+          fr: "Marchand assoupi parmi les sacs de grain empilés dans un marché de Medellín, photographie documentaire noir et blanc",
+          es: "Vendedor descansando entre sacos de grano apilados en un mercado de Medellín, fotografía documental en blanco y negro"
+        }
+      },
+      {
+        file: "medellin-vintage-tram-interior-wood-green-documentary-colombia-w2b.jpg",
+        alt: {
+          en: "Interior of a vintage wooden tram carriage with green seats, Medellín, colour documentary film photography",
+          fr: "Intérieur d'un ancien tramway en bois aux banquettes vertes, Medellín, photographie documentaire argentique couleur",
+          es: "Interior de un viejo tranvía de madera con asientos verdes, Medellín, fotografía documental analógica color"
+        }
+      },
+      {
+        file: "medellin-green-corridor-lone-figure-walking-documentary-colombia-w2b.jpg",
+        alt: {
+          en: "A lone figure walking down a green-walled corridor, Medellín, colour documentary photography",
+          fr: "Une silhouette solitaire marchant dans un couloir aux murs verts, Medellín, photographie documentaire couleur",
+          es: "Una figura solitaria caminando por un corredor de paredes verdes, Medellín, fotografía documental color"
+        }
+      },
+      {
+        file: "medellin-elder-woman-market-vendor-stall-documentary-colombia-w2b.jpg",
+        alt: {
+          en: "Elderly woman tending her market stall in Medellín, colour documentary street photography",
+          fr: "Femme âgée tenant son étal de marché à Medellín, photographie documentaire de rue en couleur",
+          es: "Mujer mayor atendiendo su puesto de mercado en Medellín, fotografía documental callejera en color"
+        }
+      },
+      {
+        file: "medellin-dark-alley-figures-moody-street-documentary-colombia-w2b.jpg",
+        alt: {
+          en: "Figures in a dim Medellín alley at dusk, moody colour documentary street photography",
+          fr: "Silhouettes dans une ruelle sombre de Medellín au crépuscule, photographie documentaire de rue en couleur",
+          es: "Figuras en un callejón oscuro de Medellín al anochecer, fotografía documental callejera en color"
+        }
+      },
+      {
+        file: "medellin-marigold-flower-market-stall-colour-documentary-colombia-w2b.jpg",
+        alt: {
+          en: "Stall piled with marigolds and yellow flowers at a Medellín flower market, vivid colour documentary photography",
+          fr: "Étal débordant d'œillets d'Inde et de fleurs jaunes dans un marché aux fleurs de Medellín, photographie documentaire couleur",
+          es: "Puesto repleto de caléndulas y flores amarillas en un mercado de flores de Medellín, fotografía documental a color"
+        }
+      },
+      {
+        file: "medellin-man-market-stall-vendor-documentary-colombia-w2b.jpg",
+        alt: {
+          en: "Man at his stall in a Medellín market, colour documentary street photography",
+          fr: "Homme à son étal dans un marché de Medellín, photographie documentaire de rue en couleur",
+          es: "Hombre en su puesto en un mercado de Medellín, fotografía documental callejera en color"
+        }
+      },
+      {
+        file: "medellin-street-sweeper-yellow-uniform-urban-documentary-colombia-w2b.jpg",
+        alt: {
+          en: "A street sweeper in a yellow uniform crossing an empty Medellín street, colour documentary photography",
+          fr: "Un balayeur de rue en uniforme jaune traversant une rue déserte de Medellín, photographie documentaire couleur",
+          es: "Un barrendero con uniforme amarillo cruzando una calle vacía de Medellín, fotografía documental a color"
+        }
       }
     ]
   },
@@ -779,6 +843,152 @@ const GALLERY_DATA = {
         }
       }
     ]
+  },
+
+  "blackout": {
+    id: "blackout",
+    folder: "images/blackout/",
+    coverIndex: 4,
+    title: {
+      en: "Colombian Blackout",
+      fr: "Colombian Blackout",
+      es: "Colombian Blackout"
+    },
+    description: {
+      en: "A rooftop in Medellín during a solar eclipse — golden hour, the blackout, and the city below. Afro-Colombian portraits from a collaboration, made as the light went out.",
+      fr: "Un toit de Medellín pendant une éclipse solaire — l'heure dorée, le blackout, et la ville en contrebas. Portraits afro-colombiens d'une collaboration, faits au moment où la lumière s'est éteinte.",
+      es: "Una azotea en Medellín durante un eclipse solar — la hora dorada, el blackout, y la ciudad abajo. Retratos afrocolombianos de una colaboración, hechos mientras se apagaba la luz."
+    },
+    images: [
+      {
+        file: "blackout-medellin-rooftop-man-seated-meditative-mountains-golden-hour-w2b.jpg",
+        alt: {
+          en: "A man seated cross-legged on a Medellín rooftop in golden light, mountains behind, during the Colombian Blackout eclipse gathering",
+          fr: "Un homme assis en tailleur sur un toit de Medellín dans la lumière dorée, montagnes en arrière-plan, lors du rassemblement de l'éclipse Colombian Blackout",
+          es: "Un hombre sentado con las piernas cruzadas en una azotea de Medellín bajo la luz dorada, montañas al fondo, durante el encuentro del eclipse Colombian Blackout"
+        }
+      },
+      {
+        file: "blackout-medellin-solar-eclipse-crescent-sky-w2b.jpg",
+        alt: {
+          en: "The sun reduced to a glowing crescent during the solar eclipse over Medellín — the blackout",
+          fr: "Le soleil réduit à un croissant lumineux pendant l'éclipse solaire au-dessus de Medellín — le blackout",
+          es: "El sol reducido a un creciente luminoso durante el eclipse solar sobre Medellín — el blackout"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-man-railing-comuna-skyline-golden-hour-w2b.jpg",
+        alt: {
+          en: "A man at the rooftop railing looking out over the Medellín comuna hillside at golden hour, Colombian Blackout",
+          fr: "Un homme à la rambarde d'un toit contemplant les collines de la comuna de Medellín à l'heure dorée, Colombian Blackout",
+          es: "Un hombre en la baranda de una azotea mirando las laderas de la comuna de Medellín en la hora dorada, Colombian Blackout"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-woman-beaded-top-golden-hour-portrait-w2b.jpg",
+        alt: {
+          en: "Golden-hour portrait of a woman in a beaded top on the rooftop, Colombian Blackout, Medellín",
+          fr: "Portrait à l'heure dorée d'une femme en haut perlé sur le toit, Colombian Blackout, Medellín",
+          es: "Retrato en la hora dorada de una mujer con top de cuentas en la azotea, Colombian Blackout, Medellín"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-woman-green-top-locs-portrait-w2b.jpg",
+        alt: {
+          en: "Portrait of a woman with locs in a green top glancing back, golden hour, Colombian Blackout rooftop, Medellín",
+          fr: "Portrait d'une femme aux locks en haut vert se retournant, heure dorée, toit Colombian Blackout, Medellín",
+          es: "Retrato de una mujer con locs y top verde mirando hacia atrás, hora dorada, azotea Colombian Blackout, Medellín"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-man-afro-portrait-golden-hour-w2b.jpg",
+        alt: {
+          en: "Golden-hour portrait of a man with an afro in an open shirt, Colombian Blackout rooftop, Medellín",
+          fr: "Portrait à l'heure dorée d'un homme afro en chemise ouverte, toit Colombian Blackout, Medellín",
+          es: "Retrato en la hora dorada de un hombre afro con camisa abierta, azotea Colombian Blackout, Medellín"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-woman-curly-hair-joyful-golden-hour-w2b.jpg",
+        alt: {
+          en: "A woman with curly hair laughing in golden backlight on the rooftop, Colombian Blackout, Medellín",
+          fr: "Une femme aux cheveux bouclés riant dans un contre-jour doré sur le toit, Colombian Blackout, Medellín",
+          es: "Una mujer de cabello rizado riendo a contraluz dorado en la azotea, Colombian Blackout, Medellín"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-woman-white-fringe-dress-golden-hour-w2b.jpg",
+        alt: {
+          en: "A woman in a white fringe dress standing in golden-hour light on the rooftop, Colombian Blackout, Medellín",
+          fr: "Une femme en robe blanche à franges debout dans la lumière dorée sur le toit, Colombian Blackout, Medellín",
+          es: "Una mujer con vestido blanco de flecos de pie bajo la luz dorada en la azotea, Colombian Blackout, Medellín"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-three-women-smiling-golden-hour-w2b.jpg",
+        alt: {
+          en: "Three women smiling together at golden hour on the rooftop, Colombian Blackout, Medellín",
+          fr: "Trois femmes souriant ensemble à l'heure dorée sur le toit, Colombian Blackout, Medellín",
+          es: "Tres mujeres sonriendo juntas en la hora dorada en la azotea, Colombian Blackout, Medellín"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-man-dancing-arms-raised-skyline-golden-hour-w2b.jpg",
+        alt: {
+          en: "A man dancing with arms raised against the Medellín skyline at golden hour, Colombian Blackout",
+          fr: "Un homme dansant bras levés devant les toits de Medellín à l'heure dorée, Colombian Blackout",
+          es: "Un hombre bailando con los brazos en alto frente al horizonte de Medellín en la hora dorada, Colombian Blackout"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-two-women-dancing-skyline-golden-hour-w2b.jpg",
+        alt: {
+          en: "Two women dancing with the city skyline behind them at golden hour, Colombian Blackout, Medellín",
+          fr: "Deux femmes dansant avec les toits de la ville derrière elles à l'heure dorée, Colombian Blackout, Medellín",
+          es: "Dos mujeres bailando con el horizonte de la ciudad detrás en la hora dorada, Colombian Blackout, Medellín"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-men-bar-golden-hour-gathering-w2b.jpg",
+        alt: {
+          en: "Men gathered at the rooftop bar in golden light, Colombian Blackout, Medellín",
+          fr: "Des hommes réunis au bar du toit dans la lumière dorée, Colombian Blackout, Medellín",
+          es: "Hombres reunidos en la barra de la azotea bajo la luz dorada, Colombian Blackout, Medellín"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-man-railing-drink-golden-hour-w2b.jpg",
+        alt: {
+          en: "A man at the rooftop railing with a drink as the light fades, Colombian Blackout, Medellín",
+          fr: "Un homme à la rambarde du toit, un verre à la main, alors que la lumière décline, Colombian Blackout, Medellín",
+          es: "Un hombre en la baranda de la azotea con una bebida mientras cae la luz, Colombian Blackout, Medellín"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-group-dancing-skyline-golden-hour-w2b.jpg",
+        alt: {
+          en: "A group dancing with hands raised against the skyline at golden hour, Colombian Blackout, Medellín",
+          fr: "Un groupe dansant les mains levées devant les toits à l'heure dorée, Colombian Blackout, Medellín",
+          es: "Un grupo bailando con las manos en alto frente al horizonte en la hora dorada, Colombian Blackout, Medellín"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-couple-candid-golden-hour-w2b.jpg",
+        alt: {
+          en: "A candid moment between two people in golden light on the rooftop, Colombian Blackout, Medellín",
+          fr: "Un moment spontané entre deux personnes dans la lumière dorée sur le toit, Colombian Blackout, Medellín",
+          es: "Un momento espontáneo entre dos personas bajo la luz dorada en la azotea, Colombian Blackout, Medellín"
+        }
+      },
+      {
+        file: "blackout-medellin-rooftop-woman-seated-smiling-golden-hour-w2b.jpg",
+        alt: {
+          en: "A woman seated and smiling in warm golden-hour light, Colombian Blackout rooftop, Medellín",
+          fr: "Une femme assise et souriante dans la chaude lumière dorée, toit Colombian Blackout, Medellín",
+          es: "Una mujer sentada y sonriendo bajo la cálida luz dorada, azotea Colombian Blackout, Medellín"
+        }
+      }
+    ]
   }
 
 };
@@ -791,7 +1001,8 @@ const GALLERY_ORDER = [
   "series-2",
   "series-3",
   "nude",
-  "boudoir"
+  "boudoir",
+  "blackout"
 ];
 
 /* Extra non-gallery frames appended to the film strip on the homepage.
