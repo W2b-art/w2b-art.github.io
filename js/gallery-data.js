@@ -989,6 +989,168 @@ const GALLERY_DATA = {
         }
       }
     ]
+  },
+
+  "argentina": {
+    id: "argentina",
+    folder: "images/argentina/",
+    coverIndex: 17,
+    title: {
+      en: "Argentina",
+      fr: "Argentine",
+      es: "Argentina"
+    },
+    description: {
+      en: "A journey south on film — Patagonian lakes and the high desert, Buenos Aires, and the tango. Argentina seen with a foreign eye.",
+      fr: "Un voyage vers le sud, en argentique — les lacs de Patagonie et le haut désert, Buenos Aires, et le tango. L'Argentine vue par un œil étranger.",
+      es: "Un viaje al sur en analógico — los lagos de la Patagonia y el altiplano, Buenos Aires, y el tango. Argentina vista con una mirada extranjera."
+    },
+    images: [
+      {
+        file: "argentina-patagonia-lake-islands-mountains-colour-film-w2b.jpg",
+        alt: {
+          en: "Patagonian lake dotted with islands and ringed by mountains, colour film landscape, Argentina",
+          fr: "Lac de Patagonie parsemé d'îles et cerné de montagnes, paysage argentique couleur, Argentine",
+          es: "Lago patagónico salpicado de islas y rodeado de montañas, paisaje analógico color, Argentina"
+        }
+      },
+      {
+        file: "argentina-patagonia-lake-town-mountains-colour-film-w2b.jpg",
+        alt: {
+          en: "Mountain lake with a lakeside town and peaks beyond, colour film, Patagonia, Argentina",
+          fr: "Lac de montagne avec un village au bord de l'eau et des sommets au loin, argentique couleur, Patagonie, Argentine",
+          es: "Lago de montaña con un pueblo a la orilla y cumbres al fondo, analógico color, Patagonia, Argentina"
+        }
+      },
+      {
+        file: "argentina-misty-green-mountain-peak-film-w2b.jpg",
+        alt: {
+          en: "A green mountain peak wreathed in mist, colour film landscape, Argentina",
+          fr: "Un sommet vert nimbé de brume, paysage argentique couleur, Argentine",
+          es: "Un pico montañoso verde envuelto en bruma, paisaje analógico color, Argentina"
+        }
+      },
+      {
+        file: "argentina-andean-canyon-golden-light-film-w2b.jpg",
+        alt: {
+          en: "Andean canyon walls in warm low light, colour film landscape, Argentina",
+          fr: "Parois d'un canyon andin dans une lumière chaude et basse, paysage argentique couleur, Argentine",
+          es: "Paredes de un cañón andino bajo una luz cálida y baja, paisaje analógico color, Argentina"
+        }
+      },
+      {
+        file: "argentina-araucaria-tree-black-white-film-w2b.jpg",
+        alt: {
+          en: "An araucaria (monkey-puzzle) tree against the sky, black and white film, Patagonia, Argentina",
+          fr: "Un araucaria (désespoir des singes) se découpant sur le ciel, argentique noir et blanc, Patagonie, Argentine",
+          es: "Una araucaria recortada contra el cielo, analógico blanco y negro, Patagonia, Argentina"
+        }
+      },
+      {
+        file: "argentina-dramatic-clouds-lake-black-white-film-w2b.jpg",
+        alt: {
+          en: "Dramatic clouds massing over a lake, black and white film landscape, Argentina",
+          fr: "Nuages dramatiques s'amassant au-dessus d'un lac, paysage argentique noir et blanc, Argentine",
+          es: "Nubes dramáticas acumulándose sobre un lago, paisaje analógico blanco y negro, Argentina"
+        }
+      },
+      {
+        file: "argentina-geyser-steam-altiplano-black-white-film-w2b.jpg",
+        alt: {
+          en: "Steam rising from a geyser field on the high altiplano, black and white film, Argentina",
+          fr: "Vapeur s'élevant d'un champ de geysers sur l'altiplano, argentique noir et blanc, Argentine",
+          es: "Vapor brotando de un campo de géiseres en el altiplano, analógico blanco y negro, Argentina"
+        }
+      },
+      {
+        file: "argentina-child-leaping-into-lake-black-white-film-w2b.jpg",
+        alt: {
+          en: "A child caught mid-leap into a lake, black and white film, Argentina",
+          fr: "Un enfant saisi en plein saut dans un lac, argentique noir et blanc, Argentine",
+          es: "Un niño captado en pleno salto a un lago, analógico blanco y negro, Argentina"
+        }
+      },
+      {
+        file: "argentina-figure-arms-raised-sunset-film-w2b.jpg",
+        alt: {
+          en: "A figure with arms raised against the sunset, colour film, Argentina",
+          fr: "Une silhouette bras levés face au coucher du soleil, argentique couleur, Argentine",
+          es: "Una figura con los brazos en alto frente al atardecer, analógico color, Argentina"
+        }
+      },
+      {
+        file: "argentina-statue-silhouette-dusk-film-w2b.jpg",
+        alt: {
+          en: "Silhouette of a statue at dusk, colour film, Argentina",
+          fr: "Silhouette d'une statue au crépuscule, argentique couleur, Argentine",
+          es: "Silueta de una estatua al anochecer, analógico color, Argentina"
+        }
+      },
+      {
+        file: "buenos-aires-avenue-palm-golden-light-film-w2b.jpg",
+        alt: {
+          en: "A wide Buenos Aires avenue lined with palms in golden light, colour film",
+          fr: "Une large avenue de Buenos Aires bordée de palmiers dans la lumière dorée, argentique couleur",
+          es: "Una amplia avenida de Buenos Aires bordeada de palmeras bajo la luz dorada, analógico color"
+        }
+      },
+      {
+        file: "buenos-aires-street-cars-warm-light-film-w2b.jpg",
+        alt: {
+          en: "A Buenos Aires street with cars in warm afternoon light, colour film",
+          fr: "Une rue de Buenos Aires avec des voitures dans la lumière chaude de l'après-midi, argentique couleur",
+          es: "Una calle de Buenos Aires con autos bajo la cálida luz de la tarde, analógico color"
+        }
+      },
+      {
+        file: "buenos-aires-golden-modernist-facade-film-w2b.jpg",
+        alt: {
+          en: "Golden geometric facade of a Buenos Aires modernist building, colour film",
+          fr: "Façade géométrique dorée d'un immeuble moderniste de Buenos Aires, argentique couleur",
+          es: "Fachada geométrica dorada de un edificio modernista de Buenos Aires, analógico color"
+        }
+      },
+      {
+        file: "buenos-aires-cathedral-spire-black-white-film-w2b.jpg",
+        alt: {
+          en: "Spire of a Buenos Aires cathedral against the sky, black and white film",
+          fr: "Flèche d'une cathédrale de Buenos Aires sur fond de ciel, argentique noir et blanc",
+          es: "Aguja de una catedral de Buenos Aires contra el cielo, analógico blanco y negro"
+        }
+      },
+      {
+        file: "buenos-aires-colonial-church-facade-film-w2b.jpg",
+        alt: {
+          en: "Ornate colonial church facade in Buenos Aires, colour film",
+          fr: "Façade d'église coloniale ornée à Buenos Aires, argentique couleur",
+          es: "Fachada de iglesia colonial ornamentada en Buenos Aires, analógico color"
+        }
+      },
+      {
+        file: "argentina-couple-embrace-black-white-film-w2b.jpg",
+        alt: {
+          en: "Two people embracing, black and white film, Argentina",
+          fr: "Deux personnes enlacées, argentique noir et blanc, Argentine",
+          es: "Dos personas abrazándose, analógico blanco y negro, Argentina"
+        }
+      },
+      {
+        file: "buenos-aires-bandoneon-player-tango-film-w2b.jpg",
+        alt: {
+          en: "A bandoneón player performing, Buenos Aires, colour film — tango",
+          fr: "Un joueur de bandonéon en plein jeu, Buenos Aires, argentique couleur — tango",
+          es: "Un bandoneonista tocando, Buenos Aires, analógico color — tango"
+        }
+      },
+      {
+        file: "buenos-aires-tango-dancer-red-dress-window-film-w2b.jpg",
+        alt: {
+          en: "A tango dancer in a red dress in window light, Buenos Aires, colour film",
+          fr: "Une danseuse de tango en robe rouge dans la lumière d'une fenêtre, Buenos Aires, argentique couleur",
+          es: "Una bailarina de tango con vestido rojo en la luz de una ventana, Buenos Aires, analógico color"
+        }
+      }
+    ]
   }
 
 };
@@ -1000,6 +1162,7 @@ const GALLERY_ORDER = [
   "series-1",
   "series-2",
   "series-3",
+  "argentina",
   "nude",
   "boudoir",
   "blackout"
