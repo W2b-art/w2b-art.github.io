@@ -799,6 +799,27 @@ const GALLERY_ORDER = [
    so the click handler routes to a standalone page instead of the
    gallery-${id}.html template. */
 const STRIP_EXTRAS = {
+  "shop": {
+    id: "shop",
+    folder: "images/best-of/",
+    coverIndex: 0,
+    url: "shop.html",
+    title: {
+      en: "Prints",
+      fr: "Tirages",
+      es: "Copias"
+    },
+    images: [
+      {
+        file: "antique-shop-gilded-mirror-roman-bust-w2b.jpg",
+        alt: {
+          en: "Signed archival fine-art prints",
+          fr: "Tirages d'art signés",
+          es: "Copias de autor firmadas"
+        }
+      }
+    ]
+  },
   "collaborate": {
     id: "collaborate",
     folder: "images/nude/",
@@ -845,4 +866,4 @@ const STRIP_EXTRAS = {
 
 /* Full ordering rendered into the film strip — galleries first, then
    any standalone-page frames (about, etc.). */
-const STRIP_ORDER = [...GALLERY_ORDER, "collaborate", "about"];
+const STRIP_ORDER = [...GALLERY_ORDER, "shop", "collaborate", "about"];

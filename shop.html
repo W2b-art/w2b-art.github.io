@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prints — W2b</title>
+  <meta name="description" content="Signed archival fine-art prints by Guillaume Delye — pigment ink on cotton rag, editions of 7 + 2 AP, shipped worldwide.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .shop-page { max-width: 1100px; margin: 0 auto; padding: 7rem 1.5rem 5rem; }
+    .shop-head { max-width: 720px; margin: 0 auto 3rem; text-align: center; }
+    .shop-eyebrow {
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--crimson); margin-bottom: 1rem;
+    }
+    .shop-h1 {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: clamp(2.4rem, 7vw, 3.6rem); line-height: 1.05; color: var(--text);
+    }
+    .shop-intro { color: var(--text-muted); margin-top: 1rem; font-size: 1.05rem; line-height: 1.6; }
+    .shop-terms { color: var(--text-muted); margin-top: 0.75rem; font-size: 0.85rem; opacity: 0.8; }
+
+    .shop-group { margin-top: 3.5rem; }
+    .shop-group-title {
+      font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-muted);
+      padding-bottom: 0.75rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border);
+    }
+    .shop-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.25rem;
+    }
+    .shop-card {
+      position: relative; overflow: hidden; border-radius: 4px;
+      background: var(--bg-2); border: 1px solid var(--border); aspect-ratio: 4 / 5;
+    }
+    .shop-card img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s ease, opacity 0.3s; opacity: 0.92;
+    }
+    .shop-card:hover img { transform: scale(1.04); opacity: 1; }
+    .shop-card-acquire {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to top, rgba(14,12,9,0.94), rgba(14,12,9,0));
+      padding: 3rem 0.9rem 0.9rem; display: flex; justify-content: space-between;
+      align-items: flex-end; gap: 0.6rem;
+    }
+    .shop-card-title {
+      font-family: var(--font-display); font-size: 1rem; color: var(--text);
+      line-height: 1.2; text-shadow: 0 1px 6px rgba(0,0,0,0.7); padding-bottom: 0.15rem;
+    }
+    .shop-card-btn {
+      background: none; border: 1px solid var(--crimson); color: var(--text);
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.45rem 0.9rem; border-radius: 4px; cursor: pointer; transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .shop-card-btn:hover { background: var(--crimson); color: #fff; }
+    .shop-badge {
+      position: absolute; top: 0.6rem; left: 0.6rem; z-index: 2;
+      font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--text); background: rgba(196,30,58,0.85); padding: 0.28rem 0.55rem; border-radius: 3px;
+    }
+    .acq-edition {
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em; line-height: 1.5;
+      color: var(--crimson); margin: -0.4rem 0 1.1rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--border);
+    }
+
+    .shop-dark-note {
+      margin-top: 3.5rem; text-align: center; font-size: 0.9rem; color: var(--text-muted);
+      border-top: 1px solid var(--border); padding-top: 2rem;
+    }
+    .shop-dark-note a { color: var(--crimson); text-decoration: none; }
+    .shop-dark-note a:hover { text-decoration: underline; }
+
+    /* Acquire modal */
+    .acq-overlay {
+      position: fixed; inset: 0; background: rgba(8,7,5,0.88); backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center; z-index: 1000; padding: 1.5rem;
+    }
+    .acq-overlay.open { display: flex; }
+    .acq-modal {
+      background: var(--bg); border: 1px solid var(--border-red, var(--border)); border-radius: 6px;
+      max-width: 760px; width: 100%; max-height: 90vh; overflow-y: auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    }
+    @media (max-width: 640px) { .acq-modal { grid-template-columns: 1fr; } .acq-figure { max-height: 240px; } }
+    .acq-figure { background: var(--bg-2); }
+    .acq-figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .acq-body { padding: 1.75rem 1.6rem; position: relative; }
+    .acq-close {
+      position: absolute; top: 0.8rem; right: 0.9rem; background: none; border: none;
+      color: var(--text-muted); font-size: 1.3rem; cursor: pointer; line-height: 1;
+    }
+    .acq-close:hover { color: var(--text); }
+    .acq-label {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--crimson); margin-bottom: 0.6rem;
+    }
+    .acq-title { font-family: var(--font-display); font-size: 1.4rem; color: var(--text); margin-bottom: 0.6rem; }
+    .acq-intro { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.25rem; }
+    .acq-field { margin-bottom: 0.9rem; }
+    .acq-field label {
+      display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem;
+    }
+    .acq-field input, .acq-field select, .acq-field textarea {
+      width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px;
+      color: var(--text); font-family: var(--font-body); font-size: 0.95rem; padding: 0.6rem 0.7rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .acq-field input:focus, .acq-field select:focus, .acq-field textarea:focus { border-color: var(--crimson); }
+    .acq-field textarea { resize: vertical; min-height: 64px; }
+    .acq-submit {
+      width: 100%; margin-top: 0.4rem; background: var(--crimson); border: 1px solid var(--crimson);
+      color: #fff; font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.8rem 1rem; border-radius: 4px; cursor: pointer; transition: opacity 0.2s;
+    }
+    .acq-submit:hover { opacity: 0.88; }
+    .acq-success { display: none; color: var(--text); font-size: 0.92rem; line-height: 1.6; margin-top: 1rem; }
+    .acq-success.show { display: block; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" role="navigation">
+    <a class="nav-logo" href="index.html" aria-label="W2b Art — Home">
+      <svg viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="78" height="42" rx="2" stroke="#C41E3A" stroke-width="0.8" fill="none"/>
+        <rect x="4"  y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="4"  y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <text x="14" y="29" font-family="'Space Mono', monospace" font-size="18" font-weight="700"
+              fill="#E8E4DF" letter-spacing="-0.5">W2b</text>
+        <line x1="14" y1="32" x2="66" y2="32" stroke="#C41E3A" stroke-width="0.8" opacity="0.7"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html"           data-i18n="nav_home">Home</a></li>
+      <li><a href="index.html#galleries" data-i18n="nav_galleries">Galleries</a></li>
+      <li><a href="shop.html"            data-i18n="nav_shop">Prints</a></li>
+      <li><a href="about.html"           data-i18n="nav_about">About</a></li>
+      <li><a href="https://w2b-art.github.io/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="shop-page">
+    <header class="shop-head">
+      <p class="shop-eyebrow" data-i18n="shop_lead">Prints &amp; Editions</p>
+      <h1 class="shop-h1" data-i18n="shop_title">Collect a print</h1>
+      <p class="shop-intro" data-i18n="shop_intro">Selected images, available as signed archival prints — pigment ink on cotton rag, in editions of 7 + 2 AP, numbered and signed by hand.</p>
+      <p class="shop-terms" data-i18n="shop_terms">Each print is made to order and shipped worldwide. Allow two to three weeks. Prices in EUR; Colombian peso on request.</p>
+    </header>
+
+    <div id="shop-groups"></div>
+
+    <p class="shop-dark-note">
+      <span data-i18n="shop_dark_note">Prints from the Nude and Dark Desire series are available privately, on request.</span>
+      <a href="collaborate.html#commissions" data-i18n="nav_collab">Collaborate</a>
+    </p>
+  </main>
+
+  <!-- Acquire modal -->
+  <div class="acq-overlay" id="acq-overlay" role="dialog" aria-modal="true" aria-labelledby="acq-title">
+    <div class="acq-modal">
+      <div class="acq-figure"><img id="acq-img" src="" alt=""></div>
+      <div class="acq-body">
+        <button class="acq-close" id="acq-close" aria-label="Close">✕</button>
+        <p class="acq-label" data-i18n="shop_lead">Prints &amp; Editions</p>
+        <h2 class="acq-title" id="acq-title">Print</h2>
+        <p class="acq-intro" data-i18n="shop_m_intro">Choose a size. I'll confirm availability, the final price and shipping to you.</p>
+        <p class="acq-edition" id="acq-note-collector" data-i18n="shop_collector_note" style="display:none;">Signed and numbered · limited edition of 15 + 2 AP · with certificate of authenticity.</p>
+        <p class="acq-edition" id="acq-note-open" data-i18n="shop_open_note" style="display:none;">Open edition · archival pigment print · unsigned.</p>
+
+        <form id="acq-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
+          <input type="hidden" name="_subject" id="acq-subject" value="Print order — w2b art">
+          <input type="hidden" name="edition" id="acq-edition-field" value="">
+          <input type="hidden" name="print" id="acq-print" value="">
+          <div class="acq-field">
+            <label for="acq-size" data-i18n="shop_m_size">Size</label>
+            <select id="acq-size" name="size" required></select>
+          </div>
+          <div class="acq-field">
+            <label for="acq-name" data-i18n="shop_m_name">Name</label>
+            <input type="text" id="acq-name" name="name" required>
+          </div>
+          <div class="acq-field">
+            <label for="acq-email" data-i18n="shop_m_email">Email</label>
+            <input type="email" id="acq-email" name="email" required>
+          </div>
+          <div class="acq-field">
+            <label for="acq-note" data-i18n="shop_m_note">Anything I should know (optional)</label>
+            <textarea id="acq-note" name="note" rows="2"></textarea>
+          </div>
+          <button type="submit" class="acq-submit" data-i18n="shop_m_submit">Request this print</button>
+          <p class="acq-success" id="acq-success" data-i18n="shop_m_success" role="alert">Thank you. I'll confirm availability and send the invoice within a couple of days.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <nav class="footer-social" aria-label="Contact and social">
+      <a href="https://www.instagram.com/w2b.film" target="_blank" rel="noopener">Instagram</a>
+      <a href="shop.html" data-i18n="nav_shop">Prints</a>
+      <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
+      <a href="mailto:w2bphoto+prints@gmail.com">Inquire</a>
+    </nav>
+    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye — All rights reserved</p>
+  </footer>
+
+  <script src="js/gallery-data.js"></script>
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    /* ── Two tiers · EDIT THESE NUMBERS to set pricing ──
+       Sizes are universal; all three prices are shown to the buyer.
+       Rates used: 1 EUR ≈ 3997 COP, 1 EUR ≈ 1.08 USD — update when they drift.
+       COLLECTOR = signed, numbered, limited (15 + 2 AP), with certificate.
+       OPEN = unsigned, open edition, notably cheaper. */
+    const EDITION = "15 + 2 AP";
+    const TIERS = {
+      collector: {
+        subject: "Print order (collector) — w2b art",
+        sizes: [
+          { label: "30 × 40 cm",  eur: 150, usd: 160, cop: 600000 },
+          { label: "50 × 70 cm",  eur: 290, usd: 310, cop: 1160000 },
+          { label: "70 × 100 cm", eur: 520, usd: 560, cop: 2080000 }
+        ]
+      },
+      open: {
+        subject: "Print order (open) — w2b art",
+        sizes: [
+          { label: "30 × 40 cm",  eur: 75,  usd: 80,  cop: 300000 },
+          { label: "50 × 70 cm",  eur: 145, usd: 155, cop: 580000 },
+          { label: "70 × 100 cm", eur: 260, usd: 280, cop: 1040000 }
+        ]
+      }
+    };
+
+    /* ── Collector selection · EDIT THIS LIST (your eye) ──
+       Any filename here becomes a signed, numbered collector print.
+       Everything else in the sellable galleries is an open edition.
+       Seeded with a few per gallery as a placeholder — curate freely. */
+    const COLLECTOR_PICKS = [
+      // best-of
+      "bonfire-flames-night-black-white-w2b.jpg",
+      "lone-figure-salt-flat-salar-argentina-film-w2b.jpg",
+      "antique-shop-gilded-mirror-roman-bust-w2b.jpg",
+      // work-in-progress
+      "medellin-palacio-cultura-neo-gothic-arches-interior-black-white-w2b.jpg",
+      "medellin-church-cross-tattoo-wings-devotion-documentary-w2b.jpg",
+      // details
+      "artichoke-bud-close-up-spiral-geometry-medium-format-film-w2b.jpg",
+      "blue-spiky-wildflower-macro-medium-format-colour-film-w2b.jpg",
+      // perspectives
+      "aerial-bariloche-lake-islands-mountain-panorama-colour-film-w2b.jpg",
+      "stone-statues-silhouette-purple-lake-sunset-patagonia-film-w2b.jpg",
+      // textures
+      "cactus-spines-extreme-macro-abstract-black-white-film-w2b.jpg",
+      "guitar-strings-light-trails-long-exposure-black-white-film-w2b.jpg"
+    ];
+
+    const copFmt = n => '$' + n.toLocaleString('es-CO') + ' COP';
+    const isCollector = file => COLLECTOR_PICKS.indexOf(file) !== -1;
+
+    /* ── Print titles · EDIT FREELY (this is the naming, your voice) ──
+       Short, evocative trilingual titles per image. Missing files fall
+       back to the first words of the description. */
+    const TITLES = {
+      // best-of
+      "bonfire-flames-night-black-white-w2b.jpg":                         { en: "Ember", fr: "Braise", es: "Brasa" },
+      "willow-catkin-spring-dusk-blue-sky-w2b.jpg":                       { en: "First Breath", fr: "Premier souffle", es: "Primer aliento" },
+      "abandoned-shoes-street-debris-urban-black-white-w2b.jpg":          { en: "What Remains", fr: "Ce qui reste", es: "Lo que queda" },
+      "solitary-figure-bench-tropical-tree-seaside-black-white-w2b.jpg":  { en: "Alone with the Sea", fr: "Seul face à la mer", es: "A solas con el mar" },
+      "sea-anemone-underwater-teal-ocean-w2b.jpg":                        { en: "Bloom in the Deep", fr: "Floraison des profondeurs", es: "Floración del abismo" },
+      "bamboo-forest-pond-reflection-stone-wall-w2b.jpg":                 { en: "Stillness", fr: "Quiétude", es: "Quietud" },
+      "antique-shop-gilded-mirror-roman-bust-w2b.jpg":                    { en: "Vanitas", fr: "Vanités", es: "Vanidades" },
+      "ski-lift-silhouette-alpine-sunset-mountains-w2b.jpg":              { en: "Ascension", fr: "Ascension", es: "Ascensión" },
+      "kite-grey-sky-airplane-contrail-minimalist-black-white-w2b.jpg":   { en: "Tethered", fr: "Attaché", es: "Atado" },
+      "lake-view-wooden-window-mountains-reeds-w2b.jpg":                  { en: "Threshold", fr: "Seuil", es: "Umbral" },
+      "sunset-lake-mountain-silhouette-bird-film-w2b.jpg":               { en: "Vespers", fr: "Vêpres", es: "Vísperas" },
+      "lone-figure-salt-flat-salar-argentina-film-w2b.jpg":              { en: "The Long Walk", fr: "La longue marche", es: "La larga marcha" },
+      "moving-crane-apartment-building-facade-urban-w2b.jpg":            { en: "Departure", fr: "Départ", es: "Partida" },
+      "congress-building-buenos-aires-argentina-black-white-w2b.jpg":    { en: "The Weight of Stone", fr: "Le poids de la pierre", es: "El peso de la piedra" },
+      "stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg": { en: "Vanishing", fr: "Point de fuite", es: "Punto de fuga" },
+      "industrial-gears-bolts-vintage-machine-macro-black-white-w2b.jpg":{ en: "Mechanism", fr: "Rouages", es: "Engranajes" },
+      "abandoned-fishing-boat-low-tide-harbor-black-white-w2b.jpg":      { en: "Low Tide", fr: "Marée basse", es: "Marea baja" },
+      "ransacked-room-interior-debris-chaos-documentary-w2b.jpg":        { en: "Aftermath", fr: "Après", es: "Después" },
+      "crowded-medieval-street-france-motion-blur-black-white-w2b.jpg":  { en: "Passing", fr: "Passage", es: "Paso" },
+      "paris-street-sticker-j-existe-haussmann-graffiti-w2b.jpg":        { en: "I Exist", fr: "J'existe", es: "Existo" },
+      "clown-statue-closeup-red-hair-colorful-w2b.jpg":                  { en: "The Painted Smile", fr: "Le sourire peint", es: "La sonrisa pintada" },
+      // work-in-progress
+      "medellin-elder-straw-hat-curbside-street-portrait-colombia-w2b.jpg":              { en: "The Witness", fr: "Le témoin", es: "El testigo" },
+      "medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg":                   { en: "Tenderness", fr: "Tendresse", es: "Ternura" },
+      "medellin-dried-flower-market-vintage-scale-colour-w2b.jpg":                       { en: "The Weight of Flowers", fr: "Le poids des fleurs", es: "El peso de las flores" },
+      "medellin-elder-straw-hat-graffiti-street-scene-colombia-w2b.jpg":                 { en: "Against Blue", fr: "Contre le bleu", es: "Contra el azul" },
+      "medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg":                      { en: "Small Sweetness", fr: "Petites douceurs", es: "Pequeña dulzura" },
+      "medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg":                      { en: "Green Light", fr: "Lumière verte", es: "Luz verde" },
+      "medellin-worker-rappel-building-facade-urban-labour-w2b.jpg":                     { en: "Suspended", fr: "Suspendu", es: "Suspendido" },
+      "medellin-auditorium-social-realist-mural-empty-chairs-black-white-w2b.jpg":       { en: "Empty Seats", fr: "Sièges vides", es: "Asientos vacíos" },
+      "medellin-palacio-cultura-neo-gothic-arches-interior-black-white-w2b.jpg":         { en: "Toward the Light", fr: "Vers la lumière", es: "Hacia la luz" },
+      "medellin-church-cross-tattoo-wings-devotion-documentary-w2b.jpg":                 { en: "Borrowed Wings", fr: "Ailes d'emprunt", es: "Alas prestadas" },
+      // details
+      "child-shoes-stone-ledge-brick-wall-found-object-film-w2b.jpg":                    { en: "Small Absence", fr: "Petite absence", es: "Pequeña ausencia" },
+      "animal-skeleton-rocky-ground-sepia-film-w2b.jpg":                                 { en: "Memento", fr: "Memento", es: "Memento" },
+      "ghost-swing-blue-urban-alley-multiple-exposure-colour-film-w2b.jpg":              { en: "Echo", fr: "Écho", es: "Eco" },
+      "frida-kahlo-painted-portrait-dark-wooden-planks-film-w2b.jpg":                    { en: "Frida", fr: "Frida", es: "Frida" },
+      "geranium-silhouette-teal-glass-wall-minimalist-film-w2b.jpg":                     { en: "Leaning to Light", fr: "Pencher vers la lumière", es: "Inclinada a la luz" },
+      "geranium-plant-light-leak-orange-curtain-interior-film-w2b.jpg":                  { en: "Fever Light", fr: "Lumière de fièvre", es: "Luz de fiebre" },
+      "blue-spiky-wildflower-macro-medium-format-colour-film-w2b.jpg":                   { en: "In a Mist", fr: "Dans la brume", es: "Entre la niebla" },
+      "artichoke-bud-close-up-spiral-geometry-medium-format-film-w2b.jpg":               { en: "Spiral", fr: "Spirale", es: "Espiral" },
+      // perspectives
+      "aerial-plaza-fountain-palm-shadows-overhead-colour-film-w2b.jpg":                 { en: "From Above", fr: "Vue d'en haut", es: "Desde arriba" },
+      "airplane-window-wing-river-below-aerial-black-white-film-w2b.jpg":                { en: "Leaving Earth", fr: "Quitter la terre", es: "Dejar la tierra" },
+      "lighthouse-signal-tower-silhouette-golden-sunset-film-w2b.jpg":                   { en: "Beacon", fr: "Phare", es: "Faro" },
+      "stone-arch-corridor-bicycles-night-black-white-film-w2b.jpg":                     { en: "Night Vaults", fr: "Voûtes nocturnes", es: "Bóvedas nocturnas" },
+      "metro-crowd-glimpsed-dark-gap-black-white-film-w2b.jpg":                          { en: "Glimpse", fr: "Aperçu", es: "Vislumbre" },
+      "circus-tent-blue-neon-arcs-dusk-structural-film-w2b.jpg":                         { en: "Blue Arcs", fr: "Arcs bleus", es: "Arcos azules" },
+      "aerial-bariloche-lake-islands-mountain-panorama-colour-film-w2b.jpg":             { en: "Archipelago", fr: "Archipel", es: "Archipiélago" },
+      "stone-statues-silhouette-purple-lake-sunset-patagonia-film-w2b.jpg":              { en: "Sentinels", fr: "Sentinelles", es: "Centinelas" },
+      // textures
+      "cactus-spines-extreme-macro-abstract-black-white-film-w2b.jpg":                   { en: "Defences", fr: "Défenses", es: "Defensas" },
+      "water-cascade-splash-dark-rocks-black-white-film-w2b.jpg":                        { en: "White Water", fr: "Eau vive", es: "Agua viva" },
+      "guitar-strings-light-trails-long-exposure-black-white-film-w2b.jpg":              { en: "Sound Made Light", fr: "Le son devenu lumière", es: "El sonido hecho luz" },
+      "geodesic-dome-mesh-looking-up-sepia-film-w2b.jpg":                                { en: "Lattice", fr: "Treillis", es: "Entramado" },
+      "fresh-pita-bread-bakery-shallow-depth-colour-film-w2b.jpg":                       { en: "Daily Bread", fr: "Pain quotidien", es: "Pan de cada día" },
+      "stage-spotlights-purple-smoke-darkness-abstract-w2b.jpg":                         { en: "Into the Smoke", fr: "Dans la fumée", es: "Entre el humo" },
+      "pink-geranium-silver-foliage-close-up-medium-format-film-w2b.jpg":                { en: "Small Mercy", fr: "Petite grâce", es: "Pequeña gracia" }
+    };
+    const titleFor = (file, lang, fallback) => {
+      const t = TITLES[file];
+      return (t && (t[lang] || t.en)) || (fallback ? fallback.split(',')[0] : file);
+    };
+
+    /* Which galleries are sellable as prints (Nude / Dark Desire excluded). */
+    const SHOP_GALLERIES = ["best-of", "work-in-progress", "series-1", "series-2", "series-3"];
+
+    (function buildShop() {
+      const lang = localStorage.getItem('w2b_lang') || 'en';
+      const groupsEl = document.getElementById('shop-groups');
+
+      SHOP_GALLERIES.forEach(id => {
+        const g = GALLERY_DATA[id];
+        if (!g) return;
+        const section = document.createElement('section');
+        section.className = 'shop-group';
+
+        const h = document.createElement('h2');
+        h.className = 'shop-group-title';
+        h.setAttribute('data-i18n-title', id);
+        h.textContent = (g.title && g.title[lang]) || g.title.en;
+        section.appendChild(h);
+
+        const grid = document.createElement('div');
+        grid.className = 'shop-grid';
+
+        g.images.forEach(img => {
+          const card = document.createElement('div');
+          card.className = 'shop-card';
+          const alt = (img.alt && img.alt[lang]) || (img.alt && img.alt.en) || '';
+          const src = g.folder + img.file;
+          const coll = isCollector(img.file);
+          const title = titleFor(img.file, lang, alt);
+          const badge = coll
+            ? '<span class="shop-badge" data-i18n="shop_badge_collector">Collector</span>'
+            : '';
+          card.innerHTML =
+            badge +
+            '<img loading="lazy" src="' + src + '" alt="' + alt.replace(/"/g, '&quot;') + '">' +
+            '<div class="shop-card-acquire">' +
+              '<span class="shop-card-title" data-i18n-ptitle="' + img.file + '">' + title + '</span>' +
+              '<button class="shop-card-btn" data-i18n="shop_acquire" ' +
+              'data-file="' + img.file + '" data-src="' + src + '" ' +
+              'data-tier="' + (coll ? 'collector' : 'open') + '" ' +
+              'data-alt="' + alt.replace(/"/g, '&quot;') + '">Acquire</button>' +
+            '</div>';
+          grid.appendChild(card);
+        });
+
+        section.appendChild(grid);
+        groupsEl.appendChild(section);
+      });
+
+      // Re-apply translations to the freshly injected nodes
+      if (typeof applyLang === 'function') applyLang(localStorage.getItem('w2b_lang') || 'en');
+
+      // Modal refs
+      const sizeSel = document.getElementById('acq-size');
+      const overlay = document.getElementById('acq-overlay');
+      const acqImg = document.getElementById('acq-img');
+      const acqTitle = document.getElementById('acq-title');
+      const acqPrint = document.getElementById('acq-print');
+      const acqSubject = document.getElementById('acq-subject');
+      const acqEditionField = document.getElementById('acq-edition-field');
+      const noteColl = document.getElementById('acq-note-collector');
+      const noteOpen = document.getElementById('acq-note-open');
+      const form = document.getElementById('acq-form');
+      const success = document.getElementById('acq-success');
+
+      function fillSizes(tier) {
+        sizeSel.innerHTML = '';
+        TIERS[tier].sizes.forEach(s => {
+          const o = document.createElement('option');
+          const txt = s.label + ' — €' + s.eur + ' · US$' + s.usd + ' · ' + copFmt(s.cop);
+          o.value = txt; o.textContent = txt;
+          sizeSel.appendChild(o);
+        });
+      }
+
+      function openModal(btn) {
+        const tier = btn.dataset.tier === 'collector' ? 'collector' : 'open';
+        acqImg.src = btn.dataset.src;
+        acqImg.alt = btn.dataset.alt;
+        acqTitle.textContent = titleFor(btn.dataset.file, localStorage.getItem('w2b_lang') || 'en', btn.dataset.alt);
+        acqPrint.value = btn.dataset.file;
+        acqSubject.value = TIERS[tier].subject;
+        acqEditionField.value = tier === 'collector' ? ('Collector · edition of ' + EDITION) : 'Open edition';
+        noteColl.style.display = tier === 'collector' ? '' : 'none';
+        noteOpen.style.display = tier === 'collector' ? 'none' : '';
+        fillSizes(tier);
+        success.classList.remove('show');
+        form.style.display = '';
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.addEventListener('click', e => {
+        const btn = e.target.closest('.shop-card-btn');
+        if (btn) { openModal(btn); return; }
+        if (e.target.id === 'acq-close' || e.target === overlay) closeModal();
+      });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+      // Keep dynamically-built gallery headings translated on language switch
+      document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => {
+        const l = b.dataset.lang;
+        document.querySelectorAll('[data-i18n-title]').forEach(h => {
+          const g = GALLERY_DATA[h.getAttribute('data-i18n-title')];
+          if (g) h.textContent = (g.title && g.title[l]) || g.title.en;
+        });
+        document.querySelectorAll('[data-i18n-ptitle]').forEach(s => {
+          s.textContent = titleFor(s.getAttribute('data-i18n-ptitle'), l);
+        });
+        if (overlay.classList.contains('open') && acqPrint.value) {
+          acqTitle.textContent = titleFor(acqPrint.value, l);
+        }
+      }));
+
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            success.classList.add('show');
+          }
+        } catch (_) { /* fall back silently */ }
+      });
+    })();
+  </script>
+</body>
+</html>

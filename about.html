@@ -6,6 +6,29 @@
   <title>W2b — About</title>
   <meta name="description" content="W2b — Guillaume Delye, photographer based in Medellín. Studio practice in film. Available for exhibitions, residencies, and acquisitions.">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .press-form { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.9rem; max-width: 460px; }
+    .press-intro { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 0.4rem; }
+    .press-field label {
+      display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem;
+    }
+    .press-field input, .press-field textarea {
+      width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px;
+      color: var(--text); font-family: var(--font-body); font-size: 0.95rem; padding: 0.6rem 0.7rem;
+      outline: none; transition: border-color 0.2s;
+    }
+    .press-field input:focus, .press-field textarea:focus { border-color: var(--crimson); }
+    .press-field textarea { resize: vertical; min-height: 72px; }
+    .press-submit {
+      align-self: flex-start; background: none; border: 1px solid var(--crimson); color: var(--text);
+      font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.7rem 1.4rem; border-radius: 4px; cursor: pointer; transition: all 0.2s;
+    }
+    .press-submit:hover { background: var(--crimson); color: #fff; }
+    .press-success { display: none; color: var(--text); font-size: 0.9rem; margin-top: 0.5rem; }
+    .press-success.show { display: block; }
+  </style>
 </head>
 <body>
 
@@ -26,6 +49,7 @@
     <ul class="nav-links">
       <li><a href="index.html"        data-i18n="nav_home">Home</a></li>
       <li><a href="index.html#galleries" data-i18n="nav_galleries">Galleries</a></li>
+      <li><a href="shop.html"         data-i18n="nav_shop">Prints</a></li>
       <li><a href="about.html"        data-i18n="nav_about">About</a></li>
       <li><a href="https://w2b-art.github.io/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a></li>
     </ul>
@@ -81,8 +105,8 @@
 
       <dt data-i18n="about_prints_label">Editions</dt>
       <dd>
-        <span data-i18n="about_prints">Editions of 7 + 2 AP · signed and numbered · pricing on request.</span>
-        <a href="mailto:w2bphoto+prints@gmail.com?subject=Print%20inquiry" class="about-meta-link">w2bphoto@gmail.com</a>
+        <span data-i18n="about_prints">Editions of 7 + 2 AP · signed and numbered.</span>
+        <a href="shop.html" class="about-meta-link" data-i18n="about_prints_link">See prints →</a>
       </dd>
     </dl>
 
@@ -98,9 +122,24 @@
 
     <section class="about-list reveal" aria-labelledby="publications-heading">
       <h2 id="publications-heading" data-i18n="about_publications_label">Press &amp; selected features</h2>
-      <ul>
-        <li data-i18n="about_press_line">For press, features and review copies — <a href="mailto:w2bphoto+press@gmail.com">w2bphoto@gmail.com</a></li>
-      </ul>
+      <p class="press-intro" data-i18n="press_intro">For press, features, interviews and review copies, send a note — I reply within 48 hours.</p>
+      <form class="press-form" id="press-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
+        <input type="hidden" name="_subject" value="Press inquiry — w2b art">
+        <div class="press-field">
+          <label for="press-name" data-i18n="press_name">Name &amp; outlet</label>
+          <input type="text" id="press-name" name="name" required>
+        </div>
+        <div class="press-field">
+          <label for="press-email" data-i18n="press_email">Email</label>
+          <input type="email" id="press-email" name="email" required>
+        </div>
+        <div class="press-field">
+          <label for="press-msg" data-i18n="press_msg">What you're working on</label>
+          <textarea id="press-msg" name="message" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="press-submit" data-i18n="press_submit">Send</button>
+        <p class="press-success" id="press-success" data-i18n="press_success" role="alert">Thank you. I'll be in touch shortly.</p>
+      </form>
     </section>
 
     <!-- Signature -->
@@ -118,6 +157,7 @@
   <footer class="footer">
     <nav class="footer-social" aria-label="Contact and social">
       <a href="https://www.instagram.com/w2b.film" target="_blank" rel="noopener">Instagram</a>
+      <a href="shop.html" data-i18n="nav_shop">Prints</a>
       <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
       <a href="mailto:w2bphoto+prints@gmail.com">Inquire</a>
     </nav>
@@ -127,5 +167,21 @@
   <script src="js/gallery-data.js"></script>
   <script src="js/lang.js"></script>
   <script src="js/main.js"></script>
+  <script>
+    (function () {
+      const form = document.getElementById('press-form');
+      if (!form) return;
+      const ok = document.getElementById('press-success');
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }
+          });
+          if (res.ok) { form.querySelector('.press-submit').style.display = 'none'; ok.classList.add('show'); }
+        } catch (_) {}
+      });
+    })();
+  </script>
 </body>
 </html>

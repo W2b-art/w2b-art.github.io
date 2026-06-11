@@ -43,7 +43,7 @@ const TRANSLATIONS = {
 
     /* About snippet */
     sec_about:      "About",
-    about_p1:       "Guillaume Delye, French photographer based in Medellín. The work is made on film and printed by hand.",
+    about_p1:       "Guillaume Delye, French photographer based in Medellín. The work is made on film.",
     about_p2:       "Available for exhibitions, acquisitions, and signed editions. Editorial commissions on the commercial site.",
     about_readmore: "Read more",
 
@@ -55,7 +55,7 @@ const TRANSLATIONS = {
     inquire_label:    "Inquire",
     inquire_lightbox: "Inquire about this print",
     inquire_subject:  "Print inquiry",
-    edition_label:    "Editions of 7 + 2 AP · Signed and numbered · Archival pigment on cotton rag",
+    edition_label:    "Collector editions of 15 + 2 AP, signed and numbered · open editions also available · archival pigment on cotton rag",
 
     /* Footer */
     footer_copy:    "© W2b — All rights reserved",
@@ -65,7 +65,7 @@ const TRANSLATIONS = {
     photo_count:    "images",
 
     /* About page */
-    about_lead:     "Medellín — film, hand-printed.",
+    about_lead:     "Medellín — film.",
     about_title:    "Guillaume Delye",
     about_full_p1:  "I'm Guillaume Delye, a French photographer based in Medellín, Colombia. I shoot 35mm and medium format. Black and white is processed by hand; colour is scanned and printed on cotton rag.",
     about_full_p2:  "The work asks the same three questions — how a place holds memory, how a body sits in light, how an image earns the right to exist. The series come slowly, and they stay.",
@@ -77,7 +77,8 @@ const TRANSLATIONS = {
     about_locations_label:    "Based",
     about_locations:          "Medellín, Colombia · available internationally",
     about_prints_label:       "Editions",
-    about_prints:             "Editions of 7 + 2 AP · signed and numbered · pricing on request.",
+    about_prints:             "Collector editions of 15 + 2 AP, signed and numbered · open editions available.",
+    about_prints_link:        "See prints →",
     about_exhibitions_label:  "Available for",
     about_avail_1:            "Solo and group exhibitions",
     about_avail_2:            "Residencies and assignments",
@@ -117,6 +118,34 @@ const TRANSLATIONS = {
     collab_response:   "Replies within about a week.",
     collab_discretion: "Every inquiry is handled privately and in confidence.",
     collab_b_cta:      "Private commissions →",
+
+    /* Prints / Shop */
+    nav_shop:          "Prints",
+    shop_lead:         "Prints &amp; Editions",
+    shop_title:        "Collect a print",
+    shop_intro:        "Selected images as archival pigment prints on cotton rag, in two tiers — open editions across the catalogue, and a signed, numbered collector edition (15 + 2 AP, with certificate) of the strongest work.",
+    shop_terms:        "Each print is made to order and shipped worldwide. Allow two to three weeks. Prices in euros, US dollars and Colombian pesos.",
+    shop_acquire:      "Acquire",
+    shop_badge_collector: "Collector",
+    shop_collector_note:  "Signed and numbered · limited edition of 15 + 2 AP · with certificate of authenticity.",
+    shop_open_note:       "Open edition · archival pigment print · unsigned.",
+    shop_m_intro:      "Choose a size. I'll confirm availability, the final price and shipping to you.",
+    shop_m_size:       "Size",
+    shop_m_name:       "Name",
+    shop_m_email:      "Email",
+    shop_m_note:       "Anything I should know (optional)",
+    shop_m_submit:     "Request this print",
+    shop_m_success:    "Thank you. I'll confirm availability and send the invoice within a couple of days.",
+    shop_dark_note:    "Prints from the Nude and Dark Desire series are available privately, on request.",
+
+    /* Press form (About) */
+    press_label:       "Press",
+    press_intro:       "For press, features, interviews and review copies, send a note — I reply within 48 hours.",
+    press_name:        "Name &amp; outlet",
+    press_email:       "Email",
+    press_msg:         "What you're working on",
+    press_submit:      "Send",
+    press_success:     "Thank you. I'll be in touch shortly.",
   },
 
   fr: {
@@ -151,7 +180,7 @@ const TRANSLATIONS = {
     gal_s3_desc:      "Études matérielles — lumière, climat, grain de la matière.",
 
     sec_about:      "À propos",
-    about_p1:       "Guillaume Delye, photographe français installé à Medellín. Travail argentique, tirage à la main.",
+    about_p1:       "Guillaume Delye, photographe français installé à Medellín. Travail argentique.",
     about_p2:       "Disponible pour expositions, acquisitions et tirages signés. Commandes éditoriales sur le site commercial.",
     about_readmore: "En savoir plus",
 
@@ -161,14 +190,14 @@ const TRANSLATIONS = {
     inquire_label:    "Acquérir",
     inquire_lightbox: "Demander cette épreuve",
     inquire_subject:  "Demande de tirage",
-    edition_label:    "Tirages de 7 + 2 EA · signés et numérotés · pigment archive sur papier coton",
+    edition_label:    "Éditions collector de 15 + 2 EA, signées et numérotées · éditions ouvertes également · pigment archive sur papier coton",
 
     footer_copy:    "© W2b — Tous droits réservés",
 
     back_home:      "← Retour",
     photo_count:    "images",
 
-    about_lead:     "Medellín — argentique, tirage à la main.",
+    about_lead:     "Medellín — argentique.",
     about_title:    "Guillaume Delye",
     about_full_p1:  "Je suis Guillaume Delye, photographe français installé à Medellín, en Colombie. Je travaille en 35mm et moyen format. Le noir et blanc est développé à la main ; la couleur est scannée et tirée sur papier coton.",
     about_full_p2:  "Le travail revient à trois questions — comment un lieu garde la mémoire, comment un corps habite la lumière, comment une image gagne le droit d'exister. Les séries viennent lentement, et restent.",
@@ -180,7 +209,8 @@ const TRANSLATIONS = {
     about_locations_label:    "Basé",
     about_locations:          "Medellín, Colombie · disponible à l'international",
     about_prints_label:       "Éditions",
-    about_prints:             "Éditions de 7 + 2 EA · signées et numérotées · prix sur demande.",
+    about_prints:             "Éditions collector de 15 + 2 EA, signées et numérotées · éditions ouvertes disponibles.",
+    about_prints_link:        "Voir les tirages →",
     about_exhibitions_label:  "Disponible pour",
     about_avail_1:            "Expositions personnelles et collectives",
     about_avail_2:            "Résidences et missions",
@@ -219,6 +249,34 @@ const TRANSLATIONS = {
     collab_response:   "Réponse sous une semaine environ.",
     collab_discretion: "Chaque demande est traitée en privé et en confiance.",
     collab_b_cta:      "Commandes privées →",
+
+    /* Tirages / Boutique */
+    nav_shop:          "Tirages",
+    shop_lead:         "Tirages &amp; Éditions",
+    shop_title:        "Acquérir un tirage",
+    shop_intro:        "Une sélection d'images en tirages pigmentaires archive sur papier coton, sur deux niveaux — éditions ouvertes dans tout le catalogue, et une édition collector signée et numérotée (15 + 2 EA, avec certificat) des œuvres les plus fortes.",
+    shop_terms:        "Chaque tirage est réalisé à la commande et expédié dans le monde entier. Comptez deux à trois semaines. Prix en euros, dollars US et pesos colombiens.",
+    shop_acquire:      "Acquérir",
+    shop_badge_collector: "Collection",
+    shop_collector_note:  "Signé et numéroté · édition limitée de 15 + 2 EA · avec certificat d'authenticité.",
+    shop_open_note:       "Édition ouverte · tirage pigmentaire archive · non signé.",
+    shop_m_intro:      "Choisissez un format. Je confirme la disponibilité, le prix final et l'envoi.",
+    shop_m_size:       "Format",
+    shop_m_name:       "Nom",
+    shop_m_email:      "E-mail",
+    shop_m_note:       "Ce que je devrais savoir (facultatif)",
+    shop_m_submit:     "Demander ce tirage",
+    shop_m_success:    "Merci. Je confirme la disponibilité et envoie la facture sous quelques jours.",
+    shop_dark_note:    "Les tirages des séries Nu et Dark Desire sont disponibles en privé, sur demande.",
+
+    /* Formulaire presse (À propos) */
+    press_label:       "Presse",
+    press_intro:       "Pour la presse, articles, entretiens et exemplaires de presse, écrivez-moi — je réponds sous 48 heures.",
+    press_name:        "Nom &amp; média",
+    press_email:       "E-mail",
+    press_msg:         "Ce sur quoi vous travaillez",
+    press_submit:      "Envoyer",
+    press_success:     "Merci. Je vous réponds très vite.",
   },
 
   es: {
@@ -253,7 +311,7 @@ const TRANSLATIONS = {
     gal_s3_desc:      "Estudios materiales — luz, clima, el grano de la materia.",
 
     sec_about:      "Acerca",
-    about_p1:       "Guillaume Delye, fotógrafo francés afincado en Medellín. La obra se hace en analógico y se imprime a mano.",
+    about_p1:       "Guillaume Delye, fotógrafo francés afincado en Medellín. La obra se hace en analógico.",
     about_p2:       "Disponible para exposiciones, adquisiciones y ediciones firmadas. Los encargos editoriales y comerciales en el sitio comercial.",
     about_readmore: "Leer más",
 
@@ -263,14 +321,14 @@ const TRANSLATIONS = {
     inquire_label:    "Adquirir",
     inquire_lightbox: "Solicitar esta copia",
     inquire_subject:  "Solicitud de copia",
-    edition_label:    "Ediciones de 7 + 2 PA · firmadas y numeradas · pigmento archival sobre papel de algodón",
+    edition_label:    "Ediciones de coleccionista de 15 + 2 PA, firmadas y numeradas · ediciones abiertas también · pigmento archival sobre papel de algodón",
 
     footer_copy:    "© W2b — Todos los derechos reservados",
 
     back_home:      "← Volver",
     photo_count:    "imágenes",
 
-    about_lead:     "Medellín — analógico, copia a mano.",
+    about_lead:     "Medellín — analógico.",
     about_title:    "Guillaume Delye",
     about_full_p1:  "Soy Guillaume Delye, fotógrafo francés afincado en Medellín, Colombia. Trabajo en 35mm y medio formato. El blanco y negro lo revelo a mano; el color lo escaneo y lo imprimo sobre papel de algodón.",
     about_full_p2:  "El trabajo vuelve a las mismas tres preguntas — cómo un lugar guarda la memoria, cómo un cuerpo habita la luz, cómo una imagen se gana el derecho a existir. Las series llegan lentas, y se quedan.",
@@ -282,7 +340,8 @@ const TRANSLATIONS = {
     about_locations_label:    "Ubicación",
     about_locations:          "Medellín, Colombia · disponible internacionalmente",
     about_prints_label:       "Ediciones",
-    about_prints:             "Ediciones de 7 + 2 PA · firmadas y numeradas · precios bajo solicitud.",
+    about_prints:             "Ediciones de coleccionista de 15 + 2 PA, firmadas y numeradas · ediciones abiertas disponibles.",
+    about_prints_link:        "Ver copias →",
     about_exhibitions_label:  "Disponible para",
     about_avail_1:            "Exposiciones individuales y colectivas",
     about_avail_2:            "Residencias y encargos",
@@ -321,6 +380,34 @@ const TRANSLATIONS = {
     collab_response:   "Respuesta en aproximadamente una semana.",
     collab_discretion: "Cada solicitud se trata en privado y con confidencialidad.",
     collab_b_cta:      "Encargos privados →",
+
+    /* Copias / Tienda */
+    nav_shop:          "Copias",
+    shop_lead:         "Copias y Ediciones",
+    shop_title:        "Adquirir una copia",
+    shop_intro:        "Una selección de imágenes en copias pigmentadas archival sobre papel de algodón, en dos niveles — ediciones abiertas en todo el catálogo, y una edición de coleccionista firmada y numerada (15 + 2 P/A, con certificado) de las obras más fuertes.",
+    shop_terms:        "Cada copia se hace por encargo y se envía a todo el mundo. Calcula dos o tres semanas. Precios en euros, dólares y pesos colombianos.",
+    shop_acquire:      "Adquirir",
+    shop_badge_collector: "Colección",
+    shop_collector_note:  "Firmada y numerada · edición limitada de 15 + 2 P/A · con certificado de autenticidad.",
+    shop_open_note:       "Edición abierta · copia pigmentada archival · sin firmar.",
+    shop_m_intro:      "Elige un tamaño. Confirmo disponibilidad, el precio final y el envío.",
+    shop_m_size:       "Tamaño",
+    shop_m_name:       "Nombre",
+    shop_m_email:      "Correo",
+    shop_m_note:       "Algo que deba saber (opcional)",
+    shop_m_submit:     "Solicitar esta copia",
+    shop_m_success:    "Gracias. Confirmo disponibilidad y envío la factura en un par de días.",
+    shop_dark_note:    "Las copias de las series Desnudo y Dark Desire están disponibles en privado, a solicitud.",
+
+    /* Formulario de prensa (Sobre mí) */
+    press_label:       "Prensa",
+    press_intro:       "Para prensa, artículos, entrevistas y ejemplares de reseña, escríbeme — respondo en 48 horas.",
+    press_name:        "Nombre y medio",
+    press_email:       "Correo",
+    press_msg:         "En qué estás trabajando",
+    press_submit:      "Enviar",
+    press_success:     "Gracias. Te escribo muy pronto.",
   }
 };
 
