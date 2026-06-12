@@ -425,6 +425,15 @@ function refreshGalleryTitles() {
     const lab = s.querySelector('.seg-label'); if (lab) lab.textContent = d.title[lang] || d.title.en;
   });
 
+  /* Gallery page: update the h1 + description for the current language. */
+  if (window._galleryPageId && GALLERY_DATA[window._galleryPageId]) {
+    const d  = GALLERY_DATA[window._galleryPageId];
+    const h  = document.getElementById('gallery-page-title');
+    const ds = document.getElementById('gallery-page-desc');
+    if (h)  h.textContent  = d.title[lang] || d.title.en;
+    if (ds) ds.textContent = d.description[lang] || d.description.en;
+  }
+
   /* Refresh the LCD screen (desktop) for the current selection. */
   if (typeof _selectedGalleryIdx === 'number') selectGallery(_selectedGalleryIdx);
 }
@@ -448,6 +457,7 @@ function initRevealOnScroll() {
 function renderGalleryPage(galleryId) {
   const data = GALLERY_DATA[galleryId];
   if (!data) return;
+  window._galleryPageId = galleryId;
 
   const lang  = localStorage.getItem('w2b_lang') || 'en';
   const grid  = document.getElementById('photo-grid');
