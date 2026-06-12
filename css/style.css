@@ -2182,6 +2182,11 @@ body.galleries-revealed .hero {
   .nav-links.open { display: flex; }
   .nav-toggle { display: flex; }
 
+  /* Footer: wrap the social row + tighten padding so 4 links never
+     overflow a phone width. */
+  .footer { padding: 2rem 1.5rem; }
+  .footer-social { flex-wrap: wrap; gap: 1rem 1.25rem; justify-content: center; }
+
   /* Hero compact on mobile — keeps the curatorial typography
      readable but tighter so the canister+feed fit on a phone screen. */
   .hero {
