@@ -401,6 +401,35 @@ function selectGallery(idx) {
   }
 }
 
+/* Re-translate the gallery titles in the film strip + wheel (and the LCD
+   screen) when the language changes. These titles come from GALLERY_DATA,
+   not data-i18n, so applyLang() in lang.js can't reach them on its own —
+   without this the strip stays frozen in whatever language it was built in. */
+function refreshGalleryTitles() {
+  const lang = localStorage.getItem('w2b_lang') || 'en';
+  const resolve = (id) =>
+    (typeof GALLERY_DATA !== 'undefined' && GALLERY_DATA[id]) ||
+    (typeof STRIP_EXTRAS !== 'undefined' ? STRIP_EXTRAS[id] : undefined);
+
+  document.querySelectorAll('.film-frame[data-gallery]').forEach(f => {
+    const d = resolve(f.getAttribute('data-gallery'));
+    if (!d) return;
+    const title = d.title[lang] || d.title.en;
+    const t = f.querySelector('.frame-title'); if (t) t.textContent = title;
+    const img = f.querySelector('img');        if (img) img.alt = title;
+  });
+
+  document.querySelectorAll('.wheel-segment[data-gallery]').forEach(s => {
+    const d = GALLERY_DATA[s.getAttribute('data-gallery')];
+    if (!d) return;
+    const lab = s.querySelector('.seg-label'); if (lab) lab.textContent = d.title[lang] || d.title.en;
+  });
+
+  /* Refresh the LCD screen (desktop) for the current selection. */
+  if (typeof _selectedGalleryIdx === 'number') selectGallery(_selectedGalleryIdx);
+}
+window.refreshGalleryTitles = refreshGalleryTitles;
+
 /* ── Scroll Reveal ──────────────────────────────────────────── */
 function initRevealOnScroll() {
   const observer = new IntersectionObserver(entries => {

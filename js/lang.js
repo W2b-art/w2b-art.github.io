@@ -443,6 +443,10 @@ function applyLang(lang) {
 
   // Update html lang attribute
   document.documentElement.lang = lang;
+
+  // Re-translate dynamic gallery titles (film strip + wheel) that come from
+  // GALLERY_DATA, not data-i18n, so they don't stay frozen in one language.
+  if (typeof window.refreshGalleryTitles === 'function') window.refreshGalleryTitles();
 }
 
 function initLang() {
