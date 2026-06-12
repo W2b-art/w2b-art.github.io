@@ -305,14 +305,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "medellin-green-corridor-lone-figure-walking-documentary-colombia-w2b.jpg",
-        alt: {
-          en: "A lone figure walking down a green-walled corridor, Medellín, colour documentary photography",
-          fr: "Une silhouette solitaire marchant dans un couloir aux murs verts, Medellín, photographie documentaire couleur",
-          es: "Una figura solitaria caminando por un corredor de paredes verdes, Medellín, fotografía documental color"
-        }
-      },
-      {
         file: "medellin-street-sweeper-yellow-uniform-urban-documentary-colombia-w2b.jpg",
         alt: {
           en: "A street sweeper in a yellow uniform crossing an empty Medellín street, colour documentary photography",
@@ -1116,112 +1108,152 @@ const GALLERY_DATA = {
   "contemplations": {
     id: "contemplations",
     folder: "images/contemplations/",
-    coverIndex: 10,
+    coverIndex: 6,
     title: {
       en: "Contemplations",
       fr: "Contemplations",
       es: "Contemplaciones"
     },
     description: {
-      en: "Slow pictures on medium-format film. Not images of contemplation but images that ask for it: fog, still water, the light coming and going. A growing series.",
-      fr: "Des images lentes, en moyen format argentique. Non pas des images de la contemplation mais des images qui l'appellent : la brume, l'eau calme, la lumière qui va et vient. Une série en cours.",
-      es: "Imágenes lentas, en película de formato medio. No imágenes de la contemplación sino imágenes que la piden: la niebla, el agua quieta, la luz que va y viene. Una serie en crecimiento."
+      en: "Slow pictures on medium-format film — the coast, old boats, ruins, the quiet hours. Less images of contemplation than images that ask for it. A growing series.",
+      fr: "Des images lentes, en moyen format argentique — la côte, les vieux bateaux, les ruines, les heures calmes. Moins des images de la contemplation que des images qui l'appellent. Une série en cours.",
+      es: "Imágenes lentas, en película de formato medio — la costa, los barcos viejos, las ruinas, las horas quietas. Menos imágenes de la contemplación que imágenes que la piden. Una serie en crecimiento."
     },
     images: [
       {
-        file: "contemplations-misty-headland-fog-black-white-medium-format-w2b.jpg",
+        file: "contemplations-windswept-tree-cliff-edge-black-white-w2b.jpg",
         alt: {
-          en: "A headland fading into sea fog, black and white medium-format film",
-          fr: "Un promontoire s'effaçant dans la brume marine, moyen format argentique noir et blanc",
-          es: "Un promontorio desvaneciéndose en la niebla marina, película de formato medio en blanco y negro"
+          en: "A wind-bent tree at a cliff edge above the sea, black and white medium-format film",
+          fr: "Un arbre courbé par le vent au bord d'une falaise au-dessus de la mer, moyen format argentique noir et blanc",
+          es: "Un árbol curvado por el viento al borde de un acantilado sobre el mar, película de formato medio en blanco y negro"
         }
       },
       {
-        file: "contemplations-misty-rock-formations-sea-black-white-medium-format-w2b.jpg",
+        file: "contemplations-cliff-coastline-black-white-w2b.jpg",
         alt: {
-          en: "Rock formations standing in a still sea, black and white medium-format film",
-          fr: "Des formations rocheuses dressées dans une mer immobile, moyen format argentique noir et blanc",
-          es: "Formaciones rocosas erguidas en un mar inmóvil, película de formato medio en blanco y negro"
+          en: "A rugged cliff coastline under a heavy sky, black and white medium-format film",
+          fr: "Un littoral de falaises escarpées sous un ciel lourd, moyen format argentique noir et blanc",
+          es: "Una costa de acantilados escarpados bajo un cielo pesado, película de formato medio en blanco y negro"
         }
       },
       {
-        file: "contemplations-cliff-mist-veil-black-white-medium-format-w2b.jpg",
+        file: "contemplations-cliff-cove-inlet-black-white-w2b.jpg",
         alt: {
-          en: "A cliff behind a veil of mist, black and white medium-format film",
-          fr: "Une falaise derrière un voile de brume, moyen format argentique noir et blanc",
-          es: "Un acantilado tras un velo de niebla, película de formato medio en blanco y negro"
+          en: "A quiet cove cut into the cliffs, black and white medium-format film",
+          fr: "Une crique tranquille creusée dans les falaises, moyen format argentique noir et blanc",
+          es: "Una cala tranquila entre los acantilados, película de formato medio en blanco y negro"
         }
       },
       {
-        file: "contemplations-deep-fog-cliff-black-white-medium-format-w2b.jpg",
+        file: "contemplations-sea-stacks-pillars-black-white-w2b.jpg",
         alt: {
-          en: "A coastline almost lost in deep fog, black and white medium-format film",
-          fr: "Un littoral presque perdu dans une brume épaisse, moyen format argentique noir et blanc",
-          es: "Una costa casi perdida en una niebla espesa, película de formato medio en blanco y negro"
+          en: "Weathered rock pillars along the shore, black and white medium-format film",
+          fr: "Des piliers rocheux érodés le long du rivage, moyen format argentique noir et blanc",
+          es: "Pilares de roca erosionados a lo largo de la orilla, película de formato medio en blanco y negro"
         }
       },
       {
-        file: "contemplations-figure-dissolving-in-fog-black-white-medium-format-w2b.jpg",
+        file: "contemplations-stone-cairn-rocky-shore-black-white-w2b.jpg",
         alt: {
-          en: "A figure dissolving into fog, black and white medium-format film",
-          fr: "Une silhouette se dissolvant dans la brume, moyen format argentique noir et blanc",
-          es: "Una figura disolviéndose en la niebla, película de formato medio en blanco y negro"
+          en: "A stone cairn on a rocky shore, black and white medium-format film",
+          fr: "Un cairn de pierres sur un rivage rocheux, moyen format argentique noir et blanc",
+          es: "Un mojón de piedras en una orilla rocosa, película de formato medio en blanco y negro"
         }
       },
       {
-        file: "contemplations-misty-hill-still-water-medium-format-w2b.jpg",
+        file: "contemplations-two-boats-misty-still-water-w2b.jpg",
         alt: {
-          en: "A green hill and still water under a soft sky, medium-format film",
-          fr: "Une colline verte et une eau calme sous un ciel doux, moyen format argentique",
-          es: "Una colina verde y agua quieta bajo un cielo suave, película de formato medio"
+          en: "Two small boats on still, misty water, medium-format film",
+          fr: "Deux petites barques sur une eau calme et brumeuse, moyen format argentique",
+          es: "Dos pequeñas barcas sobre agua quieta y brumosa, película de formato medio"
         }
       },
       {
-        file: "contemplations-soft-mist-over-bay-medium-format-w2b.jpg",
+        file: "contemplations-golden-dusk-rock-spires-coast-w2b.jpg",
         alt: {
-          en: "Soft mist drifting over a quiet bay, medium-format film",
-          fr: "Une brume douce flottant sur une baie tranquille, moyen format argentique",
-          es: "Una niebla suave flotando sobre una bahía tranquila, película de formato medio"
+          en: "Rock spires on the coast under a golden dusk, medium-format film",
+          fr: "Des aiguilles rocheuses sur la côte sous un crépuscule doré, moyen format argentique",
+          es: "Agujas rocosas en la costa bajo un crepúsculo dorado, película de formato medio"
         }
       },
       {
-        file: "contemplations-misty-minimal-shore-medium-format-w2b.jpg",
+        file: "contemplations-figure-bench-by-the-sea-black-white-w2b.jpg",
         alt: {
-          en: "A pale, almost empty shore in the mist, medium-format film",
-          fr: "Un rivage pâle, presque vide, dans la brume, moyen format argentique",
-          es: "Una orilla pálida, casi vacía, en la niebla, película de formato medio"
+          en: "A solitary figure on a bench facing the sea, black and white medium-format film",
+          fr: "Une silhouette solitaire sur un banc face à la mer, moyen format argentique noir et blanc",
+          es: "Una figura solitaria en un banco frente al mar, película de formato medio en blanco y negro"
         }
       },
       {
-        file: "contemplations-light-leak-abstract-water-medium-format-w2b.jpg",
+        file: "contemplations-woman-white-dress-reclining-rocks-w2b.jpg",
         alt: {
-          en: "Light leaking across water into abstraction, medium-format film",
-          fr: "La lumière fuyant sur l'eau jusqu'à l'abstraction, moyen format argentique",
-          es: "La luz filtrándose sobre el agua hasta la abstracción, película de formato medio"
+          en: "A woman in a white dress reclining on coastal rocks, medium-format film",
+          fr: "Une femme en robe blanche allongée sur les rochers du littoral, moyen format argentique",
+          es: "Una mujer con vestido blanco recostada sobre las rocas de la costa, película de formato medio"
         }
       },
       {
-        file: "contemplations-sun-shimmering-still-water-medium-format-w2b.jpg",
+        file: "contemplations-blossom-branches-backlit-black-white-w2b.jpg",
         alt: {
-          en: "Sun breaking through cloud onto still water, medium-format film",
-          fr: "Le soleil perçant les nuages sur une eau immobile, moyen format argentique",
-          es: "El sol atravesando las nubes sobre el agua inmóvil, película de formato medio"
+          en: "Backlit blossom branches against the light, black and white medium-format film",
+          fr: "Des branches en fleurs à contre-jour, moyen format argentique noir et blanc",
+          es: "Ramas en flor a contraluz, película de formato medio en blanco y negro"
         }
       },
       {
-        file: "contemplations-painterly-misty-shore-medium-format-w2b.jpg",
+        file: "contemplations-weathered-boat-hull-colour-w2b.jpg",
         alt: {
-          en: "A misty shore rendered almost as a painting, medium-format film",
-          fr: "Un rivage brumeux rendu presque comme une peinture, moyen format argentique",
-          es: "Una orilla brumosa que parece casi una pintura, película de formato medio"
+          en: "The weathered hull of an old boat, colour medium-format film",
+          fr: "La coque usée d'un vieux bateau, moyen format argentique couleur",
+          es: "El casco desgastado de un viejo barco, película de formato medio a color"
         }
       },
       {
-        file: "contemplations-golden-light-sea-rock-spires-medium-format-w2b.jpg",
+        file: "contemplations-beached-boat-low-tide-colour-w2b.jpg",
         alt: {
-          en: "Rock spires at sea under a golden, clouded light, medium-format film",
-          fr: "Des aiguilles rocheuses en mer sous une lumière dorée et nuageuse, moyen format argentique",
-          es: "Agujas rocosas en el mar bajo una luz dorada y nublada, película de formato medio"
+          en: "A boat beached at low tide, colour medium-format film",
+          fr: "Un bateau échoué à marée basse, moyen format argentique couleur",
+          es: "Un barco varado en marea baja, película de formato medio a color"
+        }
+      },
+      {
+        file: "contemplations-boat-prow-stranded-rocks-colour-w2b.jpg",
+        alt: {
+          en: "The prow of a stranded boat among rocks, colour medium-format film",
+          fr: "La proue d'un bateau échoué parmi les rochers, moyen format argentique couleur",
+          es: "La proa de un barco varado entre las rocas, película de formato medio a color"
+        }
+      },
+      {
+        file: "contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg",
+        alt: {
+          en: "A wrecked boat on a rocky shore, black and white medium-format film",
+          fr: "Une épave de bateau sur un rivage rocheux, moyen format argentique noir et blanc",
+          es: "Los restos de un barco en una orilla rocosa, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "contemplations-ruined-doorway-light-colour-w2b.jpg",
+        alt: {
+          en: "Light falling through a ruined doorway, colour medium-format film",
+          fr: "La lumière tombant à travers une porte en ruine, moyen format argentique couleur",
+          es: "La luz cayendo a través de un umbral en ruinas, película de formato medio a color"
+        }
+      },
+      {
+        file: "contemplations-overgrown-ruin-interior-colour-w2b.jpg",
+        alt: {
+          en: "Plants reclaiming a ruined interior, colour medium-format film",
+          fr: "Les plantes reprenant un intérieur en ruine, moyen format argentique couleur",
+          es: "Las plantas reclamando un interior en ruinas, película de formato medio a color"
+        }
+      },
+      {
+        file: "contemplations-stone-tower-well-black-white-w2b.jpg",
+        alt: {
+          en: "An old stone tower and well, black and white medium-format film",
+          fr: "Une vieille tour de pierre et un puits, moyen format argentique noir et blanc",
+          es: "Una vieja torre de piedra y un pozo, película de formato medio en blanco y negro"
         }
       }
     ]
