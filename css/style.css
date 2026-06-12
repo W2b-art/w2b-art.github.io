@@ -2255,22 +2255,25 @@ body.galleries-revealed .hero {
   .label-bw     { font-size: 0.55rem; }
 
   /* Strip = vertical scroll-snap feed below the rotated canister */
+  /* Flow the strip in the normal page scroll — NOT a nested 70vh
+     scroll-snap feed. The old inner scroll trapped the gesture and the
+     browser restored a stale inner position (landing mid-list), so the
+     page appeared stuck and the earlier galleries were unreachable. */
   .film-strip-container {
     flex: 0 0 auto;
     margin-left: 0;
     margin-top: 0;
-    transform: scaleY(0);
-    transform-origin: top center;
+    transform: none;
+    opacity: 1;
     width: 100%;
     max-width: 420px;
-    height: 70vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
+    height: auto;
+    overflow: visible;
     justify-content: center;
   }
+  /* No unroll animation on mobile — show the roll immediately so there's
+     no tall empty gap while it would otherwise wait to reveal. */
+  .film-scene.revealed .film-strip-container { transform: none; }
 
   .film-scene.revealed .film-strip-container { transform: scaleY(1); }
 
@@ -2279,12 +2282,10 @@ body.galleries-revealed .hero {
   .perforations { flex-direction: column; padding: 8px 5px; gap: 16px; }
   .film-frames  { flex-direction: column; padding: 4px 0; gap: 3px; flex: 1; }
 
-  /* Each frame ≈ a "post" in the feed — large, snap to the top */
+  /* Each frame is a compact card in the in-page film roll. */
   .film-frame {
     width: 100%;
-    height: 60vh;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+    height: 32vh;
   }
   .film-frame .frame-cta { display: none; }
   .film-frame-overlay .frame-title { font-size: 1.6rem; }
