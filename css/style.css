@@ -2293,6 +2293,12 @@ body.galleries-revealed .hero {
   /* Slider hidden — vertical scrolling is the natural gesture */
   .film-controls { display: none; }
 
+  /* On phones the film roll above IS the gallery index — hide the
+     redundant camera-back "Selected Work" wheel section, and make the
+     canister decorative so its tap can't scroll to the hidden section. */
+  .camera-back-section { display: none; }
+  #canister-trigger { pointer-events: none; cursor: default; }
+
   /* Catalogue label rules: shorter on tiny screens */
   .catalogue-label::before, .catalogue-label::after { width: 24px; }
 
