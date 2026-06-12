@@ -15,7 +15,7 @@ const TRANSLATIONS = {
     /* Hero — curatorial title block */
     hero_tagline:      "Photographs on film. Guillaume Delye.",
     hero_eyebrow:      "Photographs on film · 2014 — 2026",
-    hero_statement:    "A working monograph. Five series, sixty-four photographs — made between Medellín and the road.",
+    hero_statement:    "Film photography made slowly, between Medellín and the road. The work keeps returning to the same questions: how a place holds memory, how a body meets the light, how an image earns the right to exist.",
     hero_location:     "Studio · Medellín, Colombia",
     hero_index_label:  "Index",
     canister_emulsion: "Hand-developed",
@@ -157,7 +157,7 @@ const TRANSLATIONS = {
 
     hero_tagline:      "Photographies argentiques. Guillaume Delye.",
     hero_eyebrow:      "Photographies argentiques · 2014 — 2026",
-    hero_statement:    "Monographie en cours. Cinq séries, soixante-quatre photographies — faites entre Medellín et la route.",
+    hero_statement:    "Une photographie argentique faite lentement, entre Medellín et la route. Le travail revient toujours aux mêmes questions : comment un lieu garde la mémoire, comment un corps rencontre la lumière, comment une image gagne le droit d'exister.",
     hero_location:     "Atelier · Medellín, Colombie",
     hero_index_label:  "Index",
     canister_emulsion: "Développé à la main",
@@ -289,7 +289,7 @@ const TRANSLATIONS = {
 
     hero_tagline:      "Fotografía analógica. Guillaume Delye.",
     hero_eyebrow:      "Fotografía analógica · 2014 — 2026",
-    hero_statement:    "Monografía en curso. Cinco series, sesenta y cuatro fotografías — hechas entre Medellín y la carretera.",
+    hero_statement:    "Fotografía analógica hecha con lentitud, entre Medellín y la carretera. La obra vuelve siempre a las mismas preguntas: cómo un lugar guarda la memoria, cómo un cuerpo encuentra la luz, cómo una imagen se gana el derecho a existir.",
     hero_location:     "Estudio · Medellín, Colombia",
     hero_index_label:  "Índice",
     canister_emulsion: "Revelado a mano",
