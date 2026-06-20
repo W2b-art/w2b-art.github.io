@@ -563,9 +563,9 @@ const GALLERY_DATA = {
       es: "Desnudo"
     },
     description: {
-      en: "Fine-art nude and boudoir — the body as landscape, studied in low-key black and white.",
-      fr: "Nu d'art et boudoir — le corps comme paysage, étudié en noir et blanc clair-obscur.",
-      es: "Desnudo artístico y boudoir — el cuerpo como paisaje, estudiado en blanco y negro de bajo perfil."
+      en: "Fine-art nude and boudoir, the body as landscape. Low-key black and white studies, with a colour series on devotion, control, and release.",
+      fr: "Nu d'art et boudoir, le corps comme paysage. Études en noir et blanc clair-obscur, et une série couleur sur la dévotion, l'emprise et la libération.",
+      es: "Desnudo artístico y boudoir, el cuerpo como paisaje. Estudios en blanco y negro de bajo perfil, y una serie a color sobre la devoción, el control y la liberación."
     },
     images: [
       {
@@ -671,6 +671,46 @@ const GALLERY_DATA = {
           fr: "Silhouette allongée dans une lumière chaude ambiante, photographie boudoir intime",
           es: "Figura reclinada en cálida luz ambiente, fotografía boudoir íntima"
         }
+      },
+      {
+        file: "boudoir-red-drape-kneeling-bust-colour-w2b.jpg",
+        alt: {
+          en: "A woman draped in red kneeling and reaching up to a white classical bust on a pedestal, colour fine-art boudoir, Medellín",
+          fr: "Une femme drapée de rouge agenouillée tendant les bras vers un buste classique blanc sur un piédestal, boudoir d'art couleur, Medellín",
+          es: "Una mujer envuelta en rojo arrodillada extendiendo los brazos hacia un busto clásico blanco sobre un pedestal, boudoir artístico a color, Medellín"
+        }
+      },
+      {
+        file: "boudoir-red-drape-nude-intimate-colour-w2b.jpg",
+        alt: {
+          en: "Intimate fine-art nude wrapped in flowing red fabric against a dark backdrop, colour boudoir photography",
+          fr: "Nu d'art intime enveloppé d'un tissu rouge fluide sur fond sombre, photographie boudoir couleur",
+          es: "Desnudo artístico íntimo envuelto en una tela roja fluida sobre fondo oscuro, fotografía boudoir a color"
+        }
+      },
+      {
+        file: "boudoir-red-drape-reaching-bust-colour-w2b.jpg",
+        alt: {
+          en: "Woman in red reaching toward a red-draped classical bust inside a tall mirror, colour fine-art boudoir",
+          fr: "Femme en rouge tendant la main vers un buste classique drapé de rouge dans un grand miroir, boudoir d'art couleur",
+          es: "Mujer de rojo extendiendo la mano hacia un busto clásico cubierto de rojo dentro de un espejo alto, boudoir artístico a color"
+        }
+      },
+      {
+        file: "boudoir-white-dress-reading-colour-w2b.jpg",
+        alt: {
+          en: "Woman in a white dress reading a book among tropical plants and blue tilework, colour fine-art boudoir, Medellín",
+          fr: "Femme en robe blanche lisant un livre parmi des plantes tropicales et des azulejos bleus, boudoir d'art couleur, Medellín",
+          es: "Mujer con vestido blanco leyendo un libro entre plantas tropicales y azulejos azules, boudoir artístico a color, Medellín"
+        }
+      },
+      {
+        file: "boudoir-mirror-bust-red-white-fabric-colour-w2b.jpg",
+        alt: {
+          en: "Woman in white reading inside a tall mirror as red and white fabric spill from the frame toward the viewer, a toppled bust below, colour fine-art boudoir",
+          fr: "Femme en blanc lisant dans un grand miroir tandis que des tissus rouge et blanc débordent du cadre vers le spectateur, un buste renversé en bas, boudoir d'art couleur",
+          es: "Mujer de blanco leyendo dentro de un espejo alto mientras telas roja y blanca se derraman del marco hacia el espectador, un busto derribado abajo, boudoir artístico a color"
+        }
       }
     ]
   },
@@ -685,9 +725,9 @@ const GALLERY_DATA = {
       es: "Deseo Oscuro"
     },
     description: {
-      en: "A darker register — latex, masks, and red light. Fetish portraiture and bold colour boudoir.",
-      fr: "Un registre plus sombre — latex, masques et lumière rouge. Portrait fétichiste et boudoir couleur affirmé.",
-      es: "Un registro más oscuro — látex, máscaras y luz roja. Retrato fetichista y boudoir a color audaz."
+      en: "A darker register of latex, masks, red light, and shibari rope. Fetish portraiture, bondage, and bold colour boudoir.",
+      fr: "Un registre plus sombre, fait de latex, de masques, de lumière rouge et de corde shibari. Portrait fétichiste, bondage et boudoir couleur affirmé.",
+      es: "Un registro más oscuro de látex, máscaras, luz roja y cuerda shibari. Retrato fetichista, bondage y boudoir a color audaz."
     },
     images: [
       {
@@ -792,6 +832,54 @@ const GALLERY_DATA = {
           en: "Warm-toned colour boudoir nude study, fine-art photography",
           fr: "Étude de nu boudoir couleur aux tons chauds, photographie d'art",
           es: "Estudio de desnudo boudoir a color de tonos cálidos, fotografía artística"
+        }
+      },
+      {
+        file: "shibari-bound-nude-gypsophila-black-white-w2b.jpg",
+        alt: {
+          en: "Fine-art nude bound with shibari rope, a lace veil and baby's breath flowers, low-key black and white photography",
+          fr: "Nu d'art ligoté à la corde shibari, un voile de dentelle et des fleurs de gypsophile, photographie noir et blanc clair-obscur",
+          es: "Desnudo artístico atado con cuerda shibari, un velo de encaje y flores de gypsophila, fotografía en blanco y negro de bajo perfil"
+        }
+      },
+      {
+        file: "shibari-rope-bound-ankles-teal-light-w2b.jpg",
+        alt: {
+          en: "Crossed ankles bound in shibari rope on a patterned rug under cool teal light, fine-art bondage photography",
+          fr: "Chevilles croisées ligotées à la corde shibari sur un tapis à motifs sous une lumière sarcelle froide, photographie de bondage d'art",
+          es: "Tobillos cruzados atados con cuerda shibari sobre una alfombra estampada bajo una luz turquesa fría, fotografía artística de bondage"
+        }
+      },
+      {
+        file: "shibari-bound-legs-golden-light-batik-w2b.jpg",
+        alt: {
+          en: "Legs bound in shibari rope beneath a green batik wrap in warm golden light, fine-art bondage photography",
+          fr: "Jambes ligotées à la corde shibari sous un drapé batik vert dans une lumière dorée chaude, photographie de bondage d'art",
+          es: "Piernas atadas con cuerda shibari bajo un pareo batik verde en cálida luz dorada, fotografía artística de bondage"
+        }
+      },
+      {
+        file: "shibari-rope-tying-red-roses-w2b.jpg",
+        alt: {
+          en: "Hands tying shibari rope around a body beside red roses under warm red light, fetish art photography",
+          fr: "Des mains nouant la corde shibari autour d'un corps près de roses rouges sous une lumière rouge chaude, photographie d'art fétichiste",
+          es: "Manos atando cuerda shibari alrededor de un cuerpo junto a rosas rojas bajo cálida luz roja, fotografía artística fetichista"
+        }
+      },
+      {
+        file: "shibari-rope-bound-hand-black-white-w2b.jpg",
+        alt: {
+          en: "Close study of a hand and wrist bound in shibari rope with long nails, low-key black and white photography",
+          fr: "Étude rapprochée d'une main et d'un poignet ligotés à la corde shibari aux ongles longs, photographie noir et blanc clair-obscur",
+          es: "Estudio cercano de una mano y muñeca atadas con cuerda shibari con uñas largas, fotografía en blanco y negro de bajo perfil"
+        }
+      },
+      {
+        file: "shibari-reclining-portrait-black-white-w2b.jpg",
+        alt: {
+          en: "Reclining portrait of a model resting on a wooden floor in soft light, black and white fine-art photography",
+          fr: "Portrait allongé d'une modèle reposant sur un sol en bois dans une lumière douce, photographie d'art noir et blanc",
+          es: "Retrato reclinado de una modelo descansando sobre un suelo de madera en luz suave, fotografía artística en blanco y negro"
         }
       }
     ]
