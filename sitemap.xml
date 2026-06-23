@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ART site (apex) -->
+  <url><loc>https://w2bphotography.com/</loc><lastmod>2026-06-23</lastmod><priority>1.0</priority></url>
+  <url><loc>https://w2bphotography.com/about.html</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://w2bphotography.com/shop.html</loc><lastmod>2026-06-23</lastmod><priority>0.8</priority></url>
+  <url><loc>https://w2bphotography.com/collaborate.html</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://w2bphotography.com/gallery-best-of.html</loc><lastmod>2026-06-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://w2bphotography.com/gallery-argentina.html</loc><lastmod>2026-06-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://w2bphotography.com/gallery-blackout.html</loc><lastmod>2026-06-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://w2bphotography.com/gallery-contemplations.html</loc><lastmod>2026-06-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://w2bphotography.com/gallery-series-1.html</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://w2bphotography.com/gallery-series-2.html</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://w2bphotography.com/gallery-series-3.html</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://w2bphotography.com/gallery-work-in-progress.html</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://w2bphotography.com/gallery-nude.html</loc><lastmod>2026-06-23</lastmod><priority>0.5</priority></url>
+  <url><loc>https://w2bphotography.com/gallery-boudoir.html</loc><lastmod>2026-06-23</lastmod><priority>0.5</priority></url>
+
+  <!-- PRO / commercial site (served under the apex) -->
+  <url><loc>https://w2bphotography.com/w2b-pro/</loc><lastmod>2026-06-23</lastmod><priority>0.9</priority></url>
+  <url><loc>https://w2bphotography.com/w2b-pro/about.html</loc><lastmod>2026-06-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://w2bphotography.com/w2b-pro/contact.html</loc><lastmod>2026-06-23</lastmod><priority>0.7</priority></url>
+  <url><loc>https://w2bphotography.com/w2b-pro/gallery-fashion.html</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://w2bphotography.com/w2b-pro/gallery-restaurants.html</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://w2bphotography.com/w2b-pro/gallery-events.html</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://w2bphotography.com/w2b-pro/gallery-portraits.html</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
+  <url><loc>https://w2bphotography.com/w2b-pro/documents/services.html</loc><lastmod>2026-06-23</lastmod><priority>0.6</priority></url>
+
+</urlset>

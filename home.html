@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <title>Guillaume Delye — Photographs on film</title>
+  <meta name="description" content="Guillaume Delye — French photographer based in Medellín. Fine-art photography on film, hand-printed. Editions, exhibitions, and acquisitions.">
+  <meta name="keywords" content="Guillaume Delye, fine art photography, film photographer, black and white, Medellín, Colombia, signed editions, acquisitions">
+  <meta property="og:title"       content="Guillaume Delye — Photographs on film">
+  <meta property="og:description" content="Fine-art photography on film, hand-printed. Editions, exhibitions, and acquisitions.">
+  <meta property="og:type"        content="website">
+  <link rel="alternate" hreflang="en" href="home.html">
+  <link rel="alternate" hreflang="fr" href="home.html">
+  <link rel="alternate" hreflang="es" href="home.html">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="canonical" href="https://w2bphotography.com/home.html">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════════════════════ -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+
+    <!-- Logo -->
+    <a class="nav-logo" href="home.html" aria-label="W2b Art — Home">
+      <svg viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Film frame border -->
+        <rect x="1" y="1" width="78" height="42" rx="2" stroke="#C41E3A" stroke-width="0.8" fill="none"/>
+        <!-- Perforation holes -->
+        <rect x="4"  y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="4"  y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <!-- W2b text -->
+        <text x="14" y="29" font-family="'Space Mono', monospace" font-size="18" font-weight="700"
+              fill="#E8E4DF" letter-spacing="-0.5">W2b</text>
+        <!-- Underline accent -->
+        <line x1="14" y1="32" x2="66" y2="32" stroke="#C41E3A" stroke-width="0.8" opacity="0.7"/>
+      </svg>
+    </a>
+
+    <!-- Links -->
+    <ul class="nav-links" role="list">
+      <li><a href="home.html"    data-i18n="nav_home">Home</a></li>
+      <li><a href="#galleries"    data-i18n="nav_galleries">Galleries</a></li>
+      <li><a href="shop.html"     data-i18n="nav_shop">Prints</a></li>
+      <li><a href="about.html"    data-i18n="nav_about">About</a></li>
+      <li><a href="https://w2b-art.github.io/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a></li>
+    </ul>
+
+    <!-- Language switcher + mobile toggle -->
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <div class="lang-switcher" role="group" aria-label="Language">
+        <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HERO — typographic title, catalogue index below
+  ════════════════════════════════════════════════════════ -->
+  <section class="hero" id="home" aria-label="Hero">
+
+    <!-- Curatorial title block -->
+    <div class="curatorial">
+      <p class="curatorial-eyebrow" data-i18n="hero_eyebrow">Photographs on film · 2014 — 2026</p>
+      <h1 class="curatorial-title">Guillaume <em>Delye</em></h1>
+      <p class="curatorial-statement" data-i18n="hero_statement">
+        Film photography made slowly, between Medellín and the road. The work keeps returning to the same questions: how a place holds memory, how a body meets the light, how an image earns the right to exist.
+      </p>
+      <div class="curatorial-meta">
+        <span class="curatorial-rule" aria-hidden="true"></span>
+        <span data-i18n="hero_location">Studio · Medellín, Colombia</span>
+      </div>
+    </div>
+
+    <!-- Catalogue index — film as physical metaphor for the body of work -->
+    <div class="catalogue-strip">
+      <p class="catalogue-label" data-i18n="hero_index_label">Index</p>
+
+      <div class="film-scene" id="film-scene">
+
+        <div class="canister-wrapper">
+          <div class="canister" id="canister-trigger" role="button" tabindex="0"
+               aria-label="Open the catalogue" title="Open the catalogue">
+            <div class="canister-cap-top" aria-hidden="true"></div>
+            <div class="canister-body">
+              <div class="canister-label">
+                <span class="label-mark">GD</span>
+                <span class="label-accent">35mm</span>
+                <span class="label-bw" data-i18n="canister_emulsion">Hand-developed</span>
+              </div>
+              <div class="canister-slot" aria-hidden="true"></div>
+            </div>
+            <div class="canister-cap-bottom" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <div class="film-strip-container" id="film-strip-container"></div>
+
+      </div>
+
+      <!-- Slider controls -->
+      <div class="film-controls" id="film-controls">
+        <button class="film-ctl-btn" id="film-prev" aria-label="Roll film backward">‹</button>
+        <div class="film-slider-track">
+          <input type="range" class="film-slider" id="film-slider"
+                 min="0" max="100" value="0" step="0.1"
+                 aria-label="Film position">
+          <div class="film-slider-progress" id="film-slider-progress" aria-hidden="true"></div>
+        </div>
+        <button class="film-ctl-btn" id="film-next" aria-label="Roll film forward">›</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       GALLERIES SECTION — CAMERA-BACK SELECTOR
+  ════════════════════════════════════════════════════════ -->
+  <section class="section camera-back-section" id="galleries" aria-label="Galleries">
+    <div class="section-header">
+      <span class="section-number" data-i18n="sec_galleries_num">PLATE 01</span>
+      <h2 class="section-title" data-i18n="sec_galleries">Selected Work</h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
+
+    <div class="camera-back" id="camera-back" role="region" aria-label="Gallery selector">
+
+      <!-- LCD SCREEN: shows selected gallery preview + description -->
+      <div class="camera-screen">
+        <div class="screen-bezel">
+          <div class="screen-status">
+            <span class="status-counter" id="screen-counter">01 / 05</span>
+          </div>
+          <div class="screen-glass">
+            <img class="screen-image" id="screen-image" src="" alt="" loading="lazy">
+            <div class="screen-grid-overlay" aria-hidden="true"></div>
+            <div class="screen-corner screen-corner-tl"></div>
+            <div class="screen-corner screen-corner-tr"></div>
+            <div class="screen-corner screen-corner-bl"></div>
+            <div class="screen-corner screen-corner-br"></div>
+          </div>
+          <div class="screen-foot">
+            <span class="foot-meta" id="screen-meta">21 photographs</span>
+          </div>
+        </div>
+
+        <div class="screen-info">
+          <h3 class="info-title" id="screen-title">—</h3>
+          <p class="info-desc" id="screen-desc">—</p>
+          <a class="info-cta" id="screen-cta" href="#">
+            <span data-i18n="view_gallery">View Gallery</span>
+            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- CONTROL DIAL: vertical mode wheel that scrolls on selection -->
+      <div class="camera-controls-wrapper">
+        <button class="wheel-arrow wheel-arrow-up" id="wheel-prev" aria-label="Previous gallery">▲</button>
+        <div class="camera-controls">
+          <div class="wheel-indicator" aria-hidden="true"></div>
+          <div class="control-wheel" id="control-wheel" role="listbox" aria-label="Galleries"></div>
+        </div>
+        <button class="wheel-arrow wheel-arrow-down" id="wheel-next" aria-label="Next gallery">▼</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ABOUT SNIPPET
+  ════════════════════════════════════════════════════════ -->
+  <section class="section" id="about-snippet" aria-label="About">
+    <div class="section-header">
+      <span class="section-number" data-i18n="sec_about_num">PLATE 02</span>
+      <h2 class="section-title" data-i18n="sec_about">About</h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
+
+    <div class="about-snippet">
+      <div class="about-text reveal">
+        <p data-i18n="about_p1">Guillaume Delye, French photographer based in Medellín. The work is made on film.</p>
+        <p data-i18n="about_p2">Available for exhibitions, acquisitions, and signed editions. Editorial commissions on the commercial site.</p>
+        <div class="signature">Guillaume Delye</div>
+        <br>
+        <a class="btn btn-ghost" href="about.html">
+          <span data-i18n="about_readmore">Read more</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+        </a>
+      </div>
+      <div class="about-img-wrap reveal">
+        <img src="images/ui/about.jpg" alt="W2b — portrait of the photographer"
+             style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;">
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       BRIDGE TO PROFESSIONAL SITE
+  ════════════════════════════════════════════════════════ -->
+  <div class="pro-bridge reveal" aria-label="Professional site link">
+    <p class="bridge-text" data-i18n="bridge_text">Also working on editorial and commercial commissions.</p>
+    <a class="bridge-link" href="https://w2b-art.github.io/w2b-pro/">
+      <span data-i18n="bridge_link">Visit the commercial portfolio ↗</span>
+      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <nav class="footer-social" aria-label="Contact and social">
+      <a href="https://www.instagram.com/w2b.film" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+      <a href="shop.html" data-i18n="nav_shop">Prints</a>
+      <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
+      <a href="mailto:w2bphoto+prints@gmail.com" aria-label="Inquire about prints">Inquire</a>
+    </nav>
+    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye — All rights reserved</p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       LIGHTBOX
+  ════════════════════════════════════════════════════════ -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Close">✕ Close</button>
+    <button id="lightbox-prev"  class="lightbox-nav lightbox-prev" aria-label="Previous">‹</button>
+    <img    id="lightbox-img"   class="lightbox-img" src="" alt="">
+    <button id="lightbox-next"  class="lightbox-nav lightbox-next" aria-label="Next">›</button>
+    <div    id="lightbox-caption" class="lightbox-caption"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/gallery-data.js"></script>
+  <script src="js/lang.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

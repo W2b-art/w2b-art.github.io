@@ -6,252 +6,359 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <title>Guillaume Delye — Photographs on film</title>
-  <meta name="description" content="Guillaume Delye — French photographer based in Medellín. Fine-art photography on film, hand-printed. Editions, exhibitions, and acquisitions.">
-  <meta name="keywords" content="Guillaume Delye, fine art photography, film photographer, black and white, Medellín, Colombia, signed editions, acquisitions">
-  <meta property="og:title"       content="Guillaume Delye — Photographs on film">
-  <meta property="og:description" content="Fine-art photography on film, hand-printed. Editions, exhibitions, and acquisitions.">
+
+  <title>Guillaume Delye — Photographer, Medellín · Fine Art, Commercial &amp; Prints</title>
+  <meta name="description" content="Guillaume Delye (W2b), French photographer based in Medellín. Fine-art film photography, editorial and commercial commissions, and signed limited-edition prints. Choose where to begin.">
+  <meta name="keywords" content="Guillaume Delye, W2b, photographer Medellín, fine art photography, film photographer, editorial photographer, commercial photographer, signed prints, Colombia">
+  <link rel="canonical" href="https://w2bphotography.com/">
+  <meta property="og:title"       content="Guillaume Delye — Photographer, Medellín">
+  <meta property="og:description" content="Fine art on film, editorial and commercial commissions, and signed limited-edition prints.">
   <meta property="og:type"        content="website">
-  <link rel="alternate" hreflang="en" href="index.html">
-  <link rel="alternate" hreflang="fr" href="index.html">
-  <link rel="alternate" hreflang="es" href="index.html">
-  <link rel="stylesheet" href="css/style.css">
+  <meta property="og:image"       content="https://w2bphotography.com/images/ui/hero.jpg">
+  <link rel="alternate" hreflang="en" href="https://w2bphotography.com/">
+  <link rel="alternate" hreflang="fr" href="https://w2bphotography.com/">
+  <link rel="alternate" hreflang="es" href="https://w2bphotography.com/">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:        #0E0C09;
+      --bg-2:      #15110C;
+      --bg-3:      #1C1812;
+      --crimson:   #C41E3A;
+      --gold:      #C9A84C;
+      --champagne: #C5B999;
+      --text:      #ECE6DA;
+      --muted:     #948A78;
+      --border:    rgba(197,185,153,0.14);
+      --border-soft: rgba(197,185,153,0.07);
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-sub:     'Cormorant Garamond', Georgia, serif;
+      --font-mono:    'Space Mono', 'Courier New', monospace;
+      --font-body:    'Lato', system-ui, sans-serif;
+      --ease:      cubic-bezier(0.25,0.46,0.45,0.94);
+      --ease-lift: cubic-bezier(0.34,1.56,0.64,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:var(--font-body);
+      font-weight:400;
+      line-height:1.7;
+      min-height:100vh;
+      overflow-x:hidden;
+      background-image:
+        radial-gradient(120% 80% at 50% 0%, rgba(201,168,76,0.06), transparent 60%),
+        radial-gradient(100% 60% at 50% 100%, rgba(196,30,58,0.05), transparent 70%);
+      background-attachment:fixed;
+    }
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;}
+
+    /* ── Top bar ───────────────────────────── */
+    .bar{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:1.6rem clamp(1.2rem,5vw,3.5rem);
+    }
+    .bar-logo svg{height:42px;width:auto;display:block;}
+    .lang{display:flex;align-items:center;gap:.55rem;font-family:var(--font-mono);font-size:.72rem;}
+    .lang button{
+      background:none;border:none;color:var(--muted);cursor:pointer;
+      font-family:inherit;font-size:inherit;letter-spacing:.05em;padding:.2rem;
+      transition:color .25s var(--ease);
+    }
+    .lang button:hover{color:var(--text);}
+    .lang button.active{color:var(--gold);}
+    .lang .sep{color:var(--border);}
+
+    /* ── Hero ──────────────────────────────── */
+    .hero{
+      text-align:center;
+      padding:clamp(2rem,7vh,5rem) clamp(1.2rem,5vw,3.5rem) clamp(1.2rem,3vh,2.2rem);
+      max-width:880px;margin:0 auto;
+    }
+    .eyebrow{
+      font-family:var(--font-mono);font-size:.74rem;letter-spacing:.34em;
+      text-transform:uppercase;color:var(--champagne);margin-bottom:1.4rem;
+    }
+    .hero h1{
+      font-family:var(--font-display);font-weight:500;
+      font-size:clamp(2.6rem,7vw,5rem);line-height:1.02;letter-spacing:-0.01em;
+    }
+    .hero h1 em{font-style:italic;color:var(--gold);}
+    .hero .statement{
+      font-family:var(--font-sub);font-size:clamp(1.15rem,2.4vw,1.5rem);
+      line-height:1.55;color:var(--muted);margin:1.6rem auto 0;max-width:46ch;
+    }
+    .hero-rule{width:54px;height:1px;background:var(--crimson);opacity:.7;margin:1.8rem auto 0;}
+
+    .swipe-hint{display:none;}
+
+    /* ── Choices: TRIANGLE on desktop ──────── */
+    .choices{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(250px,360px));
+      justify-content:center;
+      align-items:start;
+      gap:clamp(1.6rem,3vw,2.8rem);
+      max-width:1080px;margin:0 auto;
+      padding:clamp(1rem,3vh,2.4rem) clamp(1.2rem,5vw,3.5rem) clamp(3rem,8vh,6rem);
+    }
+    .card{
+      position:relative;display:flex;flex-direction:column;
+      text-align:left;width:100%;
+      transition:transform .5s var(--ease-lift);
+    }
+    .card--shop{grid-column:1 / -1;grid-row:2;justify-self:center;width:min(360px,100%);}  /* inverted apex (bottom point) */
+    .card:hover{transform:translateY(-6px);}
+
+    /* shared body */
+    .card-body{position:relative;padding:1.2rem .15rem 0;}
+    .card-accent{display:block;height:2px;width:38px;margin-bottom:.7rem;transition:width .5s var(--ease);}
+    .card:hover .card-accent{width:100%;}
+    .card--art  .card-accent{background:var(--crimson);}
+    .card--pro  .card-accent{background:var(--gold);}
+    .card--shop .card-accent{background:var(--champagne);}
+    .card-label{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:.45rem;}
+    .card--art  .card-label .k{color:var(--crimson);}
+    .card--pro  .card-label .k{color:var(--gold);}
+    .card--shop .card-label .k{color:var(--champagne);}
+    .card-title{font-family:var(--font-display);font-weight:500;font-size:1.7rem;line-height:1.1;margin-bottom:.4rem;}
+    .card-desc{font-size:.9rem;color:var(--muted);line-height:1.5;}
+    .card-cta{display:inline-flex;align-items:center;gap:.45rem;margin-top:.9rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text);}
+    .card-cta .arr{transition:transform .4s var(--ease);}
+    .card:hover .card-cta .arr{transform:translateX(5px);}
+
+    /* ART — gallery frame + mat */
+    .frame{
+      background:linear-gradient(135deg,#e6cd7e 0%,#a87f33 28%,#caa84c 52%,#8a6a28 78%,#d8bd6a 100%);
+      padding:11px;border-radius:2px;
+      box-shadow:0 22px 55px -24px rgba(0,0,0,.9), inset 0 1px 0 rgba(255,255,255,.25), inset 0 -1px 0 rgba(0,0,0,.35);
+    }
+    .frame-mat{
+      background:linear-gradient(#efeadf,#e3dccb);
+      padding:clamp(13px,4.5%,22px);
+      box-shadow:inset 0 3px 13px rgba(0,0,0,.22);
+    }
+    .frame-window{position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.2);}
+    .frame-window img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(.3) brightness(.92) contrast(1.03);transition:transform 1.1s var(--ease),filter .6s var(--ease);}
+    .card--art:hover .frame-window img{transform:scale(1.05);filter:grayscale(0) brightness(1);}
+    .frame-sign{margin-top:clamp(9px,3.4%,15px);text-align:center;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.24em;color:#1a1610;}
+
+    /* PRO — magazine cover */
+    .cover{position:relative;aspect-ratio:3/4;overflow:hidden;background:#15110C;box-shadow:0 22px 55px -24px rgba(0,0,0,.9);}
+    .cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.04) brightness(.76);transition:transform 1.1s var(--ease);}
+    .card--pro:hover .cover img{transform:scale(1.05);}
+    .cover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,.34) 20%,transparent 40%,transparent 50%,rgba(0,0,0,.82) 100%);}
+    .cover-top{position:absolute;top:13px;left:14px;right:14px;text-align:center;z-index:2;}
+    .cover-masthead{font-family:var(--font-display);font-weight:600;font-size:1.85rem;line-height:1.04;color:#fff;letter-spacing:.01em;text-shadow:0 2px 18px rgba(0,0,0,.9),0 1px 3px rgba(0,0,0,.7);}
+    .cover-kicker{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:#EBDCA8;margin-top:.45rem;text-shadow:0 1px 6px rgba(0,0,0,.95);}
+    .cover-rule{height:1px;background:rgba(255,255,255,.45);margin:.5rem auto 0;width:66%;}
+    .cover-lines{position:absolute;bottom:13px;left:14px;right:14px;z-index:2;}
+    .cover-lines .cl{display:block;font-family:var(--font-sub);font-size:1.02rem;color:#f3efe6;line-height:1.25;text-shadow:0 1px 8px rgba(0,0,0,.5);}
+    .cover-issue{display:flex;justify-content:space-between;align-items:flex-end;margin-top:.55rem;font-family:var(--font-mono);font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.68);}
+    .cover-barcode{display:flex;gap:1.5px;align-items:flex-end;height:13px;}
+    .cover-barcode i{display:block;width:1.5px;height:100%;background:rgba(255,255,255,.72);}
+    .cover-barcode i:nth-child(odd){height:68%;}
+
+    /* SHOP — plain media (as is) */
+    .media{position:relative;overflow:hidden;aspect-ratio:3/4;box-shadow:0 22px 55px -24px rgba(0,0,0,.9);}
+    .media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35) brightness(.78) contrast(1.02);transition:transform 1.1s var(--ease),filter .6s var(--ease);}
+    .card--shop:hover .media img{transform:scale(1.06);filter:grayscale(0) brightness(.92);}
+    .media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(14,12,9,.55) 100%);}
+
+    /* ── Footer ────────────────────────────── */
+    .foot{
+      border-top:1px solid var(--border-soft);
+      padding:1.8rem clamp(1.2rem,5vw,3.5rem);
+      display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between;
+      font-family:var(--font-mono);font-size:.72rem;letter-spacing:.05em;color:var(--muted);
+    }
+    .foot a{color:var(--muted);transition:color .25s var(--ease);}
+    .foot a:hover{color:var(--gold);}
+    .foot-links{display:flex;gap:1.6rem;}
+
+    /* ── Mobile: horizontal scroll ─────────── */
+    @media(max-width:860px){
+      .swipe-hint{
+        display:block;text-align:center;
+        font-family:var(--font-mono);font-size:.64rem;letter-spacing:.24em;
+        text-transform:uppercase;color:var(--muted);margin:.2rem 0 -.4rem;
+      }
+      .choices{
+        display:flex;grid-template-columns:none;
+        overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+        gap:1.1rem;max-width:none;
+        padding:1.4rem clamp(1.2rem,7vw,2rem) 3rem;
+        scroll-padding-left:clamp(1.2rem,7vw,2rem);
+      }
+      .choices::-webkit-scrollbar{height:0;}
+      .card,.card--shop{flex:0 0 82%;width:82%;grid-column:auto;grid-row:auto;justify-self:auto;scroll-snap-align:center;}
+    }
+    @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+  </style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════════════
-       NAVIGATION
-  ════════════════════════════════════════════════════════ -->
-  <nav class="nav" role="navigation" aria-label="Main navigation">
-
-    <!-- Logo -->
-    <a class="nav-logo" href="index.html" aria-label="W2b Art — Home">
+  <!-- ── Top bar ───────────────────────────── -->
+  <header class="bar">
+    <a class="bar-logo" href="index.html" aria-label="W2b — Guillaume Delye">
       <svg viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- Film frame border -->
         <rect x="1" y="1" width="78" height="42" rx="2" stroke="#C41E3A" stroke-width="0.8" fill="none"/>
-        <!-- Perforation holes -->
         <rect x="4"  y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
         <rect x="4"  y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
         <rect x="71" y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
         <rect x="71" y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
-        <!-- W2b text -->
         <text x="14" y="29" font-family="'Space Mono', monospace" font-size="18" font-weight="700"
-              fill="#E8E4DF" letter-spacing="-0.5">W2b</text>
-        <!-- Underline accent -->
+              fill="#ECE6DA" letter-spacing="-0.5">W2b</text>
         <line x1="14" y1="32" x2="66" y2="32" stroke="#C41E3A" stroke-width="0.8" opacity="0.7"/>
       </svg>
     </a>
-
-    <!-- Links -->
-    <ul class="nav-links" role="list">
-      <li><a href="index.html"    data-i18n="nav_home">Home</a></li>
-      <li><a href="#galleries"    data-i18n="nav_galleries">Galleries</a></li>
-      <li><a href="shop.html"     data-i18n="nav_shop">Prints</a></li>
-      <li><a href="about.html"    data-i18n="nav_about">About</a></li>
-      <li><a href="https://w2b-art.github.io/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a></li>
-    </ul>
-
-    <!-- Language switcher + mobile toggle -->
-    <div style="display:flex;align-items:center;gap:1.5rem;">
-      <div class="lang-switcher" role="group" aria-label="Language">
-        <button class="lang-btn active" data-lang="en" aria-label="English">EN</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" data-lang="fr" aria-label="Français">FR</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" data-lang="es" aria-label="Español">ES</button>
-      </div>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-  </nav>
-
-  <!-- ═══════════════════════════════════════════════════════
-       HERO — typographic title, catalogue index below
-  ════════════════════════════════════════════════════════ -->
-  <section class="hero" id="home" aria-label="Hero">
-
-    <!-- Curatorial title block -->
-    <div class="curatorial">
-      <p class="curatorial-eyebrow" data-i18n="hero_eyebrow">Photographs on film · 2014 — 2026</p>
-      <h1 class="curatorial-title">Guillaume <em>Delye</em></h1>
-      <p class="curatorial-statement" data-i18n="hero_statement">
-        Film photography made slowly, between Medellín and the road. The work keeps returning to the same questions: how a place holds memory, how a body meets the light, how an image earns the right to exist.
-      </p>
-      <div class="curatorial-meta">
-        <span class="curatorial-rule" aria-hidden="true"></span>
-        <span data-i18n="hero_location">Studio · Medellín, Colombia</span>
-      </div>
-    </div>
-
-    <!-- Catalogue index — film as physical metaphor for the body of work -->
-    <div class="catalogue-strip">
-      <p class="catalogue-label" data-i18n="hero_index_label">Index</p>
-
-      <div class="film-scene" id="film-scene">
-
-        <div class="canister-wrapper">
-          <div class="canister" id="canister-trigger" role="button" tabindex="0"
-               aria-label="Open the catalogue" title="Open the catalogue">
-            <div class="canister-cap-top" aria-hidden="true"></div>
-            <div class="canister-body">
-              <div class="canister-label">
-                <span class="label-mark">GD</span>
-                <span class="label-accent">35mm</span>
-                <span class="label-bw" data-i18n="canister_emulsion">Hand-developed</span>
-              </div>
-              <div class="canister-slot" aria-hidden="true"></div>
-            </div>
-            <div class="canister-cap-bottom" aria-hidden="true"></div>
-          </div>
-        </div>
-
-        <div class="film-strip-container" id="film-strip-container"></div>
-
-      </div>
-
-      <!-- Slider controls -->
-      <div class="film-controls" id="film-controls">
-        <button class="film-ctl-btn" id="film-prev" aria-label="Roll film backward">‹</button>
-        <div class="film-slider-track">
-          <input type="range" class="film-slider" id="film-slider"
-                 min="0" max="100" value="0" step="0.1"
-                 aria-label="Film position">
-          <div class="film-slider-progress" id="film-slider-progress" aria-hidden="true"></div>
-        </div>
-        <button class="film-ctl-btn" id="film-next" aria-label="Roll film forward">›</button>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════
-       GALLERIES SECTION — CAMERA-BACK SELECTOR
-  ════════════════════════════════════════════════════════ -->
-  <section class="section camera-back-section" id="galleries" aria-label="Galleries">
-    <div class="section-header">
-      <span class="section-number" data-i18n="sec_galleries_num">PLATE 01</span>
-      <h2 class="section-title" data-i18n="sec_galleries">Selected Work</h2>
-      <div class="section-line" aria-hidden="true"></div>
-    </div>
-
-    <div class="camera-back" id="camera-back" role="region" aria-label="Gallery selector">
-
-      <!-- LCD SCREEN: shows selected gallery preview + description -->
-      <div class="camera-screen">
-        <div class="screen-bezel">
-          <div class="screen-status">
-            <span class="status-counter" id="screen-counter">01 / 05</span>
-          </div>
-          <div class="screen-glass">
-            <img class="screen-image" id="screen-image" src="" alt="" loading="lazy">
-            <div class="screen-grid-overlay" aria-hidden="true"></div>
-            <div class="screen-corner screen-corner-tl"></div>
-            <div class="screen-corner screen-corner-tr"></div>
-            <div class="screen-corner screen-corner-bl"></div>
-            <div class="screen-corner screen-corner-br"></div>
-          </div>
-          <div class="screen-foot">
-            <span class="foot-meta" id="screen-meta">21 photographs</span>
-          </div>
-        </div>
-
-        <div class="screen-info">
-          <h3 class="info-title" id="screen-title">—</h3>
-          <p class="info-desc" id="screen-desc">—</p>
-          <a class="info-cta" id="screen-cta" href="#">
-            <span data-i18n="view_gallery">View Gallery</span>
-            <svg viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- CONTROL DIAL: vertical mode wheel that scrolls on selection -->
-      <div class="camera-controls-wrapper">
-        <button class="wheel-arrow wheel-arrow-up" id="wheel-prev" aria-label="Previous gallery">▲</button>
-        <div class="camera-controls">
-          <div class="wheel-indicator" aria-hidden="true"></div>
-          <div class="control-wheel" id="control-wheel" role="listbox" aria-label="Galleries"></div>
-        </div>
-        <button class="wheel-arrow wheel-arrow-down" id="wheel-next" aria-label="Next gallery">▼</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════
-       ABOUT SNIPPET
-  ════════════════════════════════════════════════════════ -->
-  <section class="section" id="about-snippet" aria-label="About">
-    <div class="section-header">
-      <span class="section-number" data-i18n="sec_about_num">PLATE 02</span>
-      <h2 class="section-title" data-i18n="sec_about">About</h2>
-      <div class="section-line" aria-hidden="true"></div>
-    </div>
-
-    <div class="about-snippet">
-      <div class="about-text reveal">
-        <p data-i18n="about_p1">Guillaume Delye, French photographer based in Medellín. The work is made on film.</p>
-        <p data-i18n="about_p2">Available for exhibitions, acquisitions, and signed editions. Editorial commissions on the commercial site.</p>
-        <div class="signature">Guillaume Delye</div>
-        <br>
-        <a class="btn btn-ghost" href="about.html">
-          <span data-i18n="about_readmore">Read more</span>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
-          </svg>
-        </a>
-      </div>
-      <div class="about-img-wrap reveal">
-        <img src="images/ui/about.jpg" alt="W2b — portrait of the photographer"
-             style="width:100%;aspect-ratio:3/4;object-fit:cover;display:block;">
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════
-       BRIDGE TO PROFESSIONAL SITE
-  ════════════════════════════════════════════════════════ -->
-  <div class="pro-bridge reveal" aria-label="Professional site link">
-    <p class="bridge-text" data-i18n="bridge_text">Also working on editorial and commercial commissions.</p>
-    <a class="bridge-link" href="https://w2b-art.github.io/w2b-pro/">
-      <span data-i18n="bridge_link">Visit the commercial portfolio ↗</span>
-      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-      </svg>
-    </a>
-  </div>
-
-  <!-- ═══════════════════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════════════════════ -->
-  <footer class="footer" role="contentinfo">
-    <nav class="footer-social" aria-label="Contact and social">
-      <a href="https://www.instagram.com/w2b.film" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
-      <a href="shop.html" data-i18n="nav_shop">Prints</a>
-      <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
-      <a href="mailto:w2bphoto+prints@gmail.com" aria-label="Inquire about prints">Inquire</a>
+    <nav class="lang" role="group" aria-label="Language">
+      <button data-lang="en" class="active">EN</button><span class="sep">|</span>
+      <button data-lang="fr">FR</button><span class="sep">|</span>
+      <button data-lang="es">ES</button>
     </nav>
-    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye — All rights reserved</p>
+  </header>
+
+  <!-- ── Hero ──────────────────────────────── -->
+  <section class="hero">
+    <p class="eyebrow" data-i18n="eyebrow">Photographer · Medellín</p>
+    <h1>Guillaume <em>Delye</em></h1>
+    <p class="statement" data-i18n="statement">Fine-art photography on film, editorial and commercial commissions, and signed limited-edition prints. Choose where to begin.</p>
+    <div class="hero-rule" aria-hidden="true"></div>
+  </section>
+
+  <p class="swipe-hint" aria-hidden="true" data-i18n="swipe">← Swipe →</p>
+
+  <!-- ── Three choices ─────────────────────── -->
+  <main class="choices">
+
+    <!-- Fine Art — apex, gallery frame -->
+    <a class="card card--art" href="home.html" aria-label="Fine art portfolio">
+      <div class="frame">
+        <div class="frame-mat">
+          <div class="frame-window">
+            <img src="images/ui/hero.jpg" alt="Fine-art film photograph by Guillaume Delye" loading="lazy">
+          </div>
+          <div class="frame-sign" aria-hidden="true">W2b</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <span class="card-accent" aria-hidden="true"></span>
+        <p class="card-label"><span class="k">01</span> · <span data-i18n="art_label">Fine Art</span></p>
+        <h2 class="card-title" data-i18n="art_title">Fine Art</h2>
+        <p class="card-desc" data-i18n="art_desc">Film work, series, and exhibitions.</p>
+        <span class="card-cta"><span data-i18n="art_cta">Enter</span> <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- Commercial — magazine cover -->
+    <a class="card card--pro" href="w2b-pro/" aria-label="Commercial and editorial work">
+      <div class="cover">
+        <img src="images/ui/commercial.jpg" alt="Editorial photograph by Guillaume Delye" loading="lazy">
+        <div class="cover-top" aria-hidden="true">
+          <div class="cover-masthead">Guillaume Delye</div>
+          <div class="cover-kicker" data-i18n="cover_kicker">Editorial &amp; Commercial</div>
+          <div class="cover-rule"></div>
+        </div>
+        <div class="cover-lines" aria-hidden="true">
+          <span class="cl" data-i18n="cover_line1">Fashion · Hospitality</span>
+          <span class="cl" data-i18n="cover_line2">Reportage · Brand</span>
+          <div class="cover-issue">
+            <span>Corsica · 2025</span>
+            <span class="cover-barcode"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <span class="card-accent" aria-hidden="true"></span>
+        <p class="card-label"><span class="k">02</span> · <span data-i18n="pro_label">Commercial</span></p>
+        <h2 class="card-title" data-i18n="pro_title">Commercial</h2>
+        <p class="card-desc" data-i18n="pro_desc">Editorial, hospitality, and reportage. Brief to delivery.</p>
+        <span class="card-cta"><span data-i18n="pro_cta">Work with me</span> <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- Prints / Shop — as is -->
+    <a class="card card--shop" href="https://w2bphoto.myshopify.com/" target="_blank" rel="noopener" aria-label="Print shop (opens in a new tab)">
+      <div class="media">
+        <img src="images/ui/about.jpg" alt="Signed limited-edition print by Guillaume Delye" loading="lazy">
+      </div>
+      <div class="card-body">
+        <span class="card-accent" aria-hidden="true"></span>
+        <p class="card-label"><span class="k">03</span> · <span data-i18n="shop_label">Prints</span></p>
+        <h2 class="card-title" data-i18n="shop_title">Prints</h2>
+        <p class="card-desc" data-i18n="shop_desc">Signed, limited-edition photographic prints.</p>
+        <span class="card-cta"><span data-i18n="shop_cta">Shop</span> <span class="arr">↗</span></span>
+      </div>
+    </a>
+
+  </main>
+
+  <!-- ── Footer ────────────────────────────── -->
+  <footer class="foot">
+    <span data-i18n="copy">© Guillaume Delye · W2b · Medellín, Colombia</span>
+    <span class="foot-links">
+      <a href="https://www.instagram.com/w2b.film" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:w2bphoto@gmail.com" data-i18n="contact">Contact</a>
+    </span>
   </footer>
 
-  <!-- ═══════════════════════════════════════════════════════
-       LIGHTBOX
-  ════════════════════════════════════════════════════════ -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-    <button id="lightbox-close" class="lightbox-close" aria-label="Close">✕ Close</button>
-    <button id="lightbox-prev"  class="lightbox-nav lightbox-prev" aria-label="Previous">‹</button>
-    <img    id="lightbox-img"   class="lightbox-img" src="" alt="">
-    <button id="lightbox-next"  class="lightbox-nav lightbox-next" aria-label="Next">›</button>
-    <div    id="lightbox-caption" class="lightbox-caption"></div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="js/gallery-data.js"></script>
-  <script src="js/lang.js"></script>
-  <script src="js/main.js"></script>
+  <script>
+    (function(){
+      var I18N = {
+        en:{
+          eyebrow:"Photographer · Medellín",
+          statement:"Fine-art photography on film, editorial and commercial commissions, and signed limited-edition prints. Choose where to begin.",
+          swipe:"← Swipe →",
+          art_label:"Fine Art", art_title:"Fine Art", art_desc:"Film work, series, and exhibitions.", art_cta:"Enter",
+          pro_label:"Commercial", pro_title:"Commercial", pro_desc:"Editorial, hospitality, and reportage. Brief to delivery.", pro_cta:"Work with me",
+          cover_kicker:"Editorial & Commercial", cover_line1:"Fashion · Hospitality", cover_line2:"Reportage · Brand",
+          shop_label:"Prints", shop_title:"Prints", shop_desc:"Signed, limited-edition photographic prints.", shop_cta:"Shop",
+          copy:"© Guillaume Delye · W2b · Medellín, Colombia", contact:"Contact"
+        },
+        fr:{
+          eyebrow:"Photographe · Medellín",
+          statement:"Photographie d'art sur pellicule, commandes éditoriales et commerciales, et tirages signés en édition limitée. Choisissez par où commencer.",
+          swipe:"← Glissez →",
+          art_label:"Art", art_title:"Art", art_desc:"Travail argentique, séries et expositions.", art_cta:"Entrer",
+          pro_label:"Commercial", pro_title:"Commercial", pro_desc:"Éditorial, hôtellerie et reportage. Du brief à la livraison.", pro_cta:"Travailler ensemble",
+          cover_kicker:"Éditorial & Commercial", cover_line1:"Mode · Hôtellerie", cover_line2:"Reportage · Marque",
+          shop_label:"Tirages", shop_title:"Tirages", shop_desc:"Tirages photographiques signés, en édition limitée.", shop_cta:"Boutique",
+          copy:"© Guillaume Delye · W2b · Medellín, Colombie", contact:"Contact"
+        },
+        es:{
+          eyebrow:"Fotógrafo · Medellín",
+          statement:"Fotografía de autor en película, encargos editoriales y comerciales, y copias firmadas de edición limitada. Elige por dónde empezar.",
+          swipe:"← Desliza →",
+          art_label:"Arte", art_title:"Arte", art_desc:"Trabajo en película, series y exposiciones.", art_cta:"Entrar",
+          pro_label:"Comercial", pro_title:"Comercial", pro_desc:"Editorial, hostelería y reportaje. Del brief a la entrega.", pro_cta:"Trabajemos",
+          cover_kicker:"Editorial & Comercial", cover_line1:"Moda · Hostelería", cover_line2:"Reportaje · Marca",
+          shop_label:"Copias", shop_title:"Copias", shop_desc:"Copias fotográficas firmadas, de edición limitada.", shop_cta:"Tienda",
+          copy:"© Guillaume Delye · W2b · Medellín, Colombia", contact:"Contacto"
+        }
+      };
+      var btns = document.querySelectorAll('.lang button');
+      function apply(lang){
+        if(!I18N[lang]) lang = 'en';
+        document.documentElement.lang = lang;
+        document.querySelectorAll('[data-i18n]').forEach(function(el){
+          var v = I18N[lang][el.getAttribute('data-i18n')];
+          if(v != null) el.innerHTML = v;
+        });
+        btns.forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-lang') === lang); });
+        try{ localStorage.setItem('w2b_lang', lang); }catch(e){}
+      }
+      btns.forEach(function(b){ b.addEventListener('click', function(){ apply(b.getAttribute('data-lang')); }); });
+      var saved; try{ saved = localStorage.getItem('w2b_lang'); }catch(e){}
+      apply(saved || 'en');
+    })();
+  </script>
 </body>
 </html>

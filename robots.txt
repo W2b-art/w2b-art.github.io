@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://w2bphotography.com/sitemap.xml
