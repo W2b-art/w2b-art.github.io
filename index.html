@@ -191,7 +191,7 @@
         text-transform:uppercase;color:var(--muted);margin:.2rem 0 -.4rem;
       }
       .choices{
-        display:flex;grid-template-columns:none;
+        display:flex;grid-template-columns:none;justify-content:flex-start;
         overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
         gap:1.1rem;max-width:none;
         padding:1.4rem clamp(1.2rem,7vw,2rem) 3rem;
@@ -199,6 +199,10 @@
       }
       .choices::-webkit-scrollbar{height:0;}
       .card,.card--shop{flex:0 0 82%;width:82%;grid-column:auto;grid-row:auto;justify-self:auto;scroll-snap-align:center;}
+      /* Art in the middle so the carousel opens on it and swipes both ways */
+      .card--pro{order:1;}
+      .card--art{order:2;}
+      .card--shop{order:3;}
     }
     @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
   </style>
@@ -358,6 +362,33 @@
       btns.forEach(function(b){ b.addEventListener('click', function(){ apply(b.getAttribute('data-lang')); }); });
       var saved; try{ saved = localStorage.getItem('w2b_lang'); }catch(e){}
       apply(saved || 'en');
+
+      // Mobile: open the carousel centered on the Fine Art card so the visitor
+      // can swipe both directions from there.
+      var userMovedCarousel = false;
+      function centerArt(){
+        if(userMovedCarousel) return;
+        if(!window.matchMedia('(max-width:860px)').matches) return;
+        var wrap = document.querySelector('.choices');
+        var art  = document.querySelector('.card--art');
+        if(!wrap || !art) return;
+        var delta = (art.getBoundingClientRect().left - wrap.getBoundingClientRect().left)
+                    - (wrap.clientWidth - art.offsetWidth) / 2;
+        wrap.scrollLeft += delta;
+      }
+      window.addEventListener('load', centerArt);
+      window.addEventListener('resize', centerArt);
+      setTimeout(centerArt, 350);
+      centerArt();
+
+      // Mobile browsers fire 'resize' when the address bar hides/shows during
+      // a swipe; without this guard that re-triggers centerArt() mid-gesture
+      // and snaps the carousel back to Art, making left-swipes feel broken.
+      var choicesEl = document.querySelector('.choices');
+      if(choicesEl){
+        choicesEl.addEventListener('touchstart', function(){ userMovedCarousel = true; }, {passive:true});
+        choicesEl.addEventListener('wheel', function(){ userMovedCarousel = true; }, {passive:true});
+      }
     })();
   </script>
 </body>
