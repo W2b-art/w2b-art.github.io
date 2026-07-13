@@ -311,23 +311,119 @@ const GALLERY_DATA = {
           fr: "Un balayeur de rue en uniforme jaune traversant une rue déserte de Medellín, photographie documentaire couleur",
           es: "Un barrendero con uniforme amarillo cruzando una calle vacía de Medellín, fotografía documental a color"
         }
+      },
+      {
+        file: "medellin-carniceria-carne-colgada-black-white-w2b.jpg",
+        alt: {
+          en: "Rows of meat hanging in a Medellín market butcher stall, black and white documentary photography",
+          fr: "Rangées de viande suspendue à un étal de boucherie du marché de Medellín, photographie documentaire noir et blanc",
+          es: "Hileras de carne colgada en un puesto de carnicería del mercado de Medellín, fotografía documental en blanco y negro"
+        }
+      },
+      {
+        file: "medellin-mercado-vendedora-manos-movimiento-black-white-w2b.jpg",
+        alt: {
+          en: "A market vendor's hands caught in motion beneath a hand-painted plátano leaves sign, Medellín, black and white documentary photography",
+          fr: "Les mains d'une marchande saisies en mouvement sous une enseigne peinte de feuilles de bananier, Medellín, photographie documentaire noir et blanc",
+          es: "Las manos de una vendedora captadas en movimiento bajo un letrero pintado de hojas de plátano, Medellín, fotografía documental en blanco y negro"
+        }
+      },
+      {
+        file: "medellin-calle-peatones-movimiento-luz-dorada-color-w2b.jpg",
+        alt: {
+          en: "Pedestrians blurred in motion on a dirt street at golden hour, Medellín, colour documentary photography",
+          fr: "Piétons flous en mouvement sur une rue de terre à l'heure dorée, Medellín, photographie documentaire couleur",
+          es: "Peatones desenfocados en movimiento sobre una calle de tierra en la hora dorada, Medellín, fotografía documental a color"
+        }
+      },
+      {
+        file: "medellin-carniceria-cabeza-res-color-w2b.jpg",
+        alt: {
+          en: "A cow's head set on a wooden board at a Medellín market butcher stall, colour documentary photography",
+          fr: "Une tête de vache posée sur une planche de bois à un étal de boucherie du marché de Medellín, photographie documentaire couleur",
+          es: "Una cabeza de res sobre una tabla de madera en un puesto de carnicería del mercado de Medellín, fotografía documental a color"
+        }
+      },
+      {
+        file: "medellin-fachada-colonial-verde-azulejos-color-w2b.jpg",
+        alt: {
+          en: "A green and blue tiled colonial-era facade with a red awning, Medellín, colour architectural photography",
+          fr: "Une façade coloniale carrelée de vert et de bleu avec un auvent rouge, Medellín, photographie architecturale couleur",
+          es: "Una fachada colonial con azulejos verdes y azules y un toldo rojo, Medellín, fotografía arquitectónica a color"
+        }
+      },
+      {
+        file: "medellin-bus-abandonado-arbol-color-w2b.jpg",
+        alt: {
+          en: "An abandoned bus overtaken by a tree growing through its windshield, Medellín outskirts, colour documentary photography",
+          fr: "Un bus abandonné envahi par un arbre poussant à travers son pare-brise, périphérie de Medellín, photographie documentaire couleur",
+          es: "Un bus abandonado invadido por un árbol que crece a través de su parabrisas, periferia de Medellín, fotografía documental a color"
+        }
+      },
+      {
+        file: "medellin-bella-artes-torre-agua-industrial-color-w2b.jpg",
+        alt: {
+          en: "A rusted water tower seen from below against the sky at the former Bellas Artes rail workshops, Medellín, colour photography",
+          fr: "Un château d'eau rouillé vu en contre-plongée sur le ciel aux anciens ateliers ferroviaires de Bellas Artes, Medellín, photographie couleur",
+          es: "Una torre de agua oxidada vista desde abajo contra el cielo en los antiguos talleres ferroviarios de Bellas Artes, Medellín, fotografía a color"
+        }
+      },
+      {
+        file: "medellin-bella-artes-locomotora-abandonada-color-w2b.jpg",
+        alt: {
+          en: "A rusted, graffiti-covered locomotive reclaimed by vegetation at the abandoned Bellas Artes rail yard, Medellín, colour photography",
+          fr: "Une locomotive rouillée couverte de graffitis reprise par la végétation dans la gare ferroviaire abandonnée de Bellas Artes, Medellín, photographie couleur",
+          es: "Una locomotora oxidada cubierta de grafitis reconquistada por la vegetación en el patio ferroviario abandonado de Bellas Artes, Medellín, fotografía a color"
+        }
+      },
+      {
+        file: "medellin-bella-artes-interior-ruinas-luz-color-w2b.jpg",
+        alt: {
+          en: "Light falling through a collapsed roof onto scattered debris inside the ruined Bellas Artes workshop, Medellín, colour photography",
+          fr: "La lumière tombant à travers un toit effondré sur des débris épars à l'intérieur de l'atelier en ruine de Bellas Artes, Medellín, photographie couleur",
+          es: "La luz cayendo a través de un techo derrumbado sobre escombros dispersos dentro del taller en ruinas de Bellas Artes, Medellín, fotografía a color"
+        }
+      },
+      {
+        file: "medellin-bella-artes-letrero-calle-34-escombros-color-w2b.jpg",
+        alt: {
+          en: "A green 'Calle 34' street sign standing amid a pile of rusted rubble, Medellín, colour documentary photography",
+          fr: "Un panneau vert « Calle 34 » debout au milieu d'un tas de gravats rouillés, Medellín, photographie documentaire couleur",
+          es: "Un letrero verde de 'Calle 34' en medio de un montón de escombros oxidados, Medellín, fotografía documental a color"
+        }
+      },
+      {
+        file: "medellin-fachada-colonial-azul-blanco-portal-color-w2b.jpg",
+        alt: {
+          en: "An ornate blue and white colonial facade with a gated entrance and palms, Medellín, colour architectural photography",
+          fr: "Une façade coloniale bleue et blanche ornée avec une entrée grillagée et des palmiers, Medellín, photographie architecturale couleur",
+          es: "Una fachada colonial azul y blanca ornamentada con una entrada enrejada y palmeras, Medellín, fotografía arquitectónica a color"
+        }
+      },
+      {
+        file: "medellin-mercado-interior-siluetas-black-white-w2b.jpg",
+        alt: {
+          en: "Silhouetted figures inside a dim covered market under raking light, Medellín, black and white documentary photography",
+          fr: "Silhouettes à l'intérieur d'un marché couvert peu éclairé sous une lumière rasante, Medellín, photographie documentaire noir et blanc",
+          es: "Siluetas dentro de un mercado cubierto en penumbra bajo luz rasante, Medellín, fotografía documental en blanco y negro"
+        }
       }
     ]
   },
 
-  "series-1": {
-    id: "series-1",
-    folder: "images/details/",
-    coverIndex: 7,
+  "matter": {
+    id: "matter",
+    folder: "images/matter/",
+    coverIndex: 8,
     title: {
-      en: "Details",
-      fr: "Détails",
-      es: "Detalles"
+      en: "Matter",
+      fr: "Matière",
+      es: "Materia"
     },
     description: {
-      en: "Quiet close-ups, found objects, and botanical fragments — fine details noticed and held still.",
-      fr: "Gros plans silencieux, objets trouvés et fragments botaniques — détails fins remarqués et figés.",
-      es: "Primeros planos silenciosos, objetos encontrados y fragmentos botánicos — detalles notados y detenidos."
+      en: "Quiet close-ups, found objects, and abstract surfaces — the tactile language of light on matter.",
+      fr: "Gros plans silencieux, objets trouvés et surfaces abstraites — le langage tactile de la lumière sur la matière.",
+      es: "Primeros planos silenciosos, objetos encontrados y superficies abstractas — el lenguaje táctil de la luz sobre la materia."
     },
     images: [
       {
@@ -392,6 +488,62 @@ const GALLERY_DATA = {
           en: "Close-up of an unopened artichoke bud revealing the perfect spiral geometry of its leaves, medium format colour film",
           fr: "Gros plan d'un bouton d'artichaut fermé révélant la géométrie spirale parfaite de ses feuilles, moyen format argentique couleur",
           es: "Primer plano de una alcachofa cerrada revelando la geometría espiral perfecta de sus hojas, medio formato analógico color"
+        }
+      },
+      {
+        file: "cactus-spines-extreme-macro-abstract-black-white-film-w2b.jpg",
+        alt: {
+          en: "Extreme macro of cactus spines forming an abstract crystalline pattern, black and white film photography",
+          fr: "Macro extrême d'épines de cactus formant un motif cristallin abstrait, photographie argentique noir et blanc",
+          es: "Macro extrema de espinas de cactus formando un patrón cristalino abstracto, fotografía analógica blanco y negro"
+        }
+      },
+      {
+        file: "water-cascade-splash-dark-rocks-black-white-film-w2b.jpg",
+        alt: {
+          en: "Whitewater splashing over dark wet rocks, frozen by film, black and white texture photography",
+          fr: "Eau blanche éclaboussant sur des rochers sombres mouillés, figée à l'argentique, photographie de texture noir et blanc",
+          es: "Agua blanca salpicando sobre rocas oscuras y húmedas, congelada por el analógico, fotografía de textura blanco y negro"
+        }
+      },
+      {
+        file: "guitar-strings-light-trails-long-exposure-black-white-film-w2b.jpg",
+        alt: {
+          en: "Long exposure of guitar strings rendered as flowing light trails by a moving hand, black and white film abstract texture",
+          fr: "Longue exposition de cordes de guitare devenues traînées lumineuses par une main en mouvement, texture abstraite argentique noir et blanc",
+          es: "Larga exposición de cuerdas de guitarra convertidas en estelas de luz por una mano en movimiento, textura abstracta analógica"
+        }
+      },
+      {
+        file: "geodesic-dome-mesh-looking-up-sepia-film-w2b.jpg",
+        alt: {
+          en: "Looking up through the geometric mesh of a geodesic dome sculpture, sepia toned film texture and pattern photography",
+          fr: "Vue vers le haut à travers le maillage géométrique d'une sculpture en dôme géodésique, photographie argentique sépia de texture et motif",
+          es: "Vista hacia arriba a través de la malla geométrica de una escultura de cúpula geodésica, fotografía analógica sepia de textura y patrón"
+        }
+      },
+      {
+        file: "fresh-pita-bread-bakery-shallow-depth-colour-film-w2b.jpg",
+        alt: {
+          en: "Row of fresh pita breads on a bakery counter, shallow depth of field, warm colour film food texture photography",
+          fr: "Rangée de pains pita frais sur un comptoir de boulangerie, faible profondeur de champ, photographie argentique couleur de texture culinaire",
+          es: "Fila de panes pita frescos en mostrador de panadería, poca profundidad de campo, fotografía analógica color de textura culinaria"
+        }
+      },
+      {
+        file: "stage-spotlights-purple-smoke-darkness-abstract-w2b.jpg",
+        alt: {
+          en: "Purple stage spotlights cutting through smoke in total darkness, abstract concert texture photography",
+          fr: "Projecteurs de scène violets traversant la fumée dans l'obscurité totale, photographie abstraite de texture de concert",
+          es: "Focos morados de escenario atravesando humo en total oscuridad, fotografía abstracta de textura de concierto"
+        }
+      },
+      {
+        file: "pink-geranium-silver-foliage-close-up-medium-format-film-w2b.jpg",
+        alt: {
+          en: "Tiny pink geranium flower nestled within silver-green foliage, medium format colour film botanical texture photography",
+          fr: "Petite fleur de géranium rose nichée dans un feuillage vert argenté, photographie botanique de texture moyen format argentique couleur",
+          es: "Pequeña flor de geranio rosa anidada en follaje verde plateado, fotografía botánica de textura medio formato analógico color"
         }
       }
     ]
@@ -474,80 +626,6 @@ const GALLERY_DATA = {
           en: "Three carved stone figures silhouetted against a violet Patagonian lake at sunset, colour film perspective photography",
           fr: "Trois figures de pierre sculptées en silhouette devant un lac patagonien violet au coucher du soleil, photographie argentique couleur",
           es: "Tres figuras de piedra talladas en silueta contra un lago patagónico violeta al atardecer, fotografía analógica color"
-        }
-      }
-    ]
-  },
-
-  "series-3": {
-    id: "series-3",
-    folder: "images/textures/",
-    coverIndex: 0,
-    title: {
-      en: "Textures",
-      fr: "Textures",
-      es: "Texturas"
-    },
-    description: {
-      en: "Surfaces, materials, and abstract studies — the tactile language of light on matter.",
-      fr: "Surfaces, matières et études abstraites — le langage tactile de la lumière sur la matière.",
-      es: "Superficies, materiales y estudios abstractos — el lenguaje táctil de la luz sobre la materia."
-    },
-    images: [
-      {
-        file: "cactus-spines-extreme-macro-abstract-black-white-film-w2b.jpg",
-        alt: {
-          en: "Extreme macro of cactus spines forming an abstract crystalline pattern, black and white film photography",
-          fr: "Macro extrême d'épines de cactus formant un motif cristallin abstrait, photographie argentique noir et blanc",
-          es: "Macro extrema de espinas de cactus formando un patrón cristalino abstracto, fotografía analógica blanco y negro"
-        }
-      },
-      {
-        file: "water-cascade-splash-dark-rocks-black-white-film-w2b.jpg",
-        alt: {
-          en: "Whitewater splashing over dark wet rocks, frozen by film, black and white texture photography",
-          fr: "Eau blanche éclaboussant sur des rochers sombres mouillés, figée à l'argentique, photographie de texture noir et blanc",
-          es: "Agua blanca salpicando sobre rocas oscuras y húmedas, congelada por el analógico, fotografía de textura blanco y negro"
-        }
-      },
-      {
-        file: "guitar-strings-light-trails-long-exposure-black-white-film-w2b.jpg",
-        alt: {
-          en: "Long exposure of guitar strings rendered as flowing light trails by a moving hand, black and white film abstract texture",
-          fr: "Longue exposition de cordes de guitare devenues traînées lumineuses par une main en mouvement, texture abstraite argentique noir et blanc",
-          es: "Larga exposición de cuerdas de guitarra convertidas en estelas de luz por una mano en movimiento, textura abstracta analógica"
-        }
-      },
-      {
-        file: "geodesic-dome-mesh-looking-up-sepia-film-w2b.jpg",
-        alt: {
-          en: "Looking up through the geometric mesh of a geodesic dome sculpture, sepia toned film texture and pattern photography",
-          fr: "Vue vers le haut à travers le maillage géométrique d'une sculpture en dôme géodésique, photographie argentique sépia de texture et motif",
-          es: "Vista hacia arriba a través de la malla geométrica de una escultura de cúpula geodésica, fotografía analógica sepia de textura y patrón"
-        }
-      },
-      {
-        file: "fresh-pita-bread-bakery-shallow-depth-colour-film-w2b.jpg",
-        alt: {
-          en: "Row of fresh pita breads on a bakery counter, shallow depth of field, warm colour film food texture photography",
-          fr: "Rangée de pains pita frais sur un comptoir de boulangerie, faible profondeur de champ, photographie argentique couleur de texture culinaire",
-          es: "Fila de panes pita frescos en mostrador de panadería, poca profundidad de campo, fotografía analógica color de textura culinaria"
-        }
-      },
-      {
-        file: "stage-spotlights-purple-smoke-darkness-abstract-w2b.jpg",
-        alt: {
-          en: "Purple stage spotlights cutting through smoke in total darkness, abstract concert texture photography",
-          fr: "Projecteurs de scène violets traversant la fumée dans l'obscurité totale, photographie abstraite de texture de concert",
-          es: "Focos morados de escenario atravesando humo en total oscuridad, fotografía abstracta de textura de concierto"
-        }
-      },
-      {
-        file: "pink-geranium-silver-foliage-close-up-medium-format-film-w2b.jpg",
-        alt: {
-          en: "Tiny pink geranium flower nestled within silver-green foliage, medium format colour film botanical texture photography",
-          fr: "Petite fleur de géranium rose nichée dans un feuillage vert argenté, photographie botanique de texture moyen format argentique couleur",
-          es: "Pequeña flor de geranio rosa anidada en follaje verde plateado, fotografía botánica de textura medio formato analógico color"
         }
       }
     ]
@@ -885,160 +963,14 @@ const GALLERY_DATA = {
     ]
   },
 
-  "blackout": {
-    id: "blackout",
-    folder: "images/blackout/",
-    coverIndex: 4,
-    title: {
-      en: "Colombian Blackout",
-      fr: "Colombian Blackout",
-      es: "Colombian Blackout"
-    },
-    description: {
-      en: "A rooftop in Medellín during a solar eclipse — golden hour, the blackout, and the city below. Afro-Colombian portraits from a collaboration, made as the light went out.",
-      fr: "Un toit de Medellín pendant une éclipse solaire — l'heure dorée, le blackout, et la ville en contrebas. Portraits afro-colombiens d'une collaboration, faits au moment où la lumière s'est éteinte.",
-      es: "Una azotea en Medellín durante un eclipse solar — la hora dorada, el blackout, y la ciudad abajo. Retratos afrocolombianos de una colaboración, hechos mientras se apagaba la luz."
-    },
-    images: [
-      {
-        file: "blackout-medellin-rooftop-man-seated-meditative-mountains-golden-hour-w2b.jpg",
-        alt: {
-          en: "A man seated cross-legged on a Medellín rooftop in golden light, mountains behind, during the Colombian Blackout eclipse gathering",
-          fr: "Un homme assis en tailleur sur un toit de Medellín dans la lumière dorée, montagnes en arrière-plan, lors du rassemblement de l'éclipse Colombian Blackout",
-          es: "Un hombre sentado con las piernas cruzadas en una azotea de Medellín bajo la luz dorada, montañas al fondo, durante el encuentro del eclipse Colombian Blackout"
-        }
-      },
-      {
-        file: "blackout-medellin-solar-eclipse-crescent-sky-w2b.jpg",
-        alt: {
-          en: "The sun reduced to a glowing crescent during the solar eclipse over Medellín — the blackout",
-          fr: "Le soleil réduit à un croissant lumineux pendant l'éclipse solaire au-dessus de Medellín — le blackout",
-          es: "El sol reducido a un creciente luminoso durante el eclipse solar sobre Medellín — el blackout"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-man-railing-comuna-skyline-golden-hour-w2b.jpg",
-        alt: {
-          en: "A man at the rooftop railing looking out over the Medellín comuna hillside at golden hour, Colombian Blackout",
-          fr: "Un homme à la rambarde d'un toit contemplant les collines de la comuna de Medellín à l'heure dorée, Colombian Blackout",
-          es: "Un hombre en la baranda de una azotea mirando las laderas de la comuna de Medellín en la hora dorada, Colombian Blackout"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-woman-beaded-top-golden-hour-portrait-w2b.jpg",
-        alt: {
-          en: "Golden-hour portrait of a woman in a beaded top on the rooftop, Colombian Blackout, Medellín",
-          fr: "Portrait à l'heure dorée d'une femme en haut perlé sur le toit, Colombian Blackout, Medellín",
-          es: "Retrato en la hora dorada de una mujer con top de cuentas en la azotea, Colombian Blackout, Medellín"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-woman-green-top-locs-portrait-w2b.jpg",
-        alt: {
-          en: "Portrait of a woman with locs in a green top glancing back, golden hour, Colombian Blackout rooftop, Medellín",
-          fr: "Portrait d'une femme aux locks en haut vert se retournant, heure dorée, toit Colombian Blackout, Medellín",
-          es: "Retrato de una mujer con locs y top verde mirando hacia atrás, hora dorada, azotea Colombian Blackout, Medellín"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-man-afro-portrait-golden-hour-w2b.jpg",
-        alt: {
-          en: "Golden-hour portrait of a man with an afro in an open shirt, Colombian Blackout rooftop, Medellín",
-          fr: "Portrait à l'heure dorée d'un homme afro en chemise ouverte, toit Colombian Blackout, Medellín",
-          es: "Retrato en la hora dorada de un hombre afro con camisa abierta, azotea Colombian Blackout, Medellín"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-woman-curly-hair-joyful-golden-hour-w2b.jpg",
-        alt: {
-          en: "A woman with curly hair laughing in golden backlight on the rooftop, Colombian Blackout, Medellín",
-          fr: "Une femme aux cheveux bouclés riant dans un contre-jour doré sur le toit, Colombian Blackout, Medellín",
-          es: "Una mujer de cabello rizado riendo a contraluz dorado en la azotea, Colombian Blackout, Medellín"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-woman-white-fringe-dress-golden-hour-w2b.jpg",
-        alt: {
-          en: "A woman in a white fringe dress standing in golden-hour light on the rooftop, Colombian Blackout, Medellín",
-          fr: "Une femme en robe blanche à franges debout dans la lumière dorée sur le toit, Colombian Blackout, Medellín",
-          es: "Una mujer con vestido blanco de flecos de pie bajo la luz dorada en la azotea, Colombian Blackout, Medellín"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-three-women-smiling-golden-hour-w2b.jpg",
-        alt: {
-          en: "Three women smiling together at golden hour on the rooftop, Colombian Blackout, Medellín",
-          fr: "Trois femmes souriant ensemble à l'heure dorée sur le toit, Colombian Blackout, Medellín",
-          es: "Tres mujeres sonriendo juntas en la hora dorada en la azotea, Colombian Blackout, Medellín"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-man-dancing-arms-raised-skyline-golden-hour-w2b.jpg",
-        alt: {
-          en: "A man dancing with arms raised against the Medellín skyline at golden hour, Colombian Blackout",
-          fr: "Un homme dansant bras levés devant les toits de Medellín à l'heure dorée, Colombian Blackout",
-          es: "Un hombre bailando con los brazos en alto frente al horizonte de Medellín en la hora dorada, Colombian Blackout"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-two-women-dancing-skyline-golden-hour-w2b.jpg",
-        alt: {
-          en: "Two women dancing with the city skyline behind them at golden hour, Colombian Blackout, Medellín",
-          fr: "Deux femmes dansant avec les toits de la ville derrière elles à l'heure dorée, Colombian Blackout, Medellín",
-          es: "Dos mujeres bailando con el horizonte de la ciudad detrás en la hora dorada, Colombian Blackout, Medellín"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-men-bar-golden-hour-gathering-w2b.jpg",
-        alt: {
-          en: "Men gathered at the rooftop bar in golden light, Colombian Blackout, Medellín",
-          fr: "Des hommes réunis au bar du toit dans la lumière dorée, Colombian Blackout, Medellín",
-          es: "Hombres reunidos en la barra de la azotea bajo la luz dorada, Colombian Blackout, Medellín"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-man-railing-drink-golden-hour-w2b.jpg",
-        alt: {
-          en: "A man at the rooftop railing with a drink as the light fades, Colombian Blackout, Medellín",
-          fr: "Un homme à la rambarde du toit, un verre à la main, alors que la lumière décline, Colombian Blackout, Medellín",
-          es: "Un hombre en la baranda de la azotea con una bebida mientras cae la luz, Colombian Blackout, Medellín"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-group-dancing-skyline-golden-hour-w2b.jpg",
-        alt: {
-          en: "A group dancing with hands raised against the skyline at golden hour, Colombian Blackout, Medellín",
-          fr: "Un groupe dansant les mains levées devant les toits à l'heure dorée, Colombian Blackout, Medellín",
-          es: "Un grupo bailando con las manos en alto frente al horizonte en la hora dorada, Colombian Blackout, Medellín"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-couple-candid-golden-hour-w2b.jpg",
-        alt: {
-          en: "A candid moment between two people in golden light on the rooftop, Colombian Blackout, Medellín",
-          fr: "Un moment spontané entre deux personnes dans la lumière dorée sur le toit, Colombian Blackout, Medellín",
-          es: "Un momento espontáneo entre dos personas bajo la luz dorada en la azotea, Colombian Blackout, Medellín"
-        }
-      },
-      {
-        file: "blackout-medellin-rooftop-woman-seated-smiling-golden-hour-w2b.jpg",
-        alt: {
-          en: "A woman seated and smiling in warm golden-hour light, Colombian Blackout rooftop, Medellín",
-          fr: "Une femme assise et souriante dans la chaude lumière dorée, toit Colombian Blackout, Medellín",
-          es: "Una mujer sentada y sonriendo bajo la cálida luz dorada, azotea Colombian Blackout, Medellín"
-        }
-      }
-    ]
-  },
-
   "argentina": {
     id: "argentina",
     folder: "images/argentina/",
     coverIndex: 17,
     title: {
-      en: "Argentina",
-      fr: "Argentine",
-      es: "Argentina"
+      en: "Discovery and Passion",
+      fr: "Découverte et Passion",
+      es: "Descubrimiento y Pasión"
     },
     description: {
       en: "A journey south on film — Patagonian lakes and the high desert, Buenos Aires, and the tango. Argentina seen with a foreign eye.",
@@ -1345,6 +1277,184 @@ const GALLERY_DATA = {
         }
       }
     ]
+  },
+
+  "bailar-la-ciudad": {
+    id: "bailar-la-ciudad",
+    folder: "images/bailar-la-ciudad/",
+    coverIndex: 15,
+    title: {
+      en: "Bailar la Ciudad",
+      fr: "Bailar la Ciudad",
+      es: "Bailar la Ciudad"
+    },
+    description: {
+      en: "An ongoing series following a cypher of street dancers in Miraflores, Medellín — bodies caught mid-motion under night light.",
+      fr: "Une série en cours suivant un cypher de danseurs de rue à Miraflores, Medellín — des corps saisis en plein mouvement sous la lumière nocturne.",
+      es: "Una serie en curso que sigue a un cypher de bailarines callejeros en Miraflores, Medellín — cuerpos captados en pleno movimiento bajo la luz nocturna."
+    },
+    images: [
+      {
+        file: "bailar-ciudad-parada-manos-nocturna-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer in a handstand, low angle at night, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur en appui sur les mains, contre-plongée de nuit, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín en parada de manos, contrapicado nocturno, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-bailarin-movimiento-publico-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer caught mid-move in front of a seated crowd, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur saisi en plein mouvement devant un public assis, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín captado en pleno movimiento frente a un público sentado, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-bailarin-manos-gesto-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer with hands raised in a sharp gesture, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur aux mains levées dans un geste tranchant, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín con las manos alzadas en un gesto marcado, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-bailarin-caminando-grafiti-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer walking past a graffiti-covered wall, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur marchant devant un mur couvert de graffitis, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín caminando frente a un muro cubierto de grafitis, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-floor-work-cabeza-abajo-black-white-w2b.jpg",
+        alt: {
+          en: "A breaker inverted in floor work, head low to the ground, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un breaker inversé au sol, tête proche du bitume, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un breaker invertido en trabajo de piso, cabeza cerca del suelo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-bailarin-bandana-inclinado-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer in a bandana leaning into a dynamic move, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur au bandana penché dans un mouvement dynamique, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín con bandana inclinado en un movimiento dinámico, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-bailarina-cabello-rizado-black-white-w2b.jpg",
+        alt: {
+          en: "A female dancer with curly hair, hand raised mid-move, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Une danseuse aux cheveux bouclés, main levée en plein mouvement, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Una bailarina de cabello rizado, con la mano alzada en pleno movimiento, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-bailarin-agachado-cabello-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer crouched low, hair caught in motion, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur accroupi, cheveux saisis en mouvement, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín agachado, cabello captado en movimiento, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-bailarina-ojos-cerrados-black-white-w2b.jpg",
+        alt: {
+          en: "A female dancer with eyes closed mid-move, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Une danseuse aux yeux fermés en plein mouvement, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Una bailarina con los ojos cerrados en pleno movimiento, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-bailarina-adidas-inclinada-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer in a striped tracksuit leaning into a low move, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Une danseuse en survêtement rayé penchée dans un mouvement bas, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Una bailarina en sudadera de rayas inclinada en un movimiento bajo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-dos-bailarines-cara-a-cara-black-white-w2b.jpg",
+        alt: {
+          en: "Two dancers facing off inside the circle, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Deux danseurs se faisant face au centre du cercle, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Dos bailarines encarándose dentro del círculo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-circulo-publico-cypher-black-white-w2b.jpg",
+        alt: {
+          en: "Wide view of the cypher circle with the crowd watching, Bailar la Ciudad, Miraflores, Medellín, black and white photography",
+          fr: "Vue large du cercle du cypher avec le public regardant, Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Vista amplia del círculo del cypher con el público observando, Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-freeze-pose-grafiti-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer holding a freeze pose against a graffiti wall, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur tenant un freeze devant un mur de graffitis, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín sosteniendo un freeze contra un muro de grafitis, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-tenis-detalle-pared-black-white-w2b.jpg",
+        alt: {
+          en: "Detail of sneakers propped against a brick wall, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Détail de baskets posées contre un mur de brique, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Detalle de tenis apoyados contra un muro de ladrillo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-movimiento-inclinado-tatuaje-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer bent low into a move, tattooed arm extended, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur penché bas dans un mouvement, bras tatoué tendu, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín inclinado hacia abajo en un movimiento, brazo tatuado extendido, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-power-move-aire-luz-black-white-w2b.jpg",
+        alt: {
+          en: "A breaker suspended mid-air in a power move under dramatic light, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un breaker suspendu en l'air dans un power move sous une lumière dramatique, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un breaker suspendido en el aire en un power move bajo luz dramática, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-freeze-vertical-dramatico-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer in a vertical freeze, dramatic side light, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur dans un freeze vertical, lumière latérale dramatique, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín en un freeze vertical, luz lateral dramática, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-enfrentamiento-circulo-black-white-w2b.jpg",
+        alt: {
+          en: "Two dancers squaring up inside the circle, onlookers behind, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Deux danseurs se toisant au centre du cercle, spectateurs en arrière-plan, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Dos bailarines midiéndose dentro del círculo, espectadores detrás, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-patada-aire-movimiento-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer mid-kick, motion blur against the night, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur en plein coup de pied, flou de mouvement dans la nuit, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín en pleno patada, desenfoque de movimiento en la noche, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-detalle-gorra-oreja-black-white-w2b.jpg",
+        alt: {
+          en: "Close detail of a cap and earring at the edge of the circle, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Détail rapproché d'une casquette et d'une boucle d'oreille en bordure du cercle, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Detalle cercano de una gorra y un arete al borde del círculo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      }
+    ]
   }
 
 };
@@ -1353,14 +1463,13 @@ const GALLERY_DATA = {
 const GALLERY_ORDER = [
   "best-of",
   "work-in-progress",
-  "series-1",
+  "matter",
   "series-2",
-  "series-3",
   "argentina",
   "contemplations",
+  "bailar-la-ciudad",
   "nude",
-  "boudoir",
-  "blackout"
+  "boudoir"
 ];
 
 /* Extra non-gallery frames appended to the film strip on the homepage.
