@@ -204,8 +204,11 @@ function buildStripHTML(galleryIds, lang) {
     const isEmpty  = !cover ? ' empty' : '';
     const isExtra  = !!data.url;
     const urlAttr  = isExtra ? ` data-url="${data.url}"` : '';
-    const ctaKey   = isExtra ? 'view_about' : 'view_gallery';
-    const ctaText  = isExtra ? 'Read more'  : 'View Gallery';
+    /* Extras normally read "Read more"; an extra can opt into the gallery
+       CTA ("Enter") by setting stripCta: "view_gallery" (e.g. after-dark). */
+    const galleryCta = !isExtra || data.stripCta === 'view_gallery';
+    const ctaKey   = galleryCta ? 'view_gallery' : 'view_about';
+    const ctaText  = galleryCta ? 'View Gallery' : 'Read more';
     const frameNum = String(i + 1).padStart(2, '0');
 
     return `
@@ -372,7 +375,7 @@ function selectGallery(idx) {
   if (img && cover) { img.src = cover; img.alt = title; }
   if (titleEl) titleEl.textContent = title;
   if (descEl)  descEl.textContent  = desc;
-  if (ctaEl)   ctaEl.href = `gallery-${id}.html`;
+  if (ctaEl)   ctaEl.href = data.url || `gallery-${id}.html`;
   if (counter) counter.textContent = `${String(idx + 1).padStart(2, '0')}/${String(GALLERY_ORDER.length).padStart(2, '0')}`;
   if (meta)    meta.textContent = `GALLERY ${String(idx + 1).padStart(2, '0')} · ${count} FRAMES`;
 

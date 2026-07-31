@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <title>After Dark — W2b</title>
+  <meta name="description" content="Adults-only section of W2b Art — fine-art nude and darker fetish photography by Guillaume Delye, behind an age gate.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="canonical" href="https://w2bphotography.com/after-dark.html">
+  <style>
+    .ad-wrap { max-width: 1100px; margin: 0 auto; padding: 4rem 1.5rem 3rem; }
+
+    /* Age gate */
+    .ad-gate { min-height: 60vh; display: flex; align-items: center; justify-content: center; }
+    .ad-gate-card {
+      max-width: 560px; width: 100%; text-align: center;
+      border: 1px solid rgba(196,30,58,0.35); border-radius: 6px;
+      padding: 3rem 2rem; background: rgba(0,0,0,0.35);
+    }
+    .ad-eyebrow {
+      font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.28em;
+      text-transform: uppercase; color: #C41E3A; margin: 0 0 1.25rem;
+    }
+    .ad-title { font-size: clamp(2rem, 6vw, 3.2rem); margin: 0 0 1.25rem; line-height: 1.05; }
+    .ad-lead { color: #B8B2AB; max-width: 42ch; margin: 0 auto 1.5rem; line-height: 1.6; }
+    .ad-question {
+      font-family: 'Space Mono', monospace; font-size: 0.95rem; letter-spacing: 0.04em;
+      color: #E8E4DF; margin: 0 0 1.75rem;
+    }
+    .ad-actions { display: flex; flex-direction: column; gap: 0.75rem; align-items: center; }
+    .ad-btn {
+      font-family: 'Space Mono', monospace; font-size: 0.8rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.85rem 1.75rem; border-radius: 4px;
+      cursor: pointer; text-decoration: none; display: inline-block; min-width: 260px;
+      border: 1px solid rgba(196,30,58,0.5); background: #C41E3A; color: #fff;
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .ad-btn:hover { background: #a5182f; }
+    .ad-btn-ghost { background: transparent; color: #B8B2AB; border-color: rgba(255,255,255,0.18); }
+    .ad-btn-ghost:hover { color: #E8E4DF; background: rgba(255,255,255,0.04); }
+
+    /* Chooser */
+    .ad-chooser[hidden], .ad-gate[hidden] { display: none; }
+    .ad-chooser-head { text-align: center; margin-bottom: 2.5rem; }
+    .ad-chooser-sub { color: #B8B2AB; margin: 0.75rem auto 0; max-width: 46ch; line-height: 1.6; }
+    .ad-rooms { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .ad-room {
+      position: relative; display: block; border-radius: 6px; overflow: hidden;
+      text-decoration: none; color: #E8E4DF; aspect-ratio: 4 / 5;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .ad-room img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.62); transition: transform 0.6s ease, filter 0.4s ease;
+    }
+    .ad-room:hover img { transform: scale(1.05); filter: brightness(0.72); }
+    .ad-room-overlay {
+      position: absolute; inset: 0; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 1.75rem; gap: 0.4rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0) 100%);
+    }
+    .ad-room-label { font-size: 1.6rem; line-height: 1.1; }
+    .ad-room-desc {
+      font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.02em;
+      color: #C9C3BC; line-height: 1.5; max-width: 34ch;
+    }
+    .ad-room-cta {
+      margin-top: 0.5rem; font-family: 'Space Mono', monospace; font-size: 0.72rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #fff;
+    }
+    .ad-room--dark { border-color: rgba(196,30,58,0.4); }
+    .ad-room--dark .ad-room-cta { color: #ff6b82; }
+
+    @media (max-width: 680px) {
+      .ad-rooms { grid-template-columns: 1fr; }
+      .ad-btn { min-width: 220px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" role="navigation">
+    <a class="nav-logo" href="home.html" aria-label="W2b Art · Home">
+      <svg viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="78" height="42" rx="2" stroke="#C41E3A" stroke-width="0.8" fill="none"/>
+        <rect x="4"  y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="4"  y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <rect x="71" y="36" width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
+        <text x="14" y="29" font-family="'Space Mono', monospace" font-size="18" font-weight="700"
+              fill="#E8E4DF" letter-spacing="-0.5">W2b</text>
+        <line x1="14" y1="32" x2="66" y2="32" stroke="#C41E3A" stroke-width="0.8" opacity="0.7"/>
+      </svg>
+    </a>
+    <ul class="nav-links">
+      <li><a href="home.html"           data-i18n="nav_home">Home</a></li>
+      <li><a href="home.html#galleries" data-i18n="nav_galleries">Galleries</a></li>
+      <li><a href="shop.html"            data-i18n="nav_shop">Prints</a></li>
+      <li><a href="about.html"           data-i18n="nav_about">About</a></li>
+      <li><a href="https://w2bphotography.com/w2b-pro/"    data-i18n="nav_pro">Commercial ↗</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <main class="ad-wrap">
+
+    <!-- Age gate -->
+    <section id="age-gate" class="ad-gate" aria-label="Age verification">
+      <div class="ad-gate-card">
+        <p  class="ad-eyebrow"  data-i18n="ad_gate_eyebrow">Mature content</p>
+        <h1 class="ad-title"    data-i18n="ad_gate_title">After Dark</h1>
+        <p  class="ad-lead"     data-i18n="ad_gate_lead">Beyond this point the work includes fine-art nudity and fetish photography.</p>
+        <p  class="ad-question" data-i18n="ad_gate_question">Are you 18 or older?</p>
+        <div class="ad-actions">
+          <button id="age-yes" class="ad-btn"               data-i18n="ad_gate_yes">Yes, I am 18 or older</button>
+          <a      id="age-no"  class="ad-btn ad-btn-ghost" href="home.html" data-i18n="ad_gate_no">No, take me back</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chooser (revealed after age confirmation) -->
+    <section id="dark-chooser" class="ad-chooser" aria-label="Choose a gallery" hidden>
+      <div class="ad-chooser-head">
+        <a class="gallery-back" href="home.html#galleries" data-i18n="back_home">← Back</a>
+        <h1 class="ad-title" data-i18n="ad_choose_title">How dark do you want to go?</h1>
+        <p  class="ad-chooser-sub" data-i18n="ad_choose_sub">Two rooms, two registers. Choose where to step in.</p>
+      </div>
+      <div class="ad-rooms">
+        <a class="ad-room ad-room--soft" href="gallery-nude.html">
+          <img src="images/nude/fine-art-nude-torso-sculptural-light-black-white-03-w2b.jpg"
+               alt="" loading="lazy">
+          <span class="ad-room-overlay">
+            <span class="ad-room-label" data-i18n="ad_nude_label">Nude</span>
+            <span class="ad-room-desc"  data-i18n="ad_nude_desc">Softer. Fine-art nude and boudoir, the body as landscape.</span>
+            <span class="ad-room-cta"   data-i18n="ad_enter">Enter</span>
+          </span>
+        </a>
+        <a class="ad-room ad-room--dark" href="gallery-boudoir.html">
+          <img src="images/boudoir/fetish-latex-mask-red-light-01-w2b.jpg"
+               alt="" loading="lazy">
+          <span class="ad-room-overlay">
+            <span class="ad-room-label" data-i18n="ad_dark_label">Dark Desire</span>
+            <span class="ad-room-desc"  data-i18n="ad_dark_desc">Darker. Latex, masks, red light and shibari rope.</span>
+            <span class="ad-room-cta"   data-i18n="ad_enter">Enter</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <nav class="footer-social" aria-label="Contact and social">
+      <a href="https://www.instagram.com/w2b.film" target="_blank" rel="noopener">Instagram</a>
+      <a href="shop.html" data-i18n="nav_shop">Prints</a>
+      <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
+      <a href="mailto:w2bphoto+prints@gmail.com">Inquire</a>
+    </nav>
+    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye. All rights reserved</p>
+  </footer>
+
+  <script src="js/gallery-data.js"></script>
+  <script src="js/lang.js"></script>
+  <script src="js/after-dark-i18n.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    /* Age gate: reveal the chooser on confirmation. Remembered for the
+       browser session only (sessionStorage), so a fresh visit re-asks. */
+    (function () {
+      var KEY = 'w2b_adult_ok';
+      var gate = document.getElementById('age-gate');
+      var chooser = document.getElementById('dark-chooser');
+      function reveal() { gate.hidden = true; chooser.hidden = false; }
+      if (sessionStorage.getItem(KEY) === '1') reveal();
+      document.getElementById('age-yes').addEventListener('click', function () {
+        try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+        reveal();
+      });
+    })();
+  </script>
+</body>
+</html>

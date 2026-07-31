@@ -1455,6 +1455,170 @@ const GALLERY_DATA = {
         }
       }
     ]
+  },
+
+  "pretty-od": {
+    id: "pretty-od",
+    folder: "images/pretty-od/",
+    coverIndex: 5,
+    title: {
+      en: "Pretty OD",
+      fr: "Pretty OD",
+      es: "Pretty OD"
+    },
+    description: {
+      en: "A conceptual series in six chapters. Love as a substance, affection bought by the dose in a pink dystopia — from the void left behind, through the first relief, to the comfort that becomes a cage.",
+      fr: "Une série conceptuelle en six chapitres. L'amour comme une substance, la tendresse achetée à la dose dans une dystopie rose — du vide laissé derrière, au premier soulagement, jusqu'au confort qui devient une cage.",
+      es: "Una serie conceptual en seis capítulos. El amor como sustancia, el cariño comprado por dosis en una distopía rosa — del vacío que queda, al primer alivio, hasta el consuelo que se vuelve jaula."
+    },
+    images: [
+      {
+        file: "01-pretty-od-portrait-protagonist-medellin-w2b.jpg",
+        alt: {
+          en: "Chapter one, what's missing — a young woman standing against a wall, a hollow left where someone used to be, conceptual portrait photography",
+          fr: "Chapitre un, le manque — une jeune femme debout contre un mur, un vide là où quelqu'un se tenait, photographie de portrait conceptuel",
+          es: "Capítulo uno, la falta — una joven de pie contra una pared, un hueco donde antes había alguien, fotografía de retrato conceptual"
+        }
+      },
+      {
+        file: "02-pretty-od-glitch-distortion-red-dystopia-w2b.jpg",
+        alt: {
+          en: "Chapter one, what's missing — a hand reaching through red digital distortion, the glitch of a feeling bought online, experimental conceptual photography",
+          fr: "Chapitre un, le manque — une main tendue à travers une distorsion numérique rouge, le glitch d'un sentiment acheté en ligne, photographie conceptuelle expérimentale",
+          es: "Capítulo uno, la falta — una mano que se extiende a través de una distorsión digital roja, el glitch de un sentimiento comprado en línea, fotografía conceptual experimental"
+        }
+      },
+      {
+        file: "03-pretty-od-syringe-pink-dose-arm-w2b.jpg",
+        alt: {
+          en: "Chapter two, relief — a pink syringe pressed to a bare arm, affection delivered by the dose, conceptual photography in red light",
+          fr: "Chapitre deux, le soulagement — une seringue rose contre un bras nu, la tendresse livrée à la dose, photographie conceptuelle en lumière rouge",
+          es: "Capítulo dos, el alivio — una jeringa rosa contra un brazo desnudo, el cariño entregado por dosis, fotografía conceptual en luz roja"
+        }
+      },
+      {
+        file: "04-pretty-od-relief-red-light-couch-w2b.jpg",
+        alt: {
+          en: "Chapter two, relief — a young woman seated on a couch in deep red light, the first dose settling into the body, cinematic conceptual photography",
+          fr: "Chapitre deux, le soulagement — une jeune femme assise sur un canapé dans une lumière rouge profonde, la première dose qui gagne le corps, photographie conceptuelle cinématographique",
+          es: "Capítulo dos, el alivio — una joven sentada en un sofá bajo luz roja profunda, la primera dosis asentándose en el cuerpo, fotografía conceptual cinematográfica"
+        }
+      },
+      {
+        file: "05-pretty-od-relief-face-eyes-closed-red-w2b.jpg",
+        alt: {
+          en: "Chapter two, relief — a face at rest with eyes closed in warm red light, the body remembering being looked at, conceptual portrait photography",
+          fr: "Chapitre deux, le soulagement — un visage au repos, les yeux fermés dans une lumière rouge chaude, le corps se souvenant d'être regardé, photographie de portrait conceptuel",
+          es: "Capítulo dos, el alivio — un rostro en reposo con los ojos cerrados bajo cálida luz roja, el cuerpo recordando ser mirado, fotografía de retrato conceptual"
+        }
+      },
+      {
+        file: "06-pretty-od-glowing-pink-eye-upside-down-w2b.jpg",
+        alt: {
+          en: "Chapter three, POV — an upside-down face with a glowing pink eye, present but absent, unsettling conceptual portrait photography",
+          fr: "Chapitre trois, POV — un visage à l'envers avec un œil rose lumineux, présente mais absente, photographie de portrait conceptuel inquiétante",
+          es: "Capítulo tres, POV — un rostro al revés con un ojo rosa luminoso, presente pero ausente, fotografía de retrato conceptual inquietante"
+        }
+      },
+      {
+        file: "07-pretty-od-pink-eyes-portrait-stare-w2b.jpg",
+        alt: {
+          en: "Chapter three, POV — a still, direct stare with glowing pink eyes in a dim room, sadness seen from the doorway, conceptual portrait photography",
+          fr: "Chapitre trois, POV — un regard fixe et direct aux yeux roses lumineux dans une pièce sombre, la tristesse vue depuis la porte, photographie de portrait conceptuel",
+          es: "Capítulo tres, POV — una mirada fija y directa con ojos rosas luminosos en un cuarto en penumbra, la tristeza vista desde la puerta, fotografía de retrato conceptual"
+        }
+      },
+      {
+        file: "08-pretty-od-euphoria-glitter-smile-w2b.jpg",
+        alt: {
+          en: "Chapter four, to feel — a radiant open smile with glitter under the eyes, adored from the inside, conceptual portrait photography",
+          fr: "Chapitre quatre, ressentir — un sourire radieux et ouvert, des paillettes sous les yeux, adorée de l'intérieur, photographie de portrait conceptuel",
+          es: "Capítulo cuatro, sentir — una sonrisa radiante y abierta con brillo bajo los ojos, adorada desde adentro, fotografía de retrato conceptual"
+        }
+      },
+      {
+        file: "09-pretty-od-glitter-bliss-eyes-closed-w2b.jpg",
+        alt: {
+          en: "Chapter four, to feel — eyes closed in bliss beneath shimmering glitter makeup, the cheapest thing to buy is feeling loved, conceptual portrait photography",
+          fr: "Chapitre quatre, ressentir — les yeux fermés dans le ravissement sous un maquillage à paillettes scintillant, se sentir aimée est la chose la moins chère à acheter, photographie de portrait conceptuel",
+          es: "Capítulo cuatro, sentir — los ojos cerrados en éxtasis bajo un maquillaje de brillo, sentirse amada es lo más barato que se puede comprar, fotografía de retrato conceptual"
+        }
+      },
+      {
+        file: "10-pretty-od-pink-love-perfume-bottle-w2b.jpg",
+        alt: {
+          en: "Chapter four, to feel — a pink Pink Love perfume bottle glowing under magenta light, love packaged as a product, conceptual still-life photography",
+          fr: "Chapitre quatre, ressentir — un flacon de parfum rose Pink Love luisant sous une lumière magenta, l'amour emballé comme un produit, photographie de nature morte conceptuelle",
+          es: "Capítulo cuatro, sentir — un frasco de perfume rosa Pink Love brillando bajo luz magenta, el amor envasado como producto, fotografía de bodegón conceptual"
+        }
+      },
+      {
+        file: "11-pretty-od-double-exposure-doubling-w2b.jpg",
+        alt: {
+          en: "Chapter five, I don't know which one I am — a double exposure of the same figure folding over herself, the self coming apart, experimental conceptual photography",
+          fr: "Chapitre cinq, je ne sais plus laquelle je suis — une double exposition de la même silhouette se repliant sur elle-même, le soi qui se défait, photographie conceptuelle expérimentale",
+          es: "Capítulo cinco, ya no sé cuál soy — una doble exposición de la misma figura doblándose sobre sí misma, el yo que se deshace, fotografía conceptual experimental"
+        }
+      },
+      {
+        file: "12-pretty-od-dream-haze-portrait-purple-w2b.jpg",
+        alt: {
+          en: "Chapter five, I don't know which one I am — a portrait dissolving into a purple haze, no longer sure which feeling was ever hers, conceptual portrait photography",
+          fr: "Chapitre cinq, je ne sais plus laquelle je suis — un portrait se dissolvant dans une brume violette, ne sachant plus quel sentiment était le sien, photographie de portrait conceptuel",
+          es: "Capítulo cinco, ya no sé cuál soy — un retrato disolviéndose en una bruma violeta, sin saber ya qué sentimiento fue suyo, fotografía de retrato conceptual"
+        }
+      },
+      {
+        file: "13-pretty-od-face-plastic-wrap-magenta-w2b.jpg",
+        alt: {
+          en: "Chapter six, made to measure — a face pressed against clear plastic under magenta light, the comfort becoming the cage, conceptual portrait photography",
+          fr: "Chapitre six, faite sur mesure — un visage pressé contre du plastique transparent sous une lumière magenta, le réconfort qui devient la cage, photographie de portrait conceptuel",
+          es: "Capítulo seis, hecha a la medida — un rostro presionado contra plástico transparente bajo luz magenta, el consuelo que se vuelve jaula, fotografía de retrato conceptual"
+        }
+      },
+      {
+        file: "14-pretty-od-plastic-cage-red-light-w2b.jpg",
+        alt: {
+          en: "Chapter six, made to measure — a figure wrapped in plastic within a red-lit frame, calm inside because she no longer remembers the outside, conceptual photography",
+          fr: "Chapitre six, faite sur mesure — une silhouette enveloppée de plastique dans un cadre éclairé de rouge, calme à l'intérieur car elle ne se souvient plus du dehors, photographie conceptuelle",
+          es: "Capítulo seis, hecha a la medida — una figura envuelta en plástico dentro de un marco iluminado de rojo, tranquila adentro porque ya no recuerda el afuera, fotografía conceptual"
+        }
+      }
+    ]
+  },
+
+  /* Combined, age-gated entry that stands in for the two adult galleries
+     (nude + boudoir) on the homepage. Carries a `url` override so both the
+     wheel and the film strip route to the age gate at after-dark.html
+     instead of a gallery-<id>.html template. The nude and boudoir entries
+     below still exist in GALLERY_DATA so their pages render; they are just
+     no longer listed in GALLERY_ORDER as separate tiles. */
+  "after-dark": {
+    id: "after-dark",
+    folder: "images/nude/",
+    coverIndex: 0,
+    url: "after-dark.html",
+    stripCta: "view_gallery",
+    title: {
+      en: "After Dark",
+      fr: "Après la nuit",
+      es: "Después del anochecer"
+    },
+    description: {
+      en: "Fine-art nude and a darker register. Eighteen and over.",
+      fr: "Nu d'art et un registre plus sombre. Dix-huit ans et plus.",
+      es: "Desnudo artístico y un registro más oscuro. Mayores de dieciocho."
+    },
+    images: [
+      {
+        file: "boudoir-red-drape-nude-intimate-colour-w2b.jpg",
+        alt: {
+          en: "After Dark — fine-art nude and fetish photography, behind an age gate",
+          fr: "Après la nuit — nu d'art et photographie fétichiste, derrière une vérification d'âge",
+          es: "Después del anochecer — desnudo artístico y fotografía fetichista, tras una verificación de edad"
+        }
+      }
+    ]
   }
 
 };
@@ -1468,8 +1632,8 @@ const GALLERY_ORDER = [
   "argentina",
   "contemplations",
   "bailar-la-ciudad",
-  "nude",
-  "boudoir"
+  "pretty-od",
+  "after-dark"
 ];
 
 /* Extra non-gallery frames appended to the film strip on the homepage.
