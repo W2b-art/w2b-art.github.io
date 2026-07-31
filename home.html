@@ -26,7 +26,7 @@
   <nav class="nav" role="navigation" aria-label="Main navigation">
 
     <!-- Logo -->
-    <a class="nav-logo" href="home.html" aria-label="W2b Art — Home">
+    <a class="nav-logo" href="home.html" aria-label="W2b Art · Home">
       <svg viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <!-- Film frame border -->
         <rect x="1" y="1" width="78" height="42" rx="2" stroke="#C41E3A" stroke-width="0.8" fill="none"/>
@@ -49,7 +49,7 @@
       <li><a href="#galleries"    data-i18n="nav_galleries">Galleries</a></li>
       <li><a href="shop.html"     data-i18n="nav_shop">Prints</a></li>
       <li><a href="about.html"    data-i18n="nav_about">About</a></li>
-      <li><a href="https://w2b-art.github.io/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a></li>
+      <li><a href="https://w2bphotography.com/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a></li>
     </ul>
 
     <!-- Language switcher + mobile toggle -->
@@ -75,7 +75,7 @@
 
     <!-- Curatorial title block -->
     <div class="curatorial">
-      <p class="curatorial-eyebrow" data-i18n="hero_eyebrow">Photographs on film · 2014 — 2026</p>
+      <p class="curatorial-eyebrow" data-i18n="hero_eyebrow">Photographs on film · 2014–2026</p>
       <h1 class="curatorial-title">Guillaume <em>Delye</em></h1>
       <p class="curatorial-statement" data-i18n="hero_statement">
         Film photography made slowly, between Medellín and the road. The work keeps returning to the same questions: how a place holds memory, how a body meets the light, how an image earns the right to exist.
@@ -125,6 +125,47 @@
       </div>
     </div>
 
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FEATURED STRIP — scroll-tilt teaser (curated frames)
+  ════════════════════════════════════════════════════════ -->
+  <section class="section featured-section" id="featured" aria-label="Selected frames">
+    <div class="section-header">
+      <span class="section-number" data-i18n="featured_eyebrow">Selected</span>
+      <h2 class="section-title" data-i18n="featured_title">A Few Frames</h2>
+      <div class="section-line" aria-hidden="true"></div>
+    </div>
+
+    <div class="featured-grid" id="featured-grid">
+      <figure data-col="0"><a href="gallery-best-of.html">
+        <img src="images/best-of/lone-figure-salt-flat-salar-argentina-film-w2b.jpg" alt="Lone figure on the salt flat, Salar, Argentina — film" loading="lazy">
+        <figcaption>Salar · Argentina</figcaption></a></figure>
+      <figure data-col="1"><a href="gallery-best-of.html">
+        <img src="images/best-of/crowded-medieval-street-france-motion-blur-black-white-w2b.jpg" alt="Crowded medieval street, France, motion blur, black and white" loading="lazy">
+        <figcaption>Rue · France</figcaption></a></figure>
+      <figure data-col="2"><a href="gallery-best-of.html">
+        <img src="images/best-of/ski-lift-silhouette-alpine-sunset-mountains-w2b.jpg" alt="Ski lift silhouette at alpine sunset" loading="lazy">
+        <figcaption>Alpes</figcaption></a></figure>
+      <figure data-col="0"><a href="gallery-best-of.html">
+        <img src="images/best-of/bamboo-forest-pond-reflection-stone-wall-w2b.jpg" alt="Bamboo forest pond reflection with stone wall" loading="lazy">
+        <figcaption>Reflet</figcaption></a></figure>
+      <figure data-col="1"><a href="gallery-best-of.html">
+        <img src="images/best-of/paris-street-sticker-j-existe-haussmann-graffiti-w2b.jpg" alt="J'existe street sticker, Haussmann facade, Paris" loading="lazy">
+        <figcaption>J'existe · Paris</figcaption></a></figure>
+      <figure data-col="2"><a href="gallery-best-of.html">
+        <img src="images/best-of/lake-view-wooden-window-mountains-reeds-w2b.jpg" alt="Lake view through a wooden window, mountains and reeds" loading="lazy">
+        <figcaption>Lac</figcaption></a></figure>
+    </div>
+
+    <div class="featured-cta">
+      <a class="btn btn-ghost" href="#galleries">
+        <span data-i18n="featured_cta">See all galleries</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+      </a>
+    </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════
@@ -218,7 +259,7 @@
   ════════════════════════════════════════════════════════ -->
   <div class="pro-bridge reveal" aria-label="Professional site link">
     <p class="bridge-text" data-i18n="bridge_text">Also working on editorial and commercial commissions.</p>
-    <a class="bridge-link" href="https://w2b-art.github.io/w2b-pro/">
+    <a class="bridge-link" href="https://w2bphotography.com/w2b-pro/">
       <span data-i18n="bridge_link">Visit the commercial portfolio ↗</span>
       <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
@@ -236,7 +277,7 @@
       <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
       <a href="mailto:w2bphoto+prints@gmail.com" aria-label="Inquire about prints">Inquire</a>
     </nav>
-    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye — All rights reserved</p>
+    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye. All rights reserved</p>
   </footer>
 
   <!-- ═══════════════════════════════════════════════════════
@@ -253,6 +294,7 @@
   <!-- Scripts -->
   <script src="js/gallery-data.js"></script>
   <script src="js/lang.js"></script>
+  <script src="js/vendor/anime.iife.min.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

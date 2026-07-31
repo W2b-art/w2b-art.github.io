@@ -77,6 +77,31 @@ body::before {
   z-index: 9999;
 }
 
+/* Atmospheric mesh gradient — fixed, behind all content. Kept subtle so
+   it only warms the near-black ground and never competes with the work. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: -15%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 44% at 20% 25%, rgba(196, 30, 58, 0.10), transparent 60%),
+    radial-gradient(38% 40% at 82% 20%, rgba(139, 21, 40, 0.09), transparent 62%),
+    radial-gradient(48% 50% at 72% 82%, rgba(120, 72, 36, 0.08), transparent 60%),
+    radial-gradient(42% 44% at 22% 85%, rgba(30, 44, 60, 0.10), transparent 62%);
+  filter: blur(30px) saturate(110%);
+  animation: meshDrift 40s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes meshDrift {
+  0%   { transform: translate3d(-3%, -2%, 0) scale(1.06); }
+  100% { transform: translate3d( 4%,  3%, 0) scale(1.12) rotate(6deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::after { animation: none; }
+}
+
 img { display: block; max-width: 100%; }
 a  { color: inherit; text-decoration: none; }
 ul { list-style: none; }
@@ -1543,6 +1568,41 @@ body.galleries-revealed .hero {
   color: var(--text);
 }
 
+/* Signature block on the About page — real ink scan, pre-processed to a
+   transparent PNG with cream ink (see scratchpad/process_signature.py), so
+   it drops straight onto the dark page. Drawn in left-to-right on scroll. */
+.about-page .signature {
+  margin: 3.5rem 0 0.5rem;
+}
+.about-page .sig-ink {
+  display: block;
+  width: clamp(180px, 44vw, 300px);
+  height: auto;
+  opacity: 0.92;
+}
+
+/* JS opts in: hide the ink behind a soft mask, then wipe it in
+   left-to-right so it reads as being written. */
+.about-page .signature.sig-animate .sig-ink {
+  -webkit-mask-image: linear-gradient(90deg, #000 40%, transparent 60%);
+          mask-image: linear-gradient(90deg, #000 40%, transparent 60%);
+  -webkit-mask-size: 230% 100%;
+          mask-size: 230% 100%;
+  -webkit-mask-position: 100% 0;
+          mask-position: 100% 0;
+}
+.about-page .signature.sig-animate.drawn .sig-ink {
+  -webkit-mask-position: 0 0;
+          mask-position: 0 0;
+  -webkit-transition: -webkit-mask-position 1.4s var(--ease-film) 0.2s;
+          transition: mask-position 1.4s var(--ease-film) 0.2s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-page .signature.sig-animate .sig-ink {
+    -webkit-mask-position: 0 0; mask-position: 0 0; transition: none;
+  }
+}
+
 .about-img-wrap {
   position: relative;
 }
@@ -2030,6 +2090,74 @@ body.galleries-revealed .hero {
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* When Anime.js drives the reveal (staggered), it writes inline styles every
+   frame — the CSS transition above would fight it, so disable it. Anime sets
+   the same final state, and .visible still locks it if JS is interrupted. */
+html.anime-ready .reveal {
+  transition: none;
+  will-change: opacity, transform;
+}
+html.anime-ready .reveal.visible { will-change: auto; }
+
+/* Users who ask for less motion get the content immediately, no reveal. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── Featured strip — scroll-tilt grid ───────────────────────────
+   A curated teaser band on the home page. Uses CSS grid (clean 3D
+   context) so the frames can tilt as they cross the viewport, without
+   touching the frame-preserving masonry galleries. */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.2rem, 3vw, 2.6rem);
+  perspective: 1500px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 0 2rem;
+}
+@media (min-width: 900px) { .featured-grid { grid-template-columns: repeat(3, 1fr); } }
+.featured-grid figure {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg-2);
+  transform-style: preserve-3d;
+  will-change: transform, opacity, filter;
+}
+/* Stagger the columns vertically so the band reads composed, not tabular. */
+.featured-grid figure:nth-child(3n+2) { margin-top: clamp(1.5rem, 5vw, 4rem); }
+.featured-grid figure:nth-child(3n+3) { margin-top: clamp(0.8rem, 3vw, 2.2rem); }
+.featured-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 1s var(--ease-film);
+}
+.featured-grid figure:hover img { transform: scale(1.04); }
+.featured-grid figcaption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 2rem 1rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--silver-light);
+  background: linear-gradient(to top, rgba(14,12,9,0.82), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.featured-grid figure:hover figcaption { opacity: 1; }
+.featured-cta {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .featured-grid figure { transform: none !important; opacity: 1 !important; filter: none !important; }
 }
 
 /* ── Buttons ─────────────────────────────────────────────────── */

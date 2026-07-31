@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderHomepageGalleries();
   initRevealOnScroll();
   initLightbox();
+  initSignatureFlourish();
+  initFeaturedTilt();
 });
 
 /* ── Navigation ─────────────────────────────────────────────── */
@@ -442,18 +444,154 @@ function refreshGalleryTitles() {
 }
 window.refreshGalleryTitles = refreshGalleryTitles;
 
-/* ── Scroll Reveal ──────────────────────────────────────────── */
+/* ── Scroll Reveal ──────────────────────────────────────────────
+   Photos fade + rise in as you scroll, but two rules keep it from
+   feeling like everything pops at once:
+   1. An item only reveals once its IMAGE has loaded — so the motion
+      lands on an actual photo, never on a blank box that then blits in.
+   2. Reveals are drained from a paced queue (one every SPACING ms), so
+      there's always a visible cascade even when images are cached and
+      all become ready together.
+   Tiers: reduced-motion → instant; Anime.js → animated; no lib → CSS
+   .visible. Every path ends at .visible, so nothing can get stuck hidden.
+
+   Tuning knobs: DURATION = how slow each photo settles; SPACING = the
+   gap between consecutive photos in the cascade. */
 function initRevealOnScroll() {
+  const items = document.querySelectorAll('.reveal:not(.visible)');
+  if (!items.length) return;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const anime  = window.anime;
+  const useAnime = !reduce && anime && typeof anime.animate === 'function';
+
+  if (reduce) {
+    items.forEach(el => el.classList.add('visible'));
+    return;
+  }
+
+  if (useAnime) document.documentElement.classList.add('anime-ready');
+
+  const DURATION = 1400;   // per-photo settle time (ms)
+  const SPACING  = 120;    // gap between consecutive reveals (ms) — the cascade
+
+  function revealOne(el) {
+    if (useAnime) {
+      anime.animate(el, {
+        opacity:    [0, 1],
+        translateY: [30, 0],
+        duration:   DURATION,
+        ease:       'out(2)',
+        onComplete: () => el.classList.add('visible'),
+      });
+    } else {
+      el.classList.add('visible');
+    }
+  }
+
+  /* Paced queue: reveal one item every SPACING ms so photos always
+     cascade with a visible rhythm, regardless of network timing. */
+  const queue = [];
+  let draining = false;
+  function drain() {
+    if (draining) return;
+    draining = true;
+    (function step() {
+      if (!queue.length) { draining = false; return; }
+      revealOne(queue.shift());
+      setTimeout(step, SPACING);
+    })();
+  }
+  function enqueue(el) { queue.push(el); drain(); }
+
+  /* Reveal only once the item is on screen AND its image has loaded. */
+  function whenReady(el) {
+    const img = el.tagName === 'IMG' ? el : el.querySelector('img');
+    if (!img || (img.complete && img.naturalWidth > 0)) { enqueue(el); return; }
+    const go = () => enqueue(el);
+    img.addEventListener('load',  go, { once: true });
+    img.addEventListener('error', go, { once: true });
+  }
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (!e.isIntersecting) return;
+      observer.unobserve(e.target);
+      whenReady(e.target);
     });
   }, { threshold: 0.12 });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  items.forEach(el => observer.observe(el));
+}
+
+/* ── Signature (About page) ──────────────────────────────────────
+   Wipes the real ink signature in left-to-right when it scrolls into
+   view, so it reads as being written. Pure CSS mask transition toggled
+   by a class — no animation-library dependency. Default state (no JS,
+   or reduced-motion) shows the signature fully; JS only opts in to the
+   "hide then wipe in" reveal. */
+function initSignatureFlourish() {
+  const sig = document.querySelector('.signature');
+  const ink = document.querySelector('.sig-ink');
+  if (!sig || !ink) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  sig.classList.add('sig-animate');          // hides the ink behind the mask
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      obs.unobserve(e.target);
+      sig.classList.add('drawn');            // wipes mask-position → 0
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(sig);
+}
+
+/* ── Featured strip: scroll-linked tilt (home page) ──────────────
+   Each figure in .featured-grid tilts in 3D based on how far its centre
+   sits from the viewport centre — tilted / dimmed / soft when far,
+   flat / sharp / full at the centre. Grid layout only (never the
+   masonry galleries). rAF-throttled; reduced-motion leaves it static. */
+function initFeaturedTilt() {
+  const figures = Array.from(document.querySelectorAll('.featured-grid figure'));
+  if (!figures.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let ticking = false;
+
+  function update() {
+    const vh = window.innerHeight;
+    const mid = vh / 2;
+    for (const fig of figures) {
+      const r = fig.getBoundingClientRect();
+      const c = r.top + r.height / 2;
+      let d = (c - mid) / vh;                       // -1 (top) .. +1 (bottom)
+      d = Math.max(-1.1, Math.min(1.1, d));
+      const ad  = Math.abs(d);
+      const col = +fig.dataset.col || 0;            // 0,1,2 → column
+      const yaw = (col - 1) * 4;                    // outer columns yaw outward
+      const rotX = d * 6;
+      const scale = 1 - ad * 0.05;
+      const ty = d * 10;
+      fig.style.transform =
+        `translateY(${ty.toFixed(1)}px) scale(${scale.toFixed(3)}) ` +
+        `rotateX(${(-rotX).toFixed(2)}deg) rotateY(${yaw.toFixed(2)}deg)`;
+      fig.style.opacity = Math.max(0.2, 1 - ad * 0.32).toFixed(3);
+      fig.style.filter  = `blur(${(ad * 1.6).toFixed(2)}px)`;
+    }
+    ticking = false;
+  }
+
+  function onScroll() {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', update);
+  update();
 }
 
 /* ── Gallery Page: render photo grid ───────────────────────── */

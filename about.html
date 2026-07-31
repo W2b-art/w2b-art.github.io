@@ -38,7 +38,7 @@
 
   <!-- Navigation -->
   <nav class="nav" role="navigation">
-    <a class="nav-logo" href="home.html" aria-label="W2b Art — Home">
+    <a class="nav-logo" href="home.html" aria-label="W2b Art · Home">
       <svg viewBox="0 0 80 44" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="1" y="1" width="78" height="42" rx="2" stroke="#C41E3A" stroke-width="0.8" fill="none"/>
         <rect x="4"  y="4"  width="5" height="4" rx="1" fill="#C41E3A" opacity="0.6"/>
@@ -55,7 +55,7 @@
       <li><a href="home.html#galleries" data-i18n="nav_galleries">Galleries</a></li>
       <li><a href="shop.html"         data-i18n="nav_shop">Prints</a></li>
       <li><a href="about.html"        data-i18n="nav_about">About</a></li>
-      <li><a href="https://w2b-art.github.io/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a></li>
+      <li><a href="https://w2bphotography.com/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:1.5rem;">
       <div class="lang-switcher">
@@ -74,7 +74,7 @@
   <!-- About Page Content -->
   <main class="about-page" aria-label="About W2b">
 
-    <p class="about-page-eyebrow" data-i18n="about_lead">Medellín — film, hand-printed.</p>
+    <p class="about-page-eyebrow" data-i18n="about_lead">Medellín, film, hand-printed.</p>
     <h1 class="about-page-title" data-i18n="about_title">Guillaume Delye</h1>
 
     <!-- Portrait -->
@@ -89,7 +89,7 @@
         I'm Guillaume Delye, a French photographer based in Medellín, Colombia. I shoot 35mm and medium format. Black and white is processed by hand; colour is scanned and printed on cotton rag.
       </p>
       <p data-i18n="about_full_p2">
-        The work asks the same three questions — how a place holds memory, how a body sits in light, how an image earns the right to exist. The series come slowly, and they stay.
+        The work asks the same three questions: how a place holds memory, how a body sits in light, how an image earns the right to exist. The series come slowly, and they stay.
       </p>
       <p data-i18n="about_full_p3">
         Open to exhibitions, residencies, and acquisitions. Editorial and commercial commissions are handled on the commercial site.
@@ -99,7 +99,7 @@
     <!-- Studio metadata -->
     <dl class="about-meta reveal">
       <dt data-i18n="about_currently_label">In progress</dt>
-      <dd data-i18n="about_currently"><em>Medellín</em> — long-form documentary, since 2024.</dd>
+      <dd data-i18n="about_currently"><em>Medellín</em>, long-form documentary, since 2024.</dd>
 
       <dt data-i18n="about_practice_label">Practice</dt>
       <dd data-i18n="about_practice">35mm and medium format film · Hand-developed black &amp; white · Archival pigment prints on cotton rag</dd>
@@ -120,13 +120,13 @@
       <ul>
         <li data-i18n="about_avail_1">Solo and group exhibitions</li>
         <li data-i18n="about_avail_2">Residencies and assignments</li>
-        <li data-i18n="about_avail_3">Acquisitions — institutional and private</li>
+        <li data-i18n="about_avail_3">Acquisitions, institutional and private</li>
       </ul>
     </section>
 
     <section class="about-list reveal" aria-labelledby="publications-heading">
-      <h2 id="publications-heading" data-i18n="about_publications_label">Press &amp; selected features</h2>
-      <p class="press-intro" data-i18n="press_intro">For press, features, interviews and review copies, send a note — I reply within 48 hours.</p>
+      <h2 id="publications-heading" data-i18n="about_publications_label">Press</h2>
+      <p class="press-intro" data-i18n="press_intro">For press, features, interviews and review copies, send a note. I reply within 48 hours.</p>
       <form class="press-form" id="press-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
         <input type="hidden" name="_subject" value="Press inquiry — w2b art">
         <div class="press-field">
@@ -146,13 +146,17 @@
       </form>
     </section>
 
-    <!-- Signature -->
-    <div class="signature reveal">Guillaume Delye</div>
+    <!-- Signature (real ink scan, drawn in on scroll) -->
+    <div class="signature reveal" aria-label="Guillaume Delye">
+      <img class="sig-ink" src="images/ui/signature.png"
+           alt="Signature — Guillaume Delye" width="320"
+           onerror="this.closest('.signature').style.display='none'">
+    </div>
 
     <!-- Action links -->
     <div class="about-actions reveal">
       <a class="btn" href="home.html#galleries" data-i18n="nav_galleries">Galleries</a>
-      <a class="btn btn-ghost" href="https://w2b-art.github.io/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a>
+      <a class="btn btn-ghost" href="https://w2bphotography.com/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a>
     </div>
 
   </main>
@@ -165,11 +169,12 @@
       <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
       <a href="mailto:w2bphoto+prints@gmail.com">Inquire</a>
     </nav>
-    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye — All rights reserved</p>
+    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye. All rights reserved</p>
   </footer>
 
   <script src="js/gallery-data.js"></script>
   <script src="js/lang.js"></script>
+  <script src="js/vendor/anime.iife.min.js"></script>
   <script src="js/main.js"></script>
   <script>
     (function () {
