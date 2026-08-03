@@ -737,7 +737,9 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 .film-frame {
   position: relative;
   width: 140px;
-  height: 144px;
+  /* Desktop (>1100px): frame height tuned so the strip (frame + two 19px
+     perforation rails) spans the full height of the canister artwork. */
+  height: 338px;
   overflow: hidden;
   cursor: pointer;
   flex-shrink: 0;
