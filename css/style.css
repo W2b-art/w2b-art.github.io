@@ -144,6 +144,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   height: 32px;
 }
 
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
 /* Nav links */
 .nav-links {
   display: flex;
