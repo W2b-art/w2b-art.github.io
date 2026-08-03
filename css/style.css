@@ -422,6 +422,15 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   filter: drop-shadow(0 0 0 2px var(--crimson)) drop-shadow(0 10px 36px rgba(196,30,58,0.45));
 }
 
+/* New canister artwork (replaces the CSS-drawn cartridge) */
+.canister-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 /* Retracting animation when canister is clicked.
    Uses Material standard easing (slow start, gentle end) for a polished feel. */
 .film-scene.retracting .canister {
