@@ -193,9 +193,10 @@ function buildStripHTML(galleryIds, lang) {
   const resolve = (id) => GALLERY_DATA[id]
     || (typeof STRIP_EXTRAS !== 'undefined' ? STRIP_EXTRAS[id] : undefined);
 
-  let framesHTML = galleryIds.map((id, i) => {
+  const items = galleryIds.filter(id => resolve(id));
+
+  let framesHTML = items.map((id, i) => {
     const data = resolve(id);
-    if (!data) return '';
     const title    = data.title[lang] || data.title.en;
     const cover    = data.images[data.coverIndex]
                      ? data.folder + data.images[data.coverIndex].file
@@ -211,10 +212,8 @@ function buildStripHTML(galleryIds, lang) {
     const galleryCta = !isExtra || data.stripCta === 'view_gallery';
     const ctaKey   = galleryCta ? 'view_gallery' : 'view_about';
     const ctaText  = galleryCta ? 'View Gallery' : 'Read more';
-    const frameNum = String(i + 1).padStart(2, '0');
-
     return `
-      <div class="film-frame${isEmpty}" data-gallery="${id}"${urlAttr} data-number="${frameNum}A">
+      <div class="film-frame${isEmpty}" data-gallery="${id}"${urlAttr} data-number="${i + 1}">
         ${imgHTML}
         <div class="film-frame-overlay">
           <span class="frame-title">${title}</span>
@@ -223,14 +222,23 @@ function buildStripHTML(galleryIds, lang) {
       </div>`;
   }).join('');
 
+  /* Frame numbers along the film edges (35mm-style), 1..N per gallery.
+     Shown on desktop only (see CSS); each cell aligns to its frame. */
+  const topNumsHTML = items.map((id, i) =>
+    `<span class="edge-cell">${i + 1}<em>W2b·400</em></span>`).join('');
+  const botNumsHTML = items.map((id, i) =>
+    `<span class="edge-cell">▸ ${i + 1}A</span>`).join('');
+
   /* Perforation holes — 4 per frame on each rail */
-  const perfCount = galleryIds.length * 4;
+  const perfCount = items.length * 4;
   const perfsHTML = Array(perfCount).fill('<div class="perf"></div>').join('');
 
   return `
     <div class="film-strip">
       <div class="perforations">${perfsHTML}</div>
+      <div class="film-numbers film-numbers--top">${topNumsHTML}</div>
       <div class="film-frames">${framesHTML}</div>
+      <div class="film-numbers film-numbers--bottom">${botNumsHTML}</div>
       <div class="perforations">${perfsHTML}</div>
     </div>`;
 }

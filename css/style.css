@@ -693,6 +693,14 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   pointer-events: all;
 }
 
+/* Desktop: nudge the strip down ~17px so its band sits between the reference
+   marks on the canister body (top mark ~14%, bottom mark ~95% of the art). */
+@media (min-width: 1101px) {
+  .film-strip-container { transform: translateY(17px) scaleX(0); }
+  .film-scene.revealed .film-strip-container { transform: translateY(17px) scaleX(1); }
+  .film-scene.retracting .film-strip-container { transform: translateY(17px) scaleX(0); }
+}
+
 .film-strip {
   display: flex;
   flex-direction: column;
@@ -732,14 +740,57 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
   gap: 3px;
 }
 
+/* 35mm-style frame numbers on the top & bottom film edges (desktop only).
+   Absolutely overlaid on the perforation rails; cells share the frame pitch
+   (400px + 3px gap, 4px side padding) so each number sits at its frame's left. */
+.film-numbers { display: none; }
+@media (min-width: 1101px) {
+  .film-numbers {
+    display: flex;
+    position: absolute;
+    left: 0; right: 0;
+    padding: 0 4px;
+    gap: 3px;
+    pointer-events: none;
+    z-index: 3;
+    font-family: var(--font-mono);
+    color: #e6a02a;
+  }
+  .film-numbers--top    { top: 2px;    align-items: flex-start; }
+  .film-numbers--bottom { bottom: 2px; align-items: flex-end; }
+  .film-numbers .edge-cell {
+    width: 400px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding-left: 3px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+  }
+  .film-numbers .edge-cell em {
+    font-style: normal;
+    font-size: 8.5px;
+    font-weight: 400;
+    opacity: 0.75;
+    letter-spacing: 0.14em;
+  }
+  /* On desktop the edge numbers replace the in-frame corner number. */
+  .film-frame::before { display: none; }
+}
+
 /* Individual gallery frame — sized so all 5 series fit visible at once
    in the strip area on standard desktop viewports. */
 .film-frame {
   position: relative;
-  width: 140px;
-  /* Desktop (>1100px): frame height tuned so the strip (frame + two 19px
-     perforation rails) spans the full height of the canister artwork. */
-  height: 338px;
+  /* Desktop (>1100px): landscape 3:2 frames; height tuned so the strip
+     (frame + two 19px perforation rails) spans the canister BODY between the
+     reference marks (~14%–95% of the artwork), not the whole cartridge. */
+  width: 400px;
+  height: 267px;
   overflow: hidden;
   cursor: pointer;
   flex-shrink: 0;
