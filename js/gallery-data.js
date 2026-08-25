@@ -297,22 +297,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "medellin-market-vendor-resting-grain-sacks-black-white-documentary-colombia-w2b.jpg",
-        alt: {
-          en: "Market vendor resting among stacked sacks of grain in a Medellín marketplace, black and white documentary photography",
-          fr: "Marchand assoupi parmi les sacs de grain empilés dans un marché de Medellín, photographie documentaire noir et blanc",
-          es: "Vendedor descansando entre sacos de grano apilados en un mercado de Medellín, fotografía documental en blanco y negro"
-        }
-      },
-      {
-        file: "medellin-street-sweeper-yellow-uniform-urban-documentary-colombia-w2b.jpg",
-        alt: {
-          en: "A street sweeper in a yellow uniform crossing an empty Medellín street, colour documentary photography",
-          fr: "Un balayeur de rue en uniforme jaune traversant une rue déserte de Medellín, photographie documentaire couleur",
-          es: "Un barrendero con uniforme amarillo cruzando una calle vacía de Medellín, fotografía documental a color"
-        }
-      },
-      {
         file: "medellin-carniceria-carne-colgada-black-white-w2b.jpg",
         alt: {
           en: "Rows of meat hanging in a Medellín market butcher stall, black and white documentary photography",
@@ -1226,14 +1210,6 @@ const GALLERY_DATA = {
           en: "The weathered hull of an old boat, colour medium-format film",
           fr: "La coque usée d'un vieux bateau, moyen format argentique couleur",
           es: "El casco desgastado de un viejo barco, película de formato medio a color"
-        }
-      },
-      {
-        file: "contemplations-beached-boat-low-tide-colour-w2b.jpg",
-        alt: {
-          en: "A boat beached at low tide, colour medium-format film",
-          fr: "Un bateau échoué à marée basse, moyen format argentique couleur",
-          es: "Un barco varado en marea baja, película de formato medio a color"
         }
       },
       {

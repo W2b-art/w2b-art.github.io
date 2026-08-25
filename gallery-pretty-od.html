@@ -1,95 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <title>Pretty OD — W2b</title>
-  <meta name="description" content="Pretty OD, a conceptual series in six chapters by Guillaume Delye — love as a substance, affection bought by the dose in a pink dystopia.">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="canonical" href="https://w2bphotography.com/gallery-pretty-od.html">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pretty OD — W2b</title>
+<meta name="description" content="A six-chapter fiction on love sold by the dose.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://w2bphotography.com/gallery-pretty-od.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/art.css?v=2">
 </head>
 <body>
-
-  <nav class="nav" role="navigation">
-    <a class="nav-logo" href="home.html" aria-label="W2b Art · Home">
-      <img src="images/ui/w2b-logo.png" alt="W2b" width="197" height="140">
-    </a>
-    <ul class="nav-links">
-      <li><a href="home.html"           data-i18n="nav_home">Home</a></li>
-      <li><a href="home.html#galleries" data-i18n="nav_galleries">Galleries</a></li>
-      <li><a href="shop.html"            data-i18n="nav_shop">Prints</a></li>
-      <li><a href="about.html"           data-i18n="nav_about">About</a></li>
-      <li><a href="https://w2bphotography.com/w2b-pro/"    data-i18n="nav_pro">Commercial ↗</a></li>
-    </ul>
-    <div style="display:flex;align-items:center;gap:1.5rem;">
-      <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" data-lang="fr">FR</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" data-lang="es">ES</button>
-      </div>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Gallery Hero -->
-  <header class="gallery-page-hero" aria-label="Gallery header">
-    <div class="gallery-page-hero-content">
-      <a class="gallery-back" href="home.html#galleries" data-i18n="back_home">← Back</a>
-      <h1 class="gallery-page-title" id="gallery-page-title">Gallery</h1>
-      <p  class="gallery-page-desc"  id="gallery-page-desc"></p>
-    </div>
-  </header>
-
-  <!-- Photo Grid -->
-  <main>
-    <div class="photo-grid" id="photo-grid" role="list" aria-label="Photo gallery"></div>
-  </main>
-
-  <!-- Bridge -->
-  <div class="pro-bridge" style="margin-top:2rem;">
-    <p class="bridge-text" data-i18n="bridge_text">Also working on editorial and commercial commissions.</p>
-    <a class="bridge-link" href="https://w2bphotography.com/w2b-pro/">
-      <span data-i18n="bridge_link">Visit the commercial portfolio ↗</span>
-      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-      </svg>
-    </a>
-  </div>
-
-  <footer class="footer">
-    <nav class="footer-social" aria-label="Contact and social">
-      <a href="https://www.instagram.com/w2b.film" target="_blank" rel="noopener">Instagram</a>
-      <a href="shop.html" data-i18n="nav_shop">Prints</a>
-      <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
-      <a href="mailto:w2bphoto+prints@gmail.com">Inquire</a>
-    </nav>
-    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye. All rights reserved</p>
-  </footer>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
-    <button id="lightbox-close" class="lightbox-close">✕ Close</button>
-    <button id="lightbox-prev"  class="lightbox-nav lightbox-prev">‹</button>
-    <img    id="lightbox-img"   class="lightbox-img" src="" alt="">
-    <button id="lightbox-next"  class="lightbox-nav lightbox-next">›</button>
-    <div    id="lightbox-caption" class="lightbox-caption"></div>
-  </div>
-
-  <script src="js/gallery-data.js"></script>
-  <script src="js/lang.js"></script>
-  <script src="js/vendor/anime.iife.min.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      renderGalleryPage('pretty-od');
-    });
-  </script>
+<header class="hdr">
+  <a class="brand" href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
+  <a class="back" data-ui="back_series" href="home.html#series">Series</a>
+  <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
+</header>
+<main id="app"></main>
+<div class="lb" id="lb">
+  <span class="x" id="lbX">&times;</span>
+  <span class="arw prev" id="lbPrev">&#8249;</span>
+  <span class="arw next" id="lbNext">&#8250;</span>
+  <div class="inner"><img id="lbImg" src="" alt=""><div class="cap"><div class="num" id="lbNum"></div><div class="txt" id="lbTxt"></div></div></div>
+</div>
+<footer>
+  <div class="sig"><img src="images/ui/film-canister.png" alt=""><div class="w">W2<span>b</span></div></div>
+  <div class="nav"><a href="shop.html" data-ui="foot_prints">Prints</a><a href="collaborate.html" data-ui="foot_collab">Collaborate</a><a href="about.html" data-ui="foot_about">About</a></div>
+</footer>
+<script>window.GALLERY_ID="pretty-od";</script>
+<script src="js/gallery-data.js?v=2"></script>
+<script src="js/art-copy.js?v=2"></script>
+<script src="js/art-i18n.js?v=1"></script>
+<script src="js/art-gallery.js?v=2"></script>
 </body>
 </html>

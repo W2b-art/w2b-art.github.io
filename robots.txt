@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Adult / After Dark content — keep out of image search (pages carry noindex)
+Disallow: /images/nude/
+Disallow: /images/boudoir/
+
 Sitemap: https://w2bphotography.com/sitemap.xml

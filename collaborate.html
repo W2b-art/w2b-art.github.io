@@ -1,184 +1,221 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <title>Collaborate — W2b</title>
-  <meta name="description" content="Artist collaborations and private fine-art boudoir / Dark Desire commissions by Guillaume Delye. By application, consent-forward, made as art.">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    .collab-page { max-width: 720px; margin: 0 auto; padding: 7rem 1.5rem 5rem; }
-    .collab-head { margin-bottom: 3.5rem; }
-    .collab-eyebrow {
-      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--accent-warm-dim); margin-bottom: 1rem;
-    }
-    .collab-h1 {
-      font-family: var(--font-display); font-weight: 500;
-      font-size: clamp(2.4rem, 7vw, 3.6rem); line-height: 1.05; color: var(--text);
-    }
-    .collab-intro { color: var(--text-muted); margin-top: 1rem; font-size: 1.05rem; }
-    .collab-section { margin-top: 3.5rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
-    .collab-label {
-      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em;
-      text-transform: uppercase; color: var(--crimson); margin-bottom: 0.75rem;
-    }
-    .collab-h2 {
-      font-family: var(--font-display); font-weight: 500;
-      font-size: clamp(1.7rem, 4.5vw, 2.2rem); color: var(--text); margin-bottom: 1rem;
-    }
-    .collab-body { color: var(--text-muted); line-height: 1.7; margin-bottom: 1rem; }
-    .collab-terms {
-      font-size: 0.9rem; color: var(--text-muted); font-style: italic;
-      border-left: 2px solid var(--crimson-dim); padding-left: 1rem; margin: 1.5rem 0;
-    }
-    .collab-form { margin-top: 1.75rem; display: flex; flex-direction: column; gap: 1.1rem; }
-    .field label {
-      display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.45rem;
-    }
-    .field input[type=text], .field input[type=email], .field input[type=url], .field textarea {
-      width: 100%; background: var(--bg-2); border: 1px solid var(--border);
-      border-radius: 4px; color: var(--text); font-family: var(--font-body); font-size: 0.95rem;
-      padding: 0.7rem 0.8rem; outline: none; transition: border-color 0.2s;
-    }
-    .field input:focus, .field textarea:focus { border-color: var(--crimson); }
-    .field textarea { resize: vertical; min-height: 90px; }
-    .consent-row {
-      display: flex; gap: 0.7rem; align-items: flex-start;
-      background: var(--bg-2); border: 1px solid var(--border-red); border-radius: 4px;
-      padding: 0.9rem 1rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;
-    }
-    .consent-row input { margin-top: 0.2rem; width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--crimson); }
-    .collab-submit {
-      align-self: flex-start; margin-top: 0.4rem;
-      background: none; border: 1px solid var(--crimson); color: var(--text);
-      font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 0.8rem 1.6rem; border-radius: 4px; cursor: pointer; transition: all 0.2s;
-    }
-    .collab-submit:hover { background: var(--crimson); color: #fff; }
-    .collab-note { font-size: 0.82rem; color: var(--accent-warm-dim); margin-top: 0.9rem; }
-  </style>
-  <link rel="canonical" href="https://w2bphotography.com/collaborate.html">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collaborer — W2b</title>
+<meta name="description" content="Collaborer avec W2b : collaborations créatives, commandes boudoir et Dark Desire faites comme de l'art, presse et curateurs. Consentement au cœur, en confiance.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://w2bphotography.com/collaborate.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/art.css?v=3">
 </head>
 <body>
 
-  <nav class="nav" role="navigation">
-    <a class="nav-logo" href="home.html" aria-label="W2b Art · Home">
-      <img src="images/ui/w2b-logo.png" alt="W2b" width="197" height="140">
-    </a>
-    <ul class="nav-links">
-      <li><a href="home.html"           data-i18n="nav_home">Home</a></li>
-      <li><a href="home.html#galleries" data-i18n="nav_galleries">Galleries</a></li>
-      <li><a href="shop.html"            data-i18n="nav_shop">Prints</a></li>
-      <li><a href="about.html"           data-i18n="nav_about">About</a></li>
-      <li><a href="https://w2bphotography.com/w2b-pro/"    data-i18n="nav_pro">Commercial ↗</a></li>
-    </ul>
-    <div style="display:flex;align-items:center;gap:1.5rem;">
-      <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" data-lang="fr">FR</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" data-lang="es">ES</button>
-      </div>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+<header class="hdr" id="hdr">
+  <div class="brand"><a href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a></div>
+  <nav>
+    <a href="home.html#series" data-ui="nav_series">Séries</a>
+    <a href="shop.html" data-ui="nav_prints">Tirages</a>
+    <a href="collaborate.html" data-ui="nav_collab">Collaborer</a>
+    <a href="about.html" data-ui="nav_about">À propos</a>
   </nav>
+  <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
+</header>
 
-  <main class="collab-page">
-    <header class="collab-head">
-      <p class="collab-eyebrow" data-i18n="collab_lead">Collaboration &amp; Commissions</p>
-      <h1 class="collab-h1" data-i18n="collab_title">Work together</h1>
-      <p class="collab-intro" data-i18n="collab_intro">Two ways in: a collaboration between artists, or a private commission.</p>
-    </header>
+<main class="book">
+  <div class="book-head">
+    <div class="k" data-k="k"></div>
+    <h1 data-k="h1"></h1>
+    <p data-k="lede"></p>
+  </div>
 
-    <!-- 01 — Collaborations -->
-    <section class="collab-section">
-      <p class="collab-label" data-i18n="collab_c_label">01 · Collaborations</p>
-      <h2 class="collab-h2" data-i18n="collab_c_title">For artists &amp; makers</h2>
-      <p class="collab-body" data-i18n="collab_c_body">I work with models, stylists, dancers and other artists on shared projects: series, exhibitions, ideas that need more than one pair of hands. I bring the eye and the film; you bring what you make. If our work might belong in the same frame, tell me what you're building.</p>
+  <div class="tracks" role="tablist">
+    <button class="track-btn on" data-track="a" data-k="ta"></button>
+    <button class="track-btn b" data-track="b" data-k="tb"></button>
+    <button class="track-btn" data-track="c" data-k="tc"></button>
+  </div>
 
-      <form class="collab-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
-        <input type="hidden" name="_subject" value="Collaboration proposal — w2b art">
-        <div class="field">
-          <label for="c-name" data-i18n="collab_c_name">Name</label>
-          <input type="text" id="c-name" name="name" required>
-        </div>
-        <div class="field">
-          <label for="c-discipline" data-i18n="collab_c_discipline">Discipline or medium</label>
-          <input type="text" id="c-discipline" name="discipline">
-        </div>
-        <div class="field">
-          <label for="c-idea" data-i18n="collab_c_idea">What you're working on</label>
-          <textarea id="c-idea" name="idea" rows="4" required></textarea>
-        </div>
-        <div class="field">
-          <label for="c-link" data-i18n="collab_c_link">Portfolio or Instagram</label>
-          <input type="text" id="c-link" name="portfolio">
-        </div>
-        <div class="field">
-          <label for="c-email" data-i18n="collab_c_email">Email</label>
-          <input type="email" id="c-email" name="email" required>
-        </div>
-        <button type="submit" class="collab-submit" data-i18n="collab_c_submit">Send proposal</button>
-      </form>
-    </section>
+  <!-- A -->
+  <section class="track on" id="track-a">
+    <p class="intro" data-k="a_intro"></p>
+    <div class="split">
+      <div class="steps">
+        <div class="step"><div class="sn">01</div><div><h3 data-k="a1h"></h3><p data-k="a1p"></p></div></div>
+        <div class="step"><div class="sn">02</div><div><h3 data-k="a2h"></h3><p data-k="a2p"></p></div></div>
+        <div class="step"><div class="sn">03</div><div><h3 data-k="a3h"></h3><p data-k="a3p"></p><div class="det" data-k="a3d"></div></div></div>
+        <div class="step"><div class="sn">04</div><div><h3 data-k="a4h"></h3><p data-k="a4p"></p></div></div>
+        <div class="step"><div class="sn">05</div><div><h3 data-k="a5h"></h3><p data-k="a5p"></p><div class="det" data-k="a5d"></div></div></div>
+      </div>
+      <figure class="figure"><img src="images/bailar-la-ciudad/bailar-ciudad-movimiento-inclinado-tatuaje-black-white-w2b.jpg" alt=""><figcaption>Bailar la Ciudad</figcaption></figure>
+    </div>
+    <form class="book-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
+      <input type="hidden" name="_subject" value="Collaboration proposal — w2b art">
+      <div class="field"><label for="a-name" data-k="f_name"></label><input id="a-name" name="name" type="text" required></div>
+      <div class="field"><label for="a-disc" data-k="a_f_disc"></label><input id="a-disc" name="discipline" type="text"></div>
+      <div class="field"><label for="a-idea" data-k="a_f_idea"></label><textarea id="a-idea" name="idea" rows="4" required></textarea></div>
+      <div class="field"><label for="a-link" data-k="a_f_link"></label><input id="a-link" name="portfolio" type="text"></div>
+      <div class="field"><label for="a-email" data-k="f_email"></label><input id="a-email" name="email" type="email" required></div>
+      <button class="submit" type="submit" data-k="a_submit"></button>
+    </form>
+  </section>
 
-    <!-- 02 — Commissions: Boudoir / Dark Desire -->
-    <section class="collab-section" id="commissions">
-      <p class="collab-label" data-i18n="collab_b_label">02 · Commissions</p>
-      <h2 class="collab-h2" data-i18n="collab_b_title">Boudoir &amp; Dark Desire</h2>
-      <p class="collab-body" data-i18n="collab_b_body1">A few private commissions each year, in the language of the Nude and Dark Desire series: fine-art boudoir and fetish portraiture, made as art, in a lineage that runs from Bellocq and Newton to Nan Goldin.</p>
-      <p class="collab-body" data-i18n="collab_b_body2">How it works: we talk first, at length, before any camera. You see references, we agree the frame together, and nothing is made that you haven't approved. The images are reviewed with you. They are yours, at your pace, and you decide what exists and what doesn't. Closed set in Medellín, full discretion.</p>
-      <p class="collab-terms" data-i18n="collab_b_terms">By application. Adults only (18+). Not every request is accepted. This work is made slowly and with care.</p>
+  <!-- B -->
+  <section class="track" id="track-b">
+    <p class="intro" data-k="b_intro"></p>
+    <div class="split">
+      <div class="steps">
+        <div class="step"><div class="sn">01</div><div><h3 data-k="b1h"></h3><p data-k="b1p"></p></div></div>
+        <div class="step"><div class="sn">02</div><div><h3 data-k="b2h"></h3><p data-k="b2p"></p></div></div>
+        <div class="step"><div class="sn">03</div><div><h3 data-k="b3h"></h3><p data-k="b3p"></p><div class="det" data-k="b3d"></div></div></div>
+        <div class="step"><div class="sn">04</div><div><h3 data-k="b4h"></h3><p data-k="b4p"></p><div class="det" data-k="b4d"></div></div></div>
+        <div class="step"><div class="sn">05</div><div><h3 data-k="b5h"></h3><p data-k="b5p"></p></div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <figure class="figure"><img src="images/nude/fine-art-nude-back-curve-shadow-black-white-02-w2b.jpg" alt=""><figcaption>Nude</figcaption></figure>
+        <figure class="figure"><img src="images/boudoir/fetish-latex-mask-red-light-01-w2b.jpg" alt=""><figcaption>Dark Desire · <a href="after-dark.html" style="color:var(--or)" data-k="b_seeseries"></a></figcaption></figure>
+      </div>
+    </div>
+    <p class="reassure" data-k="b_reassure"></p>
+    <form class="book-form" action="https://formspree.io/f/mvznbrql" method="POST">
+      <input type="hidden" name="_subject" value="Commission inquiry — Dark Desire">
+      <div class="field"><label for="b-name" data-k="b_f_name"></label><input id="b-name" name="name" type="text" required></div>
+      <div class="field"><label for="b-email" data-k="f_email"></label><input id="b-email" name="email" type="email" required></div>
+      <div class="field"><label for="b-note" data-k="b_f_note"></label><textarea id="b-note" name="note" rows="3" data-kph="b_f_note_ph"></textarea></div>
+      <label class="consent"><input type="checkbox" name="consent" required><span data-k="b_consent"></span></label>
+      <button class="submit" type="submit" data-k="b_submit"></button>
+    </form>
+    <p class="book-note" data-k="b_note2"></p>
+  </section>
 
-      <form class="collab-form" action="https://formspree.io/f/mvznbrql" method="POST">
-        <input type="hidden" name="_subject" value="Commission inquiry — Dark Desire">
-        <div class="field">
-          <label for="b-name" data-i18n="collab_b_name">Name</label>
-          <input type="text" id="b-name" name="name" required>
-        </div>
-        <div class="field">
-          <label for="b-email" data-i18n="collab_b_email">Email</label>
-          <input type="email" id="b-email" name="email" required>
-        </div>
-        <div class="field">
-          <label for="b-note" data-i18n="collab_b_note">A few words about what draws you to the work</label>
-          <textarea id="b-note" name="note" rows="3" data-i18n-placeholder="collab_b_note_ph" placeholder="No need for detail here, just a sense of why."></textarea>
-        </div>
-        <label class="consent-row">
-          <input type="checkbox" name="consent" required>
-          <span data-i18n="collab_b_consent">I am 18 or older, and I understand this is an inquiry, not a booking.</span>
-        </label>
-        <button type="submit" class="collab-submit" data-i18n="collab_b_submit">Send inquiry</button>
-      </form>
+  <!-- C -->
+  <section class="track" id="track-c">
+    <p class="intro" data-k="c_intro"></p>
+    <div class="split">
+      <div class="kit">
+        <div class="item"><h3 data-k="c1h"></h3><p data-k="c1p"></p></div>
+        <div class="item"><h3 data-k="c2h"></h3><p data-k="c2p"></p></div>
+        <div class="item"><h3 data-k="c3h"></h3><p data-k="c3p"></p></div>
+      </div>
+      <figure class="figure"><img src="images/contemplations/contemplations-golden-dusk-rock-spires-coast-w2b.jpg" alt=""><figcaption>Contemplations</figcaption></figure>
+    </div>
+    <form class="book-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
+      <input type="hidden" name="_subject" value="Press / curator — w2b art">
+      <div class="field"><label for="c-name" data-k="f_name"></label><input id="c-name" name="name" type="text" required></div>
+      <div class="field"><label for="c-org" data-k="c_f_org"></label><input id="c-org" name="organisation" type="text"></div>
+      <div class="field"><label for="c-type" data-k="c_f_type"></label>
+        <select id="c-type" name="type"><option data-k="opt_press"></option><option data-k="opt_expo"></option><option data-k="opt_pub"></option><option data-k="opt_other"></option></select></div>
+      <div class="field"><label for="c-msg" data-k="c_f_msg"></label><textarea id="c-msg" name="message" rows="4" required></textarea></div>
+      <div class="field"><label for="c-email" data-k="f_email"></label><input id="c-email" name="email" type="email" required></div>
+      <button class="submit" type="submit" data-k="c_submit"></button>
+    </form>
+  </section>
+</main>
 
-      <p class="collab-note">
-        <span data-i18n="collab_response">Replies within about a week.</span>
-        <span data-i18n="collab_discretion">Every inquiry is handled privately and in confidence.</span>
-      </p>
-    </section>
-  </main>
+<footer>
+  <div class="sig"><img src="images/ui/film-canister.png" alt=""><div class="w">W2<span>b</span></div></div>
+  <div class="l">@w2b.film<br><a href="home.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
+</footer>
 
-  <footer class="footer">
-    <nav class="footer-social" aria-label="Contact and social">
-      <a href="https://www.instagram.com/w2b.film" target="_blank" rel="noopener">Instagram</a>
-      <a href="shop.html" data-i18n="nav_shop">Prints</a>
-      <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
-      <a href="mailto:w2bphoto+prints@gmail.com">Inquire</a>
-    </nav>
-    <p class="footer-copy" data-i18n="footer_copy">© W2b. All rights reserved</p>
-  </footer>
+<script src="js/art-i18n.js?v=1"></script>
+<script>
+(function(){
+  if(typeof w2bApplyUI==='function') w2bApplyUI();
+  var L=(window.W2B_LANG)||'fr';
+  var BOOK={
+   fr:{k:"Collaborer",h1:"Travailler ensemble, avec soin.",lede:"Trois manières d'entrer dans ce travail. Chacune commence par une conversation, à ton rythme, sans engagement.",
+     ta:"Collaboration créative",tb:"Commande · Dark Desire",tc:"Presse & curateurs",
+     a_intro:"Un projet à plusieurs mains. On met en commun un regard, un corps, un savoir-faire, et on fabrique quelque chose qu'aucun de nous ne ferait seul.",
+     a1h:"Tu me racontes",a1p:"Quelques mots sur ce que tu fais et ce que tu cherches. Ta discipline, ton envie, ce projet qui te trotte dans la tête. Rien de figé.",
+     a2h:"On prend le temps de se rencontrer",a2p:"Un appel, un café. On regarde si nos univers se répondent, sans pression et sans obligation de suite.",
+     a3h:"On pose le cadre à deux",a3p:"Rôles, dates, droits, ce que chacun apporte et ce que chacun en retire. Tout est clair et écrit, pour que la création reste légère.",a3d:"✓ Un accord simple, pensé pour les deux",
+     a4h:"On crée, en confiance",a4p:"Le jour venu, on décide à deux. Un espace calme, du temps, et de la place pour l'imprévu.",
+     a5h:"On partage",a5p:"On choisit ensemble, je livre les images, les crédits sont clairs. Chacun repart avec de quoi montrer le travail.",a5d:"✓ Livraison et crédits convenus d'avance",
+     f_name:"Nom",f_email:"Email",a_f_disc:"Discipline ou médium",a_f_idea:"Ce sur quoi tu travailles",a_f_link:"Portfolio ou Instagram",a_submit:"Envoyer la proposition",
+     b_intro:"Un moment pour toi, tenu avec soin. Une séance intime, en nu d'art ou boudoir, pensée d'abord pour que tu te sentes en sécurité et regardée avec justesse.",
+     b1h:"Tu écris, sans te dévoiler",b1p:"Quelques mots sur ce qui t'attire, une intention, une émotion. Aucun détail à donner. Dix-huit ans et plus.",
+     b2h:"On parle, longuement, avant le moindre appareil",b2p:"Un échange privé, à ton rythme, pour comprendre ton désir et poser tes limites. Ce sont elles qui guident tout le reste.",
+     b3h:"On prépare un cadre rassurant",b3p:"On choisit ensemble le lieu, la lumière, les références. On écrit ce qui sera fait et ce qui ne le sera pas.",b3d:"✓ Accord de droit à l'image signé, pour ta tranquillité",
+     b4h:"Le jour de la séance",b4p:"Plateau fermé à Medellín, une présence discrète, une musique, le temps qu'il faut. Je te guide pas à pas et tu gardes la main à chaque instant.",b4d:"✓ Rien ne se fait sans ton oui",
+     b5h:"Tu décides de ce qui existe",b5p:"Tu revois les images avec moi, tranquillement. Elles sont à toi. Tu choisis ce qui reste, ce qui se montre, ce qui disparaît.",
+     b_seeseries:"voir la série (18+)",b_reassure:"Sur candidature, en confiance absolue. Chaque échange reste privé. Ce travail se fait lentement et avec soin.",
+     b_f_name:"Nom ou prénom",b_f_note:"Quelques mots sur ce qui t'attire dans ce travail",b_f_note_ph:"Pas besoin de détails, juste une intention.",
+     b_consent:"J'ai 18 ans ou plus, et je comprends qu'il s'agit d'une prise de contact, pas d'une réservation.",b_submit:"Envoyer la demande",
+     b_note2:"Réponse sous une semaine environ. Chaque demande est traitée en privé et en toute confidentialité.",
+     c_intro:"Pour les galeries, curateurs, éditeurs et journalistes. De quoi écrire, montrer et programmer le travail sereinement.",
+     c1h:"Dossier & biographie",c1p:"Bio courte et longue, démarche, parcours, sur simple demande.",
+     c2h:"Fichiers haute définition",c2p:"Images en haute résolution pour la presse, sous accord d'usage.",
+     c3h:"Tirages & expositions",c3p:"Disponibilités, formats, conditions de prêt et d'accrochage.",
+     c_f_org:"Organisation",c_f_type:"Objet",c_f_msg:"Message",c_submit:"Envoyer",
+     opt_press:"Presse",opt_expo:"Exposition",opt_pub:"Édition",opt_other:"Autre"},
+   en:{k:"Collaborate",h1:"Working together, with care.",lede:"Three ways into this work. Each begins with a conversation, at your pace, with no commitment.",
+     ta:"Creative collaboration",tb:"Commission · Dark Desire",tc:"Press & curators",
+     a_intro:"A project made by several hands. We pool an eye, a body, a craft, and make something none of us would make alone.",
+     a1h:"You tell me",a1p:"A few words on what you do and what you are after. Your discipline, your urge, that project on your mind. Nothing fixed.",
+     a2h:"We take time to meet",a2p:"A call, a coffee. We see whether our worlds echo each other, no pressure and no obligation to go further.",
+     a3h:"We set the frame together",a3p:"Roles, dates, rights, what each brings and takes away. All clear and in writing, so the making stays light.",a3d:"✓ A simple agreement, made for both",
+     a4h:"We create, in trust",a4p:"When the day comes, we decide together. A calm space, time, and room for the unexpected.",
+     a5h:"We share",a5p:"We choose together, I deliver the images, credits are clear. Each leaves with something to show the work.",a5d:"✓ Delivery and credits agreed in advance",
+     f_name:"Name",f_email:"Email",a_f_disc:"Discipline or medium",a_f_idea:"What you are working on",a_f_link:"Portfolio or Instagram",a_submit:"Send proposal",
+     b_intro:"A moment for you, held with care. An intimate session, fine-art nude or boudoir, made first so you feel safe and seen with fairness.",
+     b1h:"You write, without exposing yourself",b1p:"A few words on what draws you, an intention, an emotion. No detail needed. Eighteen and over.",
+     b2h:"We talk, at length, before any camera",b2p:"A private exchange, at your pace, to understand your desire and set your limits. They guide everything else.",
+     b3h:"We prepare a reassuring frame",b3p:"Together we choose the place, the light, the references. We write down what will be done and what will not.",b3d:"✓ A signed image-rights agreement, for your peace of mind",
+     b4h:"The day of the session",b4p:"Closed set in Medellín, a discreet presence, music, all the time you need. I guide you step by step and you stay in control throughout.",b4d:"✓ Nothing happens without your yes",
+     b5h:"You decide what exists",b5p:"You review the images with me, calmly. They are yours. You choose what stays, what is shown, what disappears.",
+     b_seeseries:"see the series (18+)",b_reassure:"By application, in complete trust. Every exchange stays private. This work is made slowly and with care.",
+     b_f_name:"Name or first name",b_f_note:"A few words on what draws you to this work",b_f_note_ph:"No need for detail, just an intention.",
+     b_consent:"I am 18 or older, and I understand this is an inquiry, not a booking.",b_submit:"Send inquiry",
+     b_note2:"A reply within about a week. Every inquiry is handled privately and in confidence.",
+     c_intro:"For galleries, curators, editors and journalists. What you need to write about, show and programme the work with ease.",
+     c1h:"Portfolio & biography",c1p:"Short and long bio, statement, background, on request.",
+     c2h:"High-resolution files",c2p:"High-resolution images for press, under a usage agreement.",
+     c3h:"Prints & exhibitions",c3p:"Availability, formats, loan and hanging terms.",
+     c_f_org:"Organisation",c_f_type:"Subject",c_f_msg:"Message",c_submit:"Send",
+     opt_press:"Press",opt_expo:"Exhibition",opt_pub:"Publishing",opt_other:"Other"},
+   es:{k:"Colaborar",h1:"Trabajar juntos, con cuidado.",lede:"Tres maneras de entrar en este trabajo. Cada una empieza con una conversación, a tu ritmo, sin compromiso.",
+     ta:"Colaboración creativa",tb:"Encargo · Dark Desire",tc:"Prensa y curadores",
+     a_intro:"Un proyecto a varias manos. Ponemos en común una mirada, un cuerpo, un oficio, y hacemos algo que ninguno haría solo.",
+     a1h:"Me cuentas",a1p:"Unas palabras sobre lo que haces y lo que buscas. Tu disciplina, tus ganas, ese proyecto que te ronda. Nada fijo.",
+     a2h:"Nos tomamos el tiempo de encontrarnos",a2p:"Una llamada, un café. Vemos si nuestros mundos se responden, sin presión ni obligación de seguir.",
+     a3h:"Fijamos el marco entre los dos",a3p:"Roles, fechas, derechos, lo que cada uno aporta y recibe. Todo claro y por escrito, para que crear siga siendo ligero.",a3d:"✓ Un acuerdo simple, pensado para ambos",
+     a4h:"Creamos, con confianza",a4p:"Llegado el día, decidimos entre los dos. Un espacio tranquilo, tiempo, y lugar para lo imprevisto.",
+     a5h:"Compartimos",a5p:"Elegimos juntos, entrego las imágenes, los créditos son claros. Cada uno se va con algo que mostrar.",a5d:"✓ Entrega y créditos acordados de antemano",
+     f_name:"Nombre",f_email:"Email",a_f_disc:"Disciplina o medio",a_f_idea:"En qué trabajas",a_f_link:"Portafolio o Instagram",a_submit:"Enviar la propuesta",
+     b_intro:"Un momento para ti, sostenido con cuidado. Una sesión íntima, desnudo artístico o boudoir, pensada ante todo para que te sientas segura y mirada con justeza.",
+     b1h:"Escribes, sin exponerte",b1p:"Unas palabras sobre lo que te atrae, una intención, una emoción. Sin dar detalles. Dieciocho años o más.",
+     b2h:"Hablamos, con calma, antes de cualquier cámara",b2p:"Un intercambio privado, a tu ritmo, para entender tu deseo y poner tus límites. Ellos guían todo lo demás.",
+     b3h:"Preparamos un marco que tranquiliza",b3p:"Elegimos juntos el lugar, la luz, las referencias. Escribimos lo que se hará y lo que no.",b3d:"✓ Un acuerdo de derechos de imagen firmado, para tu tranquilidad",
+     b4h:"El día de la sesión",b4p:"Set cerrado en Medellín, una presencia discreta, música, el tiempo que haga falta. Te guío paso a paso y mantienes el control en todo momento.",b4d:"✓ Nada se hace sin tu sí",
+     b5h:"Tú decides qué existe",b5p:"Revisas las imágenes conmigo, con calma. Son tuyas. Eliges qué queda, qué se muestra, qué desaparece.",
+     b_seeseries:"ver la serie (18+)",b_reassure:"Por candidatura, en total confianza. Cada intercambio queda privado. Este trabajo se hace despacio y con cuidado.",
+     b_f_name:"Nombre",b_f_note:"Unas palabras sobre lo que te atrae de este trabajo",b_f_note_ph:"Sin detalles, solo una intención.",
+     b_consent:"Tengo 18 años o más, y entiendo que esto es un contacto, no una reserva.",b_submit:"Enviar la solicitud",
+     b_note2:"Respuesta en una semana aproximadamente. Cada solicitud se trata en privado y con total confidencialidad.",
+     c_intro:"Para galerías, curadores, editores y periodistas. Lo necesario para escribir, mostrar y programar el trabajo con tranquilidad.",
+     c1h:"Dossier y biografía",c1p:"Bio corta y larga, declaración, trayectoria, a pedido.",
+     c2h:"Archivos en alta resolución",c2p:"Imágenes en alta resolución para prensa, bajo acuerdo de uso.",
+     c3h:"Copias y exposiciones",c3p:"Disponibilidad, formatos, condiciones de préstamo y montaje.",
+     c_f_org:"Organización",c_f_type:"Asunto",c_f_msg:"Mensaje",c_submit:"Enviar",
+     opt_press:"Prensa",opt_expo:"Exposición",opt_pub:"Edición",opt_other:"Otro"}
+  };
+  var D=BOOK[L]||BOOK.fr;
+  document.querySelectorAll('[data-k]').forEach(function(el){ var v=D[el.getAttribute('data-k')]; if(v!=null) el.textContent=v; });
+  document.querySelectorAll('[data-kph]').forEach(function(el){ var v=D[el.getAttribute('data-kph')]; if(v!=null) el.setAttribute('placeholder',v); });
 
-  <script src="js/gallery-data.js"></script>
-  <script src="js/lang.js"></script>
-  <script src="js/vendor/anime.iife.min.js"></script>
-  <script src="js/main.js"></script>
+  var btns=document.querySelectorAll('.track-btn'), panels={a:'track-a',b:'track-b',c:'track-c'};
+  btns.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      btns.forEach(function(b){b.classList.remove('on');});
+      btn.classList.add('on');
+      Object.keys(panels).forEach(function(k){ document.getElementById(panels[k]).classList.toggle('on', k===btn.dataset.track); });
+    });
+  });
+})();
+</script>
 </body>
 </html>

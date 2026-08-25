@@ -1,187 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <title>W2b — About</title>
-  <meta name="description" content="W2b — Guillaume Delye, photographer based in Medellín. Studio practice in film. Available for exhibitions, residencies, and acquisitions.">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    .press-form { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.9rem; max-width: 460px; }
-    .press-intro { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 0.4rem; }
-    .press-field label {
-      display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.4rem;
-    }
-    .press-field input, .press-field textarea {
-      width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 4px;
-      color: var(--text); font-family: var(--font-body); font-size: 0.95rem; padding: 0.6rem 0.7rem;
-      outline: none; transition: border-color 0.2s;
-    }
-    .press-field input:focus, .press-field textarea:focus { border-color: var(--crimson); }
-    .press-field textarea { resize: vertical; min-height: 72px; }
-    .press-submit {
-      align-self: flex-start; background: none; border: 1px solid var(--crimson); color: var(--text);
-      font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
-      padding: 0.7rem 1.4rem; border-radius: 4px; cursor: pointer; transition: all 0.2s;
-    }
-    .press-submit:hover { background: var(--crimson); color: #fff; }
-    .press-success { display: none; color: var(--text); font-size: 0.9rem; margin-top: 0.5rem; }
-    .press-success.show { display: block; }
-  </style>
-  <link rel="canonical" href="https://w2bphotography.com/about.html">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>À propos — W2b</title>
+<meta name="description" content="W2b — Guillaume Delye, fine-art photographer based in Medellín. Film and digital, printed on cotton rag. Open to exhibitions, residencies and acquisitions.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://w2bphotography.com/about.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/art.css?v=5">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="nav" role="navigation">
-    <a class="nav-logo" href="home.html" aria-label="W2b Art · Home">
-      <img src="images/ui/w2b-logo.png" alt="W2b" width="197" height="140">
-    </a>
-    <ul class="nav-links">
-      <li><a href="home.html"        data-i18n="nav_home">Home</a></li>
-      <li><a href="home.html#galleries" data-i18n="nav_galleries">Galleries</a></li>
-      <li><a href="shop.html"         data-i18n="nav_shop">Prints</a></li>
-      <li><a href="about.html"        data-i18n="nav_about">About</a></li>
-      <li><a href="https://w2bphotography.com/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a></li>
-    </ul>
-    <div style="display:flex;align-items:center;gap:1.5rem;">
-      <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" data-lang="fr">FR</button>
-        <span class="lang-sep">|</span>
-        <button class="lang-btn" data-lang="es">ES</button>
-      </div>
-      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+<header class="hdr" id="hdr">
+  <div class="brand"><a href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a></div>
+  <nav>
+    <a href="home.html#series" data-ui="nav_series">Séries</a>
+    <a href="shop.html" data-ui="nav_prints">Tirages</a>
+    <a href="collaborate.html" data-ui="nav_collab">Collaborer</a>
+    <a href="about.html" data-ui="nav_about">À propos</a>
   </nav>
+  <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
+</header>
 
-  <!-- About Page Content -->
-  <main class="about-page" aria-label="About W2b">
+<main class="about">
+  <div class="eyebrow" data-k="eyebrow"></div>
+  <h1>Guillaume Delye</h1>
+  <div class="portrait"><img src="images/ui/portrait.jpg" alt="Guillaume Delye, Medellín"></div>
+  <div class="bio">
+    <p data-k="p1"></p>
+    <p data-k="p2"></p>
+    <p data-k="p3"></p>
+  </div>
+  <dl>
+    <dt data-k="m1l"></dt><dd data-k="m1v"></dd>
+    <dt data-k="m2l"></dt><dd data-k="m2v"></dd>
+    <dt data-k="m3l"></dt><dd data-k="m3v"></dd>
+    <dt data-k="m4l"></dt><dd><span data-k="m4v"></span><a href="shop.html" data-k="m4link"></a></dd>
+  </dl>
+  <div class="avail">
+    <h2 data-k="avail_l"></h2>
+    <ul><li data-k="av1"></li><li data-k="av2"></li><li data-k="av3"></li></ul>
+  </div>
+  <p class="press"><span data-k="press"></span> <a href="collaborate.html#track-c" data-k="press_link"></a></p>
+  <div class="sig"><img src="images/ui/signature.png" alt="Guillaume Delye" onerror="this.closest('.sig').style.display='none'"></div>
+</main>
 
-    <p class="about-page-eyebrow" data-i18n="about_lead">Medellín, film, hand-printed.</p>
-    <h1 class="about-page-title" data-i18n="about_title">Guillaume Delye</h1>
+<footer>
+  <div class="sig" style="display:flex;align-items:center;gap:18px"><img src="images/ui/film-canister.png" alt="" style="height:80px;opacity:.9"><div class="w" style="font-family:var(--serif);font-size:28px">W2<span style="color:var(--sang)">b</span></div></div>
+  <div class="l">@w2b.film<br><a href="home.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
+</footer>
 
-    <!-- Portrait -->
-    <div class="about-portrait-wrap">
-      <img src="images/ui/portrait.jpg" alt="W2b — Guillaume Delye, portrait, Medellín">
-      <div class="about-portrait-frame" aria-hidden="true"></div>
-    </div>
-
-    <!-- Bio paragraphs -->
-    <div class="about-bio reveal">
-      <p data-i18n="about_full_p1">
-        I'm Guillaume Delye, a French photographer based in Medellín, Colombia. I shoot 35mm and medium format. Black and white is processed by hand; colour is scanned and printed on cotton rag.
-      </p>
-      <p data-i18n="about_full_p2">
-        The work asks the same three questions: how a place holds memory, how a body sits in light, how an image earns the right to exist. The series come slowly, and they stay.
-      </p>
-      <p data-i18n="about_full_p3">
-        Open to exhibitions, residencies, and acquisitions. Editorial and commercial commissions are handled on the commercial site.
-      </p>
-    </div>
-
-    <!-- Studio metadata -->
-    <dl class="about-meta reveal">
-      <dt data-i18n="about_currently_label">In progress</dt>
-      <dd data-i18n="about_currently"><em>Medellín</em>, long-form documentary, since 2024.</dd>
-
-      <dt data-i18n="about_practice_label">Practice</dt>
-      <dd data-i18n="about_practice">35mm and medium format film · Hand-developed black &amp; white · Archival pigment prints on cotton rag</dd>
-
-      <dt data-i18n="about_locations_label">Based</dt>
-      <dd data-i18n="about_locations">Medellín, Colombia · available internationally</dd>
-
-      <dt data-i18n="about_prints_label">Editions</dt>
-      <dd>
-        <span data-i18n="about_prints">Editions of 7 + 2 AP · signed and numbered.</span>
-        <a href="shop.html" class="about-meta-link" data-i18n="about_prints_link">See prints →</a>
-      </dd>
-    </dl>
-
-    <!-- Available for / Press -->
-    <section class="about-list reveal" aria-labelledby="exhibitions-heading">
-      <h2 id="exhibitions-heading" data-i18n="about_exhibitions_label">Available for</h2>
-      <ul>
-        <li data-i18n="about_avail_1">Solo and group exhibitions</li>
-        <li data-i18n="about_avail_2">Residencies and assignments</li>
-        <li data-i18n="about_avail_3">Acquisitions, institutional and private</li>
-      </ul>
-    </section>
-
-    <section class="about-list reveal" aria-labelledby="publications-heading">
-      <h2 id="publications-heading" data-i18n="about_publications_label">Press</h2>
-      <p class="press-intro" data-i18n="press_intro">For press, features, interviews and review copies, send a note. I reply within 48 hours.</p>
-      <form class="press-form" id="press-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
-        <input type="hidden" name="_subject" value="Press inquiry — w2b art">
-        <div class="press-field">
-          <label for="press-name" data-i18n="press_name">Name &amp; outlet</label>
-          <input type="text" id="press-name" name="name" required>
-        </div>
-        <div class="press-field">
-          <label for="press-email" data-i18n="press_email">Email</label>
-          <input type="email" id="press-email" name="email" required>
-        </div>
-        <div class="press-field">
-          <label for="press-msg" data-i18n="press_msg">What you're working on</label>
-          <textarea id="press-msg" name="message" rows="3" required></textarea>
-        </div>
-        <button type="submit" class="press-submit" data-i18n="press_submit">Send</button>
-        <p class="press-success" id="press-success" data-i18n="press_success" role="alert">Thank you. I'll be in touch shortly.</p>
-      </form>
-    </section>
-
-    <!-- Signature (real ink scan, drawn in on scroll) -->
-    <div class="signature reveal" aria-label="Guillaume Delye">
-      <img class="sig-ink" src="images/ui/signature.png"
-           alt="Signature — Guillaume Delye" width="320"
-           onerror="this.closest('.signature').style.display='none'">
-    </div>
-
-    <!-- Action links -->
-    <div class="about-actions reveal">
-      <a class="btn" href="home.html#galleries" data-i18n="nav_galleries">Galleries</a>
-      <a class="btn btn-ghost" href="https://w2bphotography.com/w2b-pro/" data-i18n="nav_pro">Commercial ↗</a>
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <nav class="footer-social" aria-label="Contact and social">
-      <a href="https://www.instagram.com/w2b.film" target="_blank" rel="noopener">Instagram</a>
-      <a href="shop.html" data-i18n="nav_shop">Prints</a>
-      <a href="collaborate.html" data-i18n="nav_collab">Collaborate</a>
-      <a href="mailto:w2bphoto+prints@gmail.com">Inquire</a>
-    </nav>
-    <p class="footer-copy" data-i18n="footer_copy">© Guillaume Delye. All rights reserved</p>
-  </footer>
-
-  <script src="js/gallery-data.js"></script>
-  <script src="js/lang.js"></script>
-  <script src="js/vendor/anime.iife.min.js"></script>
-  <script src="js/main.js"></script>
-  <script>
-    (function () {
-      const form = document.getElementById('press-form');
-      if (!form) return;
-      const ok = document.getElementById('press-success');
-      form.addEventListener('submit', async e => {
-        e.preventDefault();
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }
-          });
-          if (res.ok) { form.querySelector('.press-submit').style.display = 'none'; ok.classList.add('show'); }
-        } catch (_) {}
-      });
-    })();
-  </script>
+<script src="js/art-i18n.js?v=1"></script>
+<script>
+(function(){
+  if(typeof w2bApplyUI==='function') w2bApplyUI();
+  var L=(window.W2B_LANG)||'fr';
+  var A={
+   fr:{eyebrow:"Medellín · argentique et numérique · tiré à la main",
+     p1:"Je suis Guillaume Delye, photographe français installé à Medellín, en Colombie. Je travaille en 35mm, moyen format et numérique. Le noir et blanc est souvent développé à la main ; les tirages sont faits sur coton.",
+     p2:"Le travail pose toujours les trois mêmes questions : comment un lieu garde la mémoire, comment un corps se tient dans la lumière, comment une image gagne le droit d'exister. Les séries viennent lentement, et elles restent.",
+     p3:"Ouvert aux expositions, résidences et acquisitions. Les commandes éditoriales et commerciales sont traitées sur le site commercial.",
+     m1l:"En cours",m1v:"Medellín, documentaire au long cours, depuis 2024.",
+     m2l:"Pratique",m2v:"Film 35mm et moyen format · Noir et blanc développé à la main · Tirages pigmentaires d'archive sur coton",
+     m3l:"Basé",m3v:"Medellín, Colombie · disponible à l'international",
+     m4l:"Éditions",m4v:"Éditions de 15 + 2 AP · signées et numérotées.",m4link:"Voir les tirages →",
+     avail_l:"Disponible pour",av1:"Expositions personnelles et collectives",av2:"Résidences et commandes",av3:"Acquisitions, institutionnelles et privées",
+     press:"Presse, curateurs, éditeurs : dossier, images HD et expositions.",press_link:"Voir Collaborer →"},
+   en:{eyebrow:"Medellín · film and digital · hand-printed",
+     p1:"I'm Guillaume Delye, a French photographer based in Medellín, Colombia. I work across 35mm, medium format and digital. Black and white is often hand-processed; prints are made on cotton rag.",
+     p2:"The work asks the same three questions: how a place holds memory, how a body sits in light, how an image earns the right to exist. The series come slowly, and they stay.",
+     p3:"Open to exhibitions, residencies and acquisitions. Editorial and commercial commissions are handled on the commercial site.",
+     m1l:"In progress",m1v:"Medellín, long-form documentary, since 2024.",
+     m2l:"Practice",m2v:"35mm and medium format film · Hand-developed black and white · Archival pigment prints on cotton rag",
+     m3l:"Based",m3v:"Medellín, Colombia · available internationally",
+     m4l:"Editions",m4v:"Editions of 15 + 2 AP · signed and numbered.",m4link:"See the prints →",
+     avail_l:"Available for",av1:"Solo and group exhibitions",av2:"Residencies and assignments",av3:"Acquisitions, institutional and private",
+     press:"Press, curators, editors: portfolio, high-res images and exhibitions.",press_link:"See Collaborate →"},
+   es:{eyebrow:"Medellín · película y digital · impreso a mano",
+     p1:"Soy Guillaume Delye, fotógrafo francés radicado en Medellín, Colombia. Trabajo en 35mm, formato medio y digital. El blanco y negro suele revelarse a mano; las copias se hacen sobre algodón.",
+     p2:"El trabajo hace siempre las mismas tres preguntas: cómo un lugar guarda la memoria, cómo un cuerpo se sostiene en la luz, cómo una imagen se gana el derecho a existir. Las series llegan despacio, y se quedan.",
+     p3:"Abierto a exposiciones, residencias y adquisiciones. Los encargos editoriales y comerciales se atienden en el sitio comercial.",
+     m1l:"En curso",m1v:"Medellín, documental de largo aliento, desde 2024.",
+     m2l:"Práctica",m2v:"Película 35mm y formato medio · Blanco y negro revelado a mano · Copias pigmentadas de archivo sobre algodón",
+     m3l:"Radicado",m3v:"Medellín, Colombia · disponible internacionalmente",
+     m4l:"Ediciones",m4v:"Ediciones de 15 + 2 AP · firmadas y numeradas.",m4link:"Ver las copias →",
+     avail_l:"Disponible para",av1:"Exposiciones individuales y colectivas",av2:"Residencias y encargos",av3:"Adquisiciones, institucionales y privadas",
+     press:"Prensa, curadores, editores: dossier, imágenes HD y exposiciones.",press_link:"Ver Colaborar →"}
+  };
+  var D=A[L]||A.fr;
+  document.querySelectorAll('[data-k]').forEach(function(el){var v=D[el.getAttribute('data-k')];if(v!=null)el.textContent=v;});
+})();
+</script>
 </body>
 </html>
