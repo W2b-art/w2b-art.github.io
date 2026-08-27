@@ -391,6 +391,15 @@ const GALLERY_DATA = {
           fr: "Silhouettes à l'intérieur d'un marché couvert peu éclairé sous une lumière rasante, Medellín, photographie documentaire noir et blanc",
           es: "Siluetas dentro de un mercado cubierto en penumbra bajo luz rasante, Medellín, fotografía documental en blanco y negro"
         }
+      },
+      {
+        file: "medellin-bella-artes-pano-taller-luz-color-w2b.jpg",
+        wide: true,
+        alt: {
+          en: "Panoramic interior of the abandoned Bellas Artes rail workshop, warm light falling through the broken roof, Medellín, colour photography",
+          fr: "Panoramique de l'intérieur de l'atelier ferroviaire abandonné de Bellas Artes, lumière chaude tombant à travers le toit crevé, Medellín, photographie couleur",
+          es: "Panorámica del interior del taller ferroviario abandonado de Bellas Artes, luz cálida cayendo por el techo roto, Medellín, fotografía a color"
+        }
       }
     ]
   },
@@ -400,14 +409,14 @@ const GALLERY_DATA = {
     folder: "images/matter/",
     coverIndex: 8,
     title: {
-      en: "Matter",
-      fr: "Matière",
-      es: "Materia"
+      en: "Aesthetic Exploration",
+      fr: "Exploration Esthétique",
+      es: "Exploración Estética"
     },
     description: {
-      en: "Quiet close-ups, found objects, and abstract surfaces — the tactile language of light on matter.",
-      fr: "Gros plans silencieux, objets trouvés et surfaces abstraites — le langage tactile de la lumière sur la matière.",
-      es: "Primeros planos silenciosos, objetos encontrados y superficies abstractas — el lenguaje táctil de la luz sobre la materia."
+      en: "A study of light, texture, and detail. Quiet close-ups, found objects, and abstract surfaces where the eye slows down and the ordinary turns tactile.",
+      fr: "Une étude de la lumière, des textures et des détails. Gros plans silencieux, objets trouvés et surfaces abstraites, là où l'œil ralentit et où l'ordinaire devient matière.",
+      es: "Un estudio de la luz, las texturas y el detalle. Primeros planos silenciosos, objetos encontrados y superficies abstractas donde la mirada se detiene y lo ordinario se vuelve táctil."
     },
     images: [
       {
@@ -625,9 +634,9 @@ const GALLERY_DATA = {
       es: "Desnudo"
     },
     description: {
-      en: "Fine-art nude and boudoir, the body as landscape. Low-key black and white studies, with a colour series on devotion, control, and release.",
-      fr: "Nu d'art et boudoir, le corps comme paysage. Études en noir et blanc clair-obscur, et une série couleur sur la dévotion, l'emprise et la libération.",
-      es: "Desnudo artístico y boudoir, el cuerpo como paisaje. Estudios en blanco y negro de bajo perfil, y una serie a color sobre la devoción, el control y la liberación."
+      en: "Fine-art nude, the body as landscape. Low-key black and white studies where form emerges from shadow.",
+      fr: "Nu d'art, le corps comme paysage. Études en noir et blanc clair-obscur où la forme émerge de l'ombre.",
+      es: "Desnudo artístico, el cuerpo como paisaje. Estudios en blanco y negro de bajo perfil donde la forma emerge de la sombra."
     },
     images: [
       {
@@ -732,46 +741,6 @@ const GALLERY_DATA = {
           en: "Reclining figure in warm ambient light, intimate boudoir photography",
           fr: "Silhouette allongée dans une lumière chaude ambiante, photographie boudoir intime",
           es: "Figura reclinada en cálida luz ambiente, fotografía boudoir íntima"
-        }
-      },
-      {
-        file: "boudoir-red-drape-kneeling-bust-colour-w2b.jpg",
-        alt: {
-          en: "A woman draped in red kneeling and reaching up to a white classical bust on a pedestal, colour fine-art boudoir, Medellín",
-          fr: "Une femme drapée de rouge agenouillée tendant les bras vers un buste classique blanc sur un piédestal, boudoir d'art couleur, Medellín",
-          es: "Una mujer envuelta en rojo arrodillada extendiendo los brazos hacia un busto clásico blanco sobre un pedestal, boudoir artístico a color, Medellín"
-        }
-      },
-      {
-        file: "boudoir-red-drape-nude-intimate-colour-w2b.jpg",
-        alt: {
-          en: "Intimate fine-art nude wrapped in flowing red fabric against a dark backdrop, colour boudoir photography",
-          fr: "Nu d'art intime enveloppé d'un tissu rouge fluide sur fond sombre, photographie boudoir couleur",
-          es: "Desnudo artístico íntimo envuelto en una tela roja fluida sobre fondo oscuro, fotografía boudoir a color"
-        }
-      },
-      {
-        file: "boudoir-red-drape-reaching-bust-colour-w2b.jpg",
-        alt: {
-          en: "Woman in red reaching toward a red-draped classical bust inside a tall mirror, colour fine-art boudoir",
-          fr: "Femme en rouge tendant la main vers un buste classique drapé de rouge dans un grand miroir, boudoir d'art couleur",
-          es: "Mujer de rojo extendiendo la mano hacia un busto clásico cubierto de rojo dentro de un espejo alto, boudoir artístico a color"
-        }
-      },
-      {
-        file: "boudoir-white-dress-reading-colour-w2b.jpg",
-        alt: {
-          en: "Woman in a white dress reading a book among tropical plants and blue tilework, colour fine-art boudoir, Medellín",
-          fr: "Femme en robe blanche lisant un livre parmi des plantes tropicales et des azulejos bleus, boudoir d'art couleur, Medellín",
-          es: "Mujer con vestido blanco leyendo un libro entre plantas tropicales y azulejos azules, boudoir artístico a color, Medellín"
-        }
-      },
-      {
-        file: "boudoir-mirror-bust-red-white-fabric-colour-w2b.jpg",
-        alt: {
-          en: "Woman in white reading inside a tall mirror as red and white fabric spill from the frame toward the viewer, a toppled bust below, colour fine-art boudoir",
-          fr: "Femme en blanc lisant dans un grand miroir tandis que des tissus rouge et blanc débordent du cadre vers le spectateur, un buste renversé en bas, boudoir d'art couleur",
-          es: "Mujer de blanco leyendo dentro de un espejo alto mientras telas roja y blanca se derraman del marco hacia el espectador, un busto derribado abajo, boudoir artístico a color"
         }
       }
     ]
@@ -881,22 +850,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "boudoir-nude-warm-light-colour-12-w2b.jpg",
-        alt: {
-          en: "Colour boudoir nude seen from behind in warm ambient light, fine-art photography",
-          fr: "Nu boudoir couleur vu de dos dans une lumière chaude ambiante, photographie d'art",
-          es: "Desnudo boudoir a color visto de espaldas en cálida luz ambiente, fotografía artística"
-        }
-      },
-      {
-        file: "boudoir-nude-warm-light-colour-13-w2b.jpg",
-        alt: {
-          en: "Warm-toned colour boudoir nude study, fine-art photography",
-          fr: "Étude de nu boudoir couleur aux tons chauds, photographie d'art",
-          es: "Estudio de desnudo boudoir a color de tonos cálidos, fotografía artística"
-        }
-      },
-      {
         file: "shibari-bound-nude-gypsophila-black-white-w2b.jpg",
         alt: {
           en: "Fine-art nude bound with shibari rope, a lace veil and baby's breath flowers, low-key black and white photography",
@@ -947,163 +900,109 @@ const GALLERY_DATA = {
     ]
   },
 
-  "argentina": {
-    id: "argentina",
-    folder: "images/argentina/",
-    coverIndex: 17,
+  "boudoir-red": {
+    id: "boudoir-red",
+    folder: "images/boudoir-red/",
+    coverIndex: 0,
     title: {
-      en: "Discovery and Passion",
-      fr: "Découverte et Passion",
-      es: "Descubrimiento y Pasión"
+      en: "Boudoir",
+      fr: "Boudoir",
+      es: "Boudoir"
     },
     description: {
-      en: "A journey south on film — Patagonian lakes and the high desert, Buenos Aires, and the tango. Argentina seen with a foreign eye.",
-      fr: "Un voyage vers le sud, en argentique — les lacs de Patagonie et le haut désert, Buenos Aires, et le tango. L'Argentine vue par un œil étranger.",
-      es: "Un viaje al sur en analógico — los lagos de la Patagonia y el altiplano, Buenos Aires, y el tango. Argentina vista con una mirada extranjera."
+      en: "Here the person is the whole picture. Skin, gaze and gesture given the room to be beautiful without apology — sensuality read as presence, not as pose. It opens on a story in red, and keeps growing.",
+      fr: "Ici, la personne est toute l'image. La peau, le regard, le geste, à qui l'on laisse la place d'être beaux sans s'excuser — la sensualité comme présence, non comme pose. Elle s'ouvre sur une histoire en rouge, et continue de grandir.",
+      es: "Aquí la persona es toda la imagen. La piel, la mirada, el gesto, a los que se les deja espacio para ser bellos sin pedir permiso — la sensualidad como presencia, no como pose. Se abre con una historia en rojo, y sigue creciendo."
     },
     images: [
       {
-        file: "argentina-patagonia-lake-islands-mountains-colour-film-w2b.jpg",
+        file: "boudoir-red-drape-reaching-bust-colour-w2b.jpg",
         alt: {
-          en: "Patagonian lake dotted with islands and ringed by mountains, colour film landscape, Argentina",
-          fr: "Lac de Patagonie parsemé d'îles et cerné de montagnes, paysage argentique couleur, Argentine",
-          es: "Lago patagónico salpicado de islas y rodeado de montañas, paisaje analógico color, Argentina"
+          en: "Woman in red reaching toward a red-draped classical bust inside a tall mirror, colour fine-art boudoir",
+          fr: "Femme en rouge tendant la main vers un buste classique drapé de rouge dans un grand miroir, boudoir d'art couleur",
+          es: "Mujer de rojo extendiendo la mano hacia un busto clásico cubierto de rojo dentro de un espejo alto, boudoir artístico a color"
         }
       },
       {
-        file: "argentina-patagonia-lake-town-mountains-colour-film-w2b.jpg",
+        file: "boudoir-red-drape-kneeling-bust-colour-w2b.jpg",
         alt: {
-          en: "Mountain lake with a lakeside town and peaks beyond, colour film, Patagonia, Argentina",
-          fr: "Lac de montagne avec un village au bord de l'eau et des sommets au loin, argentique couleur, Patagonie, Argentine",
-          es: "Lago de montaña con un pueblo a la orilla y cumbres al fondo, analógico color, Patagonia, Argentina"
+          en: "A woman draped in red kneeling and reaching up to a white classical bust on a pedestal, colour fine-art boudoir, Medellín",
+          fr: "Une femme drapée de rouge agenouillée tendant les bras vers un buste classique blanc sur un piédestal, boudoir d'art couleur, Medellín",
+          es: "Una mujer envuelta en rojo arrodillada extendiendo los brazos hacia un busto clásico blanco sobre un pedestal, boudoir artístico a color, Medellín"
         }
       },
       {
-        file: "argentina-misty-green-mountain-peak-film-w2b.jpg",
+        file: "boudoir-mirror-bust-red-white-fabric-colour-w2b.jpg",
         alt: {
-          en: "A green mountain peak wreathed in mist, colour film landscape, Argentina",
-          fr: "Un sommet vert nimbé de brume, paysage argentique couleur, Argentine",
-          es: "Un pico montañoso verde envuelto en bruma, paisaje analógico color, Argentina"
+          en: "Woman in white reading inside a tall mirror as red and white fabric spill from the frame toward the viewer, a toppled bust below, colour fine-art boudoir",
+          fr: "Femme en blanc lisant dans un grand miroir tandis que des tissus rouge et blanc débordent du cadre vers le spectateur, un buste renversé en bas, boudoir d'art couleur",
+          es: "Mujer de blanco leyendo dentro de un espejo alto mientras telas roja y blanca se derraman del marco hacia el espectador, un busto derribado abajo, boudoir artístico a color"
         }
       },
       {
-        file: "argentina-andean-canyon-golden-light-film-w2b.jpg",
+        file: "boudoir-white-dress-reading-colour-w2b.jpg",
         alt: {
-          en: "Andean canyon walls in warm low light, colour film landscape, Argentina",
-          fr: "Parois d'un canyon andin dans une lumière chaude et basse, paysage argentique couleur, Argentine",
-          es: "Paredes de un cañón andino bajo una luz cálida y baja, paisaje analógico color, Argentina"
+          en: "Woman in a white dress reading a book among tropical plants and blue tilework, colour fine-art boudoir, Medellín",
+          fr: "Femme en robe blanche lisant un livre parmi des plantes tropicales et des azulejos bleus, boudoir d'art couleur, Medellín",
+          es: "Mujer con vestido blanco leyendo un libro entre plantas tropicales y azulejos azules, boudoir artístico a color, Medellín"
         }
       },
       {
-        file: "argentina-araucaria-tree-black-white-film-w2b.jpg",
+        file: "boudoir-red-drape-nude-intimate-colour-w2b.jpg",
         alt: {
-          en: "An araucaria (monkey-puzzle) tree against the sky, black and white film, Patagonia, Argentina",
-          fr: "Un araucaria (désespoir des singes) se découpant sur le ciel, argentique noir et blanc, Patagonie, Argentine",
-          es: "Una araucaria recortada contra el cielo, analógico blanco y negro, Patagonia, Argentina"
+          en: "Intimate fine-art nude wrapped in flowing red fabric against a dark backdrop, colour boudoir photography",
+          fr: "Nu d'art intime enveloppé d'un tissu rouge fluide sur fond sombre, photographie boudoir couleur",
+          es: "Desnudo artístico íntimo envuelto en una tela roja fluida sobre fondo oscuro, fotografía boudoir a color"
         }
-      },
-      {
-        file: "argentina-dramatic-clouds-lake-black-white-film-w2b.jpg",
-        alt: {
-          en: "Dramatic clouds massing over a lake, black and white film landscape, Argentina",
-          fr: "Nuages dramatiques s'amassant au-dessus d'un lac, paysage argentique noir et blanc, Argentine",
-          es: "Nubes dramáticas acumulándose sobre un lago, paisaje analógico blanco y negro, Argentina"
-        }
-      },
-      {
-        file: "argentina-geyser-steam-altiplano-black-white-film-w2b.jpg",
-        alt: {
-          en: "Steam rising from a geyser field on the high altiplano, black and white film, Argentina",
-          fr: "Vapeur s'élevant d'un champ de geysers sur l'altiplano, argentique noir et blanc, Argentine",
-          es: "Vapor brotando de un campo de géiseres en el altiplano, analógico blanco y negro, Argentina"
-        }
-      },
+      }
+    ]
+  },
+
+  "argentina": {
+    id: "argentina",
+    folder: "images/argentina/",
+    coverIndex: 3,
+    title: {
+      en: "Anima",
+      fr: "Anima",
+      es: "Anima"
+    },
+    description: {
+      en: "The human, caught in the act of living. Candid frames of people mid-gesture, mid-feeling — the breath between poses. A series in preparation.",
+      fr: "L'humain, saisi en plein acte de vivre. Des images sur le vif, prises entre deux gestes, entre deux émotions — le souffle entre les poses. Une série en préparation.",
+      es: "Lo humano, captado en pleno acto de vivir. Imágenes espontáneas de personas a mitad de un gesto, a mitad de una emoción — el aliento entre poses. Una serie en preparación."
+    },
+    images: [
       {
         file: "argentina-child-leaping-into-lake-black-white-film-w2b.jpg",
         alt: {
-          en: "A child caught mid-leap into a lake, black and white film, Argentina",
-          fr: "Un enfant saisi en plein saut dans un lac, argentique noir et blanc, Argentine",
-          es: "Un niño captado en pleno salto a un lago, analógico blanco y negro, Argentina"
-        }
-      },
-      {
-        file: "argentina-figure-arms-raised-sunset-film-w2b.jpg",
-        alt: {
-          en: "A figure with arms raised against the sunset, colour film, Argentina",
-          fr: "Une silhouette bras levés face au coucher du soleil, argentique couleur, Argentine",
-          es: "Una figura con los brazos en alto frente al atardecer, analógico color, Argentina"
-        }
-      },
-      {
-        file: "argentina-statue-silhouette-dusk-film-w2b.jpg",
-        alt: {
-          en: "Silhouette of a statue at dusk, colour film, Argentina",
-          fr: "Silhouette d'une statue au crépuscule, argentique couleur, Argentine",
-          es: "Silueta de una estatua al anochecer, analógico color, Argentina"
-        }
-      },
-      {
-        file: "buenos-aires-avenue-palm-golden-light-film-w2b.jpg",
-        alt: {
-          en: "A wide Buenos Aires avenue lined with palms in golden light, colour film",
-          fr: "Une large avenue de Buenos Aires bordée de palmiers dans la lumière dorée, argentique couleur",
-          es: "Una amplia avenida de Buenos Aires bordeada de palmeras bajo la luz dorada, analógico color"
-        }
-      },
-      {
-        file: "buenos-aires-street-cars-warm-light-film-w2b.jpg",
-        alt: {
-          en: "A Buenos Aires street with cars in warm afternoon light, colour film",
-          fr: "Une rue de Buenos Aires avec des voitures dans la lumière chaude de l'après-midi, argentique couleur",
-          es: "Una calle de Buenos Aires con autos bajo la cálida luz de la tarde, analógico color"
-        }
-      },
-      {
-        file: "buenos-aires-golden-modernist-facade-film-w2b.jpg",
-        alt: {
-          en: "Golden geometric facade of a Buenos Aires modernist building, colour film",
-          fr: "Façade géométrique dorée d'un immeuble moderniste de Buenos Aires, argentique couleur",
-          es: "Fachada geométrica dorada de un edificio modernista de Buenos Aires, analógico color"
-        }
-      },
-      {
-        file: "buenos-aires-cathedral-spire-black-white-film-w2b.jpg",
-        alt: {
-          en: "Spire of a Buenos Aires cathedral against the sky, black and white film",
-          fr: "Flèche d'une cathédrale de Buenos Aires sur fond de ciel, argentique noir et blanc",
-          es: "Aguja de una catedral de Buenos Aires contra el cielo, analógico blanco y negro"
-        }
-      },
-      {
-        file: "buenos-aires-colonial-church-facade-film-w2b.jpg",
-        alt: {
-          en: "Ornate colonial church facade in Buenos Aires, colour film",
-          fr: "Façade d'église coloniale ornée à Buenos Aires, argentique couleur",
-          es: "Fachada de iglesia colonial ornamentada en Buenos Aires, analógico color"
+          en: "A child caught mid-leap into a lake, candid black and white film photography",
+          fr: "Un enfant saisi en plein saut dans un lac, photographie argentique noir et blanc sur le vif",
+          es: "Un niño captado en pleno salto a un lago, fotografía analógica en blanco y negro captada al vuelo"
         }
       },
       {
         file: "argentina-couple-embrace-black-white-film-w2b.jpg",
         alt: {
-          en: "Two people embracing, black and white film, Argentina",
-          fr: "Deux personnes enlacées, argentique noir et blanc, Argentine",
-          es: "Dos personas abrazándose, analógico blanco y negro, Argentina"
+          en: "Two people embracing, candid black and white film photography",
+          fr: "Deux personnes enlacées, photographie argentique noir et blanc sur le vif",
+          es: "Dos personas abrazándose, fotografía analógica en blanco y negro captada al vuelo"
         }
       },
       {
         file: "buenos-aires-bandoneon-player-tango-film-w2b.jpg",
         alt: {
-          en: "A bandoneón player performing, Buenos Aires, colour film — tango",
-          fr: "Un joueur de bandonéon en plein jeu, Buenos Aires, argentique couleur — tango",
-          es: "Un bandoneonista tocando, Buenos Aires, analógico color — tango"
+          en: "A bandoneón player lost in the music, candid colour film photography, tango",
+          fr: "Un joueur de bandonéon absorbé par la musique, photographie argentique couleur sur le vif, tango",
+          es: "Un bandoneonista absorto en la música, fotografía analógica a color captada al vuelo, tango"
         }
       },
       {
         file: "buenos-aires-tango-dancer-red-dress-window-film-w2b.jpg",
         alt: {
-          en: "A tango dancer in a red dress in window light, Buenos Aires, colour film",
-          fr: "Une danseuse de tango en robe rouge dans la lumière d'une fenêtre, Buenos Aires, argentique couleur",
-          es: "Una bailarina de tango con vestido rojo en la luz de una ventana, Buenos Aires, analógico color"
+          en: "A tango dancer in a red dress in window light, candid colour film photography",
+          fr: "Une danseuse de tango en robe rouge dans la lumière d'une fenêtre, photographie argentique couleur sur le vif",
+          es: "Una bailarina de tango con vestido rojo en la luz de una ventana, fotografía analógica a color captada al vuelo"
         }
       }
     ]
@@ -1428,6 +1327,70 @@ const GALLERY_DATA = {
           en: "Close detail of a cap and earring at the edge of the circle, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
           fr: "Détail rapproché d'une casquette et d'une boucle d'oreille en bordure du cercle, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
           es: "Detalle cercano de una gorra y un arete al borde del círculo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-freeze-suelo-horizontal-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer holding a horizontal floor freeze, body suspended low over the ground, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur tenant un freeze horizontal au sol, le corps suspendu au ras du bitume, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín sosteniendo un freeze horizontal en el suelo, el cuerpo suspendido a ras del piso, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-chaqueta-vuelo-movimiento-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer mid-move with a jacket flying out around the body, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur en plein mouvement, veste s'envolant autour du corps, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín en pleno movimiento con la chaqueta volando alrededor del cuerpo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-freeze-una-mano-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer balanced in a one-handed freeze, legs in the air, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur en équilibre dans un freeze sur une main, jambes en l'air, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín en equilibrio en un freeze sobre una mano, piernas en el aire, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-movimiento-bajo-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer dropping into a low move close to the ground, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur plongeant dans un mouvement bas, près du sol, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín bajando a un movimiento bajo, cerca del suelo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-brazo-rostro-dramatico-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer sweeping an arm across the face in dramatic light, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur balayant le visage d'un bras dans une lumière dramatique, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín cruzando el rostro con un brazo bajo luz dramática, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-contraluz-inclinado-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer leaning into a move under hard backlight, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur penché dans un mouvement à contre-jour marqué, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín inclinado en un movimiento a contraluz marcado, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-freeze-agachado-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer holding a low crouched freeze inside the circle, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur tenant un freeze accroupi bas au centre du cercle, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín sosteniendo un freeze agachado dentro del círculo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-retrato-gorra-black-white-w2b.jpg",
+        alt: {
+          en: "Portrait of a dancer in a cap at the edge of the circle, direct and charismatic, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Portrait d'un danseur en casquette en bordure du cercle, regard direct et charismatique, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Retrato de un bailarín con gorra al borde del círculo, mirada directa y carismática, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
         }
       }
     ]

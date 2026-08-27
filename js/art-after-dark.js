@@ -23,7 +23,7 @@
         ['images/boudoir/fetish-latex-mask-dramatic-shadow-07-w2b.jpg','Dark Desire','boudoir'] ],
       [ ['images/nude/fine-art-nude-study-low-key-black-white-01-w2b.jpg','Nude','nude'],
         ['images/boudoir/shibari-rope-tying-red-roses-w2b.jpg','Dark Desire','boudoir'],
-        ['images/nude/boudoir-red-drape-nude-intimate-colour-w2b.jpg','Nude','nude'] ]
+        ['images/boudoir-red/boudoir-red-drape-reaching-bust-colour-w2b.jpg','Boudoir','boudoir-red'] ]
     ];
     var pick = GROUPS[Math.floor(Math.random()*GROUPS.length)];
     var wrap=document.getElementById('heroFrames'), now=document.getElementById('now'), dots=document.getElementById('dots');

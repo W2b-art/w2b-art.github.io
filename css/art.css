@@ -31,6 +31,10 @@ a{color:inherit;text-decoration:none}
 .hdr .lang button{background:none;border:0;color:var(--ash);font:inherit;letter-spacing:.14em;cursor:pointer;padding:0 2px}
 .hdr .lang button.on{color:var(--bone)}
 .hdr .lang button:hover{color:var(--or)}
+.hdr .xport{display:inline-flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:.16em;font-size:13px;line-height:1;color:#F3EEE6;text-shadow:0 1px 10px rgba(0,0,0,.8),0 0 2px rgba(0,0,0,.6);transition:color .3s}
+.hdr .xport img{height:16px;width:auto;display:block}
+.hdr .xport:hover{color:var(--or)}
+@media(max-width:640px){.hdr .xport span{display:none}}
 
 /* ---------- home hero (4x4 random group) ---------- */
 .hero{position:relative;height:100vh;overflow:hidden}
@@ -93,6 +97,8 @@ a{color:inherit;text-decoration:none}
 .plate:hover .n{opacity:1}
 .plate.feature{column-span:all;margin:14px auto 40px;max-width:1180px;text-align:center}
 .plate.feature img{width:100%;height:auto}
+.plate.wide{column-span:all;display:block;margin:20px 0 44px;max-width:100%;width:100%}
+.plate.wide img{display:block;width:100%;height:auto}
 
 /* ---------- lightbox (adaptive) ---------- */
 .lb{position:fixed;inset:0;z-index:200;background:rgba(8,6,4,.97);display:none;align-items:center;justify-content:center;padding:4vh 5vw}

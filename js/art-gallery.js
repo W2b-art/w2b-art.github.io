@@ -42,8 +42,8 @@
     return { src: g.folder+im.file, cap: tri || cleanCap(im.alt&&(im.alt[LANG]||im.alt.fr)) };
   });
   g.images.forEach(function(im,i){
-    var isFeature = (i%5===2) || (i===g.images.length-1);
-    var fig = document.createElement('figure'); fig.className='plate'+(isFeature?' feature':'');
+    var isFeature = !im.wide && ((i%5===2) || (i===g.images.length-1));
+    var fig = document.createElement('figure'); fig.className='plate'+(im.wide?' wide':(isFeature?' feature':''));
     var img = new Image(); img.loading='lazy'; img.src=g.folder+im.file; img.alt=(im.alt&&(im.alt[LANG]||im.alt.fr))||'';
     var cap = document.createElement('figcaption'); cap.className='n'; cap.textContent=String(i+1).padStart(2,'0')+' / '+g.images.length;
     fig.appendChild(img); fig.appendChild(cap); plates.appendChild(fig);

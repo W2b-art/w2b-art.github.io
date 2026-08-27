@@ -9,6 +9,7 @@
     nav_collab:{en:"Collaborate",fr:"Collaborer",es:"Colaborar"},
     nav_about:{en:"About",fr:"À propos",es:"Sobre mí"},
     nav_commercial:{en:"Commercial ↗",fr:"Commercial ↗",es:"Comercial ↗"},
+    nav_pro:{en:"Pro Portfolio",fr:"Portfolio Pro",es:"Portafolio Pro"},
     descriptor:{en:"Fine-art photography · Medellín",fr:"Photographie d'art · Medellín",es:"Fotografía de autor · Medellín"},
     back_series:{en:"← All series",fr:"← Toutes les séries",es:"← Todas las series"},
     back_afterdark:{en:"← After Dark",fr:"← After Dark",es:"← After Dark"},
@@ -34,7 +35,8 @@
     ad_p:{en:"The body as landscape, and a darker register. What the night allows.",fr:"Le corps comme paysage, et un registre plus sombre. Ce que la nuit autorise.",es:"El cuerpo como paisaje, y un registro más oscuro. Lo que la noche permite."},
     entry_go:{en:"View the series →",fr:"Voir la série →",es:"Ver la serie →"},
     entry_nude_p:{en:"The body as landscape. What light reveals once everything else falls away.",fr:"Le corps comme paysage. Ce que la lumière révèle quand tout le reste s'efface.",es:"El cuerpo como paisaje. Lo que la luz revela cuando todo lo demás se borra."},
-    entry_dd_p:{en:"Desire staged, between latex, rope and red light.",fr:"Le désir mis en scène, entre latex, corde et lumière rouge.",es:"El deseo puesto en escena, entre látex, cuerda y luz roja."}
+    entry_dd_p:{en:"Desire staged, between latex, rope and red light.",fr:"Le désir mis en scène, entre latex, corde et lumière rouge.",es:"El deseo puesto en escena, entre látex, cuerda y luz roja."},
+    entry_bd_p:{en:"The person as the whole picture — presence, not pose.",fr:"La personne comme toute l'image — la présence, pas la pose.",es:"La persona como toda la imagen — presencia, no pose."}
   };
 
   window.w2bT = function(key){ var e=W2B_UI[key]; return e ? (e[W2B_LANG]||e.fr) : key; };
@@ -51,5 +53,20 @@
         b.addEventListener('click', function(){ try{ localStorage.setItem('w2b_lang', b.dataset.l); }catch(e){} location.reload(); });
       });
     }
+    /* cross-portfolio button → commercial (pro) site.
+       Only on navigational pages (home/about/prints/collaborate), not inside
+       a gallery view (those set window.GALLERY_ID). */
+    try {
+      var hdr = document.querySelector('.hdr');
+      if (hdr && !window.GALLERY_ID && !hdr.querySelector('.xport')){
+        var a = document.createElement('a');
+        a.className = 'xport'; a.href = 'https://w2bphotography.com/w2b-pro/';
+        a.setAttribute('aria-label', w2bT('nav_pro'));
+        a.innerHTML = '<img src="images/ui/gd-mark-light.svg" alt=""><span>'+w2bT('nav_pro')+'</span>';
+        var nav = hdr.querySelector('nav');
+        if (nav) nav.appendChild(a);
+        else hdr.insertBefore(a, hdr.querySelector('.lang'));
+      }
+    } catch(e){}
   };
 })();
