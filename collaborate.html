@@ -9,9 +9,7 @@
 <link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="canonical" href="https://w2bphotography.com/collaborate.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/art.css?v=5">
 </head>
 <body>
@@ -60,6 +58,7 @@
       <div class="field"><label for="a-idea" data-k="a_f_idea"></label><textarea id="a-idea" name="idea" rows="4" required></textarea></div>
       <div class="field"><label for="a-link" data-k="a_f_link"></label><input id="a-link" name="portfolio" type="text"></div>
       <div class="field"><label for="a-email" data-k="f_email"></label><input id="a-email" name="email" type="email" required></div>
+      <label class="consent"><input type="checkbox" name="privacy_consent" required><span data-k="f_consent"></span> <a href="documents/privacy.html" target="_blank" rel="noopener" data-k="f_privacy_link"></a></label>
       <button class="submit" type="submit" data-k="a_submit"></button>
     </form>
   </section>
@@ -87,6 +86,7 @@
       <div class="field"><label for="b-email" data-k="f_email"></label><input id="b-email" name="email" type="email" required></div>
       <div class="field"><label for="b-note" data-k="b_f_note"></label><textarea id="b-note" name="note" rows="3" data-kph="b_f_note_ph"></textarea></div>
       <label class="consent"><input type="checkbox" name="consent" required><span data-k="b_consent"></span></label>
+      <label class="consent"><input type="checkbox" name="privacy_consent" required><span data-k="f_consent"></span> <a href="documents/privacy.html" target="_blank" rel="noopener" data-k="f_privacy_link"></a></label>
       <button class="submit" type="submit" data-k="b_submit"></button>
     </form>
     <p class="book-note" data-k="b_note2"></p>
@@ -111,6 +111,7 @@
         <select id="c-type" name="type"><option data-k="opt_press"></option><option data-k="opt_expo"></option><option data-k="opt_pub"></option><option data-k="opt_other"></option></select></div>
       <div class="field"><label for="c-msg" data-k="c_f_msg"></label><textarea id="c-msg" name="message" rows="4" required></textarea></div>
       <div class="field"><label for="c-email" data-k="f_email"></label><input id="c-email" name="email" type="email" required></div>
+      <label class="consent"><input type="checkbox" name="privacy_consent" required><span data-k="f_consent"></span> <a href="documents/privacy.html" target="_blank" rel="noopener" data-k="f_privacy_link"></a></label>
       <button class="submit" type="submit" data-k="c_submit"></button>
     </form>
   </section>
@@ -121,7 +122,7 @@
   <div class="l">@w2b.film<br><a href="home.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
 </footer>
 
-<script src="js/art-i18n.js?v=3"></script>
+<script src="js/art-i18n.js?v=4"></script>
 <script>
 (function(){
   if(typeof w2bApplyUI==='function') w2bApplyUI();
@@ -135,7 +136,7 @@
      a3h:"On pose le cadre à deux",a3p:"Rôles, dates, droits, ce que chacun apporte et ce que chacun en retire. Tout est clair et écrit, pour que la création reste légère.",a3d:"✓ Un accord simple, pensé pour les deux",
      a4h:"On crée, en confiance",a4p:"Le jour venu, on décide à deux. Un espace calme, du temps, et de la place pour l'imprévu.",
      a5h:"On partage",a5p:"On choisit ensemble, je livre les images, les crédits sont clairs. Chacun repart avec de quoi montrer le travail.",a5d:"✓ Livraison et crédits convenus d'avance",
-     f_name:"Nom",f_email:"Email",a_f_disc:"Discipline ou médium",a_f_idea:"Ce sur quoi tu travailles",a_f_link:"Portfolio ou Instagram",a_submit:"Envoyer la proposition",
+     f_name:"Nom",f_email:"Email",f_consent:"J'accepte que mes données soient traitées pour répondre à ma demande, selon la",f_privacy_link:"Politique de confidentialité.",a_f_disc:"Discipline ou médium",a_f_idea:"Ce sur quoi tu travailles",a_f_link:"Portfolio ou Instagram",a_submit:"Envoyer la proposition",
      b_intro:"Un moment pour toi, tenu avec soin. Une séance intime, en nu d'art ou boudoir, pensée d'abord pour que tu te sentes en sécurité et regardée avec justesse.",
      b1h:"Tu écris, sans te dévoiler",b1p:"Quelques mots sur ce qui t'attire, une intention, une émotion. Aucun détail à donner. Dix-huit ans et plus.",
      b2h:"On parle, longuement, avant le moindre appareil",b2p:"Un échange privé, à ton rythme, pour comprendre ton désir et poser tes limites. Ce sont elles qui guident tout le reste.",
@@ -160,7 +161,7 @@
      a3h:"We set the frame together",a3p:"Roles, dates, rights, what each brings and takes away. All clear and in writing, so the making stays light.",a3d:"✓ A simple agreement, made for both",
      a4h:"We create, in trust",a4p:"When the day comes, we decide together. A calm space, time, and room for the unexpected.",
      a5h:"We share",a5p:"We choose together, I deliver the images, credits are clear. Each leaves with something to show the work.",a5d:"✓ Delivery and credits agreed in advance",
-     f_name:"Name",f_email:"Email",a_f_disc:"Discipline or medium",a_f_idea:"What you are working on",a_f_link:"Portfolio or Instagram",a_submit:"Send proposal",
+     f_name:"Name",f_email:"Email",f_consent:"I agree my data may be processed to answer my request, per the",f_privacy_link:"Privacy policy.",a_f_disc:"Discipline or medium",a_f_idea:"What you are working on",a_f_link:"Portfolio or Instagram",a_submit:"Send proposal",
      b_intro:"A moment for you, held with care. An intimate session, fine-art nude or boudoir, made first so you feel safe and seen with fairness.",
      b1h:"You write, without exposing yourself",b1p:"A few words on what draws you, an intention, an emotion. No detail needed. Eighteen and over.",
      b2h:"We talk, at length, before any camera",b2p:"A private exchange, at your pace, to understand your desire and set your limits. They guide everything else.",
@@ -185,7 +186,7 @@
      a3h:"Fijamos el marco entre los dos",a3p:"Roles, fechas, derechos, lo que cada uno aporta y recibe. Todo claro y por escrito, para que crear siga siendo ligero.",a3d:"✓ Un acuerdo simple, pensado para ambos",
      a4h:"Creamos, con confianza",a4p:"Llegado el día, decidimos entre los dos. Un espacio tranquilo, tiempo, y lugar para lo imprevisto.",
      a5h:"Compartimos",a5p:"Elegimos juntos, entrego las imágenes, los créditos son claros. Cada uno se va con algo que mostrar.",a5d:"✓ Entrega y créditos acordados de antemano",
-     f_name:"Nombre",f_email:"Email",a_f_disc:"Disciplina o medio",a_f_idea:"En qué trabajas",a_f_link:"Portafolio o Instagram",a_submit:"Enviar la propuesta",
+     f_name:"Nombre",f_email:"Email",f_consent:"Acepto que mis datos se traten para responder a mi solicitud, según la",f_privacy_link:"Política de datos.",a_f_disc:"Disciplina o medio",a_f_idea:"En qué trabajas",a_f_link:"Portafolio o Instagram",a_submit:"Enviar la propuesta",
      b_intro:"Un momento para ti, sostenido con cuidado. Una sesión íntima, desnudo artístico o boudoir, pensada ante todo para que te sientas segura y mirada con justeza.",
      b1h:"Escribes, sin exponerte",b1p:"Unas palabras sobre lo que te atrae, una intención, una emoción. Sin dar detalles. Dieciocho años o más.",
      b2h:"Hablamos, con calma, antes de cualquier cámara",b2p:"Un intercambio privado, a tu ritmo, para entender tu deseo y poner tus límites. Ellos guían todo lo demás.",
@@ -217,5 +218,6 @@
   });
 })();
 </script>
+<script src="js/legal-footer.js" defer></script>
 </body>
 </html>

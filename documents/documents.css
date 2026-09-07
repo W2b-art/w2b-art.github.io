@@ -1,0 +1,73 @@
+/* W2b art — legal documents. Dark cinematic, matches the art shell palette. */
+:root{
+  --nuit:#100C0A; --surface:#181310; --bone:#EDE6DA; --ash:#9A9089;
+  --sang:#9E241B; --braise:#B0294B; --or:#C6924E;
+  --sans:'Montserrat',system-ui,sans-serif; --serif:'Lora',Georgia,serif;
+  --line:rgba(237,230,218,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{min-height:100vh;color:var(--bone);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;
+  background:
+    radial-gradient(55% 45% at 12% 4%, rgba(158,36,27,.10), transparent 62%),
+    radial-gradient(60% 50% at 88% 96%, rgba(176,41,75,.08), transparent 62%),
+    var(--nuit);
+  background-attachment:fixed;line-height:1.6}
+a{color:var(--or);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s ease}
+a:hover,a:focus-visible{border-bottom-color:var(--or)}
+:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:2px}
+
+/* top bar */
+.doc-topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:18px clamp(20px,5vw,40px);border-bottom:1px solid var(--line);position:sticky;top:0;
+  background:rgba(16,12,10,.82);backdrop-filter:blur(8px);z-index:10}
+.doc-brand{display:flex;align-items:center;gap:9px;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--bone)}
+.doc-brand .dot{width:6px;height:6px;border-radius:50%;background:var(--sang)}
+.doc-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.lang{display:flex;gap:4px;align-items:center;font-size:11px;letter-spacing:.14em;color:var(--ash)}
+.lang button{background:none;border:0;color:var(--ash);font:inherit;letter-spacing:.14em;cursor:pointer;padding:4px 3px}
+.lang button.active{color:var(--bone)}
+.lang button:hover,.lang button:focus-visible{color:var(--or)}
+.lang .sep{opacity:.4}
+.btn-doc{font:inherit;font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  padding:9px 16px;border-radius:2px;border:1px solid var(--line);background:none;color:var(--bone);transition:all .2s ease}
+.btn-doc:hover,.btn-doc:focus-visible{border-color:var(--or);color:var(--or)}
+.btn-doc.ghost{color:var(--ash)}
+
+/* page */
+.doc-page{max-width:780px;margin:0 auto;padding:clamp(30px,6vh,60px) clamp(20px,5vw,40px) 90px}
+.doc-header{margin-bottom:44px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.doc-eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--or);margin-bottom:16px}
+.doc-title{font-family:var(--serif);font-weight:400;font-size:clamp(30px,5vw,46px);line-height:1.05}
+.doc-title em{font-style:italic;color:#fff}
+.doc-meta{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:18px;font-size:12px;letter-spacing:.04em;color:var(--ash)}
+
+.doc-section{margin-bottom:34px}
+.doc-section h2{font-family:var(--serif);font-weight:500;font-size:20px;margin-bottom:12px;display:flex;gap:12px;align-items:baseline;color:#fff}
+.doc-section h2 .num{font-family:var(--sans);font-size:12px;letter-spacing:.1em;color:var(--or);opacity:.9}
+.doc-section h3{font-size:14px;letter-spacing:.02em;color:var(--bone);margin:18px 0 8px;font-weight:500}
+.doc-section p{margin-bottom:12px;color:var(--bone);opacity:.9}
+.doc-section ul,.doc-section ol{margin:0 0 12px 20px;color:var(--bone);opacity:.9}
+.doc-section li{margin-bottom:7px}
+.doc-section strong{color:#fff;font-weight:500}
+
+.callout{border:1px solid var(--line);border-left:2px solid var(--or);border-radius:2px;background:rgba(198,146,78,.05);
+  padding:16px 18px;margin:14px 0}
+.callout-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--or);margin-bottom:6px}
+
+.doc-footer{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px;
+  font-size:12px;letter-spacing:.04em;color:var(--ash)}
+
+/* language blocks: show only the active one */
+[data-doclang]{display:none}
+[data-doclang].on{display:block}
+
+@media print{
+  .no-print{display:none!important}
+  body{background:#fff;color:#111}
+  a{color:#111}
+  .doc-title em,.doc-section strong,.doc-section h2{color:#000}
+  [data-doclang]{display:none}
+  [data-doclang].on{display:block}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}

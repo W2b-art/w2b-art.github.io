@@ -64,6 +64,16 @@
   document.getElementById('lbX').addEventListener('click', closeLB);
   document.getElementById('lbPrev').addEventListener('click', function(){ show(cur-1); });
   document.getElementById('lbNext').addEventListener('click', function(){ show(cur+1); });
+  /* a11y: name the icon controls and make them keyboard-operable */
+  (function(){
+    var LBL={es:{close:'Cerrar',prev:'Anterior',next:'Siguiente'},en:{close:'Close',prev:'Previous',next:'Next'},fr:{close:'Fermer',prev:'Précédent',next:'Suivant'}};
+    var t=LBL[LANG]||LBL.fr, map={lbX:t.close,lbPrev:t.prev,lbNext:t.next};
+    Object.keys(map).forEach(function(idk){
+      var el=document.getElementById(idk); if(!el)return;
+      el.setAttribute('role','button'); el.setAttribute('tabindex','0'); el.setAttribute('aria-label',map[idk]);
+      el.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); el.click(); } });
+    });
+  })();
   lb.addEventListener('click', function(e){ if(e.target===lb||e.target.classList.contains('inner')) closeLB(); });
   document.addEventListener('keydown', function(e){ if(!lb.classList.contains('open'))return;
     if(e.key==='Escape')closeLB(); if(e.key==='ArrowLeft')show(cur-1); if(e.key==='ArrowRight')show(cur+1); });

@@ -9,9 +9,7 @@
 <link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="canonical" href="https://w2bphotography.com/shop.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/art.css?v=5">
 </head>
 <body>
@@ -40,7 +38,7 @@
 
 <div class="acq" id="acq">
   <div class="box">
-    <span class="x" id="acq-x">&times;</span>
+    <span class="x" id="acq-x" role="button" tabindex="0">&times;</span>
     <div class="k" id="acq-k"></div>
     <h3 id="acq-title"></h3>
     <p class="ed" id="acq-ed"></p>
@@ -52,6 +50,7 @@
       <div><label id="acq-l-name" for="acq-name"></label><input id="acq-name" name="name" type="text" required></div>
       <div><label id="acq-l-email" for="acq-email"></label><input id="acq-email" name="email" type="email" required></div>
       <div><label id="acq-l-note" for="acq-note"></label><textarea id="acq-note" name="note" rows="2"></textarea></div>
+      <label class="consent"><input type="checkbox" name="privacy_consent" required><span id="acq-l-consent"></span> <a id="acq-l-privacy" href="documents/privacy.html" target="_blank" rel="noopener"></a></label>
       <button class="submit" type="submit" id="acq-submit"></button>
       <p class="ok" id="acq-ok"></p>
     </form>
@@ -64,16 +63,16 @@
 </footer>
 
 <script src="js/gallery-data.js?v=3"></script>
-<script src="js/art-i18n.js?v=3"></script>
+<script src="js/art-i18n.js?v=4"></script>
 <script>
 (function(){
   if(typeof w2bApplyUI==='function') w2bApplyUI();
   var L=(window.W2B_LANG)||'fr';
 
   var S={
-    fr:{k:"Tirages",h1:"Acquérir un tirage",intro:"Une sélection d'images, en tirages d'art signés : encre pigmentaire sur coton, numérotés et signés à la main.",terms:"Chaque tirage est fait sur commande et expédié dans le monde entier. Comptez deux à trois semaines. Prix en euros ; peso colombien sur demande.",dark:"Les tirages des séries Nude et Dark Desire sont disponibles en privé, sur demande.",darklink:"Écrire",coll:"Édition collector",open:"Édition ouverte",from:"dès",size:"Format",name:"Nom",email:"Email",note:"Un mot (facultatif)",submit:"Demander ce tirage",ok:"Merci. Je confirme la disponibilité et t'envoie la facture sous quelques jours.",noteCol:"Signé et numéroté · édition limitée de 15 + 2 AP · avec certificat d'authenticité.",noteOpen:"Édition ouverte · tirage pigmentaire d'archive · non signé."},
-    en:{k:"Prints",h1:"Collect a print",intro:"A selection of images, as signed fine-art prints: pigment ink on cotton rag, numbered and signed by hand.",terms:"Each print is made to order and shipped worldwide. Allow two to three weeks. Prices in euros; Colombian peso on request.",dark:"Prints from the Nude and Dark Desire series are available privately, on request.",darklink:"Write",coll:"Collector edition",open:"Open edition",from:"from",size:"Size",name:"Name",email:"Email",note:"A note (optional)",submit:"Request this print",ok:"Thank you. I'll confirm availability and send the invoice within a few days.",noteCol:"Signed and numbered · limited edition of 15 + 2 AP · with certificate of authenticity.",noteOpen:"Open edition · archival pigment print · unsigned."},
-    es:{k:"Copias",h1:"Adquirir una copia",intro:"Una selección de imágenes, en copias de autor firmadas: tinta pigmentada sobre algodón, numeradas y firmadas a mano.",terms:"Cada copia se hace por encargo y se envía a todo el mundo. Dos a tres semanas. Precios en euros; peso colombiano a pedido.",dark:"Las copias de las series Nude y Dark Desire están disponibles en privado, a pedido.",darklink:"Escribir",coll:"Edición coleccionista",open:"Edición abierta",from:"desde",size:"Formato",name:"Nombre",email:"Email",note:"Una nota (opcional)",submit:"Solicitar esta copia",ok:"Gracias. Confirmo disponibilidad y te envío la factura en unos días.",noteCol:"Firmado y numerado · edición limitada de 15 + 2 AP · con certificado de autenticidad.",noteOpen:"Edición abierta · copia pigmentada de archivo · sin firmar."}
+    fr:{k:"Tirages",h1:"Acquérir un tirage",intro:"Une sélection d'images, en tirages d'art signés : encre pigmentaire sur coton, numérotés et signés à la main.",terms:"Chaque tirage est fait sur commande et expédié dans le monde entier. Comptez deux à trois semaines. Prix en euros ; peso colombien sur demande.",dark:"Les tirages des séries Nude et Dark Desire sont disponibles en privé, sur demande.",darklink:"Écrire",coll:"Édition collector",open:"Édition ouverte",from:"dès",size:"Format",name:"Nom",email:"Email",note:"Un mot (facultatif)",submit:"Demander ce tirage",ok:"Merci. Je confirme la disponibilité et t'envoie la facture sous quelques jours.",noteCol:"Signé et numéroté · édition limitée de 15 + 2 AP · avec certificat d'authenticité.",noteOpen:"Édition ouverte · tirage pigmentaire d'archive · non signé.",consent:"J'accepte que mes données soient traitées pour répondre à ma demande, selon la",privacylink:"Politique de confidentialité."},
+    en:{k:"Prints",h1:"Collect a print",intro:"A selection of images, as signed fine-art prints: pigment ink on cotton rag, numbered and signed by hand.",terms:"Each print is made to order and shipped worldwide. Allow two to three weeks. Prices in euros; Colombian peso on request.",dark:"Prints from the Nude and Dark Desire series are available privately, on request.",darklink:"Write",coll:"Collector edition",open:"Open edition",from:"from",size:"Size",name:"Name",email:"Email",note:"A note (optional)",submit:"Request this print",ok:"Thank you. I'll confirm availability and send the invoice within a few days.",noteCol:"Signed and numbered · limited edition of 15 + 2 AP · with certificate of authenticity.",noteOpen:"Open edition · archival pigment print · unsigned.",consent:"I agree my data may be processed to answer my request, per the",privacylink:"Privacy policy."},
+    es:{k:"Copias",h1:"Adquirir una copia",intro:"Una selección de imágenes, en copias de autor firmadas: tinta pigmentada sobre algodón, numeradas y firmadas a mano.",terms:"Cada copia se hace por encargo y se envía a todo el mundo. Dos a tres semanas. Precios en euros; peso colombiano a pedido.",dark:"Las copias de las series Nude y Dark Desire están disponibles en privado, a pedido.",darklink:"Escribir",coll:"Edición coleccionista",open:"Edición abierta",from:"desde",size:"Formato",name:"Nombre",email:"Email",note:"Una nota (opcional)",submit:"Solicitar esta copia",ok:"Gracias. Confirmo disponibilidad y te envío la factura en unos días.",noteCol:"Firmado y numerado · edición limitada de 15 + 2 AP · con certificado de autenticidad.",noteOpen:"Edición abierta · copia pigmentada de archivo · sin firmar.",consent:"Acepto que mis datos se traten para responder a mi solicitud, según la",privacylink:"Política de datos."}
   };
   var D=S[L]||S.fr;
   document.getElementById('s_k').textContent=D.k;
@@ -183,6 +182,8 @@
   document.getElementById('acq-l-email').textContent=D.email;
   document.getElementById('acq-l-note').textContent=D.note;
   document.getElementById('acq-submit').textContent=D.submit;
+  document.getElementById('acq-l-consent').textContent=D.consent;
+  document.getElementById('acq-l-privacy').textContent=D.privacylink;
   function openAcq(file,tier,title){
     document.getElementById('acq-title').textContent=title;
     document.getElementById('acq-ed').textContent=(tier==='collector')?D.noteCol:D.noteOpen;
@@ -195,6 +196,7 @@
     acq.classList.add('open'); document.body.style.overflow='hidden';
   }
   function closeAcq(){ acq.classList.remove('open'); document.body.style.overflow=''; }
+  (function(){var x=document.getElementById('acq-x');var lbl={fr:'Fermer',en:'Close',es:'Cerrar'}[L]||'Fermer';x.setAttribute('aria-label',lbl);x.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();closeAcq();}});})();
   document.getElementById('acq-x').addEventListener('click',closeAcq);
   acq.addEventListener('click',function(e){ if(e.target===acq) closeAcq(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeAcq(); });
@@ -205,5 +207,6 @@
   });
 })();
 </script>
+<script src="js/legal-footer.js" defer></script>
 </body>
 </html>

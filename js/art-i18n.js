@@ -24,6 +24,7 @@
     foot_about:{en:"About",fr:"À propos",es:"Sobre mí"},
     foot_commercial:{en:"Commercial → pro site ↗",fr:"Commercial → site pro ↗",es:"Comercial → sitio pro ↗"},
     foot_place:{en:"Medellín · Colombia",fr:"Medellín · Colombie",es:"Medellín · Colombia"},
+    foot_contact:{en:"Contact",fr:"Contact",es:"Contacto"},
     /* after dark */
     gate_k:{en:"After Dark",fr:"After Dark",es:"After Dark"},
     gate_h:{en:"This section contains adult imagery.",fr:"Cette section contient des images pour adultes.",es:"Esta sección contiene imágenes para adultos."},
