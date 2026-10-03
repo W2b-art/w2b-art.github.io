@@ -15,6 +15,8 @@
   var g = (typeof GALLERY_DATA!=='undefined') && GALLERY_DATA[id];
   var app = document.getElementById('app');
   if(!g){ app.innerHTML = '<p style="padding:140px 40px">Gallery not found: '+id+'</p>'; return; }
+  /* clear the crawlable static copy rendered into #app by the gallery pages */
+  app.innerHTML = '';
 
   /* back link: explicit galleries return to After Dark, the rest to the home series */
   var backEl = document.querySelector('.hdr .back');
