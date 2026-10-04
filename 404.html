@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — W2b</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Page not found. W2b, fine-art photography from Medellín.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/art.css?v=5">
+<style>
+  .nf{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:140px 24px 80px}
+  .nf-photo{width:min(640px,92vw);margin:0 0 40px}
+  .nf-photo img{display:block;width:100%;height:auto;opacity:.92}
+  .nf-photo--mobile{display:none}
+  @media (max-width:720px){.nf-photo--desktop{display:none}.nf-photo--mobile{display:block}}
+  .nf-code{font-family:var(--serif);font-size:clamp(96px,22vw,200px);line-height:1;color:var(--or);opacity:.9;letter-spacing:-.02em}
+  .nf h1{font-family:var(--serif);font-weight:400;font-size:clamp(24px,4vw,36px);margin:18px 0 14px}
+  .nf p{max-width:460px;font-size:15px;line-height:1.7;color:var(--ash);margin-bottom:34px}
+  .nf-links{display:flex;gap:28px;flex-wrap:wrap;justify-content:center}
+  .nf-links a{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--bone);text-decoration:none;border-bottom:1px solid var(--or);padding-bottom:4px}
+  .nf-links a:hover{color:var(--or)}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <a class="brand" href="/" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
+  <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
+</header>
+<main class="nf">
+  <figure class="nf-photo nf-photo--desktop">
+    <img src="images/ui/404-calle-54-rubble-w2b.jpg" alt="Un panneau « Calle 54 » et une flèche parmi les gravats, Medellín" width="2000" height="735" loading="eager">
+  </figure>
+  <figure class="nf-photo nf-photo--mobile">
+    <img src="images/ui/404-coup-d-oeil-serie-20-mobile-w2b.jpg" alt="Panneau de randonnée « 7 Blueberry » face à un massif enneigé, en noir et blanc" width="1200" height="779" loading="eager">
+  </figure>
+  <div class="nf-code" aria-hidden="true">404</div>
+  <h1 data-ui="err404_title">Cette image n'existe pas.</h1>
+  <p data-ui="err404_text">La page recherchée a été déplacée ou n'a jamais existé.</p>
+  <nav class="nf-links">
+    <a href="/" data-ui="err404_home">Accueil</a>
+    <a href="/home.html#series" data-ui="nav_series">Séries</a>
+    <a href="/shop.html" data-ui="nav_prints">Tirages</a>
+  </nav>
+</main>
+<script src="js/art-i18n.js?v=5"></script>
+<script>if (typeof w2bApplyUI === 'function') w2bApplyUI();</script>
+</body>
+</html>
