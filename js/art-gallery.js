@@ -39,15 +39,18 @@
   app.appendChild(top);
 
   var plates = document.createElement('section'); plates.className='plates';
-  var ITEMS = g.images.map(function(im,i){
-    var tri = COPY[id]&&COPY[id].caps&&COPY[id].caps[i]&&COPY[id].caps[i][LANG];
+  var coverIdx = g.coverIndex||0;
+  var gridImages = g.images.filter(function(im,i){ return i!==coverIdx; });
+  var ITEMS = gridImages.map(function(im){
+    var origIdx = g.images.indexOf(im);
+    var tri = COPY[id]&&COPY[id].caps&&COPY[id].caps[origIdx]&&COPY[id].caps[origIdx][LANG];
     return { src: g.folder+im.file, cap: tri || cleanCap(im.alt&&(im.alt[LANG]||im.alt.fr)) };
   });
-  g.images.forEach(function(im,i){
-    var isFeature = !im.wide && ((i%5===2) || (i===g.images.length-1));
+  gridImages.forEach(function(im,i){
+    var isFeature = !im.wide && ((i%5===2) || (i===gridImages.length-1));
     var fig = document.createElement('figure'); fig.className='plate'+(im.wide?' wide':(isFeature?' feature':''));
     var img = new Image(); img.loading='lazy'; img.src=g.folder+im.file; img.alt=(im.alt&&(im.alt[LANG]||im.alt.fr))||'';
-    var cap = document.createElement('figcaption'); cap.className='n'; cap.textContent=String(i+1).padStart(2,'0')+' / '+g.images.length;
+    var cap = document.createElement('figcaption'); cap.className='n'; cap.textContent=String(i+1).padStart(2,'0')+' / '+gridImages.length;
     fig.appendChild(img); fig.appendChild(cap); plates.appendChild(fig);
     fig.addEventListener('click', function(){ openLB(i); });
   });

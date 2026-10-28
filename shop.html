@@ -16,13 +16,16 @@
 
 <header class="hdr" id="hdr">
   <div class="brand"><a href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a></div>
-  <nav>
-    <a href="home.html#series" data-ui="nav_series">Séries</a>
-    <a href="shop.html" data-ui="nav_prints">Tirages</a>
-    <a href="collaborate.html" data-ui="nav_collab">Collaborer</a>
-    <a href="about.html" data-ui="nav_about">À propos</a>
-  </nav>
-  <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
+  <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="hdr-panel" id="hdrPanel">
+    <nav>
+      <a href="home.html#series" data-ui="nav_series">Séries</a>
+      <a href="shop.html" data-ui="nav_prints">Tirages</a>
+      <a href="collaborate.html" data-ui="nav_collab">Collaborer</a>
+      <a href="about.html" data-ui="nav_about">À propos</a>
+    </nav>
+    <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
+  </div>
 </header>
 
 <main class="shop">
@@ -58,7 +61,7 @@
 </div>
 
 <footer>
-  <div class="sig"><img src="images/ui/film-canister.png" alt=""><div class="w">W2<span>b</span></div></div>
+  <div class="sig"><img src="images/ui/w2b-logo.png" alt="W2b"></div>
   <div class="l">@w2b.film<br><a href="home.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
 </footer>
 
@@ -164,8 +167,8 @@
       var minEur=TIERS[tier].sizes[0].eur;
       var t=titleFor(im.file, im.alt&&(im.alt[L]||im.alt.fr));
       var card=document.createElement('div'); card.className='print';
-      card.innerHTML='<div class="frame"><img loading="lazy" src="'+g.folder+im.file+'" alt="'+((im.alt&&(im.alt[L]||im.alt.fr))||'').replace(/"/g,'')+'">'+
-        '<span class="badge '+(col?'':'open')+'">'+(col?D.coll:D.open)+'</span></div>'+
+      card.innerHTML='<div class="frame"><img loading="lazy" src="'+g.folder+im.file+'" alt="'+((im.alt&&(im.alt[L]||im.alt.fr))||'').replace(/"/g,'')+'"></div>'+
+        '<div class="edition">'+(col?D.coll:D.open)+'</div>'+
         '<div class="meta"><span class="t">'+t+'</span><span class="from">'+D.from+' '+minEur+' €</span></div>'+
         '<button class="buy">'+D.submit+'</button>';
       card.querySelector('.buy').addEventListener('click',function(){ openAcq(im.file,tier,t); });

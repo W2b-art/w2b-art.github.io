@@ -19,13 +19,16 @@
     <a href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
     <span class="back" data-ui="descriptor" style="opacity:.75">Photographie d'art · Medellín</span>
   </div>
-  <nav>
-    <a href="#series" data-ui="nav_series">Séries</a>
-    <a href="shop.html" data-ui="nav_prints">Tirages</a>
-    <a href="collaborate.html" data-ui="nav_collab">Collaborer</a>
-    <a href="about.html" data-ui="nav_about">À propos</a>
-  </nav>
-  <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
+  <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="hdr-panel" id="hdrPanel">
+    <nav>
+      <a href="#series" data-ui="nav_series">Séries</a>
+      <a href="shop.html" data-ui="nav_prints">Tirages</a>
+      <a href="collaborate.html" data-ui="nav_collab">Collaborer</a>
+      <a href="about.html" data-ui="nav_about">À propos</a>
+    </nav>
+    <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
+  </div>
 </header>
 
 <section class="hero" id="hero">
@@ -40,6 +43,7 @@
 </section>
 
 <section class="sect" id="series">
+  <img class="canister" src="images/ui/film-canister.png" alt="" aria-hidden="true">
   <div class="lead">
     <h2 data-ui="work_h">Le travail</h2>
     <p data-ui="work_sub">Neuf séries. Chacune sa lumière, son lieu, son propos.</p>
@@ -48,7 +52,7 @@
 </section>
 
 <footer>
-  <div class="sig"><img src="images/ui/film-canister.png" alt=""><div class="w">W2<span>b</span></div></div>
+  <div class="sig"><img src="images/ui/w2b-logo.png" alt="W2b"></div>
   <div class="l">
     @w2b.film<br>
     <a href="shop.html" data-ui="foot_prints">Tirages d'art</a> · <a href="collaborate.html" data-ui="foot_collab">Collaborer</a><br>

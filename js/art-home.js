@@ -18,11 +18,10 @@
   ];
   var gridEl=document.getElementById('seriesgrid');
   if(gridEl && typeof GALLERY_DATA!=='undefined'){
-    var ord=(typeof GALLERY_ORDER!=='undefined')?GALLERY_ORDER:[];
-    GRID.forEach(function(row){
+    GRID.forEach(function(row,idx){
       var id=row[0], span=row[1], cover=row[2], href, title, sub='';
       if(id==='__afterdark__'){ href='after-dark.html'; title=(typeof w2bT==='function'?w2bT('afterdark_label'):'After Dark'); sub='<span class="adult">18 +</span>'; }
-      else { href='gallery-'+id+'.html'; var gd=GALLERY_DATA[id]; title=gd?(gd.title[LANG]||gd.title.fr):id; var n=ord.indexOf(id); if(n>=0) sub=String(n+1).padStart(2,'0'); }
+      else { href='gallery-'+id+'.html'; var gd=GALLERY_DATA[id]; title=gd?(gd.title[LANG]||gd.title.fr):id; sub=String(idx+1).padStart(2,'0'); }
       var a=document.createElement('a'); a.className='card '+span; a.href=href;
       a.innerHTML='<img src="'+cover+'" alt="">'+
         '<div class="lab">'+(sub?'<div class="no">'+sub+'</div>':'')+'<h3>'+title+'</h3></div>';
@@ -52,7 +51,7 @@
   var pick = GROUPS[Math.floor(Math.random()*GROUPS.length)];
 
   var wrap=document.getElementById('heroFrames'), now=document.getElementById('now'),
-      dots=document.getElementById('dots'), hdr=document.getElementById('hdr');
+      dots=document.getElementById('dots');
   pick.forEach(function(p,i){
     var f=document.createElement('a'); f.className='frame'+(i===0?' on':''); f.href='gallery-'+p[3]+'.html';
     var im=document.createElement('img'); im.src=p[0]; im.alt=''; f.appendChild(im); wrap.appendChild(f);
@@ -64,6 +63,5 @@
   function go(i){ frames[cur].classList.remove('on'); dd[cur].classList.remove('on'); cur=i; frames[cur].classList.add('on'); dd[cur].classList.add('on'); setNow(i); reset(); }
   function reset(){ clearInterval(timer); timer=setInterval(function(){ go((cur+1)%frames.length); },5200); }
   reset();
-  window.addEventListener('scroll', function(){ hdr.classList.toggle('solid', window.scrollY>60); });
   window.addEventListener('pageshow', function(e){ if(e.persisted) location.reload(); });
 })();
