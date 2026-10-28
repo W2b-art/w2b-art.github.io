@@ -2,11 +2,17 @@
 (function(){
   if (typeof w2bApplyUI === 'function') w2bApplyUI();
   var KEY='w2b_ad_ok';
-  var gate=document.getElementById('gate'), content=document.getElementById('content');
+  var gate=document.getElementById('gate');
 
   function enterSite(){
     try{ sessionStorage.setItem(KEY,'1'); }catch(e){}
-    gate.style.display='none'; content.style.display='block'; document.body.style.overflow=''; initHero();
+    if (!document.getElementById('content')){
+      var tpl=document.getElementById('content-tpl');
+      if (tpl) document.body.appendChild(tpl.content.cloneNode(true));
+    }
+    gate.style.display='none'; document.body.style.overflow='';
+    if (typeof w2bApplyUI === 'function') w2bApplyUI();
+    initHero();
   }
   document.getElementById('enter').addEventListener('click', enterSite);
   var ok=false; try{ ok = sessionStorage.getItem(KEY)==='1'; }catch(e){}
