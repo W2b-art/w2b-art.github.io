@@ -264,6 +264,20 @@ footer .l,footer .nav{font-size:12px;letter-spacing:.14em;text-transform:upperca
 footer .nav a{display:inline-block;margin-left:22px}
 footer .l a:hover,footer .nav a:hover{color:var(--bone)}
 
+/* nav collapses to the hamburger earlier than the general mobile breakpoint:
+   full nav + cross-site link + lang switcher stop fitting on one row around 820-1280px,
+   wrapping "Sobre mí" onto a second line and overlapping "GD Portafolio Pro". */
+@media(max-width:1180px){
+  .hdr .brand .back{display:none}
+  .menu-btn{display:flex}
+  .hdr-panel{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;max-height:0;overflow:hidden;
+    background:rgba(16,12,10,.97);backdrop-filter:blur(10px);transition:max-height .35s ease;z-index:59}
+  .hdr.open .hdr-panel{max-height:100vh;padding-top:72px}
+  .hdr-panel nav{flex-direction:column;align-items:stretch;gap:0;width:100%;font-size:14px}
+  .hdr-panel nav a{padding:16px 20px;width:100%;border-bottom:1px solid rgba(237,230,218,.08)}
+  .hdr-panel .lang{justify-content:center;padding:20px 0;gap:16px;font-size:13px}
+}
+
 @media(max-width:820px){
   .hdr{padding:14px 20px}
   .hdr .brand .back{display:none}
