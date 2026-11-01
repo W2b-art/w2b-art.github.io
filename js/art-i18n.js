@@ -20,8 +20,11 @@
     hero_title:{en:"The world, as it gives itself to those who take the time to look.",fr:"Le monde, tel qu'il se donne à qui prend le temps de regarder.",es:"El mundo, tal como se entrega a quien se toma el tiempo de mirar."},
     afterdark_label:{en:"After Dark",fr:"After Dark",es:"After Dark"},
     hero_scroll:{en:"Series",fr:"Séries",es:"Series"},
-    work_h:{en:"The work",fr:"Le travail",es:"El trabajo"},
-    work_sub:{en:"Nine series. Each with its own light, place and intent.",fr:"Neuf séries. Chacune sa lumière, son lieu, son propos.",es:"Nueve series. Cada una con su luz, su lugar y su propósito."},
+    work_h:{en:"The Selection",fr:"La Sélection",es:"La Selección"},
+    work_sub:{en:"A selection across the practice. Click one to follow where it leads.",fr:"Une sélection à travers le travail. Clique sur l'une d'elles pour suivre où elle mène.",es:"Una selección de todo el trabajo. Haz clic en una para seguir hacia donde lleva."},
+    /* trunk/branch navigation (home.html) — see js/art-trunk.js */
+    branch_back:{en:"← Selection",fr:"← Sélection",es:"← Selección"},
+    branch_related:{en:"More like this",fr:"D'autres comme celle-ci",es:"Más como esta"},
     foot_prints:{en:"Fine-art prints",fr:"Tirages d'art",es:"Copias de autor"},
     foot_collab:{en:"Collaborate",fr:"Collaborer",es:"Colaborar"},
     foot_about:{en:"About",fr:"À propos",es:"Sobre mí"},
@@ -40,7 +43,36 @@
     entry_go:{en:"View the series →",fr:"Voir la série →",es:"Ver la serie →"},
     entry_nude_p:{en:"The body as landscape. What light reveals once everything else falls away.",fr:"Le corps comme paysage. Ce que la lumière révèle quand tout le reste s'efface.",es:"El cuerpo como paisaje. Lo que la luz revela cuando todo lo demás se borra."},
     entry_dd_p:{en:"Desire staged, between latex, rope and red light.",fr:"Le désir mis en scène, entre latex, corde et lumière rouge.",es:"El deseo puesto en escena, entre látex, cuerda y luz roja."},
-    entry_bd_p:{en:"The person as the whole picture — presence, not pose.",fr:"La personne comme toute l'image — la présence, pas la pose.",es:"La persona como toda la imagen — presencia, no pose."}
+    entry_bd_p:{en:"The person as the whole picture — presence, not pose.",fr:"La personne comme toute l'image — la présence, pas la pose.",es:"La persona como toda la imagen — presencia, no pose."},
+    /* corner index overlay (rooms system) */
+    idx_label:{en:"Index",fr:"Index",es:"Índice"},
+    idx_explore:{en:"Explore",fr:"Explorer",es:"Explorar"},
+    idx_art:{en:"Fine Art",fr:"Fine Art",es:"Fine Art"},
+    idx_pro:{en:"Commercial ↗",fr:"Commercial ↗",es:"Comercial ↗"},
+    idx_prints:{en:"Prints",fr:"Tirages",es:"Copias"},
+    idx_series_h:{en:"Series",fr:"Séries",es:"Series"},
+    /* singular "Series NN" label on a gallery hero / the home "now" badge —
+       was hardcoded French ("Série 06") regardless of language; this is
+       what read as "titles not translated" even though captions/titles/
+       openers were already correctly localized. */
+    series_no:{en:"Series",fr:"Série",es:"Serie"},
+    idx_expo:{en:"Exhibitions",fr:"Expositions",es:"Exposiciones"},
+    /* expositions.html — every fact here is sourced and verified (wiki:
+       project_memoria_urbana_medellin.md, project_cypher_hiphop_dossier.md,
+       both checked 2026-10-30). Nothing invented, nothing padded. */
+    expo_eyebrow:{en:"Exhibitions",fr:"Expositions",es:"Exposiciones"},
+    expo_lead:{en:"Guillaume's work has shown publicly in Medellín.",fr:"Le travail de Guillaume a été montré en public à Medellín.",es:"El trabajo de Guillaume se ha mostrado públicamente en Medellín."},
+    expo_venue:{en:"Palacio de Bellas Artes, Medellín — September 30, 2026",fr:"Palacio de Bellas Artes, Medellín — 30 septembre 2026",es:"Palacio de Bellas Artes, Medellín — 30 de septiembre de 2026"},
+    expo_context:{en:"Through the documentary photography seminar (semillero) at the Universidad de Bellas Artes de Medellín, under Prof. Enrique Aguirre.",fr:"Dans le cadre du semillero de photographie documentaire de l'Universidad de Bellas Artes de Medellín (prof. Enrique Aguirre).",es:"En el marco del semillero de fotografía documental de la Universidad de Bellas Artes de Medellín (prof. Enrique Aguirre)."},
+    expo_credit_label:{en:"As printed on the exhibition panel",fr:"Tel qu'imprimé sur le panneau d'exposition",es:"Tal como fue impreso en el panel de la exposición"},
+    expo_credit:{en:"Autor: Guillaume Delye · Técnica: Fotografía análoga, medio formato · Año: 2026 · Lugar: Medellín.",fr:"Autor: Guillaume Delye · Técnica: Fotografía análoga, medio formato · Año: 2026 · Lugar: Medellín.",es:"Autor: Guillaume Delye · Técnica: Fotografía análoga, medio formato · Año: 2026 · Lugar: Medellín."},
+    expo_install_label:{en:"Installation",fr:"Installation",es:"Instalación"},
+    expo_install:{en:"Square prints, analog grain, warm desaturated tones — mounted on V-shaped metal panels, outdoors, next to the Parque de las Luces.",fr:"Tirages carrés, grain argentique, tons chauds désaturés — montés sur panneaux métalliques en V, en extérieur, à côté du Parque de las Luces.",es:"Copias cuadradas, grano analógico, tonos cálidos desaturados — montadas en paneles metálicos en V, al aire libre, junto al Parque de las Luces."},
+    expo_statement_label:{en:"Artist's statement (as exhibited, in Spanish)",fr:"Texte d'intention (tel qu'exposé, en espagnol)",es:"Texto de intención (tal como se expuso)"},
+    expo_statement_es:{en:"Lo que olvidamos es parte de nuestra memoria. El «deja vu», es nuestro subconsciente llamando nuestra atención. La ciudad que se olvida aún existe cerca de nuestras vidas; es un organismo vivo, sus edificios son parte de su consciencia, su personalidad y su historia. Es a través de nuestra visión que la descubrimos.",fr:"Lo que olvidamos es parte de nuestra memoria. El «deja vu», es nuestro subconsciente llamando nuestra atención. La ciudad que se olvida aún existe cerca de nuestras vidas; es un organismo vivo, sus edificios son parte de su consciencia, su personalidad y su historia. Es a través de nuestra visión que la descubrimos.",es:"Lo que olvidamos es parte de nuestra memoria. El «deja vu», es nuestro subconsciente llamando nuestra atención. La ciudad que se olvida aún existe cerca de nuestras vidas; es un organismo vivo, sus edificios son parte de su consciencia, su personalidad y su historia. Es a través de nuestra visión que la descubrimos."},
+    expo_cross:{en:"At the same opening, one print from the",fr:"Au même vernissage, un tirage de la série",es:"En la misma inauguración, una copia de la serie"},
+    expo_cross2:{en:"series was shown alongside it — a single print, not the full series.",fr:"était exposé à côté — une image, pas la série complète.",es:"se exhibió junto a ella — una sola imagen, no la serie completa."},
+    expo_notgallery:{en:"\"Lo que dejamos\" (Medellín's abandoned buildings, urban memory) is not yet a published series on this site.",fr:"« Lo que dejamos » (les bâtiments abandonnés de Medellín, la mémoire urbaine) n'est pas encore une série publiée sur ce site.",es:"«Lo que dejamos» (los edificios abandonados de Medellín, la memoria urbana) aún no es una serie publicada en este sitio."}
   };
 
   window.w2bT = function(key){ var e=W2B_UI[key]; return e ? (e[W2B_LANG]||e.fr) : key; };

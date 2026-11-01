@@ -29,7 +29,10 @@
         ['images/boudoir/fetish-latex-mask-dramatic-shadow-07-w2b.jpg','Dark Desire','boudoir'] ],
       [ ['images/nude/fine-art-nude-study-low-key-black-white-01-w2b.jpg','Nude','nude'],
         ['images/boudoir/shibari-rope-tying-red-roses-w2b.jpg','Dark Desire','boudoir'],
-        ['images/boudoir-red/boudoir-red-drape-reaching-bust-colour-w2b.jpg','Boudoir','boudoir-red'] ]
+        ['images/boudoir-red/boudoir-red-drape-reaching-bust-colour-w2b.jpg','Boudoir','boudoir-red'] ],
+      [ ['images/boudoir-red/nude-red-curtain-dramatic-gaze-boots-w2b.jpg','Boudoir','boudoir-red'],
+        ['images/boudoir-red/garter-belt-lingerie-tattooed-back-purple-light-w2b.jpg','Boudoir','boudoir-red'],
+        ['images/boudoir-red/smoke-heart-exhale-spiked-choker-purple-light-w2b.jpg','Boudoir','boudoir-red'] ]
     ];
     var pick = GROUPS[Math.floor(Math.random()*GROUPS.length)];
     var wrap=document.getElementById('heroFrames'), now=document.getElementById('now'), dots=document.getElementById('dots');

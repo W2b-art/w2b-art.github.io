@@ -954,6 +954,54 @@ const GALLERY_DATA = {
           fr: "Nu d'art intime enveloppé d'un tissu rouge fluide sur fond sombre, photographie boudoir couleur",
           es: "Desnudo artístico íntimo envuelto en una tela roja fluida sobre fondo oscuro, fotografía boudoir a color"
         }
+      },
+      {
+        file: "silhouette-nude-bikini-top-purple-light-w2b.jpg",
+        alt: {
+          en: "Nude silhouette holding a bikini top under deep purple light, fine-art boudoir photography",
+          fr: "Silhouette nue tenant un haut de bikini sous une lumière violette profonde, photographie boudoir d'art",
+          es: "Silueta desnuda sosteniendo la parte superior de un bikini bajo una luz morada profunda, fotografía boudoir artística"
+        }
+      },
+      {
+        file: "nude-red-curtain-dramatic-gaze-boots-w2b.jpg",
+        alt: {
+          en: "Nude figure emerging from behind a red curtain in laced boots, dramatic low-key boudoir photography",
+          fr: "Silhouette nue émergeant d'un rideau rouge en bottes lacées, photographie boudoir dramatique en clair-obscur",
+          es: "Figura desnuda emergiendo de una cortina roja con botas de cordones, fotografía boudoir dramática de bajo perfil"
+        }
+      },
+      {
+        file: "smoke-heart-exhale-spiked-choker-purple-light-w2b.jpg",
+        alt: {
+          en: "Close portrait exhaling a heart-shaped cloud of smoke, spiked choker under purple light, fetish portrait photography",
+          fr: "Portrait rapproché exhalant un nuage de fumée en forme de cœur, collier à pointes sous lumière violette, portrait fétichiste",
+          es: "Retrato cercano exhalando una nube de humo en forma de corazón, gargantilla con púas bajo luz morada, retrato fetichista"
+        }
+      },
+      {
+        file: "garter-belt-lingerie-tattooed-back-purple-light-w2b.jpg",
+        alt: {
+          en: "Tattooed back and garter-belt lingerie seen from behind under purple and blue light, boudoir photography",
+          fr: "Dos tatoué et porte-jarretelles vus de dos sous une lumière violette et bleue, photographie boudoir",
+          es: "Espalda tatuada y liguero vistos de espaldas bajo luz morada y azul, fotografía boudoir"
+        }
+      },
+      {
+        file: "nude-torso-raised-arms-pink-light-w2b.jpg",
+        alt: {
+          en: "Nude torso with arms raised against a curtain backdrop under warm pink light, boudoir photography",
+          fr: "Torse nu bras levés devant un rideau sous une lumière rose chaude, photographie boudoir",
+          es: "Torso desnudo con los brazos levantados ante un telón bajo luz rosa cálida, fotografía boudoir"
+        }
+      },
+      {
+        file: "nude-side-portrait-red-light-piercings-w2b.jpg",
+        alt: {
+          en: "Side portrait of a nude figure with piercings and hoop earrings under red light on a balcony, boudoir photography",
+          fr: "Portrait de profil d'une silhouette nue avec piercings et créoles sous lumière rouge sur un balcon, photographie boudoir",
+          es: "Retrato de perfil de una figura desnuda con piercings y aros bajo luz roja en un balcón, fotografía boudoir"
+        }
       }
     ]
   },
@@ -1558,6 +1606,437 @@ const GALLERY_DATA = {
         }
       }
     ]
+  },
+
+  /* ----------------------------------------------------------------
+     Trunk / branch pseudo-series (home.html tree navigation only).
+     These are NOT part of GALLERY_ORDER or any gallery-*.html page —
+     js/trunk-data.js's TRUNK_MANIFEST and js/art-trunk.js's resolve()
+     read them directly by {series, idx}. Guillaume's real curated
+     selection (2026-10-31), replacing the earlier placeholder data.
+     ---------------------------------------------------------------- */
+  "trunk": {
+    id: "trunk",
+    folder: "images/trunk/",
+    title: {
+      en: "Selected",
+      fr: "Sélection",
+      es: "Selección"
+    },
+    images: [
+      {
+        file: "weathered-rock-formation-coastal-texture-w2b.jpg",
+        alt: {
+          en: "Close-up of a weathered coastal rock formation with a green shrub against a blue sky, medium format film photography",
+          fr: "Gros plan sur une formation rocheuse côtière érodée avec un arbuste vert sur fond de ciel bleu, moyen format argentique",
+          es: "Primer plano de una formación rocosa costera erosionada con un arbusto verde contra un cielo azul, película de formato medio"
+        }
+      },
+      {
+        file: "driftwood-pebble-beach-mountains-black-white-w2b.jpg",
+        alt: {
+          en: "Curved driftwood resting on a pebble beach with misty mountains across the water, black and white film photography",
+          fr: "Bois flotté incurvé posé sur une plage de galets face à des montagnes embrumées, photographie argentique noir et blanc",
+          es: "Madera flotante curvada sobre una playa de guijarros frente a montañas con niebla, fotografía analógica en blanco y negro"
+        }
+      },
+      {
+        file: "sunset-pine-trees-mountain-silhouette-w2b.jpg",
+        alt: {
+          en: "Sun setting behind silhouetted pine trees with a misty mountain ridge beyond, golden dusk photography",
+          fr: "Soleil couchant derrière des sapins silhouettés avec une crête montagneuse embrumée au loin, photographie au crépuscule doré",
+          es: "Puesta de sol detrás de pinos en silueta con una cresta montañosa brumosa al fondo, fotografía al atardecer dorado"
+        }
+      },
+      {
+        file: "contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg",
+        alt: {
+          en: "A wrecked boat on a rocky shore, black and white medium-format film",
+          fr: "Une épave de bateau sur un rivage rocheux, moyen format argentique noir et blanc",
+          es: "Los restos de un barco en una orilla rocosa, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "glass-roof-grid-baroque-sculpture-ornament-w2b.jpg",
+        alt: {
+          en: "Looking up at a curved glass-and-steel roof grid above a baroque stone cherub sculpture, muted-tone film photography",
+          fr: "Vue en contre-plongée d'une verrière métallique courbe au-dessus d'une sculpture baroque de chérubin en pierre, argentique aux tons sourds",
+          es: "Vista hacia arriba de una cubierta de vidrio y acero curva sobre una escultura barroca de querubín en piedra, fotografía analógica en tonos apagados"
+        }
+      },
+      {
+        file: "pinball-arcade-machine-jackpot-cards-neon-w2b.jpg",
+        alt: {
+          en: "Vintage pinball arcade machine lit with neon tubes, playing cards, jackpot graphics, euro banknotes and tokens inside",
+          fr: "Machine à sous vintage éclairée au néon, avec cartes à jouer, graphismes jackpot, billets en euros et jetons à l'intérieur",
+          es: "Máquina tragamonedas vintage iluminada con neón, con cartas, gráficos de jackpot, billetes de euro y fichas en su interior"
+        }
+      },
+      {
+        file: "red-lamp-crossed-legs-magazine-intimate-room-w2b.jpg",
+        alt: {
+          en: "Crossed bare legs lit by a red lampshade beside a magazine and discarded white underwear, intimate interior photography",
+          fr: "Jambes nues croisées éclairées par un abat-jour rouge près d'un magazine et de sous-vêtements blancs abandonnés, photographie d'intérieur intime",
+          es: "Piernas desnudas cruzadas iluminadas por una pantalla roja junto a una revista y ropa interior blanca abandonada, fotografía de interior íntimo"
+        }
+      },
+      {
+        file: "street-dancer-colombia-jersey-motion-night-w2b.jpg",
+        alt: {
+          en: "Street dancer in a Colombia football jersey and cap caught mid-movement under warm stage light at night, black and white",
+          fr: "Danseur de rue en maillot de football de Colombie et casquette saisi en plein mouvement sous une lumière de scène chaude la nuit, noir et blanc",
+          es: "Bailarín callejero con camiseta de fútbol de Colombia y gorra capturado en pleno movimiento bajo luz de escenario cálida de noche, blanco y negro"
+        }
+      },
+      {
+        file: "rowboats-misty-lake-mountains-w2b.jpg",
+        alt: {
+          en: "Wooden rowboats moored on a calm lake with misty mountains and a wooded island behind, film photography",
+          fr: "Barques en bois amarrées sur un lac calme face à des montagnes embrumées et une île boisée, photographie argentique",
+          es: "Botes de remo amarrados en un lago en calma frente a montañas con niebla y una isla boscosa, fotografía analógica"
+        }
+      },
+      {
+        file: "bamboo-tunnel-pond-stone-wall-w2b.jpg",
+        alt: {
+          en: "Path through a bamboo tunnel opening onto a still pond and an old stone wall, medium format film photography",
+          fr: "Chemin à travers un tunnel de bambous débouchant sur un étang immobile et un vieux mur de pierre, moyen format argentique",
+          es: "Camino a través de un túnel de bambú que da a un estanque quieto y un viejo muro de piedra, película de formato medio"
+        }
+      },
+      {
+        file: "coastal-path-bench-ocean-view-faded-film-w2b.jpg",
+        alt: {
+          en: "A bench at the end of a green coastal path overlooking the blue ocean, faded vintage film photography",
+          fr: "Un banc au bout d'un sentier côtier verdoyant face à l'océan bleu, photographie argentique délavée",
+          es: "Un banco al final de un sendero costero verde con vista al océano azul, fotografía analógica desvaída"
+        }
+      },
+      {
+        file: "rushing-water-rocks-black-white-w2b.jpg",
+        alt: {
+          en: "White water rushing and foaming over dark rocks, black and white close-up photography",
+          fr: "Eau blanche se précipitant en écume sur des rochers sombres, photographie rapprochée noir et blanc",
+          es: "Agua blanca precipitándose en espuma sobre rocas oscuras, fotografía en primer plano en blanco y negro"
+        }
+      },
+      {
+        file: "hands-playing-double-bass-black-white-w2b.jpg",
+        alt: {
+          en: "Close-up of hands playing a double bass with a bow, black and white motion-blurred photography",
+          fr: "Gros plan sur des mains jouant de la contrebasse à l'archet, photographie noir et blanc avec flou de mouvement",
+          es: "Primer plano de manos tocando un contrabajo con arco, fotografía en blanco y negro con desenfoque de movimiento"
+        }
+      },
+      {
+        file: "street-lamp-silhouette-bird-sky-black-white-w2b.jpg",
+        alt: {
+          en: "Ornate curved street lamp silhouetted against a pale sky with a bird in flight, black and white film photography",
+          fr: "Réverbère ouvragé en silhouette sur un ciel pâle avec un oiseau en vol, photographie argentique noir et blanc",
+          es: "Farola ornamentada en silueta contra un cielo pálido con un ave en vuelo, fotografía analógica en blanco y negro"
+        }
+      },
+      {
+        file: "wet-tree-bark-dripping-water-close-up-w2b.jpg",
+        alt: {
+          en: "Close-up of wet tree bark with water droplets dripping down its texture",
+          fr: "Gros plan sur une écorce d'arbre mouillée avec des gouttes d'eau ruisselant sur sa texture",
+          es: "Primer plano de corteza de árbol mojada con gotas de agua escurriendo por su textura"
+        }
+      },
+      {
+        file: "abandoned-train-wagons-junkyard-color-w2b.jpg",
+        alt: {
+          en: "Rusted abandoned train wagons sitting in an overgrown junkyard, medium format colour film photography",
+          fr: "Wagons de train abandonnés et rouillés dans une friche envahie par la végétation, moyen format argentique couleur",
+          es: "Vagones de tren abandonados y oxidados en un depósito invadido por la vegetación, película de formato medio a color"
+        }
+      },
+      {
+        file: "woman-car-window-candid-street-black-white-w2b.jpg",
+        alt: {
+          en: "Woman glancing out of a car window, candid black and white street photography",
+          fr: "Femme jetant un regard par la fenêtre d'une voiture, photographie de rue candide noir et blanc",
+          es: "Mujer mirando por la ventana de un auto, fotografía callejera candid en blanco y negro"
+        }
+      },
+      {
+        file: "dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg",
+        alt: {
+          en: "Silhouetted coastline framing a calm bay under a dramatic cloudy sky, black and white film photography",
+          fr: "Côte en silhouette encadrant une baie calme sous un ciel nuageux dramatique, photographie argentique noir et blanc",
+          es: "Costa en silueta enmarcando una bahía tranquila bajo un cielo nublado dramático, fotografía analógica en blanco y negro"
+        }
+      },
+      {
+        file: "bolts-nuts-industrial-gear-close-up-black-white-w2b.jpg",
+        alt: {
+          en: "Close-up of loose bolts and nuts scattered on an industrial gear wheel, black and white photography",
+          fr: "Gros plan sur des boulons et écrous éparpillés sur une roue dentée industrielle, photographie noir et blanc",
+          es: "Primer plano de tornillos y tuercas dispersos sobre un engranaje industrial, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "crowded-historic-passage-street-photography-black-white-w2b.jpg",
+        alt: {
+          en: "Crowded historic covered passage lined with shop signs, black and white street photography",
+          fr: "Passage couvert historique bondé bordé d'enseignes de boutiques, photographie de rue noir et blanc",
+          es: "Pasaje histórico cubierto y concurrido bordeado de letreros de tiendas, fotografía callejera en blanco y negro"
+        }
+      }
+    ]
+  },
+
+  "branch-bailar-la-ciudad": {
+    id: "branch-bailar-la-ciudad",
+    folder: "images/branch-bailar-la-ciudad/",
+    title: {
+      en: "Bailar la Ciudad",
+      fr: "Bailar la Ciudad",
+      es: "Bailar la Ciudad"
+    },
+    images: [
+      {
+        file: "man-trucker-cap-sunglasses-night-portrait-black-white-w2b.jpg",
+        alt: {
+          en: "Man in a trucker cap and sunglasses caught under flash at night, black and white portrait photography",
+          fr: "Homme en casquette et lunettes de soleil saisi au flash la nuit, photographie de portrait noir et blanc",
+          es: "Hombre con gorra y gafas de sol captado con flash de noche, fotografía de retrato en blanco y negro"
+        }
+      },
+      {
+        file: "men-streetwear-cap-flip-night-black-white-w2b.jpg",
+        alt: {
+          en: "Two men at night, one flipping a cap in the air, streetwear and tattoos, black and white photography",
+          fr: "Deux hommes de nuit, l'un faisant tournoyer une casquette en l'air, streetwear et tatouages, photographie noir et blanc",
+          es: "Dos hombres de noche, uno lanzando una gorra al aire, streetwear y tatuajes, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "man-glasses-hand-gesture-tattoos-portrait-black-white-w2b.jpg",
+        alt: {
+          en: "Tattooed man in glasses raising both middle fingers toward the camera, black and white portrait photography",
+          fr: "Homme tatoué à lunettes levant les deux majeurs vers l'objectif, photographie de portrait noir et blanc",
+          es: "Hombre tatuado con gafas levantando ambos dedos medios hacia la cámara, fotografía de retrato en blanco y negro"
+        }
+      },
+      {
+        file: "breakdancer-mid-motion-red-light-w2b.jpg",
+        alt: {
+          en: "Breakdancer frozen mid-move under warm red stage light, black and white photography",
+          fr: "Breakdancer figé en plein mouvement sous une lumière de scène rouge chaude, photographie noir et blanc",
+          es: "Bailarín de breakdance congelado en pleno movimiento bajo luz de escenario roja cálida, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "palacio-bellas-artes-facade-installation-print-w2b.jpg",
+        alt: {
+          en: "Framed print of Bailar la Ciudad mounted on the brick facade of the Palacio de Bellas Artes, Medellín, palm fronds overhead",
+          fr: "Tirage encadré de Bailar la Ciudad installé sur la façade en brique du Palacio de Bellas Artes, Medellín, palmes au-dessus",
+          es: "Tiraje enmarcado de Bailar la Ciudad montado en la fachada de ladrillo del Palacio de Bellas Artes, Medellín, palmeras encima"
+        }
+      },
+      {
+        file: "bailar-la-ciudad-exhibition-panel-detail-w2b.jpg",
+        alt: {
+          en: "Close view of the mounted Bailar la Ciudad print, a dancer frozen mid-motion in red light",
+          fr: "Vue rapprochée du tirage Bailar la Ciudad installé, un danseur figé en plein mouvement sous lumière rouge",
+          es: "Vista cercana del tiraje Bailar la Ciudad instalado, un bailarín congelado en pleno movimiento bajo luz roja"
+        }
+      },
+      {
+        file: "cypher-miraflores-fanzine-stack-wood-table-w2b.jpg",
+        alt: {
+          en: "Three Cypher Miraflores fanzines on a wood table, black and white dance photography covers",
+          fr: "Trois fanzines Cypher Miraflores posés sur une table en bois, couvertures de photographie de danse noir et blanc",
+          es: "Tres fanzines Cypher Miraflores sobre una mesa de madera, portadas de fotografía de danza en blanco y negro"
+        }
+      }
+    ]
+  },
+
+  "branch-lo-que-dejamos": {
+    id: "branch-lo-que-dejamos",
+    folder: "images/branch-lo-que-dejamos/",
+    title: {
+      en: "What We Leave Behind",
+      fr: "Ce que nous laissons",
+      es: "Lo que dejamos"
+    },
+    images: [
+      {
+        file: "scrap-metal-yard-entrance-barbed-wire-workers-w2b.jpg",
+        alt: {
+          en: "Workers inside a scrap-metal yard behind a barbed-wire gate, Spanish signage advertising metal purchase, medium format colour film",
+          fr: "Ouvriers dans une casse de ferraille derrière un portail barbelé, enseigne en espagnol annonçant l'achat de métaux, moyen format argentique couleur",
+          es: "Trabajadores dentro de un depósito de chatarra tras un portón de alambre de púas, letrero en español que anuncia compra de metales, formato medio a color"
+        }
+      },
+      {
+        file: "abandoned-factory-water-tower-overgrown-w2b.jpg",
+        alt: {
+          en: "Rusted water tower rising between abandoned brick factory buildings, overgrown with grass, medium format colour film",
+          fr: "Château d'eau rouillé s'élevant entre des bâtiments d'usine en brique abandonnés, envahis par l'herbe, moyen format argentique couleur",
+          es: "Torre de agua oxidada entre edificios de fábrica de ladrillo abandonados, cubiertos de hierba, formato medio a color"
+        }
+      },
+      {
+        file: "ruined-building-interior-debris-furniture-w2b.jpg",
+        alt: {
+          en: "Interior of a ruined building strewn with broken furniture and debris, medium format colour film photography",
+          fr: "Intérieur d'un bâtiment en ruine jonché de meubles brisés et de débris, moyen format argentique couleur",
+          es: "Interior de un edificio en ruinas cubierto de muebles rotos y escombros, película de formato medio a color"
+        }
+      },
+      {
+        file: "calle-54-street-sign-rubble-w2b.jpg",
+        alt: {
+          en: "Bent Calle 54 street sign leaning among piles of rubble and rusted metal, medium format colour film photography",
+          fr: "Panneau de rue « Calle 54 » tordu penché parmi des gravats et de la ferraille rouillée, moyen format argentique couleur",
+          es: "Letrero de calle «Calle 54» torcido entre escombros y chatarra oxidada, película de formato medio a color"
+        }
+      },
+      {
+        file: "lo-que-dejamos-exhibition-wide-parque-luces-w2b.jpg",
+        alt: {
+          en: "Lo que dejamos shown outdoors on V-shaped panels, visitors walking past, Parque de las Luces light poles behind",
+          fr: "Lo que dejamos exposé en extérieur sur des panneaux en V, visiteurs passant devant, mâts lumineux du Parque de las Luces en arrière-plan",
+          es: "Lo que dejamos expuesto al aire libre en paneles en V, visitantes pasando, postes de luz del Parque de las Luces al fondo"
+        }
+      },
+      {
+        file: "lo-que-dejamos-exhibition-panel-angle-w2b.jpg",
+        alt: {
+          en: "Angled view of a Lo que dejamos exhibition panel, abandoned-building photographs beside the printed wall text",
+          fr: "Vue en angle d'un panneau de l'exposition Lo que dejamos, photographies de bâtiments abandonnés à côté du texte imprimé",
+          es: "Vista en ángulo de un panel de la exposición Lo que dejamos, fotografías de edificios abandonados junto al texto impreso"
+        }
+      },
+      {
+        file: "lo-que-dejamos-exhibition-panel-closeup-w2b.jpg",
+        alt: {
+          en: "Close view of a Lo que dejamos panel spread, scrapyard and street-sign photographs beside the exhibition statement",
+          fr: "Vue rapprochée d'un panneau double de Lo que dejamos, photographies de casse et de panneau de rue à côté du texte d'intention",
+          es: "Vista cercana de un panel doble de Lo que dejamos, fotografías de depósito de chatarra y señal de calle junto al texto de intención"
+        }
+      }
+    ]
+  },
+
+  "branch-pretty-od": {
+    id: "branch-pretty-od",
+    folder: "images/branch-pretty-od/",
+    title: {
+      en: "Pretty OD",
+      fr: "Pretty OD",
+      es: "Pretty OD"
+    },
+    images: [
+      {
+        file: "pink-plastic-wrap-figure-abstract-w2b.jpg",
+        alt: {
+          en: "Figure wrapped in crumpled plastic sheeting under pink and purple light, abstract conceptual photography",
+          fr: "Silhouette enveloppée de film plastique froissé sous une lumière rose et violette, photographie conceptuelle abstraite",
+          es: "Figura envuelta en plástico arrugado bajo luz rosa y morada, fotografía conceptual abstracta"
+        }
+      },
+      {
+        file: "red-light-glowing-eyes-intense-portrait-w2b.jpg",
+        alt: {
+          en: "Close portrait with eyes glowing red, intense conceptual photography",
+          fr: "Portrait rapproché aux yeux luisant de rouge, photographie conceptuelle intense",
+          es: "Retrato cercano con los ojos brillando en rojo, fotografía conceptual intensa"
+        }
+      },
+      {
+        file: "woman-reclining-neon-light-bedroom-w2b.jpg",
+        alt: {
+          en: "Woman reclining on a bed under pink and blue neon light, posters covering the wall behind her",
+          fr: "Femme allongée sur un lit sous une lumière néon rose et bleue, mur recouvert d'affiches derrière elle",
+          es: "Mujer recostada en una cama bajo luz neón rosa y azul, pared cubierta de pósters detrás de ella"
+        }
+      },
+      {
+        file: "woman-graphic-tee-pink-lit-room-posters-w2b.jpg",
+        alt: {
+          en: "Woman kneeling in an oversized graphic t-shirt in a pink-lit room covered in posters",
+          fr: "Femme agenouillée dans un t-shirt graphique oversize dans une pièce éclairée de rose et couverte d'affiches",
+          es: "Mujer de rodillas con una camiseta gráfica oversize en una habitación iluminada de rosa y cubierta de pósters"
+        }
+      },
+      {
+        file: "pink-love-perfume-bottle-still-life-w2b.jpg",
+        alt: {
+          en: "Heart-shaped Pink Love perfume bottle resting on fabric under pink light, conceptual still life photography",
+          fr: "Flacon de parfum « Pink Love » en forme de cœur posé sur un tissu sous lumière rose, nature morte conceptuelle",
+          es: "Frasco de perfume « Pink Love » en forma de corazón sobre tela bajo luz rosa, naturaleza muerta conceptual"
+        }
+      }
+    ]
+  },
+
+  "branch-pinball": {
+    id: "branch-pinball",
+    folder: "images/branch-pinball/",
+    title: {
+      en: "Pinball",
+      fr: "Pinball",
+      es: "Pinball"
+    },
+    images: [
+      {
+        file: "vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg",
+        alt: {
+          en: "Cluttered vintage costume shop lit by bent neon tubes, fur coats and beaded curtains on the racks",
+          fr: "Boutique de costumes vintage encombrée, éclairée par des tubes néon tordus, manteaux de fourrure et rideaux de perles sur les portants",
+          es: "Tienda de disfraces vintage abarrotada, iluminada con tubos de neón curvados, abrigos de piel y cortinas de cuentas en los percheros"
+        }
+      },
+      {
+        file: "circus-tent-entrance-blue-neon-arches-w2b.jpg",
+        alt: {
+          en: "Circus tent entrance at night under two arching blue neon tubes",
+          fr: "Entrée de chapiteau de cirque la nuit sous deux arches de néon bleu",
+          es: "Entrada de carpa de circo de noche bajo dos arcos de neón azul"
+        }
+      },
+      {
+        file: "teal-neon-light-trails-abandoned-interior-w2b.jpg",
+        alt: {
+          en: "Long-exposure teal neon light trails crossing a concrete pillar in a derelict interior",
+          fr: "Traînées de lumière néon turquoise en pose longue croisant un pilier de béton dans un intérieur à l'abandon",
+          es: "Estelas de luz neón turquesa en larga exposición cruzando un pilar de concreto en un interior abandonado"
+        }
+      },
+      {
+        file: "dj-booth-neon-light-trails-nightclub-w2b.jpg",
+        alt: {
+          en: "DJ booth seen from above through swirling red and blue neon light trails, nightclub",
+          fr: "Cabine DJ vue de haut à travers des traînées de lumière néon rouge et bleue, boîte de nuit",
+          es: "Cabina de DJ vista desde arriba a través de estelas de luz neón roja y azul, discoteca"
+        }
+      }
+    ]
+  },
+
+  "branch-passage": {
+    id: "branch-passage",
+    folder: "images/branch-passage/",
+    title: {
+      en: "Workbench",
+      fr: "Établi",
+      es: "Taller"
+    },
+    images: [
+      {
+        file: "tattoo-artist-desk-work-flash-art-wall-w2b.jpg",
+        alt: {
+          en: "Hooded figure working at a lamp-lit desk, tattoo flash sheets and reference images covering the wall behind",
+          fr: "Silhouette encapuchonnée au travail sur un bureau éclairé par une lampe, planches de flash tattoo et images de référence couvrant le mur",
+          es: "Figura encapuchada trabajando en un escritorio iluminado por una lámpara, planchas de flash de tatuaje e imágenes de referencia cubriendo la pared"
+        }
+      }
+    ]
   }
 
 };
@@ -1594,9 +2073,9 @@ const STRIP_EXTRAS = {
       {
         file: "antique-shop-gilded-mirror-roman-bust-w2b.jpg",
         alt: {
-          en: "Signed archival fine-art prints",
-          fr: "Tirages d'art signés",
-          es: "Copias de autor firmadas"
+          en: "Fine-art prints — numbered, with a signed certificate",
+          fr: "Tirages d'art — numérotés, avec certificat signé",
+          es: "Copias de autor — numeradas, con certificado firmado"
         }
       }
     ]

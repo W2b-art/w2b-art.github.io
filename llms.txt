@@ -6,13 +6,11 @@ Languages: English, French and Spanish.
 
 ## Fine-art practice (W2b)
 
-- [Home](https://w2bphotography.com/): the W2b fine-art series, film and digital, printed on cotton rag.
-- [Selected works](https://w2bphotography.com/gallery-best-of.html): a distillation of the practice across every medium.
-- [Series: Argentina](https://w2bphotography.com/gallery-argentina.html)
+- [Home](https://w2bphotography.com/home.html): the W2b fine-art trunk — a curated selection plus three named projects (Bailar la Ciudad, Lo que dejamos, Pretty OD), film and digital, printed on cotton rag.
 - [Series: Contemplations](https://w2bphotography.com/gallery-contemplations.html)
 - [Series: Bailar la ciudad](https://w2bphotography.com/gallery-bailar-la-ciudad.html)
-- [Series: Matter](https://w2bphotography.com/gallery-matter.html)
-- [Series: Work in progress](https://w2bphotography.com/gallery-work-in-progress.html)
+- [Series: Pretty OD](https://w2bphotography.com/gallery-pretty-od.html)
+- [Exhibitions](https://w2bphotography.com/expositions.html): verified exhibition history.
 - [Prints shop](https://w2bphotography.com/shop.html): limited-edition prints, signed and numbered collector tier and open edition.
 - [Collaborate](https://w2bphotography.com/collaborate.html): artist collaborations and commissions.
 - [About](https://w2bphotography.com/about.html): biography, practice and approach.
@@ -20,9 +18,14 @@ Languages: English, French and Spanish.
 ## Pro practice (editorial and commercial)
 
 - [Pro home](https://w2bphotography.com/w2b-pro/): editorial and commercial photography in Medellín.
-- [Selected work](https://w2bphotography.com/w2b-pro/work.html): fashion, restaurants, events and portraits.
+- [Selected work](https://w2bphotography.com/w2b-pro/work.html): fashion, portraits and product; hospitality and events each have their own page.
+- [Hospitality and restaurants](https://w2bphotography.com/w2b-pro/restaurants.html): restaurant and hospitality photography in Medellín and Corsica.
+- [Events](https://w2bphotography.com/w2b-pro/eventos.html): festivals, parties and concerts in Medellín.
 - [Studio](https://w2bphotography.com/w2b-pro/studio.html): process and approach.
-- [Services and packages](https://w2bphotography.com/w2b-pro/documents/services.html): rates in EUR and COP.
+- [Services and packages](https://w2bphotography.com/w2b-pro/services.html): how the process works and what it costs.
+- [Services and packages (detail)](https://w2bphotography.com/w2b-pro/documents/services.html): rates in EUR and COP.
+- [Pre-quote tool](https://w2bphotography.com/w2b-pro/devis.html): indicative price range in two minutes.
+- [Book a session](https://w2bphotography.com/w2b-pro/booking.html): step-by-step booking by project type.
 - [Contact](https://w2bphotography.com/w2b-pro/contact.html): brief, budget and availability.
 
 ## Key facts

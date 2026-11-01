@@ -4,37 +4,66 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tirages — W2b</title>
-<meta name="description" content="Signed archival fine-art prints by W2b (Guillaume Delye) — pigment ink on cotton rag, numbered and signed, shipped worldwide.">
+<meta name="description" content="Fine-art prints by W2b (Guillaume Delye) — pigment ink on cotton rag; collector editions numbered with a signed certificate, shipped worldwide.">
+<link rel="canonical" href="https://w2bphotography.com/shop.html">
+<meta property="og:title" content="Tirages — W2b">
+<meta property="og:description" content="Fine-art prints by W2b (Guillaume Delye) — pigment ink on cotton rag; collector editions numbered with a signed certificate, shipped worldwide.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://w2bphotography.com/shop.html">
+<meta property="og:image" content="https://w2bphotography.com/images/trunk/glass-roof-grid-baroque-sculpture-ornament-w2b.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="canonical" href="https://w2bphotography.com/shop.html">
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/art.css?v=5">
+<link rel="stylesheet" href="css/rooms.css?v=8">
 </head>
 <body>
 
-<header class="hdr" id="hdr">
-  <div class="brand"><a href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a></div>
-  <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <div class="hdr-panel" id="hdrPanel">
-    <nav>
-      <a href="home.html#series" data-ui="nav_series">Séries</a>
-      <a href="shop.html" data-ui="nav_prints">Tirages</a>
-      <a href="collaborate.html" data-ui="nav_collab">Collaborer</a>
-      <a href="about.html" data-ui="nav_about">À propos</a>
-    </nav>
-    <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
-  </div>
+<header class="rbar">
+  <a class="brand" href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
 </header>
 
-<main class="shop">
-  <div class="shop-head">
-    <div class="k" id="s_k"></div>
-    <h1 id="s_h1"></h1>
-    <p id="s_intro"></p>
-    <p class="terms" id="s_terms"></p>
+<button id="idxFab" class="idx-fab" type="button" aria-haspopup="dialog" aria-expanded="false">
+  <span class="dot" aria-hidden="true"></span><span data-ui="idx_label">Index</span><span class="cur" id="idxCur"></span>
+</button>
+<div class="idx-overlay" id="idxOverlay" role="dialog" aria-modal="true">
+  <span class="idx-close" id="idxClose" role="button" tabindex="0">&times;</span>
+  <div class="idx-wrap">
+    <div class="idx-sec">
+      <h4 data-ui="idx_explore">Explorer</h4>
+      <div class="idx-row">
+        <a href="home.html" data-ui="idx_art">Fine Art</a>
+        <a href="https://w2bphotography.com/w2b-pro/" data-ui="idx_pro">Commercial ↗</a>
+        <a href="shop.html" data-ui="idx_prints">Tirages</a>
+        <a href="expositions.html" data-ui="idx_expo">Expositions</a>
+      </div>
+    </div>
+    <div class="idx-sec">
+      <h4 data-ui="idx_series_h">Séries</h4>
+      <div id="idxSeries"></div>
+    </div>
+    <div class="idx-sec">
+      <div class="idx-row">
+        <a href="collaborate.html" data-ui="foot_collab">Collaborer</a>
+        <a href="about.html" data-ui="foot_about">À propos</a>
+        <span class="lang" data-idx-lang><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></span>
+      </div>
+    </div>
   </div>
+</div>
+
+<main class="shop">
+  <section class="shop-hero">
+    <img src="images/trunk/glass-roof-grid-baroque-sculpture-ornament-w2b.jpg" alt="">
+    <div class="shop-head room-confident">
+      <div class="k" id="s_k"></div>
+      <h1 id="s_h1"></h1>
+      <p id="s_intro"></p>
+    </div>
+  </section>
+  <p class="terms shop-terms-standalone" id="s_terms"></p>
   <div id="shop-groups"></div>
   <p class="shop-dark-note"><span id="s_dark"></span> <a href="collaborate.html" id="s_dark_link"></a></p>
 </main>
@@ -65,17 +94,17 @@
   <div class="l">@w2b.film<br><a href="home.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
 </footer>
 
-<script src="js/gallery-data.js?v=3"></script>
-<script src="js/art-i18n.js?v=4"></script>
+<script src="js/gallery-data.js?v=9"></script>
+<script src="js/art-i18n.js?v=8"></script>
 <script>
 (function(){
   if(typeof w2bApplyUI==='function') w2bApplyUI();
   var L=(window.W2B_LANG)||'fr';
 
   var S={
-    fr:{k:"Tirages",h1:"Acquérir un tirage",intro:"Une sélection d'images, en tirages d'art signés : encre pigmentaire sur coton, numérotés et signés à la main.",terms:"Chaque tirage est fait sur commande et expédié dans le monde entier. Comptez deux à trois semaines. Prix en euros ; peso colombien sur demande.",dark:"Les tirages des séries Nude et Dark Desire sont disponibles en privé, sur demande.",darklink:"Écrire",coll:"Édition collector",open:"Édition ouverte",from:"dès",size:"Format",name:"Nom",email:"Email",note:"Un mot (facultatif)",submit:"Demander ce tirage",ok:"Merci. Je confirme la disponibilité et t'envoie la facture sous quelques jours.",noteCol:"Signé et numéroté · édition limitée de 15 + 2 AP · avec certificat d'authenticité.",noteOpen:"Édition ouverte · tirage pigmentaire d'archive · non signé.",consent:"J'accepte que mes données soient traitées pour répondre à ma demande, selon la",privacylink:"Politique de confidentialité."},
-    en:{k:"Prints",h1:"Collect a print",intro:"A selection of images, as signed fine-art prints: pigment ink on cotton rag, numbered and signed by hand.",terms:"Each print is made to order and shipped worldwide. Allow two to three weeks. Prices in euros; Colombian peso on request.",dark:"Prints from the Nude and Dark Desire series are available privately, on request.",darklink:"Write",coll:"Collector edition",open:"Open edition",from:"from",size:"Size",name:"Name",email:"Email",note:"A note (optional)",submit:"Request this print",ok:"Thank you. I'll confirm availability and send the invoice within a few days.",noteCol:"Signed and numbered · limited edition of 15 + 2 AP · with certificate of authenticity.",noteOpen:"Open edition · archival pigment print · unsigned.",consent:"I agree my data may be processed to answer my request, per the",privacylink:"Privacy policy."},
-    es:{k:"Copias",h1:"Adquirir una copia",intro:"Una selección de imágenes, en copias de autor firmadas: tinta pigmentada sobre algodón, numeradas y firmadas a mano.",terms:"Cada copia se hace por encargo y se envía a todo el mundo. Dos a tres semanas. Precios en euros; peso colombiano a pedido.",dark:"Las copias de las series Nude y Dark Desire están disponibles en privado, a pedido.",darklink:"Escribir",coll:"Edición coleccionista",open:"Edición abierta",from:"desde",size:"Formato",name:"Nombre",email:"Email",note:"Una nota (opcional)",submit:"Solicitar esta copia",ok:"Gracias. Confirmo disponibilidad y te envío la factura en unos días.",noteCol:"Firmado y numerado · edición limitada de 15 + 2 AP · con certificado de autenticidad.",noteOpen:"Edición abierta · copia pigmentada de archivo · sin firmar.",consent:"Acepto que mis datos se traten para responder a mi solicitud, según la",privacylink:"Política de datos."}
+    fr:{k:"Tirages",h1:"Acquérir un tirage",intro:"Une sélection d'images, en tirages d'art : encre pigmentaire sur coton. Les éditions collector sont numérotées, avec certificat signé ; les éditions ouvertes sont des tirages d'archive, sans certificat.",terms:"Chaque tirage est fait sur commande et expédié dans le monde entier. Comptez deux à trois semaines. Prix en euros ; peso colombien sur demande.",dark:"Les tirages de la section After Dark sont disponibles en privé, sur demande.",darklink:"Écrire",coll:"Édition collector",open:"Édition ouverte",from:"dès",size:"Format",name:"Nom",email:"Email",note:"Un mot (facultatif)",submit:"Demander ce tirage",ok:"Merci. Je confirme la disponibilité et t'envoie la facture sous quelques jours.",noteCol:"Numéroté · édition limitée de 15 + 2 AP · avec certificat d'authenticité signé.",noteOpen:"Édition ouverte · tirage pigmentaire d'archive · non signé.",consent:"J'accepte que mes données soient traitées pour répondre à ma demande, selon la",privacylink:"Politique de confidentialité."},
+    en:{k:"Prints",h1:"Collect a print",intro:"A selection of images, as fine-art prints: pigment ink on cotton rag. Collector editions are numbered, with a signed certificate; open editions are archival prints, without a certificate.",terms:"Each print is made to order and shipped worldwide. Allow two to three weeks. Prices in euros; Colombian peso on request.",dark:"Prints from the After Dark section are available privately, on request.",darklink:"Write",coll:"Collector edition",open:"Open edition",from:"from",size:"Size",name:"Name",email:"Email",note:"A note (optional)",submit:"Request this print",ok:"Thank you. I'll confirm availability and send the invoice within a few days.",noteCol:"Numbered · limited edition of 15 + 2 AP · with a signed certificate of authenticity.",noteOpen:"Open edition · archival pigment print · unsigned.",consent:"I agree my data may be processed to answer my request, per the",privacylink:"Privacy policy."},
+    es:{k:"Copias",h1:"Adquirir una copia",intro:"Una selección de imágenes, en copias de autor: tinta pigmentada sobre algodón. Las ediciones coleccionista están numeradas, con certificado firmado; las ediciones abiertas son copias de archivo, sin certificado.",terms:"Cada copia se hace por encargo y se envía a todo el mundo. Dos a tres semanas. Precios en euros; peso colombiano a pedido.",dark:"Las copias de la sección After Dark están disponibles en privado, a pedido.",darklink:"Escribir",coll:"Edición coleccionista",open:"Edición abierta",from:"desde",size:"Formato",name:"Nombre",email:"Email",note:"Una nota (opcional)",submit:"Solicitar esta copia",ok:"Gracias. Confirmo disponibilidad y te envío la factura en unos días.",noteCol:"Numerada · edición limitada de 15 + 2 AP · con certificado de autenticidad firmado.",noteOpen:"Edición abierta · copia pigmentada de archivo · sin firmar.",consent:"Acepto que mis datos se traten para responder a mi solicitud, según la",privacylink:"Política de datos."}
   };
   var D=S[L]||S.fr;
   document.getElementById('s_k').textContent=D.k;
@@ -89,86 +118,86 @@
     collector:{subject:"Print order (collector) — w2b art",sizes:[{label:"30 × 40 cm",eur:150},{label:"50 × 70 cm",eur:290},{label:"70 × 100 cm",eur:520}]},
     open:{subject:"Print order (open) — w2b art",sizes:[{label:"30 × 40 cm",eur:75},{label:"50 × 70 cm",eur:145},{label:"70 × 100 cm",eur:260}]}
   };
-  var COLLECTOR_PICKS=["bonfire-flames-night-black-white-w2b.jpg","lone-figure-salt-flat-salar-argentina-film-w2b.jpg","antique-shop-gilded-mirror-roman-bust-w2b.jpg","medellin-palacio-cultura-neo-gothic-arches-interior-black-white-w2b.jpg","medellin-church-cross-tattoo-wings-devotion-documentary-w2b.jpg","artichoke-bud-close-up-spiral-geometry-medium-format-film-w2b.jpg","blue-spiky-wildflower-macro-medium-format-colour-film-w2b.jpg","aerial-bariloche-lake-islands-mountain-panorama-colour-film-w2b.jpg","stone-statues-silhouette-purple-lake-sunset-patagonia-film-w2b.jpg","cactus-spines-extreme-macro-abstract-black-white-film-w2b.jpg","guitar-strings-light-trails-long-exposure-black-white-film-w2b.jpg"];
-  var isCollector=function(f){return COLLECTOR_PICKS.indexOf(f)!==-1;};
+  /* Shop sources the assorted trunk (open edition) + the three named
+     projects with a real branch (collector edition) — see trunk-data.js.
+     Tier is by gallery, not by individual photo: a defensible default
+     (named project = numbered edition, broader trunk = archival open
+     edition), easy to flip per-photo later if a different split is
+     wanted. */
+  var COLLECTOR_GALLERIES=["branch-bailar-la-ciudad","branch-lo-que-dejamos","branch-pretty-od"];
+  var isCollector=function(galleryId){return COLLECTOR_GALLERIES.indexOf(galleryId)!==-1;};
+  /* Exhibition/fanzine documentation shots inside the branch galleries —
+     real photos of a print on a wall or a fanzine stack, not themselves
+     sellable prints. Excluded from the shop only. */
+  var SHOP_EXCLUDE={
+    "branch-bailar-la-ciudad":["palacio-bellas-artes-facade-installation-print-w2b.jpg","bailar-la-ciudad-exhibition-panel-detail-w2b.jpg","cypher-miraflores-fanzine-stack-wood-table-w2b.jpg"],
+    "branch-lo-que-dejamos":["lo-que-dejamos-exhibition-wide-parque-luces-w2b.jpg","lo-que-dejamos-exhibition-panel-angle-w2b.jpg","lo-que-dejamos-exhibition-panel-closeup-w2b.jpg"]
+  };
   var TITLES={
-   "bonfire-flames-night-black-white-w2b.jpg":{en:"Ember",fr:"Braise",es:"Brasa"},
-   "willow-catkin-spring-dusk-blue-sky-w2b.jpg":{en:"First Breath",fr:"Premier souffle",es:"Primer aliento"},
-   "abandoned-shoes-street-debris-urban-black-white-w2b.jpg":{en:"What Remains",fr:"Ce qui reste",es:"Lo que queda"},
-   "solitary-figure-bench-tropical-tree-seaside-black-white-w2b.jpg":{en:"Alone with the Sea",fr:"Seul face à la mer",es:"A solas con el mar"},
-   "sea-anemone-underwater-teal-ocean-w2b.jpg":{en:"Bloom in the Deep",fr:"Floraison des profondeurs",es:"Floración del abismo"},
-   "bamboo-forest-pond-reflection-stone-wall-w2b.jpg":{en:"Stillness",fr:"Quiétude",es:"Quietud"},
-   "antique-shop-gilded-mirror-roman-bust-w2b.jpg":{en:"Vanitas",fr:"Vanités",es:"Vanidades"},
-   "ski-lift-silhouette-alpine-sunset-mountains-w2b.jpg":{en:"Ascension",fr:"Ascension",es:"Ascensión"},
-   "kite-grey-sky-airplane-contrail-minimalist-black-white-w2b.jpg":{en:"Tethered",fr:"Attaché",es:"Atado"},
-   "lake-view-wooden-window-mountains-reeds-w2b.jpg":{en:"Threshold",fr:"Seuil",es:"Umbral"},
-   "sunset-lake-mountain-silhouette-bird-film-w2b.jpg":{en:"Vespers",fr:"Vêpres",es:"Vísperas"},
-   "lone-figure-salt-flat-salar-argentina-film-w2b.jpg":{en:"The Long Walk",fr:"La longue marche",es:"La larga marcha"},
-   "moving-crane-apartment-building-facade-urban-w2b.jpg":{en:"Departure",fr:"Départ",es:"Partida"},
-   "congress-building-buenos-aires-argentina-black-white-w2b.jpg":{en:"The Weight of Stone",fr:"Le poids de la pierre",es:"El peso de la piedra"},
-   "stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg":{en:"Vanishing",fr:"Point de fuite",es:"Punto de fuga"},
-   "industrial-gears-bolts-vintage-machine-macro-black-white-w2b.jpg":{en:"Mechanism",fr:"Rouages",es:"Engranajes"},
-   "abandoned-fishing-boat-low-tide-harbor-black-white-w2b.jpg":{en:"Low Tide",fr:"Marée basse",es:"Marea baja"},
-   "ransacked-room-interior-debris-chaos-documentary-w2b.jpg":{en:"Aftermath",fr:"Après",es:"Después"},
-   "crowded-medieval-street-france-motion-blur-black-white-w2b.jpg":{en:"Passing",fr:"Passage",es:"Paso"},
-   "paris-street-sticker-j-existe-haussmann-graffiti-w2b.jpg":{en:"I Exist",fr:"J'existe",es:"Existo"},
-   "clown-statue-closeup-red-hair-colorful-w2b.jpg":{en:"The Painted Smile",fr:"Le sourire peint",es:"La sonrisa pintada"},
-   "medellin-elder-straw-hat-curbside-street-portrait-colombia-w2b.jpg":{en:"The Witness",fr:"Le témoin",es:"El testigo"},
-   "medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg":{en:"Tenderness",fr:"Tendresse",es:"Ternura"},
-   "medellin-dried-flower-market-vintage-scale-colour-w2b.jpg":{en:"The Weight of Flowers",fr:"Le poids des fleurs",es:"El peso de las flores"},
-   "medellin-elder-straw-hat-graffiti-street-scene-colombia-w2b.jpg":{en:"Against Blue",fr:"Contre le bleu",es:"Contra el azul"},
-   "medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg":{en:"Small Sweetness",fr:"Petites douceurs",es:"Pequeña dulzura"},
-   "medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg":{en:"Green Light",fr:"Lumière verte",es:"Luz verde"},
-   "medellin-worker-rappel-building-facade-urban-labour-w2b.jpg":{en:"Suspended",fr:"Suspendu",es:"Suspendido"},
-   "medellin-auditorium-social-realist-mural-empty-chairs-black-white-w2b.jpg":{en:"Empty Seats",fr:"Sièges vides",es:"Asientos vacíos"},
-   "medellin-palacio-cultura-neo-gothic-arches-interior-black-white-w2b.jpg":{en:"Toward the Light",fr:"Vers la lumière",es:"Hacia la luz"},
-   "medellin-church-cross-tattoo-wings-devotion-documentary-w2b.jpg":{en:"Borrowed Wings",fr:"Ailes d'emprunt",es:"Alas prestadas"},
-   "child-shoes-stone-ledge-brick-wall-found-object-film-w2b.jpg":{en:"Small Absence",fr:"Petite absence",es:"Pequeña ausencia"},
-   "animal-skeleton-rocky-ground-sepia-film-w2b.jpg":{en:"Memento",fr:"Memento",es:"Memento"},
-   "ghost-swing-blue-urban-alley-multiple-exposure-colour-film-w2b.jpg":{en:"Echo",fr:"Écho",es:"Eco"},
-   "frida-kahlo-painted-portrait-dark-wooden-planks-film-w2b.jpg":{en:"Frida",fr:"Frida",es:"Frida"},
-   "geranium-silhouette-teal-glass-wall-minimalist-film-w2b.jpg":{en:"Leaning to Light",fr:"Pencher vers la lumière",es:"Inclinada a la luz"},
-   "geranium-plant-light-leak-orange-curtain-interior-film-w2b.jpg":{en:"Fever Light",fr:"Lumière de fièvre",es:"Luz de fiebre"},
-   "blue-spiky-wildflower-macro-medium-format-colour-film-w2b.jpg":{en:"In a Mist",fr:"Dans la brume",es:"Entre la niebla"},
-   "artichoke-bud-close-up-spiral-geometry-medium-format-film-w2b.jpg":{en:"Spiral",fr:"Spirale",es:"Espiral"},
-   "aerial-plaza-fountain-palm-shadows-overhead-colour-film-w2b.jpg":{en:"From Above",fr:"Vue d'en haut",es:"Desde arriba"},
-   "airplane-window-wing-river-below-aerial-black-white-film-w2b.jpg":{en:"Leaving Earth",fr:"Quitter la terre",es:"Dejar la tierra"},
-   "lighthouse-signal-tower-silhouette-golden-sunset-film-w2b.jpg":{en:"Beacon",fr:"Phare",es:"Faro"},
-   "stone-arch-corridor-bicycles-night-black-white-film-w2b.jpg":{en:"Night Vaults",fr:"Voûtes nocturnes",es:"Bóvedas nocturnas"},
-   "metro-crowd-glimpsed-dark-gap-black-white-film-w2b.jpg":{en:"Glimpse",fr:"Aperçu",es:"Vislumbre"},
-   "circus-tent-blue-neon-arcs-dusk-structural-film-w2b.jpg":{en:"Blue Arcs",fr:"Arcs bleus",es:"Arcos azules"},
-   "aerial-bariloche-lake-islands-mountain-panorama-colour-film-w2b.jpg":{en:"Archipelago",fr:"Archipel",es:"Archipiélago"},
-   "stone-statues-silhouette-purple-lake-sunset-patagonia-film-w2b.jpg":{en:"Sentinels",fr:"Sentinelles",es:"Centinelas"},
-   "cactus-spines-extreme-macro-abstract-black-white-film-w2b.jpg":{en:"Defences",fr:"Défenses",es:"Defensas"},
-   "water-cascade-splash-dark-rocks-black-white-film-w2b.jpg":{en:"White Water",fr:"Eau vive",es:"Agua viva"},
-   "guitar-strings-light-trails-long-exposure-black-white-film-w2b.jpg":{en:"Sound Made Light",fr:"Le son devenu lumière",es:"El sonido hecho luz"},
-   "geodesic-dome-mesh-looking-up-sepia-film-w2b.jpg":{en:"Lattice",fr:"Treillis",es:"Entramado"},
-   "fresh-pita-bread-bakery-shallow-depth-colour-film-w2b.jpg":{en:"Daily Bread",fr:"Pain quotidien",es:"Pan de cada día"},
-   "stage-spotlights-purple-smoke-darkness-abstract-w2b.jpg":{en:"Into the Smoke",fr:"Dans la fumée",es:"Entre el humo"},
-   "pink-geranium-silver-foliage-close-up-medium-format-film-w2b.jpg":{en:"Small Mercy",fr:"Petite grâce",es:"Pequeña gracia"},
-   "medellin-carniceria-carne-colgada-black-white-w2b.jpg":{en:"What Is Offered",fr:"Ce qui est offert",es:"Lo que se ofrece"},
-   "medellin-mercado-vendedora-manos-movimiento-black-white-w2b.jpg":{en:"Quick Hands",fr:"Mains rapides",es:"Manos rápidas"},
-   "medellin-calle-peatones-movimiento-luz-dorada-color-w2b.jpg":{en:"Hour of Gold",fr:"L'heure dorée",es:"La hora dorada"},
-   "medellin-carniceria-cabeza-res-color-w2b.jpg":{en:"Offering",fr:"Offrande",es:"Ofrenda"},
-   "medellin-fachada-colonial-verde-azulejos-color-w2b.jpg":{en:"Painted Facade",fr:"Façade peinte",es:"Fachada pintada"},
-   "medellin-bus-abandonado-arbol-color-w2b.jpg":{en:"Reclaimed",fr:"Reconquis",es:"Reconquistado"},
-   "medellin-bella-artes-torre-agua-industrial-color-w2b.jpg":{en:"Rust and Sky",fr:"Rouille et ciel",es:"Óxido y cielo"},
-   "medellin-bella-artes-locomotora-abandonada-color-w2b.jpg":{en:"Slow Return",fr:"Retour lent",es:"Regreso lento"},
-   "medellin-bella-artes-interior-ruinas-luz-color-w2b.jpg":{en:"Light Through Ruin",fr:"Lumière dans la ruine",es:"Luz en la ruina"},
-   "medellin-bella-artes-letrero-calle-34-escombros-color-w2b.jpg":{en:"Calle 34",fr:"Calle 34",es:"Calle 34"},
-   "medellin-fachada-colonial-azul-blanco-portal-color-w2b.jpg":{en:"Gate and Palm",fr:"Portail et palmier",es:"Portón y palmera"},
-   "medellin-mercado-interior-siluetas-black-white-w2b.jpg":{en:"Market Shadows",fr:"Ombres du marché",es:"Sombras del mercado"},
-   "medellin-bella-artes-pano-taller-luz-color-w2b.jpg":{en:"Warm Ruin",fr:"Ruine chaude",es:"Ruina cálida"}
+   "weathered-rock-formation-coastal-texture-w2b.jpg":{en:"Weathering",fr:"Érosion",es:"Erosión"},
+   "driftwood-pebble-beach-mountains-black-white-w2b.jpg":{en:"Driftwood",fr:"Bois flotté",es:"Madera a la deriva"},
+   "sunset-pine-trees-mountain-silhouette-w2b.jpg":{en:"Dusk Pines",fr:"Sapins du soir",es:"Pinos del atardecer"},
+   "contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg":{en:"Wreckage",fr:"Épave",es:"Naufragio"},
+   "glass-roof-grid-baroque-sculpture-ornament-w2b.jpg":{en:"Under Glass",fr:"Sous verre",es:"Bajo cristal"},
+   "pinball-arcade-machine-jackpot-cards-neon-w2b.jpg":{en:"Jackpot",fr:"Jackpot",es:"Jackpot"},
+   "red-lamp-crossed-legs-magazine-intimate-room-w2b.jpg":{en:"Red Light",fr:"Lumière rouge",es:"Luz roja"},
+   "street-dancer-colombia-jersey-motion-night-w2b.jpg":{en:"Mid-Step",fr:"En plein pas",es:"En pleno paso"},
+   "rowboats-misty-lake-mountains-w2b.jpg":{en:"Moored",fr:"À quai",es:"Amarrados"},
+   "bamboo-tunnel-pond-stone-wall-w2b.jpg":{en:"Bamboo Passage",fr:"Passage de bambous",es:"Paso de bambú"},
+   "coastal-path-bench-ocean-view-faded-film-w2b.jpg":{en:"The Bench",fr:"Le banc",es:"El banco"},
+   "rushing-water-rocks-black-white-w2b.jpg":{en:"White Water",fr:"Eau vive",es:"Agua viva"},
+   "hands-playing-double-bass-black-white-w2b.jpg":{en:"Bowed",fr:"À l'archet",es:"Con el arco"},
+   "street-lamp-silhouette-bird-sky-black-white-w2b.jpg":{en:"Flight",fr:"Envol",es:"Vuelo"},
+   "wet-tree-bark-dripping-water-close-up-w2b.jpg":{en:"After Rain",fr:"Après la pluie",es:"Después de la lluvia"},
+   "abandoned-train-wagons-junkyard-color-w2b.jpg":{en:"What's Left",fr:"Ce qui reste",es:"Lo que queda"},
+   "woman-car-window-candid-street-black-white-w2b.jpg":{en:"Glimpsed",fr:"Entrevue",es:"Vislumbre"},
+   "dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg":{en:"Dark Bay",fr:"Baie sombre",es:"Bahía oscura"},
+   "bolts-nuts-industrial-gear-close-up-black-white-w2b.jpg":{en:"Gearwork",fr:"Rouages",es:"Engranaje"},
+   "crowded-historic-passage-street-photography-black-white-w2b.jpg":{en:"Passage",fr:"Passage",es:"Pasaje"},
+   "man-trucker-cap-sunglasses-night-portrait-black-white-w2b.jpg":{en:"Trucker Cap",fr:"Casquette",es:"Gorra"},
+   "men-streetwear-cap-flip-night-black-white-w2b.jpg":{en:"Cap Flip",fr:"Casquette en l'air",es:"Gorra al aire"},
+   "man-glasses-hand-gesture-tattoos-portrait-black-white-w2b.jpg":{en:"Unbothered",fr:"Sans détour",es:"Sin rodeos"},
+   "breakdancer-mid-motion-red-light-w2b.jpg":{en:"Freeze",fr:"Freeze",es:"Freeze"},
+   "scrap-metal-yard-entrance-barbed-wire-workers-w2b.jpg":{en:"Scrapyard",fr:"Casse",es:"Chatarrería"},
+   "abandoned-factory-water-tower-overgrown-w2b.jpg":{en:"Water Tower",fr:"Château d'eau",es:"Torre de agua"},
+   "ruined-building-interior-debris-furniture-w2b.jpg":{en:"Interior",fr:"Intérieur",es:"Interior"},
+   "calle-54-street-sign-rubble-w2b.jpg":{en:"Calle 54",fr:"Calle 54",es:"Calle 54"},
+   "pink-plastic-wrap-figure-abstract-w2b.jpg":{en:"Wrapped",fr:"Enveloppé",es:"Envuelta"},
+   "red-light-glowing-eyes-intense-portrait-w2b.jpg":{en:"Red Eyes",fr:"Yeux rouges",es:"Ojos rojos"},
+   "woman-reclining-neon-light-bedroom-w2b.jpg":{en:"Neon Bedroom",fr:"Chambre néon",es:"Cuarto neón"},
+   "woman-graphic-tee-pink-lit-room-posters-w2b.jpg":{en:"Pink Room",fr:"Chambre rose",es:"Cuarto rosa"},
+   "pink-love-perfume-bottle-still-life-w2b.jpg":{en:"Pink Love",fr:"Pink Love",es:"Pink Love"}
   };
   var titleFor=function(file,fallback){var t=TITLES[file];return (t&&(t[L]||t.en))||(fallback?fallback.split(',')[0]:file);};
 
-  var SHOP_GALLERIES=["best-of","work-in-progress","matter","series-2"];
+  var SHOP_GALLERIES=["trunk","branch-bailar-la-ciudad","branch-lo-que-dejamos","branch-pretty-od"];
+  /* These 3 trunk photos are each a project's own anchor/hero image on
+     home.html (the trunk photo that opens that project's branch — see
+     trunk-data.js t07/t08/t16) — they belong to the project, not to the
+     assorted "Selección" grab-bag, even though the file itself lives in
+     images/trunk/. Pulled out of trunk and placed first in their real
+     project's group, same Collector tier as the rest of that project. */
+  var ANCHOR_TO_PROJECT={
+    "red-lamp-crossed-legs-magazine-intimate-room-w2b.jpg":"branch-pretty-od",
+    "street-dancer-colombia-jersey-motion-night-w2b.jpg":"branch-bailar-la-ciudad",
+    "abandoned-train-wagons-junkyard-color-w2b.jpg":"branch-lo-que-dejamos"
+  };
   var groupsEl=document.getElementById('shop-groups');
   var seen={}; /* dedupe across galleries */
 
   SHOP_GALLERIES.forEach(function(id){
     var g=GALLERY_DATA[id]; if(!g) return;
-    var imgs=g.images.filter(function(im){ if(seen[im.file]) return false; seen[im.file]=1; return true; });
+    var excl=SHOP_EXCLUDE[id]||[];
+    var imgs=g.images
+      .filter(function(im){ return id==='trunk' ? !ANCHOR_TO_PROJECT[im.file] : true; })
+      .map(function(im){ return {file:im.file, alt:im.alt, folder:g.folder}; });
+    /* inject this project's reassigned trunk anchor(s), lead position */
+    if(id!=='trunk' && GALLERY_DATA.trunk){
+      var anchors=GALLERY_DATA.trunk.images.filter(function(im){ return ANCHOR_TO_PROJECT[im.file]===id; })
+        .map(function(im){ return {file:im.file, alt:im.alt, folder:GALLERY_DATA.trunk.folder}; });
+      imgs=anchors.concat(imgs);
+    }
+    imgs=imgs.filter(function(im){ if(seen[im.file]) return false; if(excl.indexOf(im.file)!==-1) return false; seen[im.file]=1; return true; });
     if(!imgs.length) return;
     var sec=document.createElement('section'); sec.className='shop-group';
     var ttl=document.createElement('div'); ttl.className='shop-group-title';
@@ -176,11 +205,11 @@
     sec.appendChild(ttl);
     var grid=document.createElement('div'); grid.className='shop-grid';
     imgs.forEach(function(im){
-      var col=isCollector(im.file), tier=col?'collector':'open';
+      var col=isCollector(id), tier=col?'collector':'open';
       var minEur=TIERS[tier].sizes[0].eur;
       var t=titleFor(im.file, im.alt&&(im.alt[L]||im.alt.fr));
       var card=document.createElement('div'); card.className='print';
-      card.innerHTML='<div class="frame"><img loading="lazy" src="'+g.folder+im.file+'" alt="'+((im.alt&&(im.alt[L]||im.alt.fr))||'').replace(/"/g,'')+'"></div>'+
+      card.innerHTML='<div class="frame"><img loading="lazy" src="'+im.folder+im.file+'" alt="'+((im.alt&&(im.alt[L]||im.alt.fr))||'').replace(/"/g,'')+'"></div>'+
         '<div class="edition">'+(col?D.coll:D.open)+'</div>'+
         '<div class="meta"><span class="t">'+t+'</span><span class="from">'+D.from+' '+minEur+' €</span></div>'+
         '<button class="buy">'+D.submit+'</button>';
@@ -223,6 +252,7 @@
   });
 })();
 </script>
+<script src="js/rooms.js?v=3"></script>
 <script src="js/legal-footer.js" defer></script>
 </body>
 </html>

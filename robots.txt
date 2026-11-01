@@ -4,6 +4,7 @@ Allow: /
 # Adult / After Dark content — keep out of image search (pages carry noindex)
 Disallow: /images/nude/
 Disallow: /images/boudoir/
+Disallow: /images/boudoir-red/
 
 # AI search and answer engines: explicitly allowed so the sites can be cited in answers.
 User-agent: OAI-SearchBot
