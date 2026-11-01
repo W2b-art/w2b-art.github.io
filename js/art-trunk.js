@@ -257,6 +257,16 @@
       wrap.appendChild(h);
       var rseq = buildRoomSequence(related.length, true);
       buildRooms(wrap, related, rseq, function(it){ return relatedFigure(it); });
+      /* buildRooms() reuses the main grid's .reveal/.reveal-img scroll-in
+         treatment (clip-path:inset(0 0 100% 0) until a page-load-time
+         IntersectionObserver adds .in — see js/rooms.js). That observer
+         only ever scans the DOM once, before a branch has ever been
+         opened, so these rooms — built fresh on each click — never get
+         observed and stay permanently clipped to nothing: the space is
+         there, the photos never are. The overlay already has its own
+         entrance (opacity fade), so this content doesn't need a second,
+         scroll-triggered one — just show it. */
+      wrap.querySelectorAll('.reveal, .reveal-img').forEach(function(el){ el.classList.add('in'); });
     }
     sizeFigures(wrap);
 
