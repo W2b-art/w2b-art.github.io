@@ -255,6 +255,7 @@ const ROOM_DIMS = {
  "images/branch-glass-roof/arcade-gallery-interior-arches-columns-black-white-w2b.jpg": [1591, 2400],
 
  "images/branch-bamboo-pond/pond-stone-wall-tree-reflections-w2b.jpg": [2027, 2048],
+ "images/branch-driftwood-shore/dead-trees-rocky-shore-mountains-black-white-w2b.jpg": [2400, 2390],
 
  "images/branch-coastal-bench/couple-bench-overlooking-water-w2b.jpg": [2400, 1547],
  "images/branch-coastal-bench/figure-seated-bench-bay-view-black-white-w2b.jpg": [2400, 1591],

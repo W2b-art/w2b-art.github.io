@@ -501,5 +501,12 @@ const RESPONSIVE_MANIFEST = {
    1600
   ],
   "masterKB": 675
+ },
+ "images/branch-driftwood-shore/dead-trees-rocky-shore-mountains-black-white-w2b.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 1038
  }
 };

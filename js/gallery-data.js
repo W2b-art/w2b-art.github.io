@@ -2110,6 +2110,18 @@ const GALLERY_DATA = {
     ]
   },
 
+  "branch-driftwood-shore": {
+    id: "branch-driftwood-shore",
+    folder: "images/branch-driftwood-shore/",
+    title: { en: "Same Shore", fr: "Même rivage", es: "Misma orilla" },
+    images: [
+      { file: "dead-trees-rocky-shore-mountains-black-white-w2b.jpg", alt: {
+        en: "Dead trees on a rocky shoreline with mountains and a sailboat across the water, black and white photography",
+        fr: "Arbres morts sur un rivage rocheux avec des montagnes et un voilier de l'autre côté de l'eau, photographie noir et blanc",
+        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } }
+    ]
+  },
+
   "branch-bamboo-pond": {
     id: "branch-bamboo-pond",
     folder: "images/branch-bamboo-pond/",

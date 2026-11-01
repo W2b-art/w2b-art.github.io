@@ -85,15 +85,20 @@ const TRUNK_MANIFEST = [
   /* 2026-11-01 — 11 more branches wired in, per the hand-curated
      proposal reviewed and approved in an earlier session
      (trunk-branch-candidates-v2/manifest.json): STRONG/MODERATE
-     matches only. t02/t09/t13/t17 have no related entry — the
+     matches only. t09/t13/t17 have no related entry — the
      candidate review found nothing better than a WEAK or NO MATCH
      for them, so they stay singular rather than force a weak link
-     (same standard already applied to t06/pinball originally). */
+     (same standard already applied to t06/pinball originally).
+     t02 got a branch on 2026-11-01 after a second pass over newly
+     added source photos turned up a genuine match (same shoot,
+     same driftwood, wide shot vs. the trunk's macro detail). */
   { id:'t01', series:'trunk', idx:0, related:[
     {series:'branch-coastal-texture',idx:0},
     {series:'branch-coastal-texture',idx:1}
   ] },
-  { id:'t02', series:'trunk', idx:1 },
+  { id:'t02', series:'trunk', idx:1, related:[
+    {series:'branch-driftwood-shore',idx:0}
+  ] },
   { id:'t03', series:'trunk', idx:2, related:[
     {series:'branch-sunset-pines',idx:0},
     {series:'branch-sunset-pines',idx:1}
