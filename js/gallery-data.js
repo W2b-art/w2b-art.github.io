@@ -2037,6 +2037,185 @@ const GALLERY_DATA = {
         }
       }
     ]
+  },
+
+  /* ---------------------------------------------------------------
+     2026-11-01 — 11 new branches, implementing the curated proposal
+     from the trunk-branch-candidates-v2 review (STRONG/MODERATE
+     matches only; WEAK-only and NO MATCH trunk photos stay singular,
+     per that review's own standard). Sourced from
+     A:\PHOTOS\Projets et séries photo\pour les sites\ART\Branches\.
+     ---------------------------------------------------------------- */
+  "branch-coastal-texture": {
+    id: "branch-coastal-texture",
+    folder: "images/branch-coastal-texture/",
+    title: { en: "Coastal Texture", fr: "Texture côtière", es: "Textura costera" },
+    images: [
+      { file: "mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg", alt: {
+        en: "Close-up of mussels and barnacles encrusted on coastal rock, macro texture photography",
+        fr: "Gros plan sur des moules et balanes incrustées sur une roche côtière, photographie macro de texture",
+        es: "Primer plano de mejillones y bálanos incrustados en una roca costera, fotografía macro de textura" } },
+      { file: "sea-anemone-underwater-macro-teal-w2b.jpg", alt: {
+        en: "Underwater macro close-up of a sea anemone in teal light",
+        fr: "Gros plan macro sous-marin d'une anémone de mer dans une lumière turquoise",
+        es: "Primer plano macro submarino de una anémona de mar en luz turquesa" } }
+    ]
+  },
+
+  "branch-sunset-pines": {
+    id: "branch-sunset-pines",
+    folder: "images/branch-sunset-pines/",
+    title: { en: "Pine Country", fr: "Pays des pins", es: "Tierra de pinos" },
+    images: [
+      { file: "snow-covered-pine-trees-mountain-daylight-w2b.jpg", alt: {
+        en: "Snow-covered pine trees on a mountainside in daylight",
+        fr: "Pins enneigés à flanc de montagne en pleine journée",
+        es: "Pinos cubiertos de nieve en una ladera de montaña a plena luz del día" } },
+      { file: "lake-mountains-pines-window-frame-w2b.jpg", alt: {
+        en: "Lake and pine-covered mountains seen through a window frame",
+        fr: "Lac et montagnes couvertes de pins vus à travers l'encadrement d'une fenêtre",
+        es: "Lago y montañas cubiertas de pinos vistos a través del marco de una ventana" } }
+    ]
+  },
+
+  "branch-wrecked-boat": {
+    id: "branch-wrecked-boat",
+    folder: "images/branch-wrecked-boat/",
+    title: { en: "The Wreck", fr: "L'épave", es: "El naufragio" },
+    images: [
+      { file: "wrecked-boat-hull-close-up-black-white-w2b.jpg", alt: {
+        en: "Close-up of a wrecked boat hull, black and white film photography",
+        fr: "Gros plan sur la coque d'un bateau échoué, photographie argentique noir et blanc",
+        es: "Primer plano del casco de un barco naufragado, fotografía analógica en blanco y negro" } },
+      { file: "wrecked-boat-pl5-marking-black-white-w2b.jpg", alt: {
+        en: "Wrecked boat hull marked \"PL5\", black and white film photography",
+        fr: "Coque de bateau échoué marquée « PL5 », photographie argentique noir et blanc",
+        es: "Casco de barco naufragado marcado «PL5», fotografía analógica en blanco y negro" } },
+      { file: "wrecked-boat-full-view-colour-w2b.jpg", alt: {
+        en: "Full view of the same wrecked boat, colour film photography",
+        fr: "Vue d'ensemble du même bateau échoué, photographie argentique couleur",
+        es: "Vista completa del mismo barco naufragado, fotografía analógica a color" } }
+    ]
+  },
+
+  "branch-glass-roof": {
+    id: "branch-glass-roof",
+    folder: "images/branch-glass-roof/",
+    title: { en: "Under Glass", fr: "Sous verre", es: "Bajo cristal" },
+    images: [
+      { file: "arcade-gallery-interior-arches-columns-black-white-w2b.jpg", alt: {
+        en: "Arcade gallery interior with repeating arches and columns under a glass roof, black and white photography",
+        fr: "Intérieur d'une galerie marchande aux arches et colonnes répétées sous une verrière, photographie noir et blanc",
+        es: "Interior de una galería comercial con arcos y columnas repetidas bajo un techo de vidrio, fotografía en blanco y negro" } }
+    ]
+  },
+
+  "branch-bamboo-pond": {
+    id: "branch-bamboo-pond",
+    folder: "images/branch-bamboo-pond/",
+    title: { en: "Still Water", fr: "Eau calme", es: "Agua quieta" },
+    images: [
+      { file: "pond-stone-wall-tree-reflections-w2b.jpg", alt: {
+        en: "Still pond beside a stone wall, trees reflected in the water",
+        fr: "Étang immobile près d'un mur de pierre, arbres se reflétant dans l'eau",
+        es: "Estanque quieto junto a un muro de piedra, árboles reflejados en el agua" } }
+    ]
+  },
+
+  "branch-coastal-bench": {
+    id: "branch-coastal-bench",
+    folder: "images/branch-coastal-bench/",
+    title: { en: "The Bench", fr: "Le banc", es: "El banco" },
+    images: [
+      { file: "figure-seated-bench-bay-view-black-white-w2b.jpg", alt: {
+        en: "Figure seated on a bench overlooking a bay, black and white film photography",
+        fr: "Silhouette assise sur un banc face à une baie, photographie argentique noir et blanc",
+        es: "Figura sentada en un banco frente a una bahía, fotografía analógica en blanco y negro" } },
+      { file: "man-silhouette-bench-dramatic-sunset-sky-w2b.jpg", alt: {
+        en: "Man in silhouette on a bench under a dramatic sunset sky",
+        fr: "Homme en silhouette sur un banc sous un ciel de coucher de soleil dramatique",
+        es: "Hombre en silueta sobre un banco bajo un cielo de atardecer dramático" } },
+      { file: "couple-bench-overlooking-water-w2b.jpg", alt: {
+        en: "Couple seated on a bench overlooking still water",
+        fr: "Couple assis sur un banc face à une eau calme",
+        es: "Pareja sentada en un banco frente a aguas tranquilas" } }
+    ]
+  },
+
+  "branch-rushing-water": {
+    id: "branch-rushing-water",
+    folder: "images/branch-rushing-water/",
+    title: { en: "Iguazú", fr: "Iguazú", es: "Iguazú" },
+    images: [
+      { file: "iguazu-falls-wide-view-colour-w2b.jpg", alt: {
+        en: "Wide view of Iguazú Falls, colour film photography",
+        fr: "Vue large des chutes d'Iguazú, photographie argentique couleur",
+        es: "Vista amplia de las Cataratas del Iguazú, fotografía analógica a color" } },
+      { file: "iguazu-falls-close-crop-colour-w2b.jpg", alt: {
+        en: "Closer crop of Iguazú Falls, colour film photography",
+        fr: "Cadrage rapproché des chutes d'Iguazú, photographie argentique couleur",
+        es: "Encuadre cercano de las Cataratas del Iguazú, fotografía analógica a color" } }
+    ]
+  },
+
+  "branch-street-lamp": {
+    id: "branch-street-lamp",
+    folder: "images/branch-street-lamp/",
+    title: { en: "Open Sky", fr: "Ciel ouvert", es: "Cielo abierto" },
+    images: [
+      { file: "kite-silhouette-open-sky-black-white-w2b.jpg", alt: {
+        en: "Kite in silhouette against an open sky, black and white photography",
+        fr: "Cerf-volant en silhouette dans un ciel dégagé, photographie noir et blanc",
+        es: "Cometa en silueta contra un cielo despejado, fotografía en blanco y negro" } },
+      { file: "bird-framed-bush-black-white-w2b.jpg", alt: {
+        en: "Bird framed within a bush, black and white photography",
+        fr: "Oiseau encadré dans un buisson, photographie noir et blanc",
+        es: "Ave enmarcada en un arbusto, fotografía en blanco y negro" } }
+    ]
+  },
+
+  "branch-tree-bark": {
+    id: "branch-tree-bark",
+    folder: "images/branch-tree-bark/",
+    title: { en: "Bark", fr: "Écorce", es: "Corteza" },
+    images: [
+      { file: "tree-branches-detail-black-white-w2b.jpg", alt: {
+        en: "Close-up detail of tree branches, black and white photography",
+        fr: "Détail rapproché de branches d'arbre, photographie noir et blanc",
+        es: "Detalle cercano de ramas de árbol, fotografía en blanco y negro" } }
+    ]
+  },
+
+  "branch-dark-bay": {
+    id: "branch-dark-bay",
+    folder: "images/branch-dark-bay/",
+    title: { en: "Dark Bay", fr: "Baie sombre", es: "Bahía oscura" },
+    images: [
+      { file: "buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg", alt: {
+        en: "Buoy in silhouette in a bay under a dramatic sunset sky",
+        fr: "Bouée en silhouette dans une baie sous un ciel de coucher de soleil dramatique",
+        es: "Boya en silueta en una bahía bajo un cielo de atardecer dramático" } }
+    ]
+  },
+
+  "branch-industrial": {
+    id: "branch-industrial",
+    folder: "images/branch-industrial/",
+    title: { en: "Scrap and Steel", fr: "Ferraille et acier", es: "Chatarra y acero" },
+    images: [
+      { file: "truck-taillight-reflectors-grid-black-white-w2b.jpg", alt: {
+        en: "Grid of truck tail-light reflectors, black and white macro photography",
+        fr: "Grille de réflecteurs de feux arrière de camion, photographie macro noir et blanc",
+        es: "Rejilla de reflectores de luces traseras de camión, fotografía macro en blanco y negro" } },
+      { file: "motorcycle-frame-mechanical-detail-black-white-w2b.jpg", alt: {
+        en: "Mechanical detail of a motorcycle frame, black and white photography",
+        fr: "Détail mécanique d'un cadre de moto, photographie noir et blanc",
+        es: "Detalle mecánico de un chasis de motocicleta, fotografía en blanco y negro" } },
+      { file: "man-junkyard-stripped-car-parts-black-white-w2b.jpg", alt: {
+        en: "Man standing amid a junkyard of stripped car parts, black and white photography",
+        fr: "Homme debout au milieu d'une casse de pièces automobiles démontées, photographie noir et blanc",
+        es: "Hombre de pie entre un depósito de autopartes desmontadas, fotografía en blanco y negro" } }
+    ]
   }
 
 };

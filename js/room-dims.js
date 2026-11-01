@@ -240,5 +240,37 @@ const ROOM_DIMS = {
  "images/branch-pretty-od/red-light-glowing-eyes-intense-portrait-w2b.jpg": [1600, 2400],
  "images/branch-pretty-od/woman-reclining-neon-light-bedroom-w2b.jpg": [2400, 1600],
  "images/branch-pretty-od/woman-graphic-tee-pink-lit-room-posters-w2b.jpg": [1805, 2400],
- "images/branch-pretty-od/pink-love-perfume-bottle-still-life-w2b.jpg": [2321, 2400]
+ "images/branch-pretty-od/pink-love-perfume-bottle-still-life-w2b.jpg": [2321, 2400],
+
+ "images/branch-coastal-texture/mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg": [1024, 679],
+ "images/branch-coastal-texture/sea-anemone-underwater-macro-teal-w2b.jpg": [1024, 939],
+
+ "images/branch-sunset-pines/lake-mountains-pines-window-frame-w2b.jpg": [2400, 1798],
+ "images/branch-sunset-pines/snow-covered-pine-trees-mountain-daylight-w2b.jpg": [1591, 2400],
+
+ "images/branch-wrecked-boat/wrecked-boat-full-view-colour-w2b.jpg": [1867, 2400],
+ "images/branch-wrecked-boat/wrecked-boat-hull-close-up-black-white-w2b.jpg": [2400, 1916],
+ "images/branch-wrecked-boat/wrecked-boat-pl5-marking-black-white-w2b.jpg": [2400, 1754],
+
+ "images/branch-glass-roof/arcade-gallery-interior-arches-columns-black-white-w2b.jpg": [1591, 2400],
+
+ "images/branch-bamboo-pond/pond-stone-wall-tree-reflections-w2b.jpg": [2027, 2048],
+
+ "images/branch-coastal-bench/couple-bench-overlooking-water-w2b.jpg": [2400, 1547],
+ "images/branch-coastal-bench/figure-seated-bench-bay-view-black-white-w2b.jpg": [2400, 1591],
+ "images/branch-coastal-bench/man-silhouette-bench-dramatic-sunset-sky-w2b.jpg": [2400, 1591],
+
+ "images/branch-rushing-water/iguazu-falls-close-crop-colour-w2b.jpg": [1591, 2400],
+ "images/branch-rushing-water/iguazu-falls-wide-view-colour-w2b.jpg": [1591, 2400],
+
+ "images/branch-street-lamp/bird-framed-bush-black-white-w2b.jpg": [2400, 1591],
+ "images/branch-street-lamp/kite-silhouette-open-sky-black-white-w2b.jpg": [2400, 1389],
+
+ "images/branch-tree-bark/tree-branches-detail-black-white-w2b.jpg": [1365, 2048],
+
+ "images/branch-dark-bay/buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg": [1591, 2400],
+
+ "images/branch-industrial/man-junkyard-stripped-car-parts-black-white-w2b.jpg": [2048, 1807],
+ "images/branch-industrial/motorcycle-frame-mechanical-detail-black-white-w2b.jpg": [2048, 2048],
+ "images/branch-industrial/truck-taillight-reflectors-grid-black-white-w2b.jpg": [2048, 1629]
 };

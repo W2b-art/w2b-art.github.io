@@ -82,11 +82,30 @@ const TRUNK_MANIFEST = [
     en:"These abandoned places in Medellín carry a memory the city has stopped looking at: I photograph them so that others, in turn, might see them in a new light, a different way. The series was first shown in 2026, as part of the documentary photography seminar at the Instituto de Bellas Artes de Medellín; it keeps growing as new places appear."
   } },
 
-  { id:'t01', series:'trunk', idx:0 },
+  /* 2026-11-01 — 11 more branches wired in, per the hand-curated
+     proposal reviewed and approved in an earlier session
+     (trunk-branch-candidates-v2/manifest.json): STRONG/MODERATE
+     matches only. t02/t09/t13/t17 have no related entry — the
+     candidate review found nothing better than a WEAK or NO MATCH
+     for them, so they stay singular rather than force a weak link
+     (same standard already applied to t06/pinball originally). */
+  { id:'t01', series:'trunk', idx:0, related:[
+    {series:'branch-coastal-texture',idx:0},
+    {series:'branch-coastal-texture',idx:1}
+  ] },
   { id:'t02', series:'trunk', idx:1 },
-  { id:'t03', series:'trunk', idx:2 },
-  { id:'t04', series:'trunk', idx:3 },
-  { id:'t05', series:'trunk', idx:4 },
+  { id:'t03', series:'trunk', idx:2, related:[
+    {series:'branch-sunset-pines',idx:0},
+    {series:'branch-sunset-pines',idx:1}
+  ] },
+  { id:'t04', series:'trunk', idx:3, related:[
+    {series:'branch-wrecked-boat',idx:0},
+    {series:'branch-wrecked-boat',idx:1},
+    {series:'branch-wrecked-boat',idx:2}
+  ] },
+  { id:'t05', series:'trunk', idx:4, related:[
+    {series:'branch-glass-roof',idx:0}
+  ] },
   { id:'t06', series:'trunk', idx:5, related:[
     {series:'branch-pinball',idx:0},
     {series:'branch-pinball',idx:1},
@@ -94,15 +113,35 @@ const TRUNK_MANIFEST = [
     {series:'branch-pinball',idx:3}
   ] },
   { id:'t09', series:'trunk', idx:8 },
-  { id:'t10', series:'trunk', idx:9 },
-  { id:'t11', series:'trunk', idx:10 },
-  { id:'t12', series:'trunk', idx:11 },
+  { id:'t10', series:'trunk', idx:9, related:[
+    {series:'branch-bamboo-pond',idx:0}
+  ] },
+  { id:'t11', series:'trunk', idx:10, related:[
+    {series:'branch-coastal-bench',idx:0},
+    {series:'branch-coastal-bench',idx:1},
+    {series:'branch-coastal-bench',idx:2}
+  ] },
+  { id:'t12', series:'trunk', idx:11, related:[
+    {series:'branch-rushing-water',idx:0},
+    {series:'branch-rushing-water',idx:1}
+  ] },
   { id:'t13', series:'trunk', idx:12 },
-  { id:'t14', series:'trunk', idx:13 },
-  { id:'t15', series:'trunk', idx:14 },
+  { id:'t14', series:'trunk', idx:13, related:[
+    {series:'branch-street-lamp',idx:0},
+    {series:'branch-street-lamp',idx:1}
+  ] },
+  { id:'t15', series:'trunk', idx:14, related:[
+    {series:'branch-tree-bark',idx:0}
+  ] },
   { id:'t17', series:'trunk', idx:16 },
-  { id:'t18', series:'trunk', idx:17 },
-  { id:'t19', series:'trunk', idx:18 },
+  { id:'t18', series:'trunk', idx:17, related:[
+    {series:'branch-dark-bay',idx:0}
+  ] },
+  { id:'t19', series:'trunk', idx:18, related:[
+    {series:'branch-industrial',idx:0},
+    {series:'branch-industrial',idx:1},
+    {series:'branch-industrial',idx:2}
+  ] },
   { id:'t20', series:'trunk', idx:19, related:[
     {series:'branch-passage',idx:0}
   ] }
