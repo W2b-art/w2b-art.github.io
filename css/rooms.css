@@ -302,6 +302,14 @@
 .reveal-img .branch-mark{position:absolute;top:12px;right:12px;width:7px;height:7px;border-radius:50%;
   background:var(--or);opacity:.55;transition:opacity .3s ease,transform .3s ease;pointer-events:none}
 .reveal-img.has-branch:hover .branch-mark,.reveal-img.has-branch:focus-visible .branch-mark{opacity:1;transform:scale(1.3)}
+/* Touch devices never fire :hover, so the hover-reveal above never shows —
+   the dot would otherwise be the ONLY signal a photo goes deeper, and at
+   7px/55% opacity it reads as "nothing here" rather than "most photos are
+   singular." Raise the resting state on touch only; desktop keeps the
+   quiet hover-reveal unchanged. */
+@media (hover:none){
+  .reveal-img .branch-mark{width:9px;height:9px;opacity:.85}
+}
 
 /* ---------- expositions.html ---------- */
 .expo-main{max-width:720px;margin:0 auto;padding-top:var(--sp-6)}
