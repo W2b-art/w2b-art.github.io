@@ -14,7 +14,7 @@
   var overlay = document.getElementById('branchOverlay');
   var wrap = document.getElementById('branchWrap');
   var backBtn = document.getElementById('branchBack');
-  if (!grid || typeof GALLERY_DATA === 'undefined' || typeof TRUNK_MANIFEST === 'undefined' || typeof buildRoomSequence !== 'function') return;
+  if (!grid || typeof GALLERY_DATA === 'undefined' || typeof TRUNK_MANIFEST === 'undefined') return;
 
   /* fallback caption = subject only, no medium jargon (same rule as
      js/art-gallery.js's cleanCap — small enough to duplicate rather
@@ -106,31 +106,6 @@
     });
   }
 
-  function buildRooms(container, items, seq, onFigure){
-    seq.forEach(function(room, ri){
-      var group = items.slice(room.start, room.start + room.count);
-      var el = document.createElement('div');
-      var delayBase = ri * 60;
-      if (room.type === 'full' || room.type === 'detail') {
-        el.className = 'room reveal room--' + room.type;
-        el.appendChild(onFigure(group[0], delayBase));
-      } else if (room.type === 'asym2' || room.type === 'asym2-rev') {
-        el.className = 'room reveal room--asym2' + (room.type === 'asym2-rev' ? ' rev' : '');
-        var a = onFigure(group[0], delayBase); a.classList.add('a');
-        var b = onFigure(group[1], delayBase + 120); b.classList.add('b');
-        el.appendChild(a); el.appendChild(b);
-      } else {
-        var isAlt = room.type === 'rhythm3-alt';
-        el.className = 'room reveal room--rhythm3' + (isAlt ? ' alt' : '');
-        var x1 = onFigure(isAlt ? group[2] : group[0], delayBase); x1.classList.add('x1');
-        var x2 = onFigure(isAlt ? group[0] : group[2], delayBase + 120); x2.classList.add('x2');
-        var x3 = onFigure(group[1], delayBase + 240); x3.classList.add('x3');
-        el.appendChild(x1); el.appendChild(x2); el.appendChild(x3);
-      }
-      container.appendChild(el);
-    });
-  }
-
   /* ---------------------------------------------------------------
      Trunk: clickable figures, each opens its branch. Reveal-on-scroll
      (.reveal/.reveal-img) works here because this runs before
@@ -168,24 +143,29 @@
     return fig;
   }
 
-  /* 2026-11-01 — Guillaume: landscape trunk photos go full-screen, portrait
-     or square ones go in duos (drawn reference, same pairing rhythm as
-     .room--asym2 elsewhere). The shared buildRoomSequence() is purely
-     count/position-based and knows nothing about orientation, so the main
-     trunk grid gets its own orientation-driven builder here instead of
-     reusing it (branch "more like this" rooms still use the shared one —
-     out of scope, he asked about the trunk specifically). Orientation is
-     read from js/room-dims.js (real pixel dims), not guessed. Pairing
-     matches portrait/square photos in curated-order encounter sequence
-     (skipping over interspersed landscapes, not just literal neighbors) —
-     with this curation (12 landscape / 8 portrait+square) that yields 4
-     clean duos and no orphan. A duo renders at the position of the first
-     photo of its pair; the second is skipped when its own turn comes. */
+  /* 2026-11-01 — Guillaume: landscape photos go full-screen, portrait or
+     square ones go in duos (drawn reference, same pairing rhythm as
+     .room--asym2 elsewhere) — "the same principle inside a branch" too,
+     so this one orientation-driven builder serves both the main trunk
+     grid (grid+TRUNK below) and each branch's "more like this" list
+     (wrap+related in openBranch()), replacing the old shared, purely
+     count/position-based buildRoomSequence()+buildRooms() pair (removed;
+     also dropped js/room-sequence.js from home.html — nothing else on
+     this page used it). Orientation is read from js/room-dims.js (real
+     pixel dims), not guessed. Pairing matches portrait/square photos in
+     list-order encounter sequence (skipping over interspersed landscapes,
+     not just literal neighbors) — for the 20-photo trunk (12 landscape /
+     8 portrait+square) that yields 4 clean duos and no orphan; a branch's
+     related list is usually too short for an orphan to even arise, and a
+     true leftover (odd count, last one has no partner left) just renders
+     as a lone 'a' panel — not full-bleed, but not broken either. A duo
+     renders at the position of the first photo of its pair; the second
+     is skipped when its own turn comes. */
   function isPortraitOrSquare(item){
     var d = (typeof ROOM_DIMS !== 'undefined') && ROOM_DIMS[item.src];
     return !!d && d[1] >= d[0];
   }
-  function buildTrunkRooms(container, items, onFigure){
+  function buildOrientationRooms(container, items, onFigure){
     var placed = {}, roomIdx = 0, toggle = 0;
     for (var i = 0; i < items.length; i++) {
       if (placed[i]) continue;
@@ -214,7 +194,7 @@
       roomIdx++;
     }
   }
-  buildTrunkRooms(grid, TRUNK, trunkFigure);
+  buildOrientationRooms(grid, TRUNK, trunkFigure);
 
   /* After Dark entry point — was a visible "After Dark · 18+" card in the
      old flat series grid; dropped when that grid became this trunk tree,
@@ -262,8 +242,9 @@
   if (!overlay || !wrap || !backBtn) return;
   var lastFocus = null;
 
-  function relatedFigure(item){
+  function relatedFigure(item, delay){
     var fig = document.createElement('figure');
+    if (delay) fig.style.transitionDelay = delay + 'ms';
     fig.style.cursor = 'default';
     fig.appendChild(makeImg(item));
     fig.appendChild(cartel(item));
@@ -309,17 +290,16 @@
       var h = document.createElement('div'); h.className = 'branch-related-h';
       h.textContent = (typeof w2bT === 'function') ? w2bT('branch_related') : 'More like this';
       wrap.appendChild(h);
-      var rseq = buildRoomSequence(related.length, true);
-      buildRooms(wrap, related, rseq, function(it){ return relatedFigure(it); });
-      /* buildRooms() reuses the main grid's .reveal/.reveal-img scroll-in
-         treatment (clip-path:inset(0 0 100% 0) until a page-load-time
-         IntersectionObserver adds .in — see js/rooms.js). That observer
-         only ever scans the DOM once, before a branch has ever been
-         opened, so these rooms — built fresh on each click — never get
-         observed and stay permanently clipped to nothing: the space is
-         there, the photos never are. The overlay already has its own
-         entrance (opacity fade), so this content doesn't need a second,
-         scroll-triggered one — just show it. */
+      buildOrientationRooms(wrap, related, relatedFigure);
+      /* buildOrientationRooms() reuses the main grid's .reveal/.reveal-img
+         scroll-in treatment (clip-path:inset(0 0 100% 0) until a
+         page-load-time IntersectionObserver adds .in — see js/rooms.js).
+         That observer only ever scans the DOM once, before a branch has
+         ever been opened, so these rooms — built fresh on each click —
+         never get observed and stay permanently clipped to nothing: the
+         space is there, the photos never are. The overlay already has
+         its own entrance (opacity fade), so this content doesn't need a
+         second, scroll-triggered one — just show it. */
       wrap.querySelectorAll('.reveal, .reveal-img').forEach(function(el){ el.classList.add('in'); });
     }
     sizeFigures(wrap);
@@ -338,7 +318,18 @@
   }
 
   backBtn.addEventListener('click', closeBranch);
-  overlay.addEventListener('click', function(e){ if (e.target === overlay) closeBranch(); });
+  /* 2026-11-01 — Guillaume: clicking outside "a certain zone" should
+     close the branch back to the trunk. The old check (e.target===
+     overlay) only ever fired on viewports wide enough to leave visible
+     backdrop beside .branch-wrap's 1500px cap — effectively never, since
+     wrap fills the full width below that. Redefined "the zone" as actual
+     content (a room/photo, the statement text, the related-section
+     heading, or the sticky back bar) — anywhere else inside the overlay
+     (the gaps between rooms, the space below the last one, the margins)
+     closes it, on every viewport width. */
+  overlay.addEventListener('click', function(e){
+    if (!e.target.closest('.room, .branch-statement, .branch-related-h, .branch-backbar')) closeBranch();
+  });
   document.addEventListener('keydown', function(e){ if (overlay.classList.contains('open') && e.key === 'Escape') closeBranch(); });
 
   /* Deep-link from the 8 retired standalone gallery pages (gallery-*.html,
