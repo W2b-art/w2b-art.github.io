@@ -84,16 +84,25 @@
 
   /* finalize image sizing once figures are laid out in the DOM (see
      js/room-dims.js — width:auto alone isn't reliable pre-load). Mirrors
-     js/art-gallery.js's room-system finalize pass. */
+     js/art-gallery.js's room-system finalize pass.
+     2026-11-01 — deferred one frame via rAF: calling this synchronously
+     right after appending a big batch of rooms (12 room--full now that
+     landscapes route there, vs. 1-2 before) read clientWidth as 0 on
+     every .room--full before the browser had committed layout for that
+     many new nodes, so sizeRoomImg wrote width:0/height:0 onto every
+     image — confirmed live (empty frames, caption visible, img 0x0) and
+     confirmed fixed by re-running the same pass one tick later. */
   function sizeFigures(container){
     if (typeof ROOM_DIMS === 'undefined' || typeof sizeRoomImg !== 'function') return;
-    container.querySelectorAll('figure img').forEach(function(im){
-      var d = ROOM_DIMS[im.getAttribute('src')];
-      var fig = im.closest('figure');
-      if (!d || !fig) return;
-      var constrainedRoom = fig.closest('.room--full, .room--detail');
-      var availW = constrainedRoom ? constrainedRoom.clientWidth : fig.clientWidth;
-      sizeRoomImg(im, d, availW);
+    requestAnimationFrame(function(){
+      container.querySelectorAll('figure img').forEach(function(im){
+        var d = ROOM_DIMS[im.getAttribute('src')];
+        var fig = im.closest('figure');
+        if (!d || !fig) return;
+        var constrainedRoom = fig.closest('.room--full, .room--detail');
+        var availW = constrainedRoom ? constrainedRoom.clientWidth : fig.clientWidth;
+        sizeRoomImg(im, d, availW);
+      });
     });
   }
 
@@ -159,8 +168,53 @@
     return fig;
   }
 
-  var seq = buildRoomSequence(TRUNK.length, true);
-  buildRooms(grid, TRUNK, seq, trunkFigure);
+  /* 2026-11-01 — Guillaume: landscape trunk photos go full-screen, portrait
+     or square ones go in duos (drawn reference, same pairing rhythm as
+     .room--asym2 elsewhere). The shared buildRoomSequence() is purely
+     count/position-based and knows nothing about orientation, so the main
+     trunk grid gets its own orientation-driven builder here instead of
+     reusing it (branch "more like this" rooms still use the shared one —
+     out of scope, he asked about the trunk specifically). Orientation is
+     read from js/room-dims.js (real pixel dims), not guessed. Pairing
+     matches portrait/square photos in curated-order encounter sequence
+     (skipping over interspersed landscapes, not just literal neighbors) —
+     with this curation (12 landscape / 8 portrait+square) that yields 4
+     clean duos and no orphan. A duo renders at the position of the first
+     photo of its pair; the second is skipped when its own turn comes. */
+  function isPortraitOrSquare(item){
+    var d = (typeof ROOM_DIMS !== 'undefined') && ROOM_DIMS[item.src];
+    return !!d && d[1] >= d[0];
+  }
+  function buildTrunkRooms(container, items, onFigure){
+    var placed = {}, roomIdx = 0, toggle = 0;
+    for (var i = 0; i < items.length; i++) {
+      if (placed[i]) continue;
+      var item = items[i], delayBase = roomIdx * 60, el = document.createElement('div');
+      if (!isPortraitOrSquare(item)) {
+        el.className = 'room reveal room--full';
+        el.appendChild(onFigure(item, delayBase));
+        placed[i] = true;
+      } else {
+        var j = -1;
+        for (var k = i + 1; k < items.length; k++) {
+          if (!placed[k] && isPortraitOrSquare(items[k])) { j = k; break; }
+        }
+        el.className = 'room reveal room--asym2' + (toggle % 2 ? ' rev' : '');
+        var a = onFigure(item, delayBase); a.classList.add('a');
+        el.appendChild(a);
+        placed[i] = true;
+        if (j !== -1) {
+          var b = onFigure(items[j], delayBase + 120); b.classList.add('b');
+          el.appendChild(b);
+          placed[j] = true;
+        }
+        toggle++;
+      }
+      container.appendChild(el);
+      roomIdx++;
+    }
+  }
+  buildTrunkRooms(grid, TRUNK, trunkFigure);
 
   /* After Dark entry point — was a visible "After Dark · 18+" card in the
      old flat series grid; dropped when that grid became this trunk tree,
