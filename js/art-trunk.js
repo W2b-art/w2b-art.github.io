@@ -14,33 +14,56 @@
   var overlay = document.getElementById('branchOverlay');
   var wrap = document.getElementById('branchWrap');
   var backBtn = document.getElementById('branchBack');
-  if (!grid || typeof GALLERY_DATA === 'undefined' || typeof TRUNK_MANIFEST === 'undefined') return;
+  /* Which half of the trunk this page shows — set by an inline script
+     in oeuvre-actuelle.html / autres-travaux.html before this file
+     loads (window.TRUNK_SET = 'current' | 'other'). Defaults to
+     'current' so a page that forgets to set it still renders instead
+     of silently showing nothing. */
+  var TRUNK_MANIFEST = (window.TRUNK_SET === 'other')
+    ? (typeof TRUNK_MANIFEST_OTHER !== 'undefined' && TRUNK_MANIFEST_OTHER)
+    : (typeof TRUNK_MANIFEST_CURRENT !== 'undefined' && TRUNK_MANIFEST_CURRENT);
+  if (!grid || typeof GALLERY_DATA === 'undefined' || !TRUNK_MANIFEST) return;
 
   /* fallback caption = subject only, no medium jargon (same rule as
      js/art-gallery.js's cleanCap — small enough to duplicate rather
      than reach into that file's closure). */
   function cleanCap(s){ return (s||'').replace(/,?\s*(photographie|photography|argentique|moyen format|medium format|noir et blanc|black and white|film|macro|documentaire|documentary|couleur|colour|color|analog).*$/i,'').replace(/\s[—–]\s/g,', ').trim(); }
 
-  /* The one place that knows the {series, idx} manifest shape — change
-     this if a future real-curation pass stores photos differently. */
+  /* The one place that knows the {series, file} manifest shape — change
+     this if a future real-curation pass stores photos differently.
+     2026-11-11 — addressed by filename, not array position (idx): see
+     the migration note at the top of js/trunk-data.js. A filename is
+     unique within its own series' images array (same assumption
+     shop.html's ANCHOR_TO_PROJECT already relies on), so .find() is
+     unambiguous. */
   function resolve(ref){
     var g = ref.series && GALLERY_DATA[ref.series];
-    var im = g && g.images[ref.idx];
-    if (!g || !im) return null;
+    var im = g && g.images.filter(function(i){ return i.file === ref.file; })[0];
+    if (!g || !im || im.archived) return null;
     var alt = (im.alt && (im.alt[LANG] || im.alt.fr)) || '';
+    /* Museum-label fields (2026-11-11) — optional, per-photo: title
+       (trilingual), medium (trilingual), year (single value, not
+       translated). Absent on the 20+ photos curated before this existed;
+       cartel() below falls back to the old cap/seriesTitle behavior when
+       they're missing, so nothing needs backfilling. */
+    var title = im.title && (im.title[LANG] || im.title.fr);
+    var medium = im.medium && (im.medium[LANG] || im.medium.fr);
     return {
-      series: ref.series, idx: ref.idx,
+      series: ref.series, file: ref.file,
       src: g.folder + im.file,
       alt: alt,
       cap: cleanCap(alt),
-      seriesTitle: g.title[LANG] || g.title.fr
+      seriesTitle: g.title[LANG] || g.title.fr,
+      title: title || null,
+      medium: medium || null,
+      year: im.year || null
     };
   }
 
   var TRUNK = [], TRUNK_BY_ID = {}, RELATED_BY_ID = {};
   TRUNK_MANIFEST.forEach(function(entry){
     var item = resolve(entry);
-    if (!item) return; /* missing series/idx — skip rather than break the page */
+    if (!item) return; /* missing series/file — skip rather than break the page */
     item.id = entry.id;
     item.statement = entry.statement || null;
     TRUNK.push(item);
@@ -99,6 +122,14 @@
         var d = ROOM_DIMS[im.getAttribute('src')];
         var fig = im.closest('figure');
         if (!d || !fig) return;
+        /* .trunk-screen sizes its photo with pure CSS (viewport-relative
+           max-width/max-height, width:auto/height:auto — see rooms.css) so
+           it stays correct across any later resize/rotation; a one-time
+           inline pixel width/height from sizeRoomImg here would fight that
+           on resize (see the 2026-11-11 trunk-screen comment above
+           buildFullScreenSequence) and risks distorting the image once a
+           later resize makes only one of the two clamp. */
+        if (fig.closest('.trunk-screen')) return;
         var constrainedRoom = fig.closest('.room--full, .room--detail');
         var availW = constrainedRoom ? constrainedRoom.clientWidth : fig.clientWidth;
         sizeRoomImg(im, d, availW);
@@ -114,10 +145,38 @@
      --------------------------------------------------------------- */
   /* museum-label cartel (dossier format): title now, a .med line (medium,
      date) once that per-photo data exists — see wiki note on this gap. */
+  /* museum-label cartel (dossier format): Title, then a .med line (medium,
+     year) once that per-photo data exists (2026-11-11 — see resolve()).
+     Falls back to the pre-existing cap/seriesTitle-only line for any photo
+     that doesn't have title/medium/year set yet — nothing needed backfilling
+     for this to ship. .cartel/.cartel .med are pre-existing CSS classes
+     (css/rooms.css), this is the first code to actually populate .med. */
   function cartel(item){
     var n = document.createElement('div'); n.className = 'cartel';
-    n.textContent = item.cap || item.seriesTitle;
+    if (item.title) {
+      n.appendChild(document.createTextNode(item.title));
+      var medParts = [item.medium, item.year ? String(item.year) : null].filter(Boolean);
+      if (medParts.length) {
+        var med = document.createElement('span'); med.className = 'med';
+        med.textContent = medParts.join(', ');
+        n.appendChild(med);
+      }
+    } else {
+      n.textContent = item.cap || item.seriesTitle;
+    }
     return n;
+  }
+
+  /* A thin, non-clickable sliver of a real upcoming branch photo, stacked
+     behind the trunk figure (see .trunk-stack in css/rooms.css — the
+     visible edge/corner on hover is this img's own content, not a
+     placeholder). Lazy, decorative (the figure's own alt/cartel already
+     describe the photo in front). */
+  function stackSliver(relatedItem, cls){
+    var div = document.createElement('div'); div.className = 'stack-sliver ' + cls;
+    var img = new Image(); img.decoding = 'async'; img.loading = 'lazy'; img.alt = ''; img.src = relatedItem.src;
+    div.appendChild(img);
+    return div;
   }
 
   function trunkFigure(item, delay){
@@ -132,7 +191,8 @@
        signal, clicking is a coin-flip and most clicks (correctly) show
        nothing, which reads as "branches are broken" rather than "most
        photos are singular." Mark the 3 that go deeper. */
-    if ((RELATED_BY_ID[item.id] || []).length) {
+    var related = RELATED_BY_ID[item.id] || [];
+    if (related.length) {
       fig.classList.add('has-branch');
       var mark = document.createElement('span'); mark.className = 'branch-mark'; mark.setAttribute('aria-hidden', 'true');
       fig.appendChild(mark);
@@ -140,6 +200,22 @@
     function go(){ openBranch(item.id, fig); }
     fig.addEventListener('click', go);
     fig.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(); } });
+
+    /* 2026-11-11 — "surélévation": a branched photo lifts up-left on
+       hover, uncovering 1-2 thin slivers of its own branch's next real
+       photos stacked behind it (like a lifted card in a deck). Only
+       built around .has-branch figures — everything else renders exactly
+       as before. The figure itself stays the click target (the wrapper
+       adds no new interactive surface), so click/keyboard behavior is
+       unchanged. */
+    if (related.length) {
+      var stack = document.createElement('div'); stack.className = 'trunk-stack';
+      var s2 = related[1], s1 = related[0];
+      if (s2) stack.appendChild(stackSliver(s2, 's2'));
+      if (s1) stack.appendChild(stackSliver(s1, 's1'));
+      stack.appendChild(fig);
+      return stack;
+    }
     return fig;
   }
 
@@ -194,7 +270,27 @@
       roomIdx++;
     }
   }
-  buildOrientationRooms(grid, TRUNK, trunkFigure);
+
+  /* 2026-11-11 — oeuvre-actuelle.html / autres-travaux.html only: the main
+     trunk grid became a full-screen scroll-snap sequence (one photo per
+     screen, real aspect ratio, contain-fit — see .trunk-screen in
+     css/rooms.css) per Guillaume. Scoped to these two pages' own #seriesgrid
+     container (class="trunk-screens", set in their HTML) — gallery-*.html's
+     room/grid system (buildOrientationRooms, still used just below for each
+     branch's "more like this" list) is untouched. Each item still goes
+     through trunkFigure(), so has-branch/.trunk-stack/the surélévation hover
+     reveal keep working exactly as before — only the outer container per
+     photo changes (one full-viewport section instead of a shared
+     full/duo room). */
+  function buildFullScreenSequence(container, items, onFigure){
+    items.forEach(function(item, i){
+      var el = document.createElement('div');
+      el.className = 'room reveal trunk-screen';
+      el.appendChild(onFigure(item, i * 60));
+      container.appendChild(el);
+    });
+  }
+  buildFullScreenSequence(grid, TRUNK, trunkFigure);
 
   /* After Dark entry point — was a visible "After Dark · 18+" card in the
      old flat series grid; dropped when that grid became this trunk tree,
@@ -206,8 +302,14 @@
      teaser already built for exactly this (images/boudoir/after-dark-
      teaser-safe.jpg, dims in js/room-dims.js) — the only boudoir/nude
      asset this public page ever references. A real link, not a branch:
-     clicking it leaves the trunk entirely for after-dark.html. */
-  (function(){
+     clicking it leaves the trunk entirely for after-dark.html.
+     2026-11-12 — oeuvre-actuelle.html (the landing page) no longer gets
+     this tile: Guillaume didn't want it on the home page specifically.
+     autres-travaux.html keeps it exactly as before. It's still reachable
+     from oeuvre-actuelle.html via the new right-side nav's discreet
+     After Dark entry (see css/rooms.css .side-nav / home.html's old
+     idx-overlay, now duplicated into .side-nav on both pages). */
+  if (window.TRUNK_SET === 'other') (function(){
     var teaserSrc = 'images/boudoir/after-dark-teaser-safe.jpg';
     var dims = (typeof ROOM_DIMS !== 'undefined') && ROOM_DIMS[teaserSrc];
     var wrap = document.createElement('div'); wrap.className = 'room reveal room--detail';
@@ -332,14 +434,15 @@
   });
   document.addEventListener('keydown', function(e){ if (overlay.classList.contains('open') && e.key === 'Escape') closeBranch(); });
 
-  /* Deep-link from the 8 retired standalone gallery pages (gallery-*.html,
-     now redirecting to home.html?branch=<old-id>). Only 3 of those ids still
-     have matching trunk content — pretty-od/bailar-la-ciudad (real branches)
-     and contemplations (one trunk photo, no "more like this"). The other 5
-     old ids (argentina, best-of, matter, series-2, work-in-progress) have no
-     photo in the curated 20-photo trunk at all, so there is nothing true to
-     open for them — land on the series grid instead of guessing a stand-in. */
-  var BRANCH_SLUG_TO_ID = { 'pretty-od':'t07', 'bailar-la-ciudad':'t08', 'contemplations':'t04' };
+  /* Deep-link from the retired standalone gallery pages (gallery-*.html,
+     now redirecting to home.html?branch=<old-id>). Only 2 ids still have
+     matching trunk content — bailar-la-ciudad (real branch) and
+     contemplations (one trunk photo, no "more like this"). pretty-od was
+     archived 2026-11-11 (gallery removed); the other old ids (argentina,
+     best-of, matter, series-2, work-in-progress) never had a photo in the
+     curated trunk at all — land on the series grid instead of guessing a
+     stand-in for any of them. */
+  var BRANCH_SLUG_TO_ID = { 'bailar-la-ciudad':'t08', 'contemplations':'t04' };
   var slug;
   try { slug = new URLSearchParams(location.search).get('branch'); } catch(e){ slug = null; }
   if (slug) {

@@ -92,6 +92,12 @@
     fab.addEventListener('click', openIt);
     var closeBtn = document.getElementById('idxClose');
     if(closeBtn) closeBtn.addEventListener('click', closeIt);
+    /* 2026-11-12 — the persistent right-side nav (oeuvre-actuelle.html /
+       autres-travaux.html only, see .side-nav in css/rooms.css) has its
+       own "Index" entry that opens this exact same overlay rather than
+       duplicating the series-list markup a second time. */
+    var sideNavIndex = document.getElementById('sideNavIndex');
+    if(sideNavIndex) sideNavIndex.addEventListener('click', openIt);
     overlay.addEventListener('click', function(e){ if(e.target === overlay) closeIt(); });
     document.addEventListener('keydown', function(e){
       if(e.key === 'Escape' && overlay.classList.contains('open')) closeIt();

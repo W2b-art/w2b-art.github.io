@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Guillaume Delye — Photographe, Medellín · Fine Art, Commercial, Tirages</title>
 <meta name="description" content="Guillaume Delye (W2b), photographe basé à Medellín. Photographie d'art, commandes éditoriales et commerciales, tirages signés en édition limitée.">
 <link rel="canonical" href="https://w2bphotography.com/">
@@ -31,6 +33,8 @@ body{min-height:100vh;color:var(--bone);font-family:var(--sans);font-weight:300;
   background-attachment:fixed}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:9999;padding:12px 20px;background:var(--nuit);color:var(--bone);font-family:var(--sans);font-size:13px;letter-spacing:.04em;border:1px solid var(--or)}
+.skip-link:focus{left:16px;top:16px}
 
 .bar{display:flex;align-items:center;justify-content:space-between;padding:22px clamp(20px,5vw,40px)}
 .bar-logo img{height:46px;width:auto}
@@ -115,6 +119,8 @@ img{display:block;max-width:100%}
 </head>
 <body>
 
+<a class="skip-link" href="#main-content" data-i18n="skip">Skip to content</a>
+
 <header class="bar">
   <a class="bar-logo" href="index.html" aria-label="W2b — Guillaume Delye"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
   <nav class="lang" role="group" aria-label="Language">
@@ -122,7 +128,7 @@ img{display:block;max-width:100%}
   </nav>
 </header>
 
-<section class="hero">
+<section class="hero" id="main-content">
   <p class="eyebrow" data-i18n="eyebrow">Photographe · Medellín</p>
   <h1>Guillaume <em>Delye</em></h1>
   <p class="statement" data-i18n="statement">Photographie d'art, commandes éditoriales et commerciales, et tirages signés en édition limitée. Choisissez par où commencer.</p>
@@ -133,7 +139,7 @@ img{display:block;max-width:100%}
 
 <main class="choices">
 
-  <a class="card card--art" href="home.html" aria-label="Fine art portfolio">
+  <a class="card card--art" href="oeuvre-actuelle.html" aria-label="Fine art portfolio">
     <div class="pic"><img src="images/ui/hero.jpg" alt="Photographie d'art de Guillaume Delye" loading="lazy"></div>
     <div class="card-body">
       <span class="card-accent" aria-hidden="true"></span>
@@ -179,17 +185,17 @@ img{display:block;max-width:100%}
 <script>
 (function(){
   var I18N={
-    en:{eyebrow:"Photographer · Medellín",statement:"Fine-art photography, editorial and commercial commissions, and signed limited-edition prints. Choose where to begin.",swipe:"← Swipe →",
+    en:{skip:"Skip to content",eyebrow:"Photographer · Medellín",statement:"Fine-art photography, editorial and commercial commissions, and signed limited-edition prints. Choose where to begin.",swipe:"← Swipe →",
       art_label:"Fine Art",art_title:"Fine Art",art_desc:"Series, exhibitions, the fine-art work.",art_cta:"Enter",
       pro_label:"Commercial",pro_title:"Commercial",pro_desc:"Editorial, hospitality, reportage. Brief to delivery.",pro_cta:"Work with me",
       shop_label:"Prints",shop_title:"Prints",shop_desc:"Signed, limited-edition photographic prints.",shop_cta:"View the prints",
       copy:"© Guillaume Delye · W2b · Medellín, Colombia",contact:"Contact"},
-    fr:{eyebrow:"Photographe · Medellín",statement:"Photographie d'art, commandes éditoriales et commerciales, et tirages signés en édition limitée. Choisissez par où commencer.",swipe:"← Glissez →",
+    fr:{skip:"Aller au contenu",eyebrow:"Photographe · Medellín",statement:"Photographie d'art, commandes éditoriales et commerciales, et tirages signés en édition limitée. Choisissez par où commencer.",swipe:"← Glissez →",
       art_label:"Fine Art",art_title:"Fine Art",art_desc:"Séries, expositions, le travail d'auteur.",art_cta:"Entrer",
       pro_label:"Commercial",pro_title:"Commercial",pro_desc:"Éditorial, hôtellerie, reportage. Du brief à la livraison.",pro_cta:"Travailler ensemble",
       shop_label:"Tirages",shop_title:"Tirages",shop_desc:"Tirages photographiques signés, en édition limitée.",shop_cta:"Voir les tirages",
       copy:"© Guillaume Delye · W2b · Medellín, Colombie",contact:"Contact"},
-    es:{eyebrow:"Fotógrafo · Medellín",statement:"Fotografía de autor, encargos editoriales y comerciales, y copias firmadas de edición limitada. Elige por dónde empezar.",swipe:"← Desliza →",
+    es:{skip:"Ir al contenido",eyebrow:"Fotógrafo · Medellín",statement:"Fotografía de autor, encargos editoriales y comerciales, y copias firmadas de edición limitada. Elige por dónde empezar.",swipe:"← Desliza →",
       art_label:"Fine Art",art_title:"Fine Art",art_desc:"Series, exposiciones, la obra de autor.",art_cta:"Entrar",
       pro_label:"Comercial",pro_title:"Comercial",pro_desc:"Editorial, hostelería, reportaje. Del brief a la entrega.",pro_cta:"Trabajemos",
       shop_label:"Copias",shop_title:"Copias",shop_desc:"Copias fotográficas firmadas, de edición limitada.",shop_cta:"Ver las copias",

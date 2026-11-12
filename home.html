@@ -2,110 +2,34 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>W2b — Fine-art photography · Medellín</title>
-<meta name="description" content="Fine-art photography by W2b (Guillaume Delye), Medellín. Series, prints and exhibitions. Dark, cinematic, intimate.">
-<link rel="canonical" href="https://w2bphotography.com/home.html">
-<meta property="og:title" content="W2b — Fine-art photography · Medellín">
-<meta property="og:description" content="Fine-art photography by W2b (Guillaume Delye), Medellín. Series, prints and exhibitions. Dark, cinematic, intimate.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://w2bphotography.com/home.html">
-<meta property="og:image" content="https://w2bphotography.com/images/ui/hero.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="css/fonts.css">
-<link rel="stylesheet" href="css/art.css?v=5">
-<link rel="stylesheet" href="css/rooms.css?v=8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="refresh" content="0; url=oeuvre-actuelle.html">
+<link rel="canonical" href="https://w2bphotography.com/oeuvre-actuelle.html">
+<meta name="robots" content="noindex">
+<title>W2b</title>
+<script>
+/* home.html retired 2026-11-11 — split into oeuvre-actuelle.html (current
+   work: Bailar la Ciudad / Lo que dejamos) and autres-travaux.html (every
+   other remaining trunk photo). Kept as a redirect stub, same pattern as
+   the old gallery-*.html stubs, so bookmarks/old links don't 404 — a
+   ?branch=<id> deep link is routed to whichever page actually has that
+   branch, with the rest of the URL (hash, other query) carried along. */
+(function(){
+  var BRANCH_TO_PAGE = {
+    'bailar-la-ciudad': 'oeuvre-actuelle.html',
+    'contemplations': 'autres-travaux.html'
+  };
+  var branch;
+  try { branch = new URLSearchParams(location.search).get('branch'); } catch(e) { branch = null; }
+  var target = (branch && BRANCH_TO_PAGE[branch]) || 'oeuvre-actuelle.html';
+  location.replace(target + location.search + location.hash);
+})();
+</script>
 </head>
 <body>
-
-<header class="rbar">
-  <a class="brand" href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
-</header>
-
-<button id="idxFab" class="idx-fab" type="button" aria-haspopup="dialog" aria-expanded="false">
-  <span class="dot" aria-hidden="true"></span><span data-ui="idx_label">Index</span><span class="cur" id="idxCur"></span>
-</button>
-<div class="idx-overlay" id="idxOverlay" role="dialog" aria-modal="true">
-  <span class="idx-close" id="idxClose" role="button" tabindex="0">&times;</span>
-  <div class="idx-wrap">
-    <div class="idx-sec">
-      <h4 data-ui="idx_explore">Explorer</h4>
-      <div class="idx-row">
-        <a href="home.html" data-ui="idx_art">Fine Art</a>
-        <a href="https://w2bphotography.com/w2b-pro/" data-ui="idx_pro">Commercial ↗</a>
-        <a href="shop.html" data-ui="idx_prints">Tirages</a>
-        <a href="expositions.html" data-ui="idx_expo">Expositions</a>
-      </div>
-    </div>
-    <div class="idx-sec">
-      <h4 data-ui="idx_series_h">Séries</h4>
-      <div id="idxSeries"></div>
-    </div>
-    <div class="idx-sec">
-      <div class="idx-row">
-        <a href="collaborate.html" data-ui="foot_collab">Collaborer</a>
-        <a href="about.html" data-ui="foot_about">À propos</a>
-        <span class="lang" data-idx-lang><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<section class="hero" id="hero" data-parallax>
-  <div class="frames" id="heroFrames"></div>
-  <div class="dots" id="dots"></div>
-  <div class="cap">
-    <div class="k" data-ui="hero_kicker">Photographie d'art</div>
-    <h1 data-ui="hero_title">Le monde, tel qu'il se donne à qui prend le temps de regarder.</h1>
-  </div>
-  <div class="now" id="now"><div class="t"></div><div class="s"></div></div>
-  <a class="scroll" href="#series" data-ui="hero_scroll">Séries</a>
-</section>
-
-<section class="sect" id="series">
-  <picture>
-    <source type="image/webp" srcset="images/ui/film-canister.webp">
-    <img class="canister" src="images/ui/film-canister.png" alt="" aria-hidden="true">
-  </picture>
-  <div class="lead">
-    <h2 data-ui="work_h">Le travail</h2>
-    <p data-ui="work_sub">Neuf séries. Chacune sa lumière, son lieu, son propos.</p>
-  </div>
-  <div id="seriesgrid"></div>
-</section>
-
-<!-- Branch view: a clicked trunk photo + 3-4 related photos (js/art-trunk.js).
-     Closed by default (no "open" class, aria-hidden="true"). The back
-     button is sticky inside it, so it's always reachable while open. -->
-<div class="branch-overlay" id="branchOverlay" role="dialog" aria-modal="true" aria-hidden="true">
-  <div class="branch-backbar">
-    <button type="button" id="branchBack" class="branch-back" data-ui="branch_back">← Trunk</button>
-  </div>
-  <div class="branch-wrap" id="branchWrap"></div>
-</div>
-
-<footer>
-  <div class="sig"><img src="images/ui/w2b-logo.png" alt="W2b"></div>
-  <div class="l">
-    @w2b.film<br>
-    <a href="shop.html" data-ui="foot_prints">Tirages d'art</a> · <a href="collaborate.html" data-ui="foot_collab">Collaborer</a><br>
-    <a href="https://w2bphotography.com/w2b-pro/" data-ui="foot_commercial">Commercial → site pro ↗</a><br>
-    <span data-ui="foot_place">Medellín · Colombie</span>
-  </div>
-</footer>
-
-<script src="js/gallery-data.js?v=9" defer></script>
-<script src="js/trunk-data.js?v=6" defer></script>
-<script src="js/room-dims.js?v=1" defer></script>
-<script src="js/responsive-manifest.js?v=3" defer></script>
-<script src="js/responsive-img.js?v=1" defer></script>
-<script src="js/art-i18n.js?v=8" defer></script>
-<script src="js/art-home.js?v=11" defer></script>
-<script src="js/art-trunk.js?v=10" defer></script>
-<script src="js/rooms.js?v=3" defer></script>
+  <p>Redirecting to <a href="oeuvre-actuelle.html">W2b</a>…</p>
 <script src="js/legal-footer.js" defer></script>
 </body>
 </html>

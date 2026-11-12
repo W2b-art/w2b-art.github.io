@@ -66,7 +66,7 @@
 .room{position:relative;padding:var(--sp-7) var(--sp-5)}
 .room-first{padding-top:var(--sp-6)}
 .room-opener{max-width:800px;margin:0 auto var(--sp-6);text-align:center}
-.room-opener .rk{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--or);margin-bottom:var(--sp-4)}
+.room-opener .rk{display:block;font-family:var(--sans);font-weight:400;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--or);margin-bottom:var(--sp-4)}
 .room-opener p{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(20px,2.8vw,32px);line-height:1.5;color:var(--bone);opacity:.94}
 
 .room figure{position:relative;margin:0;cursor:zoom-in;overflow:hidden;background:var(--surface);line-height:0}
@@ -121,7 +121,7 @@
    image no longer sits inside a slab wider than itself, with the
    label/gradient floating past its edge. */
 .room--full{max-width:1500px;margin:0 auto;text-align:center}
-.room--full a.room-link,.room--full>figure{display:inline-block;max-width:100%}
+.room--full a.room-link,.room--full>figure,.room--full>.trunk-stack{display:inline-block;max-width:100%}
 
 /* ---------- room--asym2 (asymmetric 2-up, never 50/50) ----------
    Flexbox, not grid: a grid row's track height is set by its tallest
@@ -310,6 +310,92 @@
 @media (hover:none){
   .reveal-img .branch-mark{width:9px;height:9px;opacity:.85}
 }
+
+/* "surélévation" hover (2026-11-11): the trunk photo lifts up-left on
+   hover, uncovering 1-2 thin slivers of its branch's next photos sitting
+   behind it, like a lifted card in a deck. Extends has-branch — the wrapper
+   only ever exists around a .has-branch figure (see js/art-trunk.js). Pure
+   transform (no layout properties), so sibling rooms never shift: the
+   room's own box height is already set by the figure's natural (untransformed)
+   size, and a transform never participates in layout/reflow. All three
+   layers hold translate(0,0) at rest and only move on :hover/:focus-within,
+   so nothing peeks out until the reveal is actually triggered. */
+.trunk-stack{position:relative}
+.trunk-stack figure.has-branch{position:relative;z-index:3;transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.trunk-stack .stack-sliver{position:absolute;inset:0;overflow:hidden;border-radius:2px;
+  box-shadow:-3px 4px 14px rgba(0,0,0,.4);pointer-events:none;
+  transition:transform .45s cubic-bezier(.22,1,.36,1)}
+.trunk-stack .stack-sliver img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.trunk-stack .stack-sliver.s1{z-index:2}
+.trunk-stack .stack-sliver.s2{z-index:1}
+@media (prefers-reduced-motion: no-preference){
+  .trunk-stack:hover figure.has-branch,.trunk-stack:focus-within figure.has-branch{transform:translate(-11px,-11px)}
+  .trunk-stack:hover .stack-sliver.s1,.trunk-stack:focus-within .stack-sliver.s1{transform:translate(9px,9px)}
+  .trunk-stack:hover .stack-sliver.s2,.trunk-stack:focus-within .stack-sliver.s2{transform:translate(17px,17px)}
+}
+
+/* ---------- full-screen scroll-snap trunk sequence (2026-11-11) ----------
+   oeuvre-actuelle.html / autres-travaux.html ONLY (body.trunk-snap, set in
+   those two files) — replaces the room/grid visual system there with one
+   photo per full screen, real aspect ratio, never cropped/stretched.
+   gallery-*.html pages never get this class, so their .room grid is
+   byte-for-byte unaffected.
+   - scroll-snap-type lives on body (the actual scrolling box for normal
+     page scroll) — it only activates snapping for descendants that opt in
+     via scroll-snap-align, so the hero above and the after-dark teaser
+     tile below the sequence (plain .room--detail, no .trunk-screen class)
+     keep scrolling past freely, exactly as before.
+   - Each screen is a flex column that centers the figure (+ its cartel)
+     as one unit — min-height:100vh instead of height, so a long caption
+     never gets clipped, it just pushes the screen taller than one
+     viewport on that one occasion rather than overlapping the photo.
+   - Sizing is pure CSS (viewport-relative units + the width/height HTML
+     attributes already set from js/room-dims.js, which give the browser
+     the real aspect ratio before the image loads) — no JS pixel sizing
+     here on purpose, see the sizeFigures() guard in js/art-trunk.js: a
+     one-time inline px size would not track a later resize/rotation,
+     whereas max-width/max-height in vw/vh always does. */
+body.trunk-snap{scroll-snap-type:y mandatory}
+.trunk-screen{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;padding:var(--sp-6) var(--sp-5);scroll-snap-align:start;scroll-snap-stop:always}
+.trunk-screen>figure,.trunk-screen>.trunk-stack{display:inline-block;max-width:100%}
+.trunk-screen figure img{display:block;width:auto;height:auto;max-width:88vw;max-height:88vh;margin:0 auto;object-fit:contain}
+@media(max-width:820px){
+  .trunk-screen{padding:var(--sp-6) var(--sp-4)}
+  .trunk-screen figure img{max-width:92vw;max-height:76vh}
+}
+
+/* ---------- persistent right-side nav (2026-11-12) ----------
+   oeuvre-actuelle.html / autres-travaux.html ONLY — the scroll-snap
+   sequence means a visitor deep in it never sees the top .rbar/idx-fab
+   again without scrolling all the way back up, so this stays on screen
+   throughout. Narrow on purpose (vertical text, not a wide label column)
+   so it sits inside the margin .trunk-screen's own centered photo already
+   leaves (max-width:88vw → ~6vw clear on each side on desktop, comfortably
+   more than this rail's own width) rather than overlapping it — and it's
+   non-interactive everywhere except its own links/button
+   (pointer-events only on the rail itself, nothing it needs to block).
+   z-index 65: above ordinary page content, below .branch-overlay (92) and
+   .idx-overlay (95) so both still fully cover it when open, same as the
+   existing .rbar (70) relationship — this just sits a little lower so it
+   never competes with either overlay's own controls.
+   Mobile (<=820px): hidden — the existing .idx-fab + .idx-overlay (same
+   links, already reachable, already tested on mobile) is the collapsed
+   form here rather than a second new toggle; adding another fixed corner
+   element on an already-tight 375px viewport would be clutter for
+   something that already has a working mobile answer. */
+.side-nav{position:fixed;top:50%;right:10px;transform:translateY(-50%);z-index:65;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  background:rgba(16,12,10,.55);backdrop-filter:blur(4px);padding:16px 9px;border-radius:22px;
+  border:1px solid rgba(237,230,218,.12)}
+.side-nav a,.side-nav button{writing-mode:vertical-rl;text-orientation:mixed;
+  font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--bone);opacity:.72;text-decoration:none;background:none;border:none;cursor:pointer;
+  padding:2px 0;white-space:nowrap;transition:opacity .25s ease,color .25s ease}
+.side-nav a:hover,.side-nav a:focus-visible,.side-nav button:hover,.side-nav button:focus-visible{opacity:1;color:var(--or)}
+.side-nav .side-nav-afterdark{color:var(--braise);opacity:.85}
+.side-nav .side-nav-afterdark:hover,.side-nav .side-nav-afterdark:focus-visible{opacity:1;color:var(--braise)}
+@media(max-width:820px){ .side-nav{display:none} }
 
 /* ---------- expositions.html ---------- */
 .expo-main{max-width:720px;margin:0 auto;padding-top:var(--sp-6)}

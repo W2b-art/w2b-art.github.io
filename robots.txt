@@ -6,6 +6,10 @@ Disallow: /images/nude/
 Disallow: /images/boudoir/
 Disallow: /images/boudoir-red/
 
+# Archived / removed content — nothing links to these, kept only for recovery
+Disallow: /images/_archive/
+Disallow: /_archive/
+
 # AI search and answer engines: explicitly allowed so the sites can be cited in answers.
 User-agent: OAI-SearchBot
 Allow: /

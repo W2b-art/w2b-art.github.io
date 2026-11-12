@@ -763,6 +763,7 @@ const GALLERY_DATA = {
     images: [
       {
         file: "fetish-latex-mask-red-light-01-w2b.jpg",
+        archived: true,
         alt: {
           en: "Figure in a black latex hood under deep red light, fetish portrait photography",
           fr: "Silhouette en cagoule de latex noir sous une lumière rouge profonde, photographie de portrait fétichiste",
@@ -771,6 +772,7 @@ const GALLERY_DATA = {
       },
       {
         file: "fetish-latex-mask-red-light-02-w2b.jpg",
+        archived: true,
         alt: {
           en: "Masked figure in latex under dramatic red light, fetish art photography",
           fr: "Silhouette masquée en latex sous une lumière rouge dramatique, photographie d'art fétichiste",
@@ -779,6 +781,7 @@ const GALLERY_DATA = {
       },
       {
         file: "fetish-latex-mask-red-light-04-w2b.jpg",
+        archived: true,
         alt: {
           en: "Latex-hooded figure with hands together under red light, fetish portrait",
           fr: "Silhouette en cagoule de latex, mains jointes sous lumière rouge, portrait fétichiste",
@@ -787,6 +790,7 @@ const GALLERY_DATA = {
       },
       {
         file: "fetish-latex-mask-red-light-06-w2b.jpg",
+        archived: true,
         alt: {
           en: "Masked latex figure emerging from red-lit darkness, fetish art photography",
           fr: "Silhouette masquée en latex émergeant d'une obscurité rouge, photographie d'art fétichiste",
@@ -795,6 +799,7 @@ const GALLERY_DATA = {
       },
       {
         file: "fetish-latex-mask-red-light-08-w2b.jpg",
+        archived: true,
         alt: {
           en: "Latex mask lit in dual red tones, bold fetish portrait photography",
           fr: "Masque de latex éclairé en doubles tons rouges, portrait fétichiste affirmé",
@@ -803,6 +808,7 @@ const GALLERY_DATA = {
       },
       {
         file: "fetish-latex-mask-red-light-10-w2b.jpg",
+        archived: true,
         alt: {
           en: "Standing figure in a latex catsuit and hood under red light, fetish photography",
           fr: "Silhouette debout en combinaison et cagoule de latex sous lumière rouge, photographie fétichiste",
@@ -811,6 +817,7 @@ const GALLERY_DATA = {
       },
       {
         file: "fetish-latex-mask-dramatic-shadow-07-w2b.jpg",
+        archived: true,
         alt: {
           en: "Masked latex figure in dramatic chiaroscuro shadow, fetish art photography",
           fr: "Silhouette masquée en latex dans un clair-obscur dramatique, photographie d'art fétichiste",
@@ -819,6 +826,7 @@ const GALLERY_DATA = {
       },
       {
         file: "fetish-latex-mask-low-key-03-w2b.jpg",
+        archived: true,
         alt: {
           en: "Latex-hooded figure raising a blade into red light, low-key fetish portrait",
           fr: "Silhouette en cagoule de latex levant une lame dans la lumière rouge, portrait fétichiste clair-obscur",
@@ -827,6 +835,7 @@ const GALLERY_DATA = {
       },
       {
         file: "fetish-latex-mask-low-key-05-w2b.jpg",
+        archived: true,
         alt: {
           en: "Tattooed arm and latex mask with a blade, low-key red fetish photography",
           fr: "Bras tatoué et masque de latex avec une lame, photographie fétichiste rouge clair-obscur",
@@ -835,6 +844,7 @@ const GALLERY_DATA = {
       },
       {
         file: "fetish-latex-mask-low-key-09-w2b.jpg",
+        archived: true,
         alt: {
           en: "Latex mask barely emerging from near-total darkness, atmospheric fetish photography",
           fr: "Masque de latex émergeant à peine d'une obscurité quasi totale, photographie fétichiste atmosphérique",
@@ -843,10 +853,119 @@ const GALLERY_DATA = {
       },
       {
         file: "fetish-latex-mask-portrait-11-w2b.jpg",
+        archived: true,
         alt: {
           en: "Close fetish portrait, latex hood and gloved hands framing the face in red light",
           fr: "Portrait fétichiste rapproché, cagoule de latex et mains gantées encadrant le visage en lumière rouge",
           es: "Retrato fetichista cercano, capucha de látex y manos enguantadas enmarcando el rostro en luz roja"
+        }
+      },
+    ]
+  },
+
+  "boudoir-red": {
+    id: "boudoir-red",
+    folder: "images/boudoir-red/",
+    coverIndex: 0,
+    title: {
+      en: "Boudoir",
+      fr: "Boudoir",
+      es: "Boudoir"
+    },
+    description: {
+      en: "Here the person is the whole picture. Skin, gaze and gesture given the room to be beautiful without apology — sensuality read as presence, not as pose. It opens on a story in red, and keeps growing.",
+      fr: "Ici, la personne est toute l'image. La peau, le regard, le geste, à qui l'on laisse la place d'être beaux sans s'excuser — la sensualité comme présence, non comme pose. Elle s'ouvre sur une histoire en rouge, et continue de grandir.",
+      es: "Aquí la persona es toda la imagen. La piel, la mirada, el gesto, a los que se les deja espacio para ser bellos sin pedir permiso — la sensualidad como presencia, no como pose. Se abre con una historia en rojo, y sigue creciendo."
+    },
+    images: [
+      {
+        file: "boudoir-red-drape-reaching-bust-colour-w2b.jpg",
+        alt: {
+          en: "Woman in red reaching toward a red-draped classical bust inside a tall mirror, colour fine-art boudoir",
+          fr: "Femme en rouge tendant la main vers un buste classique drapé de rouge dans un grand miroir, boudoir d'art couleur",
+          es: "Mujer de rojo extendiendo la mano hacia un busto clásico cubierto de rojo dentro de un espejo alto, boudoir artístico a color"
+        }
+      },
+      {
+        file: "boudoir-red-drape-kneeling-bust-colour-w2b.jpg",
+        alt: {
+          en: "A woman draped in red kneeling and reaching up to a white classical bust on a pedestal, colour fine-art boudoir, Medellín",
+          fr: "Une femme drapée de rouge agenouillée tendant les bras vers un buste classique blanc sur un piédestal, boudoir d'art couleur, Medellín",
+          es: "Una mujer envuelta en rojo arrodillada extendiendo los brazos hacia un busto clásico blanco sobre un pedestal, boudoir artístico a color, Medellín"
+        }
+      },
+      {
+        file: "boudoir-mirror-bust-red-white-fabric-colour-w2b.jpg",
+        alt: {
+          en: "Woman in white reading inside a tall mirror as red and white fabric spill from the frame toward the viewer, a toppled bust below, colour fine-art boudoir",
+          fr: "Femme en blanc lisant dans un grand miroir tandis que des tissus rouge et blanc débordent du cadre vers le spectateur, un buste renversé en bas, boudoir d'art couleur",
+          es: "Mujer de blanco leyendo dentro de un espejo alto mientras telas roja y blanca se derraman del marco hacia el espectador, un busto derribado abajo, boudoir artístico a color"
+        }
+      },
+      {
+        file: "boudoir-white-dress-reading-colour-w2b.jpg",
+        archived: true,
+        alt: {
+          en: "Woman in a white dress reading a book among tropical plants and blue tilework, colour fine-art boudoir, Medellín",
+          fr: "Femme en robe blanche lisant un livre parmi des plantes tropicales et des azulejos bleus, boudoir d'art couleur, Medellín",
+          es: "Mujer con vestido blanco leyendo un libro entre plantas tropicales y azulejos azules, boudoir artístico a color, Medellín"
+        }
+      },
+      {
+        file: "boudoir-red-drape-nude-intimate-colour-w2b.jpg",
+        alt: {
+          en: "Intimate fine-art nude wrapped in flowing red fabric against a dark backdrop, colour boudoir photography",
+          fr: "Nu d'art intime enveloppé d'un tissu rouge fluide sur fond sombre, photographie boudoir couleur",
+          es: "Desnudo artístico íntimo envuelto en una tela roja fluida sobre fondo oscuro, fotografía boudoir a color"
+        }
+      },
+      {
+        file: "silhouette-nude-bikini-top-purple-light-w2b.jpg",
+        archived: true,
+        alt: {
+          en: "Nude silhouette holding a bikini top under deep purple light, fine-art boudoir photography",
+          fr: "Silhouette nue tenant un haut de bikini sous une lumière violette profonde, photographie boudoir d'art",
+          es: "Silueta desnuda sosteniendo la parte superior de un bikini bajo una luz morada profunda, fotografía boudoir artística"
+        }
+      },
+      {
+        file: "nude-red-curtain-dramatic-gaze-boots-w2b.jpg",
+        alt: {
+          en: "Nude figure emerging from behind a red curtain in laced boots, dramatic low-key boudoir photography",
+          fr: "Silhouette nue émergeant d'un rideau rouge en bottes lacées, photographie boudoir dramatique en clair-obscur",
+          es: "Figura desnuda emergiendo de una cortina roja con botas de cordones, fotografía boudoir dramática de bajo perfil"
+        }
+      },
+      {
+        file: "smoke-heart-exhale-spiked-choker-purple-light-w2b.jpg",
+        alt: {
+          en: "Close portrait exhaling a heart-shaped cloud of smoke, spiked choker under purple light, fetish portrait photography",
+          fr: "Portrait rapproché exhalant un nuage de fumée en forme de cœur, collier à pointes sous lumière violette, portrait fétichiste",
+          es: "Retrato cercano exhalando una nube de humo en forma de corazón, gargantilla con púas bajo luz morada, retrato fetichista"
+        }
+      },
+      {
+        file: "garter-belt-lingerie-tattooed-back-purple-light-w2b.jpg",
+        alt: {
+          en: "Tattooed back and garter-belt lingerie seen from behind under purple and blue light, boudoir photography",
+          fr: "Dos tatoué et porte-jarretelles vus de dos sous une lumière violette et bleue, photographie boudoir",
+          es: "Espalda tatuada y liguero vistos de espaldas bajo luz morada y azul, fotografía boudoir"
+        }
+      },
+      {
+        file: "nude-torso-raised-arms-pink-light-w2b.jpg",
+        alt: {
+          en: "Nude torso with arms raised against a curtain backdrop under warm pink light, boudoir photography",
+          fr: "Torse nu bras levés devant un rideau sous une lumière rose chaude, photographie boudoir",
+          es: "Torso desnudo con los brazos levantados ante un telón bajo luz rosa cálida, fotografía boudoir"
+        }
+      },
+      {
+        file: "nude-side-portrait-red-light-piercings-w2b.jpg",
+        alt: {
+          en: "Side portrait of a nude figure with piercings and hoop earrings under red light on a balcony, boudoir photography",
+          fr: "Portrait de profil d'une silhouette nue avec piercings et créoles sous lumière rouge sur un balcon, photographie boudoir",
+          es: "Retrato de perfil de una figura desnuda con piercings y aros bajo luz roja en un balcón, fotografía boudoir"
         }
       },
       {
@@ -900,112 +1019,6 @@ const GALLERY_DATA = {
     ]
   },
 
-  "boudoir-red": {
-    id: "boudoir-red",
-    folder: "images/boudoir-red/",
-    coverIndex: 0,
-    title: {
-      en: "Boudoir",
-      fr: "Boudoir",
-      es: "Boudoir"
-    },
-    description: {
-      en: "Here the person is the whole picture. Skin, gaze and gesture given the room to be beautiful without apology — sensuality read as presence, not as pose. It opens on a story in red, and keeps growing.",
-      fr: "Ici, la personne est toute l'image. La peau, le regard, le geste, à qui l'on laisse la place d'être beaux sans s'excuser — la sensualité comme présence, non comme pose. Elle s'ouvre sur une histoire en rouge, et continue de grandir.",
-      es: "Aquí la persona es toda la imagen. La piel, la mirada, el gesto, a los que se les deja espacio para ser bellos sin pedir permiso — la sensualidad como presencia, no como pose. Se abre con una historia en rojo, y sigue creciendo."
-    },
-    images: [
-      {
-        file: "boudoir-red-drape-reaching-bust-colour-w2b.jpg",
-        alt: {
-          en: "Woman in red reaching toward a red-draped classical bust inside a tall mirror, colour fine-art boudoir",
-          fr: "Femme en rouge tendant la main vers un buste classique drapé de rouge dans un grand miroir, boudoir d'art couleur",
-          es: "Mujer de rojo extendiendo la mano hacia un busto clásico cubierto de rojo dentro de un espejo alto, boudoir artístico a color"
-        }
-      },
-      {
-        file: "boudoir-red-drape-kneeling-bust-colour-w2b.jpg",
-        alt: {
-          en: "A woman draped in red kneeling and reaching up to a white classical bust on a pedestal, colour fine-art boudoir, Medellín",
-          fr: "Une femme drapée de rouge agenouillée tendant les bras vers un buste classique blanc sur un piédestal, boudoir d'art couleur, Medellín",
-          es: "Una mujer envuelta en rojo arrodillada extendiendo los brazos hacia un busto clásico blanco sobre un pedestal, boudoir artístico a color, Medellín"
-        }
-      },
-      {
-        file: "boudoir-mirror-bust-red-white-fabric-colour-w2b.jpg",
-        alt: {
-          en: "Woman in white reading inside a tall mirror as red and white fabric spill from the frame toward the viewer, a toppled bust below, colour fine-art boudoir",
-          fr: "Femme en blanc lisant dans un grand miroir tandis que des tissus rouge et blanc débordent du cadre vers le spectateur, un buste renversé en bas, boudoir d'art couleur",
-          es: "Mujer de blanco leyendo dentro de un espejo alto mientras telas roja y blanca se derraman del marco hacia el espectador, un busto derribado abajo, boudoir artístico a color"
-        }
-      },
-      {
-        file: "boudoir-white-dress-reading-colour-w2b.jpg",
-        alt: {
-          en: "Woman in a white dress reading a book among tropical plants and blue tilework, colour fine-art boudoir, Medellín",
-          fr: "Femme en robe blanche lisant un livre parmi des plantes tropicales et des azulejos bleus, boudoir d'art couleur, Medellín",
-          es: "Mujer con vestido blanco leyendo un libro entre plantas tropicales y azulejos azules, boudoir artístico a color, Medellín"
-        }
-      },
-      {
-        file: "boudoir-red-drape-nude-intimate-colour-w2b.jpg",
-        alt: {
-          en: "Intimate fine-art nude wrapped in flowing red fabric against a dark backdrop, colour boudoir photography",
-          fr: "Nu d'art intime enveloppé d'un tissu rouge fluide sur fond sombre, photographie boudoir couleur",
-          es: "Desnudo artístico íntimo envuelto en una tela roja fluida sobre fondo oscuro, fotografía boudoir a color"
-        }
-      },
-      {
-        file: "silhouette-nude-bikini-top-purple-light-w2b.jpg",
-        alt: {
-          en: "Nude silhouette holding a bikini top under deep purple light, fine-art boudoir photography",
-          fr: "Silhouette nue tenant un haut de bikini sous une lumière violette profonde, photographie boudoir d'art",
-          es: "Silueta desnuda sosteniendo la parte superior de un bikini bajo una luz morada profunda, fotografía boudoir artística"
-        }
-      },
-      {
-        file: "nude-red-curtain-dramatic-gaze-boots-w2b.jpg",
-        alt: {
-          en: "Nude figure emerging from behind a red curtain in laced boots, dramatic low-key boudoir photography",
-          fr: "Silhouette nue émergeant d'un rideau rouge en bottes lacées, photographie boudoir dramatique en clair-obscur",
-          es: "Figura desnuda emergiendo de una cortina roja con botas de cordones, fotografía boudoir dramática de bajo perfil"
-        }
-      },
-      {
-        file: "smoke-heart-exhale-spiked-choker-purple-light-w2b.jpg",
-        alt: {
-          en: "Close portrait exhaling a heart-shaped cloud of smoke, spiked choker under purple light, fetish portrait photography",
-          fr: "Portrait rapproché exhalant un nuage de fumée en forme de cœur, collier à pointes sous lumière violette, portrait fétichiste",
-          es: "Retrato cercano exhalando una nube de humo en forma de corazón, gargantilla con púas bajo luz morada, retrato fetichista"
-        }
-      },
-      {
-        file: "garter-belt-lingerie-tattooed-back-purple-light-w2b.jpg",
-        alt: {
-          en: "Tattooed back and garter-belt lingerie seen from behind under purple and blue light, boudoir photography",
-          fr: "Dos tatoué et porte-jarretelles vus de dos sous une lumière violette et bleue, photographie boudoir",
-          es: "Espalda tatuada y liguero vistos de espaldas bajo luz morada y azul, fotografía boudoir"
-        }
-      },
-      {
-        file: "nude-torso-raised-arms-pink-light-w2b.jpg",
-        alt: {
-          en: "Nude torso with arms raised against a curtain backdrop under warm pink light, boudoir photography",
-          fr: "Torse nu bras levés devant un rideau sous une lumière rose chaude, photographie boudoir",
-          es: "Torso desnudo con los brazos levantados ante un telón bajo luz rosa cálida, fotografía boudoir"
-        }
-      },
-      {
-        file: "nude-side-portrait-red-light-piercings-w2b.jpg",
-        alt: {
-          en: "Side portrait of a nude figure with piercings and hoop earrings under red light on a balcony, boudoir photography",
-          fr: "Portrait de profil d'une silhouette nue avec piercings et créoles sous lumière rouge sur un balcon, photographie boudoir",
-          es: "Retrato de perfil de una figura desnuda con piercings y aros bajo luz roja en un balcón, fotografía boudoir"
-        }
-      }
-    ]
-  },
-
   "argentina": {
     id: "argentina",
     folder: "images/argentina/",
@@ -1030,14 +1043,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "argentina-couple-embrace-black-white-film-w2b.jpg",
-        alt: {
-          en: "Two people embracing, candid black and white film photography",
-          fr: "Deux personnes enlacées, photographie argentique noir et blanc sur le vif",
-          es: "Dos personas abrazándose, fotografía analógica en blanco y negro captada al vuelo"
-        }
-      },
-      {
         file: "buenos-aires-bandoneon-player-tango-film-w2b.jpg",
         alt: {
           en: "A bandoneón player lost in the music, candid colour film photography, tango",
@@ -1051,6 +1056,14 @@ const GALLERY_DATA = {
           en: "A tango dancer in a red dress in window light, candid colour film photography",
           fr: "Une danseuse de tango en robe rouge dans la lumière d'une fenêtre, photographie argentique couleur sur le vif",
           es: "Una bailarina de tango con vestido rojo en la luz de una ventana, fotografía analógica a color captada al vuelo"
+        }
+      },
+      {
+        file: "argentina-couple-embrace-black-white-film-w2b.jpg",
+        alt: {
+          en: "Two people embracing, candid black and white film photography",
+          fr: "Deux personnes enlacées, photographie argentique noir et blanc sur le vif",
+          es: "Dos personas abrazándose, fotografía analógica en blanco y negro captada al vuelo"
         }
       }
     ]
@@ -1461,6 +1474,7 @@ const GALLERY_DATA = {
     images: [
       {
         file: "01-pretty-od-portrait-protagonist-medellin-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter one, what's missing — a young woman standing against a wall, a hollow left where someone used to be, conceptual portrait photography",
           fr: "Chapitre un, le manque — une jeune femme debout contre un mur, un vide là où quelqu'un se tenait, photographie de portrait conceptuel",
@@ -1469,6 +1483,7 @@ const GALLERY_DATA = {
       },
       {
         file: "02-pretty-od-glitch-distortion-red-dystopia-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter one, what's missing — a hand reaching through red digital distortion, the glitch of a feeling bought online, experimental conceptual photography",
           fr: "Chapitre un, le manque — une main tendue à travers une distorsion numérique rouge, le glitch d'un sentiment acheté en ligne, photographie conceptuelle expérimentale",
@@ -1477,6 +1492,7 @@ const GALLERY_DATA = {
       },
       {
         file: "03-pretty-od-syringe-pink-dose-arm-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter two, relief — a pink syringe pressed to a bare arm, affection delivered by the dose, conceptual photography in red light",
           fr: "Chapitre deux, le soulagement — une seringue rose contre un bras nu, la tendresse livrée à la dose, photographie conceptuelle en lumière rouge",
@@ -1485,6 +1501,7 @@ const GALLERY_DATA = {
       },
       {
         file: "04-pretty-od-relief-red-light-couch-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter two, relief — a young woman seated on a couch in deep red light, the first dose settling into the body, cinematic conceptual photography",
           fr: "Chapitre deux, le soulagement — une jeune femme assise sur un canapé dans une lumière rouge profonde, la première dose qui gagne le corps, photographie conceptuelle cinématographique",
@@ -1493,6 +1510,7 @@ const GALLERY_DATA = {
       },
       {
         file: "05-pretty-od-relief-face-eyes-closed-red-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter two, relief — a face at rest with eyes closed in warm red light, the body remembering being looked at, conceptual portrait photography",
           fr: "Chapitre deux, le soulagement — un visage au repos, les yeux fermés dans une lumière rouge chaude, le corps se souvenant d'être regardé, photographie de portrait conceptuel",
@@ -1501,6 +1519,7 @@ const GALLERY_DATA = {
       },
       {
         file: "06-pretty-od-glowing-pink-eye-upside-down-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter three, POV — an upside-down face with a glowing pink eye, present but absent, unsettling conceptual portrait photography",
           fr: "Chapitre trois, POV — un visage à l'envers avec un œil rose lumineux, présente mais absente, photographie de portrait conceptuel inquiétante",
@@ -1509,6 +1528,7 @@ const GALLERY_DATA = {
       },
       {
         file: "07-pretty-od-pink-eyes-portrait-stare-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter three, POV — a still, direct stare with glowing pink eyes in a dim room, sadness seen from the doorway, conceptual portrait photography",
           fr: "Chapitre trois, POV — un regard fixe et direct aux yeux roses lumineux dans une pièce sombre, la tristesse vue depuis la porte, photographie de portrait conceptuel",
@@ -1517,6 +1537,7 @@ const GALLERY_DATA = {
       },
       {
         file: "08-pretty-od-euphoria-glitter-smile-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter four, to feel — a radiant open smile with glitter under the eyes, adored from the inside, conceptual portrait photography",
           fr: "Chapitre quatre, ressentir — un sourire radieux et ouvert, des paillettes sous les yeux, adorée de l'intérieur, photographie de portrait conceptuel",
@@ -1525,6 +1546,7 @@ const GALLERY_DATA = {
       },
       {
         file: "09-pretty-od-glitter-bliss-eyes-closed-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter four, to feel — eyes closed in bliss beneath shimmering glitter makeup, the cheapest thing to buy is feeling loved, conceptual portrait photography",
           fr: "Chapitre quatre, ressentir — les yeux fermés dans le ravissement sous un maquillage à paillettes scintillant, se sentir aimée est la chose la moins chère à acheter, photographie de portrait conceptuel",
@@ -1533,6 +1555,7 @@ const GALLERY_DATA = {
       },
       {
         file: "10-pretty-od-pink-love-perfume-bottle-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter four, to feel — a pink Pink Love perfume bottle glowing under magenta light, love packaged as a product, conceptual still-life photography",
           fr: "Chapitre quatre, ressentir — un flacon de parfum rose Pink Love luisant sous une lumière magenta, l'amour emballé comme un produit, photographie de nature morte conceptuelle",
@@ -1541,6 +1564,7 @@ const GALLERY_DATA = {
       },
       {
         file: "11-pretty-od-double-exposure-doubling-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter five, I don't know which one I am — a double exposure of the same figure folding over herself, the self coming apart, experimental conceptual photography",
           fr: "Chapitre cinq, je ne sais plus laquelle je suis — une double exposition de la même silhouette se repliant sur elle-même, le soi qui se défait, photographie conceptuelle expérimentale",
@@ -1549,6 +1573,7 @@ const GALLERY_DATA = {
       },
       {
         file: "12-pretty-od-dream-haze-portrait-purple-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter five, I don't know which one I am — a portrait dissolving into a purple haze, no longer sure which feeling was ever hers, conceptual portrait photography",
           fr: "Chapitre cinq, je ne sais plus laquelle je suis — un portrait se dissolvant dans une brume violette, ne sachant plus quel sentiment était le sien, photographie de portrait conceptuel",
@@ -1557,6 +1582,7 @@ const GALLERY_DATA = {
       },
       {
         file: "13-pretty-od-face-plastic-wrap-magenta-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter six, made to measure — a face pressed against clear plastic under magenta light, the comfort becoming the cage, conceptual portrait photography",
           fr: "Chapitre six, faite sur mesure — un visage pressé contre du plastique transparent sous une lumière magenta, le réconfort qui devient la cage, photographie de portrait conceptuel",
@@ -1565,6 +1591,7 @@ const GALLERY_DATA = {
       },
       {
         file: "14-pretty-od-plastic-cage-red-light-w2b.jpg",
+        archived: true,
         alt: {
           en: "Chapter six, made to measure — a figure wrapped in plastic within a red-lit frame, calm inside because she no longer remembers the outside, conceptual photography",
           fr: "Chapitre six, faite sur mesure — une silhouette enveloppée de plastique dans un cadre éclairé de rouge, calme à l'intérieur car elle ne se souvient plus du dehors, photographie conceptuelle",
@@ -1642,6 +1669,7 @@ const GALLERY_DATA = {
       },
       {
         file: "sunset-pine-trees-mountain-silhouette-w2b.jpg",
+        archived: true,
         alt: {
           en: "Sun setting behind silhouetted pine trees with a misty mountain ridge beyond, golden dusk photography",
           fr: "Soleil couchant derrière des sapins silhouettés avec une crête montagneuse embrumée au loin, photographie au crépuscule doré",
@@ -1674,6 +1702,7 @@ const GALLERY_DATA = {
       },
       {
         file: "red-lamp-crossed-legs-magazine-intimate-room-w2b.jpg",
+        archived: true,
         alt: {
           en: "Crossed bare legs lit by a red lampshade beside a magazine and discarded white underwear, intimate interior photography",
           fr: "Jambes nues croisées éclairées par un abat-jour rouge près d'un magazine et de sous-vêtements blancs abandonnés, photographie d'intérieur intime",
@@ -1690,6 +1719,7 @@ const GALLERY_DATA = {
       },
       {
         file: "rowboats-misty-lake-mountains-w2b.jpg",
+        archived: true,
         alt: {
           en: "Wooden rowboats moored on a calm lake with misty mountains and a wooded island behind, film photography",
           fr: "Barques en bois amarrées sur un lac calme face à des montagnes embrumées et une île boisée, photographie argentique",
@@ -1730,6 +1760,7 @@ const GALLERY_DATA = {
       },
       {
         file: "street-lamp-silhouette-bird-sky-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Ornate curved street lamp silhouetted against a pale sky with a bird in flight, black and white film photography",
           fr: "Réverbère ouvragé en silhouette sur un ciel pâle avec un oiseau en vol, photographie argentique noir et blanc",
@@ -1738,6 +1769,7 @@ const GALLERY_DATA = {
       },
       {
         file: "wet-tree-bark-dripping-water-close-up-w2b.jpg",
+        archived: true,
         alt: {
           en: "Close-up of wet tree bark with water droplets dripping down its texture",
           fr: "Gros plan sur une écorce d'arbre mouillée avec des gouttes d'eau ruisselant sur sa texture",
@@ -1934,6 +1966,7 @@ const GALLERY_DATA = {
     images: [
       {
         file: "pink-plastic-wrap-figure-abstract-w2b.jpg",
+        archived: true,
         alt: {
           en: "Figure wrapped in crumpled plastic sheeting under pink and purple light, abstract conceptual photography",
           fr: "Silhouette enveloppée de film plastique froissé sous une lumière rose et violette, photographie conceptuelle abstraite",
@@ -1942,6 +1975,7 @@ const GALLERY_DATA = {
       },
       {
         file: "red-light-glowing-eyes-intense-portrait-w2b.jpg",
+        archived: true,
         alt: {
           en: "Close portrait with eyes glowing red, intense conceptual photography",
           fr: "Portrait rapproché aux yeux luisant de rouge, photographie conceptuelle intense",
@@ -1950,6 +1984,7 @@ const GALLERY_DATA = {
       },
       {
         file: "woman-reclining-neon-light-bedroom-w2b.jpg",
+        archived: true,
         alt: {
           en: "Woman reclining on a bed under pink and blue neon light, posters covering the wall behind her",
           fr: "Femme allongée sur un lit sous une lumière néon rose et bleue, mur recouvert d'affiches derrière elle",
@@ -1958,6 +1993,7 @@ const GALLERY_DATA = {
       },
       {
         file: "woman-graphic-tee-pink-lit-room-posters-w2b.jpg",
+        archived: true,
         alt: {
           en: "Woman kneeling in an oversized graphic t-shirt in a pink-lit room covered in posters",
           fr: "Femme agenouillée dans un t-shirt graphique oversize dans une pièce éclairée de rose et couverte d'affiches",
@@ -1966,6 +2002,7 @@ const GALLERY_DATA = {
       },
       {
         file: "pink-love-perfume-bottle-still-life-w2b.jpg",
+        archived: true,
         alt: {
           en: "Heart-shaped Pink Love perfume bottle resting on fabric under pink light, conceptual still life photography",
           fr: "Flacon de parfum « Pink Love » en forme de cœur posé sur un tissu sous lumière rose, nature morte conceptuelle",
@@ -2067,11 +2104,11 @@ const GALLERY_DATA = {
     folder: "images/branch-sunset-pines/",
     title: { en: "Pine Country", fr: "Pays des pins", es: "Tierra de pinos" },
     images: [
-      { file: "snow-covered-pine-trees-mountain-daylight-w2b.jpg", alt: {
+      { file: "snow-covered-pine-trees-mountain-daylight-w2b.jpg", archived: true, alt: {
         en: "Snow-covered pine trees on a mountainside in daylight",
         fr: "Pins enneigés à flanc de montagne en pleine journée",
         es: "Pinos cubiertos de nieve en una ladera de montaña a plena luz del día" } },
-      { file: "lake-mountains-pines-window-frame-w2b.jpg", alt: {
+      { file: "lake-mountains-pines-window-frame-w2b.jpg", archived: true, alt: {
         en: "Lake and pine-covered mountains seen through a window frame",
         fr: "Lac et montagnes couvertes de pins vus à travers l'encadrement d'une fenêtre",
         es: "Lago y montañas cubiertas de pinos vistos a través del marco de una ventana" } }
@@ -2175,11 +2212,11 @@ const GALLERY_DATA = {
     folder: "images/branch-street-lamp/",
     title: { en: "Open Sky", fr: "Ciel ouvert", es: "Cielo abierto" },
     images: [
-      { file: "kite-silhouette-open-sky-black-white-w2b.jpg", alt: {
+      { file: "kite-silhouette-open-sky-black-white-w2b.jpg", archived: true, alt: {
         en: "Kite in silhouette against an open sky, black and white photography",
         fr: "Cerf-volant en silhouette dans un ciel dégagé, photographie noir et blanc",
         es: "Cometa en silueta contra un cielo despejado, fotografía en blanco y negro" } },
-      { file: "bird-framed-bush-black-white-w2b.jpg", alt: {
+      { file: "bird-framed-bush-black-white-w2b.jpg", archived: true, alt: {
         en: "Bird framed within a bush, black and white photography",
         fr: "Oiseau encadré dans un buisson, photographie noir et blanc",
         es: "Ave enmarcada en un arbusto, fotografía en blanco y negro" } }
@@ -2191,7 +2228,7 @@ const GALLERY_DATA = {
     folder: "images/branch-tree-bark/",
     title: { en: "Bark", fr: "Écorce", es: "Corteza" },
     images: [
-      { file: "tree-branches-detail-black-white-w2b.jpg", alt: {
+      { file: "tree-branches-detail-black-white-w2b.jpg", archived: true, alt: {
         en: "Close-up detail of tree branches, black and white photography",
         fr: "Détail rapproché de branches d'arbre, photographie noir et blanc",
         es: "Detalle cercano de ramas de árbol, fotografía en blanco y negro" } }
@@ -2215,7 +2252,7 @@ const GALLERY_DATA = {
     folder: "images/branch-industrial/",
     title: { en: "Scrap and Steel", fr: "Ferraille et acier", es: "Chatarra y acero" },
     images: [
-      { file: "truck-taillight-reflectors-grid-black-white-w2b.jpg", alt: {
+      { file: "truck-taillight-reflectors-grid-black-white-w2b.jpg", archived: true, alt: {
         en: "Grid of truck tail-light reflectors, black and white macro photography",
         fr: "Grille de réflecteurs de feux arrière de camion, photographie macro noir et blanc",
         es: "Rejilla de reflectores de luces traseras de camión, fotografía macro en blanco y negro" } },
@@ -2241,7 +2278,6 @@ const GALLERY_ORDER = [
   "argentina",
   "contemplations",
   "bailar-la-ciudad",
-  "pretty-od",
   "after-dark"
 ];
 

@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>404 — W2b</title>
 <meta name="robots" content="noindex">
 <meta name="description" content="Page not found. W2b, fine-art photography from Medellín.">
@@ -26,11 +28,12 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content" data-ui="skip_link">Skip to content</a>
 <header class="hdr">
   <a class="brand" href="/" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
   <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
 </header>
-<main class="nf">
+<main class="nf" id="main-content">
   <figure class="nf-photo nf-photo--desktop">
     <img src="images/ui/404-calle-54-rubble-w2b.jpg" alt="Un panneau « Calle 54 » et une flèche parmi les gravats, Medellín" width="2000" height="735" loading="eager">
   </figure>
@@ -42,7 +45,7 @@
   <p data-ui="err404_text">La page recherchée a été déplacée ou n'a jamais existé.</p>
   <nav class="nf-links">
     <a href="/" data-ui="err404_home">Accueil</a>
-    <a href="/home.html#series" data-ui="nav_series">Séries</a>
+    <a href="/oeuvre-actuelle.html#series" data-ui="nav_series">Séries</a>
     <a href="/shop.html" data-ui="nav_prints">Tirages</a>
   </nav>
 </main>

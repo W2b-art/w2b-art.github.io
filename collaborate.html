@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Collaborer — W2b</title>
-<meta name="description" content="Collaborer avec W2b : collaborations créatives, commandes boudoir et Dark Desire faites comme de l'art, presse et curateurs. Consentement au cœur, en confiance.">
+<meta name="description" content="Collaborer avec W2b : collaborations créatives, commandes boudoir faites comme de l'art, presse et curateurs. Consentement au cœur, en confiance.">
 <link rel="canonical" href="https://w2bphotography.com/collaborate.html">
 <meta property="og:title" content="Collaborer — W2b">
-<meta property="og:description" content="Collaborer avec W2b : collaborations créatives, commandes boudoir et Dark Desire faites comme de l'art, presse et curateurs. Consentement au cœur, en confiance.">
+<meta property="og:description" content="Collaborer avec W2b : collaborations créatives, commandes boudoir faites comme de l'art, presse et curateurs. Consentement au cœur, en confiance.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://w2bphotography.com/collaborate.html">
 <meta property="og:image" content="https://w2bphotography.com/images/contemplations/contemplations-golden-dusk-rock-spires-coast-w2b.jpg">
@@ -17,15 +19,33 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/art.css?v=5">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "https://w2bphotography.com/collaborate.html#page",
+      "url": "https://w2bphotography.com/collaborate.html",
+      "name": "Collaborer — W2b",
+      "description": "Collaborer avec W2b : collaborations créatives, commandes boudoir faites comme de l'art, presse et curateurs. Consentement au cœur, en confiance.",
+      "inLanguage": ["en", "fr", "es"],
+      "about": { "@id": "https://w2bphotography.com/#guillaume" }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
+<a class="skip-link" href="#main-content" data-ui="skip_link">Skip to content</a>
+
 <header class="hdr" id="hdr">
-  <div class="brand"><a href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a></div>
+  <div class="brand"><a href="oeuvre-actuelle.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a></div>
   <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="hdr-panel" id="hdrPanel">
     <nav>
-      <a href="home.html#series" data-ui="nav_series">Séries</a>
+      <a href="oeuvre-actuelle.html#series" data-ui="nav_series">Séries</a>
       <a href="shop.html" data-ui="nav_prints">Tirages</a>
       <a href="collaborate.html" data-ui="nav_collab">Collaborer</a>
       <a href="about.html" data-ui="nav_about">À propos</a>
@@ -34,7 +54,7 @@
   </div>
 </header>
 
-<main class="book">
+<main class="book" id="main-content">
   <div class="book-head">
     <div class="k" data-k="k"></div>
     <h1 data-k="h1"></h1>
@@ -62,6 +82,7 @@
     </div>
     <form class="book-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
       <input type="hidden" name="_subject" value="Collaboration proposal — w2b art">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <div class="field"><label for="a-name" data-k="f_name"></label><input id="a-name" name="name" type="text" required></div>
       <div class="field"><label for="a-disc" data-k="a_f_disc"></label><input id="a-disc" name="discipline" type="text"></div>
       <div class="field"><label for="a-idea" data-k="a_f_idea"></label><textarea id="a-idea" name="idea" rows="4" required></textarea></div>
@@ -85,12 +106,13 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:12px">
         <figure class="figure"><img src="images/nude/fine-art-nude-back-curve-shadow-black-white-02-w2b.jpg" alt=""><figcaption>Nude</figcaption></figure>
-        <figure class="figure"><img src="images/boudoir/fetish-latex-mask-red-light-01-w2b.jpg" alt=""><figcaption>Dark Desire · <a href="after-dark.html" style="color:var(--or)" data-k="b_seeseries"></a></figcaption></figure>
+        <figure class="figure"><img src="images/boudoir-red/boudoir-red-drape-reaching-bust-colour-w2b.jpg" alt=""><figcaption>Boudoir · <a href="after-dark.html" style="color:var(--or)" data-k="b_seeseries"></a></figcaption></figure>
       </div>
     </div>
     <p class="reassure" data-k="b_reassure"></p>
     <form class="book-form" action="https://formspree.io/f/mvznbrql" method="POST">
-      <input type="hidden" name="_subject" value="Commission inquiry — Dark Desire">
+      <input type="hidden" name="_subject" value="Commission inquiry — Boudoir">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <div class="field"><label for="b-name" data-k="b_f_name"></label><input id="b-name" name="name" type="text" required></div>
       <div class="field"><label for="b-email" data-k="f_email"></label><input id="b-email" name="email" type="email" required></div>
       <div class="field"><label for="b-note" data-k="b_f_note"></label><textarea id="b-note" name="note" rows="3" data-kph="b_f_note_ph"></textarea></div>
@@ -114,6 +136,7 @@
     </div>
     <form class="book-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
       <input type="hidden" name="_subject" value="Press / curator — w2b art">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <div class="field"><label for="c-name" data-k="f_name"></label><input id="c-name" name="name" type="text" required></div>
       <div class="field"><label for="c-org" data-k="c_f_org"></label><input id="c-org" name="organisation" type="text"></div>
       <div class="field"><label for="c-type" data-k="c_f_type"></label>
@@ -128,7 +151,7 @@
 
 <footer>
   <div class="sig"><img src="images/ui/w2b-logo.png" alt="W2b"></div>
-  <div class="l">@w2b.film<br><a href="home.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
+  <div class="l">@w2b.film<br><a href="oeuvre-actuelle.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
 </footer>
 
 <script src="js/art-i18n.js?v=8"></script>
@@ -138,7 +161,7 @@
   var L=(window.W2B_LANG)||'fr';
   var BOOK={
    fr:{k:"Collaborer",h1:"Travailler ensemble, avec soin.",lede:"Trois manières d'entrer dans ce travail. Chacune commence par une conversation, à ton rythme, sans engagement.",
-     ta:"Collaboration créative",tb:"Commande · Dark Desire",tc:"Presse & curateurs",
+     ta:"Collaboration créative",tb:"Commande · Boudoir",tc:"Presse & curateurs",
      a_intro:"Un projet à plusieurs mains. On met en commun un regard, un corps, un savoir-faire, et on fabrique quelque chose qu'aucun de nous ne ferait seul.",
      a1h:"Tu me racontes",a1p:"Quelques mots sur ce que tu fais et ce que tu cherches. Ta discipline, ton envie, ce projet qui te trotte dans la tête. Rien de figé.",
      a2h:"On prend le temps de se rencontrer",a2p:"Un appel, un café. On regarde si nos univers se répondent, sans pression et sans obligation de suite.",
@@ -163,7 +186,7 @@
      c_f_org:"Organisation",c_f_type:"Objet",c_f_msg:"Message",c_submit:"Envoyer",
      opt_press:"Presse",opt_expo:"Exposition",opt_pub:"Édition",opt_other:"Autre"},
    en:{k:"Collaborate",h1:"Working together, with care.",lede:"Three ways into this work. Each begins with a conversation, at your pace, with no commitment.",
-     ta:"Creative collaboration",tb:"Commission · Dark Desire",tc:"Press & curators",
+     ta:"Creative collaboration",tb:"Commission · Boudoir",tc:"Press & curators",
      a_intro:"A project made by several hands. We pool an eye, a body, a craft, and make something none of us would make alone.",
      a1h:"You tell me",a1p:"A few words on what you do and what you are after. Your discipline, your urge, that project on your mind. Nothing fixed.",
      a2h:"We take time to meet",a2p:"A call, a coffee. We see whether our worlds echo each other, no pressure and no obligation to go further.",
@@ -188,7 +211,7 @@
      c_f_org:"Organisation",c_f_type:"Subject",c_f_msg:"Message",c_submit:"Send",
      opt_press:"Press",opt_expo:"Exhibition",opt_pub:"Publishing",opt_other:"Other"},
    es:{k:"Colaborar",h1:"Trabajar juntos, con cuidado.",lede:"Tres maneras de entrar en este trabajo. Cada una empieza con una conversación, a tu ritmo, sin compromiso.",
-     ta:"Colaboración creativa",tb:"Encargo · Dark Desire",tc:"Prensa y curadores",
+     ta:"Colaboración creativa",tb:"Encargo · Boudoir",tc:"Prensa y curadores",
      a_intro:"Un proyecto a varias manos. Ponemos en común una mirada, un cuerpo, un oficio, y hacemos algo que ninguno haría solo.",
      a1h:"Me cuentas",a1p:"Unas palabras sobre lo que haces y lo que buscas. Tu disciplina, tus ganas, ese proyecto que te ronda. Nada fijo.",
      a2h:"Nos tomamos el tiempo de encontrarnos",a2p:"Una llamada, un café. Vemos si nuestros mundos se responden, sin presión ni obligación de seguir.",

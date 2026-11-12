@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<script>window.TRUNK_SET='current';</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>W2b — Oeuvre actuelle · Medellín</title>
+<meta name="description" content="Fine-art photography by W2b (Guillaume Delye), Medellín. Current work: Bailar la Ciudad and Lo que dejamos. Dark, cinematic, intimate.">
+<link rel="canonical" href="https://w2bphotography.com/oeuvre-actuelle.html">
+<meta property="og:title" content="W2b — Oeuvre actuelle · Medellín">
+<meta property="og:description" content="Fine-art photography by W2b (Guillaume Delye), Medellín. Current work: Bailar la Ciudad and Lo que dejamos. Dark, cinematic, intimate.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://w2bphotography.com/oeuvre-actuelle.html">
+<meta property="og:image" content="https://w2bphotography.com/images/ui/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/art.css?v=5">
+<link rel="stylesheet" href="css/rooms.css?v=8">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://w2bphotography.com/oeuvre-actuelle.html#page",
+      "url": "https://w2bphotography.com/oeuvre-actuelle.html",
+      "name": "W2b — Oeuvre actuelle · Medellín",
+      "description": "Fine-art photography by W2b (Guillaume Delye), Medellín. Current work: Bailar la Ciudad and Lo que dejamos. Dark, cinematic, intimate.",
+      "inLanguage": ["en", "fr", "es"],
+      "creator": { "@id": "https://w2bphotography.com/#guillaume" },
+      "hasPart": [
+        {
+          "@type": "ImageGallery",
+          "name": "Bailar la Ciudad",
+          "creator": { "@id": "https://w2bphotography.com/#guillaume" }
+        },
+        {
+          "@type": "ImageGallery",
+          "name": "Lo que dejamos",
+          "creator": { "@id": "https://w2bphotography.com/#guillaume" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="trunk-snap">
+<a class="skip-link" href="#hero" data-ui="skip_link">Skip to content</a>
+
+<header class="rbar">
+  <a class="brand" href="oeuvre-actuelle.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
+</header>
+
+<button id="idxFab" class="idx-fab" type="button" aria-haspopup="dialog" aria-expanded="false">
+  <span class="dot" aria-hidden="true"></span><span data-ui="idx_label">Index</span><span class="cur" id="idxCur"></span>
+</button>
+<div class="idx-overlay" id="idxOverlay" role="dialog" aria-modal="true">
+  <span class="idx-close" id="idxClose" role="button" tabindex="0">&times;</span>
+  <div class="idx-wrap">
+    <div class="idx-sec">
+      <h4 data-ui="idx_explore">Explorer</h4>
+      <div class="idx-row">
+        <a href="oeuvre-actuelle.html" data-ui="idx_art">Fine Art</a>
+        <a href="autres-travaux.html" data-ui="idx_other_work">Autres travaux</a>
+        <a href="https://w2bphotography.com/w2b-pro/" data-ui="idx_pro">Commercial ↗</a>
+        <a href="shop.html" data-ui="idx_prints">Tirages</a>
+        <a href="expositions.html" data-ui="idx_expo">Expositions</a>
+        <a href="after-dark.html" data-ui="afterdark_label">After Dark</a>
+      </div>
+    </div>
+    <div class="idx-sec">
+      <h4 data-ui="idx_series_h">Séries</h4>
+      <div id="idxSeries"></div>
+    </div>
+    <div class="idx-sec">
+      <div class="idx-row">
+        <a href="collaborate.html" data-ui="foot_collab">Collaborer</a>
+        <a href="about.html" data-ui="foot_about">À propos</a>
+        <span class="lang" data-idx-lang><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Persistent right-side nav (2026-11-12, oeuvre-actuelle.html /
+     autres-travaux.html only) — stays reachable throughout the
+     full-screen scroll-snap sequence below, where the top .rbar/idx-fab
+     scroll out of view. Same destinations as the Index overlay above,
+     nothing new invented; "Index" re-opens that same overlay instead of
+     duplicating its series list. Hidden on mobile — see .side-nav in
+     css/rooms.css for why the existing idx-fab is the mobile form. -->
+<nav class="side-nav" aria-label="Navigation">
+  <a href="autres-travaux.html" data-ui="idx_other_work">Autres travaux</a>
+  <a href="shop.html" data-ui="idx_prints">Tirages</a>
+  <a href="expositions.html" data-ui="idx_expo">Expositions</a>
+  <a href="collaborate.html" data-ui="foot_collab">Collaborer</a>
+  <a href="about.html" data-ui="foot_about">À propos</a>
+  <button type="button" id="sideNavIndex" data-ui="idx_label">Index</button>
+  <a href="after-dark.html" class="side-nav-afterdark" data-ui="afterdark_label">After Dark</a>
+</nav>
+
+<section class="hero" id="hero" data-parallax>
+  <div class="frames" id="heroFrames"></div>
+  <div class="dots" id="dots"></div>
+  <div class="cap">
+    <div class="k" data-ui="hero_kicker">Photographie d'art</div>
+    <h1 data-ui="hero_title">Le monde, tel qu'il se donne à qui prend le temps de regarder.</h1>
+  </div>
+  <div class="now" id="now"><div class="t"></div><div class="s"></div></div>
+  <a class="scroll" href="#series" data-ui="hero_scroll">Séries</a>
+</section>
+
+<section class="sect" id="series">
+  <picture>
+    <source type="image/webp" srcset="images/ui/film-canister.webp">
+    <img class="canister" src="images/ui/film-canister.png" alt="" aria-hidden="true">
+  </picture>
+  <div class="lead">
+    <h2 data-ui="work_cur_h">Oeuvre actuelle</h2>
+    <p data-ui="work_cur_sub">Deux projets en cours : Bailar la Ciudad et Lo que dejamos.</p>
+  </div>
+</section>
+<div class="trunk-screens" id="seriesgrid"></div>
+
+<!-- Branch view: a clicked trunk photo + 3-4 related photos (js/art-trunk.js).
+     Closed by default (no "open" class, aria-hidden="true"). The back
+     button is sticky inside it, so it's always reachable while open. -->
+<div class="branch-overlay" id="branchOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="branch-backbar">
+    <button type="button" id="branchBack" class="branch-back" data-ui="branch_back">← Trunk</button>
+  </div>
+  <div class="branch-wrap" id="branchWrap"></div>
+</div>
+
+<footer>
+  <div class="sig"><img src="images/ui/w2b-logo.png" alt="W2b"></div>
+  <div class="l">
+    @w2b.film<br>
+    <a href="shop.html" data-ui="foot_prints">Tirages d'art</a> · <a href="collaborate.html" data-ui="foot_collab">Collaborer</a><br>
+    <a href="https://w2bphotography.com/w2b-pro/" data-ui="foot_commercial">Commercial → site pro ↗</a><br>
+    <span data-ui="foot_place">Medellín · Colombie</span>
+  </div>
+</footer>
+
+<script src="js/gallery-data.js?v=9" defer></script>
+<script src="js/trunk-data.js?v=7" defer></script>
+<script src="js/room-dims.js?v=1" defer></script>
+<script src="js/responsive-manifest.js?v=3" defer></script>
+<script src="js/responsive-img.js?v=1" defer></script>
+<script src="js/art-i18n.js?v=8" defer></script>
+<script src="js/art-home.js?v=12" defer></script>
+<script src="js/art-trunk.js?v=11" defer></script>
+<script src="js/rooms.js?v=3" defer></script>
+<script src="js/legal-footer.js" defer></script>
+</body>
+</html>

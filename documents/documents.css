@@ -7,6 +7,8 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+.skip-link{position:absolute;left:-9999px;top:0;z-index:9999;padding:12px 20px;background:var(--nuit);color:var(--bone);font-family:var(--sans);font-size:13px;letter-spacing:.04em;border:1px solid var(--or)}
+.skip-link:focus{left:16px;top:16px}
 body{min-height:100vh;color:var(--bone);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;
   background:
     radial-gradient(55% 45% at 12% 4%, rgba(158,36,27,.10), transparent 62%),

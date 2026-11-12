@@ -3,14 +3,18 @@
 
   <!-- ART site (apex) -->
   <url><loc>https://w2bphotography.com/</loc><lastmod>2026-10-31</lastmod><priority>1.0</priority></url>
-  <url><loc>https://w2bphotography.com/home.html</loc><lastmod>2026-10-31</lastmod><priority>0.9</priority></url>
+  <url><loc>https://w2bphotography.com/oeuvre-actuelle.html</loc><lastmod>2026-11-11</lastmod><priority>0.9</priority></url>
+  <url><loc>https://w2bphotography.com/autres-travaux.html</loc><lastmod>2026-11-11</lastmod><priority>0.7</priority></url>
   <url><loc>https://w2bphotography.com/about.html</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
   <url><loc>https://w2bphotography.com/shop.html</loc><lastmod>2026-10-31</lastmod><priority>0.8</priority></url>
   <url><loc>https://w2bphotography.com/expositions.html</loc><lastmod>2026-10-31</lastmod><priority>0.6</priority></url>
   <url><loc>https://w2bphotography.com/collaborate.html</loc><lastmod>2026-10-31</lastmod><priority>0.6</priority></url>
-  <!-- gallery-contemplations.html / gallery-bailar-la-ciudad.html / gallery-pretty-od.html intentionally
-       excluded: each now carries meta robots noindex and is a redirect stub into home.html's trunk —
-       the content itself is indexed via home.html, not a separate canonical URL per project. -->
+  <!-- gallery-contemplations.html / gallery-bailar-la-ciudad.html intentionally excluded: each now
+       carries meta robots noindex and is a redirect stub into oeuvre-actuelle.html / autres-travaux.html's
+       trunk — the content itself is indexed there, not a separate canonical URL per project.
+       home.html is excluded too: it is now only a redirect stub for old bookmarks (see home.html),
+       canonical content moved to oeuvre-actuelle.html / autres-travaux.html above.
+       gallery-pretty-od.html / gallery-boudoir.html: archived 2026-11-11 (see images/_archive/). -->
   <!-- After Dark (nude / boudoir / boudoir-red) intentionally excluded: adult content kept out of search indexes -->
 
   <!-- PRO / commercial site (served under the apex) -->

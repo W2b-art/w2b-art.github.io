@@ -2,3 +2,5 @@
 .build/package-lock.json
 node_modules/
 *.tmp
+.admin/config.json
+.admin/_upload_tmp/

@@ -10,15 +10,25 @@
   var COPY = (typeof GALLERY_COPY !== 'undefined') ? GALLERY_COPY : {};
   var id = window.GALLERY_ID || (new URLSearchParams(location.search).get('id')) || 'best-of';
 
-  /* 18+ guard: explicit galleries only reachable after the gate */
-  if (id==='nude' || id==='boudoir'){
+  /* 18+ guard: explicit galleries only reachable after the gate.
+     boudoir-red added 2026-11-11 — it was gated by being unlinked from any
+     public nav, not by this check, which is a real gap if its URL ever
+     leaks or gets bookmarked. */
+  if (id==='nude' || id==='boudoir' || id==='boudoir-red'){
     var _ok=false; try{ _ok = sessionStorage.getItem('w2b_ad_ok')==='1'; }catch(e){}
     if(!_ok){ location.replace('after-dark.html'); return; }
   }
 
   var g = (typeof GALLERY_DATA!=='undefined') && GALLERY_DATA[id];
   var app = document.getElementById('app');
-  if(!g){ app.innerHTML = '<p style="padding:140px 40px">Gallery not found: '+id+'</p>'; return; }
+  if(!g){
+    var notFound = document.createElement('p');
+    notFound.style.padding = '140px 40px';
+    notFound.textContent = 'Gallery not found: '+id;
+    app.innerHTML = '';
+    app.appendChild(notFound);
+    return;
+  }
   /* clear the crawlable static copy rendered into #app by the gallery pages */
   app.innerHTML = '';
 
@@ -26,8 +36,8 @@
      (contemplations/best-of use the corner index overlay instead and have no .hdr .back.) */
   var backEl = document.querySelector('.hdr .back');
   if(backEl){
-    if(id==='nude' || id==='boudoir'){ backEl.href='after-dark.html'; backEl.textContent=(typeof w2bT==='function'?w2bT('back_afterdark'):'← After Dark'); }
-    else { backEl.href='home.html#series'; }
+    if(id==='nude' || id==='boudoir' || id==='boudoir-red'){ backEl.href='after-dark.html'; backEl.textContent=(typeof w2bT==='function'?w2bT('back_afterdark'):'← After Dark'); }
+    else { backEl.href='oeuvre-actuelle.html#series'; }
   }
 
   var order = (typeof GALLERY_ORDER!=='undefined') ? GALLERY_ORDER.indexOf(id) : -1;
@@ -100,7 +110,7 @@
     app.appendChild(opener);
 
     var coverIdx2 = g.coverIndex||0;
-    var rest = g.images.map(function(im,i){ return {im:im, idx:i}; }).filter(function(o){ return o.idx!==coverIdx2; });
+    var rest = g.images.map(function(im,i){ return {im:im, idx:i}; }).filter(function(o){ return o.idx!==coverIdx2 && !o.im.archived; });
     var ITEMS = [];
     /* aspect ratio (width/height) from the real pixel dimensions, used to
        route images into slots so a wide column never ends up with a
@@ -243,7 +253,7 @@
 
   var plates = document.createElement('section'); plates.className='plates';
   var coverIdx = g.coverIndex||0;
-  var gridImages = g.images.filter(function(im,i){ return i!==coverIdx; });
+  var gridImages = g.images.filter(function(im,i){ return i!==coverIdx && !im.archived; });
   var ITEMS = gridImages.map(function(im){
     var origIdx = g.images.indexOf(im);
     var tri = COPY[id]&&COPY[id].caps&&COPY[id].caps[origIdx]&&COPY[id].caps[origIdx][LANG];

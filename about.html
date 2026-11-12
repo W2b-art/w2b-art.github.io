@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>À propos — W2b</title>
 <meta name="description" content="W2b — Guillaume Delye, fine-art photographer based in Medellín. Film and digital, printed on cotton rag. Open to exhibitions, residencies and acquisitions.">
 <link rel="canonical" href="https://w2bphotography.com/about.html">
@@ -17,15 +19,39 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/art.css?v=5">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://w2bphotography.com/about.html#page",
+      "url": "https://w2bphotography.com/about.html",
+      "name": "À propos — W2b",
+      "description": "W2b — Guillaume Delye, fine-art photographer based in Medellín. Film and digital, printed on cotton rag. Open to exhibitions, residencies and acquisitions.",
+      "inLanguage": ["en", "fr", "es"],
+      "mainEntity": {
+        "@type": "Person",
+        "@id": "https://w2bphotography.com/#guillaume",
+        "name": "Guillaume Delye",
+        "jobTitle": "Photographer",
+        "homeLocation": { "@type": "Place", "name": "Medellín, Colombia" }
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
+<a class="skip-link" href="#main-content" data-ui="skip_link">Skip to content</a>
+
 <header class="hdr" id="hdr">
-  <div class="brand"><a href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a></div>
+  <div class="brand"><a href="oeuvre-actuelle.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a></div>
   <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="hdr-panel" id="hdrPanel">
     <nav>
-      <a href="home.html#series" data-ui="nav_series">Séries</a>
+      <a href="oeuvre-actuelle.html#series" data-ui="nav_series">Séries</a>
       <a href="shop.html" data-ui="nav_prints">Tirages</a>
       <a href="collaborate.html" data-ui="nav_collab">Collaborer</a>
       <a href="about.html" data-ui="nav_about">À propos</a>
@@ -34,7 +60,7 @@
   </div>
 </header>
 
-<main class="about">
+<main class="about" id="main-content">
   <div class="eyebrow" data-k="eyebrow"></div>
   <h1>Guillaume Delye</h1>
   <div class="portrait"><img src="images/ui/portrait.jpg" alt="Guillaume Delye, Medellín"></div>
@@ -59,7 +85,7 @@
 
 <footer>
   <div class="sig"><img src="images/ui/w2b-logo.png" alt="W2b"></div>
-  <div class="l">@w2b.film<br><a href="home.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
+  <div class="l">@w2b.film<br><a href="oeuvre-actuelle.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
 </footer>
 
 <script src="js/art-i18n.js?v=8"></script>

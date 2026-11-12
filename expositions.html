@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Expositions — W2b</title>
 <meta name="description" content="Guillaume Delye (W2b) — exhibition history, verified facts only.">
 <link rel="canonical" href="https://w2bphotography.com/expositions.html">
@@ -18,10 +20,40 @@
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/art.css?v=5">
 <link rel="stylesheet" href="css/rooms.css?v=8">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://w2bphotography.com/expositions.html#page",
+      "url": "https://w2bphotography.com/expositions.html",
+      "name": "Expositions — W2b",
+      "description": "Guillaume Delye (W2b) — exhibition history, verified facts only.",
+      "inLanguage": ["en", "fr", "es"],
+      "about": { "@id": "https://w2bphotography.com/#guillaume" },
+      "hasPart": [
+        {
+          "@type": "Event",
+          "name": "Lo que dejamos",
+          "startDate": "2026-09-30",
+          "location": {
+            "@type": "Place",
+            "name": "Palacio de Bellas Artes",
+            "address": "Medellín, Colombia"
+          },
+          "performer": { "@id": "https://w2bphotography.com/#guillaume" }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
+<a class="skip-link" href="#main-content" data-ui="skip_link">Skip to content</a>
 <header class="rbar">
-  <a class="brand" href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
+  <a class="brand" href="oeuvre-actuelle.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
 </header>
 
 <button id="idxFab" class="idx-fab" type="button" aria-haspopup="dialog" aria-expanded="false">
@@ -33,7 +65,8 @@
     <div class="idx-sec">
       <h4 data-ui="idx_explore">Explorer</h4>
       <div class="idx-row">
-        <a href="home.html" data-ui="idx_art">Fine Art</a>
+        <a href="oeuvre-actuelle.html" data-ui="idx_art">Fine Art</a>
+        <a href="autres-travaux.html" data-ui="idx_other_work">Autres travaux</a>
         <a href="https://w2bphotography.com/w2b-pro/" data-ui="idx_pro">Commercial ↗</a>
         <a href="shop.html" data-ui="idx_prints">Tirages</a>
         <a href="expositions.html" data-ui="idx_expo">Expositions</a>
@@ -53,10 +86,10 @@
   </div>
 </div>
 
-<main class="expo-main">
+<main class="expo-main" id="main-content">
   <section class="room room-first reveal expo-head">
     <div class="room-opener">
-      <span class="rk" data-ui="expo_eyebrow">Expositions</span>
+      <h1 class="rk" data-ui="expo_eyebrow">Expositions</h1>
       <p data-ui="expo_lead">Le travail de Guillaume a été montré en public à Medellín.</p>
     </div>
   </section>

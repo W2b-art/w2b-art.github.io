@@ -14,6 +14,7 @@
     nav_commercial:{en:"Commercial ↗",fr:"Commercial ↗",es:"Comercial ↗"},
     nav_pro:{en:"Pro Portfolio",fr:"Portfolio Pro",es:"Portafolio Pro"},
     descriptor:{en:"Fine-art photography · Medellín",fr:"Photographie d'art · Medellín",es:"Fotografía de autor · Medellín"},
+    skip_link:{en:"Skip to content",fr:"Aller au contenu",es:"Ir al contenido"},
     back_series:{en:"← All series",fr:"← Toutes les séries",es:"← Todas las series"},
     back_afterdark:{en:"← After Dark",fr:"← After Dark",es:"← After Dark"},
     hero_kicker:{en:"Fine-art photography",fr:"Photographie d'art",es:"Fotografía de autor"},
@@ -22,6 +23,11 @@
     hero_scroll:{en:"Series",fr:"Séries",es:"Series"},
     work_h:{en:"The Selection",fr:"La Sélection",es:"La Selección"},
     work_sub:{en:"A selection across the practice. Click one to follow where it leads.",fr:"Une sélection à travers le travail. Clique sur l'une d'elles pour suivre où elle mène.",es:"Una selección de todo el trabajo. Haz clic en una para seguir hacia donde lleva."},
+    /* oeuvre-actuelle.html / autres-travaux.html (home.html split, 2026-11-11) */
+    work_cur_h:{en:"Current Work",fr:"Oeuvre actuelle",es:"Obra actual"},
+    work_cur_sub:{en:"Two projects in progress: Bailar la Ciudad and Lo que dejamos.",fr:"Deux projets en cours : Bailar la Ciudad et Lo que dejamos.",es:"Dos proyectos en curso: Bailar la Ciudad y Lo que dejamos."},
+    work_other_h:{en:"Other Works",fr:"Autres travaux",es:"Otros trabajos"},
+    idx_other_work:{en:"Other Works",fr:"Autres travaux",es:"Otros trabajos"},
     /* trunk/branch navigation (home.html) — see js/art-trunk.js */
     branch_back:{en:"← Selection",fr:"← Sélection",es:"← Selección"},
     branch_related:{en:"More like this",fr:"D'autres comme celle-ci",es:"Más como esta"},
@@ -42,7 +48,6 @@
     ad_p:{en:"The body as landscape, and a darker register. What the night allows.",fr:"Le corps comme paysage, et un registre plus sombre. Ce que la nuit autorise.",es:"El cuerpo como paisaje, y un registro más oscuro. Lo que la noche permite."},
     entry_go:{en:"View the series →",fr:"Voir la série →",es:"Ver la serie →"},
     entry_nude_p:{en:"The body as landscape. What light reveals once everything else falls away.",fr:"Le corps comme paysage. Ce que la lumière révèle quand tout le reste s'efface.",es:"El cuerpo como paisaje. Lo que la luz revela cuando todo lo demás se borra."},
-    entry_dd_p:{en:"Desire staged, between latex, rope and red light.",fr:"Le désir mis en scène, entre latex, corde et lumière rouge.",es:"El deseo puesto en escena, entre látex, cuerda y luz roja."},
     entry_bd_p:{en:"The person as the whole picture — presence, not pose.",fr:"La personne comme toute l'image — la présence, pas la pose.",es:"La persona como toda la imagen — presencia, no pose."},
     /* corner index overlay (rooms system) */
     idx_label:{en:"Index",fr:"Index",es:"Índice"},

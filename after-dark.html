@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="robots" content="noindex, nofollow, noimageindex">
 <title>After Dark — W2b</title>
 <meta name="description" content="Adults-only section of W2b Art, behind an age gate.">
@@ -14,6 +16,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#gate" data-ui="skip_link">Skip to content</a>
+
 <div class="gate" id="gate">
   <div class="box">
     <img class="gate-logo" src="images/ui/w2b-logo.png" alt="W2b">
@@ -23,7 +27,7 @@
     <p data-ui="gate_p">Nu d'art, boudoir et un registre plus sombre. En entrant, tu confirmes avoir dix-huit ans ou plus.</p>
     <div class="btns">
       <button class="enter" id="enter" data-ui="gate_enter">J'ai 18 ans ou plus, entrer</button>
-      <a class="leave" href="home.html" data-ui="gate_leave">Quitter</a>
+      <a class="leave" href="oeuvre-actuelle.html" data-ui="gate_leave">Quitter</a>
     </div>
     <div class="fine" data-ui="gate_fine">W2b / @w2b.film.</div>
   </div>
@@ -32,8 +36,8 @@
 <template id="content-tpl">
 <div id="content">
   <header class="hdr" id="hdr">
-    <a class="brand" href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
-    <a class="back" data-ui="back_series" href="home.html#series">Series</a>
+    <a class="brand" href="oeuvre-actuelle.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
+    <a class="back" data-ui="back_series" href="oeuvre-actuelle.html#series">Series</a>
     <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
   </header>
 
@@ -53,10 +57,6 @@
       <img src="images/nude/fine-art-nude-torso-sculptural-light-black-white-03-w2b.jpg" alt="">
       <div class="lab"><h2>Nude</h2><p data-ui="entry_nude_p">Le corps comme paysage.</p><span class="go" data-ui="entry_go">Voir la série →</span></div>
     </a>
-    <a class="entry" href="gallery-boudoir.html">
-      <img src="images/boudoir/fetish-latex-mask-red-light-01-w2b.jpg" alt="">
-      <div class="lab"><h2>Dark Desire</h2><p data-ui="entry_dd_p">Le désir mis en scène.</p><span class="go" data-ui="entry_go">Voir la série →</span></div>
-    </a>
     <a class="entry" href="gallery-boudoir-red.html">
       <img src="images/boudoir-red/boudoir-red-drape-reaching-bust-colour-w2b.jpg" alt="">
       <div class="lab"><h2>Boudoir</h2><p data-ui="entry_bd_p">Une histoire en couleur, en rouge.</p><span class="go" data-ui="entry_go">Voir la série →</span></div>
@@ -65,7 +65,7 @@
 
   <footer>
     <div class="sig"><img src="images/ui/w2b-logo.png" alt="W2b"></div>
-    <div class="l">@w2b.film<br><a href="home.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
+    <div class="l">@w2b.film<br><a href="oeuvre-actuelle.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
   </footer>
 </div>
 </template>

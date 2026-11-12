@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Tirages — W2b</title>
 <meta name="description" content="Fine-art prints by W2b (Guillaume Delye) — pigment ink on cotton rag; collector editions numbered with a signed certificate, shipped worldwide.">
 <link rel="canonical" href="https://w2bphotography.com/shop.html">
@@ -18,11 +20,31 @@
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/art.css?v=5">
 <link rel="stylesheet" href="css/rooms.css?v=8">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://w2bphotography.com/shop.html#page",
+      "url": "https://w2bphotography.com/shop.html",
+      "name": "Tirages — W2b",
+      "description": "Fine-art prints by W2b (Guillaume Delye) — pigment ink on cotton rag; collector editions numbered with a signed certificate, shipped worldwide.",
+      "inLanguage": ["en", "fr", "es"],
+      "provider": { "@id": "https://w2bphotography.com/#guillaume" },
+      "areaServed": "Worldwide",
+      "serviceType": "Fine-art photographic print sales"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
+<a class="skip-link" href="#main-content" data-ui="skip_link">Skip to content</a>
+
 <header class="rbar">
-  <a class="brand" href="home.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
+  <a class="brand" href="oeuvre-actuelle.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
 </header>
 
 <button id="idxFab" class="idx-fab" type="button" aria-haspopup="dialog" aria-expanded="false">
@@ -34,7 +56,8 @@
     <div class="idx-sec">
       <h4 data-ui="idx_explore">Explorer</h4>
       <div class="idx-row">
-        <a href="home.html" data-ui="idx_art">Fine Art</a>
+        <a href="oeuvre-actuelle.html" data-ui="idx_art">Fine Art</a>
+        <a href="autres-travaux.html" data-ui="idx_other_work">Autres travaux</a>
         <a href="https://w2bphotography.com/w2b-pro/" data-ui="idx_pro">Commercial ↗</a>
         <a href="shop.html" data-ui="idx_prints">Tirages</a>
         <a href="expositions.html" data-ui="idx_expo">Expositions</a>
@@ -54,7 +77,7 @@
   </div>
 </div>
 
-<main class="shop">
+<main class="shop" id="main-content">
   <section class="shop-hero">
     <img src="images/trunk/glass-roof-grid-baroque-sculpture-ornament-w2b.jpg" alt="">
     <div class="shop-head room-confident">
@@ -76,6 +99,7 @@
     <p class="ed" id="acq-ed"></p>
     <form id="acq-form" action="https://formspree.io/f/mjgjdvlz" method="POST">
       <input type="hidden" name="_subject" id="acq-subject" value="Print order — w2b art">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
       <input type="hidden" name="print" id="acq-print" value="">
       <input type="hidden" name="edition" id="acq-editionf" value="">
       <div><label id="acq-l-size" for="acq-size"></label><select id="acq-size" name="size"></select></div>
@@ -91,7 +115,7 @@
 
 <footer>
   <div class="sig"><img src="images/ui/w2b-logo.png" alt="W2b"></div>
-  <div class="l">@w2b.film<br><a href="home.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
+  <div class="l">@w2b.film<br><a href="oeuvre-actuelle.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
 </footer>
 
 <script src="js/gallery-data.js?v=9"></script>
@@ -124,7 +148,7 @@
      (named project = numbered edition, broader trunk = archival open
      edition), easy to flip per-photo later if a different split is
      wanted. */
-  var COLLECTOR_GALLERIES=["branch-bailar-la-ciudad","branch-lo-que-dejamos","branch-pretty-od"];
+  var COLLECTOR_GALLERIES=["branch-bailar-la-ciudad","branch-lo-que-dejamos"];
   var isCollector=function(galleryId){return COLLECTOR_GALLERIES.indexOf(galleryId)!==-1;};
   /* Exhibition/fanzine documentation shots inside the branch galleries —
      real photos of a print on a wall or a fanzine stack, not themselves
@@ -170,15 +194,14 @@
   };
   var titleFor=function(file,fallback){var t=TITLES[file];return (t&&(t[L]||t.en))||(fallback?fallback.split(',')[0]:file);};
 
-  var SHOP_GALLERIES=["trunk","branch-bailar-la-ciudad","branch-lo-que-dejamos","branch-pretty-od"];
-  /* These 3 trunk photos are each a project's own anchor/hero image on
-     home.html (the trunk photo that opens that project's branch — see
-     trunk-data.js t07/t08/t16) — they belong to the project, not to the
+  var SHOP_GALLERIES=["trunk","branch-bailar-la-ciudad","branch-lo-que-dejamos"];
+  /* These trunk photos are each a project's own anchor/hero image on
+     oeuvre-actuelle.html (the trunk photo that opens that project's
+     branch — see trunk-data.js t08/t16) — they belong to the project, not to the
      assorted "Selección" grab-bag, even though the file itself lives in
      images/trunk/. Pulled out of trunk and placed first in their real
      project's group, same Collector tier as the rest of that project. */
   var ANCHOR_TO_PROJECT={
-    "red-lamp-crossed-legs-magazine-intimate-room-w2b.jpg":"branch-pretty-od",
     "street-dancer-colombia-jersey-motion-night-w2b.jpg":"branch-bailar-la-ciudad",
     "abandoned-train-wagons-junkyard-color-w2b.jpg":"branch-lo-que-dejamos"
   };
@@ -190,14 +213,14 @@
     var excl=SHOP_EXCLUDE[id]||[];
     var imgs=g.images
       .filter(function(im){ return id==='trunk' ? !ANCHOR_TO_PROJECT[im.file] : true; })
-      .map(function(im){ return {file:im.file, alt:im.alt, folder:g.folder}; });
+      .map(function(im){ return {file:im.file, alt:im.alt, folder:g.folder, archived:im.archived}; });
     /* inject this project's reassigned trunk anchor(s), lead position */
     if(id!=='trunk' && GALLERY_DATA.trunk){
       var anchors=GALLERY_DATA.trunk.images.filter(function(im){ return ANCHOR_TO_PROJECT[im.file]===id; })
-        .map(function(im){ return {file:im.file, alt:im.alt, folder:GALLERY_DATA.trunk.folder}; });
+        .map(function(im){ return {file:im.file, alt:im.alt, folder:GALLERY_DATA.trunk.folder, archived:im.archived}; });
       imgs=anchors.concat(imgs);
     }
-    imgs=imgs.filter(function(im){ if(seen[im.file]) return false; if(excl.indexOf(im.file)!==-1) return false; seen[im.file]=1; return true; });
+    imgs=imgs.filter(function(im){ if(im.archived) return false; if(seen[im.file]) return false; if(excl.indexOf(im.file)!==-1) return false; seen[im.file]=1; return true; });
     if(!imgs.length) return;
     var sec=document.createElement('section'); sec.className='shop-group';
     var ttl=document.createElement('div'); ttl.className='shop-group-title';
