@@ -46,10 +46,32 @@
   .card button.danger { border-color: #633; }
   .card button.go { border-color: #365; }
   .card input.posnum { width: 36px; }
-  .trunk-row { display: flex; align-items: center; gap: 8px; padding: 6px 14px; border-top: 1px solid #222; font-size: 12px; flex-wrap: wrap; }
-  .trunk-row .fn { flex: 1; min-width: 200px; color: #ccc; word-break: break-all; }
-  .trunk-row .related-list { width: 100%; padding-left: 20px; font-size: 11px; color: #aaa; }
-  .trunk-row .related-list .rel-item { display: flex; gap: 6px; align-items: center; padding: 3px 0; }
+  .trunk-card { background: #181818; border: 1px solid #272727; border-radius: 8px; padding: 14px; margin: 12px 14px; }
+  .tc-head { display: flex; gap: 14px; }
+  .tc-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+  .tc-id-row { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .tc-id { font-size: 10px; color: #777; text-transform: uppercase; letter-spacing: .07em; background: #222; padding: 2px 6px; border-radius: 4px; }
+  .tc-statement { font-size: 10px; color: #6a8; }
+  .tc-title { font-size: 14px; color: #eee; }
+  .tc-title.untitled { color: #666; font-style: italic; }
+  .tc-fn { font-size: 10px; color: #777; word-break: break-all; }
+  .tc-controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; }
+  .tc-controls .grp { display: flex; flex-direction: column; gap: 3px; }
+  .tc-controls .grp label { font-size: 9px; color: #777; text-transform: uppercase; letter-spacing: .05em; }
+  .tc-controls .grp-row { display: flex; gap: 5px; }
+  .branch-sec { margin-top: 14px; padding-top: 12px; border-top: 1px solid #262626; }
+  .branch-sec h4 { margin: 0 0 10px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: .07em; }
+  .rel-grid { display: flex; flex-wrap: wrap; gap: 14px; }
+  .rel-card { width: 112px; }
+  .rel-card .rel-fn { display: block; font-size: 9px; color: #999; word-break: break-all; margin: 5px 0 4px; max-height: 2.4em; overflow: hidden; }
+  .rel-card .rel-actions { display: flex; flex-wrap: wrap; gap: 3px; }
+  .rel-card .rel-actions input.posnum { width: 30px; }
+  .trunk-card button, .trunk-card select, .trunk-card input { font-size: 11px; padding: 5px 8px; background: #2a2a2a; color: #eee; border: 1px solid #3a3a3a; border-radius: 4px; }
+  .trunk-card button { cursor: pointer; }
+  .trunk-card button:hover { background: #3a3a3a; }
+  .trunk-card button.danger { border-color: #633; }
+  .trunk-card button.go { border-color: #365; }
+  .trunk-card input.posnum { width: 44px; padding: 5px 6px; }
   .thumb { width: 112px; height: 112px; object-fit: cover; border-radius: 6px; background: #000; flex-shrink: 0; display: block; }
   .rel-item .thumb { width: 88px; height: 88px; }
   .pick-grid { display: flex; gap: 10px; flex-wrap: wrap; padding: 4px 0; max-width: 100%; }
@@ -389,51 +411,92 @@ function renderGalleries() {
 }
 
 // ---------------------------------------------------------------- Trunk tab
-function trunkRow(set, e) {
-  const wrap = document.createElement('div');
-  const row = document.createElement('div'); row.className = 'trunk-row';
-  row.appendChild(thumbImg('trunk', e.file));
-  const fn = document.createElement('span'); fn.className = 'fn';
-  fn.textContent = e.id + ' — ' + e.file + (e.hasStatement ? '  (has statement)' : '');
-  row.appendChild(fn);
+function titleBtn(seriesId, file) {
+  const btn = document.createElement('button'); btn.type = 'button'; btn.textContent = 'Title';
+  btn.onclick = () => {
+    const { g, im } = findGalleryAndImage(seriesId, file);
+    if (g && im) openMetaEditor(g, im);
+  };
+  return btn;
+}
 
-  const posInput = document.createElement('input'); posInput.className = 'posnum'; posInput.placeholder = '#'; posInput.title = 'new position in target page';
+function trunkRow(set, e) {
+  const card = document.createElement('div'); card.className = 'trunk-card';
+  const { im: anchorIm } = findGalleryAndImage('trunk', e.file);
+  const title = anchorIm && anchorIm.title;
+
+  const head = document.createElement('div'); head.className = 'tc-head';
+  head.appendChild(thumbImg('trunk', e.file));
+  const tcMain = document.createElement('div'); tcMain.className = 'tc-main';
+  const idRow = document.createElement('div'); idRow.className = 'tc-id-row';
+  const idTag = document.createElement('span'); idTag.className = 'tc-id'; idTag.textContent = e.id;
+  idRow.appendChild(idTag);
+  if (e.hasStatement) { const s = document.createElement('span'); s.className = 'tc-statement'; s.textContent = 'has statement'; idRow.appendChild(s); }
+  tcMain.appendChild(idRow);
+  const titleEl = document.createElement('div'); titleEl.className = 'tc-title' + (title ? '' : ' untitled');
+  titleEl.textContent = title ? (title.fr || title.en) : '(no title set)';
+  tcMain.appendChild(titleEl);
+  const fnEl = document.createElement('div'); fnEl.className = 'tc-fn'; fnEl.textContent = e.file;
+  tcMain.appendChild(fnEl);
+
+  const controls = document.createElement('div'); controls.className = 'tc-controls';
+  const moveGrp = document.createElement('div'); moveGrp.className = 'grp';
+  moveGrp.innerHTML = '<label>Move / reorder</label>';
+  const moveRow = document.createElement('div'); moveRow.className = 'grp-row';
   const toSel = document.createElement('select');
   ['current', 'other'].forEach((s) => { const o = document.createElement('option'); o.value = s; o.textContent = s === 'current' ? 'Oeuvre actuelle' : 'Autres travaux'; if (s === set) o.selected = true; toSel.appendChild(o); });
-  const moveBtn = document.createElement('button'); moveBtn.textContent = 'Reorder/move';
+  const posInput = document.createElement('input'); posInput.className = 'posnum'; posInput.placeholder = '#'; posInput.title = 'new position in target page (blank = append)';
+  const moveBtn = document.createElement('button'); moveBtn.className = 'go'; moveBtn.textContent = 'Go';
   moveBtn.onclick = () => {
     const pos = posInput.value.trim() === '' ? undefined : Number(posInput.value);
     doAction({ type: 'trunk-reorder', id: e.id, toSet: toSel.value, position: pos }, e.id + ' placed');
   };
-  row.appendChild(toSel); row.appendChild(posInput); row.appendChild(moveBtn);
+  moveRow.appendChild(toSel); moveRow.appendChild(posInput); moveRow.appendChild(moveBtn);
+  moveGrp.appendChild(moveRow);
+  controls.appendChild(moveGrp);
 
-  const detachBtn = document.createElement('button'); detachBtn.className = 'danger'; detachBtn.textContent = 'Detach branch';
-  detachBtn.style.display = e.related.length ? '' : 'none';
-  detachBtn.onclick = () => { if (confirm('Detach the whole branch from ' + e.id + '? The branch gallery itself is untouched, only the link is removed.')) doAction({ type: 'branch-detach', trunkId: e.id }, 'Detached branch from ' + e.id); };
-  row.appendChild(detachBtn);
-
-  wrap.appendChild(row);
-
+  const actGrp = document.createElement('div'); actGrp.className = 'grp';
+  actGrp.innerHTML = '<label>Photo</label>';
+  const actRow = document.createElement('div'); actRow.className = 'grp-row';
+  actRow.appendChild(titleBtn('trunk', e.file));
   if (e.related.length) {
-    const relWrap = document.createElement('div'); relWrap.className = 'related-list';
+    const detachBtn = document.createElement('button'); detachBtn.className = 'danger'; detachBtn.textContent = 'Detach branch';
+    detachBtn.onclick = () => { if (confirm('Detach the whole branch from ' + e.id + '? The branch gallery itself is untouched, only the link is removed.')) doAction({ type: 'branch-detach', trunkId: e.id }, 'Detached branch from ' + e.id); };
+    actRow.appendChild(detachBtn);
+  }
+  actGrp.appendChild(actRow);
+  controls.appendChild(actGrp);
+  tcMain.appendChild(controls);
+
+  head.appendChild(tcMain);
+  card.appendChild(head);
+
+  const branchSec = document.createElement('div'); branchSec.className = 'branch-sec';
+  if (e.related.length) {
+    branchSec.innerHTML = '<h4>Branch — ' + e.related.length + ' related photo(s)</h4>';
+    const grid = document.createElement('div'); grid.className = 'rel-grid';
     e.related.forEach((r, i) => {
-      const ri = document.createElement('div'); ri.className = 'rel-item';
-      ri.appendChild(thumbImg(r.series, r.file));
-      const label = document.createElement('span'); label.textContent = i + '. ' + r.series + ' / ' + r.file; label.style.flex = '1';
-      ri.appendChild(label);
-      const rpos = document.createElement('input'); rpos.className = 'posnum'; rpos.placeholder = '#';
+      const rc = document.createElement('div'); rc.className = 'rel-card';
+      rc.appendChild(thumbImg(r.series, r.file));
+      const fnTag = document.createElement('span'); fnTag.className = 'rel-fn'; fnTag.textContent = i + '. ' + r.file;
+      rc.appendChild(fnTag);
+      const actions = document.createElement('div'); actions.className = 'rel-actions';
+      actions.appendChild(titleBtn(r.series, r.file));
+      const rpos = document.createElement('input'); rpos.className = 'posnum'; rpos.placeholder = '#'; rpos.title = 'new position';
       const rbtn = document.createElement('button'); rbtn.textContent = 'Reorder';
       rbtn.onclick = () => { if (rpos.value.trim() === '') return; doAction({ type: 'branch-reorder-related', trunkId: e.id, branchSeries: r.series, file: r.file, position: Number(rpos.value) }, 'Reordered'); };
-      ri.appendChild(rpos); ri.appendChild(rbtn);
+      actions.appendChild(rpos); actions.appendChild(rbtn);
       const rm = document.createElement('button'); rm.className = 'danger'; rm.textContent = 'Remove';
       rm.onclick = () => doAction({ type: 'branch-remove-related', trunkId: e.id, file: r.file }, 'Removed ' + r.file + ' from ' + e.id);
-      ri.appendChild(rm);
-      relWrap.appendChild(ri);
+      actions.appendChild(rm);
+      rc.appendChild(actions);
+      grid.appendChild(rc);
     });
-    wrap.appendChild(relWrap);
+    branchSec.appendChild(grid);
   } else {
-    const attach = document.createElement('div'); attach.className = 'related-list';
-    const branchSel = document.createElement('select');
+    branchSec.innerHTML = '<h4>No branch yet</h4>';
+    const attach = document.createElement('div');
+    const branchSel = document.createElement('select'); branchSel.style.marginBottom = '8px';
     STATE.galleries.filter((g) => g.id.startsWith('branch-')).forEach((g) => { const o = document.createElement('option'); o.value = g.id; o.textContent = g.id; branchSel.appendChild(o); });
     const grid = document.createElement('div'); grid.className = 'pick-grid';
     function refillGrid() {
@@ -452,18 +515,19 @@ function trunkRow(set, e) {
       if (!grid.children.length) grid.textContent = '(no un-archived photos in this branch yet — upload one first)';
     }
     branchSel.onchange = refillGrid; refillGrid();
-    const hint = document.createElement('div'); hint.className = 'hint'; hint.textContent = 'Pick a branch, then click a photo to attach it as the first related photo.';
+    const hint = document.createElement('div'); hint.className = 'hint'; hint.style.margin = '6px 0'; hint.textContent = 'Pick a branch, then click a photo to attach it as the first related photo.';
     attach.appendChild(branchSel); attach.appendChild(hint); attach.appendChild(grid);
-    wrap.appendChild(attach);
+    branchSec.appendChild(attach);
   }
-  return wrap;
+  card.appendChild(branchSec);
+  return card;
 }
 
 function renderTrunk() {
   const main = document.getElementById('panel-trunk');
   main.innerHTML = '';
-  [['current', 'Oeuvre actuelle'], ['other', 'Autres travaux']].forEach(([key, label]) => {
-    const wrap = document.createElement('div'); wrap.className = 'gallery';
+  [['current', 'Oeuvre actuelle', false], ['other', 'Autres travaux', true]].forEach(([key, label, startCollapsed]) => {
+    const wrap = document.createElement('div'); wrap.className = 'gallery' + (startCollapsed ? ' collapsed' : '');
     const head = document.createElement('div'); head.className = 'g-head';
     head.innerHTML = '<b>' + label + '</b><span class="count">' + STATE.trunk[key].length + ' anchor(s)</span>';
     head.onclick = () => wrap.classList.toggle('collapsed');

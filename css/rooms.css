@@ -328,11 +328,12 @@
 .trunk-stack .stack-sliver img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .trunk-stack .stack-sliver.s1{z-index:2}
 .trunk-stack .stack-sliver.s2{z-index:1}
-@media (prefers-reduced-motion: no-preference){
-  .trunk-stack:hover figure.has-branch,.trunk-stack:focus-within figure.has-branch{transform:translate(-11px,-11px)}
-  .trunk-stack:hover .stack-sliver.s1,.trunk-stack:focus-within .stack-sliver.s1{transform:translate(9px,9px)}
-  .trunk-stack:hover .stack-sliver.s2,.trunk-stack:focus-within .stack-sliver.s2{transform:translate(17px,17px)}
-}
+/* 2026-11-13, Guillaume's explicit call: always show this hover lift,
+   even for visitors whose OS/browser requests reduced motion (no longer
+   gated behind prefers-reduced-motion — it was, by original design). */
+.trunk-stack:hover figure.has-branch,.trunk-stack:focus-within figure.has-branch{transform:translate(-11px,-11px)}
+.trunk-stack:hover .stack-sliver.s1,.trunk-stack:focus-within .stack-sliver.s1{transform:translate(9px,9px)}
+.trunk-stack:hover .stack-sliver.s2,.trunk-stack:focus-within .stack-sliver.s2{transform:translate(17px,17px)}
 
 /* ---------- full-screen scroll-snap trunk sequence (2026-11-11) ----------
    oeuvre-actuelle.html / autres-travaux.html ONLY (body.trunk-snap, set in
