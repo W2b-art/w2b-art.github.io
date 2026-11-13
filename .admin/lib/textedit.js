@@ -681,13 +681,6 @@ function detachBranch(src, trunkId) {
   return src.slice(0, cutStart) + src.slice(cutEnd);
 }
 
-/* Back-compat: every gallery is safe to move/insert/reorder in now that
-   addressing is by filename (see top-of-file note) — nothing is
-   index-locked any more. Kept as a function (always false) so
-   server.js's existing `INDEX_LOCKED(id)` call site doesn't need to
-   change; the admin UI's "locked" badge simply stops appearing. */
-function INDEX_LOCKED() { return false; }
-
 module.exports = {
   // scanning
   scanMatch, scanOpenBackward, splitTopLevelElements, splitTopLevelFields,
@@ -704,6 +697,5 @@ module.exports = {
   createGallery,
   // trunk/branch management
   findTrunkAnchor, nextTrunkId, reorderTrunkAnchor, moveTrunkAnchor, createTrunkAnchor,
-  addRelated, removeRelated, reorderRelated, detachBranch,
-  INDEX_LOCKED
+  addRelated, removeRelated, reorderRelated, detachBranch
 };

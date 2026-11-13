@@ -130,7 +130,6 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-dark-bay',file:'buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg'}
   ] },
   { id:'t19', series:'trunk', file:'bolts-nuts-industrial-gear-close-up-black-white-w2b.jpg', related:[
-    {series:'branch-industrial',file:'truck-taillight-reflectors-grid-black-white-w2b.jpg'},
     {series:'branch-industrial',file:'motorcycle-frame-mechanical-detail-black-white-w2b.jpg'},
     {series:'branch-industrial',file:'man-junkyard-stripped-car-parts-black-white-w2b.jpg'}
   ] },

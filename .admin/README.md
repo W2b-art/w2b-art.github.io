@@ -156,6 +156,38 @@ like this" on the site.
   the 2026-11-11 content cull — t03/t07/t09/t14/t15 — are real gaps this
   correctly reuses rather than skipping).
 
+### Thumbnails (Trunk / branches tab)
+Every photo shown or picked in that tab — an anchor's own photo, each
+related-branch entry, the "attach a branch" picker, the "new trunk
+anchor" picker — shows a small real thumbnail, not just a filename.
+Served via `/thumb/<dir>/<file>`, which prefers an existing `-800w`
+`.webp`/`.avif` responsive derivative and only falls back to the full
+original if neither exists — it never generates a new derivative, so
+this adds zero image-processing work.
+
+### Auto-translate the `title` field
+When editing `title` ("Edit label…" in the Galleries tab, or the Upload
+tab's Title fields), typing in any one of EN/FR/ES and leaving that field
+(blur) auto-fills the other two — but only ones still empty or that
+auto-fill itself last set; a field you've hand-typed in yourself this
+session is never overwritten. Nothing is written to `gallery-data.js`
+until you hit Save/Upload, so it's always correctable first.
+
+Translation call: `POST /api/translate` on the server (never the
+browser — keeps any API key off the client). Uses
+[DeepL](https://www.deepl.com/pro-api) if `deeplApiKey` is set in
+`.admin/config.json` (optional field, e.g. `{"password": "...",
+"deeplApiKey": "your-key-here:fx"}` — a free-tier DeepL key ends in
+`:fx` and automatically uses `api-free.deepl.com`; a paid key uses
+`api.deepl.com`). **Add this for noticeably better quality** — DeepL
+handles idiom and register far better than the fallback. Without a key,
+falls back to [MyMemory](https://mymemory.translated.net/doc/spec.php),
+a free, keyless translation API (LibreTranslate's public instance was
+tried first but now requires its own API key, so it isn't used).
+`medium` is deliberately **not** auto-translated — its wording differs
+per language on purpose (see "Museum-label metadata" above), so it
+stays manual.
+
 ### Manage branches on an anchor
 - **Attach** a branch to an anchor that doesn't have one yet (creates
   its first `related[]` entry).
@@ -167,6 +199,25 @@ like this" on the site.
 
 ## What it still deliberately doesn't do
 
+- **No "reorder galleries" or "reorder branches" control.** Investigated
+  2026-11-12: `GALLERY_ORDER` in `gallery-data.js` is still read by
+  `js/art-gallery.js` (`GALLERY_ORDER.indexOf(id)`, drives a "Série NN"
+  number badge) — but **no live page actually reaches that code path
+  today**. Only pages that set `window.GALLERY_ID` run that renderer at
+  all (currently `nude`, `boudoir-red`), and neither is in
+  `GALLERY_ORDER`; every id that IS in `GALLERY_ORDER`
+  (best-of/work-in-progress/matter/series-2/argentina/contemplations/
+  bailar-la-ciudad/after-dark) now redirects elsewhere or has no page at
+  all. So reordering `GALLERY_ORDER` has zero visible effect right now —
+  no control was built for it, on purpose, rather than ship a button that
+  does nothing a visitor can see. Branch-* gallery *objects'* own order
+  in `GALLERY_DATA` similarly has no live-site reader (nothing iterates
+  `Object.keys(GALLERY_DATA)` outside this admin tool itself). The one
+  ordering that *does* matter — a trunk anchor's position, which decides
+  render order on oeuvre-actuelle.html/autres-travaux.html — already has
+  a control ("Reorder/move" in the Trunk tab). If `GALLERY_ORDER` is ever
+  wired back up to something visible, this is the first file to re-check
+  before building a control for it again.
 - **No hard delete, anywhere.** Archive moves a file to
   `images/_archive/<gallery>/` and flips a flag; nothing in this tool
   ever calls `fs.unlink` on a real content file. If a gallery/branch

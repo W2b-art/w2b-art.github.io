@@ -2,21 +2,21 @@
    ROOMS SYSTEM — "The Container Changes"
    Structural redesign layer, additive to art.css. Does not touch
    the colour tokens defined there. Linked (after art.css) only on
-   the pages that use it: home.html, index.html, shop.html,
-   expositions.html.
-   gallery-contemplations.html and gallery-best-of.html used to load
-   this too for their own room-system layout; both are now simple
-   redirects to home.html (2026-10-30, trunk/branch rework) and no
-   longer load it. The other gallery pages keep the old .top/.plates
-   template and never loaded this file.
+   the pages that use it: oeuvre-actuelle.html, autres-travaux.html,
+   index.html, shop.html, expositions.html, and the individual
+   gallery-*.html pages that render via buildRoomGallery() (the room
+   system also backs the trunk/branch overlay, see js/art-trunk.js).
+   gallery-contemplations.html and gallery-bailar-la-ciudad.html used
+   to load this too for their own room-system layout; both are now
+   simple redirects (2026-10-30 / 2026-11-11, trunk/branch rework)
+   and no longer load it. home.html itself was retired 2026-11-11,
+   split into oeuvre-actuelle.html/autres-travaux.html above.
    ============================================================ */
 
 :root{
   --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:20px; --sp-5:32px;
   --sp-6:52px; --sp-7:84px; --sp-8:136px;
 }
-
-.g12{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--sp-5)}
 
 /* ---------- motion primitives ---------- */
 .reveal{clip-path:inset(0 0 100% 0);transition:clip-path .7s cubic-bezier(.77,0,.175,1)}

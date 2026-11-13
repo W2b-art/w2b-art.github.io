@@ -214,6 +214,48 @@ function fixResponsiveManifestKey(finalJpegPath) {
 }
 
 // ---------------------------------------------------------------------
+// Title auto-translate (museum-label `title` field only — `medium`
+// wording differs per language on purpose, see .admin/README.md, so it
+// stays manual). Uses DeepL if `deeplApiKey` is set in .admin/config.json
+// (optional, gitignored, Guillaume's own key — this tool never asks for
+// or stores one on its own), else falls back to MyMemory's free, keyless
+// translation API. Either way it's just a translation SUGGESTION: the admin UI only
+// ever fills fields that are still empty/untouched, nothing is written to
+// gallery-data.js until he submits the form.
+// ---------------------------------------------------------------------
+const DEEPL_LANG = { en: 'EN', fr: 'FR', es: 'ES' };
+const LT_LANG = { en: 'en', fr: 'fr', es: 'es' };
+
+async function translateOne(text, from, to) {
+  if (config.deeplApiKey) {
+    const host = /:fx$/.test(config.deeplApiKey) ? 'api-free.deepl.com' : 'api.deepl.com';
+    const r = await fetch('https://' + host + '/v2/translate', {
+      method: 'POST',
+      headers: { 'Authorization': 'DeepL-Auth-Key ' + config.deeplApiKey, 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ text, source_lang: DEEPL_LANG[from], target_lang: DEEPL_LANG[to] })
+    });
+    if (!r.ok) throw new Error('DeepL API error ' + r.status);
+    const j = await r.json();
+    return j.translations[0].text;
+  }
+  // MyMemory: free, keyless, no account needed (LibreTranslate's public
+  // instance now requires an API key, confirmed when first wiring this up
+  // — MyMemory is the one that actually works with zero setup).
+  const langpair = encodeURIComponent(LT_LANG[from] + '|' + LT_LANG[to]);
+  const r = await fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=' + langpair);
+  if (!r.ok) throw new Error('MyMemory error ' + r.status);
+  const j = await r.json();
+  if (!j.responseData || !j.responseData.translatedText) throw new Error('MyMemory: no translation returned');
+  return j.responseData.translatedText;
+}
+
+async function translateTitle(text, from, targets) {
+  const out = {};
+  for (const to of targets) out[to] = await translateOne(text, from, to);
+  return out;
+}
+
+// ---------------------------------------------------------------------
 // Actions
 // ---------------------------------------------------------------------
 function requireAltFields(alt) {
@@ -457,6 +499,43 @@ const server = http.createServer(async (req, res) => {
       const ext = path.extname(abs).toLowerCase();
       const type = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.avif': 'image/avif' }[ext] || 'application/octet-stream';
       send(res, 200, fs.readFileSync(abs), { 'Content-Type': type, 'Cache-Control': 'no-store' });
+      return;
+    }
+
+    // same as /img/ but prefers the existing -800w responsive derivative
+    // (webp, then avif) when one is already on disk — never generates one.
+    // Used for the small thumbnails in the Trunk/branches tab so that tab
+    // doesn't pull full-size originals just to show a filename picker.
+    if (req.method === 'GET' && u.pathname.startsWith('/thumb/')) {
+      const rel = decodeURIComponent(u.pathname.slice('/thumb/'.length));
+      const abs = path.join(IMAGES_ROOT, rel);
+      if (!abs.startsWith(IMAGES_ROOT) || !fs.existsSync(abs)) { send(res, 404, 'not found'); return; }
+      const dir = path.dirname(abs);
+      const ext = path.extname(abs);
+      const base = path.basename(abs, ext);
+      const candidates = [path.join(dir, base + '-800w.webp'), path.join(dir, base + '-800w.avif'), abs];
+      const picked = candidates.find((p) => fs.existsSync(p));
+      const pickedExt = path.extname(picked).toLowerCase();
+      const type = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.avif': 'image/avif' }[pickedExt] || 'application/octet-stream';
+      send(res, 200, fs.readFileSync(picked), { 'Content-Type': type, 'Cache-Control': 'no-store' });
+      return;
+    }
+
+    if (req.method === 'POST' && u.pathname === '/api/translate') {
+      const body = (await readBody(req, 1e5)).toString('utf8');
+      let payload;
+      try { payload = JSON.parse(body); } catch (e) { sendJson(res, 400, { ok: false, error: 'bad JSON' }); return; }
+      const { text, from, targets } = payload;
+      if (!text || !DEEPL_LANG[from] || !Array.isArray(targets) || !targets.length || targets.some((t) => !DEEPL_LANG[t])) {
+        sendJson(res, 400, { ok: false, error: 'translate: need text, from (en/fr/es), targets ([en/fr/es, ...])' });
+        return;
+      }
+      try {
+        const translations = await translateTitle(text, from, targets);
+        sendJson(res, 200, { ok: true, translations, usedDeepL: !!config.deeplApiKey });
+      } catch (e) {
+        sendJson(res, 502, { ok: false, error: e.message });
+      }
       return;
     }
 
