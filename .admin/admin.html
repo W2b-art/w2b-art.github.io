@@ -104,7 +104,7 @@
     <button data-tab="trunk">Trunk / branches</button>
     <button data-tab="upload">Upload</button>
     <button data-tab="newbranch">New branch</button>
-    <button data-tab="darkdesire">Dark Desire</button>
+    <button data-tab="afterdark">After Dark (18+)</button>
   </nav>
   <div class="pub-wrap">
     <button class="pub-btn" id="pub-btn" type="button" title="Review and push pending changes">
@@ -761,36 +761,39 @@ function renderNewBranch() {
   };
 }
 
-// ---------------------------------------------------------------- Dark Desire tab
-// Same Galleries-tab UI (header + rename + card grid), scoped to just the
-// "boudoir" gallery — the old "Dark Desire" gallery, now fully archived
-// except for 2 orphaned-reference photos; everything else from it moved
-// into Boudoir (boudoir-red) or was archived outright. A dedicated tab
-// so this one gallery's flagged exceptions don't require hunting through
-// all 26 others to review.
-function renderDarkDesire() {
-  const main = document.getElementById('panel-darkdesire');
+// ---------------------------------------------------------------- After Dark (18+) tab
+// Same Galleries-tab UI (header + rename + card grid), scoped to every
+// gallery actually behind the site's 18+ gate — js/art-gallery.js's own
+// guard is the source of truth for that set (id==='nude' ||
+// id==='boudoir' || id==='boudoir-red'), not a guess. A dedicated tab so
+// all of the gated content — including boudoir's flagged exceptions —
+// is in one place instead of hunting through all 26 galleries.
+const AFTER_DARK_GALLERIES = ['nude', 'boudoir', 'boudoir-red'];
+function renderAfterDark() {
+  const main = document.getElementById('panel-afterdark');
   main.innerHTML = '';
-  const g = STATE.galleries.find((x) => x.id === 'boudoir');
-  if (!g) { main.innerHTML = '<p class="hint">No "boudoir" (Dark Desire) gallery in gallery-data.js.</p>'; return; }
-
   const note = document.createElement('p'); note.className = 'hint';
-  note.textContent = 'The old "Dark Desire" gallery (images/boudoir/). All ' + g.images.length + ' photo(s) shown here — same Archive/Move/Rename/Edit-label controls as the Galleries tab, just scoped to this one gallery.';
+  note.textContent = 'Every gallery behind the site\'s 18+ gate (js/art-gallery.js) — nude, boudoir ("Dark Desire"), boudoir-red ("Boudoir"). Same Archive/Move/Rename/Edit-label controls as the Galleries tab, just scoped to these three.';
   main.appendChild(note);
 
-  const wrap = document.createElement('div'); wrap.className = 'gallery';
-  const head = document.createElement('div'); head.className = 'g-head'; head.style.cursor = 'default';
-  const archivedCount = g.images.filter((i) => i.archived).length;
-  head.innerHTML = '<b>' + g.id + '</b><span class="count">' + g.images.length + ' image(s)' + (archivedCount ? ', <span class="archcount">' + archivedCount + ' archived</span>' : '') + '</span>';
-  const renameBtn = document.createElement('button'); renameBtn.type = 'button'; renameBtn.className = 'ghead-btn'; renameBtn.textContent = 'Rename';
-  renameBtn.style.marginLeft = 'auto';
-  renameBtn.onclick = () => openGalleryTitleEditor(g);
-  head.appendChild(renameBtn);
-  wrap.appendChild(head);
-  const grid = document.createElement('div'); grid.className = 'grid';
-  g.images.forEach((im) => grid.appendChild(card(g, im)));
-  wrap.appendChild(grid);
-  main.appendChild(wrap);
+  AFTER_DARK_GALLERIES.forEach((id) => {
+    const g = STATE.galleries.find((x) => x.id === id);
+    if (!g) return;
+    const wrap = document.createElement('div'); wrap.className = 'gallery';
+    const head = document.createElement('div'); head.className = 'g-head';
+    const archivedCount = g.images.filter((i) => i.archived).length;
+    head.innerHTML = '<b>' + g.id + '</b><span class="count">' + g.images.length + ' image(s)' + (archivedCount ? ', <span class="archcount">' + archivedCount + ' archived</span>' : '') + '</span>';
+    head.onclick = () => wrap.classList.toggle('collapsed');
+    const renameBtn = document.createElement('button'); renameBtn.type = 'button'; renameBtn.className = 'ghead-btn'; renameBtn.textContent = 'Rename';
+    renameBtn.style.marginLeft = 'auto';
+    renameBtn.onclick = (ev) => { ev.stopPropagation(); openGalleryTitleEditor(g); };
+    head.appendChild(renameBtn);
+    wrap.appendChild(head);
+    const grid = document.createElement('div'); grid.className = 'grid';
+    g.images.forEach((im) => grid.appendChild(card(g, im)));
+    wrap.appendChild(grid);
+    main.appendChild(wrap);
+  });
 }
 
 function renderAll() {
@@ -798,7 +801,7 @@ function renderAll() {
   renderTrunk();
   renderUpload();
   renderNewBranch();
-  renderDarkDesire();
+  renderAfterDark();
 }
 
 document.querySelectorAll('nav.tabs button').forEach((btn) => {
@@ -818,7 +821,7 @@ document.querySelectorAll('nav.tabs button').forEach((btn) => {
       '<section class="tabpanel" id="panel-trunk"></section>' +
       '<section class="tabpanel" id="panel-upload"></section>' +
       '<section class="tabpanel" id="panel-newbranch"></section>' +
-      '<section class="tabpanel" id="panel-darkdesire"></section>';
+      '<section class="tabpanel" id="panel-afterdark"></section>';
     renderAll();
     refreshPublishStatus();
   } catch (e) {
