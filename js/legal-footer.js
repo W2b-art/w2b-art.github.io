@@ -27,7 +27,13 @@
       '<a data-lk="privacy" href="documents/privacy.html"></a> · '+
       '<a data-lk="terms" href="documents/terms.html"></a> · '+
       '<a data-lk="cookies" href="documents/cookies.html"></a> · '+
-      '<a data-lk="refund" href="documents/refund.html"></a>'+
+      '<a data-lk="refund" href="documents/refund.html"></a> · '+
+      /* Local admin tool only — http://127.0.0.1:4848 only ever resolves on
+         Guillaume's own machine while .admin/server.js is running; for
+         every other visitor it's just a link that goes nowhere. Kept
+         unlabeled-ish (lowercase, same muted styling as the legal links,
+         no nav/menu entry) on purpose — discreet, not hidden. */
+      '<a href="http://127.0.0.1:4848/" target="_blank" rel="noopener" title="Local admin tool">admin</a>'+
     '</nav>'+
     '<span class="legal-note" data-lk="note"></span>';
   function render(){
