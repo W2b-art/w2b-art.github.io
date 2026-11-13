@@ -4,7 +4,8 @@ const te = require('./lib/textedit');
 const {
   setArchived, setMetaField, moveImage, placeImage, insertNewImage, createGallery,
   moveTrunkAnchor, reorderTrunkAnchor, createTrunkAnchor, addRelated, removeRelated,
-  reorderRelated, detachBranch, findTrunkAnchor, nextTrunkId, trilingualLiteral, yearLiteral
+  reorderRelated, detachBranch, findTrunkAnchor, nextTrunkId, trilingualLiteral, yearLiteral,
+  setGalleryTitle
 } = te;
 
 let failures = 0;
@@ -255,6 +256,35 @@ console.log('\n--- 7. addRelated / removeRelated / reorderRelated / detachBranch
   // branch-bailar-la-ciudad's own images array in gallery-data.js must be untouched
   const gAfterDetach = loadArray(gsrc, 'GALLERY_DATA');
   ok(gAfterDetach['branch-bailar-la-ciudad'].images.length === 7, 'detaching from the anchor never touches the branch gallery itself');
+}
+
+console.log('\n--- 9. setGalleryTitle (the gallery/branch\'s own display name) ---');
+{
+  const a1 = setGalleryTitle(gsrc, 'branch-industrial', { en: 'TEST Scrap', fr: 'TEST Ferraille', es: 'TEST Chatarra' });
+  const gAfter = loadArray(a1, 'GALLERY_DATA')['branch-industrial'];
+  ok(gAfter.title.en === 'TEST Scrap' && gAfter.title.fr === 'TEST Ferraille' && gAfter.title.es === 'TEST Chatarra', 'branch-industrial title renamed (single-line-style source)');
+  ok(gAfter.images.length === 2, 'branch-industrial image count untouched by a title rename');
+  const origTitle = loadArray(gsrc, 'GALLERY_DATA')['branch-industrial'].title;
+  const a2 = setGalleryTitle(a1, 'branch-industrial', origTitle);
+  ok(a2 === gsrc, 'rename-and-restore round-trips byte-identical (single-line-style)');
+  if (a2 !== gsrc) diffAt(gsrc, a2, 'gallery-title rt');
+
+  // "nude" is hand-formatted multi-line in the real file — setGalleryTitle
+  // always writes the compact single-line form (same normalization
+  // setMetaField already applies to image-level title/medium), so this is
+  // a value round-trip, not a byte round-trip.
+  const b1 = setGalleryTitle(gsrc, 'nude', { en: 'TEST Nude', fr: 'TEST Nu', es: 'TEST Desnudo' });
+  const nudeAfter = loadArray(b1, 'GALLERY_DATA').nude;
+  ok(nudeAfter.title.en === 'TEST Nude', 'nude (multi-line-style source) title renamed');
+  const origNudeTitle = loadArray(gsrc, 'GALLERY_DATA').nude.title;
+  const b2 = setGalleryTitle(b1, 'nude', origNudeTitle);
+  const nudeRestored = loadArray(b2, 'GALLERY_DATA').nude;
+  ok(nudeRestored.title.en === origNudeTitle.en && nudeRestored.title.fr === origNudeTitle.fr && nudeRestored.title.es === origNudeTitle.es, 'nude title value round-trips correctly (reformatted to compact, as expected)');
+  ok(nudeRestored.images.length === loadArray(gsrc, 'GALLERY_DATA').nude.images.length, 'nude image count untouched');
+
+  let threw = false;
+  try { setGalleryTitle(gsrc, 'does-not-exist', { en: 'x', fr: 'x', es: 'x' }); } catch (e) { threw = true; }
+  ok(threw, 'setGalleryTitle throws on an unknown gallery id');
 }
 
 console.log(failures ? '\n=== ' + failures + ' CHECK(S) FAILED ===' : '\n=== ALL CHECKS PASSED ===');

@@ -527,6 +527,34 @@ function createGallery(src, galleryId, folder, title) {
   return insertIntoArrayAt(src, gd.start, gd.end - 1, piece, '  ', null);
 }
 
+/* Rename a gallery's own trilingual `title` — the gallery/branch's
+   display name itself (e.g. "Scrap and Steel" for branch-industrial),
+   not a photo's museum-label title (that's setMetaField). Every gallery
+   gets one from createGallery, so the "missing" branch below is
+   defensive, not a real path in current data. */
+function setGalleryTitle(src, galleryId, title) {
+  const g = findGallerySpan(src, galleryId);
+  const fields = splitTopLevelFields(src, g.galleryStart, g.galleryEnd);
+  const existing = fields.find((f) => f.key === 'title');
+  const newFieldText = 'title: ' + trilingualLiteral(title);
+
+  if (existing) {
+    let start = existing.start;
+    while (/\s/.test(src[start])) start++;
+    return src.slice(0, start) + newFieldText + src.slice(existing.end);
+  }
+
+  const imagesField = fields.find((f) => f.key === 'images');
+  if (!imagesField) throw new Error('setGalleryTitle: no images field found in ' + galleryId);
+  let p = imagesField.start;
+  while (/\s/.test(src[p])) p++;
+  const lineStart = lineStartOf(src, p, g.galleryStart);
+  if (lineStart === g.galleryStart) {
+    return src.slice(0, p) + newFieldText + ', ' + src.slice(p);
+  }
+  return src.slice(0, lineStart) + '    ' + newFieldText + ',\r\n' + src.slice(lineStart);
+}
+
 // ---------------------------------------------------------------------
 // Trunk manifest (js/trunk-data.js): anchors + their `related` branch list
 // ---------------------------------------------------------------------
@@ -716,7 +744,7 @@ module.exports = {
   // placement
   placeImage, moveImage, insertNewImage,
   // galleries
-  createGallery,
+  createGallery, setGalleryTitle,
   // trunk/branch management
   findTrunkAnchor, nextTrunkId, reorderTrunkAnchor, moveTrunkAnchor, createTrunkAnchor,
   addRelated, removeRelated, reorderRelated, detachBranch
