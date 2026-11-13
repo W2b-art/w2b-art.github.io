@@ -179,6 +179,25 @@ console.log('\n--- 5. trunk anchor reorder/move (now position-aware) ---');
   let otherOrder2 = loadArray(r2, 'TRUNK_MANIFEST_OTHER').map((e) => e.id);
   ok(otherOrder2[5] === 't01', 't01 reordered to position 5');
   ok(otherOrder2.length === otherOrder.length, 'reorder never changes element count');
+
+  // REAL BUG, caught live 2026-11-13: reordering an anchor to "append"
+  // (position omitted) within its OWN set, when it's already the last
+  // element, round-trips through insertIntoArrayAt's append branch. The
+  // array's remaining tail content is then just the removed anchor's own
+  // orphaned preceding comment (see the known-limitation note above) —
+  // insertIntoArrayAt's old comma check only looked at the literal last
+  // character, saw "*/" instead of ",", and wrongly inserted an extra
+  // separator comma, corrupting the array (a stray `*/,` — an elided
+  // array hole that JSON.stringify turns into a literal `null`, which
+  // then crashed the admin UI reading `.file` off it). t16 is
+  // TRUNK_MANIFEST_CURRENT's actual last element, so this exercises the
+  // real shape, not a synthetic one.
+  let s1 = reorderTrunkAnchor(tsrc, 't16', 'current', undefined);
+  checkJs(s1, 'after reorderTrunkAnchor t16 -> current, position omitted (self, already last)');
+  ok(!s1.includes('*/,'), 'no stray comma left after the orphaned preceding comment');
+  let selfOrder = loadArray(s1, 'TRUNK_MANIFEST_CURRENT');
+  ok(selfOrder.length === 2 && selfOrder.map((e) => e.id).join(',') === 't08,t16', 't08+t16 both present, t16 still last');
+  ok(selfOrder.find((e) => e.id === 't16').related.length === 7, "t16's related[7] survived the round-trip");
 }
 
 console.log('\n--- 6. createTrunkAnchor ---');
