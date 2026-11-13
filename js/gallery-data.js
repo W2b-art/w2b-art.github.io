@@ -920,15 +920,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "silhouette-nude-bikini-top-purple-light-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Nude silhouette holding a bikini top under deep purple light, fine-art boudoir photography",
-          fr: "Silhouette nue tenant un haut de bikini sous une lumière violette profonde, photographie boudoir d'art",
-          es: "Silueta desnuda sosteniendo la parte superior de un bikini bajo una luz morada profunda, fotografía boudoir artística"
-        }
-      },
-      {
         file: "nude-red-curtain-dramatic-gaze-boots-w2b.jpg",
         alt: {
           en: "Nude figure emerging from behind a red curtain in laced boots, dramatic low-key boudoir photography",
@@ -1668,15 +1659,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "sunset-pine-trees-mountain-silhouette-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Sun setting behind silhouetted pine trees with a misty mountain ridge beyond, golden dusk photography",
-          fr: "Soleil couchant derrière des sapins silhouettés avec une crête montagneuse embrumée au loin, photographie au crépuscule doré",
-          es: "Puesta de sol detrás de pinos en silueta con una cresta montañosa brumosa al fondo, fotografía al atardecer dorado"
-        }
-      },
-      {
         file: "contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg",
         alt: {
           en: "A wrecked boat on a rocky shore, black and white medium-format film",
@@ -1718,15 +1700,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "rowboats-misty-lake-mountains-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Wooden rowboats moored on a calm lake with misty mountains and a wooded island behind, film photography",
-          fr: "Barques en bois amarrées sur un lac calme face à des montagnes embrumées et une île boisée, photographie argentique",
-          es: "Botes de remo amarrados en un lago en calma frente a montañas con niebla y una isla boscosa, fotografía analógica"
-        }
-      },
-      {
         file: "bamboo-tunnel-pond-stone-wall-w2b.jpg",
         alt: {
           en: "Path through a bamboo tunnel opening onto a still pond and an old stone wall, medium format film photography",
@@ -1756,24 +1729,6 @@ const GALLERY_DATA = {
           en: "Close-up of hands playing a double bass with a bow, black and white motion-blurred photography",
           fr: "Gros plan sur des mains jouant de la contrebasse à l'archet, photographie noir et blanc avec flou de mouvement",
           es: "Primer plano de manos tocando un contrabajo con arco, fotografía en blanco y negro con desenfoque de movimiento"
-        }
-      },
-      {
-        file: "street-lamp-silhouette-bird-sky-black-white-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Ornate curved street lamp silhouetted against a pale sky with a bird in flight, black and white film photography",
-          fr: "Réverbère ouvragé en silhouette sur un ciel pâle avec un oiseau en vol, photographie argentique noir et blanc",
-          es: "Farola ornamentada en silueta contra un cielo pálido con un ave en vuelo, fotografía analógica en blanco y negro"
-        }
-      },
-      {
-        file: "wet-tree-bark-dripping-water-close-up-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Close-up of wet tree bark with water droplets dripping down its texture",
-          fr: "Gros plan sur une écorce d'arbre mouillée avec des gouttes d'eau ruisselant sur sa texture",
-          es: "Primer plano de corteza de árbol mojada con gotas de agua escurriendo por su textura"
         }
       },
       {
@@ -1955,63 +1910,6 @@ const GALLERY_DATA = {
     ]
   },
 
-  "branch-pretty-od": {
-    id: "branch-pretty-od",
-    folder: "images/branch-pretty-od/",
-    title: {
-      en: "Pretty OD",
-      fr: "Pretty OD",
-      es: "Pretty OD"
-    },
-    images: [
-      {
-        file: "pink-plastic-wrap-figure-abstract-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Figure wrapped in crumpled plastic sheeting under pink and purple light, abstract conceptual photography",
-          fr: "Silhouette enveloppée de film plastique froissé sous une lumière rose et violette, photographie conceptuelle abstraite",
-          es: "Figura envuelta en plástico arrugado bajo luz rosa y morada, fotografía conceptual abstracta"
-        }
-      },
-      {
-        file: "red-light-glowing-eyes-intense-portrait-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Close portrait with eyes glowing red, intense conceptual photography",
-          fr: "Portrait rapproché aux yeux luisant de rouge, photographie conceptuelle intense",
-          es: "Retrato cercano con los ojos brillando en rojo, fotografía conceptual intensa"
-        }
-      },
-      {
-        file: "woman-reclining-neon-light-bedroom-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Woman reclining on a bed under pink and blue neon light, posters covering the wall behind her",
-          fr: "Femme allongée sur un lit sous une lumière néon rose et bleue, mur recouvert d'affiches derrière elle",
-          es: "Mujer recostada en una cama bajo luz neón rosa y azul, pared cubierta de pósters detrás de ella"
-        }
-      },
-      {
-        file: "woman-graphic-tee-pink-lit-room-posters-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Woman kneeling in an oversized graphic t-shirt in a pink-lit room covered in posters",
-          fr: "Femme agenouillée dans un t-shirt graphique oversize dans une pièce éclairée de rose et couverte d'affiches",
-          es: "Mujer de rodillas con una camiseta gráfica oversize en una habitación iluminada de rosa y cubierta de pósters"
-        }
-      },
-      {
-        file: "pink-love-perfume-bottle-still-life-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Heart-shaped Pink Love perfume bottle resting on fabric under pink light, conceptual still life photography",
-          fr: "Flacon de parfum « Pink Love » en forme de cœur posé sur un tissu sous lumière rose, nature morte conceptuelle",
-          es: "Frasco de perfume « Pink Love » en forma de corazón sobre tela bajo luz rosa, naturaleza muerta conceptual"
-        }
-      }
-    ]
-  },
-
   "branch-pinball": {
     id: "branch-pinball",
     folder: "images/branch-pinball/",
@@ -2096,22 +1994,6 @@ const GALLERY_DATA = {
         en: "Underwater macro close-up of a sea anemone in teal light",
         fr: "Gros plan macro sous-marin d'une anémone de mer dans une lumière turquoise",
         es: "Primer plano macro submarino de una anémona de mar en luz turquesa" } }
-    ]
-  },
-
-  "branch-sunset-pines": {
-    id: "branch-sunset-pines",
-    folder: "images/branch-sunset-pines/",
-    title: { en: "Pine Country", fr: "Pays des pins", es: "Tierra de pinos" },
-    images: [
-      { file: "snow-covered-pine-trees-mountain-daylight-w2b.jpg", archived: true, alt: {
-        en: "Snow-covered pine trees on a mountainside in daylight",
-        fr: "Pins enneigés à flanc de montagne en pleine journée",
-        es: "Pinos cubiertos de nieve en una ladera de montaña a plena luz del día" } },
-      { file: "lake-mountains-pines-window-frame-w2b.jpg", archived: true, alt: {
-        en: "Lake and pine-covered mountains seen through a window frame",
-        fr: "Lac et montagnes couvertes de pins vus à travers l'encadrement d'une fenêtre",
-        es: "Lago y montañas cubiertas de pinos vistos a través del marco de una ventana" } }
     ]
   },
 
@@ -2207,34 +2089,6 @@ const GALLERY_DATA = {
     ]
   },
 
-  "branch-street-lamp": {
-    id: "branch-street-lamp",
-    folder: "images/branch-street-lamp/",
-    title: { en: "Open Sky", fr: "Ciel ouvert", es: "Cielo abierto" },
-    images: [
-      { file: "kite-silhouette-open-sky-black-white-w2b.jpg", archived: true, alt: {
-        en: "Kite in silhouette against an open sky, black and white photography",
-        fr: "Cerf-volant en silhouette dans un ciel dégagé, photographie noir et blanc",
-        es: "Cometa en silueta contra un cielo despejado, fotografía en blanco y negro" } },
-      { file: "bird-framed-bush-black-white-w2b.jpg", archived: true, alt: {
-        en: "Bird framed within a bush, black and white photography",
-        fr: "Oiseau encadré dans un buisson, photographie noir et blanc",
-        es: "Ave enmarcada en un arbusto, fotografía en blanco y negro" } }
-    ]
-  },
-
-  "branch-tree-bark": {
-    id: "branch-tree-bark",
-    folder: "images/branch-tree-bark/",
-    title: { en: "Bark", fr: "Écorce", es: "Corteza" },
-    images: [
-      { file: "tree-branches-detail-black-white-w2b.jpg", archived: true, alt: {
-        en: "Close-up detail of tree branches, black and white photography",
-        fr: "Détail rapproché de branches d'arbre, photographie noir et blanc",
-        es: "Detalle cercano de ramas de árbol, fotografía en blanco y negro" } }
-    ]
-  },
-
   "branch-dark-bay": {
     id: "branch-dark-bay",
     folder: "images/branch-dark-bay/",
@@ -2252,10 +2106,6 @@ const GALLERY_DATA = {
     folder: "images/branch-industrial/",
     title: { en: "Scrap and Steel", fr: "Ferraille et acier", es: "Chatarra y acero" },
     images: [
-      { file: "truck-taillight-reflectors-grid-black-white-w2b.jpg", archived: true, alt: {
-        en: "Grid of truck tail-light reflectors, black and white macro photography",
-        fr: "Grille de réflecteurs de feux arrière de camion, photographie macro noir et blanc",
-        es: "Rejilla de reflectores de luces traseras de camión, fotografía macro en blanco y negro" } },
       { file: "motorcycle-frame-mechanical-detail-black-white-w2b.jpg", alt: {
         en: "Mechanical detail of a motorcycle frame, black and white photography",
         fr: "Détail mécanique d'un cadre de moto, photographie noir et blanc",

@@ -38,6 +38,14 @@
   .trunk-row .fn { flex: 1; min-width: 200px; color: #ccc; word-break: break-all; }
   .trunk-row .related-list { width: 100%; padding-left: 20px; font-size: 11px; color: #aaa; }
   .trunk-row .related-list .rel-item { display: flex; gap: 6px; align-items: center; padding: 3px 0; }
+  .thumb { width: 44px; height: 44px; object-fit: cover; border-radius: 4px; background: #000; flex-shrink: 0; display: block; }
+  .rel-item .thumb { width: 34px; height: 34px; }
+  .pick-grid { display: flex; gap: 6px; flex-wrap: wrap; padding: 4px 0; max-width: 100%; }
+  .pick-thumb { position: relative; border: 2px solid transparent; border-radius: 5px; padding: 0; background: none; cursor: pointer; line-height: 0; }
+  .pick-thumb img { width: 56px; height: 56px; object-fit: cover; border-radius: 4px; display: block; }
+  .pick-thumb:hover { border-color: #487; }
+  .pick-thumb.sel { border-color: #6c9; }
+  .pick-thumb .pt-fn { position: absolute; left: 0; right: 0; bottom: 0; font-size: 8px; background: rgba(0,0,0,.7); color: #ccc; padding: 1px 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0 0 4px 4px; }
   .toast { position: fixed; bottom: 16px; right: 16px; background: #222; border: 1px solid #444; padding: 10px 16px; border-radius: 6px; max-width: 360px; font-size: 13px; z-index: 50; }
   .toast.err { border-color: #633; color: #f99; }
   .toast.ok { border-color: #365; color: #9f9; }
@@ -95,6 +103,64 @@ function galleryIds() { return STATE.galleries.map((g) => g.id); }
 function imgUrl(gallery, im) {
   const dir = im.archived ? '_archive/' + gallery.id : gallery.folder.replace(/^images\//, '').replace(/\/$/, '');
   return '/img/' + encodeURIComponent(dir) + '/' + encodeURIComponent(im.file);
+}
+// Same folder logic as imgUrl, but via /thumb/ (server prefers an existing
+// -800w derivative, never generates one) — used anywhere in the Trunk/
+// branches tab that shows or picks a photo, so it never pulls full-size
+// originals just to render a filename list.
+function thumbUrl(gallery, im) {
+  const dir = im.archived ? '_archive/' + gallery.id : gallery.folder.replace(/^images\//, '').replace(/\/$/, '');
+  return '/thumb/' + encodeURIComponent(dir) + '/' + encodeURIComponent(im.file);
+}
+function findGalleryAndImage(seriesId, file) {
+  const g = STATE.galleries.find((x) => x.id === seriesId);
+  const im = g && g.images.find((i) => i.file === file);
+  return { g, im };
+}
+function thumbImg(seriesId, file) {
+  const img = document.createElement('img');
+  img.className = 'thumb';
+  img.loading = 'lazy';
+  const { g, im } = findGalleryAndImage(seriesId, file);
+  img.src = (g && im) ? thumbUrl(g, im) : '';
+  img.alt = '';
+  return img;
+}
+
+// ---------------------------------------------------------------- Title auto-translate (museum-label title only)
+async function translateViaApi(text, from, targets) {
+  const r = await fetch('/api/translate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text, from, targets }) });
+  const j = await r.json();
+  if (!r.ok || j.ok === false) throw new Error(j.error || 'translate failed');
+  return j.translations;
+}
+// fields = {en: <input>, fr: <input>, es: <input>}. Fills a language's
+// field on blur of whichever field he just typed in, but only into
+// fields he hasn't hand-edited himself this session (or that are still
+// empty) — never overwrites a field he already corrected. Nothing is
+// saved anywhere by this; it only sets .value on the form inputs.
+function wireAutoTranslate(fields) {
+  const dirty = { en: false, fr: false, es: false };
+  let autoFilling = false;
+  Object.keys(fields).forEach((lang) => {
+    const el = fields[lang];
+    if (!el) return;
+    el.addEventListener('input', () => { if (!autoFilling) dirty[lang] = true; });
+    el.addEventListener('blur', async () => {
+      const text = el.value.trim();
+      if (!text) return;
+      const targets = Object.keys(fields).filter((l) => l !== lang && fields[l] && !dirty[l]);
+      if (!targets.length) return;
+      try {
+        const translations = await translateViaApi(text, lang, targets);
+        autoFilling = true;
+        targets.forEach((l) => { if (translations[l] != null) fields[l].value = translations[l]; });
+        autoFilling = false;
+      } catch (e) {
+        toast('Auto-translate failed (type the other languages by hand): ' + e.message, true);
+      }
+    });
+  });
 }
 
 // ---------------------------------------------------------------- Galleries tab
@@ -155,19 +221,59 @@ function card(gallery, im) {
 function openMetaEditor(gallery, im) {
   const t = im.title || { en: '', fr: '', es: '' };
   const m = im.medium || { en: '', fr: '', es: '' };
-  const en = prompt('Title — EN (blank to clear all 3 title fields):', t.en || ''); if (en === null) return;
-  const fr = prompt('Title — FR:', t.fr || en || ''); if (fr === null) return;
-  const es = prompt('Title — ES:', t.es || en || ''); if (es === null) return;
-  const medEn = prompt('Medium — EN (blank to clear):', m.en || ''); if (medEn === null) return;
-  const medFr = prompt('Medium — FR:', m.fr || medEn || ''); if (medFr === null) return;
-  const medEs = prompt('Medium — ES:', m.es || medEn || ''); if (medEs === null) return;
-  const year = prompt('Year (blank to clear):', im.year || ''); if (year === null) return;
+  document.querySelectorAll('.modal-backdrop').forEach((n) => n.remove());
+  const backdrop = document.createElement('div');
+  backdrop.className = 'modal-backdrop';
+  backdrop.style = 'position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:60;';
+  const form = document.createElement('form');
+  form.className = 'panel';
+  form.style = 'margin:0;max-height:90vh;overflow:auto;';
+  form.innerHTML = '<h3>Edit label — ' + im.file + '</h3>' +
+    '<label>Title (auto-translates the other two languages on blur — edit any field afterward to stop it being overwritten) — EN / FR / ES</label>' +
+    '<div class="row3"><input id="me-title-en" placeholder="EN"><input id="me-title-fr" placeholder="FR"><input id="me-title-es" placeholder="ES"></div>' +
+    '<label>Medium (wording differs per language — typed by hand, not auto-translated) — EN / FR / ES</label>' +
+    '<div class="row3"><input id="me-medium-en" placeholder="EN"><input id="me-medium-fr" placeholder="FR"><input id="me-medium-es" placeholder="ES"></div>' +
+    '<label>Year</label><input type="number" id="me-year" min="1900" max="2100">' +
+    '<div class="hint">Leave Title/EN blank to clear all three title fields on submit; same for Medium/EN.</div>' +
+    '<div style="display:flex;gap:10px;margin-top:14px;">' +
+    '<button type="button" class="submit" id="me-submit">Save</button>' +
+    '<button type="button" id="me-cancel" style="padding:9px 18px;background:#2a2a2a;border:1px solid #3a3a3a;color:#eee;border-radius:6px;cursor:pointer;">Cancel</button>' +
+    '</div>';
+  backdrop.appendChild(form);
+  document.body.appendChild(backdrop);
 
-  const jobs = [];
-  jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'title', value: en.trim() ? { en, fr, es } : null }));
-  jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'medium', value: medEn.trim() ? { en: medEn, fr: medFr, es: medEs } : null }));
-  jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'year', value: year.trim() ? Number(year) : null }));
-  Promise.all(jobs).catch(() => {});
+  document.getElementById('me-title-en').value = t.en || '';
+  document.getElementById('me-title-fr').value = t.fr || '';
+  document.getElementById('me-title-es').value = t.es || '';
+  document.getElementById('me-medium-en').value = m.en || '';
+  document.getElementById('me-medium-fr').value = m.fr || '';
+  document.getElementById('me-medium-es').value = m.es || '';
+  document.getElementById('me-year').value = im.year || '';
+
+  wireAutoTranslate({
+    en: document.getElementById('me-title-en'),
+    fr: document.getElementById('me-title-fr'),
+    es: document.getElementById('me-title-es')
+  });
+
+  const close = () => backdrop.remove();
+  backdrop.onclick = (e) => { if (e.target === backdrop) close(); };
+  document.getElementById('me-cancel').onclick = close;
+  document.getElementById('me-submit').onclick = () => {
+    const en = document.getElementById('me-title-en').value.trim();
+    const fr = document.getElementById('me-title-fr').value.trim();
+    const es = document.getElementById('me-title-es').value.trim();
+    const medEn = document.getElementById('me-medium-en').value.trim();
+    const medFr = document.getElementById('me-medium-fr').value.trim();
+    const medEs = document.getElementById('me-medium-es').value.trim();
+    const year = document.getElementById('me-year').value.trim();
+
+    const jobs = [];
+    jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'title', value: en ? { en, fr: fr || en, es: es || en } : null }));
+    jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'medium', value: medEn ? { en: medEn, fr: medFr || medEn, es: medEs || medEn } : null }));
+    jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'year', value: year ? Number(year) : null }));
+    Promise.all(jobs).then(close).catch(() => {});
+  };
 }
 
 function renderGalleries() {
@@ -195,6 +301,7 @@ function renderGalleries() {
 function trunkRow(set, e) {
   const wrap = document.createElement('div');
   const row = document.createElement('div'); row.className = 'trunk-row';
+  row.appendChild(thumbImg('trunk', e.file));
   const fn = document.createElement('span'); fn.className = 'fn';
   fn.textContent = e.id + ' — ' + e.file + (e.hasStatement ? '  (has statement)' : '');
   row.appendChild(fn);
@@ -220,6 +327,7 @@ function trunkRow(set, e) {
     const relWrap = document.createElement('div'); relWrap.className = 'related-list';
     e.related.forEach((r, i) => {
       const ri = document.createElement('div'); ri.className = 'rel-item';
+      ri.appendChild(thumbImg(r.series, r.file));
       const label = document.createElement('span'); label.textContent = i + '. ' + r.series + ' / ' + r.file; label.style.flex = '1';
       ri.appendChild(label);
       const rpos = document.createElement('input'); rpos.className = 'posnum'; rpos.placeholder = '#';
@@ -236,16 +344,25 @@ function trunkRow(set, e) {
     const attach = document.createElement('div'); attach.className = 'related-list';
     const branchSel = document.createElement('select');
     STATE.galleries.filter((g) => g.id.startsWith('branch-')).forEach((g) => { const o = document.createElement('option'); o.value = g.id; o.textContent = g.id; branchSel.appendChild(o); });
-    const fileSel = document.createElement('select');
-    function refillFiles() {
-      fileSel.innerHTML = '';
+    const grid = document.createElement('div'); grid.className = 'pick-grid';
+    function refillGrid() {
+      grid.innerHTML = '';
       const g = STATE.galleries.find((x) => x.id === branchSel.value);
-      (g ? g.images : []).filter((i) => !i.archived).forEach((i) => { const o = document.createElement('option'); o.value = i.file; o.textContent = i.file; fileSel.appendChild(o); });
+      (g ? g.images : []).filter((i) => !i.archived).forEach((i) => {
+        const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb';
+        btn.title = i.file;
+        const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(g, i);
+        btn.appendChild(img);
+        const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
+        btn.appendChild(fnTag);
+        btn.onclick = () => doAction({ type: 'branch-add-related', trunkId: e.id, branchSeries: branchSel.value, file: i.file }, 'Attached ' + i.file + ' to ' + e.id);
+        grid.appendChild(btn);
+      });
+      if (!grid.children.length) grid.textContent = '(no un-archived photos in this branch yet — upload one first)';
     }
-    branchSel.onchange = refillFiles; refillFiles();
-    const attachBtn = document.createElement('button'); attachBtn.textContent = 'Attach as first related photo';
-    attachBtn.onclick = () => { if (fileSel.value) doAction({ type: 'branch-add-related', trunkId: e.id, branchSeries: branchSel.value, file: fileSel.value }, 'Attached ' + fileSel.value + ' to ' + e.id); };
-    attach.appendChild(branchSel); attach.appendChild(fileSel); attach.appendChild(attachBtn);
+    branchSel.onchange = refillGrid; refillGrid();
+    const hint = document.createElement('div'); hint.className = 'hint'; hint.textContent = 'Pick a branch, then click a photo to attach it as the first related photo.';
+    attach.appendChild(branchSel); attach.appendChild(hint); attach.appendChild(grid);
     wrap.appendChild(attach);
   }
   return wrap;
@@ -268,15 +385,31 @@ function renderTrunk() {
 
   // create a brand-new trunk anchor from a photo already in GALLERY_DATA.trunk.images
   const form = document.createElement('form'); form.className = 'panel';
-  form.innerHTML = '<h3>New trunk anchor</h3><div class="hint">Promotes a photo already in gallery-data.js\'s "trunk" series to a clickable anchor on one of the two pages. Upload into "trunk" first (Upload tab) if the photo isn\'t there yet.</div>';
+  form.innerHTML = '<h3>New trunk anchor</h3><div class="hint">Promotes a photo already in gallery-data.js\'s "trunk" series to a clickable anchor on one of the two pages. Upload into "trunk" first (Upload tab) if the photo isn\'t there yet. Click a photo below to pick it.</div>';
   const trunkGallery = STATE.galleries.find((g) => g.id === 'trunk');
-  const fileSel = document.createElement('select');
-  (trunkGallery ? trunkGallery.images : []).filter((i) => !i.archived).forEach((i) => { const o = document.createElement('option'); o.value = i.file; o.textContent = i.file; fileSel.appendChild(o); });
+  const grid = document.createElement('div'); grid.className = 'pick-grid';
+  let pickedFile = null;
+  (trunkGallery ? trunkGallery.images : []).filter((i) => !i.archived).forEach((i) => {
+    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb'; btn.title = i.file;
+    const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(trunkGallery, i);
+    btn.appendChild(img);
+    const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
+    btn.appendChild(fnTag);
+    btn.onclick = () => {
+      pickedFile = i.file;
+      grid.querySelectorAll('.pick-thumb').forEach((b) => b.classList.remove('sel'));
+      btn.classList.add('sel');
+    };
+    grid.appendChild(btn);
+  });
   const setSel = document.createElement('select');
   [['current', 'Oeuvre actuelle'], ['other', 'Autres travaux']].forEach(([v, l]) => { const o = document.createElement('option'); o.value = v; o.textContent = l; setSel.appendChild(o); });
   const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'submit'; btn.textContent = 'Create anchor';
-  btn.onclick = () => doAction({ type: 'trunk-create-anchor', toSet: setSel.value, file: fileSel.value }, 'Anchor created');
-  form.appendChild(fileSel); form.appendChild(setSel); form.appendChild(btn);
+  btn.onclick = () => {
+    if (!pickedFile) { toast('pick a photo first', true); return; }
+    doAction({ type: 'trunk-create-anchor', toSet: setSel.value, file: pickedFile }, 'Anchor created');
+  };
+  form.appendChild(grid); form.appendChild(setSel); form.appendChild(btn);
   main.appendChild(form);
 }
 
@@ -301,6 +434,12 @@ function renderUpload() {
     '<select id="up-attach"><option value="">— don\'t attach —</option></select>' +
     '<button type="button" class="submit" id="up-submit">Upload</button>';
   main.appendChild(form);
+
+  wireAutoTranslate({
+    en: document.getElementById('up-title-en'),
+    fr: document.getElementById('up-title-fr'),
+    es: document.getElementById('up-title-es')
+  });
 
   const gSel = document.getElementById('up-gallery');
   galleryIds().forEach((id) => { const o = document.createElement('option'); o.value = id; o.textContent = id; gSel.appendChild(o); });
