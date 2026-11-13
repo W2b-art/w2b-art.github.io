@@ -35,6 +35,72 @@ const {
 const PORT = process.env.PORT ? Number(process.env.PORT) : 4848;
 
 // ---------------------------------------------------------------------
+// Publish (scoped git add+commit+push) — 2026-11-13, Guillaume's explicit
+// request, overriding this tool's original "never touches git" design
+// for exactly this narrow scope. Still never touches anything outside
+// images/, the two data files, and the responsive manifest — the admin
+// tool has no way to edit site code/templates, so there was nothing else
+// to scope out in practice. Deliberately NOT a blanket `git add -A`:
+// everything is staged by explicit path, and what actually got staged is
+// re-checked against the same whitelist before committing, so a stray
+// change sitting in the working tree for an unrelated reason (this is a
+// shared git worktree) never rides along.
+// ---------------------------------------------------------------------
+const GIT_SCOPE = ['images', 'js/gallery-data.js', 'js/trunk-data.js', 'js/responsive-manifest.js'];
+
+function git(args) {
+  return execFileSync('git', args, { cwd: ROOT, encoding: 'utf8' });
+}
+
+function gitStatusScoped() {
+  let out;
+  try {
+    out = git(['status', '--porcelain', '--'].concat(GIT_SCOPE));
+  } catch (e) {
+    throw new Error('git status failed: ' + (e.stderr || e.message));
+  }
+  return out.split(/\r?\n/).filter(Boolean).map((line) => {
+    const status = line.slice(0, 2).trim();
+    let file = line.slice(3);
+    const arrow = file.indexOf(' -> ');
+    if (arrow !== -1) file = file.slice(arrow + 4);
+    return { status, file };
+  });
+}
+
+function gitPublish(message) {
+  const pending = gitStatusScoped();
+  if (!pending.length) throw new Error('nothing to publish — no pending changes in images/, gallery-data.js, trunk-data.js or responsive-manifest.js');
+
+  git(['add', '--'].concat(GIT_SCOPE));
+
+  const staged = git(['diff', '--cached', '--name-only']).split(/\r?\n/).filter(Boolean);
+  const unexpected = staged.filter((f) => !GIT_SCOPE.some((p) => f === p || f.startsWith(p + '/')));
+  if (unexpected.length) {
+    try { git(['reset', '--']); } catch (e) { /* best effort unstage */ }
+    throw new Error('refusing to publish: file(s) outside this tool\'s scope got staged (not committed) — ' + unexpected.join(', '));
+  }
+
+  const commitMessage = (message && message.trim()) || ('Admin: ' + staged.length + ' file(s) updated via local admin tool');
+  try {
+    git(['commit', '-m', commitMessage]);
+  } catch (e) {
+    throw new Error('git commit failed: ' + (e.stderr || e.message));
+  }
+
+  const sha = git(['rev-parse', '--short', 'HEAD']).trim();
+  const branch = git(['rev-parse', '--abbrev-ref', 'HEAD']).trim();
+
+  try {
+    git(['push', 'origin', branch]);
+  } catch (e) {
+    throw new Error('committed locally (' + sha + ' on ' + branch + ') but the push failed — nothing is lost, fix the issue and hit Publish again: ' + (e.stderr || e.message));
+  }
+
+  return { sha, branch, filesCount: staged.length };
+}
+
+// ---------------------------------------------------------------------
 // Config / auth
 // ---------------------------------------------------------------------
 function ensureConfig() {
@@ -518,6 +584,28 @@ const server = http.createServer(async (req, res) => {
       const pickedExt = path.extname(picked).toLowerCase();
       const type = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.webp': 'image/webp', '.avif': 'image/avif' }[pickedExt] || 'application/octet-stream';
       send(res, 200, fs.readFileSync(picked), { 'Content-Type': type, 'Cache-Control': 'no-store' });
+      return;
+    }
+
+    if (req.method === 'GET' && u.pathname === '/api/git/status') {
+      try {
+        sendJson(res, 200, { ok: true, files: gitStatusScoped() });
+      } catch (e) {
+        sendJson(res, 500, { ok: false, error: e.message });
+      }
+      return;
+    }
+
+    if (req.method === 'POST' && u.pathname === '/api/git/publish') {
+      const body = (await readBody(req, 1e4)).toString('utf8');
+      let payload = {};
+      try { payload = body ? JSON.parse(body) : {}; } catch (e) { sendJson(res, 400, { ok: false, error: 'bad JSON' }); return; }
+      try {
+        const result = gitPublish(payload.message);
+        sendJson(res, 200, Object.assign({ ok: true }, result));
+      } catch (e) {
+        sendJson(res, 400, { ok: false, error: e.message });
+      }
       return;
     }
 

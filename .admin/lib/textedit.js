@@ -216,14 +216,36 @@ function findImageObjectSpan(src, arrayStart, arrayEnd, filename) {
    top-level elements (or at the end if position is null/undefined or
    >= the current element count). `indent` is the leading whitespace to
    give the new line. */
+/* Strips trailing `/* ... *\/` block comments (and the whitespace around
+   them) off the end of a string, repeatedly. Used only to decide whether
+   an append needs a separating comma — see insertIntoArrayAt below — so
+   it only ever looks at the tail of top-level array content between
+   elements, never inside a string, where this codebase's own convention
+   never leaves a bare trailing comment anyway. */
+function stripTrailingComments(s) {
+  let prev;
+  do {
+    prev = s;
+    s = s.replace(/\s*\/\*[\s\S]*?\*\/\s*$/, '');
+  } while (s !== prev);
+  return s;
+}
+
 function insertIntoArrayAt(src, openIdx, closeIdx, piece, indent, position) {
   const elems = splitTopLevelElements(src, openIdx, closeIdx);
   if (position == null || position >= elems.length) {
     const inner = src.slice(openIdx + 1, closeIdx);
     const trimmed = inner.replace(/\s+$/, '');
     const trailingWs = inner.slice(trimmed.length);
-    const isEmpty = trimmed.length === 0;
-    const alreadyHasComma = trimmed.endsWith(',');
+    /* A moved/removed anchor can leave its own preceding comment orphaned
+       at the tail of the array (documented limitation — see README) —
+       strip that before checking for a trailing comma, or appending after
+       it silently inserts an extra comma that corrupts the array (real
+       bug, caught 2026-11-13: reordering an anchor to "append" within its
+       own already-last position round-trips through exactly this path). */
+    const tailSansComments = stripTrailingComments(trimmed);
+    const isEmpty = tailSansComments.trim().length === 0;
+    const alreadyHasComma = tailSansComments.endsWith(',');
     const sep = (isEmpty || alreadyHasComma) ? '' : ',';
     const insertion = sep + '\r\n' + indent + piece;
     return src.slice(0, openIdx + 1) + trimmed + insertion + trailingWs + src.slice(openIdx + 1 + inner.length);

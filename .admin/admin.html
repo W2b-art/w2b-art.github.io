@@ -7,19 +7,31 @@
   :root { color-scheme: dark; }
   * { box-sizing: border-box; }
   body { font: 14px/1.4 system-ui, sans-serif; background: #111; color: #eee; margin: 0; }
-  header { padding: 14px 20px; background: #1b1b1b; border-bottom: 1px solid #333; position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  header h1 { font-size: 16px; margin: 0; font-weight: 600; }
-  header .note { color: #888; font-size: 12px; }
-  nav.tabs { display: flex; gap: 6px; margin-left: auto; }
+  header { padding: 10px 20px; background: #1b1b1b; border-bottom: 1px solid #333; position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  header h1 { font-size: 15px; margin: 0; font-weight: 600; }
+  header .note { color: #777; font-size: 11px; }
+  nav.tabs { display: flex; gap: 6px; }
   nav.tabs button { background: #222; color: #ccc; border: 1px solid #333; border-radius: 6px; padding: 6px 12px; cursor: pointer; font-size: 12px; }
   nav.tabs button.on { background: #365; color: #fff; border-color: #487; }
-  main { padding: 20px; max-width: 1400px; margin: 0 auto; }
+  .pub-wrap { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .pub-btn { background: #2a2a2a; color: #ccc; border: 1px solid #3a3a3a; border-radius: 6px; padding: 7px 14px; cursor: pointer; font-size: 12px; display: flex; align-items: center; gap: 7px; }
+  .pub-btn.has-pending { background: #4a3410; border-color: #a06b1f; color: #ffd28a; }
+  .pub-btn:disabled { opacity: .4; cursor: default; }
+  .pub-badge { background: #e0a030; color: #1b1b1b; border-radius: 10px; padding: 0 7px; font-size: 11px; font-weight: 700; min-width: 18px; text-align: center; }
+  main { padding: 18px 20px 40px; max-width: 1400px; margin: 0 auto; }
   section.tabpanel { display: none; }
   section.tabpanel.on { display: block; }
-  .gallery { margin-bottom: 28px; border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; }
-  .gallery > .g-head { padding: 10px 14px; background: #1b1b1b; display: flex; align-items: center; gap: 10px; cursor: pointer; }
-  .gallery > .g-head b { font-size: 14px; }
-  .gallery > .g-head .count { color: #888; font-size: 12px; }
+  .tab-toolbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .tab-toolbar .hint { color: #777; font-size: 11px; }
+  .tab-toolbar .expand-all { background: none; border: 1px solid #333; color: #999; border-radius: 6px; padding: 5px 10px; cursor: pointer; font-size: 11px; }
+  .gallery { margin-bottom: 10px; border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; }
+  .gallery > .g-head { padding: 9px 14px; background: #1b1b1b; display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .gallery > .g-head:hover { background: #202020; }
+  .gallery > .g-head::before { content: '▸'; color: #666; font-size: 10px; transition: transform .15s; }
+  .gallery:not(.collapsed) > .g-head::before { transform: rotate(90deg); }
+  .gallery > .g-head b { font-size: 13px; }
+  .gallery > .g-head .count { color: #888; font-size: 11px; }
+  .gallery > .g-head .archcount { color: #e0a030; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; padding: 12px; }
   .card { background: #1b1b1b; border: 1px solid #2a2a2a; border-radius: 6px; overflow: hidden; }
   .card.archived { opacity: .45; }
@@ -38,14 +50,14 @@
   .trunk-row .fn { flex: 1; min-width: 200px; color: #ccc; word-break: break-all; }
   .trunk-row .related-list { width: 100%; padding-left: 20px; font-size: 11px; color: #aaa; }
   .trunk-row .related-list .rel-item { display: flex; gap: 6px; align-items: center; padding: 3px 0; }
-  .thumb { width: 44px; height: 44px; object-fit: cover; border-radius: 4px; background: #000; flex-shrink: 0; display: block; }
-  .rel-item .thumb { width: 34px; height: 34px; }
-  .pick-grid { display: flex; gap: 6px; flex-wrap: wrap; padding: 4px 0; max-width: 100%; }
-  .pick-thumb { position: relative; border: 2px solid transparent; border-radius: 5px; padding: 0; background: none; cursor: pointer; line-height: 0; }
-  .pick-thumb img { width: 56px; height: 56px; object-fit: cover; border-radius: 4px; display: block; }
+  .thumb { width: 112px; height: 112px; object-fit: cover; border-radius: 6px; background: #000; flex-shrink: 0; display: block; }
+  .rel-item .thumb { width: 88px; height: 88px; }
+  .pick-grid { display: flex; gap: 10px; flex-wrap: wrap; padding: 4px 0; max-width: 100%; }
+  .pick-thumb { position: relative; border: 2px solid transparent; border-radius: 7px; padding: 0; background: none; cursor: pointer; line-height: 0; }
+  .pick-thumb img { width: 140px; height: 140px; object-fit: cover; border-radius: 5px; display: block; }
   .pick-thumb:hover { border-color: #487; }
   .pick-thumb.sel { border-color: #6c9; }
-  .pick-thumb .pt-fn { position: absolute; left: 0; right: 0; bottom: 0; font-size: 8px; background: rgba(0,0,0,.7); color: #ccc; padding: 1px 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0 0 4px 4px; }
+  .pick-thumb .pt-fn { position: absolute; left: 0; right: 0; bottom: 0; font-size: 10px; background: rgba(0,0,0,.7); color: #ccc; padding: 3px 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0 0 5px 5px; }
   .toast { position: fixed; bottom: 16px; right: 16px; background: #222; border: 1px solid #444; padding: 10px 16px; border-radius: 6px; max-width: 360px; font-size: 13px; z-index: 50; }
   .toast.err { border-color: #633; color: #f99; }
   .toast.ok { border-color: #365; color: #9f9; }
@@ -62,13 +74,18 @@
 <body>
 <header>
   <h1>W2b art — local admin</h1>
-  <span class="note">local only · never deployed · never touches git · review the diff and commit yourself</span>
+  <span class="note">local only · never deployed</span>
   <nav class="tabs">
     <button data-tab="galleries" class="on">Galleries</button>
     <button data-tab="trunk">Trunk / branches</button>
     <button data-tab="upload">Upload</button>
     <button data-tab="newbranch">New branch</button>
   </nav>
+  <div class="pub-wrap">
+    <button class="pub-btn" id="pub-btn" type="button" title="Review and push pending changes">
+      <span id="pub-label">Publish</span><span class="pub-badge" id="pub-badge" style="display:none">0</span>
+    </button>
+  </div>
 </header>
 <main id="main">Loading…</main>
 <script>
@@ -93,12 +110,78 @@ async function doAction(action, successMsg) {
     STATE = r.state;
     renderAll();
     toast(successMsg || r.message || 'done');
+    refreshPublishStatus();
     return r;
   } catch (e) {
     toast(e.message, true);
     throw e;
   }
 }
+
+// ---------------------------------------------------------------- Publish (scoped git add+commit+push)
+let PENDING_FILES = [];
+async function refreshPublishStatus() {
+  try {
+    const r = await api('/api/git/status');
+    PENDING_FILES = r.files;
+    const btn = document.getElementById('pub-btn');
+    const badge = document.getElementById('pub-badge');
+    if (PENDING_FILES.length) {
+      btn.classList.add('has-pending');
+      badge.style.display = '';
+      badge.textContent = PENDING_FILES.length;
+    } else {
+      btn.classList.remove('has-pending');
+      badge.style.display = 'none';
+    }
+  } catch (e) { /* git not available or not a repo — leave the button inert, non-fatal */ }
+}
+
+function openPublishModal() {
+  document.querySelectorAll('.modal-backdrop').forEach((n) => n.remove());
+  const backdrop = document.createElement('div');
+  backdrop.className = 'modal-backdrop';
+  backdrop.style = 'position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:60;';
+  const form = document.createElement('form');
+  form.className = 'panel';
+  form.style = 'margin:0;max-width:560px;max-height:85vh;overflow:auto;';
+
+  const fileRows = PENDING_FILES.length
+    ? '<ul style="list-style:none;margin:0;padding:0;max-height:260px;overflow:auto;border:1px solid #2a2a2a;border-radius:6px;">' +
+      PENDING_FILES.map((f) => '<li style="padding:5px 10px;font-size:11px;color:#bbb;border-bottom:1px solid #222;display:flex;gap:8px;"><span style="color:#e0a030;width:18px;flex-shrink:0;">' + f.status + '</span><span style="word-break:break-all;">' + f.file + '</span></li>').join('') +
+      '</ul>'
+    : '<div class="hint">Nothing pending.</div>';
+
+  form.innerHTML = '<h3>Publish changes</h3>' +
+    '<div class="hint">Commits and pushes only what this tool itself can touch — images/, gallery-data.js, trunk-data.js, responsive-manifest.js. Nothing else, even if something else in this folder happens to be modified.</div>' +
+    '<label>' + PENDING_FILES.length + ' file(s) pending</label>' + fileRows +
+    '<label>Commit message (optional)</label><textarea id="pub-msg" rows="2" placeholder="Leave blank for an auto-generated message"></textarea>' +
+    '<div style="display:flex;gap:10px;margin-top:14px;">' +
+    '<button type="button" class="submit" id="pub-confirm"' + (PENDING_FILES.length ? '' : ' disabled') + '>Commit &amp; push</button>' +
+    '<button type="button" id="pub-cancel" style="padding:9px 18px;background:#2a2a2a;border:1px solid #3a3a3a;color:#eee;border-radius:6px;cursor:pointer;">Cancel</button>' +
+    '</div>';
+  backdrop.appendChild(form);
+  document.body.appendChild(backdrop);
+
+  const close = () => backdrop.remove();
+  backdrop.onclick = (e) => { if (e.target === backdrop) close(); };
+  document.getElementById('pub-cancel').onclick = close;
+  document.getElementById('pub-confirm').onclick = async () => {
+    const btn = document.getElementById('pub-confirm');
+    btn.disabled = true; btn.textContent = 'Publishing…';
+    try {
+      const message = document.getElementById('pub-msg').value.trim();
+      const r = await api('/api/git/publish', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message }) });
+      toast('Pushed ' + r.sha + ' to ' + r.branch + ' (' + r.filesCount + ' file(s))');
+      close();
+      refreshPublishStatus();
+    } catch (e) {
+      toast(e.message, true);
+      btn.disabled = false; btn.textContent = 'Commit & push';
+    }
+  };
+}
+document.getElementById('pub-btn').onclick = openPublishModal;
 function galleryIds() { return STATE.galleries.map((g) => g.id); }
 function imgUrl(gallery, im) {
   const dir = im.archived ? '_archive/' + gallery.id : gallery.folder.replace(/^images\//, '').replace(/\/$/, '');
@@ -279,15 +362,23 @@ function openMetaEditor(gallery, im) {
 function renderGalleries() {
   const main = document.getElementById('panel-galleries');
   main.innerHTML = '';
-  const note = document.createElement('p');
-  note.style.color = '#888';
-  note.innerHTML = 'Every gallery — including <b>trunk</b> and every <b>branch-*</b> — can now be archived, moved, reordered and edited freely (see .admin/README.md for why that used to be restricted, and how the addressing was fixed so it no longer needs to be).';
-  main.appendChild(note);
+  const toolbar = document.createElement('div'); toolbar.className = 'tab-toolbar';
+  toolbar.innerHTML = '<span class="hint">' + STATE.galleries.length + ' galleries — trunk/branch-* included, same as any other</span>';
+  const expandBtn = document.createElement('button'); expandBtn.type = 'button'; expandBtn.className = 'expand-all'; expandBtn.textContent = 'Expand all';
+  let allExpanded = false;
+  expandBtn.onclick = () => {
+    allExpanded = !allExpanded;
+    main.querySelectorAll('.gallery').forEach((w) => w.classList.toggle('collapsed', !allExpanded));
+    expandBtn.textContent = allExpanded ? 'Collapse all' : 'Expand all';
+  };
+  toolbar.appendChild(expandBtn);
+  main.appendChild(toolbar);
+
   STATE.galleries.forEach((g) => {
-    const wrap = document.createElement('div'); wrap.className = 'gallery';
+    const wrap = document.createElement('div'); wrap.className = 'gallery collapsed';
     const head = document.createElement('div'); head.className = 'g-head';
     const archivedCount = g.images.filter((i) => i.archived).length;
-    head.innerHTML = '<b>' + g.id + '</b><span class="count">' + g.images.length + ' image(s), ' + archivedCount + ' archived</span>';
+    head.innerHTML = '<b>' + g.id + '</b><span class="count">' + g.images.length + ' image(s)' + (archivedCount ? ', <span class="archcount">' + archivedCount + ' archived</span>' : '') + '</span>';
     head.onclick = () => wrap.classList.toggle('collapsed');
     wrap.appendChild(head);
     const grid = document.createElement('div'); grid.className = 'grid';
@@ -536,6 +627,7 @@ document.querySelectorAll('nav.tabs button').forEach((btn) => {
       '<section class="tabpanel" id="panel-upload"></section>' +
       '<section class="tabpanel" id="panel-newbranch"></section>';
     renderAll();
+    refreshPublishStatus();
   } catch (e) {
     document.getElementById('main').textContent = 'Failed to load: ' + e.message;
   }

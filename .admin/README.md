@@ -6,12 +6,25 @@ branch-* — manage branches and trunk anchors, edit museum-label
 metadata, and archive/restore — without hand-editing
 `js/gallery-data.js` / `js/trunk-data.js`.
 
-**Local only. Never deployed, never public, never runs git.** It binds to
-`127.0.0.1` only. Every action edits `js/gallery-data.js` and/or
-`js/trunk-data.js` and moves/writes real files under `images/`, but it
-never stages, commits, or pushes anything — review the diff
-(`git status` / `git diff`) and commit it yourself, same as any other
-change.
+**Local only. Never deployed, never public.** It binds to `127.0.0.1`
+only. Every action edits `js/gallery-data.js` and/or `js/trunk-data.js`
+and moves/writes real files under `images/`.
+
+**Publish (2026-11-13)** — the "Publish" button in the header commits
+and pushes, but **only** `images/`, `js/gallery-data.js`,
+`js/trunk-data.js`, and `js/responsive-manifest.js`. This was a deliberate
+narrowing of the tool's original "never touches git" design, scoped to
+exactly what this tool can edit — not a blanket `git add -A`. It stages
+those paths explicitly, then re-checks what actually got staged against
+the same whitelist before committing; if anything else is dirty in the
+working tree for an unrelated reason (this folder is a shared git
+worktree in Claude Code sessions), Publish leaves it alone and refuses
+rather than guess. The commit message defaults to a generic one if you
+leave it blank. A failed push after a successful commit is reported as
+such — nothing is lost, your change is safe locally, just push again
+(e.g. after pulling first if the remote moved).
+You can still use `git status` / `git diff` / commit by hand any time —
+Publish is a convenience on top, not a replacement.
 
 ## Run it
 
@@ -163,7 +176,18 @@ anchor" picker — shows a small real thumbnail, not just a filename.
 Served via `/thumb/<dir>/<file>`, which prefers an existing `-800w`
 `.webp`/`.avif` responsive derivative and only falls back to the full
 original if neither exists — it never generates a new derivative, so
-this adds zero image-processing work.
+this adds zero image-processing work. Sizes: 112px for an anchor's own
+photo, 88px for each related-branch entry, 140px in the attach/create
+pickers (bumped from an initial pass that was too small to actually see
+what you're picking).
+
+### Galleries tab: collapsed by default
+With 25+ galleries this page got long fast. Every gallery now starts
+collapsed (header shows image + archived counts; click to expand), with
+an "Expand all" toggle in the toolbar for when you want to browse
+broadly. A collapsed gallery's images don't even load (`loading="lazy"`
+inside a `display:none` grid never fires), so this is also faster on
+first load.
 
 ### Auto-translate the `title` field
 When editing `title` ("Edit label…" in the Galleries tab, or the Upload
@@ -284,6 +308,22 @@ stays manual.
   trust the round-trip assertions over a visual read of the diff; two of
   the three only showed up once tested against a real single-line or
   multi-entry array, not the first (simpler) case tried.
+
+  **A fourth shipped live and corrupted real data (2026-11-13)**:
+  `insertIntoArrayAt`'s append-at-the-end branch decided whether a
+  separating comma was needed by checking if the trimmed tail literally
+  ended in `,` — but a moved/removed anchor can leave its own preceding
+  `/* comment */` orphaned at the array's tail (see the known limitation
+  above), and `*/` isn't `,`. Reordering an anchor to "append" within its
+  own set, when it was already last, hit exactly this: it inserted an
+  extra comma after the orphaned comment, creating an array hole that
+  `JSON.stringify` turns into a literal `null` — which then crashed the
+  admin UI reading `.file` off it. Fixed by stripping trailing block
+  comments before checking for a trailing comma; caught the real
+  reproduction case (reordering the current build's actual last anchor,
+  `t16`) as a permanent regression test in `test_textedit.js` section 5.
+  The fix was found by reproducing the exact failing action against the
+  real file, not by inspecting the diff and guessing.
 - If this tool's scope ever needs to grow further, prefer adding a new
   narrow primitive in `textedit.js` with its own round-trip test over
   generalizing the existing ones — the whole point is that each
