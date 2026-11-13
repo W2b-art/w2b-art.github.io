@@ -27,7 +27,7 @@ const RESPONSIVE_SCRIPT = path.join(ROOT, '.build', 'responsive.js');
 const te = require('./lib/textedit');
 const {
   setArchived, setMetaField, trilingualLiteral, yearLiteral,
-  placeImage, insertNewImage, createGallery,
+  placeImage, insertNewImage, createGallery, setGalleryTitle,
   reorderTrunkAnchor, createTrunkAnchor, addRelated, removeRelated, reorderRelated, detachBranch,
   findGallerySpan, findTrunkAnchor
 } = te;
@@ -377,6 +377,16 @@ function applyAction(action) {
     const newG = createGallery(gsrc, id, folder || ('images/' + id + '/'), title);
     fs.writeFileSync(GALLERY_DATA_PATH, newG);
     fs.mkdirSync(path.join(ROOT, (folder || ('images/' + id + '/')).replace(/\//g, path.sep)), { recursive: true });
+    return { ok: true };
+  }
+
+  if (action.type === 'set-gallery-title') {
+    // renames the gallery/branch's own display name (GALLERY_DATA[id].title)
+    // — not a photo's museum-label title, that's set-meta.
+    const { gallery, title } = action;
+    if (!title || !title.en || !title.fr || !title.es) throw new Error('set-gallery-title: title (en/fr/es) is required');
+    const newG = setGalleryTitle(gsrc, gallery, title);
+    fs.writeFileSync(GALLERY_DATA_PATH, newG);
     return { ok: true };
   }
 
