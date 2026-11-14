@@ -41,10 +41,6 @@
 
 const TRUNK_MANIFEST_CURRENT = [
 
-  /* anchor: bailar la ciudad.jpg — opens the bailar-la-ciudad branch (7
-     related: 4 portraits + 3 exhibition-install shots added 2026-10-31).
-     Statement = real paragraph from the dossier (D:\Documents\
-     W2b-Portfolio-Dossier-v3\index.html, p10 "desc"). */
   { id:'t08', series:'trunk', file:'street-dancer-colombia-jersey-motion-night-w2b.jpg', related:[
     {series:'branch-bailar-la-ciudad',file:'man-trucker-cap-sunglasses-night-portrait-black-white-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'men-streetwear-cap-flip-night-black-white-w2b.jpg'},
@@ -53,11 +49,15 @@ const TRUNK_MANIFEST_CURRENT = [
     {series:'branch-bailar-la-ciudad',file:'palacio-bellas-artes-facade-installation-print-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'bailar-la-ciudad-exhibition-panel-detail-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'cypher-miraflores-fanzine-stack-wood-table-w2b.jpg'}
-  ], statement:{
+], statement:{
     fr:"Cinq mois à suivre les danseurs de hip-hop de Medellín, cyphers et battles de quartier en quartier : je veux montrer l'espace public comme un lieu que l'on choisit d'occuper et non pas uniquement à traverser. Un premier tirage a été présenté lors de cette même exposition, sous la direction du professeur Enrique Aguirre. Le travail continue vers une exposition complète, et vers un fanzine imprimé : Cypher Miraflores. En parallèle, je construis avec eux un projet plus ample : réunir une trentaine de danseurs pour un cypher photographique unique, pensé comme une œuvre collective, vers une exposition et un livre.",
     es:"Cinco meses siguiendo a los bailarines de hip hop de Medellín, cyphers y batallas de barrio en barrio: quiero mostrar el espacio público como un lugar que se elige ocupar, no solo atravesar. Un primer tiraje se presentó en esa misma exposición, bajo la dirección del profesor Enrique Aguirre. El trabajo sigue avanzando hacia una exposición completa y un fanzine impreso: Cypher Miraflores. En paralelo, construyo con ellos un proyecto más amplio: reunir a una treintena de bailarines para un cypher fotográfico único, pensado como una obra colectiva, hacia una exposición y un libro.",
     en:"Five months following Medellín's hip-hop dancers, cyphers and battles from one neighborhood to the next: I want to show public space as something you choose to occupy, not just pass through. A first print was shown at that same exhibition, under the direction of professor Enrique Aguirre. The work is moving toward a full exhibition and a printed fanzine: Cypher Miraflores. Alongside it, I'm building something larger with them: bringing together some thirty dancers for a single photographic cypher, conceived as a collective work, toward an exhibition and a book."
   } },
+  /* anchor: bailar la ciudad.jpg — opens the bailar-la-ciudad branch (7
+     related: 4 portraits + 3 exhibition-install shots added 2026-10-31).
+     Statement = real paragraph from the dossier (D:\Documents\
+     W2b-Portfolio-Dossier-v3\index.html, p10 "desc"). */
 
   /* anchor: proyecto bella artes-24.jpg — opens the lo-que-dejamos branch (7
      related: 4 location photos + 3 exhibition-install shots added
