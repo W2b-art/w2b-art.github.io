@@ -88,6 +88,8 @@
   .pick-thumb img { width: 140px; height: 140px; object-fit: cover; border-radius: 5px; display: block; }
   .pick-thumb:hover { border-color: #487; }
   .pick-thumb.sel { border-color: #6c9; }
+  .pick-thumb.archived { opacity: .5; }
+  .pick-thumb.archived.sel { opacity: 1; }
   .pick-thumb .pt-fn { position: absolute; left: 0; right: 0; bottom: 0; font-size: 10px; background: rgba(0,0,0,.7); color: #ccc; padding: 3px 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-radius: 0 0 5px 5px; }
   .toast { position: fixed; bottom: 16px; right: 16px; background: #222; border: 1px solid #444; padding: 10px 16px; border-radius: 6px; max-width: 360px; font-size: 13px; z-index: 50; }
   .toast.err { border-color: #633; color: #f99; }
@@ -520,6 +522,8 @@ function openDeleteBranchConfirm(gallery) {
   document.querySelectorAll('.modal-backdrop').forEach((n) => n.remove());
   const liveCount = gallery.images.filter((i) => !i.archived).length;
   const archivedCount = gallery.images.length - liveCount;
+  const attachedAnchors = [...STATE.trunk.current, ...STATE.trunk.other].filter((e) => (e.related || []).some((r) => r.series === gallery.id));
+  const anchorsWithStatement = attachedAnchors.filter((e) => e.hasStatement);
   const backdrop = document.createElement('div');
   backdrop.className = 'modal-backdrop';
   backdrop.style = 'position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:60;';
@@ -529,7 +533,13 @@ function openDeleteBranchConfirm(gallery) {
   form.innerHTML = '<h3 style="color:#f99;">Delete ' + gallery.id + '</h3>' +
     '<div class="hint">This will archive ' + liveCount + ' photo(s) still live in this branch (moved to images/_archive/' + gallery.id + '/, never deleted)' +
     (archivedCount ? ' — ' + archivedCount + ' already archived in it are left where they are' : '') +
-    ', detach it from any trunk anchor still pointing at it, then remove the branch itself (the empty gallery entry and its folder). This cannot be undone from inside this tool.</div>' +
+    (attachedAnchors.length
+      ? ', and delete the anchor' + (attachedAnchors.length > 1 ? 's' : '') + ' ' + attachedAnchors.map((e) => e.id).join(', ') + ' entirely (its own photo is kept, unpromoted, in the trunk pool — only the clickable anchor tile and its link to this branch go away).'
+      : ', then remove the branch itself (the empty gallery entry and its folder).') +
+    (anchorsWithStatement.length
+      ? '<br><b style="color:#f99;">' + anchorsWithStatement.map((e) => e.id).join(', ') + ' has a written statement — deleting the anchor deletes that text too, it is not kept anywhere.</b>'
+      : '') +
+    ' This cannot be undone from inside this tool.</div>' +
     '<label>Type <b>' + gallery.id + '</b> to confirm</label>' +
     '<input id="db-confirm" placeholder="' + gallery.id + '" autocomplete="off">' +
     '<div style="display:flex;gap:10px;margin-top:14px;">' +
@@ -762,8 +772,15 @@ function openAddPhotoToBranch(branchGallery, attachAnchorId) {
     try {
       for (const { source, g, i } of items) {
         if (source === 'archive') await doAction({ type: 'unarchive', gallery: g.id, file: i.file }, null, true);
-        if (g.id !== branchGallery.id) await doAction({ type: 'place', from: g.id, to: branchGallery.id, file: i.file }, null, true);
-        await doAction({ type: 'branch-add-related', trunkId: attachAnchorId, branchSeries: branchGallery.id, file: i.file }, null, true);
+        if (g.id !== branchGallery.id) {
+          // place already attaches it into the branch's related[] too
+          // (server-side, so every other "move into a branch" path gets
+          // the same behavior) — only call branch-add-related ourselves
+          // for the no-move case below, so it isn't attached twice.
+          await doAction({ type: 'place', from: g.id, to: branchGallery.id, file: i.file }, null, true);
+        } else {
+          await doAction({ type: 'branch-add-related', trunkId: attachAnchorId, branchSeries: branchGallery.id, file: i.file }, null, true);
+        }
         done++;
       }
       toast('Added ' + done + ' photo(s) to ' + branchGallery.id);
@@ -899,7 +916,8 @@ function trunkRow(set, e) {
       moveGrp2.appendChild(moveSel);
       actions.appendChild(moveGrp2);
       const rm = document.createElement('button'); rm.className = 'danger'; rm.textContent = 'Remove';
-      rm.onclick = () => doAction({ type: 'branch-remove-related', trunkId: e.id, file: r.file }, 'Removed ' + r.file + ' from ' + e.id);
+      rm.title = 'unlinks this photo from ' + e.id + ' — the photo itself stays in ' + r.series + ', only the link is removed';
+      rm.onclick = () => { if (confirm('Remove ' + r.file + ' from ' + e.id + '? The photo stays in ' + r.series + ", only the link here is removed — there's no undo button, you'd have to re-add it by hand.")) doAction({ type: 'branch-remove-related', trunkId: e.id, file: r.file }, 'Removed ' + r.file + ' from ' + e.id); };
       actions.appendChild(rm);
       rc.appendChild(actions);
       grid.appendChild(rc);
@@ -960,31 +978,54 @@ function renderTrunk() {
 
   // create a brand-new trunk anchor from a photo already in GALLERY_DATA.trunk.images
   const form = document.createElement('form'); form.className = 'panel';
-  form.innerHTML = '<h3>New trunk anchor</h3><div class="hint">Promotes a photo already in gallery-data.js\'s "trunk" series to a clickable anchor on one of the two pages. Upload into "trunk" first (Upload tab) if the photo isn\'t there yet. Click a photo below to pick it.</div>';
+  form.innerHTML = '<h3>New trunk anchor</h3><div class="hint">Promotes a photo already in gallery-data.js\'s "trunk" series to a clickable anchor on one of the two pages. Upload into "trunk" first (Upload tab) if the photo isn\'t there yet. Only photos not already an anchor are offered, sorted by filename. Click one to pick it.</div>';
   const trunkGallery = STATE.galleries.find((g) => g.id === 'trunk');
-  const grid = document.createElement('div'); grid.className = 'pick-grid';
-  let pickedFile = null;
-  (trunkGallery ? trunkGallery.images : []).filter((i) => !i.archived).forEach((i) => {
-    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb'; btn.title = i.file;
-    const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(trunkGallery, i);
-    btn.appendChild(img);
-    const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
-    btn.appendChild(fnTag);
-    btn.onclick = () => {
-      pickedFile = i.file;
-      grid.querySelectorAll('.pick-thumb').forEach((b) => b.classList.remove('sel'));
-      btn.classList.add('sel');
-    };
-    grid.appendChild(btn);
-  });
+  let pickedFile = null, pickedArchived = false;
+
+  // Every photo already promoted to an anchor, on either page — excluded
+  // below so this picker only ever shows genuinely unused trunk photos,
+  // never a duplicate of an existing anchor.
+  const usedFiles = new Set([...STATE.trunk.current, ...STATE.trunk.other].map((e) => e.file));
+  const pool = (trunkGallery ? trunkGallery.images : []).filter((i) => !usedFiles.has(i.file));
+  const available = pool.filter((i) => !i.archived).sort((a, b) => a.file.localeCompare(b.file));
+  const archived = pool.filter((i) => i.archived).sort((a, b) => a.file.localeCompare(b.file));
+
+  function pickGrid(label, items, isArchived) {
+    if (!items.length) return null;
+    const wrap = document.createElement('div');
+    const lab = document.createElement('label'); lab.textContent = label + ' (' + items.length + ')'; wrap.appendChild(lab);
+    const grid = document.createElement('div'); grid.className = 'pick-grid';
+    items.forEach((i) => {
+      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb' + (isArchived ? ' archived' : ''); btn.title = i.file;
+      const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(trunkGallery, i);
+      btn.appendChild(img);
+      const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
+      btn.appendChild(fnTag);
+      btn.onclick = () => {
+        pickedFile = i.file; pickedArchived = isArchived;
+        form.querySelectorAll('.pick-thumb').forEach((b) => b.classList.remove('sel'));
+        btn.classList.add('sel');
+      };
+      grid.appendChild(btn);
+    });
+    wrap.appendChild(grid);
+    return wrap;
+  }
+  const availableGrid = pickGrid('Available', available, false);
+  if (availableGrid) form.appendChild(availableGrid);
+  const archivedGrid = pickGrid('Archived — picking one restores it first', archived, true);
+  if (archivedGrid) form.appendChild(archivedGrid);
+  if (!available.length && !archived.length) { const p = document.createElement('p'); p.className = 'hint'; p.textContent = 'Every photo in "trunk" is already an anchor — upload a new one first.'; form.appendChild(p); }
+
   const setSel = document.createElement('select');
   [['current', 'Oeuvre actuelle'], ['other', 'Autres travaux']].forEach(([v, l]) => { const o = document.createElement('option'); o.value = v; o.textContent = l; setSel.appendChild(o); });
   const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'submit'; btn.textContent = 'Create anchor';
-  btn.onclick = () => {
+  btn.onclick = async () => {
     if (!pickedFile) { toast('pick a photo first', true); return; }
+    if (pickedArchived) await doAction({ type: 'unarchive', gallery: 'trunk', file: pickedFile }, null, true);
     doAction({ type: 'trunk-create-anchor', toSet: setSel.value, file: pickedFile }, 'Anchor created');
   };
-  form.appendChild(grid); form.appendChild(setSel); form.appendChild(btn);
+  form.appendChild(setSel); form.appendChild(btn);
   main.appendChild(form);
 }
 

@@ -28,7 +28,7 @@ const te = require('./lib/textedit');
 const {
   setArchived, setMetaField, trilingualLiteral, yearLiteral,
   placeImage, insertNewImage, createGallery, setGalleryTitle, deleteGallery,
-  reorderTrunkAnchor, createTrunkAnchor, addRelated, removeRelated, reorderRelated, detachBranch,
+  reorderTrunkAnchor, createTrunkAnchor, addRelated, removeRelated, reorderRelated, detachBranch, deleteTrunkAnchor,
   setTrunkAnchorFile,
   findGallerySpan, findTrunkAnchor
 } = te;
@@ -344,6 +344,21 @@ function findAnchorIdForRelated(TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER, se
   return null;
 }
 
+// The anchor (if any) that already claims `branchSeries` as its attached
+// branch — i.e. some other file with that series already sits in its
+// related[]. Mirrors findAnchorIdForRelated's detach-on-move-out: this is
+// the symmetric attach-on-move-in, so placing a photo into a branch that's
+// already hooked up to an anchor keeps it visible on Trunk/branches
+// without a separate manual "attach" step.
+function findAnchorIdForBranch(TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER, branchSeries) {
+  for (const arr of [TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER]) {
+    for (const e of arr) {
+      if ((e.related || []).some((r) => r.series === branchSeries)) return e.id;
+    }
+  }
+  return null;
+}
+
 function applyAction(action) {
   const { gsrc, tsrc, GALLERY_DATA, TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER } = loadDataFiles();
 
@@ -372,6 +387,9 @@ function applyAction(action) {
       moveFiles(fromFolder, toFolder, file);
       const anchorId = findAnchorIdForRelated(TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER, from, file);
       if (anchorId) newT = removeRelated(tsrc, anchorId, file);
+      const destAnchor = [...TRUNK_MANIFEST_CURRENT, ...TRUNK_MANIFEST_OTHER].find((e) => (e.related || []).some((r) => r.series === to));
+      const alreadyRelated = destAnchor && (destAnchor.related || []).some((r) => r.series === to && r.file === file);
+      if (destAnchor && !alreadyRelated) newT = addRelated(newT, destAnchor.id, to, file, undefined);
     }
     fs.writeFileSync(GALLERY_DATA_PATH, newG);
     if (newT !== tsrc) fs.writeFileSync(TRUNK_DATA_PATH, newT);
@@ -504,9 +522,10 @@ function applyAction(action) {
 
   if (action.type === 'delete-branch') {
     // Archives every still-live photo (file move only — never fs.unlink,
-    // same as every other archive in this tool), detaches it from any
-    // anchor still pointing at it, then removes the now-empty
-    // "branch-xxx": {images:[]} entry and its now-empty folder. The UI
+    // same as every other archive in this tool), deletes any anchor(s)
+    // still pointing at it (the anchor's own photo is kept, unpromoted,
+    // in the trunk pool), then removes the now-empty "branch-xxx":
+    // {images:[]} entry and its now-empty folder. The UI
     // confirmation for this lives in admin.html (type-to-confirm) — this
     // handler itself does not re-confirm, by design: it's meant to be
     // called only after that gate has already passed.
@@ -527,7 +546,12 @@ function applyAction(action) {
         if ((e.related || []).some((r) => r.series === gallery)) attachedTo.push(e.id);
       }
     }
-    for (const id of attachedTo) newT = detachBranch(newT, id);
+    // Deleting a branch retires the anchor(s) that pointed at it too —
+    // a branch-less anchor is just clutter ("no branch yet" on a tile
+    // that used to have real work). The anchor's own photo is kept,
+    // unpromoted, in the trunk pool; only the tile and its statement
+    // (if any) go away, same as deleteTrunkAnchor's own contract.
+    for (const id of attachedTo) newT = deleteTrunkAnchor(newT, id);
     if (newT !== tsrc) fs.writeFileSync(TRUNK_DATA_PATH, newT);
 
     const newG = deleteGallery(gsrc, gallery);
@@ -535,7 +559,7 @@ function applyAction(action) {
 
     try { fs.rmdirSync(liveFolder); } catch (e) { /* best-effort: non-empty for an unexpected reason, or already gone — leave it rather than force */ }
 
-    return { ok: true, archivedCount: toArchive.length, detachedFrom: attachedTo };
+    return { ok: true, archivedCount: toArchive.length, deletedAnchors: attachedTo };
   }
 
   if (action.type === 'replace-anchor-photo') {

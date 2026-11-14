@@ -784,6 +784,25 @@ function detachBranch(src, trunkId) {
   return src.slice(0, cutStart) + src.slice(cutEnd);
 }
 
+/* Remove a trunk anchor entirely (the whole {id,series,file,related?,
+   statement?} object, plus any comment block directly above it) from
+   whichever of the two manifests it's in. Its own photo in
+   GALLERY_DATA.trunk.images is left alone — it just stops being an
+   anchor and goes back to being an ordinary, unpromoted trunk photo
+   (same as replace-anchor-photo leaves the photo it replaces). Used
+   when deleting a branch also retires the anchor that pointed at it,
+   so Trunk/branches doesn't accumulate empty "no branch yet" anchors. */
+function deleteTrunkAnchor(src, trunkId) {
+  const found = findTrunkAnchor(src, trunkId);
+  let end = found.objEnd;
+  while (src[end] === ' ') end++;
+  if (src[end] === ',') end++;
+  if (src[end] === '\r') end++;
+  if (src[end] === '\n') end++;
+  const start = lineStartOf(src, found.objStart, found.setSpan.start);
+  return stripDanglingTrailingComma(src.slice(0, start) + src.slice(end), start);
+}
+
 module.exports = {
   // scanning
   scanMatch, scanOpenBackward, splitTopLevelElements, splitTopLevelFields,
@@ -800,5 +819,5 @@ module.exports = {
   createGallery, setGalleryTitle, deleteGallery,
   // trunk/branch management
   findTrunkAnchor, nextTrunkId, reorderTrunkAnchor, moveTrunkAnchor, createTrunkAnchor,
-  addRelated, removeRelated, reorderRelated, detachBranch, setTrunkAnchorFile
+  addRelated, removeRelated, reorderRelated, detachBranch, deleteTrunkAnchor, setTrunkAnchorFile
 };
