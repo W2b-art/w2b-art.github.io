@@ -67,7 +67,11 @@
   .rel-card { width: 112px; }
   .rel-card .rel-fn { display: block; font-size: 9px; color: #999; word-break: break-all; margin: 5px 0 4px; max-height: 2.4em; overflow: hidden; }
   .rel-card .rel-actions { display: flex; flex-wrap: wrap; gap: 3px; }
+  .rel-card .rel-actions > button[type="button"]:first-child { flex: 1 1 100%; }
+  .rel-card .reorder-grp { display: flex; gap: 3px; flex: 1 1 100%; }
+  .rel-card .reorder-grp button { flex: 1; }
   .rel-card .rel-actions input.posnum { width: 30px; }
+  .rel-card .rel-actions > button.danger { flex: 1 1 100%; }
   .trunk-card button, .trunk-card select, .trunk-card input { font-size: 11px; padding: 5px 8px; background: #2a2a2a; color: #eee; border: 1px solid #3a3a3a; border-radius: 4px; }
   .trunk-card button { cursor: pointer; }
   .trunk-card button:hover { background: #3a3a3a; }
@@ -349,6 +353,25 @@ function card(gallery, im) {
   return div;
 }
 
+// Guillaume's whole body of work only ever has one of these two media —
+// no manual trilingual typing needed, just pick one. One-line addition
+// here if a third ever shows up; not a generic tag system on purpose.
+const MEDIUM_LOOKUP = {
+  digital: { en: 'Digital photograph', fr: 'Photographie numérique', es: 'Fotografía digital' },
+  analog: { en: 'Analog photograph', fr: 'Photographie argentique', es: 'Fotografía analógica' }
+};
+function mediumSelectHtml(id) {
+  return '<select id="' + id + '"><option value="">— not set —</option><option value="digital">Digital</option><option value="analog">Analog · Film</option></select>';
+}
+// Which lookup key (if any) a stored {en,fr,es} medium value matches —
+// used to pre-select the right option when editing a photo that already
+// has one set.
+function mediumKeyFor(m) {
+  if (!m) return '';
+  const key = Object.keys(MEDIUM_LOOKUP).find((k) => MEDIUM_LOOKUP[k].en === m.en);
+  return key || '';
+}
+
 function openMetaEditor(gallery, im) {
   const t = im.title || { en: '', fr: '', es: '' };
   const m = im.medium || { en: '', fr: '', es: '' };
@@ -360,12 +383,12 @@ function openMetaEditor(gallery, im) {
   form.className = 'panel';
   form.style = 'margin:0;max-height:90vh;overflow:auto;';
   form.innerHTML = '<h3>Edit label — ' + im.file + '</h3>' +
+    '<img src="' + thumbUrl(gallery, im) + '" style="width:96px;height:96px;object-fit:cover;border-radius:6px;display:block;margin-bottom:12px;background:#000;">' +
     '<label>Title (auto-translates the other two languages on blur — edit any field afterward to stop it being overwritten) — EN / FR / ES</label>' +
     '<div class="row3"><input id="me-title-en" placeholder="EN"><input id="me-title-fr" placeholder="FR"><input id="me-title-es" placeholder="ES"></div>' +
-    '<label>Medium (wording differs per language — typed by hand, not auto-translated) — EN / FR / ES</label>' +
-    '<div class="row3"><input id="me-medium-en" placeholder="EN"><input id="me-medium-fr" placeholder="FR"><input id="me-medium-es" placeholder="ES"></div>' +
+    '<label>Medium</label>' + mediumSelectHtml('me-medium') +
     '<label>Year</label><input type="number" id="me-year" min="1900" max="2100">' +
-    '<div class="hint">Leave Title/EN blank to clear all three title fields on submit; same for Medium/EN.</div>' +
+    '<div class="hint">Leave Title/EN blank to clear all three title fields on submit.</div>' +
     '<div style="display:flex;gap:10px;margin-top:14px;">' +
     '<button type="button" class="submit" id="me-submit">Save</button>' +
     '<button type="button" id="me-cancel" style="padding:9px 18px;background:#2a2a2a;border:1px solid #3a3a3a;color:#eee;border-radius:6px;cursor:pointer;">Cancel</button>' +
@@ -376,9 +399,7 @@ function openMetaEditor(gallery, im) {
   document.getElementById('me-title-en').value = t.en || '';
   document.getElementById('me-title-fr').value = t.fr || '';
   document.getElementById('me-title-es').value = t.es || '';
-  document.getElementById('me-medium-en').value = m.en || '';
-  document.getElementById('me-medium-fr').value = m.fr || '';
-  document.getElementById('me-medium-es').value = m.es || '';
+  document.getElementById('me-medium').value = mediumKeyFor(m);
   document.getElementById('me-year').value = im.year || '';
 
   wireAutoTranslate({
@@ -394,14 +415,12 @@ function openMetaEditor(gallery, im) {
     const en = document.getElementById('me-title-en').value.trim();
     const fr = document.getElementById('me-title-fr').value.trim();
     const es = document.getElementById('me-title-es').value.trim();
-    const medEn = document.getElementById('me-medium-en').value.trim();
-    const medFr = document.getElementById('me-medium-fr').value.trim();
-    const medEs = document.getElementById('me-medium-es').value.trim();
+    const mediumKey = document.getElementById('me-medium').value;
     const year = document.getElementById('me-year').value.trim();
 
     const jobs = [];
     jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'title', value: en ? { en, fr: fr || en, es: es || en } : null }));
-    jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'medium', value: medEn ? { en: medEn, fr: medFr || medEn, es: medEs || medEn } : null }));
+    jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'medium', value: mediumKey ? MEDIUM_LOOKUP[mediumKey] : null }));
     jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'year', value: year ? Number(year) : null }));
     Promise.all(jobs).then(close).catch(() => {});
   };
@@ -453,6 +472,49 @@ function openGalleryTitleEditor(gallery) {
   };
 }
 
+// Permanently removes a branch-* gallery: archives every still-live
+// photo in it (file move only, never deleted), detaches it from any
+// anchor, then drops the now-empty data entry and folder. Destructive
+// enough that Guillaume clicking this himself needs the safety built
+// into the UI, not a conversation with me first — hence type-the-id-to-
+// confirm rather than a single OK/Cancel dialog that's easy to blow
+// through on autopilot.
+function openDeleteBranchConfirm(gallery) {
+  document.querySelectorAll('.modal-backdrop').forEach((n) => n.remove());
+  const liveCount = gallery.images.filter((i) => !i.archived).length;
+  const archivedCount = gallery.images.length - liveCount;
+  const backdrop = document.createElement('div');
+  backdrop.className = 'modal-backdrop';
+  backdrop.style = 'position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:60;';
+  const form = document.createElement('form');
+  form.className = 'panel';
+  form.style = 'margin:0;max-width:480px;';
+  form.innerHTML = '<h3 style="color:#f99;">Delete ' + gallery.id + '</h3>' +
+    '<div class="hint">This will archive ' + liveCount + ' photo(s) still live in this branch (moved to images/_archive/' + gallery.id + '/, never deleted)' +
+    (archivedCount ? ' — ' + archivedCount + ' already archived in it are left where they are' : '') +
+    ', detach it from any trunk anchor still pointing at it, then remove the branch itself (the empty gallery entry and its folder). This cannot be undone from inside this tool.</div>' +
+    '<label>Type <b>' + gallery.id + '</b> to confirm</label>' +
+    '<input id="db-confirm" placeholder="' + gallery.id + '" autocomplete="off">' +
+    '<div style="display:flex;gap:10px;margin-top:14px;">' +
+    '<button type="button" class="submit danger" id="db-submit" disabled>Delete branch</button>' +
+    '<button type="button" id="db-cancel" style="padding:9px 18px;background:#2a2a2a;border:1px solid #3a3a3a;color:#eee;border-radius:6px;cursor:pointer;">Cancel</button>' +
+    '</div>';
+  backdrop.appendChild(form);
+  document.body.appendChild(backdrop);
+
+  const input = document.getElementById('db-confirm');
+  const submitBtn = document.getElementById('db-submit');
+  submitBtn.style.background = '#522'; submitBtn.style.borderColor = '#844';
+  input.oninput = () => { submitBtn.disabled = input.value.trim() !== gallery.id; };
+  const close = () => backdrop.remove();
+  backdrop.onclick = (ev) => { if (ev.target === backdrop) close(); };
+  document.getElementById('db-cancel').onclick = close;
+  submitBtn.onclick = () => {
+    if (input.value.trim() !== gallery.id) return;
+    doAction({ type: 'delete-branch', gallery: gallery.id }, gallery.id + ' deleted').then(close).catch(() => {});
+  };
+}
+
 function renderGalleries() {
   const main = document.getElementById('panel-galleries');
   main.innerHTML = '';
@@ -478,6 +540,11 @@ function renderGalleries() {
     renameBtn.style.marginLeft = 'auto';
     renameBtn.onclick = (ev) => { ev.stopPropagation(); openGalleryTitleEditor(g); };
     head.appendChild(renameBtn);
+    if (g.id.startsWith('branch-')) {
+      const deleteBtn = document.createElement('button'); deleteBtn.type = 'button'; deleteBtn.className = 'ghead-btn'; deleteBtn.textContent = 'Delete branch'; deleteBtn.style.borderColor = '#633'; deleteBtn.style.color = '#f99';
+      deleteBtn.onclick = (ev) => { ev.stopPropagation(); openDeleteBranchConfirm(g); };
+      head.appendChild(deleteBtn);
+    }
     wrap.appendChild(head);
     const grid = document.createElement('div'); grid.className = 'grid';
     g.images.forEach((im) => grid.appendChild(card(g, im)));
@@ -494,6 +561,135 @@ function titleBtn(seriesId, file) {
     if (g && im) openMetaEditor(g, im);
   };
   return btn;
+}
+
+// Repoints anchor `trunkId` at a different photo already in
+// GALLERY_DATA.trunk.images, via a one-click picker (same immediate-on-
+// click pattern as the "attach a branch" grid) — same id, same
+// position, same related[] branch, only the picture changes. Doesn't
+// touch the old photo (stays an ordinary unattached trunk photo).
+function openReplaceAnchorPhoto(trunkId, currentFile) {
+  document.querySelectorAll('.modal-backdrop').forEach((n) => n.remove());
+  const backdrop = document.createElement('div');
+  backdrop.className = 'modal-backdrop';
+  backdrop.style = 'position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:60;';
+  const form = document.createElement('form');
+  form.className = 'panel';
+  form.style = 'margin:0;max-width:640px;max-height:85vh;overflow:auto;';
+  form.innerHTML = '<h3>Replace photo — ' + trunkId + '</h3>' +
+    '<div class="hint">Click a photo to point ' + trunkId + ' at it instead. Same id, same position, same branch attachment — only the picture changes. "' + currentFile + '" (the current one) is left as an ordinary unattached trunk photo, not archived.</div>';
+  const grid = document.createElement('div'); grid.className = 'pick-grid'; grid.style.marginTop = '10px';
+  const trunkGallery = STATE.galleries.find((g) => g.id === 'trunk');
+  (trunkGallery ? trunkGallery.images : []).filter((i) => !i.archived && i.file !== currentFile).forEach((i) => {
+    const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb'; btn.title = i.file;
+    const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(trunkGallery, i);
+    btn.appendChild(img);
+    const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
+    btn.appendChild(fnTag);
+    btn.onclick = () => doAction({ type: 'replace-anchor-photo', trunkId, file: i.file }, trunkId + ' now points to ' + i.file).then(close).catch(() => {});
+    grid.appendChild(btn);
+  });
+  form.appendChild(grid);
+  if (!grid.children.length) { const p = document.createElement('p'); p.className = 'hint'; p.textContent = 'No other un-archived photos in the trunk gallery to pick from — upload one first.'; form.appendChild(p); }
+  const cancelBtn = document.createElement('button'); cancelBtn.type = 'button'; cancelBtn.textContent = 'Cancel';
+  cancelBtn.style.cssText = 'margin-top:14px;padding:9px 18px;background:#2a2a2a;border:1px solid #3a3a3a;color:#eee;border-radius:6px;cursor:pointer;';
+  form.appendChild(cancelBtn);
+  backdrop.appendChild(form);
+  document.body.appendChild(backdrop);
+  const close = () => backdrop.remove();
+  backdrop.onclick = (ev) => { if (ev.target === backdrop) close(); };
+  cancelBtn.onclick = close;
+}
+
+// Switches to the Upload tab and pre-fills it — used so "add a brand-new
+// photo to this branch" from the Trunk tab doesn't require hunting for
+// the right gallery in a long dropdown by hand.
+function goToUpload(galleryId, attachAnchorId) {
+  document.querySelectorAll('.modal-backdrop').forEach((n) => n.remove());
+  document.querySelector('nav.tabs button[data-tab="upload"]').click();
+  const gSel = document.getElementById('up-gallery');
+  gSel.value = galleryId;
+  gSel.onchange();
+  if (attachAnchorId) document.getElementById('up-attach').value = attachAnchorId;
+}
+
+// "Add a photo to this branch" — covers both halves of the gap: pulling
+// in a photo that already lives elsewhere (live in another gallery, or
+// sitting in _archive/ from an earlier archive), and jumping to Upload
+// pre-filled for a brand-new one. Without this, the only way in was the
+// Galleries tab's per-photo "Move to…" select (for a live photo) or
+// knowing Upload's branch-target dropdown existed at all (for a new one
+// or an archived one, since restoring doesn't also relocate it).
+function openAddPhotoToBranch(branchGallery, attachAnchorId) {
+  document.querySelectorAll('.modal-backdrop').forEach((n) => n.remove());
+  const backdrop = document.createElement('div');
+  backdrop.className = 'modal-backdrop';
+  backdrop.style = 'position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:60;';
+  const form = document.createElement('form');
+  form.className = 'panel';
+  form.style = 'margin:0;max-width:680px;max-height:85vh;overflow:auto;';
+  form.innerHTML = '<h3>Add a photo to ' + branchGallery.id + '</h3>';
+  const close = () => backdrop.remove();
+
+  const liveLabel = document.createElement('label'); liveLabel.textContent = 'Bring in a photo already live in another gallery';
+  form.appendChild(liveLabel);
+  const gallerySel = document.createElement('select'); gallerySel.style.marginBottom = '8px';
+  STATE.galleries.filter((g) => g.id !== branchGallery.id).forEach((g) => { const o = document.createElement('option'); o.value = g.id; o.textContent = g.id; gallerySel.appendChild(o); });
+  gallerySel.value = 'trunk';
+  form.appendChild(gallerySel);
+  const liveGrid = document.createElement('div'); liveGrid.className = 'pick-grid';
+  function refillLiveGrid() {
+    liveGrid.innerHTML = '';
+    const g = STATE.galleries.find((x) => x.id === gallerySel.value);
+    (g ? g.images : []).filter((i) => !i.archived).forEach((i) => {
+      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb'; btn.title = i.file;
+      const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(g, i);
+      btn.appendChild(img);
+      const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
+      btn.appendChild(fnTag);
+      btn.onclick = () => doAction({ type: 'place', from: g.id, to: branchGallery.id, file: i.file }, 'Moved ' + i.file + ' to ' + branchGallery.id).then(close).catch(() => {});
+      liveGrid.appendChild(btn);
+    });
+    if (!liveGrid.children.length) liveGrid.textContent = '(no un-archived photos in ' + gallerySel.value + ')';
+  }
+  gallerySel.onchange = refillLiveGrid; refillLiveGrid();
+  form.appendChild(liveGrid);
+
+  const archived = [];
+  STATE.galleries.forEach((g) => g.images.forEach((i) => { if (i.archived) archived.push({ g, i }); }));
+  if (archived.length) {
+    const archLabel = document.createElement('label'); archLabel.style.marginTop = '14px'; archLabel.textContent = 'Or restore one from the archive (' + archived.length + ')';
+    form.appendChild(archLabel);
+    const archGrid = document.createElement('div'); archGrid.className = 'pick-grid';
+    archived.forEach(({ g, i }) => {
+      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb'; btn.title = i.file + ' (archived from ' + g.id + ')';
+      const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(g, i);
+      btn.appendChild(img);
+      const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
+      btn.appendChild(fnTag);
+      btn.onclick = async () => {
+        try {
+          await doAction({ type: 'unarchive', gallery: g.id, file: i.file }, 'Restored ' + i.file);
+          if (g.id !== branchGallery.id) await doAction({ type: 'place', from: g.id, to: branchGallery.id, file: i.file }, 'Moved ' + i.file + ' to ' + branchGallery.id);
+          close();
+        } catch (e) { /* toast already shown */ }
+      };
+      archGrid.appendChild(btn);
+    });
+    form.appendChild(archGrid);
+  }
+
+  const uploadBtn = document.createElement('button'); uploadBtn.type = 'button'; uploadBtn.className = 'submit'; uploadBtn.style.marginTop = '14px'; uploadBtn.textContent = 'Or upload a brand-new photo…';
+  uploadBtn.onclick = () => goToUpload(branchGallery.id, attachAnchorId);
+  form.appendChild(uploadBtn);
+  const cancelBtn = document.createElement('button'); cancelBtn.type = 'button'; cancelBtn.textContent = 'Cancel';
+  cancelBtn.style.cssText = 'margin-top:10px;margin-left:10px;padding:9px 18px;background:#2a2a2a;border:1px solid #3a3a3a;color:#eee;border-radius:6px;cursor:pointer;';
+  form.appendChild(cancelBtn);
+
+  backdrop.appendChild(form);
+  document.body.appendChild(backdrop);
+  backdrop.onclick = (ev) => { if (ev.target === backdrop) close(); };
+  cancelBtn.onclick = close;
 }
 
 function trunkRow(set, e) {
@@ -535,6 +731,10 @@ function trunkRow(set, e) {
   actGrp.innerHTML = '<label>Photo</label>';
   const actRow = document.createElement('div'); actRow.className = 'grp-row';
   actRow.appendChild(titleBtn('trunk', e.file));
+  const replaceBtn = document.createElement('button'); replaceBtn.type = 'button'; replaceBtn.textContent = 'Replace';
+  replaceBtn.title = 'swap the photo this anchor points to — same id, same position, same branch, only the picture changes';
+  replaceBtn.onclick = () => openReplaceAnchorPhoto(e.id, e.file);
+  actRow.appendChild(replaceBtn);
   if (e.related.length) {
     const detachBtn = document.createElement('button'); detachBtn.className = 'danger'; detachBtn.textContent = 'Detach branch';
     detachBtn.onclick = () => { if (confirm('Detach the whole branch from ' + e.id + '? The branch gallery itself is untouched, only the link is removed.')) doAction({ type: 'branch-detach', trunkId: e.id }, 'Detached branch from ' + e.id); };
@@ -556,9 +756,15 @@ function trunkRow(set, e) {
     h4.textContent = 'Branch — ' + (branchTitle || e.related[0].series) + ' — ' + e.related.length + ' related photo(s)';
     secHead.appendChild(h4);
     if (branchGallery) {
+      const addPhotoBtn = document.createElement('button'); addPhotoBtn.type = 'button'; addPhotoBtn.className = 'ghead-btn'; addPhotoBtn.textContent = 'Add photo…';
+      addPhotoBtn.onclick = () => openAddPhotoToBranch(branchGallery, e.id);
+      secHead.appendChild(addPhotoBtn);
       const renameBranchBtn = document.createElement('button'); renameBranchBtn.type = 'button'; renameBranchBtn.className = 'ghead-btn'; renameBranchBtn.textContent = 'Rename branch';
       renameBranchBtn.onclick = () => openGalleryTitleEditor(branchGallery);
       secHead.appendChild(renameBranchBtn);
+      const deleteBranchBtn = document.createElement('button'); deleteBranchBtn.type = 'button'; deleteBranchBtn.className = 'ghead-btn'; deleteBranchBtn.textContent = 'Delete branch'; deleteBranchBtn.style.borderColor = '#633'; deleteBranchBtn.style.color = '#f99';
+      deleteBranchBtn.onclick = () => openDeleteBranchConfirm(branchGallery);
+      secHead.appendChild(deleteBranchBtn);
     }
     branchSec.appendChild(secHead);
     const grid = document.createElement('div'); grid.className = 'rel-grid';
@@ -569,10 +775,29 @@ function trunkRow(set, e) {
       rc.appendChild(fnTag);
       const actions = document.createElement('div'); actions.className = 'rel-actions';
       actions.appendChild(titleBtn(r.series, r.file));
-      const rpos = document.createElement('input'); rpos.className = 'posnum'; rpos.placeholder = '#'; rpos.title = 'new position';
-      const rbtn = document.createElement('button'); rbtn.textContent = 'Reorder';
-      rbtn.onclick = () => { if (rpos.value.trim() === '') return; doAction({ type: 'branch-reorder-related', trunkId: e.id, branchSeries: r.series, file: r.file, position: Number(rpos.value) }, 'Reordered'); };
-      actions.appendChild(rpos); actions.appendChild(rbtn);
+      const reorderGrp = document.createElement('span'); reorderGrp.className = 'reorder-grp';
+      const rpos = document.createElement('input'); rpos.className = 'posnum'; rpos.placeholder = '#'; rpos.title = 'position to move this photo to (used by the Reorder button next to it)';
+      const rbtn = document.createElement('button'); rbtn.textContent = 'Reorder'; rbtn.title = 'moves this photo to the position typed in the # box';
+      rbtn.onclick = () => { if (rpos.value.trim() === '') { toast('type a position number in the # box first', true); return; } doAction({ type: 'branch-reorder-related', trunkId: e.id, branchSeries: r.series, file: r.file, position: Number(rpos.value) }, 'Reordered'); };
+      reorderGrp.appendChild(rpos); reorderGrp.appendChild(rbtn);
+      actions.appendChild(reorderGrp);
+      const moveGrp2 = document.createElement('span'); moveGrp2.className = 'reorder-grp';
+      const moveSel = document.createElement('select'); moveSel.title = 'move this photo to a different gallery';
+      const moveOpt0 = document.createElement('option'); moveOpt0.value = ''; moveOpt0.textContent = 'Move to…';
+      moveSel.appendChild(moveOpt0);
+      galleryIds().forEach((id) => { if (id === r.series) return; const o = document.createElement('option'); o.value = id; o.textContent = id; moveSel.appendChild(o); });
+      // Fires on selection itself (same pattern as the Galleries tab's own
+      // move select) rather than needing a separate "Move" click — a
+      // second click after picking a value can silently do nothing if it
+      // lands between renders, same class of bug as the Reorder/Move
+      // buttons elsewhere that DO need a second click.
+      moveSel.onchange = () => {
+        if (!moveSel.value) return;
+        const to = moveSel.value;
+        doAction({ type: 'place', from: r.series, to, file: r.file }, 'Moved ' + r.file + ' to ' + to);
+      };
+      moveGrp2.appendChild(moveSel);
+      actions.appendChild(moveGrp2);
       const rm = document.createElement('button'); rm.className = 'danger'; rm.textContent = 'Remove';
       rm.onclick = () => doAction({ type: 'branch-remove-related', trunkId: e.id, file: r.file }, 'Removed ' + r.file + ' from ' + e.id);
       actions.appendChild(rm);
@@ -599,7 +824,12 @@ function trunkRow(set, e) {
         btn.onclick = () => doAction({ type: 'branch-add-related', trunkId: e.id, branchSeries: branchSel.value, file: i.file }, 'Attached ' + i.file + ' to ' + e.id);
         grid.appendChild(btn);
       });
-      if (!grid.children.length) grid.textContent = '(no un-archived photos in this branch yet — upload one first)';
+      if (!grid.children.length) {
+        grid.textContent = '(no un-archived photos in this branch yet) ';
+        const addLink = document.createElement('button'); addLink.type = 'button'; addLink.className = 'ghead-btn'; addLink.textContent = 'Add photo…';
+        addLink.onclick = () => { const g = STATE.galleries.find((x) => x.id === branchSel.value); if (g) openAddPhotoToBranch(g, e.id); };
+        grid.appendChild(addLink);
+      }
     }
     branchSel.onchange = refillGrid; refillGrid();
     const hint = document.createElement('div'); hint.className = 'hint'; hint.style.margin = '6px 0'; hint.textContent = 'Pick a branch, then click a photo to attach it as the first related photo.';
@@ -669,8 +899,7 @@ function renderUpload() {
     '<div class="row3"><input id="up-alt-en" placeholder="EN"><input id="up-alt-fr" placeholder="FR"><input id="up-alt-es" placeholder="ES"></div>' +
     '<label>Title (optional, museum-label — EN / FR / ES)</label>' +
     '<div class="row3"><input id="up-title-en" placeholder="EN"><input id="up-title-fr" placeholder="FR"><input id="up-title-es" placeholder="ES"></div>' +
-    '<label>Medium (optional — EN / FR / ES)</label>' +
-    '<div class="row3"><input id="up-medium-en" placeholder="EN"><input id="up-medium-fr" placeholder="FR"><input id="up-medium-es" placeholder="ES"></div>' +
+    '<label>Medium (optional)</label>' + mediumSelectHtml('up-medium') +
     '<label>Year (optional)</label><input type="number" id="up-year" min="1900" max="2100">' +
     '<label>Attach to a trunk anchor\'s "more like this" (only if target gallery is a branch-*)</label>' +
     '<select id="up-attach"><option value="">— don\'t attach —</option></select>' +
@@ -714,7 +943,7 @@ function renderUpload() {
     reader.onload = async () => {
       const dataBase64 = reader.result.split(',')[1];
       const titleEn = document.getElementById('up-title-en').value.trim();
-      const medEn = document.getElementById('up-medium-en').value.trim();
+      const mediumKey = document.getElementById('up-medium').value;
       const posVal = document.getElementById('up-pos').value;
       const yearVal = document.getElementById('up-year').value;
       const action = {
@@ -725,7 +954,7 @@ function renderUpload() {
         position: posVal === '' ? undefined : Number(posVal),
         alt: { en: altEn, fr: altFr, es: altEs },
         title: titleEn ? { en: titleEn, fr: document.getElementById('up-title-fr').value.trim() || titleEn, es: document.getElementById('up-title-es').value.trim() || titleEn } : null,
-        medium: medEn ? { en: medEn, fr: document.getElementById('up-medium-fr').value.trim() || medEn, es: document.getElementById('up-medium-es').value.trim() || medEn } : null,
+        medium: mediumKey ? MEDIUM_LOOKUP[mediumKey] : null,
         year: yearVal ? Number(yearVal) : null,
         attachToTrunkId: attachSel.value || undefined
       };

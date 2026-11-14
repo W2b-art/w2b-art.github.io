@@ -5,7 +5,7 @@ const {
   setArchived, setMetaField, moveImage, placeImage, insertNewImage, createGallery,
   moveTrunkAnchor, reorderTrunkAnchor, createTrunkAnchor, addRelated, removeRelated,
   reorderRelated, detachBranch, findTrunkAnchor, nextTrunkId, trilingualLiteral, yearLiteral,
-  setGalleryTitle
+  setGalleryTitle, deleteGallery, setTrunkAnchorFile
 } = te;
 
 let failures = 0;
@@ -285,6 +285,50 @@ console.log('\n--- 9. setGalleryTitle (the gallery/branch\'s own display name) -
   let threw = false;
   try { setGalleryTitle(gsrc, 'does-not-exist', { en: 'x', fr: 'x', es: 'x' }); } catch (e) { threw = true; }
   ok(threw, 'setGalleryTitle throws on an unknown gallery id');
+}
+
+console.log('\n--- 10. deleteGallery (permanent removal of a branch\'s data entry) ---');
+{
+  const beforeIds = Object.keys(loadArray(gsrc, 'GALLERY_DATA'));
+  const d1 = deleteGallery(gsrc, 'branch-dark-bay');
+  const afterIds = Object.keys(loadArray(d1, 'GALLERY_DATA'));
+  ok(beforeIds.includes('branch-dark-bay') && !afterIds.includes('branch-dark-bay'), 'branch-dark-bay removed from GALLERY_DATA');
+  ok(afterIds.length === beforeIds.length - 1, 'exactly one gallery removed, none other');
+  ok(loadArray(d1, 'GALLERY_DATA')['branch-passage'].images.length === 1, 'neighboring gallery (branch-passage) untouched');
+  checkJs(d1, 'GALLERY_DATA still valid JS after deleteGallery');
+
+  // the actual last key in GALLERY_DATA has no trailing comma before the
+  // closing brace — same edge case the GALLERY_ORDER first-element bug
+  // taught, but on removal instead of insertion.
+  const lastId = beforeIds[beforeIds.length - 1];
+  const d2 = deleteGallery(gsrc, lastId);
+  ok(!Object.keys(loadArray(d2, 'GALLERY_DATA')).includes(lastId), 'deleting the actual last GALLERY_DATA entry works (no-trailing-comma edge case): ' + lastId);
+  checkJs(d2, 'GALLERY_DATA still valid JS after deleting the last entry');
+
+  let threw = false;
+  try { deleteGallery(gsrc, 'does-not-exist'); } catch (e) { threw = true; }
+  ok(threw, 'deleteGallery throws on an unknown gallery id');
+}
+
+console.log('\n--- 11. setTrunkAnchorFile (repoint an anchor to a different photo) ---');
+{
+  const r1 = setTrunkAnchorFile(tsrc, 't01', 'weathered-rock-formation-coastal-texture-w2b.jpg');
+  ok(r1 === tsrc, 'setting the same file is a byte-identical no-op');
+
+  const r2 = setTrunkAnchorFile(tsrc, 't01', 'SOME-OTHER-FILE-w2b.jpg');
+  checkJs(r2, 'after repointing t01 to a different file');
+  const t01after = loadArray(r2, 'TRUNK_MANIFEST_OTHER').find((e) => e.id === 't01');
+  ok(t01after.file === 'SOME-OTHER-FILE-w2b.jpg', 't01 repointed to the new file');
+  const relBefore = JSON.stringify(loadArray(tsrc, 'TRUNK_MANIFEST_OTHER').find((e) => e.id === 't01').related);
+  ok(JSON.stringify(t01after.related) === relBefore, "t01's related[] untouched by the repoint");
+
+  const r3 = setTrunkAnchorFile(r2, 't01', 'weathered-rock-formation-coastal-texture-w2b.jpg');
+  ok(r3 === tsrc, 'repoint-and-restore round-trips byte-identical');
+  if (r3 !== tsrc) diffAt(tsrc, r3, 'setTrunkAnchorFile rt');
+
+  let threw = false;
+  try { setTrunkAnchorFile(tsrc, 'no-such-id', 'x.jpg'); } catch (e) { threw = true; }
+  ok(threw, 'setTrunkAnchorFile throws on an unknown trunk id');
 }
 
 console.log(failures ? '\n=== ' + failures + ' CHECK(S) FAILED ===' : '\n=== ALL CHECKS PASSED ===');

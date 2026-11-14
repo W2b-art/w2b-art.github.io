@@ -30,6 +30,19 @@ function scanMatch(src, openIdx, openCh, closeCh, hardEnd) {
   const end = hardEnd == null ? src.length : hardEnd;
   for (let i = openIdx; i < end; i++) {
     const ch = src[i];
+    // Skip comments first: an apostrophe inside prose ("Guillaume's",
+    // "trunk-data.js's") otherwise gets misread as opening a string and
+    // desyncs quote/brace tracking for the rest of the scan.
+    if (ch === '/' && src[i + 1] === '/') {
+      const nl = src.indexOf('\n', i);
+      i = nl === -1 || nl >= end ? end : nl;
+      continue;
+    }
+    if (ch === '/' && src[i + 1] === '*') {
+      const close = src.indexOf('*/', i + 2);
+      i = close === -1 || close + 1 >= end ? end : close + 1;
+      continue;
+    }
     if (ch === '"' || ch === "'") {
       const q = ch;
       let j = i + 1;
@@ -527,6 +540,28 @@ function createGallery(src, galleryId, folder, title) {
   return insertIntoArrayAt(src, gd.start, gd.end - 1, piece, '  ', null);
 }
 
+/* Remove a gallery's entire top-level entry from GALLERY_DATA — the
+   permanent-removal half of deleting a branch (server.js archives the
+   photo files first, this just drops the now-empty data record). Only
+   ever called on an already-emptied gallery in practice, but doesn't
+   assume that — it removes the entry (and whatever images it still has)
+   as one unit either way, the same cut-and-close-the-gap mechanics as
+   reorderTrunkAnchor's removal half. */
+function deleteGallery(src, galleryId) {
+  const g = findGallerySpan(src, galleryId);
+  const needle = '"' + galleryId + '": {';
+  const keyIdx = src.lastIndexOf(needle, g.galleryStart);
+  if (keyIdx === -1) throw new Error('deleteGallery: could not locate the key text for ' + galleryId);
+  const gd = findConstObjectSpan(src, 'GALLERY_DATA');
+
+  let end = g.galleryEnd;
+  if (src[end] === ',') end++;
+  if (src[end] === '\r') end++;
+  if (src[end] === '\n') end++;
+  const start = lineStartOf(src, keyIdx, gd.start);
+  return stripDanglingTrailingComma(src.slice(0, start) + src.slice(end), start);
+}
+
 /* Rename a gallery's own trilingual `title` — the gallery/branch's
    display name itself (e.g. "Scrap and Steel" for branch-industrial),
    not a photo's museum-label title (that's setMetaField). Every gallery
@@ -577,6 +612,24 @@ function findTrunkAnchor(src, trunkId) {
     }
   }
   throw new Error('findTrunkAnchor: ' + trunkId + ' not found in either manifest');
+}
+
+/* Repoints a trunk anchor at a different photo already in
+   GALLERY_DATA.trunk.images — same id, same position on the same page,
+   same related[] branch attachment, only the `file:` value changes.
+   The old photo is left as an ordinary unattached trunk photo (caller's
+   choice whether to archive it, not this function's). Pure single-field
+   surgery, deliberately not reusing the object cut/reinsert machinery
+   the full trunk-move functions need — there's nothing to move here. */
+function setTrunkAnchorFile(src, trunkId, newFile) {
+  const found = findTrunkAnchor(src, trunkId);
+  const body = src.slice(found.objStart, found.objEnd);
+  const m = /file:'([^']*)'/.exec(body);
+  if (!m) throw new Error('setTrunkAnchorFile: no file: field found on ' + trunkId);
+  const absStart = found.objStart + m.index;
+  const absEnd = absStart + m[0].length;
+  const newText = "file:'" + newFile.replace(/'/g, "\\'") + "'";
+  return src.slice(0, absStart) + newText + src.slice(absEnd);
 }
 
 /* Next unused 'tNN' id (scans both manifests; ids are not required to be
@@ -744,8 +797,8 @@ module.exports = {
   // placement
   placeImage, moveImage, insertNewImage,
   // galleries
-  createGallery, setGalleryTitle,
+  createGallery, setGalleryTitle, deleteGallery,
   // trunk/branch management
   findTrunkAnchor, nextTrunkId, reorderTrunkAnchor, moveTrunkAnchor, createTrunkAnchor,
-  addRelated, removeRelated, reorderRelated, detachBranch
+  addRelated, removeRelated, reorderRelated, detachBranch, setTrunkAnchorFile
 };

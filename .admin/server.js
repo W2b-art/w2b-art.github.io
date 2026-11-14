@@ -27,8 +27,9 @@ const RESPONSIVE_SCRIPT = path.join(ROOT, '.build', 'responsive.js');
 const te = require('./lib/textedit');
 const {
   setArchived, setMetaField, trilingualLiteral, yearLiteral,
-  placeImage, insertNewImage, createGallery, setGalleryTitle,
+  placeImage, insertNewImage, createGallery, setGalleryTitle, deleteGallery,
   reorderTrunkAnchor, createTrunkAnchor, addRelated, removeRelated, reorderRelated, detachBranch,
+  setTrunkAnchorFile,
   findGallerySpan, findTrunkAnchor
 } = te;
 
@@ -328,8 +329,23 @@ function requireAltFields(alt) {
   if (!alt || !alt.en || !alt.fr || !alt.es) throw new Error('alt text (en/fr/es) is required');
 }
 
+// If `series`/`file` is some trunk anchor's "related" branch photo,
+// returns that anchor's id; else null. Used by the move/place handler
+// below so moving a photo OUT of a branch it's currently attached to
+// doesn't leave a dangling {series,file} reference behind (resolve()
+// would just silently fail to find it — not a crash, but a related
+// photo that quietly vanishes from the anchor for the wrong reason).
+function findAnchorIdForRelated(TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER, series, file) {
+  for (const arr of [TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER]) {
+    for (const e of arr) {
+      if ((e.related || []).some((r) => r.series === series && r.file === file)) return e.id;
+    }
+  }
+  return null;
+}
+
 function applyAction(action) {
-  const { gsrc, tsrc, GALLERY_DATA } = loadDataFiles();
+  const { gsrc, tsrc, GALLERY_DATA, TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER } = loadDataFiles();
 
   if (action.type === 'archive' || action.type === 'unarchive') {
     const { gallery, file } = action;
@@ -349,12 +365,16 @@ function applyAction(action) {
     const { from, to, file, position } = action;
     if (from === to && position == null) throw new Error('place: give a position to reorder within the same gallery');
     const newG = placeImage(gsrc, from, to, file, position == null ? undefined : Number(position));
+    let newT = tsrc;
     if (from !== to) {
       const fromFolder = folderFor(GALLERY_DATA, from);
       const toFolder = folderFor(GALLERY_DATA, to);
       moveFiles(fromFolder, toFolder, file);
+      const anchorId = findAnchorIdForRelated(TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER, from, file);
+      if (anchorId) newT = removeRelated(tsrc, anchorId, file);
     }
     fs.writeFileSync(GALLERY_DATA_PATH, newG);
+    if (newT !== tsrc) fs.writeFileSync(TRUNK_DATA_PATH, newT);
     return { ok: true };
   }
 
@@ -478,6 +498,56 @@ function applyAction(action) {
   if (action.type === 'branch-detach') {
     const { trunkId } = action;
     const newT = detachBranch(tsrc, trunkId);
+    fs.writeFileSync(TRUNK_DATA_PATH, newT);
+    return { ok: true };
+  }
+
+  if (action.type === 'delete-branch') {
+    // Archives every still-live photo (file move only — never fs.unlink,
+    // same as every other archive in this tool), detaches it from any
+    // anchor still pointing at it, then removes the now-empty
+    // "branch-xxx": {images:[]} entry and its now-empty folder. The UI
+    // confirmation for this lives in admin.html (type-to-confirm) — this
+    // handler itself does not re-confirm, by design: it's meant to be
+    // called only after that gate has already passed.
+    const { gallery } = action;
+    if (!/^branch-/.test(gallery)) throw new Error('delete-branch: only branch-* galleries can be deleted this way');
+    const g = GALLERY_DATA[gallery];
+    if (!g) throw new Error('delete-branch: unknown gallery ' + gallery);
+
+    const liveFolder = folderFor(GALLERY_DATA, gallery);
+    const archFolder = path.join(ARCHIVE_ROOT, gallery);
+    const toArchive = g.images.filter((im) => !im.archived);
+    for (const im of toArchive) moveFiles(liveFolder, archFolder, im.file);
+
+    let newT = tsrc;
+    const attachedTo = [];
+    for (const arr of [TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER]) {
+      for (const e of arr) {
+        if ((e.related || []).some((r) => r.series === gallery)) attachedTo.push(e.id);
+      }
+    }
+    for (const id of attachedTo) newT = detachBranch(newT, id);
+    if (newT !== tsrc) fs.writeFileSync(TRUNK_DATA_PATH, newT);
+
+    const newG = deleteGallery(gsrc, gallery);
+    fs.writeFileSync(GALLERY_DATA_PATH, newG);
+
+    try { fs.rmdirSync(liveFolder); } catch (e) { /* best-effort: non-empty for an unexpected reason, or already gone — leave it rather than force */ }
+
+    return { ok: true, archivedCount: toArchive.length, detachedFrom: attachedTo };
+  }
+
+  if (action.type === 'replace-anchor-photo') {
+    // Repoints an existing anchor at a different trunk photo — same id,
+    // same position, same related[] branch, only `file:` changes. The
+    // old photo is left as an ordinary unattached trunk photo; archiving
+    // it (or not) is a separate decision, not part of this action.
+    const { trunkId, file } = action;
+    if (!GALLERY_DATA.trunk || !GALLERY_DATA.trunk.images.some((im) => im.file === file)) {
+      throw new Error('replace-anchor-photo: "' + file + '" is not in gallery-data.js\'s trunk.images — upload/place it there first');
+    }
+    const newT = setTrunkAnchorFile(tsrc, trunkId, file);
     fs.writeFileSync(TRUNK_DATA_PATH, newT);
     return { ok: true };
   }
