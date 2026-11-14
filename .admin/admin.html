@@ -25,6 +25,8 @@
   .tab-toolbar .hint { color: #777; font-size: 11px; }
   .tab-toolbar .expand-all { background: none; border: 1px solid #333; color: #999; border-radius: 6px; padding: 5px 10px; cursor: pointer; font-size: 11px; }
   .gallery { margin-bottom: 10px; border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; }
+  .gtier-label { margin: 22px 0 10px; padding-top: 14px; border-top: 1px dashed #333; font-size: 11px; color: #887; text-transform: uppercase; letter-spacing: .07em; }
+  .gtier-inactive { opacity: .6; }
   .gallery > .g-head { padding: 9px 14px; background: #1b1b1b; display: flex; align-items: center; gap: 10px; cursor: pointer; }
   .gallery > .g-head:hover { background: #202020; }
   .gallery > .g-head::before { content: '▸'; color: #666; font-size: 10px; transition: transform .15s; }
@@ -48,7 +50,8 @@
   .card button.danger { border-color: #633; }
   .card button.go { border-color: #365; }
   .card input.posnum { width: 36px; }
-  .trunk-card { background: #181818; border: 1px solid #272727; border-radius: 8px; padding: 14px; margin: 12px 14px; }
+  .trunk-card { background: #181818; border: 1px solid #272727; border-radius: 8px; padding: 14px; margin: 12px 14px; cursor: grab; }
+  .trunk-card.dragging, .rel-card.dragging { opacity: .35; }
   .tc-head { display: flex; gap: 14px; }
   .tc-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
   .tc-id-row { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
@@ -64,7 +67,7 @@
   .branch-sec { margin-top: 14px; padding-top: 12px; border-top: 1px solid #262626; }
   .branch-sec h4 { margin: 0 0 10px; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: .07em; }
   .rel-grid { display: flex; flex-wrap: wrap; gap: 14px; }
-  .rel-card { width: 112px; }
+  .rel-card { width: 112px; cursor: grab; }
   .rel-card .rel-fn { display: block; font-size: 9px; color: #999; word-break: break-all; margin: 5px 0 4px; max-height: 2.4em; overflow: hidden; }
   .rel-card .rel-actions { display: flex; flex-wrap: wrap; gap: 3px; }
   .rel-card .rel-actions > button[type="button"]:first-child { flex: 1 1 100%; }
@@ -90,7 +93,7 @@
   .toast.err { border-color: #633; color: #f99; }
   .toast.ok { border-color: #365; color: #9f9; }
   .collapsed .grid, .collapsed .trunk-rows { display: none; }
-  form.panel { background: #1b1b1b; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px; margin-bottom: 20px; max-width: 640px; }
+  form.panel { background: #1b1b1b; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px; margin-bottom: 20px; max-width: 640px; overscroll-behavior: contain; }
   form.panel h3 { margin: 0 0 12px; font-size: 14px; }
   form.panel label { display: block; margin: 10px 0 3px; font-size: 12px; color: #aaa; }
   form.panel input, form.panel select, form.panel textarea { width: 100%; padding: 7px; background: #111; border: 1px solid #333; color: #eee; border-radius: 5px; font-size: 13px; }
@@ -119,6 +122,10 @@
 <main id="main">Loading…</main>
 <script>
 let STATE = null;
+// Which collapsible .gallery sections (Galleries tab: gallery id; Trunk
+// tab: 'trunk-current'/'trunk-other') are expanded — survives renderAll()
+// so an action taken in one section doesn't collapse every other one.
+let OPEN_SECTIONS = new Set(['trunk-current']);
 
 async function api(path, opts) {
   const r = await fetch(path, opts);
@@ -133,12 +140,12 @@ function toast(msg, isErr) {
   document.body.appendChild(t);
   setTimeout(() => t.remove(), isErr ? 7000 : 3000);
 }
-async function doAction(action, successMsg) {
+async function doAction(action, successMsg, silent) {
   try {
     const r = await api('/api/action', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(action) });
     STATE = r.state;
     renderAll();
-    toast(successMsg || r.message || 'done');
+    if (!silent) toast(successMsg || r.message || 'done');
     refreshPublishStatus();
     return r;
   } catch (e) {
@@ -256,10 +263,40 @@ function thumbImg(seriesId, file) {
   const img = document.createElement('img');
   img.className = 'thumb';
   img.loading = 'lazy';
+  img.draggable = false; // so dragging a draggable ancestor card doesn't drag the <img> itself
   const { g, im } = findGalleryAndImage(seriesId, file);
   img.src = (g && im) ? thumbUrl(g, im) : '';
   img.alt = '';
   return img;
+}
+
+// Generic drag-to-reorder for a list of sibling elements: wires dragstart/
+// dragover/drop on `container`, live-reorders the DOM for visual feedback,
+// and calls `onDrop(newIndex, draggedEl)` once the drop lands — the caller
+// fires the real reorder action; the next renderAll() makes the server's
+// order authoritative either way.
+function enableDragReorder(container, itemSelector, onDrop) {
+  container.addEventListener('dragover', (ev) => {
+    const dragging = container.querySelector(itemSelector + '.dragging');
+    if (!dragging) return;
+    ev.preventDefault();
+    const target = ev.target.closest(itemSelector);
+    if (!target || target === dragging || target.parentNode !== container) return;
+    const rect = target.getBoundingClientRect();
+    const before = (ev.clientX - rect.left) / rect.width + (ev.clientY - rect.top) / rect.height < 1;
+    container.insertBefore(dragging, before ? target : target.nextSibling);
+  });
+  container.addEventListener('drop', (ev) => {
+    const dragging = container.querySelector(itemSelector + '.dragging');
+    if (!dragging) return;
+    ev.preventDefault();
+    onDrop(Array.from(container.children).indexOf(dragging), dragging);
+  });
+}
+function makeDraggable(el) {
+  el.draggable = true;
+  el.ondragstart = (ev) => { ev.dataTransfer.effectAllowed = 'move'; ev.dataTransfer.setData('text/plain', ''); el.classList.add('dragging'); };
+  el.ondragend = () => el.classList.remove('dragging');
 }
 
 // ---------------------------------------------------------------- Title auto-translate (museum-label title only)
@@ -520,22 +557,22 @@ function renderGalleries() {
   main.innerHTML = '';
   const toolbar = document.createElement('div'); toolbar.className = 'tab-toolbar';
   toolbar.innerHTML = '<span class="hint">' + STATE.galleries.length + ' galleries — trunk/branch-* included, same as any other</span>';
-  const expandBtn = document.createElement('button'); expandBtn.type = 'button'; expandBtn.className = 'expand-all'; expandBtn.textContent = 'Expand all';
-  let allExpanded = false;
+  const allOpen = STATE.galleries.length > 0 && STATE.galleries.every((g) => OPEN_SECTIONS.has(g.id));
+  const expandBtn = document.createElement('button'); expandBtn.type = 'button'; expandBtn.className = 'expand-all'; expandBtn.textContent = allOpen ? 'Collapse all' : 'Expand all';
   expandBtn.onclick = () => {
-    allExpanded = !allExpanded;
-    main.querySelectorAll('.gallery').forEach((w) => w.classList.toggle('collapsed', !allExpanded));
-    expandBtn.textContent = allExpanded ? 'Collapse all' : 'Expand all';
+    const open = expandBtn.textContent === 'Expand all';
+    STATE.galleries.forEach((g) => { if (open) OPEN_SECTIONS.add(g.id); else OPEN_SECTIONS.delete(g.id); });
+    renderGalleries();
   };
   toolbar.appendChild(expandBtn);
   main.appendChild(toolbar);
 
-  STATE.galleries.forEach((g) => {
-    const wrap = document.createElement('div'); wrap.className = 'gallery collapsed';
+  function renderGalleryBlock(g) {
+    const wrap = document.createElement('div'); wrap.className = 'gallery' + (OPEN_SECTIONS.has(g.id) ? '' : ' collapsed');
     const head = document.createElement('div'); head.className = 'g-head';
     const archivedCount = g.images.filter((i) => i.archived).length;
     head.innerHTML = '<b>' + g.id + '</b><span class="count">' + g.images.length + ' image(s)' + (archivedCount ? ', <span class="archcount">' + archivedCount + ' archived</span>' : '') + '</span>';
-    head.onclick = () => wrap.classList.toggle('collapsed');
+    head.onclick = () => { wrap.classList.toggle('collapsed'); if (wrap.classList.contains('collapsed')) OPEN_SECTIONS.delete(g.id); else OPEN_SECTIONS.add(g.id); };
     const renameBtn = document.createElement('button'); renameBtn.type = 'button'; renameBtn.className = 'ghead-btn'; renameBtn.textContent = 'Rename';
     renameBtn.style.marginLeft = 'auto';
     renameBtn.onclick = (ev) => { ev.stopPropagation(); openGalleryTitleEditor(g); };
@@ -549,8 +586,28 @@ function renderGalleries() {
     const grid = document.createElement('div'); grid.className = 'grid';
     g.images.forEach((im) => grid.appendChild(card(g, im)));
     wrap.appendChild(grid);
-    main.appendChild(wrap);
-  });
+    return wrap;
+  }
+
+  // Physically split into two blocks (not just an inline badge): "live"
+  // is trunk + attached branches + any other gallery with un-archived
+  // photos; everything else (orphaned/fully-archived galleries) renders
+  // below a divider, dimmed, so the two can't visually blend together.
+  const { live, rest } = liveGalleryTiers();
+  const byId = (id) => STATE.galleries.find((g) => g.id === id);
+
+  const activeWrap = document.createElement('div');
+  live.forEach((id) => { const g = byId(id); if (g) activeWrap.appendChild(renderGalleryBlock(g)); });
+  main.appendChild(activeWrap);
+
+  if (rest.length) {
+    const divider = document.createElement('div'); divider.className = 'gtier-label';
+    divider.textContent = 'Inactive — not currently shown on the site (' + rest.length + ')';
+    main.appendChild(divider);
+    const restWrap = document.createElement('div'); restWrap.className = 'gtier-inactive';
+    rest.forEach((id) => { const g = byId(id); if (g) restWrap.appendChild(renderGalleryBlock(g)); });
+    main.appendChild(restWrap);
+  }
 }
 
 // ---------------------------------------------------------------- Trunk tab
@@ -627,11 +684,34 @@ function openAddPhotoToBranch(branchGallery, attachAnchorId) {
   backdrop.style = 'position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:60;';
   const form = document.createElement('form');
   form.className = 'panel';
-  form.style = 'margin:0;max-width:680px;max-height:85vh;overflow:auto;';
-  form.innerHTML = '<h3>Add a photo to ' + branchGallery.id + '</h3>';
+  form.style = 'margin:0;max-width:680px;max-height:85vh;overflow:auto;overscroll-behavior:contain;';
+  form.innerHTML = '<h3>Add photos to ' + branchGallery.id + '</h3><div class="hint">Click as many as you want, then confirm.</div>';
   const close = () => backdrop.remove();
 
-  const liveLabel = document.createElement('label'); liveLabel.textContent = 'Bring in a photo already live in another gallery';
+  // selection state: key -> { source, g, i } ; key disambiguates across
+  // galleries since the archive grid spans all of them at once.
+  const selected = new Map();
+  const keyOf = (g, i) => g.id + '\u0000' + i.file;
+
+  const bar = document.createElement('div');
+  bar.style.cssText = 'position:sticky;top:0;background:#1b1b1b;padding:8px 0;margin-bottom:4px;display:flex;align-items:center;gap:10px;z-index:1;';
+  const countEl = document.createElement('span'); countEl.className = 'hint';
+  const addBtn = document.createElement('button'); addBtn.type = 'button'; addBtn.className = 'submit'; addBtn.style.marginTop = '0';
+  bar.appendChild(countEl); bar.appendChild(addBtn);
+  form.appendChild(bar);
+
+  function refreshBar() {
+    countEl.textContent = selected.size ? selected.size + ' selected' : 'nothing selected yet';
+    addBtn.textContent = selected.size ? 'Add ' + selected.size + ' photo(s) to ' + branchGallery.id : 'Add to ' + branchGallery.id;
+    addBtn.disabled = !selected.size;
+  }
+  function toggle(key, entry, btn) {
+    if (selected.has(key)) { selected.delete(key); btn.classList.remove('sel'); }
+    else { selected.set(key, entry); btn.classList.add('sel'); }
+    refreshBar();
+  }
+
+  const liveLabel = document.createElement('label'); liveLabel.textContent = 'Bring in photos already live in another gallery';
   form.appendChild(liveLabel);
   const gallerySel = document.createElement('select'); gallerySel.style.marginBottom = '8px';
   STATE.galleries.filter((g) => g.id !== branchGallery.id).forEach((g) => { const o = document.createElement('option'); o.value = g.id; o.textContent = g.id; gallerySel.appendChild(o); });
@@ -642,12 +722,13 @@ function openAddPhotoToBranch(branchGallery, attachAnchorId) {
     liveGrid.innerHTML = '';
     const g = STATE.galleries.find((x) => x.id === gallerySel.value);
     (g ? g.images : []).filter((i) => !i.archived).forEach((i) => {
-      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb'; btn.title = i.file;
+      const key = keyOf(g, i);
+      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb' + (selected.has(key) ? ' sel' : ''); btn.title = i.file;
       const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(g, i);
       btn.appendChild(img);
       const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
       btn.appendChild(fnTag);
-      btn.onclick = () => doAction({ type: 'place', from: g.id, to: branchGallery.id, file: i.file }, 'Moved ' + i.file + ' to ' + branchGallery.id).then(close).catch(() => {});
+      btn.onclick = () => toggle(key, { source: 'live', g, i }, btn);
       liveGrid.appendChild(btn);
     });
     if (!liveGrid.children.length) liveGrid.textContent = '(no un-archived photos in ' + gallerySel.value + ')';
@@ -658,26 +739,41 @@ function openAddPhotoToBranch(branchGallery, attachAnchorId) {
   const archived = [];
   STATE.galleries.forEach((g) => g.images.forEach((i) => { if (i.archived) archived.push({ g, i }); }));
   if (archived.length) {
-    const archLabel = document.createElement('label'); archLabel.style.marginTop = '14px'; archLabel.textContent = 'Or restore one from the archive (' + archived.length + ')';
+    const archLabel = document.createElement('label'); archLabel.style.marginTop = '14px'; archLabel.textContent = 'Or restore from the archive (' + archived.length + ')';
     form.appendChild(archLabel);
     const archGrid = document.createElement('div'); archGrid.className = 'pick-grid';
     archived.forEach(({ g, i }) => {
-      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb'; btn.title = i.file + ' (archived from ' + g.id + ')';
+      const key = keyOf(g, i);
+      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb' + (selected.has(key) ? ' sel' : ''); btn.title = i.file + ' (archived from ' + g.id + ')';
       const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(g, i);
       btn.appendChild(img);
       const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
       btn.appendChild(fnTag);
-      btn.onclick = async () => {
-        try {
-          await doAction({ type: 'unarchive', gallery: g.id, file: i.file }, 'Restored ' + i.file);
-          if (g.id !== branchGallery.id) await doAction({ type: 'place', from: g.id, to: branchGallery.id, file: i.file }, 'Moved ' + i.file + ' to ' + branchGallery.id);
-          close();
-        } catch (e) { /* toast already shown */ }
-      };
+      btn.onclick = () => toggle(key, { source: 'archive', g, i }, btn);
       archGrid.appendChild(btn);
     });
     form.appendChild(archGrid);
   }
+
+  addBtn.onclick = async () => {
+    addBtn.disabled = true;
+    const items = Array.from(selected.values());
+    let done = 0;
+    try {
+      for (const { source, g, i } of items) {
+        if (source === 'archive') await doAction({ type: 'unarchive', gallery: g.id, file: i.file }, null, true);
+        if (g.id !== branchGallery.id) await doAction({ type: 'place', from: g.id, to: branchGallery.id, file: i.file }, null, true);
+        await doAction({ type: 'branch-add-related', trunkId: attachAnchorId, branchSeries: branchGallery.id, file: i.file }, null, true);
+        done++;
+      }
+      toast('Added ' + done + ' photo(s) to ' + branchGallery.id);
+      close();
+    } catch (e) {
+      toast((done ? done + ' added, then failed: ' : 'failed: ') + e.message, true);
+      addBtn.disabled = false;
+    }
+  };
+  refreshBar();
 
   const uploadBtn = document.createElement('button'); uploadBtn.type = 'button'; uploadBtn.className = 'submit'; uploadBtn.style.marginTop = '14px'; uploadBtn.textContent = 'Or upload a brand-new photo…';
   uploadBtn.onclick = () => goToUpload(branchGallery.id, attachAnchorId);
@@ -694,6 +790,8 @@ function openAddPhotoToBranch(branchGallery, attachAnchorId) {
 
 function trunkRow(set, e) {
   const card = document.createElement('div'); card.className = 'trunk-card';
+  card.dataset.id = e.id;
+  makeDraggable(card);
   const { im: anchorIm } = findGalleryAndImage('trunk', e.file);
   const title = anchorIm && anchorIm.title;
 
@@ -770,6 +868,8 @@ function trunkRow(set, e) {
     const grid = document.createElement('div'); grid.className = 'rel-grid';
     e.related.forEach((r, i) => {
       const rc = document.createElement('div'); rc.className = 'rel-card';
+      rc.dataset.series = r.series; rc.dataset.file = r.file;
+      makeDraggable(rc);
       rc.appendChild(thumbImg(r.series, r.file));
       const fnTag = document.createElement('span'); fnTag.className = 'rel-fn'; fnTag.textContent = i + '. ' + r.file;
       rc.appendChild(fnTag);
@@ -804,6 +904,7 @@ function trunkRow(set, e) {
       rc.appendChild(actions);
       grid.appendChild(rc);
     });
+    enableDragReorder(grid, '.rel-card', (newIndex, el) => doAction({ type: 'branch-reorder-related', trunkId: e.id, branchSeries: el.dataset.series, file: el.dataset.file, position: newIndex }, 'Reordered'));
     branchSec.appendChild(grid);
   } else {
     branchSec.innerHTML = '<h4>No branch yet</h4>';
@@ -843,14 +944,16 @@ function trunkRow(set, e) {
 function renderTrunk() {
   const main = document.getElementById('panel-trunk');
   main.innerHTML = '';
-  [['current', 'Oeuvre actuelle', false], ['other', 'Autres travaux', true]].forEach(([key, label, startCollapsed]) => {
-    const wrap = document.createElement('div'); wrap.className = 'gallery' + (startCollapsed ? ' collapsed' : '');
+  [['current', 'Oeuvre actuelle'], ['other', 'Autres travaux']].forEach(([key, label]) => {
+    const sectionId = 'trunk-' + key;
+    const wrap = document.createElement('div'); wrap.className = 'gallery' + (OPEN_SECTIONS.has(sectionId) ? '' : ' collapsed');
     const head = document.createElement('div'); head.className = 'g-head';
     head.innerHTML = '<b>' + label + '</b><span class="count">' + STATE.trunk[key].length + ' anchor(s)</span>';
-    head.onclick = () => wrap.classList.toggle('collapsed');
+    head.onclick = () => { wrap.classList.toggle('collapsed'); if (wrap.classList.contains('collapsed')) OPEN_SECTIONS.delete(sectionId); else OPEN_SECTIONS.add(sectionId); };
     wrap.appendChild(head);
     const rows = document.createElement('div'); rows.className = 'trunk-rows';
     STATE.trunk[key].forEach((e) => rows.appendChild(trunkRow(key, e)));
+    enableDragReorder(rows, '.trunk-card', (newIndex, el) => doAction({ type: 'trunk-reorder', id: el.dataset.id, toSet: key, position: newIndex }, 'Reordered'));
     wrap.appendChild(rows);
     main.appendChild(wrap);
   });
