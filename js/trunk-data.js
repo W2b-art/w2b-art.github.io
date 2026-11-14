@@ -96,7 +96,9 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-coastal-texture',file:'sea-anemone-underwater-macro-teal-w2b.jpg'}
   ] },
   { id:'t02', series:'trunk', file:'driftwood-pebble-beach-mountains-black-white-w2b.jpg', related:[
-    {series:'branch-driftwood-shore',file:'dead-trees-rocky-shore-mountains-black-white-w2b.jpg'}
+    {series:'branch-driftwood-shore',file:'dead-trees-rocky-shore-mountains-black-white-w2b.jpg'},
+    {series:'branch-driftwood-shore',file:'contemplations-windswept-tree-cliff-edge-black-white-w2b.jpg'},
+    {series:'branch-driftwood-shore',file:'contemplations-stone-tower-well-black-white-w2b.jpg'}
   ] },
   { id:'t04', series:'trunk', file:'contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg', related:[
     {series:'branch-wrecked-boat',file:'wrecked-boat-hull-close-up-black-white-w2b.jpg'},
