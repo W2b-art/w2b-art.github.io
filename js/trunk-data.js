@@ -103,9 +103,7 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-wrecked-boat',file:'wrecked-boat-pl5-marking-black-white-w2b.jpg'},
     {series:'branch-wrecked-boat',file:'wrecked-boat-full-view-colour-w2b.jpg'}
   ] },
-  { id:'t05', series:'trunk', file:'glass-roof-grid-baroque-sculpture-ornament-w2b.jpg', related:[
-    {series:'branch-glass-roof',file:'arcade-gallery-interior-arches-columns-black-white-w2b.jpg'}
-  ] },
+  { id:'t05', series:'trunk', file:'glass-roof-grid-baroque-sculpture-ornament-w2b.jpg' },
   { id:'t06', series:'trunk', file:'pinball-arcade-machine-jackpot-cards-neon-w2b.jpg', related:[
     {series:'branch-pinball',file:'vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg'},
     {series:'branch-pinball',file:'circus-tent-entrance-blue-neon-arches-w2b.jpg'},

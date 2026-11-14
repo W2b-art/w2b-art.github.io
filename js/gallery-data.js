@@ -1693,6 +1693,9 @@ const GALLERY_DATA = {
       },
       {
         file: "street-dancer-colombia-jersey-motion-night-w2b.jpg",
+        title: { en: "ground control", fr: "controle du sol", es: "Control en tierra" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "Street dancer in a Colombia football jersey and cap caught mid-movement under warm stage light at night, black and white",
           fr: "Danseur de rue en maillot de football de Colombie et casquette saisi en plein mouvement sous une lumière de scène chaude la nuit, noir et blanc",
@@ -1733,6 +1736,9 @@ const GALLERY_DATA = {
       },
       {
         file: "abandoned-train-wagons-junkyard-color-w2b.jpg",
+        title: { en: "in transit to the end", fr: "en transit vers la destination finale", es: "en tránsito hacia el destino final" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2026,
         alt: {
           en: "Rusted abandoned train wagons sitting in an overgrown junkyard, medium format colour film photography",
           fr: "Wagons de train abandonnés et rouillés dans une friche envahie par la végétation, moyen format argentique couleur",
@@ -1785,6 +1791,9 @@ const GALLERY_DATA = {
     images: [
       {
         file: "man-trucker-cap-sunglasses-night-portrait-black-white-w2b.jpg",
+        title: { en: "love gun", fr: "love gun", es: "arma del amor" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "Man in a trucker cap and sunglasses caught under flash at night, black and white portrait photography",
           fr: "Homme en casquette et lunettes de soleil saisi au flash la nuit, photographie de portrait noir et blanc",
@@ -1793,6 +1802,9 @@ const GALLERY_DATA = {
       },
       {
         file: "men-streetwear-cap-flip-night-black-white-w2b.jpg",
+        title: { en: "floating", fr: "flottante", es: "flotante" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "Two men at night, one flipping a cap in the air, streetwear and tattoos, black and white photography",
           fr: "Deux hommes de nuit, l'un faisant tournoyer une casquette en l'air, streetwear et tatouages, photographie noir et blanc",
@@ -1801,6 +1813,9 @@ const GALLERY_DATA = {
       },
       {
         file: "man-glasses-hand-gesture-tattoos-portrait-black-white-w2b.jpg",
+        title: { en: "mindset", fr: "état d’esprit", es: "mentalidad" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "Tattooed man in glasses raising both middle fingers toward the camera, black and white portrait photography",
           fr: "Homme tatoué à lunettes levant les deux majeurs vers l'objectif, photographie de portrait noir et blanc",
@@ -1809,6 +1824,9 @@ const GALLERY_DATA = {
       },
       {
         file: "breakdancer-mid-motion-red-light-w2b.jpg",
+        title: { en: "twisted freeze", fr: "gel par torsion", es: "Congelación retorcida" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "Breakdancer frozen mid-move under warm red stage light, black and white photography",
           fr: "Breakdancer figé en plein mouvement sous une lumière de scène rouge chaude, photographie noir et blanc",
@@ -1853,6 +1871,9 @@ const GALLERY_DATA = {
     images: [
       {
         file: "scrap-metal-yard-entrance-barbed-wire-workers-w2b.jpg",
+        title: { en: "the workshop of hope", fr: "l'atelier de l'espoir", es: "el taller de la esperanza" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2026,
         alt: {
           en: "Workers inside a scrap-metal yard behind a barbed-wire gate, Spanish signage advertising metal purchase, medium format colour film",
           fr: "Ouvriers dans une casse de ferraille derrière un portail barbelé, enseigne en espagnol annonçant l'achat de métaux, moyen format argentique couleur",
@@ -1861,6 +1882,9 @@ const GALLERY_DATA = {
       },
       {
         file: "abandoned-factory-water-tower-overgrown-w2b.jpg",
+        title: { en: "inbetween", fr: "entre-deux", es: "entre" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2026,
         alt: {
           en: "Rusted water tower rising between abandoned brick factory buildings, overgrown with grass, medium format colour film",
           fr: "Château d'eau rouillé s'élevant entre des bâtiments d'usine en brique abandonnés, envahis par l'herbe, moyen format argentique couleur",
@@ -1869,6 +1893,9 @@ const GALLERY_DATA = {
       },
       {
         file: "ruined-building-interior-debris-furniture-w2b.jpg",
+        title: { en: "the interior of a memory", fr: "l'intérieur d'un souvenir", es: "el interior de un recuerdo" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2026,
         alt: {
           en: "Interior of a ruined building strewn with broken furniture and debris, medium format colour film photography",
           fr: "Intérieur d'un bâtiment en ruine jonché de meubles brisés et de débris, moyen format argentique couleur",
@@ -1877,6 +1904,9 @@ const GALLERY_DATA = {
       },
       {
         file: "calle-54-street-sign-rubble-w2b.jpg",
+        title: { en: "missing directions", fr: "indications manquantes", es: "Faltan indicaciones" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2026,
         alt: {
           en: "Bent Calle 54 street sign leaning among piles of rubble and rusted metal, medium format colour film photography",
           fr: "Panneau de rue « Calle 54 » tordu penché parmi des gravats et de la ferraille rouillée, moyen format argentique couleur",
