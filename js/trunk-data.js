@@ -103,18 +103,14 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-wrecked-boat',file:'wrecked-boat-pl5-marking-black-white-w2b.jpg'},
     {series:'branch-wrecked-boat',file:'wrecked-boat-full-view-colour-w2b.jpg'}
   ] },
-  { id:'t05', series:'trunk', file:'glass-roof-grid-baroque-sculpture-ornament-w2b.jpg', related:[
-    {series:'branch-glass-roof',file:'arcade-gallery-interior-arches-columns-black-white-w2b.jpg'}
-  ] },
+  { id:'t05', series:'trunk', file:'glass-roof-grid-baroque-sculpture-ornament-w2b.jpg' },
   { id:'t06', series:'trunk', file:'pinball-arcade-machine-jackpot-cards-neon-w2b.jpg', related:[
     {series:'branch-pinball',file:'vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg'},
     {series:'branch-pinball',file:'circus-tent-entrance-blue-neon-arches-w2b.jpg'},
     {series:'branch-pinball',file:'teal-neon-light-trails-abandoned-interior-w2b.jpg'},
     {series:'branch-pinball',file:'dj-booth-neon-light-trails-nightclub-w2b.jpg'}
   ] },
-  { id:'t10', series:'trunk', file:'bamboo-tunnel-pond-stone-wall-w2b.jpg', related:[
-    {series:'branch-bamboo-pond',file:'pond-stone-wall-tree-reflections-w2b.jpg'}
-  ] },
+  { id:'t10', series:'trunk', file:'bamboo-tunnel-pond-stone-wall-w2b.jpg' },
   { id:'t11', series:'trunk', file:'coastal-path-bench-ocean-view-faded-film-w2b.jpg', related:[
     {series:'branch-coastal-bench',file:'figure-seated-bench-bay-view-black-white-w2b.jpg'},
     {series:'branch-coastal-bench',file:'man-silhouette-bench-dramatic-sunset-sky-w2b.jpg'},

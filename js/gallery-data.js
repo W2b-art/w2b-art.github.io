@@ -1076,14 +1076,6 @@ const GALLERY_DATA = {
     },
     images: [
       {
-        file: "contemplations-windswept-tree-cliff-edge-black-white-w2b.jpg",
-        alt: {
-          en: "A wind-bent tree at a cliff edge above the sea, black and white medium-format film",
-          fr: "Un arbre courbé par le vent au bord d'une falaise au-dessus de la mer, moyen format argentique noir et blanc",
-          es: "Un árbol curvado por el viento al borde de un acantilado sobre el mar, película de formato medio en blanco y negro"
-        }
-      },
-      {
         file: "contemplations-cliff-coastline-black-white-w2b.jpg",
         alt: {
           en: "A rugged cliff coastline under a heavy sky, black and white medium-format film",
@@ -1193,14 +1185,6 @@ const GALLERY_DATA = {
           en: "Plants reclaiming a ruined interior, colour medium-format film",
           fr: "Les plantes reprenant un intérieur en ruine, moyen format argentique couleur",
           es: "Las plantas reclamando un interior en ruinas, película de formato medio a color"
-        }
-      },
-      {
-        file: "contemplations-stone-tower-well-black-white-w2b.jpg",
-        alt: {
-          en: "An old stone tower and well, black and white medium-format film",
-          fr: "Une vieille tour de pierre et un puits, moyen format argentique noir et blanc",
-          es: "Una vieja torre de piedra y un pozo, película de formato medio en blanco y negro"
         }
       }
     ]
@@ -1733,6 +1717,9 @@ const GALLERY_DATA = {
       },
       {
         file: "abandoned-train-wagons-junkyard-color-w2b.jpg",
+        title: { en: "train of thoughts", fr: "train d'idées", es: "tren de ideas" },
+        medium: { en: "film photography", fr: "Argentique", es: "Analogo" },
+        year: 2026,
         alt: {
           en: "Rusted abandoned train wagons sitting in an overgrown junkyard, medium format colour film photography",
           fr: "Wagons de train abandonnés et rouillés dans une friche envahie par la végétation, moyen format argentique couleur",
@@ -1777,11 +1764,7 @@ const GALLERY_DATA = {
   "branch-bailar-la-ciudad": {
     id: "branch-bailar-la-ciudad",
     folder: "images/branch-bailar-la-ciudad/",
-    title: {
-      en: "Bailar la Ciudad",
-      fr: "Bailar la Ciudad",
-      es: "Bailar la Ciudad"
-    },
+    title: { en: "Bailar la Ciudad", fr: "Bailar la Ciudad", es: "Bailar la Ciudad" },
     images: [
       {
         file: "man-trucker-cap-sunglasses-night-portrait-black-white-w2b.jpg",
@@ -2017,17 +2000,6 @@ const GALLERY_DATA = {
     ]
   },
 
-  "branch-glass-roof": {
-    id: "branch-glass-roof",
-    folder: "images/branch-glass-roof/",
-    title: { en: "Under Glass", fr: "Sous verre", es: "Bajo cristal" },
-    images: [
-      { file: "arcade-gallery-interior-arches-columns-black-white-w2b.jpg", alt: {
-        en: "Arcade gallery interior with repeating arches and columns under a glass roof, black and white photography",
-        fr: "Intérieur d'une galerie marchande aux arches et colonnes répétées sous une verrière, photographie noir et blanc",
-        es: "Interior de una galería comercial con arcos y columnas repetidas bajo un techo de vidrio, fotografía en blanco y negro" } }
-    ]
-  },
 
   "branch-driftwood-shore": {
     id: "branch-driftwood-shore",
@@ -2037,21 +2009,26 @@ const GALLERY_DATA = {
       { file: "dead-trees-rocky-shore-mountains-black-white-w2b.jpg", alt: {
         en: "Dead trees on a rocky shoreline with mountains and a sailboat across the water, black and white photography",
         fr: "Arbres morts sur un rivage rocheux avec des montagnes et un voilier de l'autre côté de l'eau, photographie noir et blanc",
-        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } }
+        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } },
+      {
+        file: "contemplations-windswept-tree-cliff-edge-black-white-w2b.jpg",
+        alt: {
+          en: "A wind-bent tree at a cliff edge above the sea, black and white medium-format film",
+          fr: "Un arbre courbé par le vent au bord d'une falaise au-dessus de la mer, moyen format argentique noir et blanc",
+          es: "Un árbol curvado por el viento al borde de un acantilado sobre el mar, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "contemplations-stone-tower-well-black-white-w2b.jpg",
+        alt: {
+          en: "An old stone tower and well, black and white medium-format film",
+          fr: "Une vieille tour de pierre et un puits, moyen format argentique noir et blanc",
+          es: "Una vieja torre de piedra y un pozo, película de formato medio en blanco y negro"
+        }
+      }
     ]
   },
 
-  "branch-bamboo-pond": {
-    id: "branch-bamboo-pond",
-    folder: "images/branch-bamboo-pond/",
-    title: { en: "Still Water", fr: "Eau calme", es: "Agua quieta" },
-    images: [
-      { file: "pond-stone-wall-tree-reflections-w2b.jpg", alt: {
-        en: "Still pond beside a stone wall, trees reflected in the water",
-        fr: "Étang immobile près d'un mur de pierre, arbres se reflétant dans l'eau",
-        es: "Estanque quieto junto a un muro de piedra, árboles reflejados en el agua" } }
-    ]
-  },
 
   "branch-coastal-bench": {
     id: "branch-coastal-bench",
