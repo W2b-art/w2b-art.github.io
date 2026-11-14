@@ -324,22 +324,21 @@ function setArchived(src, galleryId, filename, archived) {
   if (commaIdx === -1) throw new Error('setArchived: no comma after file: for ' + filename);
   const afterComma = commaIdx + 1;
 
-  const altIdx = src.indexOf('alt:', afterComma);
-  if (altIdx === -1 || altIdx > g.imagesEnd) throw new Error('setArchived: no alt: found after file: for ' + filename);
-
-  const archivedIdx = src.indexOf('archived:', afterComma);
-  const hasArchived = archivedIdx !== -1 && archivedIdx < altIdx &&
-    /^\s*$/.test(src.slice(afterComma, archivedIdx));
+  // Whitespace run right after file:'s comma — reused verbatim as the
+  // separator for whatever gets inserted/removed, so this works no
+  // matter which field (archived, wide, title, ...) actually comes next
+  // on this particular entry; it never needs to look as far as alt:.
+  const ws = /^\s*/.exec(src.slice(afterComma))[0];
+  const afterWs = afterComma + ws.length;
+  const hasArchived = src.slice(afterWs, afterWs + 'archived:'.length) === 'archived:';
 
   if (archived && !hasArchived) {
-    const gap = src.slice(afterComma, altIdx);
-    if (!/^\s*$/.test(gap)) throw new Error('setArchived: unexpected content between file: and alt: for ' + filename);
-    const insertion = gap + 'archived: true,' + gap;
-    return src.slice(0, afterComma) + insertion + src.slice(altIdx);
+    return src.slice(0, afterComma) + ws + 'archived: true,' + ws + src.slice(afterWs);
   }
   if (!archived && hasArchived) {
-    const preGap = src.slice(afterComma, archivedIdx);
-    return src.slice(0, afterComma) + preGap + src.slice(altIdx);
+    const afterArchivedField = src.indexOf(',', afterWs) + 1;
+    const ws2 = /^\s*/.exec(src.slice(afterArchivedField))[0];
+    return src.slice(0, afterComma) + ws2 + src.slice(afterArchivedField + ws2.length);
   }
   return src; // already in the requested state
 }

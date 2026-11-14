@@ -721,49 +721,53 @@ function openAddPhotoToBranch(branchGallery, attachAnchorId) {
     refreshBar();
   }
 
-  const liveLabel = document.createElement('label'); liveLabel.textContent = 'Bring in photos already live in another gallery';
-  form.appendChild(liveLabel);
+  // Every candidate photo (any gallery, live or archived) except ones
+  // already in this branch — built once, then just filtered by typing,
+  // so adding a photo is "type a few letters, click it", never a forced
+  // gallery pick + scroll through a long grid.
+  const allCandidates = [];
+  STATE.galleries.forEach((g) => {
+    if (g.id === branchGallery.id) return;
+    g.images.forEach((i) => allCandidates.push({ source: i.archived ? 'archive' : 'live', g, i }));
+  });
   const gallerySel = document.createElement('select'); gallerySel.style.marginBottom = '8px';
-  STATE.galleries.filter((g) => g.id !== branchGallery.id).forEach((g) => { const o = document.createElement('option'); o.value = g.id; o.textContent = g.id; gallerySel.appendChild(o); });
-  gallerySel.value = 'trunk';
-  form.appendChild(gallerySel);
-  const liveGrid = document.createElement('div'); liveGrid.className = 'pick-grid';
-  function refillLiveGrid() {
-    liveGrid.innerHTML = '';
-    const g = STATE.galleries.find((x) => x.id === gallerySel.value);
-    (g ? g.images : []).filter((i) => !i.archived).forEach((i) => {
-      const key = keyOf(g, i);
-      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb' + (selected.has(key) ? ' sel' : ''); btn.title = i.file;
-      const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(g, i);
-      btn.appendChild(img);
-      const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
-      btn.appendChild(fnTag);
-      btn.onclick = () => toggle(key, { source: 'live', g, i }, btn);
-      liveGrid.appendChild(btn);
-    });
-    if (!liveGrid.children.length) liveGrid.textContent = '(no un-archived photos in ' + gallerySel.value + ')';
-  }
-  gallerySel.onchange = refillLiveGrid; refillLiveGrid();
-  form.appendChild(liveGrid);
+  const optAll = document.createElement('option'); optAll.value = ''; optAll.textContent = 'All galleries'; gallerySel.appendChild(optAll);
+  [...new Set(allCandidates.map((c) => c.g.id))].sort().forEach((id) => { const o = document.createElement('option'); o.value = id; o.textContent = id; gallerySel.appendChild(o); });
+  const searchInput = document.createElement('input'); searchInput.type = 'text'; searchInput.placeholder = 'Search by filename…'; searchInput.autocomplete = 'off';
+  searchInput.style.cssText = 'flex:2;min-width:0;';
+  gallerySel.style.cssText = 'flex:1;min-width:0;margin-bottom:0;';
+  const searchRow = document.createElement('div'); searchRow.style.cssText = 'display:flex;gap:8px;margin-bottom:4px;';
+  searchRow.appendChild(searchInput); searchRow.appendChild(gallerySel);
+  form.appendChild(searchRow);
 
-  const archived = [];
-  STATE.galleries.forEach((g) => g.images.forEach((i) => { if (i.archived) archived.push({ g, i }); }));
-  if (archived.length) {
-    const archLabel = document.createElement('label'); archLabel.style.marginTop = '14px'; archLabel.textContent = 'Or restore from the archive (' + archived.length + ')';
-    form.appendChild(archLabel);
-    const archGrid = document.createElement('div'); archGrid.className = 'pick-grid';
-    archived.forEach(({ g, i }) => {
+  const resultsGrid = document.createElement('div'); resultsGrid.className = 'pick-grid';
+  const hint = document.createElement('div'); hint.className = 'hint'; hint.textContent = 'Type part of a filename to find it — ' + allCandidates.length + ' photo(s) total, nothing shown until you search so there is never a long list to scroll.';
+  form.appendChild(hint);
+  form.appendChild(resultsGrid);
+
+  function refillResults() {
+    const q = searchInput.value.trim().toLowerCase();
+    resultsGrid.innerHTML = '';
+    if (!q) { hint.style.display = ''; return; }
+    hint.style.display = 'none';
+    const scoped = gallerySel.value ? allCandidates.filter((c) => c.g.id === gallerySel.value) : allCandidates;
+    const matches = scoped.filter((c) => c.i.file.toLowerCase().includes(q)).slice(0, 60);
+    matches.forEach(({ source, g, i }) => {
       const key = keyOf(g, i);
-      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb' + (selected.has(key) ? ' sel' : ''); btn.title = i.file + ' (archived from ' + g.id + ')';
+      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb' + (source === 'archive' ? ' archived' : '') + (selected.has(key) ? ' sel' : '');
+      btn.title = i.file + ' — ' + g.id + (source === 'archive' ? ' (archived)' : '');
       const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(g, i);
       btn.appendChild(img);
-      const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
+      const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = g.id + ' / ' + i.file;
       btn.appendChild(fnTag);
-      btn.onclick = () => toggle(key, { source: 'archive', g, i }, btn);
-      archGrid.appendChild(btn);
+      btn.onclick = () => toggle(key, { source, g, i }, btn);
+      resultsGrid.appendChild(btn);
     });
-    form.appendChild(archGrid);
+    if (!matches.length) resultsGrid.textContent = '(no match' + (gallerySel.value ? ' in ' + gallerySel.value : '') + ')';
   }
+  searchInput.oninput = refillResults;
+  gallerySel.onchange = refillResults;
+  refillResults();
 
   addBtn.onclick = async () => {
     addBtn.disabled = true;
@@ -803,6 +807,7 @@ function openAddPhotoToBranch(branchGallery, attachAnchorId) {
   document.body.appendChild(backdrop);
   backdrop.onclick = (ev) => { if (ev.target === backdrop) close(); };
   cancelBtn.onclick = close;
+  searchInput.focus();
 }
 
 function trunkRow(set, e) {
