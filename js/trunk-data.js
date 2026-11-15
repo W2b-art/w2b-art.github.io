@@ -113,10 +113,10 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-pinball',file:'dj-booth-neon-light-trails-nightclub-w2b.jpg'}
   ] },
   { id:'t10', series:'trunk', file:'bamboo-tunnel-pond-stone-wall-w2b.jpg' },
-  { id:'t11', series:'trunk', file:'coastal-path-bench-ocean-view-faded-film-w2b.jpg', related:[
+  { id:'t11', series:'trunk', file:'man-silhouette-bench-dramatic-sunset-sky-w2b.jpg', related:[
     {series:'branch-coastal-bench',file:'figure-seated-bench-bay-view-black-white-w2b.jpg'},
-    {series:'branch-coastal-bench',file:'man-silhouette-bench-dramatic-sunset-sky-w2b.jpg'},
-    {series:'branch-coastal-bench',file:'couple-bench-overlooking-water-w2b.jpg'}
+    {series:'branch-coastal-bench',file:'couple-bench-overlooking-water-w2b.jpg'},
+    {series:'branch-coastal-bench',file:'coastal-path-bench-ocean-view-faded-film-w2b.jpg'}
   ] },
   { id:'t12', series:'trunk', file:'rushing-water-rocks-black-white-w2b.jpg', related:[
     {series:'branch-rushing-water',file:'iguazu-falls-wide-view-colour-w2b.jpg'},

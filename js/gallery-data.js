@@ -1777,14 +1777,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "coastal-path-bench-ocean-view-faded-film-w2b.jpg",
-        alt: {
-          en: "A bench at the end of a green coastal path overlooking the blue ocean, faded vintage film photography",
-          fr: "Un banc au bout d'un sentier côtier verdoyant face à l'océan bleu, photographie argentique délavée",
-          es: "Un banco al final de un sendero costero verde con vista al océano azul, fotografía analógica desvaída"
-        }
-      },
-      {
         file: "rushing-water-rocks-black-white-w2b.jpg",
         alt: {
           en: "White water rushing and foaming over dark rocks, black and white close-up photography",
@@ -1842,7 +1834,11 @@ const GALLERY_DATA = {
           fr: "Passage couvert historique bondé bordé d'enseignes de boutiques, photographie de rue noir et blanc",
           es: "Pasaje histórico cubierto y concurrido bordeado de letreros de tiendas, fotografía callejera en blanco y negro"
         }
-      }
+      },
+      { file: "man-silhouette-bench-dramatic-sunset-sky-w2b.jpg", alt: {
+        en: "Man in silhouette on a bench under a dramatic sunset sky",
+        fr: "Homme en silhouette sur un banc sous un ciel de coucher de soleil dramatique",
+        es: "Hombre en silueta sobre un banco bajo un cielo de atardecer dramático" } }
     ]
   },
 
@@ -2124,14 +2120,18 @@ const GALLERY_DATA = {
         en: "Figure seated on a bench overlooking a bay, black and white film photography",
         fr: "Silhouette assise sur un banc face à une baie, photographie argentique noir et blanc",
         es: "Figura sentada en un banco frente a una bahía, fotografía analógica en blanco y negro" } },
-      { file: "man-silhouette-bench-dramatic-sunset-sky-w2b.jpg", alt: {
-        en: "Man in silhouette on a bench under a dramatic sunset sky",
-        fr: "Homme en silhouette sur un banc sous un ciel de coucher de soleil dramatique",
-        es: "Hombre en silueta sobre un banco bajo un cielo de atardecer dramático" } },
       { file: "couple-bench-overlooking-water-w2b.jpg", alt: {
         en: "Couple seated on a bench overlooking still water",
         fr: "Couple assis sur un banc face à une eau calme",
-        es: "Pareja sentada en un banco frente a aguas tranquilas" } }
+        es: "Pareja sentada en un banco frente a aguas tranquilas" } },
+      {
+        file: "coastal-path-bench-ocean-view-faded-film-w2b.jpg",
+        alt: {
+          en: "A bench at the end of a green coastal path overlooking the blue ocean, faded vintage film photography",
+          fr: "Un banc au bout d'un sentier côtier verdoyant face à l'océan bleu, photographie argentique délavée",
+          es: "Un banco al final de un sendero costero verde con vista al océano azul, fotografía analógica desvaída"
+        }
+      }
     ]
   },
 
