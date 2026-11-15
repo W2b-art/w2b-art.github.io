@@ -522,14 +522,16 @@ function applyAction(action) {
 
   if (action.type === 'delete-branch') {
     // Archives every still-live photo (file move only — never fs.unlink,
-    // same as every other archive in this tool), deletes any anchor(s)
-    // still pointing at it (the anchor's own photo is kept, unpromoted,
-    // in the trunk pool), then removes the now-empty "branch-xxx":
-    // {images:[]} entry and its now-empty folder. The UI
-    // confirmation for this lives in admin.html (type-to-confirm) — this
-    // handler itself does not re-confirm, by design: it's meant to be
-    // called only after that gate has already passed.
-    const { gallery } = action;
+    // same as every other archive in this tool), then either deletes any
+    // anchor(s) still pointing at it (deleteAnchors: true — "the whole
+    // thing", the anchor's own photo is kept, unpromoted, in the trunk
+    // pool) or just detaches it (deleteAnchors: false/omitted — the
+    // anchor stays, now showing "no branch yet"), then removes the
+    // now-empty "branch-xxx": {images:[]} entry and its now-empty
+    // folder. The UI confirmation for this lives in admin.html
+    // (type-to-confirm) — this handler itself does not re-confirm, by
+    // design: it's meant to be called only after that gate has passed.
+    const { gallery, deleteAnchors } = action;
     if (!/^branch-/.test(gallery)) throw new Error('delete-branch: only branch-* galleries can be deleted this way');
     const g = GALLERY_DATA[gallery];
     if (!g) throw new Error('delete-branch: unknown gallery ' + gallery);
@@ -546,12 +548,14 @@ function applyAction(action) {
         if ((e.related || []).some((r) => r.series === gallery)) attachedTo.push(e.id);
       }
     }
-    // Deleting a branch retires the anchor(s) that pointed at it too —
-    // a branch-less anchor is just clutter ("no branch yet" on a tile
-    // that used to have real work). The anchor's own photo is kept,
-    // unpromoted, in the trunk pool; only the tile and its statement
-    // (if any) go away, same as deleteTrunkAnchor's own contract.
-    for (const id of attachedTo) newT = deleteTrunkAnchor(newT, id);
+    if (deleteAnchors) {
+      // "the whole thing" — the anchor's own photo is kept, unpromoted,
+      // in the trunk pool; only the tile and its statement (if any) go
+      // away, same as deleteTrunkAnchor's own contract.
+      for (const id of attachedTo) newT = deleteTrunkAnchor(newT, id);
+    } else {
+      for (const id of attachedTo) newT = detachBranch(newT, id);
+    }
     if (newT !== tsrc) fs.writeFileSync(TRUNK_DATA_PATH, newT);
 
     const newG = deleteGallery(gsrc, gallery);
@@ -559,7 +563,7 @@ function applyAction(action) {
 
     try { fs.rmdirSync(liveFolder); } catch (e) { /* best-effort: non-empty for an unexpected reason, or already gone — leave it rather than force */ }
 
-    return { ok: true, archivedCount: toArchive.length, deletedAnchors: attachedTo };
+    return { ok: true, archivedCount: toArchive.length, deletedAnchors: deleteAnchors ? attachedTo : [], detachedFrom: deleteAnchors ? [] : attachedTo };
   }
 
   if (action.type === 'replace-anchor-photo') {
