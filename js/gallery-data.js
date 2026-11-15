@@ -238,15 +238,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Row of glowing green bioreactor tanks in a Medellín research laboratory, colour documentary photography",
-          fr: "Rangée de cuves bioreacteurs vertes lumineuses dans un laboratoire de recherche de Medellín, photographie documentaire couleur",
-          es: "Fila de tanques biorreactores verdes luminosos en un laboratorio de investigación de Medellín, fotografía documental color"
-        }
-      },
-      {
         file: "medellin-worker-rappel-building-facade-urban-labour-w2b.jpg",
         archived: true,
         alt: {
@@ -1075,15 +1066,6 @@ const GALLERY_DATA = {
     },
     images: [
       {
-        file: "contemplations-cliff-coastline-black-white-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "A rugged cliff coastline under a heavy sky, black and white medium-format film",
-          fr: "Un littoral de falaises escarpées sous un ciel lourd, moyen format argentique noir et blanc",
-          es: "Una costa de acantilados escarpados bajo un cielo pesado, película de formato medio en blanco y negro"
-        }
-      },
-      {
         file: "contemplations-cliff-cove-inlet-black-white-w2b.jpg",
         archived: true,
         alt: {
@@ -1153,15 +1135,6 @@ const GALLERY_DATA = {
           en: "A wrecked boat on a rocky shore, black and white medium-format film",
           fr: "Une épave de bateau sur un rivage rocheux, moyen format argentique noir et blanc",
           es: "Los restos de un barco en una orilla rocosa, película de formato medio en blanco y negro"
-        }
-      },
-      {
-        file: "contemplations-ruined-doorway-light-colour-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Light falling through a ruined doorway, colour medium-format film",
-          fr: "La lumière tombant à travers une porte en ruine, moyen format argentique couleur",
-          es: "La luz cayendo a través de un umbral en ruinas, película de formato medio a color"
         }
       },
       {
@@ -1642,15 +1615,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "bamboo-tunnel-pond-stone-wall-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Path through a bamboo tunnel opening onto a still pond and an old stone wall, medium format film photography",
-          fr: "Chemin à travers un tunnel de bambous débouchant sur un étang immobile et un vieux mur de pierre, moyen format argentique",
-          es: "Camino a través de un túnel de bambú que da a un estanque quieto y un viejo muro de piedra, película de formato medio"
-        }
-      },
-      {
         file: "rushing-water-rocks-black-white-w2b.jpg",
         archived: true,
         alt: {
@@ -1713,15 +1677,7 @@ const GALLERY_DATA = {
       { file: "mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg", alt: {
         en: "Close-up of mussels and barnacles encrusted on coastal rock, macro texture photography",
         fr: "Gros plan sur des moules et balanes incrustées sur une roche côtière, photographie macro de texture",
-        es: "Primer plano de mejillones y bálanos incrustados en una roca costera, fotografía macro de textura" } },
-      {
-        file: "stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg",
-        alt: {
-          en: "Ancient stone corridor in ruins with repeated arches creating a vanishing point, black and white film photography",
-          fr: "Couloir en pierre ancienne en ruines avec arches répétées créant un point de fuite, argentique noir et blanc",
-          es: "Corredor de piedra antigua en ruinas con arcos repetidos creando punto de fuga, analógico blanco y negro"
-        }
-      }
+        es: "Primer plano de mejillones y bálanos incrustados en una roca costera, fotografía macro de textura" } }
     ]
   },
 
@@ -2120,21 +2076,6 @@ const GALLERY_DATA = {
     ]
   },
 
-  "branch-rushing-water": {
-    id: "branch-rushing-water",
-    folder: "images/branch-rushing-water/",
-    title: { en: "Iguazú", fr: "Iguazú", es: "Iguazú" },
-    images: [
-      { file: "iguazu-falls-wide-view-colour-w2b.jpg", alt: {
-        en: "Wide view of Iguazú Falls, colour film photography",
-        fr: "Vue large des chutes d'Iguazú, photographie argentique couleur",
-        es: "Vista amplia de las Cataratas del Iguazú, fotografía analógica a color" } },
-      { file: "iguazu-falls-close-crop-colour-w2b.jpg", alt: {
-        en: "Closer crop of Iguazú Falls, colour film photography",
-        fr: "Cadrage rapproché des chutes d'Iguazú, photographie argentique couleur",
-        es: "Encuadre cercano de las Cataratas del Iguazú, fotografía analógica a color" } }
-    ]
-  },
 
   "branch-dark-bay": {
     id: "branch-dark-bay",
@@ -2151,6 +2092,14 @@ const GALLERY_DATA = {
           en: "Solitary bird on a calm lake at sunset, mountain silhouette and golden light reflections on water, film photography",
           fr: "Oiseau solitaire sur un lac calme au coucher du soleil, silhouette de montagne et reflets dorés sur l'eau, argentique",
           es: "Pájaro solitario en lago tranquilo al atardecer, silueta de montaña y reflejos dorados en el agua, analógico"
+        }
+      },
+      {
+        file: "contemplations-cliff-coastline-black-white-w2b.jpg",
+        alt: {
+          en: "A rugged cliff coastline under a heavy sky, black and white medium-format film",
+          fr: "Un littoral de falaises escarpées sous un ciel lourd, moyen format argentique noir et blanc",
+          es: "Una costa de acantilados escarpados bajo un cielo pesado, película de formato medio en blanco y negro"
         }
       }
     ]
@@ -2296,7 +2245,73 @@ const GALLERY_DATA = {
       id: "branch-corridors-perpectives",
       folder: "images/branch-corridors-perpectives/",
       title: { en: "corridors", fr: "couloir", es: "pasajes" },
-      images: []
+      images: [
+      {
+        file: "stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg",
+        alt: {
+          en: "Ancient stone corridor in ruins with repeated arches creating a vanishing point, black and white film photography",
+          fr: "Couloir en pierre ancienne en ruines avec arches répétées créant un point de fuite, argentique noir et blanc",
+          es: "Corredor de piedra antigua en ruinas con arcos repetidos creando punto de fuga, analógico blanco y negro"
+        }
+      }]
+    },
+  "branch-t3": {
+      id: "branch-t3",
+      folder: "images/branch-t3/",
+      title: { en: "Untitled", fr: "Sans titre", es: "Sin título" },
+      images: [
+      {
+        file: "contemplations-ruined-doorway-light-colour-w2b.jpg",
+        alt: {
+          en: "Light falling through a ruined doorway, colour medium-format film",
+          fr: "La lumière tombant à travers une porte en ruine, moyen format argentique couleur",
+          es: "La luz cayendo a través de un umbral en ruinas, película de formato medio a color"
+        }
+      },
+      {
+        file: "bamboo-tunnel-pond-stone-wall-w2b.jpg",
+        alt: {
+          en: "Path through a bamboo tunnel opening onto a still pond and an old stone wall, medium format film photography",
+          fr: "Chemin à travers un tunnel de bambous débouchant sur un étang immobile et un vieux mur de pierre, moyen format argentique",
+          es: "Camino a través de un túnel de bambú que da a un estanque quieto y un viejo muro de piedra, película de formato medio"
+        }
+      },
+      {
+        file: "medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg",
+        alt: {
+          en: "Row of glowing green bioreactor tanks in a Medellín research laboratory, colour documentary photography",
+          fr: "Rangée de cuves bioreacteurs vertes lumineuses dans un laboratoire de recherche de Medellín, photographie documentaire couleur",
+          es: "Fila de tanques biorreactores verdes luminosos en un laboratorio de investigación de Medellín, fotografía documental color"
+        }
+      },
+      {
+        file: "000084400023.jpg",
+        title: { en: "vanishing into an other world", fr: "disparaître dans un autre monde", es: "desvanecerse en otro mundo" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2023,
+        alt: {
+          en: "concrete corridors obscure",
+          fr: "couloirs en béton sombres",
+          es: "Pasillos de hormigón oscuros"
+        }
+      }]
+    },
+  "branch-scpultures-sacred": {
+      id: "branch-scpultures-sacred",
+      folder: "images/branch-scpultures-sacred/",
+      title: { en: "totems", fr: "totems", es: "totems" },
+      images: [
+      {
+        file: "000024290011.jpg",
+        title: { en: "pacha mama is dry", fr: "Pacha Mama est sèche", es: "La Pacha Mama está seca" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2023,
+        alt: {
+          en: "mount of stones covered in cloths",
+          fr: "tas de pierres recouvertes de chiffons",
+          es: "Montón de piedras cubierto con paños"
+        }
+      }]
     }
 
 };

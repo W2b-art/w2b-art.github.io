@@ -81,7 +81,6 @@ const TRUNK_MANIFEST_CURRENT = [
      ES quote is the official exhibition intention text, printed on the
      actual panel at Palacio de Bellas Artes — use verbatim, see
      project_memoria_urbana_medellin.md. */
-  { id:'t3', series:'trunk', file:'stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg' }
 ];
 
 /* 2026-11-01 — 11 more branches wired in, per the hand-curated
@@ -140,11 +139,18 @@ const TRUNK_MANIFEST_OTHER = [
   ] },
   { id:'t18', series:'trunk', file:'dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg', related:[
     {series:'branch-dark-bay',file:'buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg'},
-    {series:'branch-dark-bay',file:'sunset-lake-mountain-silhouette-bird-film-w2b.jpg'}
+    {series:'branch-dark-bay',file:'sunset-lake-mountain-silhouette-bird-film-w2b.jpg'},
+    {series:'branch-dark-bay',file:'contemplations-cliff-coastline-black-white-w2b.jpg'}
   ] },
   { id:'t19', series:'trunk', file:'bolts-nuts-industrial-gear-close-up-black-white-w2b.jpg', related:[
     {series:'branch-industrial',file:'motorcycle-frame-mechanical-detail-black-white-w2b.jpg'},
     {series:'branch-industrial',file:'man-junkyard-stripped-car-parts-black-white-w2b.jpg'},
     {series:'branch-industrial',file:'6172-1.jpg'}
-] }
+] },
+  { id:'t3', series:'trunk', file:'stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg', related:[
+    {series:'branch-t3',file:'contemplations-ruined-doorway-light-colour-w2b.jpg'},
+    {series:'branch-t3',file:'bamboo-tunnel-pond-stone-wall-w2b.jpg'},
+    {series:'branch-t3',file:'medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg'},
+    {series:'branch-t3',file:'000084400023.jpg'}
+  ] }
 ];

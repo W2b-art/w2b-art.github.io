@@ -564,5 +564,19 @@ const RESPONSIVE_MANIFEST = {
    1600
   ],
   "masterKB": 644
+ },
+ "images/branch-t3/000084400023.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 581
+ },
+ "images/branch-scpultures-sacred/000024290011.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 736
  }
 };
