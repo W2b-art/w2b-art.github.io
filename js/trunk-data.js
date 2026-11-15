@@ -123,7 +123,11 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-coastal-bench',file:'solitary-figure-bench-tropical-tree-seaside-black-white-w2b.jpg'},
     {series:'branch-coastal-bench',file:'coastal-path-bench-ocean-view-faded-film-w2b.jpg'}
 ] },
-  { id:'t13', series:'trunk', file:'hands-playing-double-bass-black-white-w2b.jpg' },
+  { id:'t13', series:'trunk', file:'hands-playing-double-bass-black-white-w2b.jpg', related:[
+    {series:'branch-t13',file:'6607-9.jpg'},
+    {series:'branch-t13',file:'6607-36.jpg'},
+    {series:'branch-t13',file:'6607-34.jpg'}
+  ] },
   { id:'t17', series:'trunk', file:'woman-car-window-candid-street-black-white-w2b.jpg', related:[
     {series:'branch-t17',file:'medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg'},
     {series:'branch-t17',file:'medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg'}

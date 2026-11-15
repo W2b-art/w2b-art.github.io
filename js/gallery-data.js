@@ -2199,6 +2199,45 @@ const GALLERY_DATA = {
           es: "Joven llevando un gatito con arnés de leopardo sobre el hombro en una colorida calle de Medellín, documental color"
         }
       }]
+    },
+  "branch-t13": {
+      id: "branch-t13",
+      folder: "images/branch-t13/",
+      title: { en: "Untitled", fr: "Sans titre", es: "Sin título" },
+      images: [
+      {
+        file: "6607-9.jpg",
+        title: { en: "have you seens my left foot?", fr: "Avez-vous vu mon pied gauche ?", es: "¿Has visto mi pie izquierdo?" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2026,
+        alt: {
+          en: "hand holding prostetic leg",
+          fr: "main tenant une prothèse",
+          es: "mano grabando una protésis"
+        }
+      },
+      {
+        file: "6607-36.jpg",
+        title: { en: "every wrinkle is an extra stitch", fr: "chaque ride est une maille en plus", es: "Cada arruga es un punto más" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2026,
+        alt: {
+          en: "hand crafting a net",
+          fr: "main fabricant un filet",
+          es: "mano hechando un filiete"
+        }
+      },
+      {
+        file: "6607-34.jpg",
+        title: { en: "Sweet palms", fr: "Palmiers doux", es: "Palmeras dulces" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2026,
+        alt: {
+          en: "hand holding a candy paste black and white",
+          fr: "main tenant un nougat",
+          es: "mano gabando un dulce"
+        }
+      }]
     }
 
 };

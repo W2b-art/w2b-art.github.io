@@ -508,5 +508,26 @@ const RESPONSIVE_MANIFEST = {
    1600
   ],
   "masterKB": 1038
+ },
+ "images/branch-t13/6607-9.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 875
+ },
+ "images/branch-t13/6607-36.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 601
+ },
+ "images/branch-t13/6607-34.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 811
  }
 };
