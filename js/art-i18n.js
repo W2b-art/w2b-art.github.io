@@ -56,6 +56,8 @@
     idx_pro:{en:"Commercial ↗",fr:"Commercial ↗",es:"Comercial ↗"},
     idx_prints:{en:"Prints",fr:"Tirages",es:"Copias"},
     idx_series_h:{en:"Series",fr:"Séries",es:"Series"},
+    portfolio_label:{en:"Portfolio",fr:"Portfolio",es:"Portafolio"},
+    portfolio_q:{en:"Language",fr:"Langue",es:"Idioma"},
     /* singular "Series NN" label on a gallery hero / the home "now" badge —
        was hardcoded French ("Série 06") regardless of language; this is
        what read as "titles not translated" even though captions/titles/

@@ -75,3 +75,26 @@
     }
   }
 })();
+
+/* "Portfolio" side-nav button → EN/FR/ES language picker (2026-11-15).
+   position:fixed in the CSS so it floats free of the nav's own flex
+   column; this just places it next to whichever instance of the button
+   opened it (oeuvre-actuelle.html and autres-travaux.html each have
+   their own #sideNavPortfolio/#portfolioPick pair, same ids, only one
+   pair exists per page). */
+(function(){
+  var btn = document.getElementById('sideNavPortfolio');
+  var pick = document.getElementById('portfolioPick');
+  if (!btn || !pick) return;
+  function place(){
+    var r = btn.getBoundingClientRect();
+    pick.style.top = Math.max(8, r.top - 4) + 'px';
+    pick.style.right = (window.innerWidth - r.left + 10) + 'px';
+  }
+  function open(){ place(); pick.classList.add('open'); pick.setAttribute('aria-hidden', 'false'); btn.setAttribute('aria-expanded', 'true'); }
+  function close(){ pick.classList.remove('open'); pick.setAttribute('aria-hidden', 'true'); btn.setAttribute('aria-expanded', 'false'); }
+  btn.addEventListener('click', function(e){ e.stopPropagation(); pick.classList.contains('open') ? close() : open(); });
+  document.addEventListener('click', function(e){ if (pick.classList.contains('open') && !pick.contains(e.target) && e.target !== btn) close(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  window.addEventListener('resize', function(){ if (pick.classList.contains('open')) place(); });
+})();

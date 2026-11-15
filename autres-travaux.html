@@ -20,7 +20,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/art.css?v=5">
-<link rel="stylesheet" href="css/rooms.css?v=8">
+<link rel="stylesheet" href="css/rooms.css?v=9">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -94,6 +94,7 @@
      page while scrolling, not the only way in on this one. -->
 <nav class="side-nav" aria-label="Navigation">
   <a href="oeuvre-actuelle.html" data-ui="idx_art">Fine Art</a>
+  <button type="button" id="sideNavPortfolio" aria-haspopup="true" aria-expanded="false" data-ui="portfolio_label">Portfolio</button>
   <a href="expositions.html" data-ui="idx_expo">Expositions</a>
   <a href="collaborate.html" data-ui="foot_collab">Collaborer</a>
   <a href="about.html" data-ui="foot_about">À propos</a>
@@ -101,6 +102,16 @@
   <button type="button" id="sideNavIndex" data-ui="idx_label">Index</button>
   <a href="after-dark.html" class="side-nav-afterdark" data-ui="afterdark_label">After Dark</a>
 </nav>
+<!-- Portfolio language picker — opened by #sideNavPortfolio (js/art-home.js
+     positions it next to the button). Each link is a direct PDF, no
+     intermediate page. Side-nav only (desktop); no mobile idx-overlay
+     equivalent yet — this page's nav is hidden below 820px anyway. -->
+<div class="portfolio-pick" id="portfolioPick" aria-hidden="true">
+  <div class="q" data-ui="portfolio_q">Language</div>
+  <a href="documents/portfolio-en.pdf" target="_blank" rel="noopener">EN</a>
+  <a href="https://drive.google.com/file/d/1oDgwmPVgZoNLONP17cxiKoCSzTEkrQE_/view" target="_blank" rel="noopener">FR</a>
+  <a href="https://drive.google.com/file/d/1-cTEsnEsB1FDi1s4IDTb0MoW2Qg49XPh/view" target="_blank" rel="noopener">ES</a>
+</div>
 
 <section class="hero" id="hero" data-parallax>
   <div class="frames" id="heroFrames"></div>
@@ -150,8 +161,8 @@
 <script src="js/room-dims.js?v=1" defer></script>
 <script src="js/responsive-manifest.js?v=3" defer></script>
 <script src="js/responsive-img.js?v=1" defer></script>
-<script src="js/art-i18n.js?v=8" defer></script>
-<script src="js/art-home.js?v=12" defer></script>
+<script src="js/art-i18n.js?v=9" defer></script>
+<script src="js/art-home.js?v=13" defer></script>
 <script src="js/art-trunk.js?v=11" defer></script>
 <script src="js/rooms.js?v=3" defer></script>
 <script src="js/legal-footer.js" defer></script>
