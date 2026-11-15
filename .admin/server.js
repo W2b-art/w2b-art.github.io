@@ -581,6 +581,38 @@ function applyAction(action) {
     return { ok: true, archivedCount: toArchive.length, deletedAnchors: deleteAnchors ? attachedTo : [], detachedFrom: deleteAnchors ? [] : attachedTo };
   }
 
+  if (action.type === 'delete-trunk-anchor') {
+    // Fully removes a branch-less anchor: archives its own photo (same
+    // file-move as the generic 'archive' action, scoped to the 'trunk'
+    // gallery) so it drops off both trunk pages (art-trunk.js's resolve()
+    // skips archived images), then deletes the trunk-data.js anchor entry
+    // itself so no ghost row is left in this tool. Refuses an anchor that
+    // still has a branch — detach it first, same gate the UI enforces.
+    const { trunkId } = action;
+    for (const arr of [TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER]) {
+      const e = arr.find((x) => x.id === trunkId);
+      if (e && (e.related || []).length) throw new Error('delete-trunk-anchor: ' + trunkId + ' still has a branch — detach it first');
+    }
+    const file = (() => {
+      for (const arr of [TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER]) {
+        const e = arr.find((x) => x.id === trunkId);
+        if (e) return e.file;
+      }
+      throw new Error('delete-trunk-anchor: ' + trunkId + ' not found in either manifest');
+    })();
+
+    const im = GALLERY_DATA.trunk.images.find((i) => i.file === file);
+    if (im && !im.archived) {
+      const newG = setArchived(gsrc, 'trunk', file, true);
+      moveFiles(folderFor(GALLERY_DATA, 'trunk'), path.join(ARCHIVE_ROOT, 'trunk'), file);
+      fs.writeFileSync(GALLERY_DATA_PATH, newG);
+    }
+
+    const newT = deleteTrunkAnchor(tsrc, trunkId);
+    fs.writeFileSync(TRUNK_DATA_PATH, newT);
+    return { ok: true };
+  }
+
   if (action.type === 'replace-anchor-photo') {
     // Repoints an existing anchor at a different trunk photo — same id,
     // same position, same related[] branch, only `file:` changes. The

@@ -1011,6 +1011,11 @@ function trunkRow(set, e) {
     const detachBtn = document.createElement('button'); detachBtn.className = 'danger'; detachBtn.textContent = 'Detach branch';
     detachBtn.onclick = () => { if (confirm('Detach the whole branch from ' + e.id + '? The branch gallery itself is untouched, only the link is removed.')) doAction({ type: 'branch-detach', trunkId: e.id }, 'Detached branch from ' + e.id); };
     actRow.appendChild(detachBtn);
+  } else {
+    const deleteBtn = document.createElement('button'); deleteBtn.className = 'danger'; deleteBtn.textContent = 'Delete';
+    deleteBtn.title = 'archives the photo (so it drops off both trunk pages) and removes this anchor entry — the only way to fully get rid of a branch-less anchor';
+    deleteBtn.onclick = () => { if (confirm('Delete ' + e.id + ' (' + e.file + ')? Its photo is archived (not erased from disk) and this anchor tile is removed. No undo button — re-adding it is a manual Upload-tab/trunk-anchor step.')) doAction({ type: 'delete-trunk-anchor', trunkId: e.id }, 'Deleted ' + e.id); };
+    actRow.appendChild(deleteBtn);
   }
   actGrp.appendChild(actRow);
   controls.appendChild(actGrp);
