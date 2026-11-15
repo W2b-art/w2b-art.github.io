@@ -81,6 +81,7 @@ const TRUNK_MANIFEST_CURRENT = [
      ES quote is the official exhibition intention text, printed on the
      actual panel at Palacio de Bellas Artes — use verbatim, see
      project_memoria_urbana_medellin.md. */
+  { id:'t3', series:'trunk', file:'stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg' }
 ];
 
 /* 2026-11-01 — 11 more branches wired in, per the hand-curated

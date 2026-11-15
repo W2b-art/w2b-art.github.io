@@ -139,15 +139,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Ancient stone corridor in ruins with repeated arches creating a vanishing point, black and white film photography",
-          fr: "Couloir en pierre ancienne en ruines avec arches répétées créant un point de fuite, argentique noir et blanc",
-          es: "Corredor de piedra antigua en ruinas con arcos repetidos creando punto de fuga, analógico blanco y negro"
-        }
-      },
-      {
         file: "industrial-gears-bolts-vintage-machine-macro-black-white-w2b.jpg",
         archived: true,
         alt: {
@@ -1722,7 +1713,15 @@ const GALLERY_DATA = {
       { file: "mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg", alt: {
         en: "Close-up of mussels and barnacles encrusted on coastal rock, macro texture photography",
         fr: "Gros plan sur des moules et balanes incrustées sur une roche côtière, photographie macro de texture",
-        es: "Primer plano de mejillones y bálanos incrustados en una roca costera, fotografía macro de textura" } }
+        es: "Primer plano de mejillones y bálanos incrustados en una roca costera, fotografía macro de textura" } },
+      {
+        file: "stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg",
+        alt: {
+          en: "Ancient stone corridor in ruins with repeated arches creating a vanishing point, black and white film photography",
+          fr: "Couloir en pierre ancienne en ruines avec arches répétées créant un point de fuite, argentique noir et blanc",
+          es: "Corredor de piedra antigua en ruinas con arcos repetidos creando punto de fuga, analógico blanco y negro"
+        }
+      }
     ]
   },
 
