@@ -79,10 +79,24 @@
      room-system galleries in js/art-gallery.js. */
   function makeImg(item){
     var dims = (typeof ROOM_DIMS !== 'undefined') && ROOM_DIMS[item.src];
-    var img = (typeof buildResponsiveImg === 'function')
+    var node = (typeof buildResponsiveImg === 'function')
       ? buildResponsiveImg(item.src, item.alt, dims && dims[0], dims && dims[1])
-      : (function(){ var i = new Image(); i.decoding = 'async'; i.loading = 'lazy'; i.src = item.src; i.alt = item.alt; if (dims){ i.width = dims[0]; i.height = dims[1]; } return i; })();
-    return img;
+      : (function(){ var i = new Image(); i.decoding = 'async'; i.src = item.src; i.alt = item.alt; if (dims){ i.width = dims[0]; i.height = dims[1]; } return i; })();
+    /* 2026-11-15 — native loading="lazy" (set by buildResponsiveImg/the
+       fallback above) silently skips images the browser jumps past in one
+       go — a fast flick, a scrollbar drag, or an anchor jump across this
+       full-screen scroll-snap sequence leaves the skipped photo's <img>
+       permanently unloaded (blank) even once the user is sitting right on
+       top of it, because it was never near the viewport DURING the jump.
+       Confirmed live on autres-travaux.html: an instant scroll to the
+       bottom left 4 mid-sequence photos blank 1.5s after landing. This is
+       a small, curated set (~30 images total, already compressed +
+       responsive AVIF/WebP) — eager-loading all of it is cheap and removes
+       the failure mode entirely, so override lazy here rather than try to
+       special-case the threshold. */
+    var im = (node.tagName === 'IMG') ? node : node.querySelector('img');
+    if (im) im.loading = 'eager';
+    return node;
   }
 
   /* 2026-10-31 — measured native loading="lazy" firing nearly all 20
@@ -405,6 +419,14 @@
       wrap.querySelectorAll('.reveal, .reveal-img').forEach(function(el){ el.classList.add('in'); });
     }
     sizeFigures(wrap);
+
+    /* 2026-11-15 — overlay.scrollTop is never reset by closeBranch(), so
+       without this a branch opened after scrolling through a previous one
+       inherits that same scroll position: the new branch's own hero photo
+       is already scrolled past, landing the visitor straight on "more like
+       this" (reproduced live: scroll branch A, close, open branch B →
+       lands on B's first related photo, B's hero hidden above the fold). */
+    overlay.scrollTop = 0;
 
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
