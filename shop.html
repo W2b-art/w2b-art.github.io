@@ -12,7 +12,7 @@
 <meta property="og:description" content="Fine-art prints by W2b (Guillaume Delye) — pigment ink on cotton rag; collector editions numbered with a signed certificate, shipped worldwide.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://w2bphotography.com/shop.html">
-<meta property="og:image" content="https://w2bphotography.com/images/trunk/glass-roof-grid-baroque-sculpture-ornament-w2b.jpg">
+<meta property="og:image" content="https://w2bphotography.com/images/trunk/contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate icon" href="/favicon-32.png" sizes="32x32">
@@ -79,7 +79,7 @@
 
 <main class="shop" id="main-content">
   <section class="shop-hero">
-    <img src="images/trunk/glass-roof-grid-baroque-sculpture-ornament-w2b.jpg" alt="">
+    <img src="images/trunk/contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg" alt="">
     <div class="shop-head room-confident">
       <div class="k" id="s_k"></div>
       <h1 id="s_h1"></h1>
@@ -113,12 +113,23 @@
   </div>
 </div>
 
+<!-- Series view: a clicked series tile's full print list, anchor photo
+     first — same component as oeuvre-actuelle.html's branch overlay
+     (css/rooms.css), built fresh here with buy cards instead of captions. -->
+<div class="branch-overlay" id="shopBranchOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="branch-backbar">
+    <button type="button" id="shopBranchBack" class="branch-back"></button>
+  </div>
+  <div class="branch-wrap" id="shopBranchWrap"></div>
+</div>
+
 <footer>
   <div class="sig"><img src="images/ui/w2b-logo.png" alt="W2b"></div>
   <div class="l">@w2b.film<br><a href="oeuvre-actuelle.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
 </footer>
 
 <script src="js/gallery-data.js?v=9"></script>
+<script src="js/trunk-data.js?v=7"></script>
 <script src="js/art-i18n.js?v=8"></script>
 <script>
 (function(){
@@ -126,9 +137,9 @@
   var L=(window.W2B_LANG)||'fr';
 
   var S={
-    fr:{k:"Tirages",h1:"Acquérir un tirage",intro:"Une sélection d'images, en tirages d'art : encre pigmentaire sur coton. Les éditions collector sont numérotées, avec certificat signé ; les éditions ouvertes sont des tirages d'archive, sans certificat.",terms:"Chaque tirage est fait sur commande et expédié dans le monde entier. Comptez deux à trois semaines. Prix en euros ; peso colombien sur demande.",dark:"Les tirages de la section After Dark sont disponibles en privé, sur demande.",darklink:"Écrire",coll:"Édition collector",open:"Édition ouverte",from:"dès",size:"Format",name:"Nom",email:"Email",note:"Un mot (facultatif)",submit:"Demander ce tirage",ok:"Merci. Je confirme la disponibilité et t'envoie la facture sous quelques jours.",noteCol:"Numéroté · édition limitée de 15 + 2 AP · avec certificat d'authenticité signé.",noteOpen:"Édition ouverte · tirage pigmentaire d'archive · non signé.",consent:"J'accepte que mes données soient traitées pour répondre à ma demande, selon la",privacylink:"Politique de confidentialité."},
-    en:{k:"Prints",h1:"Collect a print",intro:"A selection of images, as fine-art prints: pigment ink on cotton rag. Collector editions are numbered, with a signed certificate; open editions are archival prints, without a certificate.",terms:"Each print is made to order and shipped worldwide. Allow two to three weeks. Prices in euros; Colombian peso on request.",dark:"Prints from the After Dark section are available privately, on request.",darklink:"Write",coll:"Collector edition",open:"Open edition",from:"from",size:"Size",name:"Name",email:"Email",note:"A note (optional)",submit:"Request this print",ok:"Thank you. I'll confirm availability and send the invoice within a few days.",noteCol:"Numbered · limited edition of 15 + 2 AP · with a signed certificate of authenticity.",noteOpen:"Open edition · archival pigment print · unsigned.",consent:"I agree my data may be processed to answer my request, per the",privacylink:"Privacy policy."},
-    es:{k:"Copias",h1:"Adquirir una copia",intro:"Una selección de imágenes, en copias de autor: tinta pigmentada sobre algodón. Las ediciones coleccionista están numeradas, con certificado firmado; las ediciones abiertas son copias de archivo, sin certificado.",terms:"Cada copia se hace por encargo y se envía a todo el mundo. Dos a tres semanas. Precios en euros; peso colombiano a pedido.",dark:"Las copias de la sección After Dark están disponibles en privado, a pedido.",darklink:"Escribir",coll:"Edición coleccionista",open:"Edición abierta",from:"desde",size:"Formato",name:"Nombre",email:"Email",note:"Una nota (opcional)",submit:"Solicitar esta copia",ok:"Gracias. Confirmo disponibilidad y te envío la factura en unos días.",noteCol:"Numerada · edición limitada de 15 + 2 AP · con certificado de autenticidad firmado.",noteOpen:"Edición abierta · copia pigmentada de archivo · sin firmar.",consent:"Acepto que mis datos se traten para responder a mi solicitud, según la",privacylink:"Política de datos."}
+    fr:{k:"Tirages",h1:"Acquérir un tirage",intro:"Une sélection d'images, en tirages d'art : encre pigmentaire sur coton. Les éditions collector sont numérotées, avec certificat signé ; les éditions ouvertes sont des tirages d'archive, sans certificat.",terms:"Chaque tirage est fait sur commande et expédié dans le monde entier. Comptez deux à trois semaines. Prix en euros ; peso colombien sur demande.",dark:"Les tirages de la section After Dark sont disponibles en privé, sur demande.",darklink:"Écrire",coll:"Édition collector",open:"Édition ouverte",from:"dès",size:"Format",name:"Nom",email:"Email",note:"Un mot (facultatif)",submit:"Demander ce tirage",ok:"Merci. Je confirme la disponibilité et t'envoie la facture sous quelques jours.",noteCol:"Numéroté · édition limitée de 15 + 2 AP · avec certificat d'authenticité signé.",noteOpen:"Édition ouverte · tirage pigmentaire d'archive · non signé.",consent:"J'accepte que mes données soient traitées pour répondre à ma demande, selon la",privacylink:"Politique de confidentialité.",series_h:"Séries",selection_h:"Sélection",go:"Voir la série",back:"← Tirages"},
+    en:{k:"Prints",h1:"Collect a print",intro:"A selection of images, as fine-art prints: pigment ink on cotton rag. Collector editions are numbered, with a signed certificate; open editions are archival prints, without a certificate.",terms:"Each print is made to order and shipped worldwide. Allow two to three weeks. Prices in euros; Colombian peso on request.",dark:"Prints from the After Dark section are available privately, on request.",darklink:"Write",coll:"Collector edition",open:"Open edition",from:"from",size:"Size",name:"Name",email:"Email",note:"A note (optional)",submit:"Request this print",ok:"Thank you. I'll confirm availability and send the invoice within a few days.",noteCol:"Numbered · limited edition of 15 + 2 AP · with a signed certificate of authenticity.",noteOpen:"Open edition · archival pigment print · unsigned.",consent:"I agree my data may be processed to answer my request, per the",privacylink:"Privacy policy.",series_h:"Series",selection_h:"Selection",go:"See the series",back:"← Prints"},
+    es:{k:"Copias",h1:"Adquirir una copia",intro:"Una selección de imágenes, en copias de autor: tinta pigmentada sobre algodón. Las ediciones coleccionista están numeradas, con certificado firmado; las ediciones abiertas son copias de archivo, sin certificado.",terms:"Cada copia se hace por encargo y se envía a todo el mundo. Dos a tres semanas. Precios en euros; peso colombiano a pedido.",dark:"Las copias de la sección After Dark están disponibles en privado, a pedido.",darklink:"Escribir",coll:"Edición coleccionista",open:"Edición abierta",from:"desde",size:"Formato",name:"Nombre",email:"Email",note:"Una nota (opcional)",submit:"Solicitar esta copia",ok:"Gracias. Confirmo disponibilidad y te envío la factura en unos días.",noteCol:"Numerada · edición limitada de 15 + 2 AP · con certificado de autenticidad firmado.",noteOpen:"Edición abierta · copia pigmentada de archivo · sin firmar.",consent:"Acepto que mis datos se traten para responder a mi solicitud, según la",privacylink:"Política de datos.",series_h:"Series",selection_h:"Selección",go:"Ver la serie",back:"← Copias"}
   };
   var D=S[L]||S.fr;
   document.getElementById('s_k').textContent=D.k;
@@ -183,55 +194,97 @@
    "ruined-building-interior-debris-furniture-w2b.jpg":{en:"Interior",fr:"Intérieur",es:"Interior"},
    "calle-54-street-sign-rubble-w2b.jpg":{en:"Calle 54",fr:"Calle 54",es:"Calle 54"}
   };
-  var titleFor=function(file,fallback){var t=TITLES[file];return (t&&(t[L]||t.en))||(fallback?fallback.split(',')[0]:file);};
+  // 2026-11-15 — the museum-label title Guillaume sets per photo in the
+  // admin tool (gallery-data.js's im.title) always wins now: this TITLES
+  // map was a one-time hand-typed snapshot that drifted out of sync with
+  // whatever he later edited there. Kept as a fallback only for photos
+  // that predate the title field and never got one set.
+  var titleFor=function(file,imTitle,fallback){if(imTitle)return imTitle[L]||imTitle.en||imTitle.fr;var t=TITLES[file];return (t&&(t[L]||t.en))||(fallback?fallback.split(',')[0]:file);};
 
-  var SHOP_GALLERIES=["trunk","branch-bailar-la-ciudad","branch-lo-que-dejamos"];
-  /* These trunk photos are each a project's own anchor/hero image on
-     oeuvre-actuelle.html (the trunk photo that opens that project's
-     branch — see trunk-data.js t08/t16) — they belong to the project, not to the
-     assorted "Selección" grab-bag, even though the file itself lives in
-     images/trunk/. Pulled out of trunk and placed first in their real
-     project's group, same Collector tier as the rest of that project. */
-  var ANCHOR_TO_PROJECT={
-    "street-dancer-colombia-jersey-motion-night-w2b.jpg":"branch-bailar-la-ciudad",
-    "abandoned-train-wagons-junkyard-color-w2b.jpg":"branch-lo-que-dejamos"
-  };
-  var groupsEl=document.getElementById('shop-groups');
-  var seen={}; /* dedupe across galleries */
+  /* 2026-11-15 — rebuilt to source directly from trunk-data.js's real
+     anchor/branch structure instead of this file's own, separately
+     maintained SHOP_GALLERIES/ANCHOR_TO_PROJECT lists — those had drifted
+     badly out of sync (only knew about 2 of the 11 branches actually live
+     on oeuvre-actuelle.html/autres-travaux.html, so 9 real projects had no
+     way to be bought at all). Now: every trunk anchor with a branch becomes
+     a "see the full series" tile, exactly like the trunk/branch pattern on
+     the home pages; a branch-less anchor stays a direct, individually
+     buyable print — same two-tier split the site already uses, just always
+     in sync with whatever trunk-data.js actually says. */
+  function resolveShopImg(series,file){
+    var g=GALLERY_DATA[series];
+    var im=g&&g.images.filter(function(i){return i.file===file;})[0];
+    if(!g||!im||im.archived) return null;
+    return {file:file,alt:im.alt,title:im.title,folder:g.folder};
+  }
+  function buyCard(im,tier){
+    var minEur=TIERS[tier].sizes[0].eur;
+    var t=titleFor(im.file, im.title, im.alt&&(im.alt[L]||im.alt.fr));
+    var card=document.createElement('div'); card.className='print';
+    card.innerHTML='<div class="frame"><img loading="lazy" src="'+im.folder+im.file+'" alt="'+((im.alt&&(im.alt[L]||im.alt.fr))||'').replace(/"/g,'')+'"></div>'+
+      '<div class="edition">'+(tier==='collector'?D.coll:D.open)+'</div>'+
+      '<div class="meta"><span class="t">'+t+'</span><span class="from">'+D.from+' '+minEur+' €</span></div>'+
+      '<button class="buy">'+D.submit+'</button>';
+    card.querySelector('.buy').addEventListener('click',function(){ openAcq(im.file,tier,t); });
+    return card;
+  }
 
-  SHOP_GALLERIES.forEach(function(id){
-    var g=GALLERY_DATA[id]; if(!g) return;
-    var excl=SHOP_EXCLUDE[id]||[];
-    var imgs=g.images
-      .filter(function(im){ return id==='trunk' ? !ANCHOR_TO_PROJECT[im.file] : true; })
-      .map(function(im){ return {file:im.file, alt:im.alt, folder:g.folder, archived:im.archived}; });
-    /* inject this project's reassigned trunk anchor(s), lead position */
-    if(id!=='trunk' && GALLERY_DATA.trunk){
-      var anchors=GALLERY_DATA.trunk.images.filter(function(im){ return ANCHOR_TO_PROJECT[im.file]===id; })
-        .map(function(im){ return {file:im.file, alt:im.alt, folder:GALLERY_DATA.trunk.folder, archived:im.archived}; });
-      imgs=anchors.concat(imgs);
-    }
-    imgs=imgs.filter(function(im){ if(im.archived) return false; if(seen[im.file]) return false; if(excl.indexOf(im.file)!==-1) return false; seen[im.file]=1; return true; });
-    if(!imgs.length) return;
-    var sec=document.createElement('section'); sec.className='shop-group';
-    var ttl=document.createElement('div'); ttl.className='shop-group-title';
-    ttl.innerHTML='<h2>'+(g.title[L]||g.title.fr)+'</h2><span class="ln"></span>';
-    sec.appendChild(ttl);
-    var grid=document.createElement('div'); grid.className='shop-grid';
-    imgs.forEach(function(im){
-      var col=isCollector(id), tier=col?'collector':'open';
-      var minEur=TIERS[tier].sizes[0].eur;
-      var t=titleFor(im.file, im.alt&&(im.alt[L]||im.alt.fr));
-      var card=document.createElement('div'); card.className='print';
-      card.innerHTML='<div class="frame"><img loading="lazy" src="'+im.folder+im.file+'" alt="'+((im.alt&&(im.alt[L]||im.alt.fr))||'').replace(/"/g,'')+'"></div>'+
-        '<div class="edition">'+(col?D.coll:D.open)+'</div>'+
-        '<div class="meta"><span class="t">'+t+'</span><span class="from">'+D.from+' '+minEur+' €</span></div>'+
-        '<button class="buy">'+D.submit+'</button>';
-      card.querySelector('.buy').addEventListener('click',function(){ openAcq(im.file,tier,t); });
-      grid.appendChild(card);
+  var ALL_ANCHORS=(typeof TRUNK_MANIFEST_CURRENT!=='undefined'?TRUNK_MANIFEST_CURRENT:[]).concat(typeof TRUNK_MANIFEST_OTHER!=='undefined'?TRUNK_MANIFEST_OTHER:[]);
+  var seriesList=[],standalone=[],seenIds={};
+  ALL_ANCHORS.forEach(function(e){
+    if(seenIds[e.id]) return; seenIds[e.id]=1; /* t3/t7 currently share one file — guard against showing the same anchor twice if trunk-data.js ever lists an id more than once */
+    var anchorIm=resolveShopImg(e.series,e.file);
+    if(!anchorIm) return;
+    var related=(e.related||[]).filter(function(r){
+      var excl=SHOP_EXCLUDE[r.series]||[];
+      return excl.indexOf(r.file)===-1;
     });
-    sec.appendChild(grid); groupsEl.appendChild(sec);
+    if(!related.length){ standalone.push({im:anchorIm,tier:isCollector(e.series)?'collector':'open'}); return; }
+    var branchSeries=related[0].series;
+    var items=[anchorIm].concat(related.map(function(r){return resolveShopImg(r.series,r.file);}).filter(Boolean));
+    var branchG=GALLERY_DATA[branchSeries];
+    var title=titleFor(anchorIm.file, anchorIm.title, (branchG&&branchG.title&&(branchG.title[L]||branchG.title.fr))||(anchorIm.alt&&(anchorIm.alt[L]||anchorIm.alt.fr)));
+    seriesList.push({cover:anchorIm,title:title,tier:isCollector(branchSeries)?'collector':'open',items:items});
   });
+
+  var groupsEl=document.getElementById('shop-groups');
+  var branchOverlay=document.getElementById('shopBranchOverlay'),branchWrap=document.getElementById('shopBranchWrap'),branchBack=document.getElementById('shopBranchBack');
+  branchBack.textContent=D.back;
+  function openSeries(s){
+    branchWrap.innerHTML='';
+    s.items.forEach(function(im){ branchWrap.appendChild(buyCard(im,s.tier)); });
+    branchOverlay.scrollTop=0;
+    branchOverlay.classList.add('open'); branchOverlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden'; branchBack.focus();
+  }
+  function closeSeries(){
+    branchOverlay.classList.remove('open'); branchOverlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+  branchBack.addEventListener('click',closeSeries);
+  branchOverlay.addEventListener('click',function(e){ if(!e.target.closest('.print,.branch-backbar')) closeSeries(); });
+  document.addEventListener('keydown',function(e){ if(branchOverlay.classList.contains('open')&&e.key==='Escape') closeSeries(); });
+
+  if(seriesList.length){
+    var secS=document.createElement('section'); secS.className='shop-group';
+    secS.innerHTML='<div class="shop-group-title"><h2>'+D.series_h+'</h2><span class="ln"></span></div>';
+    var gridS=document.createElement('div'); gridS.className='shop-grid';
+    seriesList.forEach(function(s){
+      var tile=document.createElement('button'); tile.type='button'; tile.className='shop-series-tile';
+      tile.innerHTML='<div class="frame"><img loading="lazy" src="'+s.cover.folder+s.cover.file+'" alt="'+((s.cover.alt&&(s.cover.alt[L]||s.cover.alt.fr))||'').replace(/"/g,'')+'"></div>'+
+        '<div class="meta"><span class="t">'+s.title+'</span><span class="go">'+D.go+'</span></div>';
+      tile.addEventListener('click',function(){ openSeries(s); });
+      gridS.appendChild(tile);
+    });
+    secS.appendChild(gridS); groupsEl.appendChild(secS);
+  }
+  if(standalone.length){
+    var secP=document.createElement('section'); secP.className='shop-group';
+    secP.innerHTML='<div class="shop-group-title"><h2>'+D.selection_h+'</h2><span class="ln"></span></div>';
+    var gridP=document.createElement('div'); gridP.className='shop-grid';
+    standalone.forEach(function(p){ gridP.appendChild(buyCard(p.im,p.tier)); });
+    secP.appendChild(gridP); groupsEl.appendChild(secP);
+  }
 
   /* acquire modal */
   var acq=document.getElementById('acq'),form=document.getElementById('acq-form');

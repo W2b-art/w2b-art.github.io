@@ -221,6 +221,20 @@ a{color:inherit;text-decoration:none}
 .shop-dark-note{text-align:center;margin-top:70px;font-family:var(--serif);font-style:italic;color:var(--ash);font-size:14px}
 .shop-dark-note a{color:var(--or)}
 
+/* 2026-11-15 — series tiles: one cover photo per project/branch, same
+   trunk-click-through idea as oeuvre-actuelle.html, "Voir la série" in
+   place of a price/buy button (buying happens one level in, per photo,
+   once the series is open — see .branch-overlay/.branch-wrap, reused
+   as-is from rooms.css for that expanded view). */
+.shop-series-tile{display:flex;flex-direction:column;cursor:pointer;background:none;border:none;padding:0;text-align:left;font:inherit;color:inherit}
+.shop-series-tile .frame{position:relative;background:#000;overflow:hidden}
+.shop-series-tile .frame img{width:100%;height:auto;display:block;transition:transform .9s ease,opacity .9s ease;opacity:.94}
+.shop-series-tile:hover .frame img,.shop-series-tile:focus-visible .frame img{transform:scale(1.03);opacity:1}
+.shop-series-tile .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:14px}
+.shop-series-tile .meta .t{font-family:var(--serif);font-size:19px;line-height:1.2}
+.shop-series-tile .meta .go{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--or);white-space:nowrap;transition:opacity .25s ease}
+.shop-series-tile .meta .go::after{content:'→';margin-left:5px}
+
 /* acquire modal */
 .acq{position:fixed;inset:0;z-index:200;background:rgba(8,6,4,.97);display:none;align-items:center;justify-content:center;padding:6vh 5vw}
 .acq.open{display:flex}

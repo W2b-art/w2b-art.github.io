@@ -385,17 +385,31 @@ body.trunk-snap{scroll-snap-type:y mandatory}
    form here rather than a second new toggle; adding another fixed corner
    element on an already-tight 375px viewport would be clutter for
    something that already has a working mobile answer. */
+/* 2026-11-15 — Guillaume: 25% larger, white background, dark letters —
+   "so it's more visible" (was a dark, semi-transparent chip blending into
+   this dark-ground site; now a solid light panel that reads at a glance
+   regardless of what photo is behind it). Every size below is the old
+   value *1.25. */
 .side-nav{position:fixed;top:50%;right:10px;transform:translateY(-50%);z-index:65;
-  display:flex;flex-direction:column;align-items:center;gap:16px;
-  background:rgba(16,12,10,.55);backdrop-filter:blur(4px);padding:16px 9px;border-radius:22px;
-  border:1px solid rgba(237,230,218,.12)}
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+  background:rgba(250,248,244,.95);padding:20px 11px;border-radius:28px;
+  border:1px solid rgba(16,12,10,.1);box-shadow:0 4px 18px rgba(0,0,0,.25)}
 .side-nav a,.side-nav button{writing-mode:vertical-rl;text-orientation:mixed;
-  font-family:var(--sans);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--bone);opacity:.72;text-decoration:none;background:none;border:none;cursor:pointer;
-  padding:2px 0;white-space:nowrap;transition:opacity .25s ease,color .25s ease}
+  font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--nuit);opacity:.82;text-decoration:none;background:none;border:none;cursor:pointer;
+  padding:2.5px 0;white-space:nowrap;transition:opacity .25s ease,color .25s ease}
 .side-nav a:hover,.side-nav a:focus-visible,.side-nav button:hover,.side-nav button:focus-visible{opacity:1;color:var(--or)}
-.side-nav .side-nav-afterdark{color:var(--braise);opacity:.85}
+.side-nav .side-nav-afterdark{color:var(--braise);opacity:.9}
 .side-nav .side-nav-afterdark:hover,.side-nav .side-nav-afterdark:focus-visible{opacity:1;color:var(--braise)}
+/* The rail's height is driven by its longest labels' text length (vertical
+   writing mode), not by font-size alone — at the larger size above it's
+   ~840px tall and centers via top:50%/translateY(-50%), so it runs off
+   both the top and bottom edge on the many common laptops around
+   768-800px tall. Tighten gap/padding only (not font-size, the actual
+   "more visible" lever) below that, measured to fit with margin at 768px. */
+@media (max-height:820px){
+  .side-nav{gap:6px;padding:10px 10px}
+}
 @media(max-width:820px){ .side-nav{display:none} }
 
 /* ---------- expositions.html ---------- */
