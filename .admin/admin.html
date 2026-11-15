@@ -1166,6 +1166,24 @@ function renderTrunk() {
   main.appendChild(form);
 }
 
+// server.js's upload pipeline only accepts filenames matching
+// /^[\w.-]+\.jpe?g$/i (word chars, dots, hyphens) — real-world export
+// names (phone camera rolls, Lightroom, screenshots) routinely have
+// spaces, accents or parentheses ("IMG 1234.jpg", "été.jpg", "photo
+// (1).jpg"), all of which that check flat-out rejects before the upload
+// even starts. Slugify to the site's own naming convention instead of
+// making Guillaume manually rename every file first.
+function slugifyUploadFilename(name) {
+  const m = /^(.*)\.(jpe?g)$/i.exec(name);
+  if (!m) return name; // not a .jpg/.jpeg — let the server's own error explain why
+  const slug = m[1]
+    .normalize('NFD').replace(/[̀-ͯ]/g, '') // strip accents (é -> e)
+    .replace(/[^\w.-]+/g, '-')                          // anything else -> hyphen
+    .replace(/-+/g, '-')
+    .replace(/^[-.]+|[-.]+$/g, '');
+  return (slug || 'photo') + '.' + m[2].toLowerCase();
+}
+
 // ---------------------------------------------------------------- Upload tab
 function renderUpload() {
   const main = document.getElementById('panel-upload');
@@ -1176,7 +1194,7 @@ function renderUpload() {
     '<label>Source file</label><input type="file" id="up-file" accept="image/jpeg">' +
     '<label>Target gallery</label><select id="up-gallery"></select>' +
     '<label>Position (blank = append at end)</label><input type="number" id="up-pos" min="0">' +
-    '<label>Alt text (required — EN / FR / ES)</label>' +
+    '<label>Alt text (required — auto-translates on blur — edit any field afterward to stop it being overwritten) — EN / FR / ES</label>' +
     '<div class="row3"><input id="up-alt-en" placeholder="EN"><input id="up-alt-fr" placeholder="FR"><input id="up-alt-es" placeholder="ES"></div>' +
     '<label>Title (optional, museum-label — EN / FR / ES)</label>' +
     '<div class="row3"><input id="up-title-en" placeholder="EN"><input id="up-title-fr" placeholder="FR"><input id="up-title-es" placeholder="ES"></div>' +
@@ -1191,6 +1209,11 @@ function renderUpload() {
     en: document.getElementById('up-title-en'),
     fr: document.getElementById('up-title-fr'),
     es: document.getElementById('up-title-es')
+  });
+  wireAutoTranslate({
+    en: document.getElementById('up-alt-en'),
+    fr: document.getElementById('up-alt-fr'),
+    es: document.getElementById('up-alt-es')
   });
 
   const gSel = document.getElementById('up-gallery');
@@ -1239,7 +1262,7 @@ function renderUpload() {
       const action = {
         type: 'upload',
         gallery: gSel.value,
-        filename: f.name,
+        filename: slugifyUploadFilename(f.name),
         dataBase64,
         position: posVal === '' ? undefined : Number(posVal),
         alt: { en: altEn, fr: altFr, es: altEs },
@@ -1248,10 +1271,18 @@ function renderUpload() {
         year: yearVal ? Number(yearVal) : null,
         attachToTrunkId: attachSel.value || undefined
       };
+      const submitBtn = document.getElementById('up-submit');
+      const oldLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Uploading… (compress + responsive, up to ~30s)';
       try {
         await doAction(action, 'Uploaded');
         fileInput.value = '';
-      } catch (e) { /* toast already shown */ }
+      } catch (e) { /* toast already shown */
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = oldLabel;
+      }
     };
     reader.readAsDataURL(f);
   };
