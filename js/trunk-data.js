@@ -111,21 +111,18 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-wrecked-boat',file:'wrecked-boat-full-view-colour-w2b.jpg'},
     {series:'branch-wrecked-boat',file:'wrecked-boat-pl5-marking-black-white-w2b.jpg'}
 ] },
-  { id:'t05', series:'trunk', file:'glass-roof-grid-baroque-sculpture-ornament-w2b.jpg' },
   { id:'t06', series:'trunk', file:'pinball-arcade-machine-jackpot-cards-neon-w2b.jpg', related:[
     {series:'branch-pinball',file:'vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg'},
     {series:'branch-pinball',file:'circus-tent-entrance-blue-neon-arches-w2b.jpg'},
     {series:'branch-pinball',file:'teal-neon-light-trails-abandoned-interior-w2b.jpg'},
     {series:'branch-pinball',file:'dj-booth-neon-light-trails-nightclub-w2b.jpg'}
   ] },
-  { id:'t10', series:'trunk', file:'bamboo-tunnel-pond-stone-wall-w2b.jpg' },
   { id:'t11', series:'trunk', file:'man-silhouette-bench-dramatic-sunset-sky-w2b.jpg', related:[
     {series:'branch-coastal-bench',file:'figure-seated-bench-bay-view-black-white-w2b.jpg'},
     {series:'branch-coastal-bench',file:'couple-bench-overlooking-water-w2b.jpg'},
     {series:'branch-coastal-bench',file:'solitary-figure-bench-tropical-tree-seaside-black-white-w2b.jpg'},
     {series:'branch-coastal-bench',file:'coastal-path-bench-ocean-view-faded-film-w2b.jpg'}
 ] },
-  { id:'t12', series:'trunk', file:'rushing-water-rocks-black-white-w2b.jpg' },
   { id:'t13', series:'trunk', file:'hands-playing-double-bass-black-white-w2b.jpg' },
   { id:'t17', series:'trunk', file:'woman-car-window-candid-street-black-white-w2b.jpg', related:[
     {series:'branch-t17',file:'medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg'},
@@ -139,7 +136,7 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-industrial',file:'motorcycle-frame-mechanical-detail-black-white-w2b.jpg'},
     {series:'branch-industrial',file:'man-junkyard-stripped-car-parts-black-white-w2b.jpg'}
 ] },
-  { id:'t20', series:'trunk', file:'crowded-historic-passage-street-photography-black-white-w2b.jpg', related:[
-    {series:'branch-passage',file:'tattoo-artist-desk-work-flash-art-wall-w2b.jpg'}
+  { id:'t20', series:'trunk', file:'tattoo-artist-desk-work-flash-art-wall-w2b.jpg', related:[
+    {series:'branch-passage',file:'crowded-historic-passage-street-photography-black-white-w2b.jpg'}
   ] }
 ];

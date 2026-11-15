@@ -1640,6 +1640,7 @@ const GALLERY_DATA = {
       },
       {
         file: "glass-roof-grid-baroque-sculpture-ornament-w2b.jpg",
+        archived: true,
         alt: {
           en: "Looking up at a curved glass-and-steel roof grid above a baroque stone cherub sculpture, muted-tone film photography",
           fr: "Vue en contre-plongée d'une verrière métallique courbe au-dessus d'une sculpture baroque de chérubin en pierre, argentique aux tons sourds",
@@ -1676,6 +1677,7 @@ const GALLERY_DATA = {
       },
       {
         file: "bamboo-tunnel-pond-stone-wall-w2b.jpg",
+        archived: true,
         alt: {
           en: "Path through a bamboo tunnel opening onto a still pond and an old stone wall, medium format film photography",
           fr: "Chemin à travers un tunnel de bambous débouchant sur un étang immobile et un vieux mur de pierre, moyen format argentique",
@@ -1684,6 +1686,7 @@ const GALLERY_DATA = {
       },
       {
         file: "rushing-water-rocks-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "White water rushing and foaming over dark rocks, black and white close-up photography",
           fr: "Eau blanche se précipitant en écume sur des rochers sombres, photographie rapprochée noir et blanc",
@@ -1733,14 +1736,6 @@ const GALLERY_DATA = {
           es: "Primer plano de tornillos y tuercas dispersos sobre un engranaje industrial, fotografía en blanco y negro"
         }
       },
-      {
-        file: "crowded-historic-passage-street-photography-black-white-w2b.jpg",
-        alt: {
-          en: "Crowded historic covered passage lined with shop signs, black and white street photography",
-          fr: "Passage couvert historique bondé bordé d'enseignes de boutiques, photographie de rue noir et blanc",
-          es: "Pasaje histórico cubierto y concurrido bordeado de letreros de tiendas, fotografía callejera en blanco y negro"
-        }
-      },
       { file: "man-silhouette-bench-dramatic-sunset-sky-w2b.jpg", alt: {
         en: "Man in silhouette on a bench under a dramatic sunset sky",
         fr: "Homme en silhouette sur un banc sous un ciel de coucher de soleil dramatique",
@@ -1748,7 +1743,15 @@ const GALLERY_DATA = {
       { file: "dead-trees-rocky-shore-mountains-black-white-w2b.jpg", alt: {
         en: "Dead trees on a rocky shoreline with mountains and a sailboat across the water, black and white photography",
         fr: "Arbres morts sur un rivage rocheux avec des montagnes et un voilier de l'autre côté de l'eau, photographie noir et blanc",
-        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } }
+        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } },
+      {
+        file: "tattoo-artist-desk-work-flash-art-wall-w2b.jpg",
+        alt: {
+          en: "Hooded figure working at a lamp-lit desk, tattoo flash sheets and reference images covering the wall behind",
+          fr: "Silhouette encapuchonnée au travail sur un bureau éclairé par une lampe, planches de flash tattoo et images de référence couvrant le mur",
+          es: "Figura encapuchada trabajando en un escritorio iluminado por una lámpara, planchas de flash de tatuaje e imágenes de referencia cubriendo la pared"
+        }
+      }
     ]
   },
 
@@ -1989,11 +1992,11 @@ const GALLERY_DATA = {
     },
     images: [
       {
-        file: "tattoo-artist-desk-work-flash-art-wall-w2b.jpg",
+        file: "crowded-historic-passage-street-photography-black-white-w2b.jpg",
         alt: {
-          en: "Hooded figure working at a lamp-lit desk, tattoo flash sheets and reference images covering the wall behind",
-          fr: "Silhouette encapuchonnée au travail sur un bureau éclairé par une lampe, planches de flash tattoo et images de référence couvrant le mur",
-          es: "Figura encapuchada trabajando en un escritorio iluminado por una lámpara, planchas de flash de tatuaje e imágenes de referencia cubriendo la pared"
+          en: "Crowded historic covered passage lined with shop signs, black and white street photography",
+          fr: "Passage couvert historique bondé bordé d'enseignes de boutiques, photographie de rue noir et blanc",
+          es: "Pasaje histórico cubierto y concurrido bordeado de letreros de tiendas, fotografía callejera en blanco y negro"
         }
       }
     ]
