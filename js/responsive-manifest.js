@@ -529,5 +529,40 @@ const RESPONSIVE_MANIFEST = {
    1600
   ],
   "masterKB": 811
+ },
+ "images/branch-t13/000066060021.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 380
+ },
+ "images/branch-pinball/000027230023.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 162
+ },
+ "images/branch-industrial/6172-1.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 1131
+ },
+ "images/branch-t17/serie-7-6.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 839
+ },
+ "images/branch-passage/serie-20-8.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 644
  }
 };

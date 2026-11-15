@@ -1962,6 +1962,17 @@ const GALLERY_DATA = {
           fr: "Cabine DJ vue de haut à travers des traînées de lumière néon rouge et bleue, boîte de nuit",
           es: "Cabina de DJ vista desde arriba a través de estelas de luz neón roja y azul, discoteca"
         }
+      },
+      {
+        file: "000027230023.jpg",
+        title: { en: "red reveals", fr: "les retombées rouges", es: "El rojo revela" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2026,
+        alt: {
+          en: "red neon tubes and dark lighting",
+          fr: "Tubes néon rouges et éclairage tamisé",
+          es: "Tubos de neón rojos e iluminación tenue"
+        }
       }
     ]
   },
@@ -1981,6 +1992,17 @@ const GALLERY_DATA = {
           en: "Crowded historic covered passage lined with shop signs, black and white street photography",
           fr: "Passage couvert historique bondé bordé d'enseignes de boutiques, photographie de rue noir et blanc",
           es: "Pasaje histórico cubierto y concurrido bordeado de letreros de tiendas, fotografía callejera en blanco y negro"
+        }
+      },
+      {
+        file: "serie-20-8.jpg",
+        title: { en: "one sweep away", fr: "à un geste près", es: "A un paso" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2025,
+        alt: {
+          en: "construction workers sweeping the ground",
+          fr: "Ouvriers du bâtiment balayant le sol",
+          es: "Obreros de la construcción barriendo el suelo"
         }
       }
     ]
@@ -2159,7 +2181,18 @@ const GALLERY_DATA = {
       { file: "man-junkyard-stripped-car-parts-black-white-w2b.jpg", alt: {
         en: "Man standing amid a junkyard of stripped car parts, black and white photography",
         fr: "Homme debout au milieu d'une casse de pièces automobiles démontées, photographie noir et blanc",
-        es: "Hombre de pie entre un depósito de autopartes desmontadas, fotografía en blanco y negro" } }
+        es: "Hombre de pie entre un depósito de autopartes desmontadas, fotografía en blanco y negro" } },
+      {
+        file: "6172-1.jpg",
+        title: { en: "the cargo forgets the human toll", fr: "La cargaison fait oublier le bilan humain", es: "La carga hace olvidar el coste humano" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2026,
+        alt: {
+          en: "lined up wooden transport carts",
+          fr: "Chariots de transport en bois alignés",
+          es: "Carros de transporte de madera alineados"
+        }
+      }
     ]
   },
   "branch-t17": {
@@ -2197,6 +2230,17 @@ const GALLERY_DATA = {
           en: "Hooded figure working at a lamp-lit desk, tattoo flash sheets and reference images covering the wall behind",
           fr: "Silhouette encapuchonnée au travail sur un bureau éclairé par une lampe, planches de flash tattoo et images de référence couvrant le mur",
           es: "Figura encapuchada trabajando en un escritorio iluminado por una lámpara, planchas de flash de tatuaje e imágenes de referencia cubriendo la pared"
+        }
+      },
+      {
+        file: "serie-7-6.jpg",
+        title: { en: "princess has to sell her dresses", fr: "La princesse doit vendre ses robes", es: "La princesa tiene que vender sus vestidos" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2024,
+        alt: {
+          en: "silhouet in a dress shop",
+          fr: "Silhouette dans un magasin de robes",
+          es: "Silueta en una tienda de vestidos"
         }
       }]
     },
@@ -2236,6 +2280,17 @@ const GALLERY_DATA = {
           en: "hand holding a candy paste black and white",
           fr: "main tenant un nougat",
           es: "mano gabando un dulce"
+        }
+      },
+      {
+        file: "000066060021.jpg",
+        title: { en: "to clean the dirtiness you need it's opposite", fr: "Pour nettoyer la saleté, il faut faire le contraire.", es: "Para limpiar la suciedad, necesitas lo contrario." },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2026,
+        alt: {
+          en: "garage worker dirty hands movement",
+          fr: "mouvement des mains sales d'un ouvrier de garage",
+          es: "Movimiento de manos sucias de un trabajador de taller"
         }
       }]
     }

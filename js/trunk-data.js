@@ -115,7 +115,8 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-pinball',file:'vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg'},
     {series:'branch-pinball',file:'circus-tent-entrance-blue-neon-arches-w2b.jpg'},
     {series:'branch-pinball',file:'teal-neon-light-trails-abandoned-interior-w2b.jpg'},
-    {series:'branch-pinball',file:'dj-booth-neon-light-trails-nightclub-w2b.jpg'}
+    {series:'branch-pinball',file:'dj-booth-neon-light-trails-nightclub-w2b.jpg'},
+    {series:'branch-pinball',file:'000027230023.jpg'}
   ] },
   { id:'t11', series:'trunk', file:'man-silhouette-bench-dramatic-sunset-sky-w2b.jpg', related:[
     {series:'branch-coastal-bench',file:'figure-seated-bench-bay-view-black-white-w2b.jpg'},
@@ -126,13 +127,15 @@ const TRUNK_MANIFEST_OTHER = [
   { id:'t13', series:'trunk', file:'hands-playing-double-bass-black-white-w2b.jpg', related:[
     {series:'branch-t13',file:'6607-9.jpg'},
     {series:'branch-t13',file:'6607-36.jpg'},
-    {series:'branch-t13',file:'6607-34.jpg'}
+    {series:'branch-t13',file:'6607-34.jpg'},
+    {series:'branch-t13',file:'000066060021.jpg'}
   ] },
   { id:'t17', series:'trunk', file:'woman-car-window-candid-street-black-white-w2b.jpg', related:[
     {series:'branch-t17',file:'medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg'},
     {series:'branch-t17',file:'medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg'},
     {series:'branch-t17',file:'boudoir-red-drape-reaching-bust-colour-w2b.jpg'},
-    {series:'branch-t17',file:'tattoo-artist-desk-work-flash-art-wall-w2b.jpg'}
+    {series:'branch-t17',file:'tattoo-artist-desk-work-flash-art-wall-w2b.jpg'},
+    {series:'branch-t17',file:'serie-7-6.jpg'}
   ] },
   { id:'t18', series:'trunk', file:'dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg', related:[
     {series:'branch-dark-bay',file:'buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg'},
@@ -140,6 +143,7 @@ const TRUNK_MANIFEST_OTHER = [
   ] },
   { id:'t19', series:'trunk', file:'bolts-nuts-industrial-gear-close-up-black-white-w2b.jpg', related:[
     {series:'branch-industrial',file:'motorcycle-frame-mechanical-detail-black-white-w2b.jpg'},
-    {series:'branch-industrial',file:'man-junkyard-stripped-car-parts-black-white-w2b.jpg'}
+    {series:'branch-industrial',file:'man-junkyard-stripped-car-parts-black-white-w2b.jpg'},
+    {series:'branch-industrial',file:'6172-1.jpg'}
 ] }
 ];
