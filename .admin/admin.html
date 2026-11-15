@@ -964,12 +964,18 @@ function trunkRow(set, e) {
   } else {
     branchSec.innerHTML = '<h4>No branch yet</h4>';
     const attach = document.createElement('div');
-    const branchSel = document.createElement('select'); branchSel.style.marginBottom = '8px';
-    STATE.galleries.filter((g) => g.id.startsWith('branch-')).forEach((g) => { const o = document.createElement('option'); o.value = g.id; o.textContent = g.id; branchSel.appendChild(o); });
-    const hint = document.createElement('div'); hint.className = 'hint'; hint.style.margin = '6px 0'; hint.textContent = 'Pick a branch, then add photos to it the same way as an existing branch.';
+    const hint = document.createElement('div'); hint.className = 'hint'; hint.style.margin = '6px 0'; hint.textContent = 'Creates this anchor\'s own branch the first time, then adds photos the same way as an existing branch.';
     const addBtn = document.createElement('button'); addBtn.type = 'button'; addBtn.className = 'submit'; addBtn.textContent = 'Add photo…';
-    addBtn.onclick = () => { const g = STATE.galleries.find((x) => x.id === branchSel.value); if (g) openAddPhotoToBranch(g, e.id); };
-    attach.appendChild(branchSel); attach.appendChild(hint); attach.appendChild(addBtn);
+    addBtn.onclick = async () => {
+      const branchId = 'branch-' + e.id;
+      let g = STATE.galleries.find((x) => x.id === branchId);
+      if (!g) {
+        const r = await doAction({ type: 'create-gallery', id: branchId, title: { en: 'Untitled', fr: 'Sans titre', es: 'Sin título' } }, null, true);
+        g = r.state.galleries.find((x) => x.id === branchId);
+      }
+      openAddPhotoToBranch(g, e.id);
+    };
+    attach.appendChild(hint); attach.appendChild(addBtn);
     branchSec.appendChild(attach);
   }
   card.appendChild(branchSec);
