@@ -1677,7 +1677,18 @@ const GALLERY_DATA = {
       { file: "mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg", alt: {
         en: "Close-up of mussels and barnacles encrusted on coastal rock, macro texture photography",
         fr: "Gros plan sur des moules et balanes incrustées sur une roche côtière, photographie macro de texture",
-        es: "Primer plano de mejillones y bálanos incrustados en una roca costera, fotografía macro de textura" } }
+        es: "Primer plano de mejillones y bálanos incrustados en una roca costera, fotografía macro de textura" } },
+      {
+        file: "000024290011.jpg",
+        title: { en: "pacha mama is dry", fr: "Pacha Mama est sèche", es: "La Pacha Mama está seca" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2023,
+        alt: {
+          en: "mount of stones covered in cloths",
+          fr: "tas de pierres recouvertes de chiffons",
+          es: "Montón de piedras cubierto con paños"
+        }
+      }
     ]
   },
 
@@ -1919,25 +1930,6 @@ const GALLERY_DATA = {
     ]
   },
 
-  "branch-passage": {
-    id: "branch-passage",
-    folder: "images/branch-passage/",
-    title: {
-      en: "Workbench",
-      fr: "Établi",
-      es: "Taller"
-    },
-    images: [
-      {
-        file: "crowded-historic-passage-street-photography-black-white-w2b.jpg",
-        alt: {
-          en: "Crowded historic covered passage lined with shop signs, black and white street photography",
-          fr: "Passage couvert historique bondé bordé d'enseignes de boutiques, photographie de rue noir et blanc",
-          es: "Pasaje histórico cubierto y concurrido bordeado de letreros de tiendas, fotografía callejera en blanco y negro"
-        }
-      }
-    ]
-  },
 
   /* ---------------------------------------------------------------
      2026-11-01 — 11 new branches, implementing the curated proposal
@@ -2301,15 +2293,33 @@ const GALLERY_DATA = {
       folder: "images/branch-scpultures-sacred/",
       title: { en: "totems", fr: "totems", es: "totems" },
       images: [
+]
+    },
+  "branch-t5": {
+      id: "branch-t5",
+      folder: "images/branch-t5/",
+      title: { en: "Untitled", fr: "Sans titre", es: "Sin título" },
+      images: [
       {
-        file: "000024290011.jpg",
-        title: { en: "pacha mama is dry", fr: "Pacha Mama est sèche", es: "La Pacha Mama está seca" },
+        file: "serie-82-8.jpg",
+        title: { en: "nnature is the real god", fr: "La nature est le vrai dieu.", es: "La naturaleza es el verdadero dios." },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        year: 2023,
+        year: 2026,
         alt: {
-          en: "mount of stones covered in cloths",
-          fr: "tas de pierres recouvertes de chiffons",
-          es: "Montón de piedras cubierto con paños"
+          en: "tree covered in religious symbols",
+          fr: "arbre couvert de symboles religieux",
+          es: "Árbol cubierto de símbolos religiosos"
+        }
+      },
+      {
+        file: "Stand-alone-2.jpg",
+        title: { en: "manmade devil", fr: "démon créé par l'homme", es: "diablo creado por el hombre" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2022,
+        alt: {
+          en: "sculture of a devil black and white",
+          fr: "Sculpture d'un diable en noir et blanc",
+          es: "Escultura de un diablo en blanco y negro"
         }
       }]
     }

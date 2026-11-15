@@ -152,5 +152,9 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-t3',file:'bamboo-tunnel-pond-stone-wall-w2b.jpg'},
     {series:'branch-t3',file:'medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg'},
     {series:'branch-t3',file:'000084400023.jpg'}
+  ] },
+  { id:'t5', series:'trunk', file:'000024290011.jpg', related:[
+    {series:'branch-t5',file:'serie-82-8.jpg'},
+    {series:'branch-t5',file:'Stand-alone-2.jpg'}
   ] }
 ];

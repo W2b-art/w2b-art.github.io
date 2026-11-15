@@ -578,5 +578,19 @@ const RESPONSIVE_MANIFEST = {
    1600
   ],
   "masterKB": 736
+ },
+ "images/branch-t5/serie-82-8.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 709
+ },
+ "images/branch-t5/Stand-alone-2.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 1169
  }
 };
