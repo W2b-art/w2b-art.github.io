@@ -32,6 +32,7 @@ const GALLERY_DATA = {
     images: [
       {
         file: "bonfire-flames-night-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Bonfire burning intensely at night, high contrast black and white film photography",
           fr: "Feu de joie en flammes la nuit, photographie argentique noir et blanc grand contraste",
@@ -40,6 +41,7 @@ const GALLERY_DATA = {
       },
       {
         file: "willow-catkin-spring-dusk-blue-sky-w2b.jpg",
+        archived: true,
         alt: {
           en: "Willow catkin in bloom against a blue dusk sky, close-up nature film photography",
           fr: "Chaton de saule en fleur sur fond de ciel bleu au crépuscule, macro argentique",
@@ -48,6 +50,7 @@ const GALLERY_DATA = {
       },
       {
         file: "abandoned-shoes-street-debris-urban-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Abandoned shoes and urban debris on wet pavement, black and white street documentary photography",
           fr: "Chaussures abandonnées et débris urbains sur pavé mouillé, photographie documentaire noir et blanc",
@@ -56,6 +59,7 @@ const GALLERY_DATA = {
       },
       {
         file: "solitary-figure-bench-tropical-tree-seaside-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Solitary figure seated under a tropical tree overlooking the sea, black and white film photography",
           fr: "Silhouette solitaire assise sous un arbre tropical face à la mer, argentique noir et blanc",
@@ -64,6 +68,7 @@ const GALLERY_DATA = {
       },
       {
         file: "sea-anemone-underwater-teal-ocean-w2b.jpg",
+        archived: true,
         alt: {
           en: "Sea anemone with golden tentacles and pink tips on a dark teal ocean floor, underwater photography",
           fr: "Anémone de mer aux tentacules dorés et pointes roses sur fond océan sarcelle, photographie sous-marine",
@@ -72,6 +77,7 @@ const GALLERY_DATA = {
       },
       {
         file: "bamboo-forest-pond-reflection-stone-wall-w2b.jpg",
+        archived: true,
         alt: {
           en: "Bamboo forest framing a tranquil pond with stone wall reflection, medium format film photography",
           fr: "Forêt de bambous encadrant un étang tranquille avec reflet de mur en pierre, moyen format argentique",
@@ -80,6 +86,7 @@ const GALLERY_DATA = {
       },
       {
         file: "antique-shop-gilded-mirror-roman-bust-w2b.jpg",
+        archived: true,
         alt: {
           en: "Antique shop interior with gilded mirror reflecting the photographer, Roman bust and chandeliers, colour film",
           fr: "Intérieur de brocante avec miroir doré reflétant le photographe, buste romain et lustres, argentique couleur",
@@ -88,6 +95,7 @@ const GALLERY_DATA = {
       },
       {
         file: "ski-lift-silhouette-alpine-sunset-mountains-w2b.jpg",
+        archived: true,
         alt: {
           en: "Ski lift silhouette against a golden alpine sunset with snow-capped mountain range, film photography",
           fr: "Silhouette de télésiège contre un coucher de soleil alpin doré et chaîne de montagnes enneigées, argentique",
@@ -96,6 +104,7 @@ const GALLERY_DATA = {
       },
       {
         file: "kite-grey-sky-airplane-contrail-minimalist-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Lone kite flying in a grey sky crossed by an airplane contrail, minimalist black and white film photography",
           fr: "Cerf-volant solitaire dans un ciel gris traversé par une traînée d'avion, minimaliste noir et blanc argentique",
@@ -104,6 +113,7 @@ const GALLERY_DATA = {
       },
       {
         file: "lake-view-wooden-window-mountains-reeds-w2b.jpg",
+        archived: true,
         alt: {
           en: "Mountain lake with reeds and pine forest viewed through a dark wooden window frame, film photography",
           fr: "Lac de montagne avec roseaux et forêt de pins vu à travers un cadre de fenêtre en bois sombre, argentique",
@@ -112,6 +122,7 @@ const GALLERY_DATA = {
       },
       {
         file: "sunset-lake-mountain-silhouette-bird-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Solitary bird on a calm lake at sunset, mountain silhouette and golden light reflections on water, film photography",
           fr: "Oiseau solitaire sur un lac calme au coucher du soleil, silhouette de montagne et reflets dorés sur l'eau, argentique",
@@ -120,6 +131,7 @@ const GALLERY_DATA = {
       },
       {
         file: "lone-figure-salt-flat-salar-argentina-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Lone figure walking across a vast salt flat in Argentina under a dramatic cloudy sky, colour film photography",
           fr: "Silhouette solitaire marchant sur un immense salar en Argentine sous un ciel nuageux dramatique, argentique couleur",
@@ -128,6 +140,7 @@ const GALLERY_DATA = {
       },
       {
         file: "moving-crane-apartment-building-facade-urban-w2b.jpg",
+        archived: true,
         alt: {
           en: "Moving crane extending diagonally across a Parisian apartment building facade, urban colour film photography",
           fr: "Monte-meuble s'étendant en diagonale sur la façade d'un immeuble parisien, photographie urbaine argentique couleur",
@@ -136,6 +149,7 @@ const GALLERY_DATA = {
       },
       {
         file: "congress-building-buenos-aires-argentina-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Argentine National Congress building in Buenos Aires with statues and pedestrians, black and white film photography",
           fr: "Congrès national argentin à Buenos Aires avec statues et passants, photographie argentique noir et blanc",
@@ -144,6 +158,7 @@ const GALLERY_DATA = {
       },
       {
         file: "stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Ancient stone corridor in ruins with repeated arches creating a vanishing point, black and white film photography",
           fr: "Couloir en pierre ancienne en ruines avec arches répétées créant un point de fuite, argentique noir et blanc",
@@ -152,6 +167,7 @@ const GALLERY_DATA = {
       },
       {
         file: "industrial-gears-bolts-vintage-machine-macro-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Close-up of vintage industrial machine parts with gears and scattered bolts, black and white macro film photography",
           fr: "Gros plan de pièces mécaniques industrielles vintage avec engrenages et boulons épars, macro argentique noir et blanc",
@@ -160,6 +176,7 @@ const GALLERY_DATA = {
       },
       {
         file: "abandoned-fishing-boat-low-tide-harbor-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Weathered fishing boat PL5 stranded on mud at low tide in a misty harbour, black and white film photography",
           fr: "Vieux bateau de pêche PL5 échoué sur la vase à marée basse dans un port brumeux, argentique noir et blanc",
@@ -168,6 +185,7 @@ const GALLERY_DATA = {
       },
       {
         file: "ransacked-room-interior-debris-chaos-documentary-w2b.jpg",
+        archived: true,
         alt: {
           en: "Interior of a completely ransacked room covered in scattered papers and debris, colour documentary film photography",
           fr: "Intérieur d'une pièce entièrement saccagée couverte de papiers épars et débris, photographie documentaire argentique couleur",
@@ -176,6 +194,7 @@ const GALLERY_DATA = {
       },
       {
         file: "crowded-medieval-street-france-motion-blur-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Crowded medieval street in France with motion-blurred figures and historic shop signs, black and white film photography",
           fr: "Rue médiévale bondée en France avec silhouettes floues en mouvement et enseignes historiques, argentique noir et blanc",
@@ -184,6 +203,7 @@ const GALLERY_DATA = {
       },
       {
         file: "paris-street-sticker-j-existe-haussmann-graffiti-w2b.jpg",
+        archived: true,
         alt: {
           en: "Paris street traffic box with J'EXISTE sticker and graffiti tags, Haussmann buildings softly blurred in background, colour film",
           fr: "Boîtier de signalisation parisien avec sticker J'EXISTE et tags graffiti, immeubles haussmanniens flous en arrière-plan, argentique couleur",
@@ -192,6 +212,7 @@ const GALLERY_DATA = {
       },
       {
         file: "clown-statue-closeup-red-hair-colorful-w2b.jpg",
+        archived: true,
         alt: {
           en: "Close-up portrait of a painted clown statue with red hair and yellow bow tie, vivid colour film photography",
           fr: "Portrait en gros plan d'une statue de clown peinte aux cheveux rouges et nœud papillon jaune, argentique couleur vif",
@@ -218,6 +239,7 @@ const GALLERY_DATA = {
     images: [
       {
         file: "medellin-elder-straw-hat-curbside-street-portrait-colombia-w2b.jpg",
+        archived: true,
         alt: {
           en: "Elderly man in straw hat and red shirt sitting on a curbside in Medellín, street portrait, colour documentary photography",
           fr: "Homme âgé en chapeau de paille et chemise rouge assis sur un trottoir à Medellín, portrait de rue, documentaire couleur",
@@ -226,6 +248,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg",
+        archived: true,
         alt: {
           en: "Young person carrying a kitten in a leopard-print harness on their shoulder in a colourful Medellín street, colour documentary",
           fr: "Jeune personne portant un chaton en harnais léopard sur l'épaule dans une rue colorée de Medellín, documentaire couleur",
@@ -234,6 +257,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-dried-flower-market-vintage-scale-colour-w2b.jpg",
+        archived: true,
         alt: {
           en: "Medellín flower market stall packed with hanging dried and fresh flowers surrounding a vintage weighing scale, colour photography",
           fr: "Étal de marché aux fleurs de Medellín débordant de fleurs séchées et fraîches suspendues autour d'une balance vintage, couleur",
@@ -242,6 +266,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-elder-straw-hat-graffiti-street-scene-colombia-w2b.jpg",
+        archived: true,
         alt: {
           en: "Elderly man in straw hat seated near a locksmith shop against a vivid blue graffiti wall in Medellín, street documentary",
           fr: "Homme âgé au chapeau de paille assis près d'une serrurerie devant un mur de graffiti bleu vif à Medellín, documentaire de rue",
@@ -250,6 +275,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg",
+        archived: true,
         alt: {
           en: "Elderly candy vendor resting at a colourful market stall overflowing with sweets and lollipops in Medellín, documentary portrait",
           fr: "Vendeur de bonbons âgé se reposant à un étal de marché coloré débordant de sucreries et sucettes à Medellín, portrait documentaire",
@@ -258,6 +284,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg",
+        archived: true,
         alt: {
           en: "Row of glowing green bioreactor tanks in a Medellín research laboratory, colour documentary photography",
           fr: "Rangée de cuves bioreacteurs vertes lumineuses dans un laboratoire de recherche de Medellín, photographie documentaire couleur",
@@ -266,6 +293,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-worker-rappel-building-facade-urban-labour-w2b.jpg",
+        archived: true,
         alt: {
           en: "Construction worker rappelling down a striking black and red building facade in Medellín, urban labour documentary, colour",
           fr: "Ouvrier en rappel sur une façade d'immeuble noir et rouge frappante à Medellín, documentaire du travail urbain, couleur",
@@ -274,6 +302,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-auditorium-social-realist-mural-empty-chairs-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Empty auditorium chairs beneath a large social realist mural in a Medellín institution, black and white documentary photography",
           fr: "Chaises d'auditorium vides sous une grande fresque réaliste sociale dans une institution de Medellín, noir et blanc documentaire",
@@ -282,6 +311,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-palacio-cultura-neo-gothic-arches-interior-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Dramatic upward view of neo-gothic arched galleries inside the Palacio de la Cultura in Medellín, black and white film photography",
           fr: "Vue dramatique vers le haut des galeries arquées néo-gothiques à l'intérieur du Palacio de la Cultura de Medellín, noir et blanc argentique",
@@ -290,6 +320,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-church-cross-tattoo-wings-devotion-documentary-w2b.jpg",
+        archived: true,
         alt: {
           en: "Woman from behind in a Medellín church pew, large angel wings and cross tattoo across her back, documentary colour photography",
           fr: "Femme de dos dans les bancs d'une église de Medellín, grand tatouage d'ailes d'ange et croix dans le dos, documentaire couleur",
@@ -298,6 +329,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-carniceria-carne-colgada-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Rows of meat hanging in a Medellín market butcher stall, black and white documentary photography",
           fr: "Rangées de viande suspendue à un étal de boucherie du marché de Medellín, photographie documentaire noir et blanc",
@@ -306,6 +338,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-mercado-vendedora-manos-movimiento-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "A market vendor's hands caught in motion beneath a hand-painted plátano leaves sign, Medellín, black and white documentary photography",
           fr: "Les mains d'une marchande saisies en mouvement sous une enseigne peinte de feuilles de bananier, Medellín, photographie documentaire noir et blanc",
@@ -314,6 +347,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-calle-peatones-movimiento-luz-dorada-color-w2b.jpg",
+        archived: true,
         alt: {
           en: "Pedestrians blurred in motion on a dirt street at golden hour, Medellín, colour documentary photography",
           fr: "Piétons flous en mouvement sur une rue de terre à l'heure dorée, Medellín, photographie documentaire couleur",
@@ -322,6 +356,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-carniceria-cabeza-res-color-w2b.jpg",
+        archived: true,
         alt: {
           en: "A cow's head set on a wooden board at a Medellín market butcher stall, colour documentary photography",
           fr: "Une tête de vache posée sur une planche de bois à un étal de boucherie du marché de Medellín, photographie documentaire couleur",
@@ -330,6 +365,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-fachada-colonial-verde-azulejos-color-w2b.jpg",
+        archived: true,
         alt: {
           en: "A green and blue tiled colonial-era facade with a red awning, Medellín, colour architectural photography",
           fr: "Une façade coloniale carrelée de vert et de bleu avec un auvent rouge, Medellín, photographie architecturale couleur",
@@ -338,6 +374,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-bus-abandonado-arbol-color-w2b.jpg",
+        archived: true,
         alt: {
           en: "An abandoned bus overtaken by a tree growing through its windshield, Medellín outskirts, colour documentary photography",
           fr: "Un bus abandonné envahi par un arbre poussant à travers son pare-brise, périphérie de Medellín, photographie documentaire couleur",
@@ -346,6 +383,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-bella-artes-torre-agua-industrial-color-w2b.jpg",
+        archived: true,
         alt: {
           en: "A rusted water tower seen from below against the sky at the former Bellas Artes rail workshops, Medellín, colour photography",
           fr: "Un château d'eau rouillé vu en contre-plongée sur le ciel aux anciens ateliers ferroviaires de Bellas Artes, Medellín, photographie couleur",
@@ -354,6 +392,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-bella-artes-locomotora-abandonada-color-w2b.jpg",
+        archived: true,
         alt: {
           en: "A rusted, graffiti-covered locomotive reclaimed by vegetation at the abandoned Bellas Artes rail yard, Medellín, colour photography",
           fr: "Une locomotive rouillée couverte de graffitis reprise par la végétation dans la gare ferroviaire abandonnée de Bellas Artes, Medellín, photographie couleur",
@@ -362,6 +401,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-bella-artes-interior-ruinas-luz-color-w2b.jpg",
+        archived: true,
         alt: {
           en: "Light falling through a collapsed roof onto scattered debris inside the ruined Bellas Artes workshop, Medellín, colour photography",
           fr: "La lumière tombant à travers un toit effondré sur des débris épars à l'intérieur de l'atelier en ruine de Bellas Artes, Medellín, photographie couleur",
@@ -370,6 +410,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-bella-artes-letrero-calle-34-escombros-color-w2b.jpg",
+        archived: true,
         alt: {
           en: "A green 'Calle 34' street sign standing amid a pile of rusted rubble, Medellín, colour documentary photography",
           fr: "Un panneau vert « Calle 34 » debout au milieu d'un tas de gravats rouillés, Medellín, photographie documentaire couleur",
@@ -378,6 +419,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-fachada-colonial-azul-blanco-portal-color-w2b.jpg",
+        archived: true,
         alt: {
           en: "An ornate blue and white colonial facade with a gated entrance and palms, Medellín, colour architectural photography",
           fr: "Une façade coloniale bleue et blanche ornée avec une entrée grillagée et des palmiers, Medellín, photographie architecturale couleur",
@@ -386,6 +428,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-mercado-interior-siluetas-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Silhouetted figures inside a dim covered market under raking light, Medellín, black and white documentary photography",
           fr: "Silhouettes à l'intérieur d'un marché couvert peu éclairé sous une lumière rasante, Medellín, photographie documentaire noir et blanc",
@@ -394,6 +437,7 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-bella-artes-pano-taller-luz-color-w2b.jpg",
+        archived: true,
         wide: true,
         alt: {
           en: "Panoramic interior of the abandoned Bellas Artes rail workshop, warm light falling through the broken roof, Medellín, colour photography",
@@ -421,6 +465,7 @@ const GALLERY_DATA = {
     images: [
       {
         file: "child-shoes-stone-ledge-brick-wall-found-object-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Pair of small child's leather shoes left on a stone ledge against a red brick wall, colour film found-object photography",
           fr: "Petites chaussures d'enfant en cuir posées sur un rebord en pierre devant un mur de briques rouges, photographie argentique d'objet trouvé",
@@ -429,6 +474,7 @@ const GALLERY_DATA = {
       },
       {
         file: "animal-skeleton-rocky-ground-sepia-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Animal skeleton resting among warm rocky ground, sepia toned colour film detail photography",
           fr: "Squelette d'animal reposant sur un sol rocheux aux tons chauds, détail photographique argentique sépia",
@@ -437,6 +483,7 @@ const GALLERY_DATA = {
       },
       {
         file: "ghost-swing-blue-urban-alley-multiple-exposure-colour-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Yellow swing rendered as a ghost from a multiple exposure in a dim blue urban alley, colour film photography",
           fr: "Balançoire jaune en surimpression spectrale dans une ruelle urbaine bleue, photographie argentique couleur",
@@ -445,6 +492,7 @@ const GALLERY_DATA = {
       },
       {
         file: "frida-kahlo-painted-portrait-dark-wooden-planks-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Painted portrait of Frida Kahlo on a small metal plate mounted on dark wooden planks, colour film street art detail",
           fr: "Portrait peint de Frida Kahlo sur une petite plaque métallique fixée sur des planches en bois sombre, détail street art argentique couleur",
@@ -453,6 +501,7 @@ const GALLERY_DATA = {
       },
       {
         file: "geranium-silhouette-teal-glass-wall-minimalist-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Slender geranium plant silhouetted against a soft teal glass wall, minimalist colour film botanical study",
           fr: "Géranium élancé en silhouette devant un mur en verre vert d'eau, étude botanique minimaliste argentique couleur",
@@ -461,6 +510,7 @@ const GALLERY_DATA = {
       },
       {
         file: "geranium-plant-light-leak-orange-curtain-interior-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Indoor geranium plant against a window with curtains, dramatic orange and green light leak, colour film photography",
           fr: "Géranium d'intérieur devant une fenêtre avec rideaux, fuites de lumière orange et verte, photographie argentique couleur",
@@ -469,6 +519,7 @@ const GALLERY_DATA = {
       },
       {
         file: "blue-spiky-wildflower-macro-medium-format-colour-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Macro close-up of a blue spiky wildflower (love-in-a-mist) on warm bokeh ground, medium format colour film botanical detail",
           fr: "Macro d'une fleur sauvage bleue épineuse (nigelle) sur fond chaud en bokeh, détail botanique moyen format argentique couleur",
@@ -477,6 +528,7 @@ const GALLERY_DATA = {
       },
       {
         file: "artichoke-bud-close-up-spiral-geometry-medium-format-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Close-up of an unopened artichoke bud revealing the perfect spiral geometry of its leaves, medium format colour film",
           fr: "Gros plan d'un bouton d'artichaut fermé révélant la géométrie spirale parfaite de ses feuilles, moyen format argentique couleur",
@@ -485,6 +537,7 @@ const GALLERY_DATA = {
       },
       {
         file: "cactus-spines-extreme-macro-abstract-black-white-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Extreme macro of cactus spines forming an abstract crystalline pattern, black and white film photography",
           fr: "Macro extrême d'épines de cactus formant un motif cristallin abstrait, photographie argentique noir et blanc",
@@ -493,6 +546,7 @@ const GALLERY_DATA = {
       },
       {
         file: "water-cascade-splash-dark-rocks-black-white-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Whitewater splashing over dark wet rocks, frozen by film, black and white texture photography",
           fr: "Eau blanche éclaboussant sur des rochers sombres mouillés, figée à l'argentique, photographie de texture noir et blanc",
@@ -501,6 +555,7 @@ const GALLERY_DATA = {
       },
       {
         file: "guitar-strings-light-trails-long-exposure-black-white-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Long exposure of guitar strings rendered as flowing light trails by a moving hand, black and white film abstract texture",
           fr: "Longue exposition de cordes de guitare devenues traînées lumineuses par une main en mouvement, texture abstraite argentique noir et blanc",
@@ -509,6 +564,7 @@ const GALLERY_DATA = {
       },
       {
         file: "geodesic-dome-mesh-looking-up-sepia-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Looking up through the geometric mesh of a geodesic dome sculpture, sepia toned film texture and pattern photography",
           fr: "Vue vers le haut à travers le maillage géométrique d'une sculpture en dôme géodésique, photographie argentique sépia de texture et motif",
@@ -517,6 +573,7 @@ const GALLERY_DATA = {
       },
       {
         file: "fresh-pita-bread-bakery-shallow-depth-colour-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Row of fresh pita breads on a bakery counter, shallow depth of field, warm colour film food texture photography",
           fr: "Rangée de pains pita frais sur un comptoir de boulangerie, faible profondeur de champ, photographie argentique couleur de texture culinaire",
@@ -525,6 +582,7 @@ const GALLERY_DATA = {
       },
       {
         file: "stage-spotlights-purple-smoke-darkness-abstract-w2b.jpg",
+        archived: true,
         alt: {
           en: "Purple stage spotlights cutting through smoke in total darkness, abstract concert texture photography",
           fr: "Projecteurs de scène violets traversant la fumée dans l'obscurité totale, photographie abstraite de texture de concert",
@@ -533,6 +591,7 @@ const GALLERY_DATA = {
       },
       {
         file: "pink-geranium-silver-foliage-close-up-medium-format-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Tiny pink geranium flower nestled within silver-green foliage, medium format colour film botanical texture photography",
           fr: "Petite fleur de géranium rose nichée dans un feuillage vert argenté, photographie botanique de texture moyen format argentique couleur",
@@ -559,6 +618,7 @@ const GALLERY_DATA = {
     images: [
       {
         file: "aerial-plaza-fountain-palm-shadows-overhead-colour-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Overhead aerial view of an empty plaza with a small fountain and dramatic palm tree shadows, warm colour film photography",
           fr: "Vue aérienne plongeante d'une place vide avec petite fontaine et ombres dramatiques de palmiers, photographie argentique couleur",
@@ -567,6 +627,7 @@ const GALLERY_DATA = {
       },
       {
         file: "airplane-window-wing-river-below-aerial-black-white-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Aerial view through an airplane porthole of the wing and a meandering river below, black and white film photography",
           fr: "Vue aérienne à travers un hublot d'avion sur l'aile et une rivière sinueuse en contrebas, photographie argentique noir et blanc",
@@ -575,6 +636,7 @@ const GALLERY_DATA = {
       },
       {
         file: "lighthouse-signal-tower-silhouette-golden-sunset-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Silhouette of a tall coastal signal tower with figures at its base against a golden orange sunset sky, colour film photography",
           fr: "Silhouette d'une haute tour de signalisation côtière avec personnages à sa base devant un ciel orange doré au coucher du soleil, argentique couleur",
@@ -583,6 +645,7 @@ const GALLERY_DATA = {
       },
       {
         file: "stone-arch-corridor-bicycles-night-black-white-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Receding stone vaulted corridor with parked bicycles and an antique urn at night, black and white film architectural photography",
           fr: "Couloir voûté en pierre en perspective fuyante avec vélos garés et urne ancienne la nuit, photographie architecturale argentique noir et blanc",
@@ -591,6 +654,7 @@ const GALLERY_DATA = {
       },
       {
         file: "metro-crowd-glimpsed-dark-gap-black-white-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Crowd of metro passengers glimpsed through a dark vertical gap with sharp light, black and white film urban photography",
           fr: "Foule de passagers du métro entrevue à travers une fente sombre verticale avec lumière vive, photographie urbaine argentique noir et blanc",
@@ -599,6 +663,7 @@ const GALLERY_DATA = {
       },
       {
         file: "circus-tent-blue-neon-arcs-dusk-structural-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Circus tent framed by curving blue neon arcs at dusk, structural and symmetrical film photography",
           fr: "Chapiteau de cirque encadré par des arcs courbes de néon bleu au crépuscule, photographie argentique structurelle et symétrique",
@@ -607,6 +672,7 @@ const GALLERY_DATA = {
       },
       {
         file: "aerial-bariloche-lake-islands-mountain-panorama-colour-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Aerial panorama of Bariloche lakes, islands and snowy mountains seen from a high vantage point, colour film landscape photography",
           fr: "Panorama aérien des lacs, îles et montagnes enneigées de Bariloche vu d'un point haut, paysage argentique couleur",
@@ -615,6 +681,7 @@ const GALLERY_DATA = {
       },
       {
         file: "stone-statues-silhouette-purple-lake-sunset-patagonia-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Three carved stone figures silhouetted against a violet Patagonian lake at sunset, colour film perspective photography",
           fr: "Trois figures de pierre sculptées en silhouette devant un lac patagonien violet au coucher du soleil, photographie argentique couleur",
@@ -1027,6 +1094,7 @@ const GALLERY_DATA = {
     images: [
       {
         file: "argentina-child-leaping-into-lake-black-white-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "A child caught mid-leap into a lake, candid black and white film photography",
           fr: "Un enfant saisi en plein saut dans un lac, photographie argentique noir et blanc sur le vif",
@@ -1035,6 +1103,7 @@ const GALLERY_DATA = {
       },
       {
         file: "buenos-aires-bandoneon-player-tango-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "A bandoneón player lost in the music, candid colour film photography, tango",
           fr: "Un joueur de bandonéon absorbé par la musique, photographie argentique couleur sur le vif, tango",
@@ -1043,6 +1112,7 @@ const GALLERY_DATA = {
       },
       {
         file: "buenos-aires-tango-dancer-red-dress-window-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "A tango dancer in a red dress in window light, candid colour film photography",
           fr: "Une danseuse de tango en robe rouge dans la lumière d'une fenêtre, photographie argentique couleur sur le vif",
@@ -1051,6 +1121,7 @@ const GALLERY_DATA = {
       },
       {
         file: "argentina-couple-embrace-black-white-film-w2b.jpg",
+        archived: true,
         alt: {
           en: "Two people embracing, candid black and white film photography",
           fr: "Deux personnes enlacées, photographie argentique noir et blanc sur le vif",
@@ -1077,6 +1148,7 @@ const GALLERY_DATA = {
     images: [
       {
         file: "contemplations-cliff-coastline-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "A rugged cliff coastline under a heavy sky, black and white medium-format film",
           fr: "Un littoral de falaises escarpées sous un ciel lourd, moyen format argentique noir et blanc",
@@ -1085,6 +1157,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-cliff-cove-inlet-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "A quiet cove cut into the cliffs, black and white medium-format film",
           fr: "Une crique tranquille creusée dans les falaises, moyen format argentique noir et blanc",
@@ -1093,6 +1166,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-sea-stacks-pillars-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Weathered rock pillars along the shore, black and white medium-format film",
           fr: "Des piliers rocheux érodés le long du rivage, moyen format argentique noir et blanc",
@@ -1101,6 +1175,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-stone-cairn-rocky-shore-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "A stone cairn on a rocky shore, black and white medium-format film",
           fr: "Un cairn de pierres sur un rivage rocheux, moyen format argentique noir et blanc",
@@ -1109,6 +1184,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-two-boats-misty-still-water-w2b.jpg",
+        archived: true,
         alt: {
           en: "Two small boats on still, misty water, medium-format film",
           fr: "Deux petites barques sur une eau calme et brumeuse, moyen format argentique",
@@ -1117,6 +1193,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-golden-dusk-rock-spires-coast-w2b.jpg",
+        archived: true,
         alt: {
           en: "Rock spires on the coast under a golden dusk, medium-format film",
           fr: "Des aiguilles rocheuses sur la côte sous un crépuscule doré, moyen format argentique",
@@ -1125,6 +1202,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-figure-bench-by-the-sea-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "A solitary figure on a bench facing the sea, black and white medium-format film",
           fr: "Une silhouette solitaire sur un banc face à la mer, moyen format argentique noir et blanc",
@@ -1133,6 +1211,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-woman-white-dress-reclining-rocks-w2b.jpg",
+        archived: true,
         alt: {
           en: "A woman in a white dress reclining on coastal rocks, medium-format film",
           fr: "Une femme en robe blanche allongée sur les rochers du littoral, moyen format argentique",
@@ -1141,6 +1220,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-blossom-branches-backlit-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "Backlit blossom branches against the light, black and white medium-format film",
           fr: "Des branches en fleurs à contre-jour, moyen format argentique noir et blanc",
@@ -1149,6 +1229,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-weathered-boat-hull-colour-w2b.jpg",
+        archived: true,
         alt: {
           en: "The weathered hull of an old boat, colour medium-format film",
           fr: "La coque usée d'un vieux bateau, moyen format argentique couleur",
@@ -1157,6 +1238,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-boat-prow-stranded-rocks-colour-w2b.jpg",
+        archived: true,
         alt: {
           en: "The prow of a stranded boat among rocks, colour medium-format film",
           fr: "La proue d'un bateau échoué parmi les rochers, moyen format argentique couleur",
@@ -1165,6 +1247,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg",
+        archived: true,
         alt: {
           en: "A wrecked boat on a rocky shore, black and white medium-format film",
           fr: "Une épave de bateau sur un rivage rocheux, moyen format argentique noir et blanc",
@@ -1173,6 +1256,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-ruined-doorway-light-colour-w2b.jpg",
+        archived: true,
         alt: {
           en: "Light falling through a ruined doorway, colour medium-format film",
           fr: "La lumière tombant à travers une porte en ruine, moyen format argentique couleur",
@@ -1181,6 +1265,7 @@ const GALLERY_DATA = {
       },
       {
         file: "contemplations-overgrown-ruin-interior-colour-w2b.jpg",
+        archived: true,
         alt: {
           en: "Plants reclaiming a ruined interior, colour medium-format film",
           fr: "Les plantes reprenant un intérieur en ruine, moyen format argentique couleur",
@@ -2098,12 +2183,6 @@ const GALLERY_DATA = {
 
 /* Order galleries appear in the camera-back homepage selector */
 const GALLERY_ORDER = [
-  "best-of",
-  "work-in-progress",
-  "matter",
-  "series-2",
-  "argentina",
-  "contemplations",
   "bailar-la-ciudad",
   "after-dark"
 ];
