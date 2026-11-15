@@ -112,15 +112,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "sunset-lake-mountain-silhouette-bird-film-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Solitary bird on a calm lake at sunset, mountain silhouette and golden light reflections on water, film photography",
-          fr: "Oiseau solitaire sur un lac calme au coucher du soleil, silhouette de montagne et reflets dorés sur l'eau, argentique",
-          es: "Pájaro solitario en lago tranquilo al atardecer, silueta de montaña y reflejos dorados en el agua, analógico"
-        }
-      },
-      {
         file: "lone-figure-salt-flat-salar-argentina-film-w2b.jpg",
         archived: true,
         alt: {
@@ -238,15 +229,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Young person carrying a kitten in a leopard-print harness on their shoulder in a colourful Medellín street, colour documentary",
-          fr: "Jeune personne portant un chaton en harnais léopard sur l'épaule dans une rue colorée de Medellín, documentaire couleur",
-          es: "Joven llevando un gatito con arnés de leopardo sobre el hombro en una colorida calle de Medellín, documental color"
-        }
-      },
-      {
         file: "medellin-dried-flower-market-vintage-scale-colour-w2b.jpg",
         archived: true,
         alt: {
@@ -262,15 +244,6 @@ const GALLERY_DATA = {
           en: "Elderly man in straw hat seated near a locksmith shop against a vivid blue graffiti wall in Medellín, street documentary",
           fr: "Homme âgé au chapeau de paille assis près d'une serrurerie devant un mur de graffiti bleu vif à Medellín, documentaire de rue",
           es: "Hombre mayor con sombrero de paja sentado cerca de una cerrajería ante una pared de grafiti azul vivo en Medellín, documental"
-        }
-      },
-      {
-        file: "medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Elderly candy vendor resting at a colourful market stall overflowing with sweets and lollipops in Medellín, documentary portrait",
-          fr: "Vendeur de bonbons âgé se reposant à un étal de marché coloré débordant de sucreries et sucettes à Medellín, portrait documentaire",
-          es: "Vendedor anciano de dulces descansando en un puesto de mercado colorido repleto de golosinas en Medellín, retrato documental"
         }
       },
       {
@@ -1137,24 +1110,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "contemplations-sea-stacks-pillars-black-white-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Weathered rock pillars along the shore, black and white medium-format film",
-          fr: "Des piliers rocheux érodés le long du rivage, moyen format argentique noir et blanc",
-          es: "Pilares de roca erosionados a lo largo de la orilla, película de formato medio en blanco y negro"
-        }
-      },
-      {
-        file: "contemplations-stone-cairn-rocky-shore-black-white-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "A stone cairn on a rocky shore, black and white medium-format film",
-          fr: "Un cairn de pierres sur un rivage rocheux, moyen format argentique noir et blanc",
-          es: "Un mojón de piedras en una orilla rocosa, película de formato medio en blanco y negro"
-        }
-      },
-      {
         file: "contemplations-two-boats-misty-still-water-w2b.jpg",
         archived: true,
         alt: {
@@ -1676,14 +1631,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "driftwood-pebble-beach-mountains-black-white-w2b.jpg",
-        alt: {
-          en: "Curved driftwood resting on a pebble beach with misty mountains across the water, black and white film photography",
-          fr: "Bois flotté incurvé posé sur une plage de galets face à des montagnes embrumées, photographie argentique noir et blanc",
-          es: "Madera flotante curvada sobre una playa de guijarros frente a montañas con niebla, fotografía analógica en blanco y negro"
-        }
-      },
-      {
         file: "contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg",
         alt: {
           en: "A wrecked boat on a rocky shore, black and white medium-format film",
@@ -1718,6 +1665,9 @@ const GALLERY_DATA = {
       },
       {
         file: "street-dancer-colombia-jersey-motion-night-w2b.jpg",
+        title: { en: "ground control", fr: "control du sol", es: "puntos de apoyo" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "Street dancer in a Colombia football jersey and cap caught mid-movement under warm stage light at night, black and white",
           fr: "Danseur de rue en maillot de football de Colombie et casquette saisi en plein mouvement sous une lumière de scène chaude la nuit, noir et blanc",
@@ -1794,7 +1744,11 @@ const GALLERY_DATA = {
       { file: "man-silhouette-bench-dramatic-sunset-sky-w2b.jpg", alt: {
         en: "Man in silhouette on a bench under a dramatic sunset sky",
         fr: "Homme en silhouette sur un banc sous un ciel de coucher de soleil dramatique",
-        es: "Hombre en silueta sobre un banco bajo un cielo de atardecer dramático" } }
+        es: "Hombre en silueta sobre un banco bajo un cielo de atardecer dramático" } },
+      { file: "dead-trees-rocky-shore-mountains-black-white-w2b.jpg", alt: {
+        en: "Dead trees on a rocky shoreline with mountains and a sailboat across the water, black and white photography",
+        fr: "Arbres morts sur un rivage rocheux avec des montagnes et un voilier de l'autre côté de l'eau, photographie noir et blanc",
+        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } }
     ]
   },
 
@@ -1805,6 +1759,9 @@ const GALLERY_DATA = {
     images: [
       {
         file: "man-trucker-cap-sunglasses-night-portrait-black-white-w2b.jpg",
+        title: { en: "love gun", fr: "love gun", es: "arma del amor" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "Man in a trucker cap and sunglasses caught under flash at night, black and white portrait photography",
           fr: "Homme en casquette et lunettes de soleil saisi au flash la nuit, photographie de portrait noir et blanc",
@@ -1813,6 +1770,9 @@ const GALLERY_DATA = {
       },
       {
         file: "men-streetwear-cap-flip-night-black-white-w2b.jpg",
+        title: { en: "floating", fr: "flottante", es: "Flotando" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "Two men at night, one flipping a cap in the air, streetwear and tattoos, black and white photography",
           fr: "Deux hommes de nuit, l'un faisant tournoyer une casquette en l'air, streetwear et tatouages, photographie noir et blanc",
@@ -1821,6 +1781,9 @@ const GALLERY_DATA = {
       },
       {
         file: "man-glasses-hand-gesture-tattoos-portrait-black-white-w2b.jpg",
+        title: { en: "mindset", fr: "état d’esprit", es: "mentalidad" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "Tattooed man in glasses raising both middle fingers toward the camera, black and white portrait photography",
           fr: "Homme tatoué à lunettes levant les deux majeurs vers l'objectif, photographie de portrait noir et blanc",
@@ -1829,6 +1792,9 @@ const GALLERY_DATA = {
       },
       {
         file: "breakdancer-mid-motion-red-light-w2b.jpg",
+        title: { en: "freeze twist", fr: "freeze twist", es: "Freeze Twist" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "Breakdancer frozen mid-move under warm red stage light, black and white photography",
           fr: "Breakdancer figé en plein mouvement sous une lumière de scène rouge chaude, photographie noir et blanc",
@@ -1861,6 +1827,9 @@ const GALLERY_DATA = {
       },
       {
         file: "bailar-ciudad-movimiento-inclinado-tatuaje-black-white-w2b.jpg",
+        title: { en: "grabbing the flow", fr: "saisir le flux", es: "entrar en el «flow»" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "A dancer bent low into a move, tattooed arm extended, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
           fr: "Un danseur penché bas dans un mouvement, bras tatoué tendu, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
@@ -1869,6 +1838,9 @@ const GALLERY_DATA = {
       },
       {
         file: "bailar-ciudad-chaqueta-vuelo-movimiento-black-white-w2b.jpg",
+        title: { en: "bridge to the soul", fr: "un pont vers l'âme", es: "puente hacia el alma" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
         alt: {
           en: "A dancer mid-move with a jacket flying out around the body, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
           fr: "Un danseur en plein mouvement, veste s'envolant autour du corps, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
@@ -2046,7 +2018,23 @@ const GALLERY_DATA = {
       { file: "sea-anemone-underwater-macro-teal-w2b.jpg", alt: {
         en: "Underwater macro close-up of a sea anemone in teal light",
         fr: "Gros plan macro sous-marin d'une anémone de mer dans une lumière turquoise",
-        es: "Primer plano macro submarino de una anémona de mar en luz turquesa" } }
+        es: "Primer plano macro submarino de una anémona de mar en luz turquesa" } },
+      {
+        file: "contemplations-stone-cairn-rocky-shore-black-white-w2b.jpg",
+        alt: {
+          en: "A stone cairn on a rocky shore, black and white medium-format film",
+          fr: "Un cairn de pierres sur un rivage rocheux, moyen format argentique noir et blanc",
+          es: "Un mojón de piedras en una orilla rocosa, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "contemplations-sea-stacks-pillars-black-white-w2b.jpg",
+        alt: {
+          en: "Weathered rock pillars along the shore, black and white medium-format film",
+          fr: "Des piliers rocheux érodés le long du rivage, moyen format argentique noir et blanc",
+          es: "Pilares de roca erosionados a lo largo de la orilla, película de formato medio en blanco y negro"
+        }
+      }
     ]
   },
 
@@ -2076,10 +2064,6 @@ const GALLERY_DATA = {
     folder: "images/branch-driftwood-shore/",
     title: { en: "Same Shore", fr: "Même rivage", es: "Misma orilla" },
     images: [
-      { file: "dead-trees-rocky-shore-mountains-black-white-w2b.jpg", alt: {
-        en: "Dead trees on a rocky shoreline with mountains and a sailboat across the water, black and white photography",
-        fr: "Arbres morts sur un rivage rocheux avec des montagnes et un voilier de l'autre côté de l'eau, photographie noir et blanc",
-        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } },
       {
         file: "contemplations-windswept-tree-cliff-edge-black-white-w2b.jpg",
         alt: {
@@ -2094,6 +2078,14 @@ const GALLERY_DATA = {
           en: "An old stone tower and well, black and white medium-format film",
           fr: "Une vieille tour de pierre et un puits, moyen format argentique noir et blanc",
           es: "Una vieja torre de piedra y un pozo, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "driftwood-pebble-beach-mountains-black-white-w2b.jpg",
+        alt: {
+          en: "Curved driftwood resting on a pebble beach with misty mountains across the water, black and white film photography",
+          fr: "Bois flotté incurvé posé sur une plage de galets face à des montagnes embrumées, photographie argentique noir et blanc",
+          es: "Madera flotante curvada sobre una playa de guijarros frente a montañas con niebla, fotografía analógica en blanco y negro"
         }
       }
     ]
@@ -2156,7 +2148,15 @@ const GALLERY_DATA = {
       { file: "buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg", alt: {
         en: "Buoy in silhouette in a bay under a dramatic sunset sky",
         fr: "Bouée en silhouette dans une baie sous un ciel de coucher de soleil dramatique",
-        es: "Boya en silueta en una bahía bajo un cielo de atardecer dramático" } }
+        es: "Boya en silueta en una bahía bajo un cielo de atardecer dramático" } },
+      {
+        file: "sunset-lake-mountain-silhouette-bird-film-w2b.jpg",
+        alt: {
+          en: "Solitary bird on a calm lake at sunset, mountain silhouette and golden light reflections on water, film photography",
+          fr: "Oiseau solitaire sur un lac calme au coucher du soleil, silhouette de montagne et reflets dorés sur l'eau, argentique",
+          es: "Pájaro solitario en lago tranquilo al atardecer, silueta de montaña y reflejos dorados en el agua, analógico"
+        }
+      }
     ]
   },
 
@@ -2172,7 +2172,23 @@ const GALLERY_DATA = {
       { file: "man-junkyard-stripped-car-parts-black-white-w2b.jpg", alt: {
         en: "Man standing amid a junkyard of stripped car parts, black and white photography",
         fr: "Homme debout au milieu d'une casse de pièces automobiles démontées, photographie noir et blanc",
-        es: "Hombre de pie entre un depósito de autopartes desmontadas, fotografía en blanco y negro" } }
+        es: "Hombre de pie entre un depósito de autopartes desmontadas, fotografía en blanco y negro" } },
+      {
+        file: "medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg",
+        alt: {
+          en: "Elderly candy vendor resting at a colourful market stall overflowing with sweets and lollipops in Medellín, documentary portrait",
+          fr: "Vendeur de bonbons âgé se reposant à un étal de marché coloré débordant de sucreries et sucettes à Medellín, portrait documentaire",
+          es: "Vendedor anciano de dulces descansando en un puesto de mercado colorido repleto de golosinas en Medellín, retrato documental"
+        }
+      },
+      {
+        file: "medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg",
+        alt: {
+          en: "Young person carrying a kitten in a leopard-print harness on their shoulder in a colourful Medellín street, colour documentary",
+          fr: "Jeune personne portant un chaton en harnais léopard sur l'épaule dans une rue colorée de Medellín, documentaire couleur",
+          es: "Joven llevando un gatito con arnés de leopardo sobre el hombro en una colorida calle de Medellín, documental color"
+        }
+      }
     ]
   }
 

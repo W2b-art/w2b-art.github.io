@@ -97,18 +97,20 @@ const TRUNK_MANIFEST_CURRENT = [
 const TRUNK_MANIFEST_OTHER = [
   { id:'t01', series:'trunk', file:'weathered-rock-formation-coastal-texture-w2b.jpg', related:[
     {series:'branch-coastal-texture',file:'mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg'},
-    {series:'branch-coastal-texture',file:'sea-anemone-underwater-macro-teal-w2b.jpg'}
+    {series:'branch-coastal-texture',file:'sea-anemone-underwater-macro-teal-w2b.jpg'},
+    {series:'branch-coastal-texture',file:'contemplations-stone-cairn-rocky-shore-black-white-w2b.jpg'},
+    {series:'branch-coastal-texture',file:'contemplations-sea-stacks-pillars-black-white-w2b.jpg'}
   ] },
-  { id:'t02', series:'trunk', file:'driftwood-pebble-beach-mountains-black-white-w2b.jpg', related:[
-    {series:'branch-driftwood-shore',file:'dead-trees-rocky-shore-mountains-black-white-w2b.jpg'},
+  { id:'t02', series:'trunk', file:'dead-trees-rocky-shore-mountains-black-white-w2b.jpg', related:[
     {series:'branch-driftwood-shore',file:'contemplations-windswept-tree-cliff-edge-black-white-w2b.jpg'},
-    {series:'branch-driftwood-shore',file:'contemplations-stone-tower-well-black-white-w2b.jpg'}
+    {series:'branch-driftwood-shore',file:'contemplations-stone-tower-well-black-white-w2b.jpg'},
+    {series:'branch-driftwood-shore',file:'driftwood-pebble-beach-mountains-black-white-w2b.jpg'}
   ] },
   { id:'t04', series:'trunk', file:'contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg', related:[
     {series:'branch-wrecked-boat',file:'wrecked-boat-hull-close-up-black-white-w2b.jpg'},
-    {series:'branch-wrecked-boat',file:'wrecked-boat-pl5-marking-black-white-w2b.jpg'},
-    {series:'branch-wrecked-boat',file:'wrecked-boat-full-view-colour-w2b.jpg'}
-  ] },
+    {series:'branch-wrecked-boat',file:'wrecked-boat-full-view-colour-w2b.jpg'},
+    {series:'branch-wrecked-boat',file:'wrecked-boat-pl5-marking-black-white-w2b.jpg'}
+] },
   { id:'t05', series:'trunk', file:'glass-roof-grid-baroque-sculpture-ornament-w2b.jpg' },
   { id:'t06', series:'trunk', file:'pinball-arcade-machine-jackpot-cards-neon-w2b.jpg', related:[
     {series:'branch-pinball',file:'vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg'},
@@ -127,11 +129,14 @@ const TRUNK_MANIFEST_OTHER = [
   { id:'t13', series:'trunk', file:'hands-playing-double-bass-black-white-w2b.jpg' },
   { id:'t17', series:'trunk', file:'woman-car-window-candid-street-black-white-w2b.jpg' },
   { id:'t18', series:'trunk', file:'dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg', related:[
-    {series:'branch-dark-bay',file:'buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg'}
+    {series:'branch-dark-bay',file:'buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg'},
+    {series:'branch-dark-bay',file:'sunset-lake-mountain-silhouette-bird-film-w2b.jpg'}
   ] },
   { id:'t19', series:'trunk', file:'bolts-nuts-industrial-gear-close-up-black-white-w2b.jpg', related:[
     {series:'branch-industrial',file:'motorcycle-frame-mechanical-detail-black-white-w2b.jpg'},
-    {series:'branch-industrial',file:'man-junkyard-stripped-car-parts-black-white-w2b.jpg'}
+    {series:'branch-industrial',file:'man-junkyard-stripped-car-parts-black-white-w2b.jpg'},
+    {series:'branch-industrial',file:'medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg'},
+    {series:'branch-industrial',file:'medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg'}
   ] },
   { id:'t20', series:'trunk', file:'crowded-historic-passage-street-photography-black-white-w2b.jpg', related:[
     {series:'branch-passage',file:'tattoo-artist-desk-work-flash-art-wall-w2b.jpg'}
