@@ -43,10 +43,10 @@ const TRUNK_MANIFEST_CURRENT = [
 
   { id:'t08', series:'trunk', file:'street-dancer-colombia-jersey-motion-night-w2b.jpg', related:[
     {series:'branch-bailar-la-ciudad',file:'man-trucker-cap-sunglasses-night-portrait-black-white-w2b.jpg'},
+    {series:'branch-bailar-la-ciudad',file:'breakdancer-mid-motion-red-light-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'men-streetwear-cap-flip-night-black-white-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'man-glasses-hand-gesture-tattoos-portrait-black-white-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'bailar-ciudad-chaqueta-vuelo-movimiento-black-white-w2b.jpg'},
-    {series:'branch-bailar-la-ciudad',file:'breakdancer-mid-motion-red-light-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'palacio-bellas-artes-facade-installation-print-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'bailar-la-ciudad-exhibition-panel-detail-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'cypher-miraflores-fanzine-stack-wood-table-w2b.jpg'}
