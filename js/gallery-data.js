@@ -2172,7 +2172,14 @@ const GALLERY_DATA = {
       { file: "man-junkyard-stripped-car-parts-black-white-w2b.jpg", alt: {
         en: "Man standing amid a junkyard of stripped car parts, black and white photography",
         fr: "Homme debout au milieu d'une casse de pièces automobiles démontées, photographie noir et blanc",
-        es: "Hombre de pie entre un depósito de autopartes desmontadas, fotografía en blanco y negro" } },
+        es: "Hombre de pie entre un depósito de autopartes desmontadas, fotografía en blanco y negro" } }
+    ]
+  },
+  "branch-t17": {
+      id: "branch-t17",
+      folder: "images/branch-t17/",
+      title: { en: "Untitled", fr: "Sans titre", es: "Sin título" },
+      images: [
       {
         file: "medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg",
         alt: {
@@ -2188,9 +2195,8 @@ const GALLERY_DATA = {
           fr: "Jeune personne portant un chaton en harnais léopard sur l'épaule dans une rue colorée de Medellín, documentaire couleur",
           es: "Joven llevando un gatito con arnés de leopardo sobre el hombro en una colorida calle de Medellín, documental color"
         }
-      }
-    ]
-  }
+      }]
+    }
 
 };
 
