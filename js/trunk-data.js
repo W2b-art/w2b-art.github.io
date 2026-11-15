@@ -130,7 +130,9 @@ const TRUNK_MANIFEST_OTHER = [
   ] },
   { id:'t17', series:'trunk', file:'woman-car-window-candid-street-black-white-w2b.jpg', related:[
     {series:'branch-t17',file:'medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg'},
-    {series:'branch-t17',file:'medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg'}
+    {series:'branch-t17',file:'medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg'},
+    {series:'branch-t17',file:'boudoir-red-drape-reaching-bust-colour-w2b.jpg'},
+    {series:'branch-t17',file:'tattoo-artist-desk-work-flash-art-wall-w2b.jpg'}
   ] },
   { id:'t18', series:'trunk', file:'dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg', related:[
     {series:'branch-dark-bay',file:'buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg'},
@@ -139,8 +141,5 @@ const TRUNK_MANIFEST_OTHER = [
   { id:'t19', series:'trunk', file:'bolts-nuts-industrial-gear-close-up-black-white-w2b.jpg', related:[
     {series:'branch-industrial',file:'motorcycle-frame-mechanical-detail-black-white-w2b.jpg'},
     {series:'branch-industrial',file:'man-junkyard-stripped-car-parts-black-white-w2b.jpg'}
-] },
-  { id:'t20', series:'trunk', file:'tattoo-artist-desk-work-flash-art-wall-w2b.jpg', related:[
-    {series:'branch-passage',file:'crowded-historic-passage-street-photography-black-white-w2b.jpg'}
-  ] }
+] }
 ];

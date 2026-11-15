@@ -891,14 +891,6 @@ const GALLERY_DATA = {
     },
     images: [
       {
-        file: "boudoir-red-drape-reaching-bust-colour-w2b.jpg",
-        alt: {
-          en: "Woman in red reaching toward a red-draped classical bust inside a tall mirror, colour fine-art boudoir",
-          fr: "Femme en rouge tendant la main vers un buste classique drapé de rouge dans un grand miroir, boudoir d'art couleur",
-          es: "Mujer de rojo extendiendo la mano hacia un busto clásico cubierto de rojo dentro de un espejo alto, boudoir artístico a color"
-        }
-      },
-      {
         file: "boudoir-red-drape-kneeling-bust-colour-w2b.jpg",
         alt: {
           en: "A woman draped in red kneeling and reaching up to a white classical bust on a pedestal, colour fine-art boudoir, Medellín",
@@ -1743,15 +1735,7 @@ const GALLERY_DATA = {
       { file: "dead-trees-rocky-shore-mountains-black-white-w2b.jpg", alt: {
         en: "Dead trees on a rocky shoreline with mountains and a sailboat across the water, black and white photography",
         fr: "Arbres morts sur un rivage rocheux avec des montagnes et un voilier de l'autre côté de l'eau, photographie noir et blanc",
-        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } },
-      {
-        file: "tattoo-artist-desk-work-flash-art-wall-w2b.jpg",
-        alt: {
-          en: "Hooded figure working at a lamp-lit desk, tattoo flash sheets and reference images covering the wall behind",
-          fr: "Silhouette encapuchonnée au travail sur un bureau éclairé par une lampe, planches de flash tattoo et images de référence couvrant le mur",
-          es: "Figura encapuchada trabajando en un escritorio iluminado por una lámpara, planchas de flash de tatuaje e imágenes de referencia cubriendo la pared"
-        }
-      }
+        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } }
     ]
   },
 
@@ -2197,6 +2181,22 @@ const GALLERY_DATA = {
           en: "Young person carrying a kitten in a leopard-print harness on their shoulder in a colourful Medellín street, colour documentary",
           fr: "Jeune personne portant un chaton en harnais léopard sur l'épaule dans une rue colorée de Medellín, documentaire couleur",
           es: "Joven llevando un gatito con arnés de leopardo sobre el hombro en una colorida calle de Medellín, documental color"
+        }
+      },
+      {
+        file: "boudoir-red-drape-reaching-bust-colour-w2b.jpg",
+        alt: {
+          en: "Woman in red reaching toward a red-draped classical bust inside a tall mirror, colour fine-art boudoir",
+          fr: "Femme en rouge tendant la main vers un buste classique drapé de rouge dans un grand miroir, boudoir d'art couleur",
+          es: "Mujer de rojo extendiendo la mano hacia un busto clásico cubierto de rojo dentro de un espejo alto, boudoir artístico a color"
+        }
+      },
+      {
+        file: "tattoo-artist-desk-work-flash-art-wall-w2b.jpg",
+        alt: {
+          en: "Hooded figure working at a lamp-lit desk, tattoo flash sheets and reference images covering the wall behind",
+          fr: "Silhouette encapuchonnée au travail sur un bureau éclairé par une lampe, planches de flash tattoo et images de référence couvrant le mur",
+          es: "Figura encapuchada trabajando en un escritorio iluminado por una lámpara, planchas de flash de tatuaje e imágenes de referencia cubriendo la pared"
         }
       }]
     },
