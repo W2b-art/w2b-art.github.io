@@ -769,15 +769,14 @@ function openAddPhotoToBranch(branchGallery, attachAnchorId) {
     try {
       for (const { source, g, i } of items) {
         if (source === 'archive') await doAction({ type: 'unarchive', gallery: g.id, file: i.file }, null, true);
-        if (g.id !== branchGallery.id) {
-          // place already attaches it into the branch's related[] too
-          // (server-side, so every other "move into a branch" path gets
-          // the same behavior) — only call branch-add-related ourselves
-          // for the no-move case below, so it isn't attached twice.
-          await doAction({ type: 'place', from: g.id, to: branchGallery.id, file: i.file }, null, true);
-        } else {
-          await doAction({ type: 'branch-add-related', trunkId: attachAnchorId, branchSeries: branchGallery.id, file: i.file }, null, true);
-        }
+        if (g.id !== branchGallery.id) await doAction({ type: 'place', from: g.id, to: branchGallery.id, file: i.file }, null, true);
+        // Always attach explicitly, even though place() also auto-attaches
+        // when the branch already has another anchor — branch-add-related
+        // is idempotent server-side, and this is the only path that still
+        // works for a brand-new branch with nothing to auto-attach to yet
+        // (its first-ever photo has no existing related[] for place to
+        // find and extend).
+        await doAction({ type: 'branch-add-related', trunkId: attachAnchorId, branchSeries: branchGallery.id, file: i.file }, null, true);
         done++;
       }
       toast('Added ' + done + ' photo(s) to ' + branchGallery.id);

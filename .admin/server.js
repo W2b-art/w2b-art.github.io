@@ -494,8 +494,23 @@ function applyAction(action) {
     if (!GALLERY_DATA[branchSeries] || !GALLERY_DATA[branchSeries].images.some((im) => im.file === file)) {
       throw new Error('branch-add-related: "' + file + '" is not in ' + branchSeries + "'s images — upload/place it there first");
     }
-    const newT = addRelated(tsrc, trunkId, branchSeries, file, position == null ? undefined : Number(position));
-    fs.writeFileSync(TRUNK_DATA_PATH, newT);
+    // Idempotent at the ACTION level (unlike addRelated itself, which
+    // intentionally allows duplicates for direct curation calls — see
+    // its own tests): client code calls this defensively after a
+    // place/unarchive that may or may not have already auto-attached the
+    // file via place's own destAnchor logic (it can't, for a branch not
+    // attached to any anchor yet — the first photo ever added to a brand
+    // new branch has nothing to auto-attach to). Checking first here
+    // means callers never have to know which case they're in.
+    const anchor = findTrunkAnchor(tsrc, trunkId);
+    const already = (() => {
+      const body = tsrc.slice(anchor.objStart, anchor.objEnd);
+      return body.includes("{series:'" + branchSeries + "',file:'" + file.replace(/'/g, "\\'") + "'}");
+    })();
+    if (!already) {
+      const newT = addRelated(tsrc, trunkId, branchSeries, file, position == null ? undefined : Number(position));
+      fs.writeFileSync(TRUNK_DATA_PATH, newT);
+    }
     return { ok: true };
   }
 
