@@ -1194,7 +1194,7 @@ function renderUpload() {
     '<label>Source file</label><input type="file" id="up-file" accept="image/jpeg">' +
     '<label>Target gallery</label><select id="up-gallery"></select>' +
     '<label>Position (blank = append at end)</label><input type="number" id="up-pos" min="0">' +
-    '<label>Alt text (required — auto-translates on blur — edit any field afterward to stop it being overwritten) — EN / FR / ES</label>' +
+    '<label>Alt text (EN required — FR/ES auto-translate on upload if left blank) — EN / FR / ES</label>' +
     '<div class="row3"><input id="up-alt-en" placeholder="EN"><input id="up-alt-fr" placeholder="FR"><input id="up-alt-es" placeholder="ES"></div>' +
     '<label>Title (optional, museum-label — EN / FR / ES)</label>' +
     '<div class="row3"><input id="up-title-en" placeholder="EN"><input id="up-title-fr" placeholder="FR"><input id="up-title-es" placeholder="ES"></div>' +
@@ -1248,10 +1248,34 @@ function renderUpload() {
     const fileInput = document.getElementById('up-file');
     const f = fileInput.files[0];
     if (!f) { toast('pick a file first', true); return; }
-    const altEn = document.getElementById('up-alt-en').value.trim();
-    const altFr = document.getElementById('up-alt-fr').value.trim();
-    const altEs = document.getElementById('up-alt-es').value.trim();
-    if (!altEn || !altFr || !altEs) { toast('alt text (EN/FR/ES) is required', true); return; }
+    const altEnEl = document.getElementById('up-alt-en');
+    const altFrEl = document.getElementById('up-alt-fr');
+    const altEsEl = document.getElementById('up-alt-es');
+    const altEn = altEnEl.value.trim();
+    if (!altEn) { toast('alt text (EN) is required', true); return; }
+    // blur-triggered auto-translate is a suggestion that may not have
+    // finished (or fired at all) by the time Upload is clicked — never
+    // submit with a blank FR/ES, so translate whatever's still missing
+    // right here and block on it, rather than silently uploading
+    // incomplete (bad-for-SEO) alt text.
+    const missing = [altFrEl, altEsEl].filter((el) => !el.value.trim()).map((el) => el === altFrEl ? 'fr' : 'es');
+    if (missing.length) {
+      const submitBtnEarly = document.getElementById('up-submit');
+      const label0 = submitBtnEarly.textContent;
+      submitBtnEarly.disabled = true; submitBtnEarly.textContent = 'Translating alt text…';
+      try {
+        const translations = await translateViaApi(altEn, 'en', missing);
+        if (translations.fr != null) altFrEl.value = translations.fr;
+        if (translations.es != null) altEsEl.value = translations.es;
+      } catch (e) {
+        toast('Auto-translate failed — fill FR/ES alt text by hand and retry: ' + e.message, true);
+        submitBtnEarly.disabled = false; submitBtnEarly.textContent = label0;
+        return;
+      }
+      submitBtnEarly.disabled = false; submitBtnEarly.textContent = label0;
+    }
+    const altFr = altFrEl.value.trim();
+    const altEs = altEsEl.value.trim();
     const reader = new FileReader();
     reader.onload = async () => {
       const dataBase64 = reader.result.split(',')[1];
