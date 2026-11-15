@@ -46,7 +46,6 @@ const TRUNK_MANIFEST_CURRENT = [
     {series:'branch-bailar-la-ciudad',file:'men-streetwear-cap-flip-night-black-white-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'man-glasses-hand-gesture-tattoos-portrait-black-white-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'bailar-ciudad-chaqueta-vuelo-movimiento-black-white-w2b.jpg'},
-    {series:'branch-bailar-la-ciudad',file:'bailar-ciudad-movimiento-inclinado-tatuaje-black-white-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'breakdancer-mid-motion-red-light-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'palacio-bellas-artes-facade-installation-print-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'bailar-la-ciudad-exhibition-panel-detail-w2b.jpg'},
@@ -109,7 +108,8 @@ const TRUNK_MANIFEST_OTHER = [
   { id:'t04', series:'trunk', file:'contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg', related:[
     {series:'branch-wrecked-boat',file:'wrecked-boat-hull-close-up-black-white-w2b.jpg'},
     {series:'branch-wrecked-boat',file:'wrecked-boat-full-view-colour-w2b.jpg'},
-    {series:'branch-wrecked-boat',file:'wrecked-boat-pl5-marking-black-white-w2b.jpg'}
+    {series:'branch-wrecked-boat',file:'wrecked-boat-pl5-marking-black-white-w2b.jpg'},
+    {series:'branch-wrecked-boat',file:'contemplations-two-boats-misty-still-water-w2b.jpg'}
 ] },
   { id:'t06', series:'trunk', file:'pinball-arcade-machine-jackpot-cards-neon-w2b.jpg', related:[
     {series:'branch-pinball',file:'vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg'},

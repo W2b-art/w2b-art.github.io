@@ -1102,15 +1102,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "contemplations-two-boats-misty-still-water-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Two small boats on still, misty water, medium-format film",
-          fr: "Deux petites barques sur une eau calme et brumeuse, moyen format argentique",
-          es: "Dos pequeñas barcas sobre agua quieta y brumosa, película de formato medio"
-        }
-      },
-      {
         file: "contemplations-golden-dusk-rock-spires-coast-w2b.jpg",
         archived: true,
         alt: {
@@ -2052,7 +2043,15 @@ const GALLERY_DATA = {
       { file: "wrecked-boat-full-view-colour-w2b.jpg", alt: {
         en: "Full view of the same wrecked boat, colour film photography",
         fr: "Vue d'ensemble du même bateau échoué, photographie argentique couleur",
-        es: "Vista completa del mismo barco naufragado, fotografía analógica a color" } }
+        es: "Vista completa del mismo barco naufragado, fotografía analógica a color" } },
+      {
+        file: "contemplations-two-boats-misty-still-water-w2b.jpg",
+        alt: {
+          en: "Two small boats on still, misty water, medium-format film",
+          fr: "Deux petites barques sur une eau calme et brumeuse, moyen format argentique",
+          es: "Dos pequeñas barcas sobre agua quieta y brumosa, película de formato medio"
+        }
+      }
     ]
   },
 
@@ -2293,6 +2292,12 @@ const GALLERY_DATA = {
           es: "Movimiento de manos sucias de un trabajador de taller"
         }
       }]
+    },
+  "branch-corridors-perpectives": {
+      id: "branch-corridors-perpectives",
+      folder: "images/branch-corridors-perpectives/",
+      title: { en: "corridors", fr: "couloir", es: "pasajes" },
+      images: []
     }
 
 };
