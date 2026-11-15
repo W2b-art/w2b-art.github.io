@@ -966,30 +966,10 @@ function trunkRow(set, e) {
     const attach = document.createElement('div');
     const branchSel = document.createElement('select'); branchSel.style.marginBottom = '8px';
     STATE.galleries.filter((g) => g.id.startsWith('branch-')).forEach((g) => { const o = document.createElement('option'); o.value = g.id; o.textContent = g.id; branchSel.appendChild(o); });
-    const grid = document.createElement('div'); grid.className = 'pick-grid';
-    function refillGrid() {
-      grid.innerHTML = '';
-      const g = STATE.galleries.find((x) => x.id === branchSel.value);
-      (g ? g.images : []).filter((i) => !i.archived).forEach((i) => {
-        const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'pick-thumb';
-        btn.title = i.file;
-        const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(g, i);
-        btn.appendChild(img);
-        const fnTag = document.createElement('span'); fnTag.className = 'pt-fn'; fnTag.textContent = i.file;
-        btn.appendChild(fnTag);
-        btn.onclick = () => doAction({ type: 'branch-add-related', trunkId: e.id, branchSeries: branchSel.value, file: i.file }, 'Attached ' + i.file + ' to ' + e.id);
-        grid.appendChild(btn);
-      });
-      if (!grid.children.length) {
-        grid.textContent = '(no un-archived photos in this branch yet) ';
-        const addLink = document.createElement('button'); addLink.type = 'button'; addLink.className = 'ghead-btn'; addLink.textContent = 'Add photo…';
-        addLink.onclick = () => { const g = STATE.galleries.find((x) => x.id === branchSel.value); if (g) openAddPhotoToBranch(g, e.id); };
-        grid.appendChild(addLink);
-      }
-    }
-    branchSel.onchange = refillGrid; refillGrid();
-    const hint = document.createElement('div'); hint.className = 'hint'; hint.style.margin = '6px 0'; hint.textContent = 'Pick a branch, then click a photo to attach it as the first related photo.';
-    attach.appendChild(branchSel); attach.appendChild(hint); attach.appendChild(grid);
+    const hint = document.createElement('div'); hint.className = 'hint'; hint.style.margin = '6px 0'; hint.textContent = 'Pick a branch, then add photos to it the same way as an existing branch.';
+    const addBtn = document.createElement('button'); addBtn.type = 'button'; addBtn.className = 'submit'; addBtn.textContent = 'Add photo…';
+    addBtn.onclick = () => { const g = STATE.galleries.find((x) => x.id === branchSel.value); if (g) openAddPhotoToBranch(g, e.id); };
+    attach.appendChild(branchSel); attach.appendChild(hint); attach.appendChild(addBtn);
     branchSec.appendChild(attach);
   }
   card.appendChild(branchSec);
