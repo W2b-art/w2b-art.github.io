@@ -1688,6 +1688,17 @@ const GALLERY_DATA = {
           fr: "tas de pierres recouvertes de chiffons",
           es: "Montón de piedras cubierto con paños"
         }
+      },
+      {
+        file: "000084400023.jpg",
+        title: { en: "vanishing into an other world", fr: "disparaître dans un autre monde", es: "desvanecerse en otro mundo" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2023,
+        alt: {
+          en: "concrete corridors obscure",
+          fr: "couloirs en béton sombres",
+          es: "Pasillos de hormigón oscuros"
+        }
       }
     ]
   },
@@ -2238,14 +2249,7 @@ const GALLERY_DATA = {
       folder: "images/branch-corridors-perpectives/",
       title: { en: "corridors", fr: "couloir", es: "pasajes" },
       images: [
-      {
-        file: "stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg",
-        alt: {
-          en: "Ancient stone corridor in ruins with repeated arches creating a vanishing point, black and white film photography",
-          fr: "Couloir en pierre ancienne en ruines avec arches répétées créant un point de fuite, argentique noir et blanc",
-          es: "Corredor de piedra antigua en ruinas con arcos repetidos creando punto de fuga, analógico blanco y negro"
-        }
-      }]
+]
     },
   "branch-t3": {
       id: "branch-t3",
@@ -2277,16 +2281,14 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "000084400023.jpg",
-        title: { en: "vanishing into an other world", fr: "disparaître dans un autre monde", es: "desvanecerse en otro mundo" },
-        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        year: 2023,
+        file: "stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg",
         alt: {
-          en: "concrete corridors obscure",
-          fr: "couloirs en béton sombres",
-          es: "Pasillos de hormigón oscuros"
+          en: "Ancient stone corridor in ruins with repeated arches creating a vanishing point, black and white film photography",
+          fr: "Couloir en pierre ancienne en ruines avec arches répétées créant un point de fuite, argentique noir et blanc",
+          es: "Corredor de piedra antigua en ruinas con arcos repetidos creando punto de fuga, analógico blanco y negro"
         }
-      }]
+      }
+]
     },
   "branch-scpultures-sacred": {
       id: "branch-scpultures-sacred",

@@ -147,14 +147,15 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-industrial',file:'man-junkyard-stripped-car-parts-black-white-w2b.jpg'},
     {series:'branch-industrial',file:'6172-1.jpg'}
 ] },
-  { id:'t3', series:'trunk', file:'stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg', related:[
+  { id:'t3', series:'trunk', file:'000084400023.jpg', related:[
     {series:'branch-t3',file:'contemplations-ruined-doorway-light-colour-w2b.jpg'},
     {series:'branch-t3',file:'bamboo-tunnel-pond-stone-wall-w2b.jpg'},
     {series:'branch-t3',file:'medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg'},
-    {series:'branch-t3',file:'000084400023.jpg'}
-  ] },
+    {series:'branch-t3',file:'stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg'}
+] },
   { id:'t5', series:'trunk', file:'000024290011.jpg', related:[
     {series:'branch-t5',file:'serie-82-8.jpg'},
     {series:'branch-t5',file:'Stand-alone-2.jpg'}
-  ] }
+  ] },
+  { id:'t7', series:'trunk', file:'000084400023.jpg' }
 ];
