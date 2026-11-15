@@ -1189,18 +1189,17 @@ function renderUpload() {
   const main = document.getElementById('panel-upload');
   main.innerHTML = '';
   const form = document.createElement('form'); form.className = 'panel';
-  form.innerHTML = '<h3>Upload a new photo</h3>' +
-    '<div class="hint">Runs .build/compress.js then .build/responsive.js (the real pipeline), writes into images/&lt;gallery&gt;/, and adds the data entry. .jpg/.jpeg only.</div>' +
-    '<label>Source file</label><input type="file" id="up-file" accept="image/jpeg">' +
+  form.innerHTML = '<h3>Upload new photos</h3>' +
+    '<div class="hint">Runs .build/compress.js then .build/responsive.js (the real pipeline) once per photo, writes into images/&lt;gallery&gt;/, and adds the data entry. .jpg/.jpeg only. Pick several files to batch-upload them all into the same gallery (and the same trunk anchor, if attached) — each still gets its own alt text below, required per photo for real (not generic) SEO.</div>' +
+    '<label>Source file(s)</label><input type="file" id="up-file" accept="image/jpeg" multiple>' +
+    '<div id="up-files"></div>' +
     '<label>Target gallery</label><select id="up-gallery"></select>' +
-    '<label>Position (blank = append at end)</label><input type="number" id="up-pos" min="0">' +
-    '<label>Alt text (EN required — FR/ES auto-translate on upload if left blank) — EN / FR / ES</label>' +
-    '<div class="row3"><input id="up-alt-en" placeholder="EN"><input id="up-alt-fr" placeholder="FR"><input id="up-alt-es" placeholder="ES"></div>' +
-    '<label>Title (optional, museum-label — EN / FR / ES)</label>' +
+    '<label id="up-pos-label">Position (blank = append at end)</label><input type="number" id="up-pos" min="0">' +
+    '<label>Title (optional, museum-label — EN / FR / ES, shared across the whole batch)</label>' +
     '<div class="row3"><input id="up-title-en" placeholder="EN"><input id="up-title-fr" placeholder="FR"><input id="up-title-es" placeholder="ES"></div>' +
-    '<label>Medium (optional)</label>' + mediumSelectHtml('up-medium') +
-    '<label>Year (optional)</label><input type="number" id="up-year" min="1900" max="2100">' +
-    '<label>Attach to a trunk anchor\'s "more like this" (only if target gallery is a branch-*)</label>' +
+    '<label>Medium (optional, shared across the whole batch)</label>' + mediumSelectHtml('up-medium') +
+    '<label>Year (optional, shared across the whole batch)</label><input type="number" id="up-year" min="1900" max="2100">' +
+    '<label>Attach to a trunk anchor\'s "more like this" (only if target gallery is a branch-*; applies to every photo in the batch)</label>' +
     '<select id="up-attach"><option value="">— don\'t attach —</option></select>' +
     '<button type="button" class="submit" id="up-submit">Upload</button>';
   main.appendChild(form);
@@ -1210,11 +1209,39 @@ function renderUpload() {
     fr: document.getElementById('up-title-fr'),
     es: document.getElementById('up-title-es')
   });
-  wireAutoTranslate({
-    en: document.getElementById('up-alt-en'),
-    fr: document.getElementById('up-alt-fr'),
-    es: document.getElementById('up-alt-es')
-  });
+
+  // One alt-text (EN/FR/ES) row per selected file — alt text is never
+  // shared across a batch (that's generic, SEO-worthless text), everything
+  // else above (gallery/title/medium/year/attach) is. Position only makes
+  // sense for a single file; batches always append in file-picker order.
+  function renderUploadFileRows() {
+    const files = Array.from(document.getElementById('up-file').files);
+    const container = document.getElementById('up-files');
+    container.innerHTML = '';
+    const posInput = document.getElementById('up-pos');
+    const posLabel = document.getElementById('up-pos-label');
+    posInput.disabled = files.length > 1;
+    if (files.length > 1) { posInput.value = ''; posLabel.textContent = 'Position — disabled for batch upload (always appends, in file-picker order)'; }
+    else { posLabel.textContent = 'Position (blank = append at end)'; }
+    files.forEach((f, i) => {
+      const row = document.createElement('div');
+      row.style.cssText = 'border:1px solid #333;border-radius:6px;padding:8px;margin:8px 0;';
+      const label = document.createElement('div');
+      label.style.cssText = 'font-size:12px;color:#aaa;margin-bottom:4px;';
+      label.textContent = (files.length > 1 ? ('File ' + (i + 1) + '/' + files.length + ' — ') : '') + f.name;
+      row.appendChild(label);
+      const alts = document.createElement('div'); alts.className = 'row3';
+      alts.innerHTML = '<input id="up-alt-en-' + i + '" placeholder="EN (required)"><input id="up-alt-fr-' + i + '" placeholder="FR"><input id="up-alt-es-' + i + '" placeholder="ES">';
+      row.appendChild(alts);
+      container.appendChild(row);
+      wireAutoTranslate({
+        en: document.getElementById('up-alt-en-' + i),
+        fr: document.getElementById('up-alt-fr-' + i),
+        es: document.getElementById('up-alt-es-' + i)
+      });
+    });
+  }
+  document.getElementById('up-file').addEventListener('change', renderUploadFileRows);
 
   const gSel = document.getElementById('up-gallery');
   const { live, rest } = liveGalleryTiers();
@@ -1244,71 +1271,102 @@ function renderUpload() {
   }
   gSel.onchange = refillAttach; refillAttach();
 
+  function readFileAsBase64(f) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = () => reject(reader.error || new Error('could not read ' + f.name));
+      reader.readAsDataURL(f);
+    });
+  }
+
   document.getElementById('up-submit').onclick = async () => {
     const fileInput = document.getElementById('up-file');
-    const f = fileInput.files[0];
-    if (!f) { toast('pick a file first', true); return; }
-    const altEnEl = document.getElementById('up-alt-en');
-    const altFrEl = document.getElementById('up-alt-fr');
-    const altEsEl = document.getElementById('up-alt-es');
-    const altEn = altEnEl.value.trim();
-    if (!altEn) { toast('alt text (EN) is required', true); return; }
+    const files = Array.from(fileInput.files);
+    if (!files.length) { toast('pick at least one file first', true); return; }
+    const rows = files.map((f, i) => ({
+      file: f,
+      altEnEl: document.getElementById('up-alt-en-' + i),
+      altFrEl: document.getElementById('up-alt-fr-' + i),
+      altEsEl: document.getElementById('up-alt-es-' + i)
+    }));
+    const missingAlt = rows.find((r) => !r.altEnEl.value.trim());
+    if (missingAlt) { toast('alt text (EN) is required for ' + missingAlt.file.name, true); return; }
+
+    const submitBtn = document.getElementById('up-submit');
+    const oldLabel = submitBtn.textContent;
+    submitBtn.disabled = true;
+
     // blur-triggered auto-translate is a suggestion that may not have
     // finished (or fired at all) by the time Upload is clicked — never
-    // submit with a blank FR/ES, so translate whatever's still missing
-    // right here and block on it, rather than silently uploading
+    // submit with a blank FR/ES, so translate whatever's still missing,
+    // per row, right here and block on it, rather than silently uploading
     // incomplete (bad-for-SEO) alt text.
-    const missing = [altFrEl, altEsEl].filter((el) => !el.value.trim()).map((el) => el === altFrEl ? 'fr' : 'es');
-    if (missing.length) {
-      const submitBtnEarly = document.getElementById('up-submit');
-      const label0 = submitBtnEarly.textContent;
-      submitBtnEarly.disabled = true; submitBtnEarly.textContent = 'Translating alt text…';
+    for (const row of rows) {
+      const missing = [row.altFrEl, row.altEsEl].filter((el) => !el.value.trim()).map((el) => el === row.altFrEl ? 'fr' : 'es');
+      if (!missing.length) continue;
+      submitBtn.textContent = 'Translating alt text (' + row.file.name + ')…';
       try {
-        const translations = await translateViaApi(altEn, 'en', missing);
-        if (translations.fr != null) altFrEl.value = translations.fr;
-        if (translations.es != null) altEsEl.value = translations.es;
+        const translations = await translateViaApi(row.altEnEl.value.trim(), 'en', missing);
+        if (translations.fr != null) row.altFrEl.value = translations.fr;
+        if (translations.es != null) row.altEsEl.value = translations.es;
       } catch (e) {
-        toast('Auto-translate failed — fill FR/ES alt text by hand and retry: ' + e.message, true);
-        submitBtnEarly.disabled = false; submitBtnEarly.textContent = label0;
+        toast('Auto-translate failed for ' + row.file.name + ' — fill FR/ES by hand and retry: ' + e.message, true);
+        submitBtn.disabled = false; submitBtn.textContent = oldLabel;
         return;
       }
-      submitBtnEarly.disabled = false; submitBtnEarly.textContent = label0;
     }
-    const altFr = altFrEl.value.trim();
-    const altEs = altEsEl.value.trim();
-    const reader = new FileReader();
-    reader.onload = async () => {
-      const dataBase64 = reader.result.split(',')[1];
-      const titleEn = document.getElementById('up-title-en').value.trim();
-      const mediumKey = document.getElementById('up-medium').value;
-      const posVal = document.getElementById('up-pos').value;
-      const yearVal = document.getElementById('up-year').value;
-      const action = {
-        type: 'upload',
-        gallery: gSel.value,
-        filename: slugifyUploadFilename(f.name),
-        dataBase64,
-        position: posVal === '' ? undefined : Number(posVal),
-        alt: { en: altEn, fr: altFr, es: altEs },
-        title: titleEn ? { en: titleEn, fr: document.getElementById('up-title-fr').value.trim() || titleEn, es: document.getElementById('up-title-es').value.trim() || titleEn } : null,
-        medium: mediumKey ? MEDIUM_LOOKUP[mediumKey] : null,
-        year: yearVal ? Number(yearVal) : null,
-        attachToTrunkId: attachSel.value || undefined
-      };
-      const submitBtn = document.getElementById('up-submit');
-      const oldLabel = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Uploading… (compress + responsive, up to ~30s)';
+
+    const titleEn = document.getElementById('up-title-en').value.trim();
+    const mediumKey = document.getElementById('up-medium').value;
+    const posVal = document.getElementById('up-pos').value;
+    const yearVal = document.getElementById('up-year').value;
+    const sharedTitle = titleEn ? { en: titleEn, fr: document.getElementById('up-title-fr').value.trim() || titleEn, es: document.getElementById('up-title-es').value.trim() || titleEn } : null;
+    const sharedMedium = mediumKey ? MEDIUM_LOOKUP[mediumKey] : null;
+    const sharedYear = yearVal ? Number(yearVal) : null;
+    const position = (rows.length === 1 && posVal !== '') ? Number(posVal) : undefined;
+    const attachToTrunkId = attachSel.value || undefined;
+
+    // Sequential, not parallel — the server is single-threaded and each
+    // upload rewrites gallery-data.js/trunk-data.js by string surgery on
+    // whatever it last read, so two in flight at once would race and
+    // corrupt each other's edit. One failure (e.g. a filename collision)
+    // doesn't abort the rest — each photo is independent, so finish the
+    // batch and report per-file results.
+    const results = [];
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i];
+      submitBtn.textContent = 'Uploading ' + (i + 1) + '/' + rows.length + ' — ' + row.file.name + '… (up to ~30s each)';
       try {
-        await doAction(action, 'Uploaded');
-        fileInput.value = '';
-      } catch (e) { /* toast already shown */
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.textContent = oldLabel;
+        const dataBase64 = await readFileAsBase64(row.file);
+        await doAction({
+          type: 'upload',
+          gallery: gSel.value,
+          filename: slugifyUploadFilename(row.file.name),
+          dataBase64,
+          position,
+          alt: { en: row.altEnEl.value.trim(), fr: row.altFrEl.value.trim(), es: row.altEsEl.value.trim() },
+          title: sharedTitle,
+          medium: sharedMedium,
+          year: sharedYear,
+          attachToTrunkId
+        }, null, true);
+        results.push({ name: row.file.name, ok: true });
+      } catch (e) {
+        results.push({ name: row.file.name, ok: false, err: e.message });
       }
-    };
-    reader.readAsDataURL(f);
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = oldLabel;
+    const failed = results.filter((r) => !r.ok);
+    if (!failed.length) {
+      toast('Uploaded ' + results.length + (results.length === 1 ? ' photo' : ' photos'));
+      fileInput.value = '';
+      document.getElementById('up-files').innerHTML = '';
+    } else {
+      toast(failed.length + '/' + results.length + ' failed — ' + failed.map((r) => r.name + ': ' + r.err).join(' · ') + ' (the rest uploaded fine; re-pick just the failed file(s) to retry)', true);
+    }
   };
 }
 
