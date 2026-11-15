@@ -58,15 +58,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "solitary-figure-bench-tropical-tree-seaside-black-white-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "Solitary figure seated under a tropical tree overlooking the sea, black and white film photography",
-          fr: "Silhouette solitaire assise sous un arbre tropical face à la mer, argentique noir et blanc",
-          es: "Figura solitaria sentada bajo un árbol tropical frente al mar, fotografía analógica en blanco y negro"
-        }
-      },
-      {
         file: "sea-anemone-underwater-teal-ocean-w2b.jpg",
         archived: true,
         alt: {
@@ -391,15 +382,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "medellin-bella-artes-locomotora-abandonada-color-w2b.jpg",
-        archived: true,
-        alt: {
-          en: "A rusted, graffiti-covered locomotive reclaimed by vegetation at the abandoned Bellas Artes rail yard, Medellín, colour photography",
-          fr: "Une locomotive rouillée couverte de graffitis reprise par la végétation dans la gare ferroviaire abandonnée de Bellas Artes, Medellín, photographie couleur",
-          es: "Una locomotora oxidada cubierta de grafitis reconquistada por la vegetación en el patio ferroviario abandonado de Bellas Artes, Medellín, fotografía a color"
-        }
-      },
-      {
         file: "medellin-bella-artes-interior-ruinas-luz-color-w2b.jpg",
         archived: true,
         alt: {
@@ -433,16 +415,6 @@ const GALLERY_DATA = {
           en: "Silhouetted figures inside a dim covered market under raking light, Medellín, black and white documentary photography",
           fr: "Silhouettes à l'intérieur d'un marché couvert peu éclairé sous une lumière rasante, Medellín, photographie documentaire noir et blanc",
           es: "Siluetas dentro de un mercado cubierto en penumbra bajo luz rasante, Medellín, fotografía documental en blanco y negro"
-        }
-      },
-      {
-        file: "medellin-bella-artes-pano-taller-luz-color-w2b.jpg",
-        archived: true,
-        wide: true,
-        alt: {
-          en: "Panoramic interior of the abandoned Bellas Artes rail workshop, warm light falling through the broken roof, Medellín, colour photography",
-          fr: "Panoramique de l'intérieur de l'atelier ferroviaire abandonné de Bellas Artes, lumière chaude tombant à travers le toit crevé, Medellín, photographie couleur",
-          es: "Panorámica del interior del taller ferroviario abandonado de Bellas Artes, luz cálida cayendo por el techo roto, Medellín, fotografía a color"
         }
       }
     ]
@@ -1403,14 +1375,6 @@ const GALLERY_DATA = {
         }
       },
       {
-        file: "bailar-ciudad-movimiento-inclinado-tatuaje-black-white-w2b.jpg",
-        alt: {
-          en: "A dancer bent low into a move, tattooed arm extended, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
-          fr: "Un danseur penché bas dans un mouvement, bras tatoué tendu, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
-          es: "Un bailarín inclinado hacia abajo en un movimiento, brazo tatuado extendido, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
-        }
-      },
-      {
         file: "bailar-ciudad-power-move-aire-luz-black-white-w2b.jpg",
         alt: {
           en: "A breaker suspended mid-air in a power move under dramatic light, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
@@ -1456,14 +1420,6 @@ const GALLERY_DATA = {
           en: "A dancer holding a horizontal floor freeze, body suspended low over the ground, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
           fr: "Un danseur tenant un freeze horizontal au sol, le corps suspendu au ras du bitume, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
           es: "Un bailarín sosteniendo un freeze horizontal en el suelo, el cuerpo suspendido a ras del piso, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
-        }
-      },
-      {
-        file: "bailar-ciudad-chaqueta-vuelo-movimiento-black-white-w2b.jpg",
-        alt: {
-          en: "A dancer mid-move with a jacket flying out around the body, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
-          fr: "Un danseur en plein mouvement, veste s'envolant autour du corps, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
-          es: "Un bailarín en pleno movimiento con la chaqueta volando alrededor del cuerpo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
         }
       },
       {
@@ -1902,6 +1858,22 @@ const GALLERY_DATA = {
           fr: "Trois fanzines Cypher Miraflores posés sur une table en bois, couvertures de photographie de danse noir et blanc",
           es: "Tres fanzines Cypher Miraflores sobre una mesa de madera, portadas de fotografía de danza en blanco y negro"
         }
+      },
+      {
+        file: "bailar-ciudad-movimiento-inclinado-tatuaje-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer bent low into a move, tattooed arm extended, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur penché bas dans un mouvement, bras tatoué tendu, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín inclinado hacia abajo en un movimiento, brazo tatuado extendido, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
+      },
+      {
+        file: "bailar-ciudad-chaqueta-vuelo-movimiento-black-white-w2b.jpg",
+        alt: {
+          en: "A dancer mid-move with a jacket flying out around the body, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
+          fr: "Un danseur en plein mouvement, veste s'envolant autour du corps, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
+          es: "Un bailarín en pleno movimiento con la chaqueta volando alrededor del cuerpo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
+        }
       }
     ]
   },
@@ -1969,6 +1941,23 @@ const GALLERY_DATA = {
           en: "Close view of a Lo que dejamos panel spread, scrapyard and street-sign photographs beside the exhibition statement",
           fr: "Vue rapprochée d'un panneau double de Lo que dejamos, photographies de casse et de panneau de rue à côté du texte d'intention",
           es: "Vista cercana de un panel doble de Lo que dejamos, fotografías de depósito de chatarra y señal de calle junto al texto de intención"
+        }
+      },
+      {
+        file: "medellin-bella-artes-locomotora-abandonada-color-w2b.jpg",
+        alt: {
+          en: "A rusted, graffiti-covered locomotive reclaimed by vegetation at the abandoned Bellas Artes rail yard, Medellín, colour photography",
+          fr: "Une locomotive rouillée couverte de graffitis reprise par la végétation dans la gare ferroviaire abandonnée de Bellas Artes, Medellín, photographie couleur",
+          es: "Una locomotora oxidada cubierta de grafitis reconquistada por la vegetación en el patio ferroviario abandonado de Bellas Artes, Medellín, fotografía a color"
+        }
+      },
+      {
+        file: "medellin-bella-artes-pano-taller-luz-color-w2b.jpg",
+        wide: true,
+        alt: {
+          en: "Panoramic interior of the abandoned Bellas Artes rail workshop, warm light falling through the broken roof, Medellín, colour photography",
+          fr: "Panoramique de l'intérieur de l'atelier ferroviaire abandonné de Bellas Artes, lumière chaude tombant à travers le toit crevé, Medellín, photographie couleur",
+          es: "Panorámica del interior del taller ferroviario abandonado de Bellas Artes, luz cálida cayendo por el techo roto, Medellín, fotografía a color"
         }
       }
     ]
@@ -2130,6 +2119,14 @@ const GALLERY_DATA = {
           en: "A bench at the end of a green coastal path overlooking the blue ocean, faded vintage film photography",
           fr: "Un banc au bout d'un sentier côtier verdoyant face à l'océan bleu, photographie argentique délavée",
           es: "Un banco al final de un sendero costero verde con vista al océano azul, fotografía analógica desvaída"
+        }
+      },
+      {
+        file: "solitary-figure-bench-tropical-tree-seaside-black-white-w2b.jpg",
+        alt: {
+          en: "Solitary figure seated under a tropical tree overlooking the sea, black and white film photography",
+          fr: "Silhouette solitaire assise sous un arbre tropical face à la mer, argentique noir et blanc",
+          es: "Figura solitaria sentada bajo un árbol tropical frente al mar, fotografía analógica en blanco y negro"
         }
       }
     ]

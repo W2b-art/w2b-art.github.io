@@ -45,6 +45,8 @@ const TRUNK_MANIFEST_CURRENT = [
     {series:'branch-bailar-la-ciudad',file:'man-trucker-cap-sunglasses-night-portrait-black-white-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'men-streetwear-cap-flip-night-black-white-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'man-glasses-hand-gesture-tattoos-portrait-black-white-w2b.jpg'},
+    {series:'branch-bailar-la-ciudad',file:'bailar-ciudad-chaqueta-vuelo-movimiento-black-white-w2b.jpg'},
+    {series:'branch-bailar-la-ciudad',file:'bailar-ciudad-movimiento-inclinado-tatuaje-black-white-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'breakdancer-mid-motion-red-light-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'palacio-bellas-artes-facade-installation-print-w2b.jpg'},
     {series:'branch-bailar-la-ciudad',file:'bailar-la-ciudad-exhibition-panel-detail-w2b.jpg'},
@@ -53,6 +55,21 @@ const TRUNK_MANIFEST_CURRENT = [
     fr:"Cinq mois à suivre les danseurs de hip-hop de Medellín, cyphers et battles de quartier en quartier : je veux montrer l'espace public comme un lieu que l'on choisit d'occuper et non pas uniquement à traverser. Un premier tirage a été présenté lors de cette même exposition, sous la direction du professeur Enrique Aguirre. Le travail continue vers une exposition complète, et vers un fanzine imprimé : Cypher Miraflores. En parallèle, je construis avec eux un projet plus ample : réunir une trentaine de danseurs pour un cypher photographique unique, pensé comme une œuvre collective, vers une exposition et un livre.",
     es:"Cinco meses siguiendo a los bailarines de hip hop de Medellín, cyphers y batallas de barrio en barrio: quiero mostrar el espacio público como un lugar que se elige ocupar, no solo atravesar. Un primer tiraje se presentó en esa misma exposición, bajo la dirección del profesor Enrique Aguirre. El trabajo sigue avanzando hacia una exposición completa y un fanzine impreso: Cypher Miraflores. En paralelo, construyo con ellos un proyecto más amplio: reunir a una treintena de bailarines para un cypher fotográfico único, pensado como una obra colectiva, hacia una exposición y un libro.",
     en:"Five months following Medellín's hip-hop dancers, cyphers and battles from one neighborhood to the next: I want to show public space as something you choose to occupy, not just pass through. A first print was shown at that same exhibition, under the direction of professor Enrique Aguirre. The work is moving toward a full exhibition and a printed fanzine: Cypher Miraflores. Alongside it, I'm building something larger with them: bringing together some thirty dancers for a single photographic cypher, conceived as a collective work, toward an exhibition and a book."
+  } },
+  { id:'t16', series:'trunk', file:'abandoned-train-wagons-junkyard-color-w2b.jpg', related:[
+    {series:'branch-lo-que-dejamos',file:'scrap-metal-yard-entrance-barbed-wire-workers-w2b.jpg'},
+    {series:'branch-lo-que-dejamos',file:'abandoned-factory-water-tower-overgrown-w2b.jpg'},
+    {series:'branch-lo-que-dejamos',file:'ruined-building-interior-debris-furniture-w2b.jpg'},
+    {series:'branch-lo-que-dejamos',file:'calle-54-street-sign-rubble-w2b.jpg'},
+    {series:'branch-lo-que-dejamos',file:'lo-que-dejamos-exhibition-wide-parque-luces-w2b.jpg'},
+    {series:'branch-lo-que-dejamos',file:'lo-que-dejamos-exhibition-panel-angle-w2b.jpg'},
+    {series:'branch-lo-que-dejamos',file:'lo-que-dejamos-exhibition-panel-closeup-w2b.jpg'},
+    {series:'branch-lo-que-dejamos',file:'medellin-bella-artes-locomotora-abandonada-color-w2b.jpg'},
+    {series:'branch-lo-que-dejamos',file:'medellin-bella-artes-pano-taller-luz-color-w2b.jpg'}
+  ], statement:{
+    fr:"Ces lieux abandonnés de Medellín portent une mémoire que la ville a cessé de regarder : je les photographie pour que chacun ait, à son tour, la possibilité de les voir sous un nouveau jour, une nouvelle lumière, une autre approche. La série a été présentée une première fois en 2026, dans le cadre du semillero de fotografía documental de l'Instituto de Bellas Artes de Medellín ; elle continue de s'étendre à mesure que de nouveaux lieux apparaissent.",
+    es:"Estos lugares abandonados de Medellín guardan una memoria que la ciudad ha dejado de mirar: los fotografío para que cada quien tenga, a su vez, la posibilidad de verlos bajo una nueva luz, otra mirada. La serie se presentó por primera vez en 2026, en el marco del semillero de fotografía documental del Instituto de Bellas Artes de Medellín; sigue creciendo a medida que aparecen nuevos lugares.",
+    en:"These abandoned places in Medellín carry a memory the city has stopped looking at: I photograph them so that others, in turn, might see them in a new light, a different way. The series was first shown in 2026, as part of the documentary photography seminar at the Instituto de Bellas Artes de Medellín; it keeps growing as new places appear."
   } },
   /* anchor: bailar la ciudad.jpg — opens the bailar-la-ciudad branch (7
      related: 4 portraits + 3 exhibition-install shots added 2026-10-31).
@@ -65,19 +82,6 @@ const TRUNK_MANIFEST_CURRENT = [
      ES quote is the official exhibition intention text, printed on the
      actual panel at Palacio de Bellas Artes — use verbatim, see
      project_memoria_urbana_medellin.md. */
-  { id:'t16', series:'trunk', file:'abandoned-train-wagons-junkyard-color-w2b.jpg', related:[
-    {series:'branch-lo-que-dejamos',file:'scrap-metal-yard-entrance-barbed-wire-workers-w2b.jpg'},
-    {series:'branch-lo-que-dejamos',file:'abandoned-factory-water-tower-overgrown-w2b.jpg'},
-    {series:'branch-lo-que-dejamos',file:'ruined-building-interior-debris-furniture-w2b.jpg'},
-    {series:'branch-lo-que-dejamos',file:'calle-54-street-sign-rubble-w2b.jpg'},
-    {series:'branch-lo-que-dejamos',file:'lo-que-dejamos-exhibition-wide-parque-luces-w2b.jpg'},
-    {series:'branch-lo-que-dejamos',file:'lo-que-dejamos-exhibition-panel-angle-w2b.jpg'},
-    {series:'branch-lo-que-dejamos',file:'lo-que-dejamos-exhibition-panel-closeup-w2b.jpg'}
-  ], statement:{
-    fr:"Ces lieux abandonnés de Medellín portent une mémoire que la ville a cessé de regarder : je les photographie pour que chacun ait, à son tour, la possibilité de les voir sous un nouveau jour, une nouvelle lumière, une autre approche. La série a été présentée une première fois en 2026, dans le cadre du semillero de fotografía documental de l'Instituto de Bellas Artes de Medellín ; elle continue de s'étendre à mesure que de nouveaux lieux apparaissent.",
-    es:"Estos lugares abandonados de Medellín guardan una memoria que la ciudad ha dejado de mirar: los fotografío para que cada quien tenga, a su vez, la posibilidad de verlos bajo una nueva luz, otra mirada. La serie se presentó por primera vez en 2026, en el marco del semillero de fotografía documental del Instituto de Bellas Artes de Medellín; sigue creciendo a medida que aparecen nuevos lugares.",
-    en:"These abandoned places in Medellín carry a memory the city has stopped looking at: I photograph them so that others, in turn, might see them in a new light, a different way. The series was first shown in 2026, as part of the documentary photography seminar at the Instituto de Bellas Artes de Medellín; it keeps growing as new places appear."
-  } }
 ];
 
 /* 2026-11-01 — 11 more branches wired in, per the hand-curated
@@ -116,12 +120,10 @@ const TRUNK_MANIFEST_OTHER = [
   { id:'t11', series:'trunk', file:'man-silhouette-bench-dramatic-sunset-sky-w2b.jpg', related:[
     {series:'branch-coastal-bench',file:'figure-seated-bench-bay-view-black-white-w2b.jpg'},
     {series:'branch-coastal-bench',file:'couple-bench-overlooking-water-w2b.jpg'},
+    {series:'branch-coastal-bench',file:'solitary-figure-bench-tropical-tree-seaside-black-white-w2b.jpg'},
     {series:'branch-coastal-bench',file:'coastal-path-bench-ocean-view-faded-film-w2b.jpg'}
-  ] },
-  { id:'t12', series:'trunk', file:'rushing-water-rocks-black-white-w2b.jpg', related:[
-    {series:'branch-rushing-water',file:'iguazu-falls-wide-view-colour-w2b.jpg'},
-    {series:'branch-rushing-water',file:'iguazu-falls-close-crop-colour-w2b.jpg'}
-  ] },
+] },
+  { id:'t12', series:'trunk', file:'rushing-water-rocks-black-white-w2b.jpg' },
   { id:'t13', series:'trunk', file:'hands-playing-double-bass-black-white-w2b.jpg' },
   { id:'t17', series:'trunk', file:'woman-car-window-candid-street-black-white-w2b.jpg' },
   { id:'t18', series:'trunk', file:'dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg', related:[
