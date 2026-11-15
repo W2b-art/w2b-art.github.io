@@ -95,12 +95,12 @@ const TRUNK_MANIFEST_CURRENT = [
    genuine match (same shoot, same driftwood, wide shot vs. the
    trunk's macro detail). */
 const TRUNK_MANIFEST_OTHER = [
-  { id:'t01', series:'trunk', file:'weathered-rock-formation-coastal-texture-w2b.jpg', related:[
-    {series:'branch-coastal-texture',file:'mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg'},
+  { id:'t01', series:'trunk', file:'mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg', related:[
+    {series:'branch-coastal-texture',file:'weathered-rock-formation-coastal-texture-w2b.jpg'},
     {series:'branch-coastal-texture',file:'sea-anemone-underwater-macro-teal-w2b.jpg'},
     {series:'branch-coastal-texture',file:'contemplations-stone-cairn-rocky-shore-black-white-w2b.jpg'},
     {series:'branch-coastal-texture',file:'contemplations-sea-stacks-pillars-black-white-w2b.jpg'}
-  ] },
+] },
   { id:'t02', series:'trunk', file:'dead-trees-rocky-shore-mountains-black-white-w2b.jpg', related:[
     {series:'branch-driftwood-shore',file:'contemplations-windswept-tree-cliff-edge-black-white-w2b.jpg'},
     {series:'branch-driftwood-shore',file:'contemplations-stone-tower-well-black-white-w2b.jpg'},
@@ -132,10 +132,10 @@ const TRUNK_MANIFEST_OTHER = [
   ] },
   { id:'t17', series:'trunk', file:'woman-car-window-candid-street-black-white-w2b.jpg', related:[
     {series:'branch-t17',file:'medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg'},
-    {series:'branch-t17',file:'medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg'},
     {series:'branch-t17',file:'boudoir-red-drape-reaching-bust-colour-w2b.jpg'},
     {series:'branch-t17',file:'tattoo-artist-desk-work-flash-art-wall-w2b.jpg'},
-    {series:'branch-t17',file:'serie-7-6.jpg'}
+    {series:'branch-t17',file:'serie-7-6.jpg'},
+    {series:'branch-t17',file:'serie-20-8.jpg'}
   ] },
   { id:'t18', series:'trunk', file:'dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg', related:[
     {series:'branch-dark-bay',file:'buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg'},

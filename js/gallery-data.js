@@ -1615,14 +1615,6 @@ const GALLERY_DATA = {
     },
     images: [
       {
-        file: "weathered-rock-formation-coastal-texture-w2b.jpg",
-        alt: {
-          en: "Close-up of a weathered coastal rock formation with a green shrub against a blue sky, medium format film photography",
-          fr: "Gros plan sur une formation rocheuse côtière érodée avec un arbuste vert sur fond de ciel bleu, moyen format argentique",
-          es: "Primer plano de una formación rocosa costera erosionada con un arbusto verde contra un cielo azul, película de formato medio"
-        }
-      },
-      {
         file: "contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg",
         alt: {
           en: "A wrecked boat on a rocky shore, black and white medium-format film",
@@ -1735,7 +1727,11 @@ const GALLERY_DATA = {
       { file: "dead-trees-rocky-shore-mountains-black-white-w2b.jpg", alt: {
         en: "Dead trees on a rocky shoreline with mountains and a sailboat across the water, black and white photography",
         fr: "Arbres morts sur un rivage rocheux avec des montagnes et un voilier de l'autre côté de l'eau, photographie noir et blanc",
-        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } }
+        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } },
+      { file: "mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg", alt: {
+        en: "Close-up of mussels and barnacles encrusted on coastal rock, macro texture photography",
+        fr: "Gros plan sur des moules et balanes incrustées sur une roche côtière, photographie macro de texture",
+        es: "Primer plano de mejillones y bálanos incrustados en una roca costera, fotografía macro de textura" } }
     ]
   },
 
@@ -1993,17 +1989,6 @@ const GALLERY_DATA = {
           fr: "Passage couvert historique bondé bordé d'enseignes de boutiques, photographie de rue noir et blanc",
           es: "Pasaje histórico cubierto y concurrido bordeado de letreros de tiendas, fotografía callejera en blanco y negro"
         }
-      },
-      {
-        file: "serie-20-8.jpg",
-        title: { en: "one sweep away", fr: "à un geste près", es: "A un paso" },
-        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        year: 2025,
-        alt: {
-          en: "construction workers sweeping the ground",
-          fr: "Ouvriers du bâtiment balayant le sol",
-          es: "Obreros de la construcción barriendo el suelo"
-        }
       }
     ]
   },
@@ -2020,10 +2005,6 @@ const GALLERY_DATA = {
     folder: "images/branch-coastal-texture/",
     title: { en: "Coastal Texture", fr: "Texture côtière", es: "Textura costera" },
     images: [
-      { file: "mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg", alt: {
-        en: "Close-up of mussels and barnacles encrusted on coastal rock, macro texture photography",
-        fr: "Gros plan sur des moules et balanes incrustées sur une roche côtière, photographie macro de texture",
-        es: "Primer plano de mejillones y bálanos incrustados en una roca costera, fotografía macro de textura" } },
       { file: "sea-anemone-underwater-macro-teal-w2b.jpg", alt: {
         en: "Underwater macro close-up of a sea anemone in teal light",
         fr: "Gros plan macro sous-marin d'une anémone de mer dans une lumière turquoise",
@@ -2042,6 +2023,14 @@ const GALLERY_DATA = {
           en: "Weathered rock pillars along the shore, black and white medium-format film",
           fr: "Des piliers rocheux érodés le long du rivage, moyen format argentique noir et blanc",
           es: "Pilares de roca erosionados a lo largo de la orilla, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "weathered-rock-formation-coastal-texture-w2b.jpg",
+        alt: {
+          en: "Close-up of a weathered coastal rock formation with a green shrub against a blue sky, medium format film photography",
+          fr: "Gros plan sur une formation rocheuse côtière érodée avec un arbuste vert sur fond de ciel bleu, moyen format argentique",
+          es: "Primer plano de una formación rocosa costera erosionada con un arbusto verde contra un cielo azul, película de formato medio"
         }
       }
     ]
@@ -2241,6 +2230,17 @@ const GALLERY_DATA = {
           en: "silhouet in a dress shop",
           fr: "Silhouette dans un magasin de robes",
           es: "Silueta en una tienda de vestidos"
+        }
+      },
+      {
+        file: "serie-20-8.jpg",
+        title: { en: "one sweep away", fr: "à un geste près", es: "A un paso" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2025,
+        alt: {
+          en: "construction workers sweeping the ground",
+          fr: "Ouvriers du bâtiment balayant le sol",
+          es: "Obreros de la construcción barriendo el suelo"
         }
       }]
     },
