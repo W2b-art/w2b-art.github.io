@@ -127,7 +127,10 @@ const TRUNK_MANIFEST_OTHER = [
 ] },
   { id:'t12', series:'trunk', file:'rushing-water-rocks-black-white-w2b.jpg' },
   { id:'t13', series:'trunk', file:'hands-playing-double-bass-black-white-w2b.jpg' },
-  { id:'t17', series:'trunk', file:'woman-car-window-candid-street-black-white-w2b.jpg' },
+  { id:'t17', series:'trunk', file:'woman-car-window-candid-street-black-white-w2b.jpg', related:[
+    {series:'branch-t17',file:'medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg'},
+    {series:'branch-t17',file:'medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg'}
+  ] },
   { id:'t18', series:'trunk', file:'dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg', related:[
     {series:'branch-dark-bay',file:'buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg'},
     {series:'branch-dark-bay',file:'sunset-lake-mountain-silhouette-bird-film-w2b.jpg'}
