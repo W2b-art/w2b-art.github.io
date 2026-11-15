@@ -5,7 +5,7 @@ const {
   setArchived, setMetaField, moveImage, placeImage, insertNewImage, createGallery,
   moveTrunkAnchor, reorderTrunkAnchor, createTrunkAnchor, addRelated, removeRelated,
   reorderRelated, detachBranch, findTrunkAnchor, nextTrunkId, trilingualLiteral, yearLiteral,
-  setGalleryTitle, deleteGallery, setTrunkAnchorFile
+  setGalleryTitle, deleteGallery, setTrunkAnchorFile, setTrunkStatement
 } = te;
 
 let failures = 0;
@@ -329,6 +329,46 @@ console.log('\n--- 11. setTrunkAnchorFile (repoint an anchor to a different phot
   let threw = false;
   try { setTrunkAnchorFile(tsrc, 'no-such-id', 'x.jpg'); } catch (e) { threw = true; }
   ok(threw, 'setTrunkAnchorFile throws on an unknown trunk id');
+}
+
+console.log('\n--- 12. setTrunkStatement (write/replace/clear the artist-statement paragraph) ---');
+{
+  // t13 is branch-less (no related[]) and has no statement — insert right after file:.
+  const s1 = setTrunkStatement(tsrc, 't13', trilingualLiteral({ en: 'Test EN.', fr: 'Test FR.', es: 'Test ES.' }));
+  checkJs(s1, 'after setTrunkStatement (insert on a branch-less, statement-less anchor)');
+  const t13 = loadArray(s1, 'TRUNK_MANIFEST_OTHER').find((e) => e.id === 't13');
+  ok(t13.statement && t13.statement.en === 'Test EN.', 'setTrunkStatement wrote the new statement');
+
+  const s2 = setTrunkStatement(s1, 't13', null);
+  ok(s2 === tsrc, 'setTrunkStatement insert+clear round-trips byte-identical on a branch-less anchor');
+  if (s2 !== tsrc) diffAt(tsrc, s2, 'setTrunkStatement rt (branch-less)');
+
+  // t08 already has a related[] AND a statement — replace in place, related[] untouched.
+  const t08before = loadArray(tsrc, 'TRUNK_MANIFEST_CURRENT').find((e) => e.id === 't08');
+  const relCount = t08before.related.length;
+  const s3 = setTrunkStatement(tsrc, 't08', trilingualLiteral({ en: 'New EN.', fr: 'New FR.', es: 'New ES.' }));
+  checkJs(s3, 'after setTrunkStatement (replace an existing statement)');
+  const t08replaced = loadArray(s3, 'TRUNK_MANIFEST_CURRENT').find((e) => e.id === 't08');
+  ok(t08replaced.statement.fr === 'New FR.' && t08replaced.related.length === relCount, 'setTrunkStatement replaced statement, left related[] (' + relCount + ' entries) untouched');
+
+  // Original statement is hand-formatted multi-line (fr/es/en order) — a
+  // replace necessarily reformats to trilingualLiteral's compact en/fr/es
+  // style, same as setGalleryTitle's multi-line-source case below, so this
+  // checks the restored VALUES match, not byte-identity.
+  const s4 = setTrunkStatement(s3, 't08', trilingualLiteral(t08before.statement));
+  const t08restored = loadArray(s4, 'TRUNK_MANIFEST_CURRENT').find((e) => e.id === 't08');
+  ok(t08restored.statement.en === t08before.statement.en && t08restored.statement.fr === t08before.statement.fr && t08restored.statement.es === t08before.statement.es,
+    'setTrunkStatement replace-and-restore recovers the original statement values (reformatted to compact, as expected)');
+
+  // Clearing an anchor that has related[] drops the statement but keeps related[].
+  const s5 = setTrunkStatement(tsrc, 't08', null);
+  checkJs(s5, 'after setTrunkStatement (clear on an anchor with related[])');
+  const t08cleared = loadArray(s5, 'TRUNK_MANIFEST_CURRENT').find((e) => e.id === 't08');
+  ok(!t08cleared.statement && t08cleared.related.length === relCount, 'setTrunkStatement(null) removed statement, kept related[] (' + relCount + ' entries)');
+
+  let threw = false;
+  try { setTrunkStatement(tsrc, 'no-such-id', trilingualLiteral({ en: 'x', fr: 'x', es: 'x' })); } catch (e) { threw = true; }
+  ok(threw, 'setTrunkStatement throws on an unknown trunk id');
 }
 
 console.log(failures ? '\n=== ' + failures + ' CHECK(S) FAILED ===' : '\n=== ALL CHECKS PASSED ===');

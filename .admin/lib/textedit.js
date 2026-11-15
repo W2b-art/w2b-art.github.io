@@ -802,6 +802,45 @@ function deleteTrunkAnchor(src, trunkId) {
   return stripDanglingTrailingComma(src.slice(0, start) + src.slice(end), start);
 }
 
+/* Write (or clear, if statementLiteral is null) the trilingual
+   `statement:{...}` artist-text paragraph on a trunk anchor's own
+   entry — modeled on setGalleryTitle/setMetaField's find-the-field,
+   replace-or-insert approach. Inserted right after `related:[...]`
+   when present (matching every hand-written anchor's own field order),
+   else right after `file:'...'` for a branch-less anchor. */
+function setTrunkStatement(src, trunkId, statementLiteral) {
+  const found = findTrunkAnchor(src, trunkId);
+  const body = src.slice(found.objStart, found.objEnd);
+  const stIdx = body.indexOf('statement:');
+  if (stIdx !== -1) {
+    const braceStart = found.objStart + stIdx + 'statement:'.length;
+    const braceEnd = scanMatch(src, braceStart, '{', '}', found.objEnd);
+    if (braceEnd === -1) throw new Error('setTrunkStatement: unbalanced statement{} for ' + trunkId);
+    if (statementLiteral === null) {
+      let cutStart = found.objStart + stIdx;
+      let cutEnd = braceEnd;
+      if (src[cutStart - 1] === ' ' && src[cutStart - 2] === ',') cutStart -= 2;
+      else if (src.slice(cutEnd, cutEnd + 2) === ', ') cutEnd += 2;
+      return src.slice(0, cutStart) + src.slice(cutEnd);
+    }
+    return src.slice(0, braceStart) + statementLiteral + src.slice(braceEnd);
+  }
+  if (statementLiteral === null) return src; // already absent
+
+  const relIdx = body.indexOf('related:[');
+  if (relIdx !== -1) {
+    const bracketStart = found.objStart + relIdx + 'related:'.length;
+    const bracketEnd = scanMatch(src, bracketStart, '[', ']', found.objEnd);
+    if (bracketEnd === -1) throw new Error('setTrunkStatement: unbalanced related[] for ' + trunkId);
+    return src.slice(0, bracketEnd) + ', statement:' + statementLiteral + src.slice(bracketEnd);
+  }
+  const fileFieldRe = /file:'[^']*'/;
+  const fm = fileFieldRe.exec(body);
+  if (!fm) throw new Error('setTrunkStatement: no file: field found on ' + trunkId);
+  const insAt = found.objStart + fm.index + fm[0].length;
+  return src.slice(0, insAt) + ', statement:' + statementLiteral + src.slice(insAt);
+}
+
 module.exports = {
   // scanning
   scanMatch, scanOpenBackward, splitTopLevelElements, splitTopLevelFields,
@@ -818,5 +857,6 @@ module.exports = {
   createGallery, setGalleryTitle, deleteGallery,
   // trunk/branch management
   findTrunkAnchor, nextTrunkId, reorderTrunkAnchor, moveTrunkAnchor, createTrunkAnchor,
-  addRelated, removeRelated, reorderRelated, detachBranch, deleteTrunkAnchor, setTrunkAnchorFile
+  addRelated, removeRelated, reorderRelated, detachBranch, deleteTrunkAnchor, setTrunkAnchorFile,
+  setTrunkStatement
 };

@@ -29,7 +29,7 @@ const {
   setArchived, setMetaField, trilingualLiteral, yearLiteral,
   placeImage, insertNewImage, createGallery, setGalleryTitle, deleteGallery,
   reorderTrunkAnchor, createTrunkAnchor, addRelated, removeRelated, reorderRelated, detachBranch, deleteTrunkAnchor,
-  setTrunkAnchorFile,
+  setTrunkAnchorFile, setTrunkStatement,
   findGallerySpan, findTrunkAnchor
 } = te;
 
@@ -152,7 +152,7 @@ function buildState() {
       folder: g.folder,
       images: (g.images || []).map((im, idx) => ({
         idx, file: im.file, archived: !!im.archived,
-        alt: im.alt && (im.alt.fr || im.alt.en) || '',
+        alt: im.alt && (im.alt.fr || im.alt.en) || '', altFull: im.alt || null,
         title: im.title || null, medium: im.medium || null, year: im.year || null
       }))
     };
@@ -160,7 +160,7 @@ function buildState() {
   const mapManifest = (arr) => arr.map((e) => ({
     id: e.id, file: e.file,
     related: (e.related || []).map((r) => ({ series: r.series, file: r.file })),
-    hasStatement: !!e.statement
+    hasStatement: !!e.statement, statement: e.statement || null
   }));
   return {
     galleries,
@@ -591,6 +591,20 @@ function applyAction(action) {
       throw new Error('replace-anchor-photo: "' + file + '" is not in gallery-data.js\'s trunk.images — upload/place it there first');
     }
     const newT = setTrunkAnchorFile(tsrc, trunkId, file);
+    fs.writeFileSync(TRUNK_DATA_PATH, newT);
+    return { ok: true };
+  }
+
+  if (action.type === 'set-trunk-statement') {
+    // The artist-text paragraph shown on a trunk anchor's own page.
+    // statement: {en,fr,es} object, or null to clear it.
+    const { trunkId, statement } = action;
+    let literal = null;
+    if (statement != null) {
+      if (!statement.fr) throw new Error('set-trunk-statement: statement.fr is required (the site falls back to it)');
+      literal = trilingualLiteral({ en: statement.en || statement.fr, fr: statement.fr, es: statement.es || statement.fr });
+    }
+    const newT = setTrunkStatement(tsrc, trunkId, literal);
     fs.writeFileSync(TRUNK_DATA_PATH, newT);
     return { ok: true };
   }
