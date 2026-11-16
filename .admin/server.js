@@ -484,6 +484,34 @@ async function applyAction(action) {
     return { ok: true };
   }
 
+  if (action.type === 'regenerate-alt') {
+    // 2026-11-15 — same "write it automatically" move as upload, applied
+    // to editing a photo already live: the Edit-label modal no longer asks
+    // for alt text at all, it calls this right after saving title/medium/
+    // location so alt text stays in sync with whatever those now say.
+    // gsrc/GALLERY_DATA above are freshly reloaded for this request, so
+    // they already reflect any set-meta calls the client made just before
+    // this one (sequential by construction — see admin.html).
+    const { gallery, file } = action;
+    const g = GALLERY_DATA[gallery];
+    if (!g) throw new Error('regenerate-alt: unknown gallery ' + gallery);
+    const im = g.images.find((i) => i.file === file);
+    if (!im) throw new Error('regenerate-alt: ' + file + ' not found in ' + gallery);
+    const imgPath = path.join(folderFor(GALLERY_DATA, gallery), file);
+    if (!fs.existsSync(imgPath)) throw new Error('regenerate-alt: file missing on disk: ' + imgPath);
+    const altEn = await generateAltTextEn(fs.readFileSync(imgPath), file, {
+      title: im.title && (im.title.en || im.title.fr),
+      medium: im.medium && im.medium.en,
+      location: im.location && im.location.en,
+      year: im.year
+    });
+    const translated = await translateTitle(altEn, 'en', ['fr', 'es']);
+    const newAlt = { en: altEn, fr: translated.fr, es: translated.es };
+    const newG2 = setMetaField(gsrc, gallery, file, 'alt', trilingualLiteral(newAlt));
+    fs.writeFileSync(GALLERY_DATA_PATH, newG2);
+    return { ok: true, generatedAlt: newAlt };
+  }
+
   if (action.type === 'create-gallery') {
     const { id, folder, title } = action;
     if (!/^branch-[\w-]+$/.test(id)) throw new Error('create-gallery: id must look like "branch-your-name" (lowercase, hyphens)');

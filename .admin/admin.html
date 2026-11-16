@@ -446,7 +446,6 @@ function openMetaEditor(gallery, im) {
   const t = im.title || { en: '', fr: '', es: '' };
   const m = im.medium || { en: '', fr: '', es: '' };
   const loc = im.location || { en: '', fr: '', es: '' };
-  const a = im.altFull || { en: '', fr: '', es: '' };
   document.querySelectorAll('.modal-backdrop').forEach((n) => n.remove());
   const backdrop = document.createElement('div');
   backdrop.className = 'modal-backdrop';
@@ -462,9 +461,7 @@ function openMetaEditor(gallery, im) {
     '<label>Location (auto-translates the other two languages on blur) — EN / FR / ES</label>' +
     '<div class="row3"><input id="me-location-en" placeholder="EN"><input id="me-location-fr" placeholder="FR"><input id="me-location-es" placeholder="ES"></div>' +
     '<label>Year</label><input type="number" id="me-year" min="1900" max="2100">' +
-    '<label>Alt text (required — auto-translates on blur — edit any field afterward to stop it being overwritten) — EN / FR / ES</label>' +
-    '<div class="row3"><input id="me-alt-en" placeholder="EN"><input id="me-alt-fr" placeholder="FR"><input id="me-alt-es" placeholder="ES"></div>' +
-    '<div class="hint">Leave Title/EN blank to clear all three title fields on submit. Alt text can\'t be cleared — it\'s required on every photo.</div>' +
+    '<div class="hint">Leave Title/EN blank to clear all three title fields on submit. Alt text isn\'t edited here any more — saving re-writes it automatically from the filename/title/medium/location (or a real look at the photo, if anthropicApiKey is set).</div>' +
     '<div style="display:flex;gap:10px;margin-top:14px;">' +
     '<button type="button" class="submit" id="me-submit">Save</button>' +
     '<button type="button" id="me-cancel" style="padding:9px 18px;background:#2a2a2a;border:1px solid #3a3a3a;color:#eee;border-radius:6px;cursor:pointer;">Cancel</button>' +
@@ -480,9 +477,6 @@ function openMetaEditor(gallery, im) {
   document.getElementById('me-location-fr').value = loc.fr || '';
   document.getElementById('me-location-es').value = loc.es || '';
   document.getElementById('me-year').value = im.year || '';
-  document.getElementById('me-alt-en').value = a.en || '';
-  document.getElementById('me-alt-fr').value = a.fr || '';
-  document.getElementById('me-alt-es').value = a.es || '';
 
   wireAutoTranslate({
     en: document.getElementById('me-title-en'),
@@ -493,11 +487,6 @@ function openMetaEditor(gallery, im) {
     en: document.getElementById('me-location-en'),
     fr: document.getElementById('me-location-fr'),
     es: document.getElementById('me-location-es')
-  });
-  wireAutoTranslate({
-    en: document.getElementById('me-alt-en'),
-    fr: document.getElementById('me-alt-fr'),
-    es: document.getElementById('me-alt-es')
   });
 
   const close = () => backdrop.remove();
@@ -512,18 +501,20 @@ function openMetaEditor(gallery, im) {
     const locFr = document.getElementById('me-location-fr').value.trim();
     const locEs = document.getElementById('me-location-es').value.trim();
     const year = document.getElementById('me-year').value.trim();
-    const altEn = document.getElementById('me-alt-en').value.trim();
-    const altFr = document.getElementById('me-alt-fr').value.trim();
-    const altEs = document.getElementById('me-alt-es').value.trim();
-    if (!altEn || !altFr || !altEs) { toast('alt text (EN/FR/ES) is required', true); return; }
 
     const jobs = [];
     jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'title', value: en ? { en, fr: fr || en, es: es || en } : null }));
     jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'medium', value: mediumKey ? MEDIUM_LOOKUP[mediumKey] : null }));
     jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'location', value: locEn ? { en: locEn, fr: locFr || locEn, es: locEs || locEn } : null }));
     jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'year', value: year ? Number(year) : null }));
-    jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'alt', value: { en: altEn, fr: altFr, es: altEs } }));
-    Promise.all(jobs).then(close).catch(() => {});
+    // regenerate-alt reads title/medium/location fresh off disk, so it has
+    // to run strictly AFTER the saves above land, not alongside them in the
+    // same Promise.all (concurrent requests can resolve in any order) — it
+    // would otherwise sometimes generate alt text from the pre-edit values.
+    Promise.all(jobs)
+      .then(() => doAction({ type: 'regenerate-alt', gallery: gallery.id, file: im.file }))
+      .then(close)
+      .catch((e) => toast('Save failed: ' + (e && e.message || 'unknown error'), true));
   };
 }
 
