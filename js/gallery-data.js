@@ -1683,6 +1683,7 @@ const GALLERY_DATA = {
         archived: true,
         title: { en: "vanishing into an other world", fr: "disparaître dans un autre monde", es: "desvanecerse en otro mundo" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Argentina", fr: "Argentine", es: "Argentina" },
         year: 2023,
         alt: {
           en: "concrete corridors obscure",
@@ -1691,12 +1692,12 @@ const GALLERY_DATA = {
         }
       },
       {
-        location: { en: "Argentina", fr: "Argentine", es: "Argentina" },
+        location: { en: "Puerto Madero", fr: "Puerto Madero", es: "Puerto Madero" },
         file: "000024250007.jpg",
         title: { en: "tips for hoped miracles", fr: "Poureboire pour les miracles espérés", es: "Propinas por los milagros esperados" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
         year: 2023,
-        alt: { en: "tips for hoped miracles", fr: "conseils pour les miracles espérés", es: "consejos para los milagros que se esperan" }}
+        alt: { en: "000024250007, analog photograph, Puerto Madero", fr: "000024250007, photographie analogique, Puerto Madero", es: "000024250007, fotografía analógica, Puerto Madero" }}
     ]
   },
 
@@ -2303,50 +2304,36 @@ const GALLERY_DATA = {
         file: "serie-82-8.jpg",
         title: { en: "nature is the real god", fr: "La nature est le vrai dieu.", es: "La naturaleza es el verdadero dios." },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Medelllin", fr: "Medelllin", es: "Medelllin" },
         year: 2026,
-        alt: { en: "tree covered in religious symbols", fr: "arbre couvert de symboles religieux", es: "Árbol cubierto de símbolos religiosos" }},
+        alt: { en: "Serie 82, analog photograph, Medelllin", fr: "Série 82, photographie analogique, Medellín", es: "Serie 82, fotografía analógica, Medellín" }},
       {
         file: "Stand-alone-2.jpg",
         title: { en: "manmade devil", fr: "démon créé par l'homme", es: "diablo creado por el hombre" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Arles", fr: "Arles.", es: "Arlés" },
         year: 2022,
-        alt: {
-          en: "sculture of a devil black and white",
-          fr: "Sculpture d'un diable en noir et blanc",
-          es: "Escultura de un diablo en blanco y negro"
-        }
-      },
+        alt: { en: "Stand alone, analog photograph, Arles", fr: "Photo analogique autonome, Arles", es: "Fotografía analógica independiente, Arles" }},
       {
         file: "000028650009.jpg",
+        title: { en: "Always on top never reachable", fr: "Toujours au sommet, jamais accessible", es: "Siempre en lo más alto, nunca al alcance" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Corsica", fr: "Corse", es: "Córcega" },
         year: 2021,
-        alt: {
-          en: "Always on top never reachable",
-          fr: "Toujours au sommet, jamais accessible",
-          es: "Siempre en lo más alto, nunca al alcance"
-        }
-      },
+        alt: { en: "000028650009, analog photograph, Corsica", fr: "000028650009, photographie analogique, Corse", es: "000028650009, fotografía analógica, Córcega" }},
       {
         file: "serie-76-5.jpg",
+        title: { en: "Igniting Faith", fr: "Allumer la foi", es: "Encender la fe" },
         medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
         year: 2026,
-        alt: {
-          en: "Lighting up the faith",
-          fr: "Allumer la foi",
-          es: "Encender la fe"
-        }
-      },
+        alt: { en: "Serie 76, digital photograph", fr: "Série 76, photographie numérique", es: "Serie 76, fotografía digital" }},
       {
         file: "000024290011.jpg",
         title: { en: "pacha mama is dry", fr: "Pacha Mama est sèche", es: "La Pacha Mama está seca" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Argentina", fr: "Argentine", es: "Argentina" },
         year: 2023,
-        alt: {
-          en: "mount of stones covered in cloths",
-          fr: "tas de pierres recouvertes de chiffons",
-          es: "Montón de piedras cubierto con paños"
-        }
-      }]
+        alt: { en: "000024290011, analog photograph, Argentina", fr: "000024290011, photographie analogique, Argentine", es: "000024290011, fotografía analógica, Argentina" }}]
     }
 
 };
