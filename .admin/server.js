@@ -323,6 +323,62 @@ async function translateTitle(text, from, targets) {
 }
 
 // ---------------------------------------------------------------------
+// Auto alt text (2026-11-15) — Guillaume: he writes the title on upload,
+// alt text is generated automatically, from an actual look at the photo,
+// for real (not generic/keyword-stuffed) SEO. Requires `anthropicApiKey`
+// in .admin/config.json (his own key from console.anthropic.com, gitignored,
+// never asked for or stored by this tool on its own) — unlike translation,
+// there's no free keyless fallback for real vision captioning, so this
+// throws a clear, actionable error when the key is missing rather than
+// silently degrading to something worse.
+// ---------------------------------------------------------------------
+async function generateAltTextEn(imageBuffer, context) {
+  if (!config.anthropicApiKey) {
+    throw new Error('alt-text generation needs an Anthropic API key — add "anthropicApiKey" to .admin/config.json (get one at console.anthropic.com); there is no free fallback for real photo captioning');
+  }
+  const contextLines = [];
+  if (context.title) contextLines.push('Title the photographer gave it: "' + context.title + '"');
+  if (context.medium) contextLines.push('Medium: ' + context.medium);
+  if (context.location) contextLines.push('Location: ' + context.location);
+  if (context.year) contextLines.push('Year: ' + context.year);
+  const prompt = 'Write alt text (English) for this photograph, for a fine-art/commercial photographer\'s website.\n\n' +
+    'Describe concretely what is actually visible — subject, action, setting, light, color or black-and-white — in one ' +
+    'natural sentence, the way a sighted person would describe it to someone who can\'t see it. This is for real ' +
+    'accessibility and SEO, so be specific and accurate to the image, never generic ("a photo of...", "an image showing...") ' +
+    'and never keyword-stuffed. Do not invent anything not visible in the image. Do not just repeat the title verbatim.' +
+    (contextLines.length ? '\n\nContext (for your reference only — describe the image, don\'t just restate this):\n' + contextLines.join('\n') : '') +
+    '\n\nReply with ONLY the alt text itself, nothing else — no quotes, no preamble, no "Alt text:" prefix.';
+
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': config.anthropicApiKey,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-5-5',
+      max_tokens: 300,
+      messages: [{
+        role: 'user',
+        content: [
+          { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: imageBuffer.toString('base64') } },
+          { type: 'text', text: prompt }
+        ]
+      }]
+    })
+  });
+  if (!r.ok) {
+    const body = await r.text().catch(() => '');
+    throw new Error('Anthropic API error ' + r.status + (body ? ': ' + body.slice(0, 300) : ''));
+  }
+  const j = await r.json();
+  const text = j.content && j.content[0] && j.content[0].text;
+  if (!text) throw new Error('alt-text generation: empty response from the Anthropic API');
+  return text.trim().replace(/^["']|["']$/g, '');
+}
+
+// ---------------------------------------------------------------------
 // Actions
 // ---------------------------------------------------------------------
 function requireAltFields(alt) {
@@ -359,7 +415,7 @@ function findAnchorIdForBranch(TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER, bra
   return null;
 }
 
-function applyAction(action) {
+async function applyAction(action) {
   const { gsrc, tsrc, GALLERY_DATA, TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER } = loadDataFiles();
 
   if (action.type === 'archive' || action.type === 'unarchive') {
@@ -430,7 +486,6 @@ function applyAction(action) {
 
   if (action.type === 'upload') {
     const { gallery, filename, dataBase64, position, alt, title, medium, location, year, attachToTrunkId } = action;
-    requireAltFields(alt);
     const g = GALLERY_DATA[gallery];
     if (!g) throw new Error('upload: unknown gallery ' + gallery);
     const buf = Buffer.from(dataBase64, 'base64');
@@ -447,8 +502,27 @@ function applyAction(action) {
     const finalJpeg = produced.find((p) => p.toLowerCase().endsWith('.jpg') || p.toLowerCase().endsWith('.jpeg'));
     fixResponsiveManifestKey(finalJpeg);
 
+    // Alt text: an explicit client-supplied value wins (back-compat escape
+    // hatch — nothing in the current admin.html sends one any more); other-
+    // wise generate it here, from the actual compressed photo that just got
+    // written, plus whatever title/medium/location/year context exists, then
+    // translate EN->FR/ES through the same pipeline as title. Guillaume
+    // writes the title; this writes the alt text.
+    let finalAlt = alt;
+    if (!finalAlt || !finalAlt.en) {
+      const altEn = await generateAltTextEn(fs.readFileSync(finalJpeg), {
+        title: title && (title.en || title.fr),
+        medium: medium && medium.en,
+        location: location && location.en,
+        year
+      });
+      const translated = await translateTitle(altEn, 'en', ['fr', 'es']);
+      finalAlt = { en: altEn, fr: translated.fr, es: translated.es };
+    }
+    requireAltFields(finalAlt);
+
     let newG = insertNewImage(gsrc, gallery, position == null ? undefined : Number(position), {
-      file: filename, alt, title: title || null, medium: medium || null, location: location || null, year: year || null
+      file: filename, alt: finalAlt, title: title || null, medium: medium || null, location: location || null, year: year || null
     });
     fs.writeFileSync(GALLERY_DATA_PATH, newG);
 
@@ -461,7 +535,7 @@ function applyAction(action) {
       fs.writeFileSync(TRUNK_DATA_PATH, newT);
       trunkMsg = ' and attached to ' + attachToTrunkId;
     }
-    return { ok: true, message: 'Uploaded ' + filename + ' into ' + gallery + trunkMsg };
+    return { ok: true, message: 'Uploaded ' + filename + ' into ' + gallery + trunkMsg, generatedAlt: finalAlt };
   }
 
   if (action.type === 'trunk-move') {
@@ -718,7 +792,7 @@ const server = http.createServer(async (req, res) => {
       let action;
       try { action = JSON.parse(body); } catch (e) { sendJson(res, 400, { ok: false, error: 'bad JSON' }); return; }
       try {
-        const result = applyAction(action);
+        const result = await applyAction(action);
         sendJson(res, 200, Object.assign(result, { state: buildState() }));
       } catch (e) {
         sendJson(res, 400, { ok: false, error: e.message });

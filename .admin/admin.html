@@ -1208,28 +1208,22 @@ function renderUpload() {
   main.innerHTML = '';
   const form = document.createElement('form'); form.className = 'panel';
   form.innerHTML = '<h3>Upload new photos</h3>' +
-    '<div class="hint">Runs .build/compress.js then .build/responsive.js (the real pipeline) once per photo, writes into images/&lt;gallery&gt;/, and adds the data entry. .jpg/.jpeg only. Pick several files to batch-upload them all into the same gallery (and the same trunk anchor, if attached) — alt text, medium, location and year are all set per photo below, never shared across the batch (different photos in one upload can genuinely be different mediums, places or years); alt text is the only one required, for real (not generic) SEO.</div>' +
+    '<div class="hint">Runs .build/compress.js then .build/responsive.js (the real pipeline) once per photo, writes into images/&lt;gallery&gt;/, and adds the data entry. .jpg/.jpeg only. Pick several files to batch-upload them all into the same gallery (and the same trunk anchor, if attached) — title, medium, location and year are all set per photo below, never shared across the batch. You write the title; alt text is generated automatically by AI from the actual photo (needs anthropicApiKey in .admin/config.json), for real — not generic — SEO. Takes longer per photo because of that (vision + translation), budget extra time on a big batch.</div>' +
     '<label>Source file(s)</label><input type="file" id="up-file" accept="image/jpeg" multiple>' +
     '<div id="up-files"></div>' +
     '<label>Target gallery</label><select id="up-gallery"></select>' +
     '<label id="up-pos-label">Position (blank = append at end)</label><input type="number" id="up-pos" min="0">' +
-    '<label>Title (optional, museum-label — EN / FR / ES, shared across the whole batch)</label>' +
-    '<div class="row3"><input id="up-title-en" placeholder="EN"><input id="up-title-fr" placeholder="FR"><input id="up-title-es" placeholder="ES"></div>' +
     '<label>Attach to a trunk anchor\'s "more like this" (only if target gallery is a branch-*; applies to every photo in the batch)</label>' +
     '<select id="up-attach"><option value="">— don\'t attach —</option></select>' +
     '<button type="button" class="submit" id="up-submit">Upload</button>';
   main.appendChild(form);
 
-  wireAutoTranslate({
-    en: document.getElementById('up-title-en'),
-    fr: document.getElementById('up-title-fr'),
-    es: document.getElementById('up-title-es')
-  });
-
-  // One alt-text (EN/FR/ES) row per selected file — alt text is never
-  // shared across a batch (that's generic, SEO-worthless text), everything
-  // else above (gallery/title/medium/year/attach) is. Position only makes
-  // sense for a single file; batches always append in file-picker order.
+  // One title (EN/FR/ES) row per selected file — the museum-label title is
+  // never shared across a batch, same reasoning as medium/location/year:
+  // Guillaume writes it per photo. Alt text isn't collected here at all any
+  // more — the server generates it from the photo itself (see server.js's
+  // generateAltTextEn). Position/gallery/attach stay shared (apply to the
+  // whole batch); position only makes sense for a single file anyway.
   function renderUploadFileRows() {
     const files = Array.from(document.getElementById('up-file').files);
     const container = document.getElementById('up-files');
@@ -1246,9 +1240,11 @@ function renderUpload() {
       label.style.cssText = 'font-size:12px;color:#aaa;margin-bottom:4px;';
       label.textContent = (files.length > 1 ? ('File ' + (i + 1) + '/' + files.length + ' — ') : '') + f.name;
       row.appendChild(label);
-      const alts = document.createElement('div'); alts.className = 'row3';
-      alts.innerHTML = '<input id="up-alt-en-' + i + '" placeholder="EN (required)"><input id="up-alt-fr-' + i + '" placeholder="FR"><input id="up-alt-es-' + i + '" placeholder="ES">';
-      row.appendChild(alts);
+      const titleLabel = document.createElement('label'); titleLabel.textContent = 'Title (required, museum-label)'; titleLabel.style.cssText = 'font-size:11px;display:block;margin-bottom:2px;';
+      row.appendChild(titleLabel);
+      const titles = document.createElement('div'); titles.className = 'row3';
+      titles.innerHTML = '<input id="up-title-en-' + i + '" placeholder="EN (required)"><input id="up-title-fr-' + i + '" placeholder="FR"><input id="up-title-es-' + i + '" placeholder="ES">';
+      row.appendChild(titles);
       const medRow = document.createElement('div'); medRow.style.cssText = 'display:flex;gap:10px;align-items:flex-end;margin-top:6px;';
       const medCol = document.createElement('div'); medCol.style.flex = '1';
       const medLabel = document.createElement('label'); medLabel.textContent = 'Medium (optional)'; medLabel.style.cssText = 'font-size:11px;display:block;';
@@ -1267,9 +1263,9 @@ function renderUpload() {
       row.appendChild(locs);
       container.appendChild(row);
       wireAutoTranslate({
-        en: document.getElementById('up-alt-en-' + i),
-        fr: document.getElementById('up-alt-fr-' + i),
-        es: document.getElementById('up-alt-es-' + i)
+        en: document.getElementById('up-title-en-' + i),
+        fr: document.getElementById('up-title-fr-' + i),
+        es: document.getElementById('up-title-es-' + i)
       });
       wireAutoTranslate({
         en: document.getElementById('up-location-en-' + i),
@@ -1323,17 +1319,17 @@ function renderUpload() {
     if (!files.length) { toast('pick at least one file first', true); return; }
     const rows = files.map((f, i) => ({
       file: f,
-      altEnEl: document.getElementById('up-alt-en-' + i),
-      altFrEl: document.getElementById('up-alt-fr-' + i),
-      altEsEl: document.getElementById('up-alt-es-' + i),
+      titleEnEl: document.getElementById('up-title-en-' + i),
+      titleFrEl: document.getElementById('up-title-fr-' + i),
+      titleEsEl: document.getElementById('up-title-es-' + i),
       mediumEl: document.getElementById('up-medium-' + i),
       yearEl: document.getElementById('up-year-' + i),
       locEnEl: document.getElementById('up-location-en-' + i),
       locFrEl: document.getElementById('up-location-fr-' + i),
       locEsEl: document.getElementById('up-location-es-' + i)
     }));
-    const missingAlt = rows.find((r) => !r.altEnEl.value.trim());
-    if (missingAlt) { toast('alt text (EN) is required for ' + missingAlt.file.name, true); return; }
+    const missingTitle = rows.find((r) => !r.titleEnEl.value.trim());
+    if (missingTitle) { toast('title (EN) is required for ' + missingTitle.file.name, true); return; }
 
     const submitBtn = document.getElementById('up-submit');
     const oldLabel = submitBtn.textContent;
@@ -1343,22 +1339,22 @@ function renderUpload() {
     // finished (or fired at all) by the time Upload is clicked — never
     // submit with a blank FR/ES, so translate whatever's still missing,
     // per row, right here and block on it, rather than silently uploading
-    // incomplete (bad-for-SEO) alt text.
+    // an incomplete title.
     for (const row of rows) {
-      const missing = [row.altFrEl, row.altEsEl].filter((el) => !el.value.trim()).map((el) => el === row.altFrEl ? 'fr' : 'es');
+      const missing = [row.titleFrEl, row.titleEsEl].filter((el) => !el.value.trim()).map((el) => el === row.titleFrEl ? 'fr' : 'es');
       if (!missing.length) continue;
-      submitBtn.textContent = 'Translating alt text (' + row.file.name + ')…';
+      submitBtn.textContent = 'Translating title (' + row.file.name + ')…';
       try {
-        const translations = await translateViaApi(row.altEnEl.value.trim(), 'en', missing);
-        if (translations.fr != null) row.altFrEl.value = translations.fr;
-        if (translations.es != null) row.altEsEl.value = translations.es;
+        const translations = await translateViaApi(row.titleEnEl.value.trim(), 'en', missing);
+        if (translations.fr != null) row.titleFrEl.value = translations.fr;
+        if (translations.es != null) row.titleEsEl.value = translations.es;
       } catch (e) {
         toast('Auto-translate failed for ' + row.file.name + ' — fill FR/ES by hand and retry: ' + e.message, true);
         submitBtn.disabled = false; submitBtn.textContent = oldLabel;
         return;
       }
     }
-    // Location is optional, unlike alt text — only auto-translate the gaps
+    // Location is optional, unlike title — only auto-translate the gaps
     // when a row actually has one started (an EN value), never force it.
     for (const row of rows) {
       const locEn = row.locEnEl.value.trim();
@@ -1377,9 +1373,7 @@ function renderUpload() {
       }
     }
 
-    const titleEn = document.getElementById('up-title-en').value.trim();
     const posVal = document.getElementById('up-pos').value;
-    const sharedTitle = titleEn ? { en: titleEn, fr: document.getElementById('up-title-fr').value.trim() || titleEn, es: document.getElementById('up-title-es').value.trim() || titleEn } : null;
     const position = (rows.length === 1 && posVal !== '') ? Number(posVal) : undefined;
     const attachToTrunkId = attachSel.value || undefined;
 
@@ -1392,26 +1386,27 @@ function renderUpload() {
     const results = [];
     for (let i = 0; i < rows.length; i++) {
       const row = rows[i];
-      submitBtn.textContent = 'Uploading ' + (i + 1) + '/' + rows.length + ' — ' + row.file.name + '… (up to ~30s each)';
+      const rowTitleEn = row.titleEnEl.value.trim();
+      const rowTitle = { en: rowTitleEn, fr: row.titleFrEl.value.trim() || rowTitleEn, es: row.titleEsEl.value.trim() || rowTitleEn };
+      submitBtn.textContent = 'Uploading ' + (i + 1) + '/' + rows.length + ' — ' + row.file.name + '… (compress + AI alt text + translate, up to ~45s each)';
       try {
         const dataBase64 = await readFileAsBase64(row.file);
         const rowMediumKey = row.mediumEl.value;
         const rowLocEn = row.locEnEl.value.trim();
         const rowYearVal = row.yearEl.value;
-        await doAction({
+        const r = await doAction({
           type: 'upload',
           gallery: gSel.value,
           filename: slugifyUploadFilename(row.file.name),
           dataBase64,
           position,
-          alt: { en: row.altEnEl.value.trim(), fr: row.altFrEl.value.trim(), es: row.altEsEl.value.trim() },
-          title: sharedTitle,
+          title: rowTitle,
           medium: rowMediumKey ? MEDIUM_LOOKUP[rowMediumKey] : null,
           location: rowLocEn ? { en: rowLocEn, fr: row.locFrEl.value.trim() || rowLocEn, es: row.locEsEl.value.trim() || rowLocEn } : null,
           year: rowYearVal ? Number(rowYearVal) : null,
           attachToTrunkId
         }, null, true);
-        results.push({ name: row.file.name, ok: true });
+        results.push({ name: row.file.name, ok: true, alt: r && r.generatedAlt && r.generatedAlt.en });
       } catch (e) {
         results.push({ name: row.file.name, ok: false, err: e.message });
       }
@@ -1427,7 +1422,42 @@ function renderUpload() {
     } else {
       toast(failed.length + '/' + results.length + ' failed — ' + failed.map((r) => r.name + ': ' + r.err).join(' · ') + ' (the rest uploaded fine; re-pick just the failed file(s) to retry)', true);
     }
+    // A 3-second toast can't hold what an AI wrote for 5 photos — show it
+    // in a proper read-only panel instead, so Guillaume can actually read
+    // and sanity-check every generated alt text (never just trust it blind).
+    const withAlt = results.filter((r) => r.alt);
+    if (withAlt.length) showGeneratedAltReview(withAlt);
   };
+}
+
+// Read-only review of the alt text the AI just wrote for a batch — one
+// line per photo. Nothing editable here on purpose: to fix one, use the
+// Galleries tab's existing "Edit label" modal (openMetaEditor), the one
+// path that already handles writing alt text back to gallery-data.js.
+function showGeneratedAltReview(items) {
+  document.querySelectorAll('.modal-backdrop').forEach((n) => n.remove());
+  const backdrop = document.createElement('div');
+  backdrop.className = 'modal-backdrop';
+  backdrop.style = 'position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:60;';
+  const form = document.createElement('div');
+  form.className = 'panel';
+  form.style = 'margin:0;max-width:640px;max-height:80vh;overflow:auto;';
+  form.innerHTML = '<h3>AI-generated alt text (EN)</h3>' +
+    '<div class="hint">Sanity-check these — to correct one, use "Edit label" on that photo in the Galleries tab.</div>';
+  items.forEach((r) => {
+    const row = document.createElement('div');
+    row.style.cssText = 'border-top:1px solid #333;padding:10px 0;';
+    const name = document.createElement('div'); name.style.cssText = 'font-size:12px;color:#aaa;'; name.textContent = r.name;
+    const alt = document.createElement('div'); alt.style.marginTop = '3px'; alt.textContent = r.alt;
+    row.appendChild(name); row.appendChild(alt);
+    form.appendChild(row);
+  });
+  const closeBtn = document.createElement('button'); closeBtn.type = 'button'; closeBtn.className = 'submit'; closeBtn.textContent = 'Close';
+  closeBtn.onclick = () => backdrop.remove();
+  form.appendChild(closeBtn);
+  backdrop.onclick = (e) => { if (e.target === backdrop) backdrop.remove(); };
+  backdrop.appendChild(form);
+  document.body.appendChild(backdrop);
 }
 
 // ---------------------------------------------------------------- New branch tab
