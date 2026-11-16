@@ -41,7 +41,10 @@
       (entry.related || []).forEach(function(r){
         var g = GALLERY_DATA[r.series];
         var im = g && g.images.filter(function(i){ return i.file === r.file; })[0];
-        if (g && im && !im.archived) POOL.push([g.folder + im.file, r.series]);
+        /* exclude exhibition install-view shots (panel/facade/booth photos
+           of the work on display, not the work itself) — not hero material.
+           Guillaume's own filenames consistently flag these. */
+        if (g && im && !im.archived && !/exhibition|installation/i.test(im.file)) POOL.push([g.folder + im.file, r.series]);
       });
     });
   }
