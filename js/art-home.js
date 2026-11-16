@@ -19,36 +19,37 @@
      autres-travaux.html (see js/art-trunk.js for the matching
      TRUNK_MANIFEST split); each page sets window.TRUNK_SET before
      this script loads, so the hero pulls only from what that page
-     actually shows. */
-  var POOL_CURRENT = [
-    ['images/branch-bailar-la-ciudad/breakdancer-mid-motion-red-light-w2b.jpg','branch-bailar-la-ciudad'],
-    ['images/branch-bailar-la-ciudad/man-glasses-hand-gesture-tattoos-portrait-black-white-w2b.jpg','branch-bailar-la-ciudad'],
-    ['images/branch-bailar-la-ciudad/man-trucker-cap-sunglasses-night-portrait-black-white-w2b.jpg','branch-bailar-la-ciudad'],
-    ['images/branch-bailar-la-ciudad/men-streetwear-cap-flip-night-black-white-w2b.jpg','branch-bailar-la-ciudad'],
-    ['images/branch-lo-que-dejamos/abandoned-factory-water-tower-overgrown-w2b.jpg','branch-lo-que-dejamos'],
-    ['images/branch-lo-que-dejamos/calle-54-street-sign-rubble-w2b.jpg','branch-lo-que-dejamos'],
-    ['images/branch-lo-que-dejamos/ruined-building-interior-debris-furniture-w2b.jpg','branch-lo-que-dejamos'],
-    ['images/branch-lo-que-dejamos/scrap-metal-yard-entrance-barbed-wire-workers-w2b.jpg','branch-lo-que-dejamos']
-  ];
-  var POOL_OTHER = [
-    ['images/branch-coastal-texture/mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg','branch-coastal-texture'],
-    ['images/branch-driftwood-shore/dead-trees-rocky-shore-mountains-black-white-w2b.jpg','branch-driftwood-shore'],
-    ['images/branch-wrecked-boat/wrecked-boat-hull-close-up-black-white-w2b.jpg','branch-wrecked-boat'],
-    ['images/branch-glass-roof/arcade-gallery-interior-arches-columns-black-white-w2b.jpg','branch-glass-roof'],
-    ['images/branch-pinball/circus-tent-entrance-blue-neon-arches-w2b.jpg','branch-pinball'],
-    ['images/branch-bamboo-pond/pond-stone-wall-tree-reflections-w2b.jpg','branch-bamboo-pond'],
-    ['images/branch-coastal-bench/man-silhouette-bench-dramatic-sunset-sky-w2b.jpg','branch-coastal-bench'],
-    ['images/branch-rushing-water/iguazu-falls-wide-view-colour-w2b.jpg','branch-rushing-water'],
-    ['images/branch-dark-bay/buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg','branch-dark-bay'],
-    ['images/branch-industrial/motorcycle-frame-mechanical-detail-black-white-w2b.jpg','branch-industrial'],
-    ['images/branch-passage/tattoo-artist-desk-work-flash-art-wall-w2b.jpg','branch-passage']
-  ];
-  var POOL = (window.TRUNK_SET === 'other') ? POOL_OTHER : POOL_CURRENT;
-  var pick = POOL[Math.floor(Math.random()*POOL.length)];
+     actually shows.
+     2026-11-15 — Guillaume: one branch (Dark Bay) kept turning up as
+     if it were the only one. Root cause: this was a hand-maintained
+     list that drifted from trunk-data.js the same way shop.html's own
+     list once did — missing several real current branches (t3/t5/t13/
+     t17) entirely, and still pointing at 3 branches since archived or
+     renamed (branch-glass-roof, branch-bamboo-pond, branch-passage —
+     all 404 now), so a meaningful share of picks silently failed and
+     only the branches that happened to still be valid ever visibly
+     showed. Built from TRUNK_MANIFEST_CURRENT/OTHER + GALLERY_DATA
+     instead — the same source of truth as the trunk grid itself below
+     — so it can't drift out of sync with reality again, and every live
+     branch's photos are actually in the pool. */
+  var HERO_TRUNK_MANIFEST = (window.TRUNK_SET === 'other')
+    ? (typeof TRUNK_MANIFEST_OTHER !== 'undefined' ? TRUNK_MANIFEST_OTHER : [])
+    : (typeof TRUNK_MANIFEST_CURRENT !== 'undefined' ? TRUNK_MANIFEST_CURRENT : []);
+  var POOL = [];
+  if (typeof GALLERY_DATA !== 'undefined') {
+    HERO_TRUNK_MANIFEST.forEach(function(entry){
+      (entry.related || []).forEach(function(r){
+        var g = GALLERY_DATA[r.series];
+        var im = g && g.images.filter(function(i){ return i.file === r.file; })[0];
+        if (g && im && !im.archived) POOL.push([g.folder + im.file, r.series]);
+      });
+    });
+  }
+  var pick = POOL.length ? POOL[Math.floor(Math.random()*POOL.length)] : null;
 
   var wrap=document.getElementById('heroFrames'), now=document.getElementById('now'),
       dots=document.getElementById('dots');
-  if (wrap) {
+  if (wrap && pick) {
     /* links into the trunk section, not the old standalone gallery page
        (those now redirect to home.html — see gallery-*.html). */
     var f=document.createElement('a'); f.className='frame on'; f.href='#series';
