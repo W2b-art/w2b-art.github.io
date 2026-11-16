@@ -392,23 +392,28 @@ body.trunk-snap{scroll-snap-type:y mandatory}
    value *1.25. */
 .side-nav{position:fixed;top:50%;right:10px;transform:translateY(-50%);z-index:65;
   display:flex;flex-direction:column;align-items:center;gap:20px;
-  background:rgba(250,248,244,.95);padding:20px 11px;border-radius:28px;
+  background:linear-gradient(165deg,#fffefc,rgba(250,248,244,.95) 55%,rgba(240,236,228,.92));
+  padding:20px 11px;border-radius:28px;
   border:1px solid rgba(16,12,10,.1);box-shadow:0 4px 18px rgba(0,0,0,.25)}
 .side-nav a,.side-nav button{writing-mode:vertical-rl;text-orientation:mixed;
-  font-family:var(--sans);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  font-family:var(--sans);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--nuit);opacity:.82;text-decoration:none;background:none;border:none;cursor:pointer;
   padding:2.5px 0;white-space:nowrap;transition:opacity .25s ease,color .25s ease}
 .side-nav a:hover,.side-nav a:focus-visible,.side-nav button:hover,.side-nav button:focus-visible{opacity:1;color:var(--or)}
 .side-nav .side-nav-afterdark{color:var(--braise);opacity:.9}
 .side-nav .side-nav-afterdark:hover,.side-nav .side-nav-afterdark:focus-visible{opacity:1;color:var(--braise)}
 /* The rail's height is driven by its longest labels' text length (vertical
-   writing mode), not by font-size alone — at the larger size above it's
-   ~840px tall and centers via top:50%/translateY(-50%), so it runs off
-   both the top and bottom edge on the many common laptops around
-   768-800px tall. Tighten gap/padding only (not font-size, the actual
-   "more visible" lever) below that, measured to fit with margin at 768px. */
+   writing mode), not by font-size alone — at the larger/bolder size above
+   it's ~848px tall and centers via top:50%/translateY(-50%), so it runs
+   off both the top and bottom edge on the many common laptops around
+   768-800px tall. Tighten gap/padding first (not font-size, the main
+   "more visible" lever); font-weight:700 alone added enough per-glyph
+   length that gap/padding cuts stopped being enough on their own (measured
+   736px at weight:400, back up to 848px at weight:700, same gap/padding) —
+   a small font-size trim on top gets it back under 768px with margin. */
 @media (max-height:820px){
-  .side-nav{gap:6px;padding:10px 10px}
+  .side-nav{gap:4px;padding:8px 8px}
+  .side-nav a,.side-nav button{font-size:11px}
 }
 
 /* 2026-11-15 — "Portfolio" side-nav entry: asks EN/FR/ES, each downloading
