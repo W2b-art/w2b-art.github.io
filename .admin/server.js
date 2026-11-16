@@ -323,59 +323,78 @@ async function translateTitle(text, from, targets) {
 }
 
 // ---------------------------------------------------------------------
-// Auto alt text (2026-11-15) — Guillaume: he writes the title on upload,
-// alt text is generated automatically, from an actual look at the photo,
-// for real (not generic/keyword-stuffed) SEO. Requires `anthropicApiKey`
-// in .admin/config.json (his own key from console.anthropic.com, gitignored,
-// never asked for or stored by this tool on its own) — unlike translation,
-// there's no free keyless fallback for real vision captioning, so this
-// throws a clear, actionable error when the key is missing rather than
-// silently degrading to something worse.
+// Auto alt text (2026-11-15, revised same day — Guillaume: "I don't want
+// to pay for it"). Free by default: built from the filename — every
+// photo in this project already has a descriptive slug for a name (e.g.
+// "street-dancer-colombia-jersey-motion-night-w2b.jpg") — plus whatever
+// medium/location context exists. It's assembled text, not a real
+// description of the pixels, but costs nothing and needs no API key.
+// If `anthropicApiKey` ever gets added to .admin/config.json (optional,
+// his own key, gitignored, never asked for by this tool), real AI vision
+// captioning — an actual look at the photo — takes over automatically,
+// same upgrade pattern as DeepL vs. the free MyMemory fallback for
+// translation. Never blocks an upload on its own: a vision-API failure
+// (bad key, rate limit, network) falls back to the free method instead
+// of failing the whole upload.
 // ---------------------------------------------------------------------
-async function generateAltTextEn(imageBuffer, context) {
-  if (!config.anthropicApiKey) {
-    throw new Error('alt-text generation needs an Anthropic API key — add "anthropicApiKey" to .admin/config.json (get one at console.anthropic.com); there is no free fallback for real photo captioning');
-  }
-  const contextLines = [];
-  if (context.title) contextLines.push('Title the photographer gave it: "' + context.title + '"');
-  if (context.medium) contextLines.push('Medium: ' + context.medium);
-  if (context.location) contextLines.push('Location: ' + context.location);
-  if (context.year) contextLines.push('Year: ' + context.year);
-  const prompt = 'Write alt text (English) for this photograph, for a fine-art/commercial photographer\'s website.\n\n' +
-    'Describe concretely what is actually visible — subject, action, setting, light, color or black-and-white — in one ' +
-    'natural sentence, the way a sighted person would describe it to someone who can\'t see it. This is for real ' +
-    'accessibility and SEO, so be specific and accurate to the image, never generic ("a photo of...", "an image showing...") ' +
-    'and never keyword-stuffed. Do not invent anything not visible in the image. Do not just repeat the title verbatim.' +
-    (contextLines.length ? '\n\nContext (for your reference only — describe the image, don\'t just restate this):\n' + contextLines.join('\n') : '') +
-    '\n\nReply with ONLY the alt text itself, nothing else — no quotes, no preamble, no "Alt text:" prefix.';
+function altTextFromMetadata(filename, context) {
+  const base = filename.replace(/\.(jpe?g)$/i, '').replace(/-w2b$/i, '').replace(/-\d+$/, '');
+  const words = base.split(/[-_]+/).filter(Boolean);
+  let phrase = words.join(' ');
+  phrase = phrase.charAt(0).toUpperCase() + phrase.slice(1);
+  const bits = [phrase];
+  if (context.medium) bits.push(context.medium.toLowerCase());
+  if (context.location) bits.push(context.location);
+  return bits.join(', ');
+}
 
-  const r = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'x-api-key': config.anthropicApiKey,
-      'anthropic-version': '2023-06-01',
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify({
-      model: 'claude-haiku-5-5',
-      max_tokens: 300,
-      messages: [{
-        role: 'user',
-        content: [
-          { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: imageBuffer.toString('base64') } },
-          { type: 'text', text: prompt }
-        ]
-      }]
-    })
-  });
-  if (!r.ok) {
-    const body = await r.text().catch(() => '');
-    throw new Error('Anthropic API error ' + r.status + (body ? ': ' + body.slice(0, 300) : ''));
+async function generateAltTextEn(imageBuffer, filename, context) {
+  if (!config.anthropicApiKey) return altTextFromMetadata(filename, context);
+  try {
+    const contextLines = [];
+    if (context.title) contextLines.push('Title the photographer gave it: "' + context.title + '"');
+    if (context.medium) contextLines.push('Medium: ' + context.medium);
+    if (context.location) contextLines.push('Location: ' + context.location);
+    if (context.year) contextLines.push('Year: ' + context.year);
+    const prompt = 'Write alt text (English) for this photograph, for a fine-art/commercial photographer\'s website.\n\n' +
+      'Describe concretely what is actually visible — subject, action, setting, light, color or black-and-white — in one ' +
+      'natural sentence, the way a sighted person would describe it to someone who can\'t see it. This is for real ' +
+      'accessibility and SEO, so be specific and accurate to the image, never generic ("a photo of...", "an image showing...") ' +
+      'and never keyword-stuffed. Do not invent anything not visible in the image. Do not just repeat the title verbatim.' +
+      (contextLines.length ? '\n\nContext (for your reference only — describe the image, don\'t just restate this):\n' + contextLines.join('\n') : '') +
+      '\n\nReply with ONLY the alt text itself, nothing else — no quotes, no preamble, no "Alt text:" prefix.';
+
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'x-api-key': config.anthropicApiKey,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-5-5',
+        max_tokens: 300,
+        messages: [{
+          role: 'user',
+          content: [
+            { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: imageBuffer.toString('base64') } },
+            { type: 'text', text: prompt }
+          ]
+        }]
+      })
+    });
+    if (!r.ok) {
+      const body = await r.text().catch(() => '');
+      throw new Error('Anthropic API error ' + r.status + (body ? ': ' + body.slice(0, 300) : ''));
+    }
+    const j = await r.json();
+    const text = j.content && j.content[0] && j.content[0].text;
+    if (!text) throw new Error('alt-text generation: empty response from the Anthropic API');
+    return text.trim().replace(/^["']|["']$/g, '');
+  } catch (e) {
+    console.error('alt-text vision call failed, falling back to the free metadata-derived text:', e.message);
+    return altTextFromMetadata(filename, context);
   }
-  const j = await r.json();
-  const text = j.content && j.content[0] && j.content[0].text;
-  if (!text) throw new Error('alt-text generation: empty response from the Anthropic API');
-  return text.trim().replace(/^["']|["']$/g, '');
 }
 
 // ---------------------------------------------------------------------
@@ -510,7 +529,7 @@ async function applyAction(action) {
     // writes the title; this writes the alt text.
     let finalAlt = alt;
     if (!finalAlt || !finalAlt.en) {
-      const altEn = await generateAltTextEn(fs.readFileSync(finalJpeg), {
+      const altEn = await generateAltTextEn(fs.readFileSync(finalJpeg), filename, {
         title: title && (title.en || title.fr),
         medium: medium && medium.en,
         location: location && location.en,

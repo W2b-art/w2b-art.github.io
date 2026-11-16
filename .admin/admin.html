@@ -1208,7 +1208,7 @@ function renderUpload() {
   main.innerHTML = '';
   const form = document.createElement('form'); form.className = 'panel';
   form.innerHTML = '<h3>Upload new photos</h3>' +
-    '<div class="hint">Runs .build/compress.js then .build/responsive.js (the real pipeline) once per photo, writes into images/&lt;gallery&gt;/, and adds the data entry. .jpg/.jpeg only. Pick several files to batch-upload them all into the same gallery (and the same trunk anchor, if attached) — title, medium, location and year are all set per photo below, never shared across the batch. You write the title; alt text is generated automatically by AI from the actual photo (needs anthropicApiKey in .admin/config.json), for real — not generic — SEO. Takes longer per photo because of that (vision + translation), budget extra time on a big batch.</div>' +
+    '<div class="hint">Runs .build/compress.js then .build/responsive.js (the real pipeline) once per photo, writes into images/&lt;gallery&gt;/, and adds the data entry. .jpg/.jpeg only. Pick several files to batch-upload them all into the same gallery (and the same trunk anchor, if attached) — title, medium, location and year are all set per photo below, never shared across the batch. You write the title; alt text is written automatically from the filename/title/medium/location (free, no API key) — add an optional anthropicApiKey to .admin/config.json later if you ever want it to actually look at the photo instead.</div>' +
     '<label>Source file(s)</label><input type="file" id="up-file" accept="image/jpeg" multiple>' +
     '<div id="up-files"></div>' +
     '<label>Target gallery</label><select id="up-gallery"></select>' +
@@ -1388,7 +1388,7 @@ function renderUpload() {
       const row = rows[i];
       const rowTitleEn = row.titleEnEl.value.trim();
       const rowTitle = { en: rowTitleEn, fr: row.titleFrEl.value.trim() || rowTitleEn, es: row.titleEsEl.value.trim() || rowTitleEn };
-      submitBtn.textContent = 'Uploading ' + (i + 1) + '/' + rows.length + ' — ' + row.file.name + '… (compress + AI alt text + translate, up to ~45s each)';
+      submitBtn.textContent = 'Uploading ' + (i + 1) + '/' + rows.length + ' — ' + row.file.name + '… (compress + alt text + translate, up to ~30s each)';
       try {
         const dataBase64 = await readFileAsBase64(row.file);
         const rowMediumKey = row.mediumEl.value;
@@ -1430,7 +1430,7 @@ function renderUpload() {
   };
 }
 
-// Read-only review of the alt text the AI just wrote for a batch — one
+// Read-only review of the alt text just auto-written for a batch — one
 // line per photo. Nothing editable here on purpose: to fix one, use the
 // Galleries tab's existing "Edit label" modal (openMetaEditor), the one
 // path that already handles writing alt text back to gallery-data.js.
@@ -1442,7 +1442,7 @@ function showGeneratedAltReview(items) {
   const form = document.createElement('div');
   form.className = 'panel';
   form.style = 'margin:0;max-width:640px;max-height:80vh;overflow:auto;';
-  form.innerHTML = '<h3>AI-generated alt text (EN)</h3>' +
+  form.innerHTML = '<h3>Auto-generated alt text (EN)</h3>' +
     '<div class="hint">Sanity-check these — to correct one, use "Edit label" on that photo in the Galleries tab.</div>';
   items.forEach((r) => {
     const row = document.createElement('div');
