@@ -819,7 +819,19 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (!isAuthed(req)) {
-      send(res, 200, LOGIN_PAGE, { 'Content-Type': 'text/html' });
+      /* Sessions are in-memory (see `sessions` above) and get wiped on
+         every server restart. A page already open in the browser keeps
+         running, so its next /api/* call used to get this same 200+HTML
+         login page back — the client's api() does r.json() on it, which
+         throws a cryptic "Unexpected token '<'" instead of anything
+         pointing at the real cause. Give API calls a real 401 + JSON so
+         the existing toast shows something actionable; page loads still
+         get the login page as before. */
+      if (u.pathname.startsWith('/api/')) {
+        sendJson(res, 401, { ok: false, error: 'Session expired (the admin server was restarted) — reload the page and log in again.' });
+      } else {
+        send(res, 200, LOGIN_PAGE, { 'Content-Type': 'text/html' });
+      }
       return;
     }
 
