@@ -113,16 +113,6 @@
   </div>
 </div>
 
-<!-- Series view: a clicked series tile's full print list, anchor photo
-     first — same component as oeuvre-actuelle.html's branch overlay
-     (css/rooms.css), built fresh here with buy cards instead of captions. -->
-<div class="branch-overlay" id="shopBranchOverlay" role="dialog" aria-modal="true" aria-hidden="true">
-  <div class="branch-backbar">
-    <button type="button" id="shopBranchBack" class="branch-back"></button>
-  </div>
-  <div class="branch-wrap" id="shopBranchWrap"></div>
-</div>
-
 <footer>
   <div class="sig"><img src="images/ui/w2b-logo.png" alt="W2b"></div>
   <div class="l">@w2b.film<br><a href="oeuvre-actuelle.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
@@ -137,9 +127,9 @@
   var L=(window.W2B_LANG)||'fr';
 
   var S={
-    fr:{k:"Tirages",h1:"Acquérir un tirage",intro:"Une sélection d'images, en tirages d'art : encre pigmentaire sur coton. Les éditions collector sont numérotées, avec certificat signé ; les éditions ouvertes sont des tirages d'archive, sans certificat.",terms:"Chaque tirage est fait sur commande et expédié dans le monde entier. Comptez deux à trois semaines. Prix en euros ; peso colombien sur demande.",dark:"Les tirages de la section After Dark sont disponibles en privé, sur demande.",darklink:"Écrire",coll:"Édition collector",open:"Édition ouverte",from:"dès",size:"Format",name:"Nom",email:"Email",note:"Un mot (facultatif)",submit:"Demander ce tirage",ok:"Merci. Je confirme la disponibilité et t'envoie la facture sous quelques jours.",noteCol:"Numéroté · édition limitée de 15 + 2 AP · avec certificat d'authenticité signé.",noteOpen:"Édition ouverte · tirage pigmentaire d'archive · non signé.",consent:"J'accepte que mes données soient traitées pour répondre à ma demande, selon la",privacylink:"Politique de confidentialité.",series_h:"Séries",selection_h:"Sélection",go:"Voir la série",back:"← Tirages"},
-    en:{k:"Prints",h1:"Collect a print",intro:"A selection of images, as fine-art prints: pigment ink on cotton rag. Collector editions are numbered, with a signed certificate; open editions are archival prints, without a certificate.",terms:"Each print is made to order and shipped worldwide. Allow two to three weeks. Prices in euros; Colombian peso on request.",dark:"Prints from the After Dark section are available privately, on request.",darklink:"Write",coll:"Collector edition",open:"Open edition",from:"from",size:"Size",name:"Name",email:"Email",note:"A note (optional)",submit:"Request this print",ok:"Thank you. I'll confirm availability and send the invoice within a few days.",noteCol:"Numbered · limited edition of 15 + 2 AP · with a signed certificate of authenticity.",noteOpen:"Open edition · archival pigment print · unsigned.",consent:"I agree my data may be processed to answer my request, per the",privacylink:"Privacy policy.",series_h:"Series",selection_h:"Selection",go:"See the series",back:"← Prints"},
-    es:{k:"Copias",h1:"Adquirir una copia",intro:"Una selección de imágenes, en copias de autor: tinta pigmentada sobre algodón. Las ediciones coleccionista están numeradas, con certificado firmado; las ediciones abiertas son copias de archivo, sin certificado.",terms:"Cada copia se hace por encargo y se envía a todo el mundo. Dos a tres semanas. Precios en euros; peso colombiano a pedido.",dark:"Las copias de la sección After Dark están disponibles en privado, a pedido.",darklink:"Escribir",coll:"Edición coleccionista",open:"Edición abierta",from:"desde",size:"Formato",name:"Nombre",email:"Email",note:"Una nota (opcional)",submit:"Solicitar esta copia",ok:"Gracias. Confirmo disponibilidad y te envío la factura en unos días.",noteCol:"Numerada · edición limitada de 15 + 2 AP · con certificado de autenticidad firmado.",noteOpen:"Edición abierta · copia pigmentada de archivo · sin firmar.",consent:"Acepto que mis datos se traten para responder a mi solicitud, según la",privacylink:"Política de datos.",series_h:"Series",selection_h:"Selección",go:"Ver la serie",back:"← Copias"}
+    fr:{k:"Tirages",h1:"Acquérir un tirage",intro:"Une sélection d'images, en tirages d'art : encre pigmentaire sur coton. Les éditions collector sont numérotées, avec certificat signé ; les éditions ouvertes sont des tirages d'archive, sans certificat.",terms:"Chaque tirage est fait sur commande et expédié dans le monde entier. Comptez deux à trois semaines. Prix en euros ; peso colombien sur demande.",dark:"Les tirages de la section After Dark sont disponibles en privé, sur demande.",darklink:"Écrire",coll:"Édition collector",open:"Édition ouverte",from:"dès",size:"Format",name:"Nom",email:"Email",note:"Un mot (facultatif)",submit:"Demander ce tirage",ok:"Merci. Je confirme la disponibilité et t'envoie la facture sous quelques jours.",noteCol:"Numéroté · édition limitée de 15 + 2 AP · avec certificat d'authenticité signé.",noteOpen:"Édition ouverte · tirage pigmentaire d'archive · non signé.",consent:"J'accepte que mes données soient traitées pour répondre à ma demande, selon la",privacylink:"Politique de confidentialité.",selection_h:"Sélection"},
+    en:{k:"Prints",h1:"Collect a print",intro:"A selection of images, as fine-art prints: pigment ink on cotton rag. Collector editions are numbered, with a signed certificate; open editions are archival prints, without a certificate.",terms:"Each print is made to order and shipped worldwide. Allow two to three weeks. Prices in euros; Colombian peso on request.",dark:"Prints from the After Dark section are available privately, on request.",darklink:"Write",coll:"Collector edition",open:"Open edition",from:"from",size:"Size",name:"Name",email:"Email",note:"A note (optional)",submit:"Request this print",ok:"Thank you. I'll confirm availability and send the invoice within a few days.",noteCol:"Numbered · limited edition of 15 + 2 AP · with a signed certificate of authenticity.",noteOpen:"Open edition · archival pigment print · unsigned.",consent:"I agree my data may be processed to answer my request, per the",privacylink:"Privacy policy.",selection_h:"Selection"},
+    es:{k:"Copias",h1:"Adquirir una copia",intro:"Una selección de imágenes, en copias de autor: tinta pigmentada sobre algodón. Las ediciones coleccionista están numeradas, con certificado firmado; las ediciones abiertas son copias de archivo, sin certificado.",terms:"Cada copia se hace por encargo y se envía a todo el mundo. Dos a tres semanas. Precios en euros; peso colombiano a pedido.",dark:"Las copias de la sección After Dark están disponibles en privado, a pedido.",darklink:"Escribir",coll:"Edición coleccionista",open:"Edición abierta",from:"desde",size:"Formato",name:"Nombre",email:"Email",note:"Una nota (opcional)",submit:"Solicitar esta copia",ok:"Gracias. Confirmo disponibilidad y te envío la factura en unos días.",noteCol:"Numerada · edición limitada de 15 + 2 AP · con certificado de autenticidad firmado.",noteOpen:"Edición abierta · copia pigmentada de archivo · sin firmar.",consent:"Acepto que mis datos se traten para responder a mi solicitud, según la",privacylink:"Política de datos.",selection_h:"Selección"}
   };
   var D=S[L]||S.fr;
   document.getElementById('s_k').textContent=D.k;
@@ -248,42 +238,27 @@
   });
 
   var groupsEl=document.getElementById('shop-groups');
-  var branchOverlay=document.getElementById('shopBranchOverlay'),branchWrap=document.getElementById('shopBranchWrap'),branchBack=document.getElementById('shopBranchBack');
-  branchBack.textContent=D.back;
-  function openSeries(s){
-    branchWrap.innerHTML='';
-    s.items.forEach(function(im){ branchWrap.appendChild(buyCard(im,s.tier)); });
-    branchOverlay.scrollTop=0;
-    branchOverlay.classList.add('open'); branchOverlay.setAttribute('aria-hidden','false');
-    document.body.style.overflow='hidden'; branchBack.focus();
-  }
-  function closeSeries(){
-    branchOverlay.classList.remove('open'); branchOverlay.setAttribute('aria-hidden','true');
-    document.body.style.overflow='';
-  }
-  branchBack.addEventListener('click',closeSeries);
-  branchOverlay.addEventListener('click',function(e){ if(!e.target.closest('.print,.branch-backbar')) closeSeries(); });
-  document.addEventListener('keydown',function(e){ if(branchOverlay.classList.contains('open')&&e.key==='Escape') closeSeries(); });
 
-  if(seriesList.length){
-    var secS=document.createElement('section'); secS.className='shop-group';
-    secS.innerHTML='<div class="shop-group-title"><h2>'+D.series_h+'</h2><span class="ln"></span></div>';
-    var gridS=document.createElement('div'); gridS.className='shop-grid';
-    seriesList.forEach(function(s){
-      var tile=document.createElement('button'); tile.type='button'; tile.className='shop-series-tile';
-      tile.innerHTML='<div class="frame"><img loading="lazy" src="'+s.cover.folder+s.cover.file+'" alt="'+((s.cover.alt&&(s.cover.alt[L]||s.cover.alt.fr))||'').replace(/"/g,'')+'"></div>'+
-        '<div class="meta"><span class="t">'+s.title+'</span><span class="go">'+D.go+'</span></div>';
-      tile.addEventListener('click',function(){ openSeries(s); });
-      gridS.appendChild(tile);
-    });
-    secS.appendChild(gridS); groupsEl.appendChild(secS);
-  }
+  /* 2026-11-15 — Guillaume: the tile+click-through-overlay read as "too
+     big" and didn't make it obvious there was more behind each tile at
+     all. Replaced with one horizontal, scrollable filmstrip per series —
+     anchor photo first, then its related branch photos, every photo
+     visible and buyable at a glance, no click needed to discover them.
+     Gallery heading = the series' own title (same titleFor() anchor
+     resolution as before); each photo keeps its own title underneath. */
+  seriesList.forEach(function(s){
+    var sec=document.createElement('section'); sec.className='shop-group';
+    sec.innerHTML='<div class="shop-group-title"><h2>'+s.title+'</h2><span class="ln"></span></div>';
+    var strip=document.createElement('div'); strip.className='shop-strip';
+    s.items.forEach(function(im){ strip.appendChild(buyCard(im,s.tier)); });
+    sec.appendChild(strip); groupsEl.appendChild(sec);
+  });
   if(standalone.length){
     var secP=document.createElement('section'); secP.className='shop-group';
     secP.innerHTML='<div class="shop-group-title"><h2>'+D.selection_h+'</h2><span class="ln"></span></div>';
-    var gridP=document.createElement('div'); gridP.className='shop-grid';
-    standalone.forEach(function(p){ gridP.appendChild(buyCard(p.im,p.tier)); });
-    secP.appendChild(gridP); groupsEl.appendChild(secP);
+    var stripP=document.createElement('div'); stripP.className='shop-strip';
+    standalone.forEach(function(p){ stripP.appendChild(buyCard(p.im,p.tier)); });
+    secP.appendChild(stripP); groupsEl.appendChild(secP);
   }
 
   /* acquire modal */
