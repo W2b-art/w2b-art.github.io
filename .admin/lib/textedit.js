@@ -346,7 +346,7 @@ function setArchived(src, galleryId, filename, archived) {
 /* Canonical field order for an image entry — used only to decide where
    a NEW field goes relative to other fields that already exist (never
    reorders fields that are already present). */
-const META_FIELD_ORDER = ['file', 'archived', 'title', 'medium', 'year', 'alt', 'wide'];
+const META_FIELD_ORDER = ['file', 'archived', 'title', 'medium', 'location', 'year', 'alt', 'wide'];
 
 /* Set (insert or replace), or remove (valueLiteral === null), one
    metadata field on the image entry for `filename` in `galleryId`.
@@ -504,6 +504,7 @@ function insertNewImage(src, galleryId, position, data) {
   if (data.archived) lines.push(indent + '  archived: true,');
   if (data.title) lines.push(indent + '  title: ' + trilingualLiteral(data.title) + ',');
   if (data.medium) lines.push(indent + '  medium: ' + trilingualLiteral(data.medium) + ',');
+  if (data.location) lines.push(indent + '  location: ' + trilingualLiteral(data.location) + ',');
   if (data.year) lines.push(indent + '  year: ' + yearLiteral(data.year) + ',');
   lines.push(indent + '  alt: {');
   lines.push(indent + '    en: "' + esc(data.alt.en) + '",');

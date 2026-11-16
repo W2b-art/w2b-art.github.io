@@ -41,13 +41,15 @@
     var im = g && g.images.filter(function(i){ return i.file === ref.file; })[0];
     if (!g || !im || im.archived) return null;
     var alt = (im.alt && (im.alt[LANG] || im.alt.fr)) || '';
-    /* Museum-label fields (2026-11-11) — optional, per-photo: title
-       (trilingual), medium (trilingual), year (single value, not
-       translated). Absent on the 20+ photos curated before this existed;
-       cartel() below falls back to the old cap/seriesTitle behavior when
-       they're missing, so nothing needs backfilling. */
+    /* Museum-label fields (2026-11-11, location added 2026-11-15) —
+       optional, per-photo: title (trilingual), medium (trilingual),
+       location (trilingual), year (single value, not translated). Absent
+       on photos curated before each field existed; cartel() below falls
+       back to the old cap/seriesTitle behavior when they're missing, so
+       nothing needs backfilling. */
     var title = im.title && (im.title[LANG] || im.title.fr);
     var medium = im.medium && (im.medium[LANG] || im.medium.fr);
+    var location = im.location && (im.location[LANG] || im.location.fr);
     return {
       series: ref.series, file: ref.file,
       src: g.folder + im.file,
@@ -56,6 +58,7 @@
       seriesTitle: g.title[LANG] || g.title.fr,
       title: title || null,
       medium: medium || null,
+      location: location || null,
       year: im.year || null
     };
   }
@@ -70,6 +73,45 @@
     TRUNK_BY_ID[entry.id] = item;
     RELATED_BY_ID[entry.id] = (entry.related || []).map(resolve).filter(Boolean);
   });
+
+  /* 2026-11-15 — the static per-page JSON-LD in <head> only ever listed 2
+     hand-typed series (same staleness bug already fixed once in shop.html's
+     own hardcoded gallery list) and had no per-photo data at all — no
+     ImageObject, no location. Rebuilt from the same TRUNK/RELATED_BY_ID
+     this page just computed, so it can't drift from reality again, and
+     it's the first place the location field actually feeds structured
+     data (as contentLocation) rather than just sitting in a cartel. */
+  (function(){
+    var ld = document.querySelector('script[type="application/ld+json"]');
+    if (!ld) return;
+    var data;
+    try { data = JSON.parse(ld.textContent); } catch (e) { return; }
+    var page = (data['@graph'] || []).filter(function(n){ return n['@id'] && /#page$/.test(n['@id']); })[0];
+    if (!page) return;
+    var BASE = 'https://w2bphotography.com/';
+    var hasPart = [];
+    TRUNK.forEach(function(anchor){
+      var related = RELATED_BY_ID[anchor.id] || [];
+      if (!related.length) return; /* branch-less anchors have nothing to group — same rule as shop.html */
+      var branchG = GALLERY_DATA[related[0].series];
+      var name = (branchG && branchG.title && (branchG.title[LANG] || branchG.title.fr)) || anchor.title || anchor.cap || anchor.seriesTitle;
+      var photos = [anchor].concat(related);
+      hasPart.push({
+        '@type': 'ImageGallery',
+        name: name,
+        creator: { '@id': BASE + '#guillaume' },
+        image: photos.map(function(p){
+          var obj = { '@type': 'ImageObject', contentUrl: BASE + p.src, caption: p.cap || p.alt };
+          if (p.location) obj.contentLocation = { '@type': 'Place', name: p.location };
+          return obj;
+        })
+      });
+    });
+    if (hasPart.length) {
+      page.hasPart = hasPart;
+      ld.textContent = JSON.stringify(data, null, 2);
+    }
+  })();
 
   /* <picture> with AVIF/WebP when js/responsive-manifest.js lists this
      src (see js/responsive-img.js) — a plain <img>, identical to
@@ -155,7 +197,7 @@
     var n = document.createElement('div'); n.className = 'cartel';
     if (item.title) {
       n.appendChild(document.createTextNode(item.title));
-      var medParts = [item.medium, item.year ? String(item.year) : null].filter(Boolean);
+      var medParts = [item.medium, item.location, item.year ? String(item.year) : null].filter(Boolean);
       if (medParts.length) {
         var med = document.createElement('span'); med.className = 'med';
         med.textContent = medParts.join(', ');

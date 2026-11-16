@@ -429,7 +429,7 @@ function applyAction(action) {
   }
 
   if (action.type === 'upload') {
-    const { gallery, filename, dataBase64, position, alt, title, medium, year, attachToTrunkId } = action;
+    const { gallery, filename, dataBase64, position, alt, title, medium, location, year, attachToTrunkId } = action;
     requireAltFields(alt);
     const g = GALLERY_DATA[gallery];
     if (!g) throw new Error('upload: unknown gallery ' + gallery);
@@ -448,7 +448,7 @@ function applyAction(action) {
     fixResponsiveManifestKey(finalJpeg);
 
     let newG = insertNewImage(gsrc, gallery, position == null ? undefined : Number(position), {
-      file: filename, alt, title: title || null, medium: medium || null, year: year || null
+      file: filename, alt, title: title || null, medium: medium || null, location: location || null, year: year || null
     });
     fs.writeFileSync(GALLERY_DATA_PATH, newG);
 
