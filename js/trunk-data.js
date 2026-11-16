@@ -152,8 +152,11 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-t3',file:'medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg'},
     {series:'branch-t3',file:'stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg'}
 ] },
-  { id:'t5', series:'trunk', file:'000024290011.jpg', related:[
+  { id:'t5', series:'trunk', file:'000024250007.jpg', related:[
     {series:'branch-t5',file:'serie-82-8.jpg'},
-    {series:'branch-t5',file:'Stand-alone-2.jpg'}
+    {series:'branch-t5',file:'Stand-alone-2.jpg'},
+    {series:'branch-t5',file:'000028650009.jpg'},
+    {series:'branch-t5',file:'serie-76-5.jpg'},
+    {series:'branch-t5',file:'000024290011.jpg'}
   ] }
 ];

@@ -1679,17 +1679,6 @@ const GALLERY_DATA = {
         fr: "Gros plan sur des moules et balanes incrustées sur une roche côtière, photographie macro de texture",
         es: "Primer plano de mejillones y bálanos incrustados en una roca costera, fotografía macro de textura" } },
       {
-        file: "000024290011.jpg",
-        title: { en: "pacha mama is dry", fr: "Pacha Mama est sèche", es: "La Pacha Mama está seca" },
-        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        year: 2023,
-        alt: {
-          en: "mount of stones covered in cloths",
-          fr: "tas de pierres recouvertes de chiffons",
-          es: "Montón de piedras cubierto con paños"
-        }
-      },
-      {
         file: "000084400023.jpg",
         archived: true,
         title: { en: "vanishing into an other world", fr: "disparaître dans un autre monde", es: "desvanecerse en otro mundo" },
@@ -1700,7 +1689,14 @@ const GALLERY_DATA = {
           fr: "couloirs en béton sombres",
           es: "Pasillos de hormigón oscuros"
         }
-      }
+      },
+      {
+        location: { en: "Argentina", fr: "Argentine", es: "Argentina" },
+        file: "000024250007.jpg",
+        title: { en: "tips for hoped miracles", fr: "Poureboire pour les miracles espérés", es: "Propinas por los milagros esperados" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2023,
+        alt: { en: "tips for hoped miracles", fr: "conseils pour les miracles espérés", es: "consejos para los milagros que se esperan" }}
     ]
   },
 
@@ -2301,19 +2297,14 @@ const GALLERY_DATA = {
   "branch-t5": {
       id: "branch-t5",
       folder: "images/branch-t5/",
-      title: { en: "Untitled", fr: "Sans titre", es: "Sin título" },
+      title: { en: "Totems", fr: "Totem", es: "Totems" },
       images: [
       {
         file: "serie-82-8.jpg",
-        title: { en: "nnature is the real god", fr: "La nature est le vrai dieu.", es: "La naturaleza es el verdadero dios." },
+        title: { en: "nature is the real god", fr: "La nature est le vrai dieu.", es: "La naturaleza es el verdadero dios." },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
         year: 2026,
-        alt: {
-          en: "tree covered in religious symbols",
-          fr: "arbre couvert de symboles religieux",
-          es: "Árbol cubierto de símbolos religiosos"
-        }
-      },
+        alt: { en: "tree covered in religious symbols", fr: "arbre couvert de symboles religieux", es: "Árbol cubierto de símbolos religiosos" }},
       {
         file: "Stand-alone-2.jpg",
         title: { en: "manmade devil", fr: "démon créé par l'homme", es: "diablo creado por el hombre" },
@@ -2323,6 +2314,37 @@ const GALLERY_DATA = {
           en: "sculture of a devil black and white",
           fr: "Sculpture d'un diable en noir et blanc",
           es: "Escultura de un diablo en blanco y negro"
+        }
+      },
+      {
+        file: "000028650009.jpg",
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2021,
+        alt: {
+          en: "Always on top never reachable",
+          fr: "Toujours au sommet, jamais accessible",
+          es: "Siempre en lo más alto, nunca al alcance"
+        }
+      },
+      {
+        file: "serie-76-5.jpg",
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        year: 2026,
+        alt: {
+          en: "Lighting up the faith",
+          fr: "Allumer la foi",
+          es: "Encender la fe"
+        }
+      },
+      {
+        file: "000024290011.jpg",
+        title: { en: "pacha mama is dry", fr: "Pacha Mama est sèche", es: "La Pacha Mama está seca" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        year: 2023,
+        alt: {
+          en: "mount of stones covered in cloths",
+          fr: "tas de pierres recouvertes de chiffons",
+          es: "Montón de piedras cubierto con paños"
         }
       }]
     }

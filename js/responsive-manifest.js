@@ -592,5 +592,26 @@ const RESPONSIVE_MANIFEST = {
    1600
   ],
   "masterKB": 1169
+ },
+ "images/branch-t5/000024250007.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 713
+ },
+ "images/branch-t5/000028650009.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 549
+ },
+ "images/branch-t5/serie-76-5.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 649
  }
 };
