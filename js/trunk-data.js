@@ -159,7 +159,6 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-t5',file:'serie-82-8.jpg'},
     {series:'branch-t5',file:'Stand-alone-2.jpg'},
     {series:'branch-t5',file:'serie-76-5.jpg'},
-    {series:'branch-t5',file:'000024290011.jpg'},
     {series:'branch-t5',file:'serie-53-5.jpg'},
     {series:'branch-t5',file:'3757-17.jpg'}
   ] }
