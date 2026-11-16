@@ -851,10 +851,16 @@ function openAddPhotoToBranch(branchGallery, attachAnchorId) {
   const keyOf = (g, i) => g.id + '\u0000' + i.file;
 
   const bar = document.createElement('div');
-  bar.style.cssText = 'position:sticky;top:0;background:#1b1b1b;padding:8px 0;margin-bottom:4px;display:flex;align-items:center;gap:10px;z-index:1;';
+  bar.style.cssText = 'position:sticky;top:0;background:#1b1b1b;padding:8px 0;margin-bottom:4px;display:flex;flex-wrap:wrap;align-items:center;gap:10px;z-index:1;';
   const countEl = document.createElement('span'); countEl.className = 'hint';
   const addBtn = document.createElement('button'); addBtn.type = 'button'; addBtn.className = 'submit'; addBtn.style.marginTop = '0';
-  bar.appendChild(countEl); bar.appendChild(addBtn);
+  // 2026-11-15 — Guillaume: put "upload a new file" next to the other
+  // button, up top — was stuck below the whole photo mosaic, easy to miss
+  // and meant scrolling past every existing candidate first if what you
+  // actually wanted was a brand-new upload.
+  const uploadBtn = document.createElement('button'); uploadBtn.type = 'button'; uploadBtn.className = 'submit'; uploadBtn.style.marginTop = '0'; uploadBtn.textContent = 'Or upload a brand-new photo…';
+  uploadBtn.onclick = () => goToUpload(branchGallery.id, attachAnchorId);
+  bar.appendChild(countEl); bar.appendChild(addBtn); bar.appendChild(uploadBtn);
   form.appendChild(bar);
 
   function refreshBar() {
@@ -920,9 +926,6 @@ function openAddPhotoToBranch(branchGallery, attachAnchorId) {
   };
   refreshBar();
 
-  const uploadBtn = document.createElement('button'); uploadBtn.type = 'button'; uploadBtn.className = 'submit'; uploadBtn.style.marginTop = '14px'; uploadBtn.textContent = 'Or upload a brand-new photo…';
-  uploadBtn.onclick = () => goToUpload(branchGallery.id, attachAnchorId);
-  form.appendChild(uploadBtn);
   const cancelBtn = document.createElement('button'); cancelBtn.type = 'button'; cancelBtn.textContent = 'Cancel';
   cancelBtn.style.cssText = 'margin-top:10px;margin-left:10px;padding:9px 18px;background:#2a2a2a;border:1px solid #3a3a3a;color:#eee;border-radius:6px;cursor:pointer;';
   form.appendChild(cancelBtn);
@@ -1205,14 +1208,13 @@ function renderUpload() {
   main.innerHTML = '';
   const form = document.createElement('form'); form.className = 'panel';
   form.innerHTML = '<h3>Upload new photos</h3>' +
-    '<div class="hint">Runs .build/compress.js then .build/responsive.js (the real pipeline) once per photo, writes into images/&lt;gallery&gt;/, and adds the data entry. .jpg/.jpeg only. Pick several files to batch-upload them all into the same gallery (and the same trunk anchor, if attached) — alt text, medium and location are all set per photo below, never shared across the batch (different photos in one upload can genuinely be different mediums or places); alt text is the only one required, for real (not generic) SEO.</div>' +
+    '<div class="hint">Runs .build/compress.js then .build/responsive.js (the real pipeline) once per photo, writes into images/&lt;gallery&gt;/, and adds the data entry. .jpg/.jpeg only. Pick several files to batch-upload them all into the same gallery (and the same trunk anchor, if attached) — alt text, medium, location and year are all set per photo below, never shared across the batch (different photos in one upload can genuinely be different mediums, places or years); alt text is the only one required, for real (not generic) SEO.</div>' +
     '<label>Source file(s)</label><input type="file" id="up-file" accept="image/jpeg" multiple>' +
     '<div id="up-files"></div>' +
     '<label>Target gallery</label><select id="up-gallery"></select>' +
     '<label id="up-pos-label">Position (blank = append at end)</label><input type="number" id="up-pos" min="0">' +
     '<label>Title (optional, museum-label — EN / FR / ES, shared across the whole batch)</label>' +
     '<div class="row3"><input id="up-title-en" placeholder="EN"><input id="up-title-fr" placeholder="FR"><input id="up-title-es" placeholder="ES"></div>' +
-    '<label>Year (optional, shared across the whole batch)</label><input type="number" id="up-year" min="1900" max="2100">' +
     '<label>Attach to a trunk anchor\'s "more like this" (only if target gallery is a branch-*; applies to every photo in the batch)</label>' +
     '<select id="up-attach"><option value="">— don\'t attach —</option></select>' +
     '<button type="button" class="submit" id="up-submit">Upload</button>';
@@ -1247,10 +1249,17 @@ function renderUpload() {
       const alts = document.createElement('div'); alts.className = 'row3';
       alts.innerHTML = '<input id="up-alt-en-' + i + '" placeholder="EN (required)"><input id="up-alt-fr-' + i + '" placeholder="FR"><input id="up-alt-es-' + i + '" placeholder="ES">';
       row.appendChild(alts);
-      const medLabel = document.createElement('label'); medLabel.textContent = 'Medium (optional)'; medLabel.style.cssText = 'font-size:11px;margin-top:6px;display:block;';
-      row.appendChild(medLabel);
-      const medWrap = document.createElement('div'); medWrap.innerHTML = mediumSelectHtml('up-medium-' + i);
-      row.appendChild(medWrap);
+      const medRow = document.createElement('div'); medRow.style.cssText = 'display:flex;gap:10px;align-items:flex-end;margin-top:6px;';
+      const medCol = document.createElement('div'); medCol.style.flex = '1';
+      const medLabel = document.createElement('label'); medLabel.textContent = 'Medium (optional)'; medLabel.style.cssText = 'font-size:11px;display:block;';
+      medCol.appendChild(medLabel);
+      medCol.insertAdjacentHTML('beforeend', mediumSelectHtml('up-medium-' + i));
+      const yearCol = document.createElement('div'); yearCol.style.width = '110px';
+      const yearLabel = document.createElement('label'); yearLabel.textContent = 'Year (optional)'; yearLabel.style.cssText = 'font-size:11px;display:block;';
+      yearCol.appendChild(yearLabel);
+      yearCol.insertAdjacentHTML('beforeend', '<input type="number" id="up-year-' + i + '" min="1900" max="2100">');
+      medRow.appendChild(medCol); medRow.appendChild(yearCol);
+      row.appendChild(medRow);
       const locLabel = document.createElement('label'); locLabel.textContent = 'Location (optional, auto-translates on blur)'; locLabel.style.cssText = 'font-size:11px;margin-top:6px;display:block;';
       row.appendChild(locLabel);
       const locs = document.createElement('div'); locs.className = 'row3';
@@ -1318,6 +1327,7 @@ function renderUpload() {
       altFrEl: document.getElementById('up-alt-fr-' + i),
       altEsEl: document.getElementById('up-alt-es-' + i),
       mediumEl: document.getElementById('up-medium-' + i),
+      yearEl: document.getElementById('up-year-' + i),
       locEnEl: document.getElementById('up-location-en-' + i),
       locFrEl: document.getElementById('up-location-fr-' + i),
       locEsEl: document.getElementById('up-location-es-' + i)
@@ -1369,9 +1379,7 @@ function renderUpload() {
 
     const titleEn = document.getElementById('up-title-en').value.trim();
     const posVal = document.getElementById('up-pos').value;
-    const yearVal = document.getElementById('up-year').value;
     const sharedTitle = titleEn ? { en: titleEn, fr: document.getElementById('up-title-fr').value.trim() || titleEn, es: document.getElementById('up-title-es').value.trim() || titleEn } : null;
-    const sharedYear = yearVal ? Number(yearVal) : null;
     const position = (rows.length === 1 && posVal !== '') ? Number(posVal) : undefined;
     const attachToTrunkId = attachSel.value || undefined;
 
@@ -1389,6 +1397,7 @@ function renderUpload() {
         const dataBase64 = await readFileAsBase64(row.file);
         const rowMediumKey = row.mediumEl.value;
         const rowLocEn = row.locEnEl.value.trim();
+        const rowYearVal = row.yearEl.value;
         await doAction({
           type: 'upload',
           gallery: gSel.value,
@@ -1399,7 +1408,7 @@ function renderUpload() {
           title: sharedTitle,
           medium: rowMediumKey ? MEDIUM_LOOKUP[rowMediumKey] : null,
           location: rowLocEn ? { en: rowLocEn, fr: row.locFrEl.value.trim() || rowLocEn, es: row.locEsEl.value.trim() || rowLocEn } : null,
-          year: sharedYear,
+          year: rowYearVal ? Number(rowYearVal) : null,
           attachToTrunkId
         }, null, true);
         results.push({ name: row.file.name, ok: true });
