@@ -112,12 +112,11 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-wrecked-boat',file:'contemplations-two-boats-misty-still-water-w2b.jpg'}
 ] },
   { id:'t06', series:'trunk', file:'pinball-arcade-machine-jackpot-cards-neon-w2b.jpg', related:[
-    {series:'branch-pinball',file:'vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg'},
     {series:'branch-pinball',file:'circus-tent-entrance-blue-neon-arches-w2b.jpg'},
     {series:'branch-pinball',file:'teal-neon-light-trails-abandoned-interior-w2b.jpg'},
     {series:'branch-pinball',file:'dj-booth-neon-light-trails-nightclub-w2b.jpg'},
     {series:'branch-pinball',file:'000027230023.jpg'}
-  ] },
+] },
   { id:'t11', series:'trunk', file:'man-silhouette-bench-dramatic-sunset-sky-w2b.jpg', related:[
     {series:'branch-coastal-bench',file:'figure-seated-bench-bay-view-black-white-w2b.jpg'},
     {series:'branch-coastal-bench',file:'couple-bench-overlooking-water-w2b.jpg'},
@@ -132,11 +131,11 @@ const TRUNK_MANIFEST_OTHER = [
   ] },
   { id:'t17', series:'trunk', file:'woman-car-window-candid-street-black-white-w2b.jpg', related:[
     {series:'branch-t17',file:'medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg'},
-    {series:'branch-t17',file:'boudoir-red-drape-reaching-bust-colour-w2b.jpg'},
     {series:'branch-t17',file:'tattoo-artist-desk-work-flash-art-wall-w2b.jpg'},
-    {series:'branch-t17',file:'serie-7-6.jpg'},
-    {series:'branch-t17',file:'serie-20-8.jpg'}
-  ] },
+    {series:'branch-t17',file:'serie-20-8.jpg'},
+    {series:'branch-t17',file:'vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg'},
+    {series:'branch-t17',file:'serie-7-6.jpg'}
+] },
   { id:'t18', series:'trunk', file:'dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg', related:[
     {series:'branch-dark-bay',file:'buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg'},
     {series:'branch-dark-bay',file:'sunset-lake-mountain-silhouette-bird-film-w2b.jpg'},
@@ -156,6 +155,5 @@ const TRUNK_MANIFEST_OTHER = [
   { id:'t5', series:'trunk', file:'000024290011.jpg', related:[
     {series:'branch-t5',file:'serie-82-8.jpg'},
     {series:'branch-t5',file:'Stand-alone-2.jpg'}
-  ] },
-  { id:'t7', series:'trunk', file:'000084400023.jpg' }
+  ] }
 ];

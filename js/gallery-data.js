@@ -1691,6 +1691,7 @@ const GALLERY_DATA = {
       },
       {
         file: "000084400023.jpg",
+        archived: true,
         title: { en: "vanishing into an other world", fr: "disparaître dans un autre monde", es: "desvanecerse en otro mundo" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
         year: 2023,
@@ -1895,14 +1896,6 @@ const GALLERY_DATA = {
       es: "Pinball"
     },
     images: [
-      {
-        file: "vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg",
-        alt: {
-          en: "Cluttered vintage costume shop lit by bent neon tubes, fur coats and beaded curtains on the racks",
-          fr: "Boutique de costumes vintage encombrée, éclairée par des tubes néon tordus, manteaux de fourrure et rideaux de perles sur les portants",
-          es: "Tienda de disfraces vintage abarrotada, iluminada con tubos de neón curvados, abrigos de piel y cortinas de cuentas en los percheros"
-        }
-      },
       {
         file: "circus-tent-entrance-blue-neon-arches-w2b.jpg",
         alt: {
@@ -2191,6 +2184,14 @@ const GALLERY_DATA = {
           en: "construction workers sweeping the ground",
           fr: "Ouvriers du bâtiment balayant le sol",
           es: "Obreros de la construcción barriendo el suelo"
+        }
+      },
+      {
+        file: "vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg",
+        alt: {
+          en: "Cluttered vintage costume shop lit by bent neon tubes, fur coats and beaded curtains on the racks",
+          fr: "Boutique de costumes vintage encombrée, éclairée par des tubes néon tordus, manteaux de fourrure et rideaux de perles sur les portants",
+          es: "Tienda de disfraces vintage abarrotada, iluminada con tubos de neón curvados, abrigos de piel y cortinas de cuentas en los percheros"
         }
       }]
     },
