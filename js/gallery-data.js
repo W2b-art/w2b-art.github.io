@@ -1571,12 +1571,11 @@ const GALLERY_DATA = {
     images: [
       {
         file: "contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg",
-        alt: {
-          en: "A wrecked boat on a rocky shore, black and white medium-format film",
-          fr: "Une épave de bateau sur un rivage rocheux, moyen format argentique noir et blanc",
-          es: "Los restos de un barco en una orilla rocosa, película de formato medio en blanco y negro"
-        }
-      },
+        title: { en: "Testimony to a slow death", fr: "Témoignage d'une mort lente", es: "Testimonio de una muerte lenta" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Ireland", fr: "Irlande", es: "Irlanda" },
+        year: 2023,
+        alt: { en: "Contemplations wrecked boat rocky shore black white, analog photograph, Ireland", fr: "Contemplations Bateau échoué Rive rocheuse Noir et blanc, photographie argentique, Irlande", es: "Reflexiones Barco naufragado Costa rocosa Blanco y negro, Fotografía analógica, Irlanda" }},
       {
         file: "glass-roof-grid-baroque-sculpture-ornament-w2b.jpg",
         archived: true,
@@ -1588,12 +1587,11 @@ const GALLERY_DATA = {
       },
       {
         file: "pinball-arcade-machine-jackpot-cards-neon-w2b.jpg",
-        alt: {
-          en: "Vintage pinball arcade machine lit with neon tubes, playing cards, jackpot graphics, euro banknotes and tokens inside",
-          fr: "Machine à sous vintage éclairée au néon, avec cartes à jouer, graphismes jackpot, billets en euros et jetons à l'intérieur",
-          es: "Máquina tragamonedas vintage iluminada con neón, con cartas, gráficos de jackpot, billetes de euro y fichas en su interior"
-        }
-      },
+        title: { en: "Jackpot", fr: "Jackpot", es: "Bote⁠(JACKPOT)" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "Francia" },
+        year: 2023,
+        alt: { en: "Pinball arcade machine jackpot cards neon, analog photograph, France", fr: "Cartes de jackpot d'un flipper d'arcade au néon, photographie analogique, France", es: "Cartas de jackpot de una máquina recreativa de pinball con luces de neón, fotografía analógica, Francia" }},
       {
         file: "red-lamp-crossed-legs-magazine-intimate-room-w2b.jpg",
         archived: true,
@@ -1625,12 +1623,10 @@ const GALLERY_DATA = {
       },
       {
         file: "hands-playing-double-bass-black-white-w2b.jpg",
-        alt: {
-          en: "Close-up of hands playing a double bass with a bow, black and white motion-blurred photography",
-          fr: "Gros plan sur des mains jouant de la contrebasse à l'archet, photographie noir et blanc avec flou de mouvement",
-          es: "Primer plano de manos tocando un contrabajo con arco, fotografía en blanco y negro con desenfoque de movimiento"
-        }
-      },
+        title: { en: "Maestria", fr: "Maestria", es: "Maestría" },
+        location: { en: "Ireland", fr: "Irlande", es: "Irlanda" },
+        year: 2022,
+        alt: { en: "Hands playing double bass black white, Ireland", fr: "Mains jouant de la contrebasse, noir et blanc, Irlande", es: "Manos tocando un contrabajo blanco y negro, Irlanda" }},
       {
         file: "abandoned-train-wagons-junkyard-color-w2b.jpg",
         title: { en: "train of thoughts", fr: "train d'idées", es: "tren de ideas" },
@@ -1644,12 +1640,11 @@ const GALLERY_DATA = {
       },
       {
         file: "woman-car-window-candid-street-black-white-w2b.jpg",
-        alt: {
-          en: "Woman glancing out of a car window, candid black and white street photography",
-          fr: "Femme jetant un regard par la fenêtre d'une voiture, photographie de rue candide noir et blanc",
-          es: "Mujer mirando por la ventana de un auto, fotografía callejera candid en blanco y negro"
-        }
-      },
+        title: { en: "Angry passenger", fr: "Passager en colère", es: "Pasajero enfadado" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
+        year: 2026,
+        alt: { en: "Woman car window candid street black white, analog photograph, Colombia", fr: "Photo analogique en noir et blanc d'une femme prise sur le vif depuis la vitre d'une voiture dans la rue, Colombie", es: "Fotografía analógica en blanco y negro de una mujer en la calle, tomada de forma espontánea desde la ventanilla de un coche, Colombia" }},
       {
         file: "dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg",
         alt: {
@@ -1666,14 +1661,8 @@ const GALLERY_DATA = {
           es: "Primer plano de tornillos y tuercas dispersos sobre un engranaje industrial, fotografía en blanco y negro"
         }
       },
-      { file: "man-silhouette-bench-dramatic-sunset-sky-w2b.jpg", alt: {
-        en: "Man in silhouette on a bench under a dramatic sunset sky",
-        fr: "Homme en silhouette sur un banc sous un ciel de coucher de soleil dramatique",
-        es: "Hombre en silueta sobre un banco bajo un cielo de atardecer dramático" } },
-      { file: "dead-trees-rocky-shore-mountains-black-white-w2b.jpg", alt: {
-        en: "Dead trees on a rocky shoreline with mountains and a sailboat across the water, black and white photography",
-        fr: "Arbres morts sur un rivage rocheux avec des montagnes et un voilier de l'autre côté de l'eau, photographie noir et blanc",
-        es: "Árboles muertos en una orilla rocosa con montañas y un velero al otro lado del agua, fotografía en blanco y negro" } },
+      { file: "man-silhouette-bench-dramatic-sunset-sky-w2b.jpg", title: { en: "sundown mesmerized up", fr: "fasciné par le coucher du soleil", es: "cautivado por la puesta de sol" }, medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" }, location: { en: "Ireland", fr: "Irlande", es: "Irlanda" }, year: 2024, alt: { en: "Man silhouette bench dramatic sunset sky, analog photograph, Ireland", fr: "Silhouette d'un homme assis sur un banc, ciel au coucher du soleil spectaculaire, photographie argentique, Irlande", es: "Silueta de un hombre en un banco con un cielo dramático al atardecer, fotografía analógica, Irlanda" }},
+      { file: "dead-trees-rocky-shore-mountains-black-white-w2b.jpg", title: { en: "beauty of the dead", fr: "beauté des morts", es: "belleza de los muertos" }, medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" }, location: { en: "Corsica", fr: "Corse", es: "Córcega" }, year: 2021, alt: { en: "Dead trees rocky shore mountains black white, analog photograph, Corsica", fr: "Arbres morts, rivage rocheux, montagnes, noir et blanc, photographie argentique, Corse", es: "Árboles muertos, costa rocosa, montañas, blanco y negro, fotografía analógica, Córcega" }},
       { file: "mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg", alt: {
         en: "Close-up of mussels and barnacles encrusted on coastal rock, macro texture photography",
         fr: "Gros plan sur des moules et balanes incrustées sur une roche côtière, photographie macro de texture",
@@ -1887,47 +1876,36 @@ const GALLERY_DATA = {
   "branch-pinball": {
     id: "branch-pinball",
     folder: "images/branch-pinball/",
-    title: {
-      en: "Pinball",
-      fr: "Pinball",
-      es: "Pinball"
-    },
+    title: { en: "the lights of our excitment", fr: "les lumières de notre enthousiasme", es: "la luz de nuestra emoción" },
     images: [
       {
         file: "circus-tent-entrance-blue-neon-arches-w2b.jpg",
-        alt: {
-          en: "Circus tent entrance at night under two arching blue neon tubes",
-          fr: "Entrée de chapiteau de cirque la nuit sous deux arches de néon bleu",
-          es: "Entrada de carpa de circo de noche bajo dos arcos de neón azul"
-        }
-      },
+        title: { en: "creepy joy", fr: "joie inquiétante", es: "alegría inquietante" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "Francia" },
+        year: 2024,
+        alt: { en: "Circus tent entrance blue neon arches, analog photograph, France", fr: "Arcs bleus en néon à l’entrée d’un chapiteau de cirque, photographie argentique, France", es: "Arcos de neón azul en la entrada de una carpa de circo, fotografía analógica, Francia" }},
       {
         file: "teal-neon-light-trails-abandoned-interior-w2b.jpg",
-        alt: {
-          en: "Long-exposure teal neon light trails crossing a concrete pillar in a derelict interior",
-          fr: "Traînées de lumière néon turquoise en pose longue croisant un pilier de béton dans un intérieur à l'abandon",
-          es: "Estelas de luz neón turquesa en larga exposición cruzando un pilar de concreto en un interior abandonado"
-        }
-      },
+        title: { en: "lighttower", fr: "tour d’éclairage", es: "torre de iluminación" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "france", fr: "France", es: "francia" },
+        year: 2025,
+        alt: { en: "Teal neon light trails abandoned interior, analog photograph, france", fr: "Traînées de lumière néon bleu sarcelle dans un intérieur abandonné, photographie argentique, France", es: "Estelas de luz neón color verde azulado en un interior abandonado, fotografía analógica, Francia" }},
       {
         file: "dj-booth-neon-light-trails-nightclub-w2b.jpg",
-        alt: {
-          en: "DJ booth seen from above through swirling red and blue neon light trails, nightclub",
-          fr: "Cabine DJ vue de haut à travers des traînées de lumière néon rouge et bleue, boîte de nuit",
-          es: "Cabina de DJ vista desde arriba a través de estelas de luz neón roja y azul, discoteca"
-        }
-      },
+        title: { en: "lights of excitements", fr: "lumières d'excitation", es: "luces de emoción" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Corsica", fr: "Corse", es: "Córcega" },
+        year: 2025,
+        alt: { en: "Dj booth neon light trails nightclub, analog photograph, Corsica", fr: "Traînées lumineuses néon de la cabine du DJ dans une boîte de nuit, photographie analogique, Corse", es: "Rastros de luz de neón en la cabina del DJ de una discoteca, fotografía analógica, Córcega" }},
       {
         file: "000027230023.jpg",
         title: { en: "red reveals", fr: "les retombées rouges", es: "El rojo revela" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "colombia", fr: "Colombie", es: "colombia" },
         year: 2026,
-        alt: {
-          en: "red neon tubes and dark lighting",
-          fr: "Tubes néon rouges et éclairage tamisé",
-          es: "Tubos de neón rojos e iluminación tenue"
-        }
-      }
+        alt: { en: "000027230023, analog photograph, colombia", fr: "000027230023, photographie argentique, Colombie", es: "000027230023, fotografía analógica, Colombia" }}
     ]
   },
 
@@ -1942,7 +1920,7 @@ const GALLERY_DATA = {
   "branch-coastal-texture": {
     id: "branch-coastal-texture",
     folder: "images/branch-coastal-texture/",
-    title: { en: "Coastal Texture", fr: "Texture côtière", es: "Textura costera" },
+    title: { en: "sea's skin", fr: "la peau de la mer", es: "la piel del mar" },
     images: [
       { file: "sea-anemone-underwater-macro-teal-w2b.jpg", alt: {
         en: "Underwater macro close-up of a sea anemone in teal light",
@@ -1950,68 +1928,50 @@ const GALLERY_DATA = {
         es: "Primer plano macro submarino de una anémona de mar en luz turquesa" } },
       {
         file: "contemplations-stone-cairn-rocky-shore-black-white-w2b.jpg",
-        alt: {
-          en: "A stone cairn on a rocky shore, black and white medium-format film",
-          fr: "Un cairn de pierres sur un rivage rocheux, moyen format argentique noir et blanc",
-          es: "Un mojón de piedras en una orilla rocosa, película de formato medio en blanco y negro"
-        }
-      },
+        title: { en: "landing mark", fr: "point de débarquement", es: "marca de aterrizaje" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Ireland", fr: "Irlande", es: "Irlanda" },
+        year: 2024,
+        alt: { en: "Contemplations stone cairn rocky shore black white, analog photograph, Ireland", fr: "Cairn de pierres de contemplation sur un rivage rocheux, noir et blanc, photographie argentique, Irlande", es: "Montículo de piedras de contemplación en una costa rocosa en blanco y negro, fotografía analógica, Irlanda" }},
       {
         file: "contemplations-sea-stacks-pillars-black-white-w2b.jpg",
-        alt: {
-          en: "Weathered rock pillars along the shore, black and white medium-format film",
-          fr: "Des piliers rocheux érodés le long du rivage, moyen format argentique noir et blanc",
-          es: "Pilares de roca erosionados a lo largo de la orilla, película de formato medio en blanco y negro"
-        }
-      },
+        title: { en: "on the edge of the sand", fr: "au bord du sable", es: "al borde de la arena" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "Francia" },
+        year: 2025,
+        alt: { en: "Contemplations sea stacks pillars black white, analog photograph, France", fr: "Contemplation de colonnes rocheuses marines, noir et blanc, photographie argentique, France", es: "Contemplaciones de farallones marinos, pilares, blanco y negro, fotografía analógica, Francia" }},
       {
         file: "weathered-rock-formation-coastal-texture-w2b.jpg",
-        alt: {
-          en: "Close-up of a weathered coastal rock formation with a green shrub against a blue sky, medium format film photography",
-          fr: "Gros plan sur une formation rocheuse côtière érodée avec un arbuste vert sur fond de ciel bleu, moyen format argentique",
-          es: "Primer plano de una formación rocosa costera erosionada con un arbusto verde contra un cielo azul, película de formato medio"
-        }
-      },
+        title: { en: "negative image of the sea", fr: "négatif de la mer", es: "negativo del mar" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Corsica", fr: "Corse", es: "Córcega" },
+        year: 2021,
+        alt: { en: "Weathered rock formation coastal texture, analog photograph, Corsica", fr: "Texture côtière de formation rocheuse érodée, photographie analogique, Corse", es: "Textura costera de una formación rocosa erosionada, fotografía analógica, Córcega" }},
       {
         file: "000036320002.jpg",
         title: { en: "temporary construction eternal cycle", fr: "construction temporaire cycle éternel", es: "construcción temporal ciclo eterno" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
         location: { en: "Corsica", fr: "Corse", es: "Córcega" },
         year: 2025,
-        alt: {
-          en: "000036320002, analog photograph, Corsica",
-          fr: "000036320002, photographie analogique, Corse",
-          es: "000036320002, fotografía analógica, Córcega"
-        }
-      }
+        alt: { en: "000036320002, analog photograph, Corsica", fr: "000036320002, photographie analogique, Corse", es: "000036320002, fotografía analógica, Córcega" }}
     ]
   },
 
   "branch-wrecked-boat": {
     id: "branch-wrecked-boat",
     folder: "images/branch-wrecked-boat/",
-    title: { en: "The Wreck", fr: "L'épave", es: "El naufragio" },
+    title: { en: "lemon ship", fr: "coque de noix", es: "Cáscara de nuez" },
     images: [
-      { file: "wrecked-boat-hull-close-up-black-white-w2b.jpg", alt: {
-        en: "Close-up of a wrecked boat hull, black and white film photography",
-        fr: "Gros plan sur la coque d'un bateau échoué, photographie argentique noir et blanc",
-        es: "Primer plano del casco de un barco naufragado, fotografía analógica en blanco y negro" } },
-      { file: "wrecked-boat-pl5-marking-black-white-w2b.jpg", alt: {
-        en: "Wrecked boat hull marked \"PL5\", black and white film photography",
-        fr: "Coque de bateau échoué marquée « PL5 », photographie argentique noir et blanc",
-        es: "Casco de barco naufragado marcado «PL5», fotografía analógica en blanco y negro" } },
-      { file: "wrecked-boat-full-view-colour-w2b.jpg", alt: {
-        en: "Full view of the same wrecked boat, colour film photography",
-        fr: "Vue d'ensemble du même bateau échoué, photographie argentique couleur",
-        es: "Vista completa del mismo barco naufragado, fotografía analógica a color" } },
+      { file: "wrecked-boat-hull-close-up-black-white-w2b.jpg", title: { en: "last cruise", fr: "dernière croisière", es: "último crucero" }, medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" }, location: { en: "France", fr: "France", es: "Francia" }, year: 2025, alt: { en: "Wrecked boat hull close up black white, analog photograph, France", fr: "Gros plan en noir et blanc d'une coque de bateau épavée, photographie argentique, France", es: "Primer plano en blanco y negro del casco de un barco naufragado, fotografía analógica, Francia" }},
+      { file: "wrecked-boat-pl5-marking-black-white-w2b.jpg", title: { en: "the young in the window of the old", fr: "les jeunes à la fenêtre des personnes âgées", es: "Los jóvenes en la ventana de los mayores" }, medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" }, location: { en: "France", fr: "France", es: "Francia" }, year: 2025, alt: { en: "Wrecked boat pl5 marking black white, analog photograph, France", fr: "Bateau naufragé, marquage P15 noir et blanc, photographie argentique, France", es: "Barco naufragado con marcas pl5 en blanco y negro, fotografía analógica, Francia" }},
+      { file: "wrecked-boat-full-view-colour-w2b.jpg", title: { en: "Proudness", fr: "fierté", es: "Orgullo" }, medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" }, location: { en: "France", fr: "France", es: "Francia" }, year: 2025, alt: { en: "Wrecked boat full view colour, analog photograph, France", fr: "Vue complète en couleur d’un bateau naufragé, photographie argentique, France", es: "Fotografía analógica en color de un barco naufragado visto en su totalidad, Francia" }},
       {
         file: "contemplations-two-boats-misty-still-water-w2b.jpg",
-        alt: {
-          en: "Two small boats on still, misty water, medium-format film",
-          fr: "Deux petites barques sur une eau calme et brumeuse, moyen format argentique",
-          es: "Dos pequeñas barcas sobre agua quieta y brumosa, película de formato medio"
-        }
-      }
+        title: { en: "Peace of the sea and mind", fr: "La sérénité de la mer et de l'esprit", es: "La paz del mar y de la mente" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Ireland", fr: "Irlande", es: "Irlanda" },
+        year: 2024,
+        alt: { en: "Contemplations two boats misty still water, analog photograph, Ireland", fr: "Contemplation de deux bateaux sur une étendue d’eau calme et brumeuse, photographie argentique, Irlande", es: "«Contemplaciones»: dos barcas en aguas tranquilas y brumosas, fotografía analógica, Irlanda" }}
     ]
   },
 
@@ -2019,44 +1979,36 @@ const GALLERY_DATA = {
   "branch-driftwood-shore": {
     id: "branch-driftwood-shore",
     folder: "images/branch-driftwood-shore/",
-    title: { en: "Same Shore", fr: "Même rivage", es: "Misma orilla" },
+    title: { en: "skeletons of life", fr: "squelettes de la vie", es: "esqueletos de la vida" },
     images: [
       {
         file: "contemplations-windswept-tree-cliff-edge-black-white-w2b.jpg",
-        alt: {
-          en: "A wind-bent tree at a cliff edge above the sea, black and white medium-format film",
-          fr: "Un arbre courbé par le vent au bord d'une falaise au-dessus de la mer, moyen format argentique noir et blanc",
-          es: "Un árbol curvado por el viento al borde de un acantilado sobre el mar, película de formato medio en blanco y negro"
-        }
-      },
+        title: { en: "on tree can hide the sky", fr: "Un arbre peut cacher le ciel", es: "Un árbol puede ocultar el cielo" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "argentina", fr: "Argentine", es: "Argentina" },
+        year: 2024,
+        alt: { en: "Contemplations windswept tree cliff edge black white, analog photograph, argentina", fr: "Contemplations Arbre balayé par le vent au bord d'une falaise en noir et blanc, photographie argentique, Argentine", es: "Contemplaciones de un árbol azotado por el viento al borde de un acantilado en blanco y negro, fotografía analógica, Argentina" }},
       {
         file: "contemplations-stone-tower-well-black-white-w2b.jpg",
-        alt: {
-          en: "An old stone tower and well, black and white medium-format film",
-          fr: "Une vieille tour de pierre et un puits, moyen format argentique noir et blanc",
-          es: "Una vieja torre de piedra y un pozo, película de formato medio en blanco y negro"
-        }
-      },
+        title: { en: "quiteness", fr: "calme", es: "tranquilidad" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "Francia" },
+        year: 2024,
+        alt: { en: "Contemplations stone tower well black white, analog photograph, France", fr: "Contemplations : tour en pierre, puits, noir et blanc, photographie argentique, France", es: "Reflexiones en un pozo con torre de piedra, blanco y negro, fotografía analógica, Francia" }},
       {
         file: "driftwood-pebble-beach-mountains-black-white-w2b.jpg",
-        alt: {
-          en: "Curved driftwood resting on a pebble beach with misty mountains across the water, black and white film photography",
-          fr: "Bois flotté incurvé posé sur une plage de galets face à des montagnes embrumées, photographie argentique noir et blanc",
-          es: "Madera flotante curvada sobre una playa de guijarros frente a montañas con niebla, fotografía analógica en blanco y negro"
-        }
-      },
+        title: { en: "Still standing", fr: "Toujours debout", es: "seguir en pie" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Corsica", fr: "Corse", es: "Córcega" },
+        year: 2021,
+        alt: { en: "Driftwood pebble beach mountains black white, analog photograph, Corsica", fr: "Plage de galets avec du bois flotté, montagnes, noir et blanc, photographie argentique, Corse", es: "Playa de guijarros con madera flotante, montañas, blanco y negro, fotografía analógica, Córcega" }},
       {
         file: "serie-85-2.jpg",
         title: { en: "death before blooming", fr: "mort avant l’épanouissement", es: "Muerte antes de florecer" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        location: { en: "Antioquia", fr: "Antioquia", es: "Antioquia" },
+        location: { en: "Colombia", fr: "Colombia", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "Serie 85, analog photograph, Antioquia",
-          fr: "Série 85, photographie analogique, Antioquia",
-          es: "Serie 85, fotografía analógica, Antioquia"
-        }
-      }
+        alt: { en: "Serie 85, analog photograph, Colombia", fr: "Série 85, photographie analogique, Colombie", es: "Serie 85, fotografía analógica, Colombia" }}
     ]
   },
 
@@ -2064,32 +2016,24 @@ const GALLERY_DATA = {
   "branch-coastal-bench": {
     id: "branch-coastal-bench",
     folder: "images/branch-coastal-bench/",
-    title: { en: "The Bench", fr: "Le banc", es: "El banco" },
+    title: { en: "pondering", fr: "réfléchissant", es: "Ponderación" },
     images: [
-      { file: "figure-seated-bench-bay-view-black-white-w2b.jpg", alt: {
-        en: "Figure seated on a bench overlooking a bay, black and white film photography",
-        fr: "Silhouette assise sur un banc face à une baie, photographie argentique noir et blanc",
-        es: "Figura sentada en un banco frente a una bahía, fotografía analógica en blanco y negro" } },
-      { file: "couple-bench-overlooking-water-w2b.jpg", alt: {
-        en: "Couple seated on a bench overlooking still water",
-        fr: "Couple assis sur un banc face à une eau calme",
-        es: "Pareja sentada en un banco frente a aguas tranquilas" } },
+      { file: "figure-seated-bench-bay-view-black-white-w2b.jpg", title: { en: "longing for the far sea", fr: "aspiration vers la mer lointaine", es: "nostalgia del mar." }, medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" }, location: { en: "Ireland", fr: "Irlande", es: "Irlanda" }, year: 2024, alt: { en: "Figure seated bench bay view black white, analog photograph, Ireland", fr: "Figure assise sur un banc, vue sur la baie, noir et blanc, photographie argentique, Irlande", es: "Figura sentada en un banco con vistas a la bahía en blanco y negro, fotografía analógica, Irlanda" }},
+      { file: "couple-bench-overlooking-water-w2b.jpg", title: { en: "why kiss elsewhere?", fr: "Pourquoi s'embrasser ailleurs ?", es: "¿Por qué besarse en otro sitio?" }, medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" }, location: { en: "France", fr: "France", es: "Francia" }, year: 2022, alt: { en: "Couple bench overlooking water, analog photograph, France", fr: "Couple sur un banc surplombant l'eau, photographie argentique, France", es: "Pareja en un banco con vistas al agua, fotografía analógica, Francia" }},
       {
         file: "coastal-path-bench-ocean-view-faded-film-w2b.jpg",
-        alt: {
-          en: "A bench at the end of a green coastal path overlooking the blue ocean, faded vintage film photography",
-          fr: "Un banc au bout d'un sentier côtier verdoyant face à l'océan bleu, photographie argentique délavée",
-          es: "Un banco al final de un sendero costero verde con vista al océano azul, fotografía analógica desvaída"
-        }
-      },
+        title: { en: "the greastest bench", fr: "le meiileur banc", es: "el mejor banco" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "Francia" },
+        year: 2022,
+        alt: { en: "Coastal path bench ocean view faded film, analog photograph, France", fr: "Banc sur un sentier côtier avec vue sur l'océan, effet film délavé, photographie argentique, France", es: "Banco en un sendero costero con vistas al mar, película desteñida, fotografía analógica, Francia" }},
       {
         file: "solitary-figure-bench-tropical-tree-seaside-black-white-w2b.jpg",
-        alt: {
-          en: "Solitary figure seated under a tropical tree overlooking the sea, black and white film photography",
-          fr: "Silhouette solitaire assise sous un arbre tropical face à la mer, argentique noir et blanc",
-          es: "Figura solitaria sentada bajo un árbol tropical frente al mar, fotografía analógica en blanco y negro"
-        }
-      }
+        title: { en: "making way", fr: "Faire place", es: "abrirse paso" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Corsica", fr: "Corse", es: "Córcega" },
+        year: 2023,
+        alt: { en: "Solitary figure bench tropical tree seaside black white, analog photograph, Corsica", fr: "Banc avec une silhouette solitaire, arbre tropical, bord de mer, noir et blanc, photographie argentique, Corse", es: "Banco con una figura solitaria, árbol tropical, junto al mar, blanco y negro, fotografía analógica, Córcega" }}
     ]
   },
 
@@ -2097,7 +2041,7 @@ const GALLERY_DATA = {
   "branch-dark-bay": {
     id: "branch-dark-bay",
     folder: "images/branch-dark-bay/",
-    title: { en: "Dark Bay", fr: "Baie sombre", es: "Bahía oscura" },
+    title: { en: "calm", fr: "calme", es: "calma" },
     images: [
       { file: "buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg", alt: {
         en: "Buoy in silhouette in a bay under a dramatic sunset sky",
@@ -2137,7 +2081,7 @@ const GALLERY_DATA = {
   "branch-industrial": {
     id: "branch-industrial",
     folder: "images/branch-industrial/",
-    title: { en: "Scrap and Steel", fr: "Ferraille et acier", es: "Chatarra y acero" },
+    title: { en: "the gears of our reality", fr: "les rouages de notre réalité", es: "los engranajes de nuestra realidad" },
     images: [
       { file: "motorcycle-frame-mechanical-detail-black-white-w2b.jpg", alt: {
         en: "Mechanical detail of a motorcycle frame, black and white photography",
@@ -2163,16 +2107,15 @@ const GALLERY_DATA = {
   "branch-t17": {
       id: "branch-t17",
       folder: "images/branch-t17/",
-      title: { en: "Untitled", fr: "Sans titre", es: "Sin título" },
+      title: { en: "windows to sonder", fr: "fenêtres vers l'introspection", es: "Ventanas hacia la introspección" },
       images: [
       {
         file: "medellin-candy-vendor-elder-colourful-market-stall-w2b.jpg",
-        alt: {
-          en: "Elderly candy vendor resting at a colourful market stall overflowing with sweets and lollipops in Medellín, documentary portrait",
-          fr: "Vendeur de bonbons âgé se reposant à un étal de marché coloré débordant de sucreries et sucettes à Medellín, portrait documentaire",
-          es: "Vendedor anciano de dulces descansando en un puesto de mercado colorido repleto de golosinas en Medellín, retrato documental"
-        }
-      },
+        title: { en: "Candy granpa", fr: "Papy bonbon", es: "Abuelo goloso" },
+        medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
+        year: 2026,
+        alt: { en: "Medellin candy vendor elder colourful market stall, digital photograph, Colombia", fr: "Vendeuse de bonbons âgée dans un étal coloré du marché de Medellín, photographie numérique, Colombie", es: "Puesto colorido de un vendedor de dulces mayor en un mercado de Medellín, fotografía digital, Colombia" }},
       {
         file: "medellin-kitten-shoulder-street-youth-colombia-colour-w2b.jpg",
         alt: {
@@ -2191,47 +2134,37 @@ const GALLERY_DATA = {
       },
       {
         file: "tattoo-artist-desk-work-flash-art-wall-w2b.jpg",
-        alt: {
-          en: "Hooded figure working at a lamp-lit desk, tattoo flash sheets and reference images covering the wall behind",
-          fr: "Silhouette encapuchonnée au travail sur un bureau éclairé par une lampe, planches de flash tattoo et images de référence couvrant le mur",
-          es: "Figura encapuchada trabajando en un escritorio iluminado por una lámpara, planchas de flash de tatuaje e imágenes de referencia cubriendo la pared"
-        }
-      },
+        title: { en: "night's of an artist", fr: "Les nuits d'un artiste", es: "Noches de un artista" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "Francia" },
+        year: 2022,
+        alt: { en: "Tattoo artist desk work flash art wall, analog photograph, France", fr: "Mur de flash art dans l'atelier d'un·e tatoueur·se, photographie analogique, France", es: "Mesa de trabajo de un tatuador con pared de «flash art», fotografía analógica, Francia" }},
       {
         file: "serie-7-6.jpg",
         title: { en: "princess has to sell her dresses", fr: "La princesse doit vendre ses robes", es: "La princesa tiene que vender sus vestidos" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "France" },
         year: 2024,
-        alt: {
-          en: "silhouet in a dress shop",
-          fr: "Silhouette dans un magasin de robes",
-          es: "Silueta en una tienda de vestidos"
-        }
-      },
+        alt: { en: "Serie 7, analog photograph, France", fr: "Série 7, photographie analogique, France", es: "Serie 7, fotografía analógica, Francia" }},
       {
         file: "serie-20-8.jpg",
         title: { en: "one sweep away", fr: "à un geste près", es: "A un paso" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "Francia" },
         year: 2025,
-        alt: {
-          en: "construction workers sweeping the ground",
-          fr: "Ouvriers du bâtiment balayant le sol",
-          es: "Obreros de la construcción barriendo el suelo"
-        }
-      },
+        alt: { en: "Serie 20, analog photograph, France", fr: "Série 20, photographie analogique, France", es: "Serie 20, fotografía analógica, Francia" }},
       {
         file: "vintage-costume-shop-neon-tubes-fur-coats-w2b.jpg",
-        alt: {
-          en: "Cluttered vintage costume shop lit by bent neon tubes, fur coats and beaded curtains on the racks",
-          fr: "Boutique de costumes vintage encombrée, éclairée par des tubes néon tordus, manteaux de fourrure et rideaux de perles sur les portants",
-          es: "Tienda de disfraces vintage abarrotada, iluminada con tubos de neón curvados, abrigos de piel y cortinas de cuentas en los percheros"
-        }
-      }]
+        title: { en: "Joy to sell pleasure to buy", fr: "Plaisir de vendre, plaisir d'acheter", es: "Alegría por vender, placer por comprar" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
+        year: 2026,
+        alt: { en: "Vintage costume shop neon tubes fur coats, analog photograph, Colombia", fr: "Néons dans une boutique de costumes vintage, manteaux de fourrure, photographie analogique, Colombie", es: "Tubos de neón en una tienda de disfraces «vintage» con abrigos de piel, fotografía analógica, Colombia" }}]
     },
   "branch-t13": {
       id: "branch-t13",
       folder: "images/branch-t13/",
-      title: { en: "Untitled", fr: "Sans titre", es: "Sin título" },
+      title: { en: "the touching", fr: "le toucher", es: "el contacto" },
       images: [
       {
         file: "6607-9.jpg",
@@ -2288,7 +2221,7 @@ const GALLERY_DATA = {
   "branch-t3": {
       id: "branch-t3",
       folder: "images/branch-t3/",
-      title: { en: "Untitled", fr: "Sans titre", es: "Sin título" },
+      title: { en: "paths", fr: "chemins", es: "rutas" },
       images: [
       {
         file: "contemplations-ruined-doorway-light-colour-w2b.jpg",
