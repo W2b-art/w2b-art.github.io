@@ -233,7 +233,13 @@
     var branchSeries=related[0].series;
     var items=[anchorIm].concat(related.map(function(r){return resolveShopImg(r.series,r.file);}).filter(Boolean));
     var branchG=GALLERY_DATA[branchSeries];
-    var title=titleFor(anchorIm.file, anchorIm.title, (branchG&&branchG.title&&(branchG.title[L]||branchG.title.fr))||(anchorIm.alt&&(anchorIm.alt[L]||anchorIm.alt.fr)));
+    // 2026-11-15 — Guillaume: the gallery heading must be the branch's own
+    // name, not the anchor photo's own title (that one stays on its own
+    // card inside the strip, via buyCard()'s titleFor call below) — the
+    // anchor's title was winning here by accident since titleFor() always
+    // checks the photo's own title first, which is right for a photo but
+    // wrong for a series heading.
+    var title=(branchG&&branchG.title&&(branchG.title[L]||branchG.title.fr))||titleFor(anchorIm.file, anchorIm.title, anchorIm.alt&&(anchorIm.alt[L]||anchorIm.alt.fr));
     seriesList.push({cover:anchorIm,title:title,tier:isCollector(branchSeries)?'collector':'open',items:items});
   });
 
