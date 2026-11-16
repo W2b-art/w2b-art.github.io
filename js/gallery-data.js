@@ -2032,6 +2032,18 @@ const GALLERY_DATA = {
           fr: "Bois flotté incurvé posé sur une plage de galets face à des montagnes embrumées, photographie argentique noir et blanc",
           es: "Madera flotante curvada sobre una playa de guijarros frente a montañas con niebla, fotografía analógica en blanco y negro"
         }
+      },
+      {
+        file: "serie-85-2.jpg",
+        title: { en: "death before blooming", fr: "mort avant l’épanouissement", es: "Muerte antes de florecer" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Antioquia", fr: "Antioquia", es: "Antioquia" },
+        year: 2026,
+        alt: {
+          en: "Serie 85, analog photograph, Antioquia",
+          fr: "Série 85, photographie analogique, Antioquia",
+          es: "Serie 85, fotografía analógica, Antioquia"
+        }
       }
     ]
   },
@@ -2285,6 +2297,42 @@ const GALLERY_DATA = {
           fr: "Couloir en pierre ancienne en ruines avec arches répétées créant un point de fuite, argentique noir et blanc",
           es: "Corredor de piedra antigua en ruinas con arcos repetidos creando punto de fuga, analógico blanco y negro"
         }
+      },
+      {
+        file: "000086720033.jpg",
+        title: { en: "window to freedom", fr: "fenêtre sur la liberté", es: "ventana a la libertad" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Calvi", fr: "Calvi", es: "Calvi" },
+        year: 2022,
+        alt: {
+          en: "000086720033, analog photograph, Calvi",
+          fr: "000086720033, photographie analogique, Calvi",
+          es: "000086720033, fotografía analógica, Calvi"
+        }
+      },
+      {
+        file: "serie-63-12.jpg",
+        title: { en: "Entering the abandonded", fr: "Entrer dans le lieu abandonné", es: "Entrar en el lugar abandonado" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "Francia" },
+        year: 2025,
+        alt: {
+          en: "Serie 63, analog photograph, France",
+          fr: "Série 63, photographie analogique, France",
+          es: "Serie 63, fotografía analógica, Francia"
+        }
+      },
+      {
+        file: "serie-63-07.jpg",
+        title: { en: "Entering the abandonded 2", fr: "Entrer dans le bâtiment abandonné 2", es: "Entrando en el edificio abandonado 2" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "Francia" },
+        year: 2025,
+        alt: {
+          en: "Serie 63, analog photograph, France",
+          fr: "Série 63, photographie analogique, France",
+          es: "Serie 63, fotografía analógica, Francia"
+        }
       }
 ]
     },
@@ -2333,7 +2381,31 @@ const GALLERY_DATA = {
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
         location: { en: "Argentina", fr: "Argentine", es: "Argentina" },
         year: 2023,
-        alt: { en: "000024290011, analog photograph, Argentina", fr: "000024290011, photographie analogique, Argentine", es: "000024290011, fotografía analógica, Argentina" }}]
+        alt: { en: "000024290011, analog photograph, Argentina", fr: "000024290011, photographie analogique, Argentine", es: "000024290011, fotografía analógica, Argentina" }},
+      {
+        file: "serie-53-5.jpg",
+        title: { en: "scrolls of the minds", fr: "parchemins des esprits", es: "pergaminos de las mentes" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Ireland", fr: "Irlande", es: "Irlanda" },
+        year: 2024,
+        alt: {
+          en: "Serie 53, analog photograph, Ireland",
+          fr: "Série 53, photographie analogique, Irlande",
+          es: "Serie 53, fotografía analógica, Irlanda"
+        }
+      },
+      {
+        file: "3757-17.jpg",
+        title: { en: "in the shadows we search for any light", fr: "Dans l'ombre, nous cherchons la moindre lueur", es: "En la oscuridad buscamos cualquier luz" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "medellin", fr: "Medellin", es: "Medellín" },
+        year: 2026,
+        alt: {
+          en: "3757, analog photograph, medellin",
+          fr: "3757, photographie argentique, Medellín",
+          es: "3757, fotografía analógica, Medellín"
+        }
+      }]
     }
 
 };

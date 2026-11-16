@@ -96,15 +96,15 @@ const TRUNK_MANIFEST_CURRENT = [
 const TRUNK_MANIFEST_OTHER = [
   { id:'t01', series:'trunk', file:'mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg', related:[
     {series:'branch-coastal-texture',file:'weathered-rock-formation-coastal-texture-w2b.jpg'},
-    {series:'branch-coastal-texture',file:'sea-anemone-underwater-macro-teal-w2b.jpg'},
     {series:'branch-coastal-texture',file:'contemplations-stone-cairn-rocky-shore-black-white-w2b.jpg'},
     {series:'branch-coastal-texture',file:'contemplations-sea-stacks-pillars-black-white-w2b.jpg'}
 ] },
   { id:'t02', series:'trunk', file:'dead-trees-rocky-shore-mountains-black-white-w2b.jpg', related:[
     {series:'branch-driftwood-shore',file:'contemplations-windswept-tree-cliff-edge-black-white-w2b.jpg'},
     {series:'branch-driftwood-shore',file:'contemplations-stone-tower-well-black-white-w2b.jpg'},
+    {series:'branch-driftwood-shore',file:'serie-85-2.jpg'},
     {series:'branch-driftwood-shore',file:'driftwood-pebble-beach-mountains-black-white-w2b.jpg'}
-  ] },
+] },
   { id:'t04', series:'trunk', file:'contemplations-wrecked-boat-rocky-shore-black-white-w2b.jpg', related:[
     {series:'branch-wrecked-boat',file:'wrecked-boat-hull-close-up-black-white-w2b.jpg'},
     {series:'branch-wrecked-boat',file:'wrecked-boat-full-view-colour-w2b.jpg'},
@@ -147,16 +147,18 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-industrial',file:'6172-1.jpg'}
 ] },
   { id:'t3', series:'trunk', file:'000084400023.jpg', related:[
-    {series:'branch-t3',file:'contemplations-ruined-doorway-light-colour-w2b.jpg'},
     {series:'branch-t3',file:'bamboo-tunnel-pond-stone-wall-w2b.jpg'},
     {series:'branch-t3',file:'medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg'},
-    {series:'branch-t3',file:'stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg'}
+    {series:'branch-t3',file:'stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg'},
+    {series:'branch-t3',file:'serie-63-12.jpg'},
+    {series:'branch-t3',file:'serie-63-07.jpg'}
 ] },
   { id:'t5', series:'trunk', file:'000024250007.jpg', related:[
     {series:'branch-t5',file:'serie-82-8.jpg'},
     {series:'branch-t5',file:'Stand-alone-2.jpg'},
-    {series:'branch-t5',file:'000028650009.jpg'},
     {series:'branch-t5',file:'serie-76-5.jpg'},
-    {series:'branch-t5',file:'000024290011.jpg'}
+    {series:'branch-t5',file:'000024290011.jpg'},
+    {series:'branch-t5',file:'serie-53-5.jpg'},
+    {series:'branch-t5',file:'3757-17.jpg'}
   ] }
 ];

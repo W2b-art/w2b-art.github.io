@@ -613,5 +613,47 @@ const RESPONSIVE_MANIFEST = {
    1600
   ],
   "masterKB": 649
+ },
+ "images/branch-t3/000086720033.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 411
+ },
+ "images/branch-t3/serie-63-12.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 837
+ },
+ "images/branch-t5/serie-53-5.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 868
+ },
+ "images/branch-t5/3757-17.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 78
+ },
+ "images/branch-t3/serie-63-07.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 246
+ },
+ "images/branch-driftwood-shore/serie-85-2.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 688
  }
 };
