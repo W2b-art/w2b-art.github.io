@@ -95,6 +95,7 @@ const TRUNK_MANIFEST_CURRENT = [
    trunk's macro detail). */
 const TRUNK_MANIFEST_OTHER = [
   { id:'t01', series:'trunk', file:'mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg', related:[
+    {series:'branch-coastal-texture',file:'000036320002.jpg'},
     {series:'branch-coastal-texture',file:'weathered-rock-formation-coastal-texture-w2b.jpg'},
     {series:'branch-coastal-texture',file:'contemplations-stone-cairn-rocky-shore-black-white-w2b.jpg'},
     {series:'branch-coastal-texture',file:'contemplations-sea-stacks-pillars-black-white-w2b.jpg'}
@@ -139,7 +140,8 @@ const TRUNK_MANIFEST_OTHER = [
   { id:'t18', series:'trunk', file:'dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg', related:[
     {series:'branch-dark-bay',file:'buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg'},
     {series:'branch-dark-bay',file:'sunset-lake-mountain-silhouette-bird-film-w2b.jpg'},
-    {series:'branch-dark-bay',file:'contemplations-cliff-coastline-black-white-w2b.jpg'}
+    {series:'branch-dark-bay',file:'contemplations-cliff-coastline-black-white-w2b.jpg'},
+    {series:'branch-dark-bay',file:'000084440009.jpg'}
   ] },
   { id:'t19', series:'trunk', file:'bolts-nuts-industrial-gear-close-up-black-white-w2b.jpg', related:[
     {series:'branch-industrial',file:'motorcycle-frame-mechanical-detail-black-white-w2b.jpg'},

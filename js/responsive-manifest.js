@@ -655,5 +655,19 @@ const RESPONSIVE_MANIFEST = {
    1600
   ],
   "masterKB": 688
+ },
+ "images/branch-coastal-texture/000036320002.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 1193
+ },
+ "images/branch-dark-bay/000084440009.jpg": {
+  "widths": [
+   800,
+   1600
+  ],
+  "masterKB": 1302
  }
 };

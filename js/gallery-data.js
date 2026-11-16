@@ -1971,6 +1971,18 @@ const GALLERY_DATA = {
           fr: "Gros plan sur une formation rocheuse côtière érodée avec un arbuste vert sur fond de ciel bleu, moyen format argentique",
           es: "Primer plano de una formación rocosa costera erosionada con un arbusto verde contra un cielo azul, película de formato medio"
         }
+      },
+      {
+        file: "000036320002.jpg",
+        title: { en: "temporary construction eternal cycle", fr: "construction temporaire cycle éternel", es: "construcción temporal ciclo eterno" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Corsica", fr: "Corse", es: "Córcega" },
+        year: 2025,
+        alt: {
+          en: "000036320002, analog photograph, Corsica",
+          fr: "000036320002, photographie analogique, Corse",
+          es: "000036320002, fotografía analógica, Córcega"
+        }
       }
     ]
   },
@@ -2105,6 +2117,18 @@ const GALLERY_DATA = {
           en: "A rugged cliff coastline under a heavy sky, black and white medium-format film",
           fr: "Un littoral de falaises escarpées sous un ciel lourd, moyen format argentique noir et blanc",
           es: "Una costa de acantilados escarpados bajo un cielo pesado, película de formato medio en blanco y negro"
+        }
+      },
+      {
+        file: "000084440009.jpg",
+        title: { en: "Calming cycle", fr: "Cycle apaisant", es: "Ciclo de calma" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Uruguay", fr: "Uruguay", es: "Uruguay" },
+        year: 2024,
+        alt: {
+          en: "000084440009, analog photograph, Uruguay",
+          fr: "000084440009, photographie argentique, Uruguay",
+          es: "000084440009, fotografía analógica, Uruguay"
         }
       }
     ]
