@@ -49,6 +49,14 @@ a{color:inherit;text-decoration:none}
 .hero .frame.on{opacity:1;animation:kb 7s ease forwards;pointer-events:auto}
 @keyframes kb{from{transform:scale(1.06)}to{transform:scale(1.0)}}
 .hero .frame img{width:100%;height:100%;object-fit:cover;filter:contrast(1.02) saturate(1.02)}
+/* 2026-11-15 — Guillaume: show the whole photo, no crop; fill any
+   letterbox space with a blurred, darkened copy of the same photo
+   instead of bare background. bg-fill sits under fg (DOM order) and is
+   scaled up past its own box before blurring so the blur doesn't fringe
+   at the edge — .hero's overflow:hidden clips the overscan. */
+.hero .frame img.bg-fill,.hero .frame img.fg{position:absolute;inset:0}
+.hero .frame img.bg-fill{object-fit:cover;filter:blur(40px) saturate(1.05) brightness(.45);transform:scale(1.15)}
+.hero .frame img.fg{object-fit:contain}
 .hero::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
   background:linear-gradient(180deg,rgba(16,12,10,.35) 0%,rgba(16,12,10,0) 26%,rgba(16,12,10,0) 42%,rgba(16,12,10,.55) 72%,rgba(16,12,10,.9) 100%)}
 .hero .cap{position:absolute;left:40px;bottom:64px;z-index:3;max-width:60%}

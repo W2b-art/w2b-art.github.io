@@ -63,10 +63,21 @@
        "main page loading is particularly slow". Still eager (not lazy)
        since this is the hero, above the fold — buildResponsiveImg()
        defaults to lazy for the grid/branch use case, override it here. */
-    var heroEl = (typeof buildResponsiveImg === 'function') ? buildResponsiveImg(pick[0], '') : (function(){ var i=new Image(); i.src=pick[0]; i.alt=''; return i; })();
-    var heroImg = heroEl.tagName === 'PICTURE' ? heroEl.querySelector('img') : heroEl;
-    heroImg.loading = 'eager';
-    f.appendChild(heroEl); wrap.appendChild(f);
+    function makeHeroLayer(cls){
+      var el = (typeof buildResponsiveImg === 'function') ? buildResponsiveImg(pick[0], '') : (function(){ var i=new Image(); i.src=pick[0]; i.alt=''; return i; })();
+      var img = el.tagName === 'PICTURE' ? el.querySelector('img') : el;
+      img.loading = 'eager';
+      img.className = cls;
+      if (el !== img) el.style.cssText = 'position:absolute;inset:0;display:block;width:100%;height:100%';
+      return {el: el, img: img};
+    }
+    /* Guillaume: show the whole photo uncropped, not cover-cropped — any
+       letterbox space gets filled with a blurred, darkened, cover-scaled
+       copy of the same photo behind it rather than left as bare background. */
+    var heroBg = makeHeroLayer('bg-fill');
+    heroBg.img.setAttribute('aria-hidden', 'true');
+    var heroFg = makeHeroLayer('fg');
+    f.appendChild(heroBg.el); f.appendChild(heroFg.el); wrap.appendChild(f);
     if (dots) dots.style.display='none'; /* nothing to switch between — single pick, no carousel */
     if (now && typeof GALLERY_DATA!=='undefined') {
       /* branch pseudo-series aren't in GALLERY_ORDER (they're not primary
