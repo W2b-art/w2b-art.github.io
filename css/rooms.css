@@ -339,8 +339,8 @@
    anyway), as a second, soft rim-light shadow — the site's own bone/cream
    tone, low opacity — alongside the existing depth shadow, not replacing
    it. */
-.trunk-stack:hover .stack-sliver.s1,.trunk-stack:focus-within .stack-sliver.s1{transform:translate(9px,9px);box-shadow:-3px 4px 14px rgba(0,0,0,.4), 0 0 16px rgba(237,230,218,.18)}
-.trunk-stack:hover .stack-sliver.s2,.trunk-stack:focus-within .stack-sliver.s2{transform:translate(17px,17px);box-shadow:-3px 4px 14px rgba(0,0,0,.4), 0 0 16px rgba(237,230,218,.18)}
+.trunk-stack:hover .stack-sliver.s1,.trunk-stack:focus-within .stack-sliver.s1{transform:translate(9px,9px);box-shadow:-3px 4px 14px rgba(0,0,0,.4), 0 0 32px rgba(237,230,218,.38)}
+.trunk-stack:hover .stack-sliver.s2,.trunk-stack:focus-within .stack-sliver.s2{transform:translate(17px,17px);box-shadow:-3px 4px 14px rgba(0,0,0,.4), 0 0 32px rgba(237,230,218,.38)}
 
 /* ---------- full-screen scroll-snap trunk sequence (2026-11-11) ----------
    oeuvre-actuelle.html / autres-travaux.html ONLY (body.trunk-snap, set in
