@@ -497,7 +497,15 @@ async function applyAction(action) {
     if (!g) throw new Error('regenerate-alt: unknown gallery ' + gallery);
     const im = g.images.find((i) => i.file === file);
     if (!im) throw new Error('regenerate-alt: ' + file + ' not found in ' + gallery);
-    const imgPath = path.join(folderFor(GALLERY_DATA, gallery), file);
+    // Archived photos physically live under images/_archive/<galleryId>/,
+    // not the gallery's own live folder — same split admin.html's own
+    // thumbUrl() already makes for thumbnails. Missing this is why editing
+    // title/medium/location/year on any archived photo (102 of 239 photos
+    // right now) threw "file missing on disk" here, even though those 4
+    // set-meta writes just above had already landed on disk correctly.
+    const imgPath = im.archived
+      ? path.join(ARCHIVE_ROOT, gallery, file)
+      : path.join(folderFor(GALLERY_DATA, gallery), file);
     if (!fs.existsSync(imgPath)) throw new Error('regenerate-alt: file missing on disk: ' + imgPath);
     const altEn = await generateAltTextEn(fs.readFileSync(imgPath), file, {
       title: im.title && (im.title.en || im.title.fr),

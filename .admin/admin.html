@@ -502,18 +502,21 @@ function openMetaEditor(gallery, im) {
     const locEs = document.getElementById('me-location-es').value.trim();
     const year = document.getElementById('me-year').value.trim();
 
-    const jobs = [];
-    jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'title', value: en ? { en, fr: fr || en, es: es || en } : null }));
-    jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'medium', value: mediumKey ? MEDIUM_LOOKUP[mediumKey] : null }));
-    jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'location', value: locEn ? { en: locEn, fr: locFr || locEn, es: locEs || locEn } : null }));
-    jobs.push(doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'year', value: year ? Number(year) : null }));
-    // regenerate-alt reads title/medium/location fresh off disk, so it has
-    // to run strictly AFTER the saves above land, not alongside them in the
-    // same Promise.all (concurrent requests can resolve in any order) — it
-    // would otherwise sometimes generate alt text from the pre-edit values.
-    Promise.all(jobs)
-      .then(() => doAction({ type: 'regenerate-alt', gallery: gallery.id, file: im.file }))
-      .then(close)
+    // Sequential, not parallel: server.js rewrites gallery-data.js by string
+    // surgery on whatever it last read off disk, and each of these 4 calls
+    // re-reads that same file — fired together (as this used to, via
+    // Promise.all) the client has no control over which response lands
+    // last and becomes the final STATE shown on screen, so a field could
+    // look unsaved even if the disk write itself landed fine. Same reasoning
+    // as the upload loop below ("server is single-threaded... two in flight
+    // at once would race"). regenerate-alt already ran last for the same
+    // reason; now every step does.
+    doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'title', value: en ? { en, fr: fr || en, es: es || en } : null }, null, true)
+      .then(() => doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'medium', value: mediumKey ? MEDIUM_LOOKUP[mediumKey] : null }, null, true))
+      .then(() => doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'location', value: locEn ? { en: locEn, fr: locFr || locEn, es: locEs || locEn } : null }, null, true))
+      .then(() => doAction({ type: 'set-meta', gallery: gallery.id, file: im.file, field: 'year', value: year ? Number(year) : null }, null, true))
+      .then(() => doAction({ type: 'regenerate-alt', gallery: gallery.id, file: im.file }, null, true))
+      .then(() => { toast('Saved'); close(); })
       .catch((e) => toast('Save failed: ' + (e && e.message || 'unknown error'), true));
   };
 }
