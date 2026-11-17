@@ -1647,20 +1647,17 @@ const GALLERY_DATA = {
         alt: { en: "Woman car window candid street black white, analog photograph, Colombia", fr: "Photo analogique en noir et blanc d'une femme prise sur le vif depuis la vitre d'une voiture dans la rue, Colombie", es: "Fotografía analógica en blanco y negro de una mujer en la calle, tomada de forma espontánea desde la ventanilla de un coche, Colombia" }},
       {
         file: "dark-bay-coastline-silhouette-dramatic-sky-black-white-w2b.jpg",
-        alt: {
-          en: "Silhouetted coastline framing a calm bay under a dramatic cloudy sky, black and white film photography",
-          fr: "Côte en silhouette encadrant une baie calme sous un ciel nuageux dramatique, photographie argentique noir et blanc",
-          es: "Costa en silueta enmarcando una bahía tranquila bajo un cielo nublado dramático, fotografía analógica en blanco y negro"
-        }
-      },
+        title: { en: "sonnet", fr: "sonnet", es: "sonnet" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Ireland", fr: "Irlande", es: "Irlanda" },
+        year: 2023,
+        alt: { en: "Dark bay coastline silhouette dramatic sky black white, analog photograph, Ireland", fr: "Silhouette du littoral d'une baie sombre, ciel spectaculaire, noir et blanc, photographie argentique, Irlande", es: "Silueta de la costa de una bahía oscura con un cielo espectacular en blanco y negro, fotografía analógica, Irlanda" }},
       {
         file: "bolts-nuts-industrial-gear-close-up-black-white-w2b.jpg",
-        alt: {
-          en: "Close-up of loose bolts and nuts scattered on an industrial gear wheel, black and white photography",
-          fr: "Gros plan sur des boulons et écrous éparpillés sur une roue dentée industrielle, photographie noir et blanc",
-          es: "Primer plano de tornillos y tuercas dispersos sobre un engranaje industrial, fotografía en blanco y negro"
-        }
-      },
+        title: { en: "Smallest part of a thing", fr: "La plus petite partie d'une chose", es: "La parte más pequeña de una cosa" },
+        location: { en: "Ireland", fr: "Irlande", es: "Irlanda" },
+        year: 2023,
+        alt: { en: "Bolts nuts industrial gear close up black white, Ireland", fr: "Gros plan en noir et blanc sur des boulons et des écrous industriels, Irlande", es: "Primer plano en blanco y negro de tuercas y tornillos de engranajes industriales, Irlanda" }},
       { file: "man-silhouette-bench-dramatic-sunset-sky-w2b.jpg", title: { en: "sundown mesmerized up", fr: "fasciné par le coucher du soleil", es: "cautivado por la puesta de sol" }, medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" }, location: { en: "Ireland", fr: "Irlande", es: "Irlanda" }, year: 2024, alt: { en: "Man silhouette bench dramatic sunset sky, analog photograph, Ireland", fr: "Silhouette d'un homme assis sur un banc, ciel au coucher du soleil spectaculaire, photographie argentique, Irlande", es: "Silueta de un hombre en un banco con un cielo dramático al atardecer, fotografía analógica, Irlanda" }},
       { file: "dead-trees-rocky-shore-mountains-black-white-w2b.jpg", title: { en: "beauty of the dead", fr: "beauté des morts", es: "belleza de los muertos" }, medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" }, location: { en: "Corsica", fr: "Corse", es: "Córcega" }, year: 2021, alt: { en: "Dead trees rocky shore mountains black white, analog photograph, Corsica", fr: "Arbres morts, rivage rocheux, montagnes, noir et blanc, photographie argentique, Corse", es: "Árboles muertos, costa rocosa, montañas, blanco y negro, fotografía analógica, Córcega" }},
       { file: "mussels-barnacles-encrusted-rock-coastal-macro-w2b.jpg", alt: {
@@ -2043,38 +2040,28 @@ const GALLERY_DATA = {
     folder: "images/branch-dark-bay/",
     title: { en: "calm", fr: "calme", es: "calma" },
     images: [
-      { file: "buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg", alt: {
-        en: "Buoy in silhouette in a bay under a dramatic sunset sky",
-        fr: "Bouée en silhouette dans une baie sous un ciel de coucher de soleil dramatique",
-        es: "Boya en silueta en una bahía bajo un cielo de atardecer dramático" } },
+      { file: "buoy-silhouette-bay-dramatic-sunset-sky-w2b.jpg", title: { en: "symphony", fr: "Symphony", es: "sinfonía" }, medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" }, location: { en: "Ireland", fr: "Irlande", es: "Irlanda" }, year: 2023, alt: { en: "Buoy silhouette bay dramatic sunset sky, analog photograph, Ireland", fr: "Silhouette d'une bouée dans une baie, ciel au coucher du soleil spectaculaire, photographie argentique, Irlande", es: "Silueta de una boya en una bahía con un espectacular cielo al atardecer, fotografía analógica, Irlanda" }},
       {
         file: "sunset-lake-mountain-silhouette-bird-film-w2b.jpg",
-        alt: {
-          en: "Solitary bird on a calm lake at sunset, mountain silhouette and golden light reflections on water, film photography",
-          fr: "Oiseau solitaire sur un lac calme au coucher du soleil, silhouette de montagne et reflets dorés sur l'eau, argentique",
-          es: "Pájaro solitario en lago tranquilo al atardecer, silueta de montaña y reflejos dorados en el agua, analógico"
-        }
-      },
+        title: { en: "Haiku", fr: "Haiku", es: "Haiku" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Ireland", fr: "Irlande", es: "Irlanda" },
+        year: 2023,
+        alt: { en: "Sunset lake mountain silhouette bird film, analog photograph, Ireland", fr: "Film représentant la silhouette d'un oiseau, d'un lac et d'une montagne au coucher du soleil, photographie argentique, Irlande", es: "Película con silueta de pájaro, montaña, lago y puesta de sol, fotografía analógica, Irlanda" }},
       {
         file: "contemplations-cliff-coastline-black-white-w2b.jpg",
-        alt: {
-          en: "A rugged cliff coastline under a heavy sky, black and white medium-format film",
-          fr: "Un littoral de falaises escarpées sous un ciel lourd, moyen format argentique noir et blanc",
-          es: "Una costa de acantilados escarpados bajo un cielo pesado, película de formato medio en blanco y negro"
-        }
-      },
+        title: { en: "Tearing the ocean", fr: "Fendre l’océan", es: "Surcando el océano" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Ireland", fr: "Irlande", es: "Irlanda" },
+        year: 2023,
+        alt: { en: "Contemplations cliff coastline black white, analog photograph, Ireland", fr: "Contemplation d'une côte de falaises en noir et blanc, photographie argentique, Irlande", es: "Contemplaciones de la costa de acantilados en blanco y negro, fotografía analógica, Irlanda" }},
       {
         file: "000084440009.jpg",
         title: { en: "Calming cycle", fr: "Cycle apaisant", es: "Ciclo de calma" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        location: { en: "Uruguay", fr: "Uruguay", es: "Uruguay" },
+        location: { en: "Urugay", fr: "Urugay", es: "Urugay" },
         year: 2024,
-        alt: {
-          en: "000084440009, analog photograph, Uruguay",
-          fr: "000084440009, photographie argentique, Uruguay",
-          es: "000084440009, fotografía analógica, Uruguay"
-        }
-      }
+        alt: { en: "000084440009, analog photograph, Urugay", fr: "000084440009, photographie analogique, Uruguay", es: "000084440009, fotografía analógica, Uruguay" }}
     ]
   },
 
@@ -2083,25 +2070,15 @@ const GALLERY_DATA = {
     folder: "images/branch-industrial/",
     title: { en: "the gears of our reality", fr: "les rouages de notre réalité", es: "los engranajes de nuestra realidad" },
     images: [
-      { file: "motorcycle-frame-mechanical-detail-black-white-w2b.jpg", alt: {
-        en: "Mechanical detail of a motorcycle frame, black and white photography",
-        fr: "Détail mécanique d'un cadre de moto, photographie noir et blanc",
-        es: "Detalle mecánico de un chasis de motocicleta, fotografía en blanco y negro" } },
-      { file: "man-junkyard-stripped-car-parts-black-white-w2b.jpg", alt: {
-        en: "Man standing amid a junkyard of stripped car parts, black and white photography",
-        fr: "Homme debout au milieu d'une casse de pièces automobiles démontées, photographie noir et blanc",
-        es: "Hombre de pie entre un depósito de autopartes desmontadas, fotografía en blanco y negro" } },
+      { file: "motorcycle-frame-mechanical-detail-black-white-w2b.jpg", title: { en: "Skeleton", fr: "Squelette", es: "Esqueleto" }, medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" }, location: { en: "Colombia", fr: "Colombie", es: "Colombia" }, year: 2026, alt: { en: "Motorcycle frame mechanical detail black white, analog photograph, Colombia", fr: "Détail mécanique d'un cadre de moto, noir et blanc, photographie argentique, Colombie", es: "Detalle mecánico del cuadro de una motocicleta en blanco y negro, fotografía analógica, Colombia" }},
+      { file: "man-junkyard-stripped-car-parts-black-white-w2b.jpg", title: { en: "Missing parts", fr: "Pièces manquantes", es: "Piezas que faltan" }, location: { en: "Colombia", fr: "Colombie", es: "Colombia" }, year: 2026, alt: { en: "Man junkyard stripped car parts black white, Colombia", fr: "Homme dans un parc à ferraille, pièces de voiture démontées, noir et blanc, Colombie", es: "Hombre en un desguace con piezas de coche desmontadas en blanco y negro, Colombia" }},
       {
         file: "6172-1.jpg",
         title: { en: "the cargo forgets the human toll", fr: "La cargaison fait oublier le bilan humain", es: "La carga hace olvidar el coste humano" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombia", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "lined up wooden transport carts",
-          fr: "Chariots de transport en bois alignés",
-          es: "Carros de transporte de madera alineados"
-        }
-      }
+        alt: { en: "6172, analog photograph, Colombia", fr: "6172, photographie argentique, Colombie", es: "6172, fotografía analógica, Colombia" }}
     ]
   },
   "branch-t17": {
@@ -2170,46 +2147,30 @@ const GALLERY_DATA = {
         file: "6607-9.jpg",
         title: { en: "have you seens my left foot?", fr: "Avez-vous vu mon pied gauche ?", es: "¿Has visto mi pie izquierdo?" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombia", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "hand holding prostetic leg",
-          fr: "main tenant une prothèse",
-          es: "mano grabando una protésis"
-        }
-      },
+        alt: { en: "6607, analog photograph, Colombia", fr: "6607, photographie analogique, Colombie", es: "6607, fotografía analógica, Colombia" }},
       {
         file: "6607-36.jpg",
         title: { en: "every wrinkle is an extra stitch", fr: "chaque ride est une maille en plus", es: "Cada arruga es un punto más" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombia", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "hand crafting a net",
-          fr: "main fabricant un filet",
-          es: "mano hechando un filiete"
-        }
-      },
+        alt: { en: "6607, analog photograph, Colombia", fr: "6607, photographie analogique, Colombie", es: "6607, fotografía analógica, Colombia" }},
       {
         file: "6607-34.jpg",
         title: { en: "Sweet palms", fr: "Palmiers doux", es: "Palmeras dulces" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "hand holding a candy paste black and white",
-          fr: "main tenant un nougat",
-          es: "mano gabando un dulce"
-        }
-      },
+        alt: { en: "6607, analog photograph, Colombia", fr: "6607, photographie analogique, Colombie", es: "6607, fotografía analógica, Colombia" }},
       {
         file: "000066060021.jpg",
         title: { en: "to clean the dirtiness you need it's opposite", fr: "Pour nettoyer la saleté, il faut faire le contraire.", es: "Para limpiar la suciedad, necesitas lo contrario." },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "colombia", fr: "Colombie", es: "colombia" },
         year: 2026,
-        alt: {
-          en: "garage worker dirty hands movement",
-          fr: "mouvement des mains sales d'un ouvrier de garage",
-          es: "Movimiento de manos sucias de un trabajador de taller"
-        }
-      }]
+        alt: { en: "000066060021, analog photograph, colombia", fr: "000066060021, photographie analogique, Colombie", es: "000066060021, fotografía analógica, Colombia" }}]
     },
   "branch-corridors-perpectives": {
       id: "branch-corridors-perpectives",
@@ -2233,28 +2194,25 @@ const GALLERY_DATA = {
       },
       {
         file: "bamboo-tunnel-pond-stone-wall-w2b.jpg",
-        alt: {
-          en: "Path through a bamboo tunnel opening onto a still pond and an old stone wall, medium format film photography",
-          fr: "Chemin à travers un tunnel de bambous débouchant sur un étang immobile et un vieux mur de pierre, moyen format argentique",
-          es: "Camino a través de un túnel de bambú que da a un estanque quieto y un viejo muro de piedra, película de formato medio"
-        }
-      },
+        title: { en: "Fairie's walk", fr: "Promenade des fées", es: "El paseo de las hadas" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "Francia" },
+        year: 2022,
+        alt: { en: "Bamboo tunnel pond stone wall, analog photograph, France", fr: "Mur en pierre d'un étang avec un tunnel de bambous, photographie argentique, France", es: "Muro de piedra de un estanque con un túnel de bambú, fotografía analógica, Francia" }},
       {
         file: "medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg",
-        alt: {
-          en: "Row of glowing green bioreactor tanks in a Medellín research laboratory, colour documentary photography",
-          fr: "Rangée de cuves bioreacteurs vertes lumineuses dans un laboratoire de recherche de Medellín, photographie documentaire couleur",
-          es: "Fila de tanques biorreactores verdes luminosos en un laboratorio de investigación de Medellín, fotografía documental color"
-        }
-      },
+        title: { en: "Lab of what?", fr: "Laboratoire de quoi ?", es: "¿Laboratorio de qué?" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
+        year: 2026,
+        alt: { en: "Medellin bioreactor laboratory green tanks science, analog photograph, Colombia", fr: "Laboratoire de bioréacteurs de Medellín, cuves vertes, science, photographie argentique, Colombie", es: "Depósitos verdes del laboratorio de biorreactores de Medellín, fotografía analógica, Colombia" }},
       {
         file: "stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg",
-        alt: {
-          en: "Ancient stone corridor in ruins with repeated arches creating a vanishing point, black and white film photography",
-          fr: "Couloir en pierre ancienne en ruines avec arches répétées créant un point de fuite, argentique noir et blanc",
-          es: "Corredor de piedra antigua en ruinas con arcos repetidos creando punto de fuga, analógico blanco y negro"
-        }
-      },
+        title: { en: "Don't fall in", fr: "Ne tombe pas dedans !", es: "No te caigas" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "France", fr: "France", es: "Francia" },
+        year: 2023,
+        alt: { en: "Stone corridor ruins arches vanishing point black white, analog photograph, France", fr: "Ruines d'un couloir en pierre avec des arches et un point de fuite, noir et blanc, photographie argentique, France", es: "Arcos de las ruinas de un pasillo de piedra con punto de fuga en blanco y negro, fotografía analógica, Francia" }},
       {
         file: "000086720033.jpg",
         title: { en: "window to freedom", fr: "fenêtre sur la liberté", es: "ventana a la libertad" },
@@ -2271,26 +2229,16 @@ const GALLERY_DATA = {
         file: "serie-63-12.jpg",
         title: { en: "Entering the abandonded", fr: "Entrer dans le lieu abandonné", es: "Entrar en el lugar abandonado" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        location: { en: "France", fr: "France", es: "Francia" },
+        location: { en: "France", fr: "France", es: "France" },
         year: 2025,
-        alt: {
-          en: "Serie 63, analog photograph, France",
-          fr: "Série 63, photographie analogique, France",
-          es: "Serie 63, fotografía analógica, Francia"
-        }
-      },
+        alt: { en: "Serie 63, analog photograph, France", fr: "Série 63, photographie analogique, France", es: "Serie 63, fotografía analógica, Francia" }},
       {
         file: "serie-63-07.jpg",
         title: { en: "Entering the abandonded 2", fr: "Entrer dans le bâtiment abandonné 2", es: "Entrando en el edificio abandonado 2" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        location: { en: "France", fr: "France", es: "Francia" },
+        location: { en: "France", fr: "France", es: "France" },
         year: 2025,
-        alt: {
-          en: "Serie 63, analog photograph, France",
-          fr: "Série 63, photographie analogique, France",
-          es: "Serie 63, fotografía analógica, Francia"
-        }
-      }
+        alt: { en: "Serie 63, analog photograph, France", fr: "Série 63, photographie analogique, France", es: "Serie 63, fotografía analógica, Francia" }}
 ]
     },
   "branch-scpultures-sacred": {
