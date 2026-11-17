@@ -407,10 +407,13 @@ body.trunk-snap{scroll-snap-type:y mandatory}
      rail's full text makes it taller than the viewport. max-height + scroll
      guarantees it always clears the header by the same margin, regardless
      of viewport height or how long the label list gets — centering math
-     (top:50%/translateY(-50%)) can't do that on its own. Scrollbar hidden;
-     the clamp is a safety net, not meant to be felt in normal use. */
-  max-height:calc(100vh - 170px);overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none}
-.side-nav::-webkit-scrollbar{display:none}
+     (top:50%/translateY(-50%)) can't do that on its own. Kept the scrollbar
+     visible (thin, accent-coloured) rather than hidden: a hidden one with
+     no other cue left "you can scroll here" undiscoverable. */
+  max-height:calc(100vh - 170px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--or) transparent}
+.side-nav::-webkit-scrollbar{width:5px}
+.side-nav::-webkit-scrollbar-track{background:transparent}
+.side-nav::-webkit-scrollbar-thumb{background:var(--or);border-radius:3px}
 .side-nav a,.side-nav button{writing-mode:vertical-rl;text-orientation:mixed;
   font-family:var(--sans);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--nuit);opacity:.82;text-decoration:none;background:none;border:none;cursor:pointer;
