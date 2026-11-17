@@ -103,7 +103,10 @@
       if(e.key === 'Escape' && overlay.classList.contains('open')) closeIt();
     });
 
-    var langBtns = overlay.querySelectorAll('[data-idx-lang] button');
+    /* document-wide, not overlay-scoped: also wires the always-visible
+       rbar-lang trigger next to the logo (2026-11-16), not just the one
+       inside this overlay. */
+    var langBtns = document.querySelectorAll('[data-idx-lang] button');
     langBtns.forEach(function(b){
       if(b.dataset.l === LANG) b.classList.add('on');
       b.addEventListener('click', function(){
