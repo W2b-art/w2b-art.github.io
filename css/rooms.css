@@ -398,26 +398,25 @@ body.trunk-snap{scroll-snap-type:y mandatory}
    regardless of what photo is behind it). Every size below is the old
    value *1.25. */
 .side-nav{position:fixed;top:50%;left:10px;transform:translateY(-50%);z-index:65;
-  display:flex;flex-direction:column;align-items:center;gap:20px;
+  display:flex;flex-direction:column;align-items:center;gap:26px;
   background:linear-gradient(165deg,#fffefc,rgba(250,248,244,.95) 55%,rgba(240,236,228,.92));
-  padding:20px 11px;border-radius:28px;
+  padding:26px 14px;border-radius:36px;
   border:1px solid rgba(16,12,10,.1);box-shadow:0 4px 18px rgba(0,0,0,.25);
-  /* 2026-11-16 — moved from the right to the left: that put it right under
-     the W2b logo (.rbar, top-left) on the common laptop heights where this
-     rail's full text makes it taller than the viewport. max-height + scroll
-     guarantees it always clears the header by the same margin, regardless
-     of viewport height or how long the label list gets — centering math
-     (top:50%/translateY(-50%)) can't do that on its own. Kept the scrollbar
-     visible (thin, accent-coloured) rather than hidden: a hidden one with
-     no other cue left "you can scroll here" undiscoverable. */
-  max-height:calc(100vh - 170px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--or) transparent}
+  /* 2026-11-16 — on the left; max-height+scroll (not shrinking the text)
+     is what keeps this clear of the header/footer on short viewports, so
+     the whole rail could then go 30% larger without needing to fit
+     unscrolled. direction:rtl is the standard trick for putting a
+     scrollbar on an element's LEFT edge instead of the browser-default
+     right — reset to ltr on the labels below so their own text/align
+     isn't reversed by it. */
+  direction:rtl;max-height:calc(100vh - 170px);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--or) transparent}
 .side-nav::-webkit-scrollbar{width:5px}
 .side-nav::-webkit-scrollbar-track{background:transparent}
 .side-nav::-webkit-scrollbar-thumb{background:var(--or);border-radius:3px}
-.side-nav a,.side-nav button{writing-mode:vertical-rl;text-orientation:mixed;
-  font-family:var(--sans);font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+.side-nav a,.side-nav button{direction:ltr;writing-mode:vertical-rl;text-orientation:mixed;
+  font-family:var(--sans);font-weight:700;font-size:16px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--nuit);opacity:.82;text-decoration:none;background:none;border:none;cursor:pointer;
-  padding:2.5px 0;white-space:nowrap;transition:opacity .25s ease,color .25s ease}
+  padding:3px 0;white-space:nowrap;transition:opacity .25s ease,color .25s ease}
 .side-nav a:hover,.side-nav a:focus-visible,.side-nav button:hover,.side-nav button:focus-visible{opacity:1;color:var(--or)}
 .side-nav .side-nav-afterdark{color:var(--braise);opacity:.9}
 .side-nav .side-nav-afterdark:hover,.side-nav .side-nav-afterdark:focus-visible{opacity:1;color:var(--braise)}
