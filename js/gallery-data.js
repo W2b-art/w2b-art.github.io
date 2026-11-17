@@ -923,6 +923,7 @@ const GALLERY_DATA = {
       },
       {
         file: "garter-belt-lingerie-tattooed-back-purple-light-w2b.jpg",
+        archived: true,
         alt: {
           en: "Tattooed back and garter-belt lingerie seen from behind under purple and blue light, boudoir photography",
           fr: "Dos tatoué et porte-jarretelles vus de dos sous une lumière violette et bleue, photographie boudoir",
@@ -971,6 +972,7 @@ const GALLERY_DATA = {
       },
       {
         file: "shibari-rope-tying-red-roses-w2b.jpg",
+        archived: true,
         alt: {
           en: "Hands tying shibari rope around a body beside red roses under warm red light, fetish art photography",
           fr: "Des mains nouant la corde shibari autour d'un corps près de roses rouges sous une lumière rouge chaude, photographie d'art fétichiste",
@@ -1607,7 +1609,7 @@ const GALLERY_DATA = {
         medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
         location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
         year: 2026,
-        alt: { en: "Street dancer colombia jersey motion night, digital photograph, Colombia", fr: "Danseur de rue en Colombie portant un maillot, nuit en mouvement, photographie numérique, Colombie", es: "Bailarín callejero en Colombia, camiseta, movimiento, noche, fotografía digital, Colombia" }},
+        alt: { en: "Street dancer colombia jersey motion night, digital photograph, Colombia", fr: "Danseur de rue en Colombie portant un maillot, nuit, mouvement, photographie numérique, Colombie", es: "Bailarín callejero en Colombia, camiseta, movimiento, noche, fotografía digital, Colombia" }},
       {
         file: "rushing-water-rocks-black-white-w2b.jpg",
         archived: true,
