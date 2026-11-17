@@ -475,6 +475,19 @@ body.trunk-snap{scroll-snap-type:y mandatory}
 .hero .cap{left:110px}
 @media(max-width:820px){ .hero .cap{left:20px} }
 
+/* 2026-11-17 — same collision, different spots: every other block that
+   inherits art.css's base 40px left padding/position still started right
+   under the side-nav once scrolled to — the "Oeuvre actuelle" section
+   heading (.sect), the shop page's own wrapper (.shop), and the footer
+   (all 4 side-nav pages have one). Fixed at the source instead of
+   waiting for each one to get reported: anything using that 40px edge
+   on these pages gets the same 110px clearance, only above 820px where
+   the side-nav is actually visible. */
+.sect{padding-left:110px}
+.shop{padding-left:110px}
+footer{padding-left:110px}
+@media(max-width:820px){ .sect{padding-left:20px} .shop{padding-left:20px} footer{padding-left:40px} }
+
 /* ---------- expositions.html ---------- */
 .expo-main{max-width:720px;margin:0 auto;padding-top:var(--sp-6)}
 .expo-head .room-opener{max-width:none}
