@@ -1605,13 +1605,9 @@ const GALLERY_DATA = {
         file: "street-dancer-colombia-jersey-motion-night-w2b.jpg",
         title: { en: "ground control", fr: "control du sol", es: "puntos de apoyo" },
         medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "Street dancer in a Colombia football jersey and cap caught mid-movement under warm stage light at night, black and white",
-          fr: "Danseur de rue en maillot de football de Colombie et casquette saisi en plein mouvement sous une lumière de scène chaude la nuit, noir et blanc",
-          es: "Bailarín callejero con camiseta de fútbol de Colombia y gorra capturado en pleno movimiento bajo luz de escenario cálida de noche, blanco y negro"
-        }
-      },
+        alt: { en: "Street dancer colombia jersey motion night, digital photograph, Colombia", fr: "Danseur de rue en Colombie portant un maillot, nuit en mouvement, photographie numérique, Colombie", es: "Bailarín callejero en Colombia, camiseta, movimiento, noche, fotografía digital, Colombia" }},
       {
         file: "rushing-water-rocks-black-white-w2b.jpg",
         archived: true,
@@ -1630,14 +1626,9 @@ const GALLERY_DATA = {
       {
         file: "abandoned-train-wagons-junkyard-color-w2b.jpg",
         title: { en: "train of thoughts", fr: "train d'idées", es: "tren de ideas" },
-        medium: { en: "film photography", fr: "Argentique", es: "Analogo" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "Rusted abandoned train wagons sitting in an overgrown junkyard, medium format colour film photography",
-          fr: "Wagons de train abandonnés et rouillés dans une friche envahie par la végétation, moyen format argentique couleur",
-          es: "Vagones de tren abandonados y oxidados en un depósito invadido por la vegetación, película de formato medio a color"
-        }
-      },
+        alt: { en: "Abandoned train wagons junkyard color, Colombia", fr: "Couleur d'un parc à ferraille de wagons de train abandonnés, Colombie", es: "Desguace de vagones de tren abandonados, Colombia" }},
       {
         file: "woman-car-window-candid-street-black-white-w2b.jpg",
         title: { en: "Angry passenger", fr: "Passager en colère", es: "Pasajero enfadado" },
@@ -1678,12 +1669,12 @@ const GALLERY_DATA = {
         }
       },
       {
-        location: { en: "Puerto Madero", fr: "Puerto Madero", es: "Puerto Madero" },
+        location: { en: "Argentina", fr: "Argentine", es: "Argentina" },
         file: "000024250007.jpg",
         title: { en: "tips for hoped miracles", fr: "Poureboire pour les miracles espérés", es: "Propinas por los milagros esperados" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
         year: 2023,
-        alt: { en: "000024250007, analog photograph, Puerto Madero", fr: "000024250007, photographie analogique, Puerto Madero", es: "000024250007, fotografía analógica, Puerto Madero" }}
+        alt: { en: "000024250007, analog photograph, Argentina", fr: "000024250007, photographie argentique, Argentine", es: "000024250007, fotografía analógica, Argentina" }}
     ]
   },
 
@@ -1696,46 +1687,30 @@ const GALLERY_DATA = {
         file: "man-trucker-cap-sunglasses-night-portrait-black-white-w2b.jpg",
         title: { en: "love gun", fr: "love gun", es: "arma del amor" },
         medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "Man in a trucker cap and sunglasses caught under flash at night, black and white portrait photography",
-          fr: "Homme en casquette et lunettes de soleil saisi au flash la nuit, photographie de portrait noir et blanc",
-          es: "Hombre con gorra y gafas de sol captado con flash de noche, fotografía de retrato en blanco y negro"
-        }
-      },
+        alt: { en: "Man trucker cap sunglasses night portrait black white, digital photograph, Colombia", fr: "Portrait en noir et blanc d'un homme la nuit portant une casquette de camionneur et des lunettes de soleil, photographie numérique, Colombie", es: "Hombre con gorra de camionero y gafas de sol, retrato nocturno en blanco y negro, fotografía digital, Colombia" }},
       {
         file: "men-streetwear-cap-flip-night-black-white-w2b.jpg",
         title: { en: "floating", fr: "flottante", es: "Flotando" },
         medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "Two men at night, one flipping a cap in the air, streetwear and tattoos, black and white photography",
-          fr: "Deux hommes de nuit, l'un faisant tournoyer une casquette en l'air, streetwear et tatouages, photographie noir et blanc",
-          es: "Dos hombres de noche, uno lanzando una gorra al aire, streetwear y tatuajes, fotografía en blanco y negro"
-        }
-      },
+        alt: { en: "Men streetwear cap flip night black white, digital photograph, Colombia", fr: "Casquette streetwear pour homme, visière relevée, noir nuit, blanc, photographie numérique, Colombie", es: "Gorra urbana para hombre con visera negra y blanca, fotografía digital, Colombia" }},
       {
         file: "man-glasses-hand-gesture-tattoos-portrait-black-white-w2b.jpg",
         title: { en: "mindset", fr: "état d’esprit", es: "mentalidad" },
         medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        location: { en: "Colombia", fr: "Colombia", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "Tattooed man in glasses raising both middle fingers toward the camera, black and white portrait photography",
-          fr: "Homme tatoué à lunettes levant les deux majeurs vers l'objectif, photographie de portrait noir et blanc",
-          es: "Hombre tatuado con gafas levantando ambos dedos medios hacia la cámara, fotografía de retrato en blanco y negro"
-        }
-      },
+        alt: { en: "Man glasses hand gesture tattoos portrait black white, digital photograph, Colombia", fr: "Portrait en noir et blanc d'un homme portant des lunettes, faisant un geste de la main et arborant des tatouages, photographie numérique, Colombie", es: "Retrato en blanco y negro de un hombre con gafas, gesto con la mano y tatuajes, fotografía digital, Colombia" }},
       {
         file: "breakdancer-mid-motion-red-light-w2b.jpg",
         title: { en: "freeze twist", fr: "freeze twist", es: "Freeze Twist" },
         medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        location: { en: "Colombia", fr: "Colombia", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "Breakdancer frozen mid-move under warm red stage light, black and white photography",
-          fr: "Breakdancer figé en plein mouvement sous une lumière de scène rouge chaude, photographie noir et blanc",
-          es: "Bailarín de breakdance congelado en pleno movimiento bajo luz de escenario roja cálida, fotografía en blanco y negro"
-        }
-      },
+        alt: { en: "Breakdancer mid motion red light, digital photograph, Colombia", fr: "Breakdancer en plein mouvement, feu rouge, photographie numérique, Colombie", es: "B-boy en movimiento bajo una luz roja, fotografía digital, Colombia" }},
       {
         file: "palacio-bellas-artes-facade-installation-print-w2b.jpg",
         alt: {
@@ -1775,13 +1750,9 @@ const GALLERY_DATA = {
         file: "bailar-ciudad-chaqueta-vuelo-movimiento-black-white-w2b.jpg",
         title: { en: "bridge to the soul", fr: "un pont vers l'âme", es: "puente hacia el alma" },
         medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "A dancer mid-move with a jacket flying out around the body, Bailar la Ciudad cypher, Miraflores, Medellín, black and white photography",
-          fr: "Un danseur en plein mouvement, veste s'envolant autour du corps, cypher Bailar la Ciudad, Miraflores, Medellín, photographie noir et blanc",
-          es: "Un bailarín en pleno movimiento con la chaqueta volando alrededor del cuerpo, cypher Bailar la Ciudad, Miraflores, Medellín, fotografía en blanco y negro"
-        }
-      }
+        alt: { en: "Bailar ciudad chaqueta vuelo movimiento black white, digital photograph, Colombia", fr: "Bailar ciudad chaqueta vuelo movimiento noir et blanc, photographie numérique, Colombie", es: "Bailar ciudad chaqueta vuelo movimiento negro blanco, fotografía digital, Colombia" }}
     ]
   },
 
@@ -1796,36 +1767,32 @@ const GALLERY_DATA = {
     images: [
       {
         file: "scrap-metal-yard-entrance-barbed-wire-workers-w2b.jpg",
-        alt: {
-          en: "Workers inside a scrap-metal yard behind a barbed-wire gate, Spanish signage advertising metal purchase, medium format colour film",
-          fr: "Ouvriers dans une casse de ferraille derrière un portail barbelé, enseigne en espagnol annonçant l'achat de métaux, moyen format argentique couleur",
-          es: "Trabajadores dentro de un depósito de chatarra tras un portón de alambre de púas, letrero en español que anuncia compra de metales, formato medio a color"
-        }
-      },
+        title: { en: "The workshop of memories", fr: "L'atelier des souvenirs", es: "El taller de los recuerdos" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
+        year: 2026,
+        alt: { en: "Scrap metal yard entrance barbed wire workers, analog photograph, Colombia", fr: "Ouvriers devant des barbelés à l'entrée d'un parc à ferraille, photographie argentique, Colombie", es: "Trabajadores en la entrada de un depósito de chatarra con alambre de espino, fotografía analógica, Colombia" }},
       {
         file: "abandoned-factory-water-tower-overgrown-w2b.jpg",
-        alt: {
-          en: "Rusted water tower rising between abandoned brick factory buildings, overgrown with grass, medium format colour film",
-          fr: "Château d'eau rouillé s'élevant entre des bâtiments d'usine en brique abandonnés, envahis par l'herbe, moyen format argentique couleur",
-          es: "Torre de agua oxidada entre edificios de fábrica de ladrillo abandonados, cubiertos de hierba, formato medio a color"
-        }
-      },
+        title: { en: "Standing inbetween new and old", fr: "À mi-chemin entre le neuf et l'ancien", es: "Entre lo nuevo y lo antiguo" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
+        year: 2026,
+        alt: { en: "Abandoned factory water tower overgrown, analog photograph, Colombia", fr: "Château d'eau d'une usine abandonnée envahi par la végétation, photographie argentique, Colombie", es: "Torre de agua de una fábrica abandonada cubierta de vegetación, fotografía analógica, Colombia" }},
       {
         file: "ruined-building-interior-debris-furniture-w2b.jpg",
-        alt: {
-          en: "Interior of a ruined building strewn with broken furniture and debris, medium format colour film photography",
-          fr: "Intérieur d'un bâtiment en ruine jonché de meubles brisés et de débris, moyen format argentique couleur",
-          es: "Interior de un edificio en ruinas cubierto de muebles rotos y escombros, película de formato medio a color"
-        }
-      },
+        title: { en: "The interior of a forgotten space", fr: "L’intérieur d’un espace oublié", es: "El interior de un espacio olvidado" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
+        year: 2026,
+        alt: { en: "Ruined building interior debris furniture, analog photograph, Colombia", fr: "Débris et meubles à l'intérieur d'un bâtiment en ruine, photographie argentique, Colombie", es: "Muebles entre escombros en el interior de un edificio en ruinas, fotografía analógica, Colombia" }},
       {
         file: "calle-54-street-sign-rubble-w2b.jpg",
-        alt: {
-          en: "Bent Calle 54 street sign leaning among piles of rubble and rusted metal, medium format colour film photography",
-          fr: "Panneau de rue « Calle 54 » tordu penché parmi des gravats et de la ferraille rouillée, moyen format argentique couleur",
-          es: "Letrero de calle «Calle 54» torcido entre escombros y chatarra oxidada, película de formato medio a color"
-        }
-      },
+        title: { en: "Directions used to be relevant", fr: "Les itinéraires étaient pertinents auparavant", es: "Antes, las indicaciones eran relevantes" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
+        year: 2026,
+        alt: { en: "Calle 54 street sign rubble, analog photograph, Colombia", fr: "Débris du panneau de la rue Calle 54, photographie argentique, Colombie", es: "Restos de la señal de la calle 54, fotografía analógica, Colombia" }},
       {
         file: "lo-que-dejamos-exhibition-wide-parque-luces-w2b.jpg",
         alt: {
@@ -1852,21 +1819,19 @@ const GALLERY_DATA = {
       },
       {
         file: "medellin-bella-artes-locomotora-abandonada-color-w2b.jpg",
-        alt: {
-          en: "A rusted, graffiti-covered locomotive reclaimed by vegetation at the abandoned Bellas Artes rail yard, Medellín, colour photography",
-          fr: "Une locomotive rouillée couverte de graffitis reprise par la végétation dans la gare ferroviaire abandonnée de Bellas Artes, Medellín, photographie couleur",
-          es: "Una locomotora oxidada cubierta de grafitis reconquistada por la vegetación en el patio ferroviario abandonado de Bellas Artes, Medellín, fotografía a color"
-        }
-      },
+        title: { en: "Trains to end", fr: "Trains vers la fin", es: "Trenes hasta el final" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
+        year: 2026,
+        alt: { en: "Medellin bella artes locomotora abandonada color, analog photograph, Colombia", fr: "Medellín, Beaux-Arts, locomotive abandonnée, couleur, photographie argentique, Colombie", es: "Medellín, Bellas Artes, locomotora abandonada, color, fotografía analógica, Colombia" }},
       {
         file: "medellin-bella-artes-pano-taller-luz-color-w2b.jpg",
+        title: { en: "The last breath of an object", fr: "Le dernier souffle d'un objet", es: "El último aliento de un objeto" },
+        medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
+        location: { en: "Colombia", fr: "Colombie", es: "Colombia" },
+        year: 2026,
         wide: true,
-        alt: {
-          en: "Panoramic interior of the abandoned Bellas Artes rail workshop, warm light falling through the broken roof, Medellín, colour photography",
-          fr: "Panoramique de l'intérieur de l'atelier ferroviaire abandonné de Bellas Artes, lumière chaude tombant à travers le toit crevé, Medellín, photographie couleur",
-          es: "Panorámica del interior del taller ferroviario abandonado de Bellas Artes, luz cálida cayendo por el techo roto, Medellín, fotografía a color"
-        }
-      }
+        alt: { en: "Medellin bella artes pano taller luz color, analog photograph, Colombia", fr: "Medellín, Beaux-Arts, atelier de peinture, lumière, couleur, photographie argentique, Colombie", es: "Taller Luz Color de Bellas Artes de Medellín, fotografía analógica, Colombia" }}
     ]
   },
 
@@ -2257,16 +2222,16 @@ const GALLERY_DATA = {
         file: "serie-82-8.jpg",
         title: { en: "nature is the real god", fr: "La nature est le vrai dieu.", es: "La naturaleza es el verdadero dios." },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        location: { en: "Medelllin", fr: "Medelllin", es: "Medelllin" },
+        location: { en: "Colombia", fr: "Colombia", es: "Colombia" },
         year: 2026,
-        alt: { en: "Serie 82, analog photograph, Medelllin", fr: "Série 82, photographie analogique, Medellín", es: "Serie 82, fotografía analógica, Medellín" }},
+        alt: { en: "Serie 82, analog photograph, Colombia", fr: "Série 82, photographie analogique, Colombie", es: "Serie 82, fotografía analógica, Colombia" }},
       {
         file: "Stand-alone-2.jpg",
         title: { en: "manmade devil", fr: "démon créé par l'homme", es: "diablo creado por el hombre" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        location: { en: "Arles", fr: "Arles.", es: "Arlés" },
+        location: { en: "France", fr: "France", es: "France" },
         year: 2022,
-        alt: { en: "Stand alone, analog photograph, Arles", fr: "Photo analogique autonome, Arles", es: "Fotografía analógica independiente, Arles" }},
+        alt: { en: "Stand alone, analog photograph, France", fr: "Photo analogique autonome, France", es: "Fotografía analógica independiente, Francia" }},
       {
         file: "000028650009.jpg",
         title: { en: "Always on top never reachable", fr: "Toujours au sommet, jamais accessible", es: "Siempre en lo más alto, nunca al alcance" },
@@ -2278,8 +2243,9 @@ const GALLERY_DATA = {
         file: "serie-76-5.jpg",
         title: { en: "Igniting Faith", fr: "Allumer la foi", es: "Encender la fe" },
         medium: { en: "Digital photograph", fr: "Photographie numérique", es: "Fotografía digital" },
+        location: { en: "Colombia", fr: "Colombia", es: "Colombia" },
         year: 2026,
-        alt: { en: "Serie 76, digital photograph", fr: "Série 76, photographie numérique", es: "Serie 76, fotografía digital" }},
+        alt: { en: "Serie 76, digital photograph, Colombia", fr: "Série 76, photographie numérique, Colombie", es: "Serie 76, fotografía digital, Colombia" }},
       {
         file: "000024290011.jpg",
         title: { en: "pacha mama is dry", fr: "Pacha Mama est sèche", es: "La Pacha Mama está seca" },
@@ -2291,26 +2257,16 @@ const GALLERY_DATA = {
         file: "serie-53-5.jpg",
         title: { en: "scrolls of the minds", fr: "parchemins des esprits", es: "pergaminos de las mentes" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        location: { en: "Ireland", fr: "Irlande", es: "Irlanda" },
+        location: { en: "Ireland", fr: "Ireland", es: "Ireland" },
         year: 2024,
-        alt: {
-          en: "Serie 53, analog photograph, Ireland",
-          fr: "Série 53, photographie analogique, Irlande",
-          es: "Serie 53, fotografía analógica, Irlanda"
-        }
-      },
+        alt: { en: "Serie 53, analog photograph, Ireland", fr: "Série 53, photographie analogique, Irlande", es: "Serie 53, fotografía analógica, Irlanda" }},
       {
         file: "3757-17.jpg",
         title: { en: "in the shadows we search for any light", fr: "Dans l'ombre, nous cherchons la moindre lueur", es: "En la oscuridad buscamos cualquier luz" },
         medium: { en: "Analog photograph", fr: "Photographie argentique", es: "Fotografía analógica" },
-        location: { en: "medellin", fr: "Medellin", es: "Medellín" },
+        location: { en: "Colombia", fr: "Colombia", es: "Colombia" },
         year: 2026,
-        alt: {
-          en: "3757, analog photograph, medellin",
-          fr: "3757, photographie argentique, Medellín",
-          es: "3757, fotografía analógica, Medellín"
-        }
-      }]
+        alt: { en: "3757, analog photograph, Colombia", fr: "3757, photographie argentique, Colombie", es: "3757, fotografía analógica, Colombia" }}]
     }
 
 };
