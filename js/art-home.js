@@ -104,7 +104,8 @@
   function place(){
     var r = btn.getBoundingClientRect();
     pick.style.top = Math.max(8, r.top - 4) + 'px';
-    pick.style.right = (window.innerWidth - r.left + 10) + 'px';
+    pick.style.right = 'auto';
+    pick.style.left = (r.right + 10) + 'px';
   }
   function open(){ place(); pick.classList.add('open'); pick.setAttribute('aria-hidden', 'false'); btn.setAttribute('aria-expanded', 'true'); }
   function close(){ pick.classList.remove('open'); pick.setAttribute('aria-hidden', 'true'); btn.setAttribute('aria-expanded', 'false'); }
