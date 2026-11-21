@@ -30,6 +30,19 @@ function scanMatch(src, openIdx, openCh, closeCh, hardEnd) {
   const end = hardEnd == null ? src.length : hardEnd;
   for (let i = openIdx; i < end; i++) {
     const ch = src[i];
+    // Skip comments first: an apostrophe inside prose ("Guillaume's",
+    // "trunk-data.js's") otherwise gets misread as opening a string and
+    // desyncs quote/brace tracking for the rest of the scan.
+    if (ch === '/' && src[i + 1] === '/') {
+      const nl = src.indexOf('\n', i);
+      i = nl === -1 || nl >= end ? end : nl;
+      continue;
+    }
+    if (ch === '/' && src[i + 1] === '*') {
+      const close = src.indexOf('*/', i + 2);
+      i = close === -1 || close + 1 >= end ? end : close + 1;
+      continue;
+    }
     if (ch === '"' || ch === "'") {
       const q = ch;
       let j = i + 1;
@@ -311,22 +324,21 @@ function setArchived(src, galleryId, filename, archived) {
   if (commaIdx === -1) throw new Error('setArchived: no comma after file: for ' + filename);
   const afterComma = commaIdx + 1;
 
-  const altIdx = src.indexOf('alt:', afterComma);
-  if (altIdx === -1 || altIdx > g.imagesEnd) throw new Error('setArchived: no alt: found after file: for ' + filename);
-
-  const archivedIdx = src.indexOf('archived:', afterComma);
-  const hasArchived = archivedIdx !== -1 && archivedIdx < altIdx &&
-    /^\s*$/.test(src.slice(afterComma, archivedIdx));
+  // Whitespace run right after file:'s comma — reused verbatim as the
+  // separator for whatever gets inserted/removed, so this works no
+  // matter which field (archived, wide, title, ...) actually comes next
+  // on this particular entry; it never needs to look as far as alt:.
+  const ws = /^\s*/.exec(src.slice(afterComma))[0];
+  const afterWs = afterComma + ws.length;
+  const hasArchived = src.slice(afterWs, afterWs + 'archived:'.length) === 'archived:';
 
   if (archived && !hasArchived) {
-    const gap = src.slice(afterComma, altIdx);
-    if (!/^\s*$/.test(gap)) throw new Error('setArchived: unexpected content between file: and alt: for ' + filename);
-    const insertion = gap + 'archived: true,' + gap;
-    return src.slice(0, afterComma) + insertion + src.slice(altIdx);
+    return src.slice(0, afterComma) + ws + 'archived: true,' + ws + src.slice(afterWs);
   }
   if (!archived && hasArchived) {
-    const preGap = src.slice(afterComma, archivedIdx);
-    return src.slice(0, afterComma) + preGap + src.slice(altIdx);
+    const afterArchivedField = src.indexOf(',', afterWs) + 1;
+    const ws2 = /^\s*/.exec(src.slice(afterArchivedField))[0];
+    return src.slice(0, afterComma) + ws2 + src.slice(afterArchivedField + ws2.length);
   }
   return src; // already in the requested state
 }
@@ -334,7 +346,7 @@ function setArchived(src, galleryId, filename, archived) {
 /* Canonical field order for an image entry — used only to decide where
    a NEW field goes relative to other fields that already exist (never
    reorders fields that are already present). */
-const META_FIELD_ORDER = ['file', 'archived', 'title', 'medium', 'year', 'alt', 'wide'];
+const META_FIELD_ORDER = ['file', 'archived', 'title', 'medium', 'location', 'year', 'alt', 'wide'];
 
 /* Set (insert or replace), or remove (valueLiteral === null), one
    metadata field on the image entry for `filename` in `galleryId`.
@@ -492,6 +504,7 @@ function insertNewImage(src, galleryId, position, data) {
   if (data.archived) lines.push(indent + '  archived: true,');
   if (data.title) lines.push(indent + '  title: ' + trilingualLiteral(data.title) + ',');
   if (data.medium) lines.push(indent + '  medium: ' + trilingualLiteral(data.medium) + ',');
+  if (data.location) lines.push(indent + '  location: ' + trilingualLiteral(data.location) + ',');
   if (data.year) lines.push(indent + '  year: ' + yearLiteral(data.year) + ',');
   lines.push(indent + '  alt: {');
   lines.push(indent + '    en: "' + esc(data.alt.en) + '",');
@@ -525,6 +538,28 @@ function createGallery(src, galleryId, folder, title) {
   // object as for a `[...]` array (splitTopLevelElements doesn't care which
   // it is) — gd.start is the '{', gd.end-1 is the matching '}'.
   return insertIntoArrayAt(src, gd.start, gd.end - 1, piece, '  ', null);
+}
+
+/* Remove a gallery's entire top-level entry from GALLERY_DATA — the
+   permanent-removal half of deleting a branch (server.js archives the
+   photo files first, this just drops the now-empty data record). Only
+   ever called on an already-emptied gallery in practice, but doesn't
+   assume that — it removes the entry (and whatever images it still has)
+   as one unit either way, the same cut-and-close-the-gap mechanics as
+   reorderTrunkAnchor's removal half. */
+function deleteGallery(src, galleryId) {
+  const g = findGallerySpan(src, galleryId);
+  const needle = '"' + galleryId + '": {';
+  const keyIdx = src.lastIndexOf(needle, g.galleryStart);
+  if (keyIdx === -1) throw new Error('deleteGallery: could not locate the key text for ' + galleryId);
+  const gd = findConstObjectSpan(src, 'GALLERY_DATA');
+
+  let end = g.galleryEnd;
+  if (src[end] === ',') end++;
+  if (src[end] === '\r') end++;
+  if (src[end] === '\n') end++;
+  const start = lineStartOf(src, keyIdx, gd.start);
+  return stripDanglingTrailingComma(src.slice(0, start) + src.slice(end), start);
 }
 
 /* Rename a gallery's own trilingual `title` — the gallery/branch's
@@ -577,6 +612,24 @@ function findTrunkAnchor(src, trunkId) {
     }
   }
   throw new Error('findTrunkAnchor: ' + trunkId + ' not found in either manifest');
+}
+
+/* Repoints a trunk anchor at a different photo already in
+   GALLERY_DATA.trunk.images — same id, same position on the same page,
+   same related[] branch attachment, only the `file:` value changes.
+   The old photo is left as an ordinary unattached trunk photo (caller's
+   choice whether to archive it, not this function's). Pure single-field
+   surgery, deliberately not reusing the object cut/reinsert machinery
+   the full trunk-move functions need — there's nothing to move here. */
+function setTrunkAnchorFile(src, trunkId, newFile) {
+  const found = findTrunkAnchor(src, trunkId);
+  const body = src.slice(found.objStart, found.objEnd);
+  const m = /file:'([^']*)'/.exec(body);
+  if (!m) throw new Error('setTrunkAnchorFile: no file: field found on ' + trunkId);
+  const absStart = found.objStart + m.index;
+  const absEnd = absStart + m[0].length;
+  const newText = "file:'" + newFile.replace(/'/g, "\\'") + "'";
+  return src.slice(0, absStart) + newText + src.slice(absEnd);
 }
 
 /* Next unused 'tNN' id (scans both manifests; ids are not required to be
@@ -731,6 +784,64 @@ function detachBranch(src, trunkId) {
   return src.slice(0, cutStart) + src.slice(cutEnd);
 }
 
+/* Remove a trunk anchor entirely (the whole {id,series,file,related?,
+   statement?} object, plus any comment block directly above it) from
+   whichever of the two manifests it's in. Its own photo in
+   GALLERY_DATA.trunk.images is left alone — it just stops being an
+   anchor and goes back to being an ordinary, unpromoted trunk photo
+   (same as replace-anchor-photo leaves the photo it replaces). Used
+   when deleting a branch also retires the anchor that pointed at it,
+   so Trunk/branches doesn't accumulate empty "no branch yet" anchors. */
+function deleteTrunkAnchor(src, trunkId) {
+  const found = findTrunkAnchor(src, trunkId);
+  let end = found.objEnd;
+  while (src[end] === ' ') end++;
+  if (src[end] === ',') end++;
+  if (src[end] === '\r') end++;
+  if (src[end] === '\n') end++;
+  const start = lineStartOf(src, found.objStart, found.setSpan.start);
+  return stripDanglingTrailingComma(src.slice(0, start) + src.slice(end), start);
+}
+
+/* Write (or clear, if statementLiteral is null) the trilingual
+   `statement:{...}` artist-text paragraph on a trunk anchor's own
+   entry — modeled on setGalleryTitle/setMetaField's find-the-field,
+   replace-or-insert approach. Inserted right after `related:[...]`
+   when present (matching every hand-written anchor's own field order),
+   else right after `file:'...'` for a branch-less anchor. */
+function setTrunkStatement(src, trunkId, statementLiteral) {
+  const found = findTrunkAnchor(src, trunkId);
+  const body = src.slice(found.objStart, found.objEnd);
+  const stIdx = body.indexOf('statement:');
+  if (stIdx !== -1) {
+    const braceStart = found.objStart + stIdx + 'statement:'.length;
+    const braceEnd = scanMatch(src, braceStart, '{', '}', found.objEnd);
+    if (braceEnd === -1) throw new Error('setTrunkStatement: unbalanced statement{} for ' + trunkId);
+    if (statementLiteral === null) {
+      let cutStart = found.objStart + stIdx;
+      let cutEnd = braceEnd;
+      if (src[cutStart - 1] === ' ' && src[cutStart - 2] === ',') cutStart -= 2;
+      else if (src.slice(cutEnd, cutEnd + 2) === ', ') cutEnd += 2;
+      return src.slice(0, cutStart) + src.slice(cutEnd);
+    }
+    return src.slice(0, braceStart) + statementLiteral + src.slice(braceEnd);
+  }
+  if (statementLiteral === null) return src; // already absent
+
+  const relIdx = body.indexOf('related:[');
+  if (relIdx !== -1) {
+    const bracketStart = found.objStart + relIdx + 'related:'.length;
+    const bracketEnd = scanMatch(src, bracketStart, '[', ']', found.objEnd);
+    if (bracketEnd === -1) throw new Error('setTrunkStatement: unbalanced related[] for ' + trunkId);
+    return src.slice(0, bracketEnd) + ', statement:' + statementLiteral + src.slice(bracketEnd);
+  }
+  const fileFieldRe = /file:'[^']*'/;
+  const fm = fileFieldRe.exec(body);
+  if (!fm) throw new Error('setTrunkStatement: no file: field found on ' + trunkId);
+  const insAt = found.objStart + fm.index + fm[0].length;
+  return src.slice(0, insAt) + ', statement:' + statementLiteral + src.slice(insAt);
+}
+
 module.exports = {
   // scanning
   scanMatch, scanOpenBackward, splitTopLevelElements, splitTopLevelFields,
@@ -744,8 +855,9 @@ module.exports = {
   // placement
   placeImage, moveImage, insertNewImage,
   // galleries
-  createGallery, setGalleryTitle,
+  createGallery, setGalleryTitle, deleteGallery,
   // trunk/branch management
   findTrunkAnchor, nextTrunkId, reorderTrunkAnchor, moveTrunkAnchor, createTrunkAnchor,
-  addRelated, removeRelated, reorderRelated, detachBranch
+  addRelated, removeRelated, reorderRelated, detachBranch, deleteTrunkAnchor, setTrunkAnchorFile,
+  setTrunkStatement
 };
