@@ -408,7 +408,7 @@
     if (!item) return;
     lastFocus = triggerEl || document.activeElement;
 
-    wrap.innerHTML = '';
+    wrap.replaceChildren();
     /* Museum-label convention only — no big sentence duplicating the
        caption. The hero's own .cartel (small, italic, right-aligned,
        OUTSIDE the photo — see css/rooms.css) is the only caption. */

@@ -82,8 +82,10 @@ img{display:block;max-width:100%}
 @media(max-width:860px){
   .bar{padding:16px 20px}
   .swipe-hint{display:block;text-align:center;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ash);margin:2px 0 -6px}
-  .choices{display:flex;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:16px;max-width:none;padding:20px clamp(20px,7vw,28px) 44px;scroll-padding-left:clamp(20px,7vw,28px)}
-  .choices::-webkit-scrollbar{height:0}
+  .choices{display:flex;justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:16px;max-width:none;padding:20px clamp(20px,7vw,28px) 44px;scroll-padding-left:clamp(20px,7vw,28px);scrollbar-width:none}
+  @supports not (scrollbar-width: none){
+    .choices::-webkit-scrollbar{height:0}
+  }
   .card{flex:0 0 82%;width:82%;grid-column:auto;grid-row:auto;justify-self:auto;scroll-snap-align:center}
   .card--art{order:1}.card--pro{order:2}.card--shop{order:3}
 }

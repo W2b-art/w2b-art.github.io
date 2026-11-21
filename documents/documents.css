@@ -15,8 +15,8 @@ body{min-height:100vh;color:var(--bone);font-family:var(--sans);font-weight:300;
     radial-gradient(60% 50% at 88% 96%, rgba(176,41,75,.08), transparent 62%),
     var(--nuit);
   background-attachment:fixed;line-height:1.6}
-a{color:var(--or);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s ease}
-a:hover,a:focus-visible{border-bottom-color:var(--or)}
+a{color:var(--or);text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:1px;text-underline-offset:3px;transition:text-decoration-color .2s ease}
+a:hover,a:focus-visible{text-decoration-color:var(--or)}
 :focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:2px}
 
 /* top bar */

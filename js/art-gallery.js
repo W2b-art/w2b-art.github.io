@@ -25,12 +25,11 @@
     var notFound = document.createElement('p');
     notFound.style.padding = '140px 40px';
     notFound.textContent = 'Gallery not found: '+id;
-    app.innerHTML = '';
-    app.appendChild(notFound);
+    app.replaceChildren(notFound);
     return;
   }
   /* clear the crawlable static copy rendered into #app by the gallery pages */
-  app.innerHTML = '';
+  app.replaceChildren();
 
   /* back link: explicit galleries return to After Dark, the rest to the home series.
      (contemplations/best-of use the corner index overlay instead and have no .hdr .back.) */
@@ -193,7 +192,7 @@
       /* within the group, route the most-landscape image to the widest
          slot and the most-portrait to the narrowest — minimizes the
          height mismatch between columns regardless of group size. */
-      var ordered = group.slice().sort(function(m,n2){ return ratioOf(n2)-ratioOf(m); });
+      var ordered = group.toSorted(function(m,n2){ return ratioOf(n2)-ratioOf(m); });
       var el = document.createElement('div');
       if (room.type === 'full') {
         el.className = 'room reveal room--full';

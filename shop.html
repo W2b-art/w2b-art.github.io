@@ -298,7 +298,7 @@
     document.getElementById('acq-print').value=title+' ('+file+')';
     document.getElementById('acq-editionf').value=tier;
     document.getElementById('acq-subject').value=TIERS[tier].subject;
-    var sel=document.getElementById('acq-size'); sel.innerHTML='';
+    var sel=document.getElementById('acq-size'); sel.replaceChildren();
     TIERS[tier].sizes.forEach(function(s){ var o=document.createElement('option'); o.value=s.label+' — '+s.eur+' €'; o.textContent=s.label+' — '+s.eur+' €'; sel.appendChild(o); });
     document.getElementById('acq-ok').style.display='none';
     acq.classList.add('open'); document.body.style.overflow='hidden';

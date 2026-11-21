@@ -24,7 +24,7 @@ function buildResponsiveImg(src, alt, widthAttr, heightAttr){
   var sizes = '(max-width:820px) 92vw, (max-width:1500px) 60vw, 1200px';
   function srcset(fmt){
     return entry.widths
-      .slice().sort(function(a,b){ return a-b; })
+      .toSorted(function(a,b){ return a-b; })
       .map(function(w){ return src.replace(/\.(jpe?g)$/i, '-'+w+'w.'+fmt)+' '+w+'w'; })
       .join(', ');
   }
