@@ -1759,8 +1759,8 @@ const GALLERY_DATA = {
     id: "branch-lo-que-dejamos",
     folder: "images/branch-lo-que-dejamos/",
     title: {
-      en: "What We Leave Behind",
-      fr: "Ce que nous laissons",
+      en: "Lo que dejamos",
+      fr: "Lo que dejamos",
       es: "Lo que dejamos"
     },
     images: [

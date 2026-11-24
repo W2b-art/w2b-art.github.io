@@ -214,21 +214,26 @@
      visible edge/corner on hover is this img's own content, not a
      placeholder). Lazy, decorative (the figure's own alt/cartel already
      describe the photo in front). */
-  /* Branch title, laid over the top of the anchor image itself (2026-11-24,
-     Guillaume's reference: a gallery wall-label felt at the doorway of a
-     room, not a caption after the fact). Only the 2 trunk anchors that open
-     onto a real named project get one — the other has-branch anchors are
-     just loosely related photo clusters with no project name to show (see
-     TRUNK_MANIFEST_OTHER in trunk-data.js), so they're left alone rather
-     than inventing a title for them. */
-  var BRANCH_TITLE = { t08:'Bailar la Ciudad', t16:'Lo que dejamos' };
-  function branchTitle(id){
-    var name = BRANCH_TITLE[id];
+  /* Branch title, set above the anchor image (2026-11-24, Guillaume's
+     reference: a gallery wall-label read before stepping into the room,
+     the image itself the room beyond). 2026-11-25 — every branch already
+     has its own trilingual title in GALLERY_DATA[branchSeries].title (set
+     via .admin, e.g. branch-coastal-texture: "sea's skin"); pull it from
+     there instead of a hand-maintained list, so it covers every branch on
+     both pages, not just the 2 on oeuvre-actuelle.html, and never drifts
+     out of sync with what .admin shows. The eyebrow differs: the 2 current
+     projects (TRUNK_SET 'current') really are "in progress"; the Other
+     Works branches are finished clusters, so they get the neutral
+     "Series" word instead. */
+  function branchTitle(branchSeries){
+    var g = branchSeries && typeof GALLERY_DATA !== 'undefined' && GALLERY_DATA[branchSeries];
+    var name = g && g.title && (g.title[LANG] || g.title.fr);
     if (!name) return null;
     var wrap = document.createElement('div'); wrap.className = 'branch-title';
     wrap.appendChild(document.createElement('span')).className = 'rule';
     var rk = document.createElement('span'); rk.className = 'rk';
-    rk.textContent = typeof w2bT === 'function' ? w2bT('branch_eyebrow') : 'In progress';
+    var eyebrowKey = (window.TRUNK_SET === 'other') ? 'nav_series' : 'branch_eyebrow';
+    rk.textContent = typeof w2bT === 'function' ? w2bT(eyebrowKey) : 'Series';
     wrap.appendChild(rk);
     var h2 = document.createElement('h2'); h2.textContent = name;
     wrap.appendChild(h2);
@@ -251,7 +256,7 @@
        photos are singular." Mark the 3 that go deeper. */
     var related = RELATED_BY_ID[item.id] || [];
     if (related.length) {
-      var bt = branchTitle(item.id);
+      var bt = branchTitle(related[0].series);
       if (bt) fig.appendChild(bt);
     }
     fig.appendChild(makeImg(item));

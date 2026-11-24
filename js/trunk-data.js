@@ -148,10 +148,18 @@ const TRUNK_MANIFEST_OTHER = [
     {series:'branch-industrial',file:'man-junkyard-stripped-car-parts-black-white-w2b.jpg'},
     {series:'branch-industrial',file:'6172-1.jpg'}
 ] },
-  { id:'t3', series:'trunk', file:'000084400023.jpg', related:[
+  /* t3's old anchor (trunk/000084400023.jpg) was archived at some point
+     (images/_archive/trunk/ — see .admin or the 2026-11-11 archival pass),
+     which silently orphaned this entire branch: resolve() skips an
+     archived ref, so the whole t3 entry dropped out of TRUNK and "chemins"
+     never rendered anywhere, even though its own 5 photos + curated title
+     were all still live. Fixed 2026-11-25 by promoting one of those still-
+     live branch photos to be the anchor instead of restoring the archived
+     one (no undo of a prior archival decision without knowing why it was
+     made). */
+  { id:'t3', series:'branch-t3', file:'stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg', related:[
     {series:'branch-t3',file:'bamboo-tunnel-pond-stone-wall-w2b.jpg'},
     {series:'branch-t3',file:'medellin-bioreactor-laboratory-green-tanks-science-w2b.jpg'},
-    {series:'branch-t3',file:'stone-corridor-ruins-arches-vanishing-point-black-white-w2b.jpg'},
     {series:'branch-t3',file:'serie-63-12.jpg'},
     {series:'branch-t3',file:'serie-63-07.jpg'}
 ] },
