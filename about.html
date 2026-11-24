@@ -19,6 +19,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/art.css?v=10">
+<link rel="stylesheet" href="css/rooms.css?v=21">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -46,19 +47,40 @@
 
 <a class="skip-link" href="#main-content" data-ui="skip_link">Skip to content</a>
 
-<header class="hdr" id="hdr">
-  <div class="brand"><a href="oeuvre-actuelle.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a></div>
-  <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <div class="hdr-panel" id="hdrPanel">
-    <nav>
-      <a href="oeuvre-actuelle.html#series" data-ui="nav_series">Séries</a>
-      <a href="shop.html" data-ui="nav_prints">Tirages</a>
-      <a href="collaborate.html" data-ui="nav_collab">Collaborer</a>
-      <a href="about.html" data-ui="nav_about">À propos</a>
-    </nav>
-    <div class="lang" data-langsw><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></div>
-  </div>
+<header class="rbar">
+  <a class="brand" href="oeuvre-actuelle.html" aria-label="W2b"><img src="images/ui/w2b-logo.png" alt="W2b"></a>
+  <span class="lang rbar-lang" data-idx-lang aria-label="Language"><button type="button" data-l="es">ES</button><span>·</span><button type="button" data-l="en">EN</button><span>·</span><button type="button" data-l="fr">FR</button></span>
 </header>
+
+<button id="idxFab" class="idx-fab" type="button" aria-haspopup="dialog" aria-expanded="false">
+  <span class="dot" aria-hidden="true"></span><span data-ui="idx_label">Index</span><span class="cur" id="idxCur"></span>
+</button>
+<div class="idx-overlay" id="idxOverlay" role="dialog" aria-modal="true">
+  <span class="idx-close" id="idxClose" role="button" tabindex="0">&times;</span>
+  <div class="idx-wrap">
+    <div class="idx-sec">
+      <h4 data-ui="idx_explore">Explorer</h4>
+      <div class="idx-row">
+        <a href="oeuvre-actuelle.html" data-ui="idx_art">Fine Art</a>
+        <a href="autres-travaux.html" data-ui="idx_other_work">Autres travaux</a>
+        <a href="https://w2bphotography.com/w2b-pro/" data-ui="idx_pro">Commercial ↗</a>
+        <a href="shop.html" data-ui="idx_prints">Tirages</a>
+        <a href="expositions.html" data-ui="idx_expo">Expositions</a>
+      </div>
+    </div>
+    <div class="idx-sec">
+      <h4 data-ui="idx_series_h">Séries</h4>
+      <div id="idxSeries"></div>
+    </div>
+    <div class="idx-sec">
+      <div class="idx-row">
+        <a href="collaborate.html" data-ui="foot_collab">Collaborer</a>
+        <a href="about.html" data-ui="foot_about">À propos</a>
+        <span class="lang" data-idx-lang><button data-l="es">ES</button><span>·</span><button data-l="en">EN</button><span>·</span><button data-l="fr">FR</button></span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <main class="about" id="main-content">
   <div class="eyebrow" data-k="eyebrow"></div>
@@ -85,9 +107,15 @@
 
 <footer>
   <div class="sig"><img src="images/ui/w2b-logo.png" alt="W2b"></div>
-  <div class="l">@w2b.film<br><a href="oeuvre-actuelle.html#series" data-ui="back_series">← Toutes les séries</a><br><span data-ui="foot_place">Medellín · Colombie</span></div>
+  <div class="l">
+    @w2b.film<br>
+    <a href="shop.html" data-ui="foot_prints">Tirages d'art</a> · <a href="collaborate.html" data-ui="foot_collab">Collaborer</a><br>
+    <a href="https://w2bphotography.com/w2b-pro/" data-ui="foot_commercial">Commercial → site pro ↗</a><br>
+    <span data-ui="foot_place">Medellín · Colombie</span>
+  </div>
 </footer>
 
+<script src="js/gallery-data.js?v=9"></script>
 <script src="js/art-i18n.js?v=9"></script>
 <script>
 (function(){
@@ -98,8 +126,8 @@
      p1:"Je suis Guillaume Delye, photographe français installé à Medellín, en Colombie. Je travaille en 35mm, moyen format et numérique. Le noir et blanc est souvent développé à la main ; les tirages sont faits sur coton.",
      p2:"Le travail pose toujours les trois mêmes questions : comment un lieu garde la mémoire, comment un corps se tient dans la lumière, comment une image gagne le droit d'exister. Les séries viennent lentement, et elles restent.",
      p3:"Ouvert aux expositions, résidences et acquisitions. Les commandes éditoriales et commerciales sont traitées sur le site commercial.",
-     m1l:"En cours",m1v:"Medellín, documentaire au long cours, depuis 2024.",
-     m2l:"Pratique",m2v:"Film 35mm et moyen format · Noir et blanc développé à la main · Tirages pigmentaires d'archive sur coton",
+     m1l:"En cours",m1v:"Bailar la Ciudad et Lo que dejamos, Medellín, depuis 2024.",
+     m2l:"Pratique",m2v:"Film 35mm et moyen format, et numérique · Noir et blanc développé à la main · Tirages pigmentaires d'archive sur coton",
      m3l:"Basé",m3v:"Medellín, Colombie · disponible à l'international",
      m4l:"Éditions",m4v:"Éditions de 15 + 2 AP · signées et numérotées.",m4link:"Voir les tirages →",
      avail_l:"Disponible pour",av1:"Expositions personnelles et collectives",av2:"Résidences et commandes",av3:"Acquisitions, institutionnelles et privées",
@@ -108,8 +136,8 @@
      p1:"I'm Guillaume Delye, a French photographer based in Medellín, Colombia. I work across 35mm, medium format and digital. Black and white is often hand-processed; prints are made on cotton rag.",
      p2:"The work asks the same three questions: how a place holds memory, how a body sits in light, how an image earns the right to exist. The series come slowly, and they stay.",
      p3:"Open to exhibitions, residencies and acquisitions. Editorial and commercial commissions are handled on the commercial site.",
-     m1l:"In progress",m1v:"Medellín, long-form documentary, since 2024.",
-     m2l:"Practice",m2v:"35mm and medium format film · Hand-developed black and white · Archival pigment prints on cotton rag",
+     m1l:"In progress",m1v:"Bailar la Ciudad and Lo que dejamos, Medellín, since 2024.",
+     m2l:"Practice",m2v:"35mm and medium format film, and digital · Hand-developed black and white · Archival pigment prints on cotton rag",
      m3l:"Based",m3v:"Medellín, Colombia · available internationally",
      m4l:"Editions",m4v:"Editions of 15 + 2 AP · signed and numbered.",m4link:"See the prints →",
      avail_l:"Available for",av1:"Solo and group exhibitions",av2:"Residencies and assignments",av3:"Acquisitions, institutional and private",
@@ -118,8 +146,8 @@
      p1:"Soy Guillaume Delye, fotógrafo francés radicado en Medellín, Colombia. Trabajo en 35mm, formato medio y digital. El blanco y negro suele revelarse a mano; las copias se hacen sobre algodón.",
      p2:"El trabajo hace siempre las mismas tres preguntas: cómo un lugar guarda la memoria, cómo un cuerpo se sostiene en la luz, cómo una imagen se gana el derecho a existir. Las series llegan despacio, y se quedan.",
      p3:"Abierto a exposiciones, residencias y adquisiciones. Los encargos editoriales y comerciales se atienden en el sitio comercial.",
-     m1l:"En curso",m1v:"Medellín, documental de largo aliento, desde 2024.",
-     m2l:"Práctica",m2v:"Película 35mm y formato medio · Blanco y negro revelado a mano · Copias pigmentadas de archivo sobre algodón",
+     m1l:"En curso",m1v:"Bailar la Ciudad y Lo que dejamos, Medellín, desde 2024.",
+     m2l:"Práctica",m2v:"Película 35mm y formato medio, y digital · Blanco y negro revelado a mano · Copias pigmentadas de archivo sobre algodón",
      m3l:"Radicado",m3v:"Medellín, Colombia · disponible internacionalmente",
      m4l:"Ediciones",m4v:"Ediciones de 15 + 2 AP · firmadas y numeradas.",m4link:"Ver las copias →",
      avail_l:"Disponible para",av1:"Exposiciones individuales y colectivas",av2:"Residencias y encargos",av3:"Adquisiciones, institucionales y privadas",
@@ -129,6 +157,7 @@
   document.querySelectorAll('[data-k]').forEach(function(el){var v=D[el.getAttribute('data-k')];if(v!=null)el.textContent=v;});
 })();
 </script>
+<script src="js/rooms.js?v=4"></script>
 <script src="js/legal-footer.js" defer></script>
 </body>
 </html>
