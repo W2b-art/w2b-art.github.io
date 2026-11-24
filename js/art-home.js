@@ -41,10 +41,15 @@
       (entry.related || []).forEach(function(r){
         var g = GALLERY_DATA[r.series];
         var im = g && g.images.filter(function(i){ return i.file === r.file; })[0];
-        /* exclude exhibition install-view shots (panel/facade/booth photos
-           of the work on display, not the work itself) — not hero material.
-           Guillaume's own filenames consistently flag these. */
-        if (g && im && !im.archived && !/exhibition|installation/i.test(im.file)) POOL.push([g.folder + im.file, r.series]);
+        /* exclude museum/expo documentation shots — exhibition install
+           views (panel/facade/booth photos of the work on display, not the
+           work itself) and fanzine photos (the printed object, not a work
+           in it) — not hero material. Same exclusion list as shop.html's
+           SHOP_EXCLUDE for the same reason; Guillaume's own filenames
+           consistently flag these. 2026-11-24: fanzine was missing here
+           (shop.html already excluded it) — a fanzine photo was turning up
+           as the hero. */
+        if (g && im && !im.archived && !/exhibition|installation|fanzine/i.test(im.file)) POOL.push([g.folder + im.file, r.series]);
       });
     });
   }
