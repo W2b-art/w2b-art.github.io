@@ -327,6 +327,24 @@
   .reveal-img .branch-mark{width:9px;height:9px;opacity:.85}
 }
 
+/* Branch title (2026-11-24): the two named current projects get their name
+   set above their trunk anchor photo — not over it — like the wall label
+   you read before stepping into a gallery room, the image itself the room
+   beyond the threshold. A thin vertical rule stands in for that threshold;
+   the eyebrow + serif title below it echo the same eyebrow+heading grammar
+   already used in .room-opener. */
+.branch-title{display:block;text-align:center;padding:0 var(--sp-4) var(--sp-4)}
+.branch-title .rule{display:block;width:1px;height:26px;margin:0 auto 12px;
+  background:linear-gradient(180deg,rgba(198,146,78,.9),rgba(198,146,78,.15))}
+.branch-title .rk{font-family:var(--sans);font-weight:400;font-size:11px;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--or)}
+.branch-title h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.6vw,48px);line-height:1.08;
+  margin-top:10px;color:var(--bone)}
+@media(max-width:640px){
+  .branch-title{padding:0 var(--sp-3) var(--sp-3)}
+  .branch-title h2{font-size:clamp(21px,6.4vw,32px)}
+}
+
 /* "surélévation" hover (2026-11-11): the trunk photo lifts up-left on
    hover, uncovering 1-2 thin slivers of its branch's next photos sitting
    behind it, like a lifted card in a deck. Extends has-branch — the wrapper

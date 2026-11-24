@@ -214,6 +214,27 @@
      visible edge/corner on hover is this img's own content, not a
      placeholder). Lazy, decorative (the figure's own alt/cartel already
      describe the photo in front). */
+  /* Branch title, laid over the top of the anchor image itself (2026-11-24,
+     Guillaume's reference: a gallery wall-label felt at the doorway of a
+     room, not a caption after the fact). Only the 2 trunk anchors that open
+     onto a real named project get one — the other has-branch anchors are
+     just loosely related photo clusters with no project name to show (see
+     TRUNK_MANIFEST_OTHER in trunk-data.js), so they're left alone rather
+     than inventing a title for them. */
+  var BRANCH_TITLE = { t08:'Bailar la Ciudad', t16:'Lo que dejamos' };
+  function branchTitle(id){
+    var name = BRANCH_TITLE[id];
+    if (!name) return null;
+    var wrap = document.createElement('div'); wrap.className = 'branch-title';
+    wrap.appendChild(document.createElement('span')).className = 'rule';
+    var rk = document.createElement('span'); rk.className = 'rk';
+    rk.textContent = typeof w2bT === 'function' ? w2bT('branch_eyebrow') : 'In progress';
+    wrap.appendChild(rk);
+    var h2 = document.createElement('h2'); h2.textContent = name;
+    wrap.appendChild(h2);
+    return wrap;
+  }
+
   function stackSliver(relatedItem, cls){
     var div = document.createElement('div'); div.className = 'stack-sliver ' + cls;
     var img = new Image(); img.decoding = 'async'; img.loading = 'lazy'; img.alt = ''; img.src = relatedItem.src;
@@ -224,16 +245,20 @@
   function trunkFigure(item, delay){
     var fig = document.createElement('figure'); fig.className = 'reveal-img';
     if (delay) fig.style.transitionDelay = delay + 'ms';
-    fig.appendChild(makeImg(item));
-    fig.appendChild(cartel(item));
-    fig.setAttribute('role', 'button');
-    fig.setAttribute('tabindex', '0');
-    fig.setAttribute('aria-haspopup', 'dialog');
     /* Only 3 of the 20 trunk photos open onto more — without a visible
        signal, clicking is a coin-flip and most clicks (correctly) show
        nothing, which reads as "branches are broken" rather than "most
        photos are singular." Mark the 3 that go deeper. */
     var related = RELATED_BY_ID[item.id] || [];
+    if (related.length) {
+      var bt = branchTitle(item.id);
+      if (bt) fig.appendChild(bt);
+    }
+    fig.appendChild(makeImg(item));
+    fig.appendChild(cartel(item));
+    fig.setAttribute('role', 'button');
+    fig.setAttribute('tabindex', '0');
+    fig.setAttribute('aria-haspopup', 'dialog');
     if (related.length) {
       fig.classList.add('has-branch');
       var mark = document.createElement('span'); mark.className = 'branch-mark'; mark.setAttribute('aria-hidden', 'true');

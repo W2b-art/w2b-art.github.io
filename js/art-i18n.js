@@ -27,6 +27,7 @@
     work_cur_h:{en:"Current Work",fr:"Oeuvre actuelle",es:"Obra actual"},
     work_cur_sub:{en:"Two projects in progress: Bailar la Ciudad and Lo que dejamos.",fr:"Deux projets en cours : Bailar la Ciudad et Lo que dejamos.",es:"Dos proyectos en curso: Bailar la Ciudad y Lo que dejamos."},
     work_other_h:{en:"Other Works",fr:"Autres travaux",es:"Otros trabajos"},
+    branch_eyebrow:{en:"In progress",fr:"En cours",es:"En curso"},
     idx_other_work:{en:"Other Works",fr:"Autres travaux",es:"Otros trabajos"},
     /* trunk/branch navigation (home.html) — see js/art-trunk.js */
     branch_back:{en:"← Selection",fr:"← Sélection",es:"← Selección"},
