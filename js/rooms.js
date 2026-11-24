@@ -62,15 +62,29 @@
        are no longer primary navigation — they're reachable through the
        home.html trunk/branch tree (js/art-trunk.js) and now just redirect
        to home.html (see gallery-*.html) — so they're dropped from this
-       list. After Dark keeps its own entry; it stays a separate, gated,
-       continuous room-sequence experience, untouched. */
+       list. In their place (2026-11-24): the two real current projects,
+       deep-linking straight into their trunk branch via the same
+       ?branch= slug the old gallery-bailar-la-ciudad.html redirect used
+       (see js/art-trunk.js BRANCH_SLUG_TO_ID). After Dark keeps its own
+       entry; it stays a separate, gated, continuous room-sequence
+       experience, untouched. */
     var list = document.getElementById('idxSeries');
     if(list){
-      var a = document.createElement('a');
-      a.className = 'idx-link';
-      a.href = 'after-dark.html';
-      a.textContent = (typeof w2bT === 'function' ? w2bT('afterdark_label') : 'After Dark') + ' · 18+';
-      list.appendChild(a);
+      [
+        { href:'oeuvre-actuelle.html?branch=bailar-la-ciudad', text:'Bailar la Ciudad' },
+        { href:'oeuvre-actuelle.html?branch=lo-que-dejamos', text:'Lo que dejamos' }
+      ].forEach(function(s){
+        var a = document.createElement('a');
+        a.className = 'idx-link';
+        a.href = s.href;
+        a.textContent = s.text;
+        list.appendChild(a);
+      });
+      var ad = document.createElement('a');
+      ad.className = 'idx-link';
+      ad.href = 'after-dark.html';
+      ad.textContent = (typeof w2bT === 'function' ? w2bT('afterdark_label') : 'After Dark') + ' · 18+';
+      list.appendChild(ad);
     }
 
     var cur = document.getElementById('idxCur');

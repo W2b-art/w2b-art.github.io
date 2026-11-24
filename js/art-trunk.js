@@ -483,8 +483,11 @@
      archived 2026-11-11 (gallery removed); the other old ids (argentina,
      best-of, matter, series-2, work-in-progress) never had a photo in the
      curated trunk at all — land on the series grid instead of guessing a
-     stand-in for any of them. */
-  var BRANCH_SLUG_TO_ID = { 'bailar-la-ciudad':'t08', 'contemplations':'t04' };
+     stand-in for any of them.
+     lo-que-dejamos (t16) added 2026-11-24 so the corner Index (js/rooms.js
+     buildIndex) can deep-link both current projects, not just After Dark —
+     it has no standalone gallery-*.html page of its own, only this slug. */
+  var BRANCH_SLUG_TO_ID = { 'bailar-la-ciudad':'t08', 'contemplations':'t04', 'lo-que-dejamos':'t16' };
   var slug;
   try { slug = new URLSearchParams(location.search).get('branch'); } catch(e){ slug = null; }
   if (slug) {
