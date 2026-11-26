@@ -2215,7 +2215,7 @@ const GALLERY_DATA = {
   "branch-t5": {
       id: "branch-t5",
       folder: "images/branch-t5/",
-      title: { en: "Totems", fr: "Totem", es: "Totems" },
+      title: { en: "Idol", fr: "Idole", es: "Ídolo" },
       images: [
       {
         file: "serie-82-8.jpg",
