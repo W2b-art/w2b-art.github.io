@@ -164,9 +164,48 @@ function loadDataFiles() {
     TRUNK_MANIFEST_CURRENT: ctx.TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER: ctx.TRUNK_MANIFEST_OTHER };
 }
 
-function buildTextState(GALLERY_DATA) {
+// Which gallery ids the live site actually renders a Description/
+// Curatorial-text/caption for: only a page that sets window.GALLERY_ID
+// loads art-gallery.js, the ONE place that ever reads GALLERY_COPY or
+// gallery-data.js's `description` field (verified 2026-11-26 by
+// grepping every consumer — see project_admin_tools_texts_2026-11-26.md
+// in the wiki for the full trail). Scanned fresh every call so this
+// stays correct as pages are added/removed, instead of a hardcoded list
+// silently going stale.
+function liveGalleryPageIds() {
+  const ids = new Set();
+  for (const f of fs.readdirSync(ROOT)) {
+    if (!f.endsWith('.html')) continue;
+    let html;
+    try { html = fs.readFileSync(path.join(ROOT, f), 'utf8'); } catch (e) { continue; }
+    const m = /window\.GALLERY_ID\s*=\s*"([^"]+)"/.exec(html);
+    if (m) ids.add(m[1]);
+  }
+  return ids;
+}
+
+// Every branch-* gallery is attached to exactly one trunk anchor (see
+// findTrunkAnchor's manifests) — THAT anchor's `statement` is the only
+// paragraph the live site ever shows for a branch (js/art-trunk.js's
+// openBranch renders item.statement, nothing from gallery-data.js or
+// art-copy.js for branch-* ids: verified 2026-11-26, same trail as
+// above). Maps branch series -> {anchorId, statement}.
+function branchToAnchorMap(TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER) {
+  const map = {};
+  for (const a of [...TRUNK_MANIFEST_CURRENT, ...TRUNK_MANIFEST_OTHER]) {
+    for (const r of (a.related || [])) {
+      if (!map[r.series]) map[r.series] = { anchorId: a.id, statement: a.statement || null };
+    }
+  }
+  return map;
+}
+
+function buildTextState(GALLERY_DATA, TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER) {
   const i18nSrc = fs.readFileSync(SITE_STRINGS_PATH, 'utf8');
   const siteStrings = readKeyFirstBlock(i18nSrc, 'W2B_UI');
+
+  const livePages = liveGalleryPageIds();
+  const branchAnchors = branchToAnchorMap(TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER);
 
   const copySrc = fs.readFileSync(GALLERY_COPY_PATH, 'utf8');
   const copy = Object.keys(GALLERY_DATA).map((id) => {
@@ -175,6 +214,13 @@ function buildTextState(GALLERY_DATA) {
     return {
       id, title: g.title, description: g.description || null,
       copyDesc: gc.desc,
+      // true only for the handful of ids with their own gallery-<id>.html
+      // page — Description/Curatorial text/captions are live there, and
+      // ONLY there.
+      live: livePages.has(id),
+      // set only for branch-* ids that are some trunk anchor's related[]
+      // target — the real, live "paragraph" for a branch.
+      anchor: branchAnchors[id] || null,
       // Pair captions to the REAL images[] by position, from the live
       // gallery, not from caps[]'s own length — if the two have drifted
       // apart (caps[] added/removed photos were archived/moved without
@@ -225,7 +271,7 @@ function buildState() {
       current: mapManifest(TRUNK_MANIFEST_CURRENT),
       other: mapManifest(TRUNK_MANIFEST_OTHER)
     },
-    texts: buildTextState(GALLERY_DATA)
+    texts: buildTextState(GALLERY_DATA, TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER)
   };
 }
 

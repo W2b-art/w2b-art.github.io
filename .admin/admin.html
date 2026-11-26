@@ -1727,21 +1727,55 @@ function renderTextsPages() {
   return wrap;
 }
 
+// Only a handful of ids have their own gallery-<id>.html page — those
+// are the ONLY ones where Description/Curatorial-text/captions are
+// actually shown anywhere (verified 2026-11-26 by tracing every reader
+// of GALLERY_COPY and gallery-data.js's description field — both are
+// read exclusively inside art-gallery.js, which only runs on a page
+// that sets window.GALLERY_ID). Every branch-* gallery's real, live
+// "paragraph" is instead its trunk anchor's statement (js/art-trunk.js
+// renders item.statement, nothing else, when a branch opens) — same
+// field the Trunk tab's "Edit/Write statement…" button already writes,
+// via the same set-trunk-statement action, just reachable from here too
+// since this is where Guillaume actually looks for it.
 function renderTextsGalleries() {
   const wrap = document.createElement('div');
   const toolbar = document.createElement('div'); toolbar.className = 'tab-toolbar';
-  toolbar.innerHTML = '<span class="hint">Every gallery/branch’s own description, curatorial copy, and per-photo captions. Trunk anchor artist-statements are edited from the Trunk tab.</span>';
+  toolbar.innerHTML = '<span class="hint">Only galleries with their own page (marked LIVE) show a Description/Curatorial text/captions on the site. Every branch shows its trunk anchor’s paragraph instead — edit it right here.</span>';
   wrap.appendChild(toolbar);
 
   STATE.texts.copy.forEach((c) => {
     const sectionId = 'txt-gal-' + c.id;
     const section = document.createElement('div'); section.className = 'gallery' + (OPEN_SECTIONS.has(sectionId) ? '' : ' collapsed');
     const head = document.createElement('div'); head.className = 'txt-section-head';
-    head.innerHTML = '<b>' + c.id + '</b><span class="count">' + (c.title && (c.title.en || c.title.fr) || '') + '</span>';
+    const liveBadge = c.live ? ' <span style="color:#6c8;font-size:10px;letter-spacing:.06em;">LIVE</span>' : (c.anchor ? ' <span style="color:#998;font-size:10px;letter-spacing:.06em;">BRANCH</span>' : ' <span style="color:#655;font-size:10px;letter-spacing:.06em;">not shown on site</span>');
+    head.innerHTML = '<b>' + c.id + '</b>' + liveBadge + '<span class="count">' + (c.title && (c.title.en || c.title.fr) || '') + '</span>';
     head.onclick = () => { section.classList.toggle('collapsed'); if (section.classList.contains('collapsed')) OPEN_SECTIONS.delete(sectionId); else OPEN_SECTIONS.add(sectionId); };
     section.appendChild(head);
 
     const body = document.createElement('div'); body.className = 'txt-body'; body.style.padding = '10px 12px';
+
+    if (c.anchor) {
+      // The REAL paragraph for a branch: its trunk anchor's statement.
+      const stRow = document.createElement('div'); stRow.className = 'txt-row'; stRow.style.border = 'none';
+      stRow.innerHTML = '<div class="txt-key">Paragraph<br><span style="opacity:.6">(anchor ' + c.anchor.anchorId + ')</span></div><div class="txt-vals">' +
+        (c.anchor.statement ? ['en', 'fr', 'es'].map((l) => '<div class="txt-val"><b>' + l.toUpperCase() + '</b>' + (c.anchor.statement[l] || '') + '</div>').join('') : '<span class="txt-missing">none yet — shown when this branch opens on the site</span>') + '</div>';
+      const stActions = document.createElement('div'); stActions.className = 'txt-actions';
+      const stBtn = document.createElement('button'); stBtn.type = 'button'; stBtn.className = 'ghead-btn'; stBtn.textContent = c.anchor.statement ? 'Edit' : 'Write…';
+      stBtn.onclick = () => openStatementEditor(c.anchor.anchorId, c.anchor.statement);
+      stActions.appendChild(stBtn);
+      stRow.appendChild(stActions);
+      body.appendChild(stRow);
+      section.appendChild(body);
+      wrap.appendChild(section);
+      return; // branches have nothing else live to show here
+    }
+
+    if (!c.live) {
+      const note = document.createElement('div'); note.style = 'font-size:11px;color:#998;margin-bottom:8px;';
+      note.textContent = 'This id has no gallery-' + c.id + '.html page and isn’t attached to any trunk anchor — nothing below is shown on the site yet. Still editable here in case a page gets built for it later.';
+      body.appendChild(note);
+    }
 
     // gallery-data.js description
     const descRow = document.createElement('div'); descRow.className = 'txt-row'; descRow.style.border = 'none';
