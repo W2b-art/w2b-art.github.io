@@ -18,6 +18,23 @@ const ROOT = path.resolve(__dirname, '..');
 const GALLERY_DATA_PATH = path.join(ROOT, 'js', 'gallery-data.js');
 const TRUNK_DATA_PATH = path.join(ROOT, 'js', 'trunk-data.js');
 const CONFIG_PATH = path.join(__dirname, 'config.json');
+
+// Texts tab (2026-11-26) — every other hand-authored trilingual string
+// table in the codebase. See lib/textedit.js's "Generic site/page text
+// editing" section for the two shapes these split into.
+const SITE_STRINGS_PATH = path.join(ROOT, 'js', 'art-i18n.js'); // KEY-FIRST: W2B_UI
+const GALLERY_COPY_PATH = path.join(ROOT, 'js', 'art-copy.js'); // GALLERY_COPY: desc + caps[]
+const PAGE_TEXT_FILES = [
+  // LANG-FIRST var blocks — label is what the Texts tab shows, file/var
+  // locate the block, langs is which langs that particular block has
+  // (GLOSS is fr/en only, no es).
+  { id: 'about', label: 'About — bio page', file: path.join(ROOT, 'about.html'), rel: 'about.html', varName: 'A', langs: ['fr', 'en', 'es'] },
+  { id: 'collaborate', label: 'Collaborate page', file: path.join(ROOT, 'collaborate.html'), rel: 'collaborate.html', varName: 'BOOK', langs: ['fr', 'en', 'es'] },
+  { id: 'expositions', label: 'Expositions — glossary panel', file: path.join(ROOT, 'expositions.html'), rel: 'expositions.html', varName: 'GLOSS', langs: ['fr', 'en'] },
+  { id: 'shop', label: 'Shop — print requests', file: path.join(ROOT, 'shop.html'), rel: 'shop.html', varName: 'S', langs: ['fr', 'en', 'es'] },
+  { id: 'legal-footer', label: 'Legal footer bar (every page)', file: path.join(ROOT, 'js', 'legal-footer.js'), rel: 'js/legal-footer.js', varName: 'L', langs: ['es', 'en', 'fr'] },
+  { id: 'consent', label: 'Cookie-consent banner', file: path.join(ROOT, 'js', 'consent.js'), rel: 'js/consent.js', varName: 'T', langs: ['es', 'en', 'fr'] }
+];
 const IMAGES_ROOT = path.join(ROOT, 'images');
 const ARCHIVE_ROOT = path.join(IMAGES_ROOT, '_archive');
 const UPLOAD_TMP_ROOT = path.join(__dirname, '_upload_tmp');
@@ -27,8 +44,12 @@ const RESPONSIVE_SCRIPT = path.join(ROOT, '.build', 'responsive.js');
 const te = require('./lib/textedit');
 const {
   setArchived, setMetaField, trilingualLiteral, yearLiteral,
-  placeImage, insertNewImage, createGallery, setGalleryTitle,
-  reorderTrunkAnchor, createTrunkAnchor, addRelated, removeRelated, reorderRelated, detachBranch,
+  placeImage, insertNewImage, createGallery, setGalleryTitle, deleteGallery,
+  reorderTrunkAnchor, createTrunkAnchor, addRelated, removeRelated, reorderRelated, detachBranch, deleteTrunkAnchor,
+  setTrunkAnchorFile, setTrunkStatement, setGalleryDescription,
+  readPageTextBlock, setPageTextField, deletePageTextKey,
+  readKeyFirstBlock, setKeyFirstField,
+  readGalleryCopy, setGalleryCopyDesc, setGalleryCopyCaption, appendGalleryCopyCaption,
   findGallerySpan, findTrunkAnchor
 } = te;
 
@@ -46,7 +67,9 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 4848;
 // change sitting in the working tree for an unrelated reason (this is a
 // shared git worktree) never rides along.
 // ---------------------------------------------------------------------
-const GIT_SCOPE = ['images', 'js/gallery-data.js', 'js/trunk-data.js', 'js/responsive-manifest.js'];
+const GIT_SCOPE = ['images', 'js/gallery-data.js', 'js/trunk-data.js', 'js/responsive-manifest.js',
+  'js/art-i18n.js', 'js/art-copy.js', 'about.html', 'collaborate.html', 'expositions.html', 'shop.html',
+  'js/legal-footer.js', 'js/consent.js'];
 
 function git(args) {
   return execFileSync('git', args, { cwd: ROOT, encoding: 'utf8' });
@@ -141,6 +164,40 @@ function loadDataFiles() {
     TRUNK_MANIFEST_CURRENT: ctx.TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER: ctx.TRUNK_MANIFEST_OTHER };
 }
 
+function buildTextState(GALLERY_DATA) {
+  const i18nSrc = fs.readFileSync(SITE_STRINGS_PATH, 'utf8');
+  const siteStrings = readKeyFirstBlock(i18nSrc, 'W2B_UI');
+
+  const copySrc = fs.readFileSync(GALLERY_COPY_PATH, 'utf8');
+  const copy = Object.keys(GALLERY_DATA).map((id) => {
+    const g = GALLERY_DATA[id];
+    const gc = readGalleryCopy(copySrc, id) || { desc: null, caps: [] };
+    return {
+      id, title: g.title, description: g.description || null,
+      copyDesc: gc.desc,
+      // Pair captions to the REAL images[] by position, from the live
+      // gallery, not from caps[]'s own length — if the two have drifted
+      // apart (caps[] added/removed photos were archived/moved without
+      // this tab) the mismatch is visible here instead of silent. Never
+      // lets the client address a caption except by an index that is
+      // also a real image's index.
+      images: (g.images || []).map((im, idx) => ({
+        idx, file: im.file, archived: !!im.archived,
+        caption: gc.caps[idx] || null
+      }))
+    };
+  });
+
+  const pages = PAGE_TEXT_FILES.map((p) => {
+    const src = fs.readFileSync(p.file, 'utf8');
+    let data = null, error = null;
+    try { data = readPageTextBlock(src, p.varName); } catch (e) { error = e.message; }
+    return { id: p.id, label: p.label, rel: p.rel, langs: p.langs, data, error };
+  });
+
+  return { siteStrings, copy, pages };
+}
+
 function buildState() {
   const { GALLERY_DATA, TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER } = loadDataFiles();
   const galleries = Object.keys(GALLERY_DATA).map((id) => {
@@ -148,10 +205,11 @@ function buildState() {
     return {
       id,
       title: g.title,
+      description: g.description || null,
       folder: g.folder,
       images: (g.images || []).map((im, idx) => ({
         idx, file: im.file, archived: !!im.archived,
-        alt: im.alt && (im.alt.fr || im.alt.en) || '',
+        alt: im.alt && (im.alt.fr || im.alt.en) || '', altFull: im.alt || null,
         title: im.title || null, medium: im.medium || null, year: im.year || null
       }))
     };
@@ -159,14 +217,15 @@ function buildState() {
   const mapManifest = (arr) => arr.map((e) => ({
     id: e.id, file: e.file,
     related: (e.related || []).map((r) => ({ series: r.series, file: r.file })),
-    hasStatement: !!e.statement
+    hasStatement: !!e.statement, statement: e.statement || null
   }));
   return {
     galleries,
     trunk: {
       current: mapManifest(TRUNK_MANIFEST_CURRENT),
       other: mapManifest(TRUNK_MANIFEST_OTHER)
-    }
+    },
+    texts: buildTextState(GALLERY_DATA)
   };
 }
 
@@ -322,14 +381,119 @@ async function translateTitle(text, from, targets) {
 }
 
 // ---------------------------------------------------------------------
+// Auto alt text (2026-11-15, revised same day — Guillaume: "I don't want
+// to pay for it"). Free by default: built from the filename — every
+// photo in this project already has a descriptive slug for a name (e.g.
+// "street-dancer-colombia-jersey-motion-night-w2b.jpg") — plus whatever
+// medium/location context exists. It's assembled text, not a real
+// description of the pixels, but costs nothing and needs no API key.
+// If `anthropicApiKey` ever gets added to .admin/config.json (optional,
+// his own key, gitignored, never asked for by this tool), real AI vision
+// captioning — an actual look at the photo — takes over automatically,
+// same upgrade pattern as DeepL vs. the free MyMemory fallback for
+// translation. Never blocks an upload on its own: a vision-API failure
+// (bad key, rate limit, network) falls back to the free method instead
+// of failing the whole upload.
+// ---------------------------------------------------------------------
+function altTextFromMetadata(filename, context) {
+  const base = filename.replace(/\.(jpe?g)$/i, '').replace(/-w2b$/i, '').replace(/-\d+$/, '');
+  const words = base.split(/[-_]+/).filter(Boolean);
+  let phrase = words.join(' ');
+  phrase = phrase.charAt(0).toUpperCase() + phrase.slice(1);
+  const bits = [phrase];
+  if (context.medium) bits.push(context.medium.toLowerCase());
+  if (context.location) bits.push(context.location);
+  return bits.join(', ');
+}
+
+async function generateAltTextEn(imageBuffer, filename, context) {
+  if (!config.anthropicApiKey) return altTextFromMetadata(filename, context);
+  try {
+    const contextLines = [];
+    if (context.title) contextLines.push('Title the photographer gave it: "' + context.title + '"');
+    if (context.medium) contextLines.push('Medium: ' + context.medium);
+    if (context.location) contextLines.push('Location: ' + context.location);
+    if (context.year) contextLines.push('Year: ' + context.year);
+    const prompt = 'Write alt text (English) for this photograph, for a fine-art/commercial photographer\'s website.\n\n' +
+      'Describe concretely what is actually visible — subject, action, setting, light, color or black-and-white — in one ' +
+      'natural sentence, the way a sighted person would describe it to someone who can\'t see it. This is for real ' +
+      'accessibility and SEO, so be specific and accurate to the image, never generic ("a photo of...", "an image showing...") ' +
+      'and never keyword-stuffed. Do not invent anything not visible in the image. Do not just repeat the title verbatim.' +
+      (contextLines.length ? '\n\nContext (for your reference only — describe the image, don\'t just restate this):\n' + contextLines.join('\n') : '') +
+      '\n\nReply with ONLY the alt text itself, nothing else — no quotes, no preamble, no "Alt text:" prefix.';
+
+    const r = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'x-api-key': config.anthropicApiKey,
+        'anthropic-version': '2023-06-01',
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'claude-haiku-5-5',
+        max_tokens: 300,
+        messages: [{
+          role: 'user',
+          content: [
+            { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: imageBuffer.toString('base64') } },
+            { type: 'text', text: prompt }
+          ]
+        }]
+      })
+    });
+    if (!r.ok) {
+      const body = await r.text().catch(() => '');
+      throw new Error('Anthropic API error ' + r.status + (body ? ': ' + body.slice(0, 300) : ''));
+    }
+    const j = await r.json();
+    const text = j.content && j.content[0] && j.content[0].text;
+    if (!text) throw new Error('alt-text generation: empty response from the Anthropic API');
+    return text.trim().replace(/^["']|["']$/g, '');
+  } catch (e) {
+    console.error('alt-text vision call failed, falling back to the free metadata-derived text:', e.message);
+    return altTextFromMetadata(filename, context);
+  }
+}
+
+// ---------------------------------------------------------------------
 // Actions
 // ---------------------------------------------------------------------
 function requireAltFields(alt) {
   if (!alt || !alt.en || !alt.fr || !alt.es) throw new Error('alt text (en/fr/es) is required');
 }
 
-function applyAction(action) {
-  const { gsrc, tsrc, GALLERY_DATA } = loadDataFiles();
+// If `series`/`file` is some trunk anchor's "related" branch photo,
+// returns that anchor's id; else null. Used by the move/place handler
+// below so moving a photo OUT of a branch it's currently attached to
+// doesn't leave a dangling {series,file} reference behind (resolve()
+// would just silently fail to find it — not a crash, but a related
+// photo that quietly vanishes from the anchor for the wrong reason).
+function findAnchorIdForRelated(TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER, series, file) {
+  for (const arr of [TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER]) {
+    for (const e of arr) {
+      if ((e.related || []).some((r) => r.series === series && r.file === file)) return e.id;
+    }
+  }
+  return null;
+}
+
+// The anchor (if any) that already claims `branchSeries` as its attached
+// branch — i.e. some other file with that series already sits in its
+// related[]. Mirrors findAnchorIdForRelated's detach-on-move-out: this is
+// the symmetric attach-on-move-in, so placing a photo into a branch that's
+// already hooked up to an anchor keeps it visible on Trunk/branches
+// without a separate manual "attach" step.
+function findAnchorIdForBranch(TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER, branchSeries) {
+  for (const arr of [TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER]) {
+    for (const e of arr) {
+      if ((e.related || []).some((r) => r.series === branchSeries)) return e.id;
+    }
+  }
+  return null;
+}
+
+async function applyAction(action) {
+  const { gsrc, tsrc, GALLERY_DATA, TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER } = loadDataFiles();
 
   if (action.type === 'archive' || action.type === 'unarchive') {
     const { gallery, file } = action;
@@ -349,12 +513,19 @@ function applyAction(action) {
     const { from, to, file, position } = action;
     if (from === to && position == null) throw new Error('place: give a position to reorder within the same gallery');
     const newG = placeImage(gsrc, from, to, file, position == null ? undefined : Number(position));
+    let newT = tsrc;
     if (from !== to) {
       const fromFolder = folderFor(GALLERY_DATA, from);
       const toFolder = folderFor(GALLERY_DATA, to);
       moveFiles(fromFolder, toFolder, file);
+      const anchorId = findAnchorIdForRelated(TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER, from, file);
+      if (anchorId) newT = removeRelated(tsrc, anchorId, file);
+      const destAnchor = [...TRUNK_MANIFEST_CURRENT, ...TRUNK_MANIFEST_OTHER].find((e) => (e.related || []).some((r) => r.series === to));
+      const alreadyRelated = destAnchor && (destAnchor.related || []).some((r) => r.series === to && r.file === file);
+      if (destAnchor && !alreadyRelated) newT = addRelated(newT, destAnchor.id, to, file, undefined);
     }
     fs.writeFileSync(GALLERY_DATA_PATH, newG);
+    if (newT !== tsrc) fs.writeFileSync(TRUNK_DATA_PATH, newT);
     return { ok: true };
   }
 
@@ -369,6 +540,42 @@ function applyAction(action) {
     const newG = setMetaField(gsrc, gallery, file, field, literal);
     fs.writeFileSync(GALLERY_DATA_PATH, newG);
     return { ok: true };
+  }
+
+  if (action.type === 'regenerate-alt') {
+    // 2026-11-15 — same "write it automatically" move as upload, applied
+    // to editing a photo already live: the Edit-label modal no longer asks
+    // for alt text at all, it calls this right after saving title/medium/
+    // location so alt text stays in sync with whatever those now say.
+    // gsrc/GALLERY_DATA above are freshly reloaded for this request, so
+    // they already reflect any set-meta calls the client made just before
+    // this one (sequential by construction — see admin.html).
+    const { gallery, file } = action;
+    const g = GALLERY_DATA[gallery];
+    if (!g) throw new Error('regenerate-alt: unknown gallery ' + gallery);
+    const im = g.images.find((i) => i.file === file);
+    if (!im) throw new Error('regenerate-alt: ' + file + ' not found in ' + gallery);
+    // Archived photos physically live under images/_archive/<galleryId>/,
+    // not the gallery's own live folder — same split admin.html's own
+    // thumbUrl() already makes for thumbnails. Missing this is why editing
+    // title/medium/location/year on any archived photo (102 of 239 photos
+    // right now) threw "file missing on disk" here, even though those 4
+    // set-meta writes just above had already landed on disk correctly.
+    const imgPath = im.archived
+      ? path.join(ARCHIVE_ROOT, gallery, file)
+      : path.join(folderFor(GALLERY_DATA, gallery), file);
+    if (!fs.existsSync(imgPath)) throw new Error('regenerate-alt: file missing on disk: ' + imgPath);
+    const altEn = await generateAltTextEn(fs.readFileSync(imgPath), file, {
+      title: im.title && (im.title.en || im.title.fr),
+      medium: im.medium && im.medium.en,
+      location: im.location && im.location.en,
+      year: im.year
+    });
+    const translated = await translateTitle(altEn, 'en', ['fr', 'es']);
+    const newAlt = { en: altEn, fr: translated.fr, es: translated.es };
+    const newG2 = setMetaField(gsrc, gallery, file, 'alt', trilingualLiteral(newAlt));
+    fs.writeFileSync(GALLERY_DATA_PATH, newG2);
+    return { ok: true, generatedAlt: newAlt };
   }
 
   if (action.type === 'create-gallery') {
@@ -391,8 +598,7 @@ function applyAction(action) {
   }
 
   if (action.type === 'upload') {
-    const { gallery, filename, dataBase64, position, alt, title, medium, year, attachToTrunkId } = action;
-    requireAltFields(alt);
+    const { gallery, filename, dataBase64, position, alt, title, medium, location, year, attachToTrunkId } = action;
     const g = GALLERY_DATA[gallery];
     if (!g) throw new Error('upload: unknown gallery ' + gallery);
     const buf = Buffer.from(dataBase64, 'base64');
@@ -409,8 +615,27 @@ function applyAction(action) {
     const finalJpeg = produced.find((p) => p.toLowerCase().endsWith('.jpg') || p.toLowerCase().endsWith('.jpeg'));
     fixResponsiveManifestKey(finalJpeg);
 
+    // Alt text: an explicit client-supplied value wins (back-compat escape
+    // hatch — nothing in the current admin.html sends one any more); other-
+    // wise generate it here, from the actual compressed photo that just got
+    // written, plus whatever title/medium/location/year context exists, then
+    // translate EN->FR/ES through the same pipeline as title. Guillaume
+    // writes the title; this writes the alt text.
+    let finalAlt = alt;
+    if (!finalAlt || !finalAlt.en) {
+      const altEn = await generateAltTextEn(fs.readFileSync(finalJpeg), filename, {
+        title: title && (title.en || title.fr),
+        medium: medium && medium.en,
+        location: location && location.en,
+        year
+      });
+      const translated = await translateTitle(altEn, 'en', ['fr', 'es']);
+      finalAlt = { en: altEn, fr: translated.fr, es: translated.es };
+    }
+    requireAltFields(finalAlt);
+
     let newG = insertNewImage(gsrc, gallery, position == null ? undefined : Number(position), {
-      file: filename, alt, title: title || null, medium: medium || null, year: year || null
+      file: filename, alt: finalAlt, title: title || null, medium: medium || null, location: location || null, year: year || null
     });
     fs.writeFileSync(GALLERY_DATA_PATH, newG);
 
@@ -423,7 +648,7 @@ function applyAction(action) {
       fs.writeFileSync(TRUNK_DATA_PATH, newT);
       trunkMsg = ' and attached to ' + attachToTrunkId;
     }
-    return { ok: true, message: 'Uploaded ' + filename + ' into ' + gallery + trunkMsg };
+    return { ok: true, message: 'Uploaded ' + filename + ' into ' + gallery + trunkMsg, generatedAlt: finalAlt };
   }
 
   if (action.type === 'trunk-move') {
@@ -456,8 +681,23 @@ function applyAction(action) {
     if (!GALLERY_DATA[branchSeries] || !GALLERY_DATA[branchSeries].images.some((im) => im.file === file)) {
       throw new Error('branch-add-related: "' + file + '" is not in ' + branchSeries + "'s images — upload/place it there first");
     }
-    const newT = addRelated(tsrc, trunkId, branchSeries, file, position == null ? undefined : Number(position));
-    fs.writeFileSync(TRUNK_DATA_PATH, newT);
+    // Idempotent at the ACTION level (unlike addRelated itself, which
+    // intentionally allows duplicates for direct curation calls — see
+    // its own tests): client code calls this defensively after a
+    // place/unarchive that may or may not have already auto-attached the
+    // file via place's own destAnchor logic (it can't, for a branch not
+    // attached to any anchor yet — the first photo ever added to a brand
+    // new branch has nothing to auto-attach to). Checking first here
+    // means callers never have to know which case they're in.
+    const anchor = findTrunkAnchor(tsrc, trunkId);
+    const already = (() => {
+      const body = tsrc.slice(anchor.objStart, anchor.objEnd);
+      return body.includes("{series:'" + branchSeries + "',file:'" + file.replace(/'/g, "\\'") + "'}");
+    })();
+    if (!already) {
+      const newT = addRelated(tsrc, trunkId, branchSeries, file, position == null ? undefined : Number(position));
+      fs.writeFileSync(TRUNK_DATA_PATH, newT);
+    }
     return { ok: true };
   }
 
@@ -479,6 +719,192 @@ function applyAction(action) {
     const { trunkId } = action;
     const newT = detachBranch(tsrc, trunkId);
     fs.writeFileSync(TRUNK_DATA_PATH, newT);
+    return { ok: true };
+  }
+
+  if (action.type === 'delete-branch') {
+    // Archives every still-live photo (file move only — never fs.unlink,
+    // same as every other archive in this tool), then either deletes any
+    // anchor(s) still pointing at it (deleteAnchors: true — "the whole
+    // thing", the anchor's own photo is kept, unpromoted, in the trunk
+    // pool) or just detaches it (deleteAnchors: false/omitted — the
+    // anchor stays, now showing "no branch yet"), then removes the
+    // now-empty "branch-xxx": {images:[]} entry and its now-empty
+    // folder. The UI confirmation for this lives in admin.html
+    // (type-to-confirm) — this handler itself does not re-confirm, by
+    // design: it's meant to be called only after that gate has passed.
+    const { gallery, deleteAnchors } = action;
+    if (!/^branch-/.test(gallery)) throw new Error('delete-branch: only branch-* galleries can be deleted this way');
+    const g = GALLERY_DATA[gallery];
+    if (!g) throw new Error('delete-branch: unknown gallery ' + gallery);
+
+    const liveFolder = folderFor(GALLERY_DATA, gallery);
+    const archFolder = path.join(ARCHIVE_ROOT, gallery);
+    const toArchive = g.images.filter((im) => !im.archived);
+    for (const im of toArchive) moveFiles(liveFolder, archFolder, im.file);
+
+    let newT = tsrc;
+    const attachedTo = [];
+    for (const arr of [TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER]) {
+      for (const e of arr) {
+        if ((e.related || []).some((r) => r.series === gallery)) attachedTo.push(e.id);
+      }
+    }
+    if (deleteAnchors) {
+      // "the whole thing" — the anchor's own photo is kept, unpromoted,
+      // in the trunk pool; only the tile and its statement (if any) go
+      // away, same as deleteTrunkAnchor's own contract.
+      for (const id of attachedTo) newT = deleteTrunkAnchor(newT, id);
+    } else {
+      for (const id of attachedTo) newT = detachBranch(newT, id);
+    }
+    if (newT !== tsrc) fs.writeFileSync(TRUNK_DATA_PATH, newT);
+
+    const newG = deleteGallery(gsrc, gallery);
+    fs.writeFileSync(GALLERY_DATA_PATH, newG);
+
+    try { fs.rmdirSync(liveFolder); } catch (e) { /* best-effort: non-empty for an unexpected reason, or already gone — leave it rather than force */ }
+
+    return { ok: true, archivedCount: toArchive.length, deletedAnchors: deleteAnchors ? attachedTo : [], detachedFrom: deleteAnchors ? [] : attachedTo };
+  }
+
+  if (action.type === 'delete-trunk-anchor') {
+    // Fully removes a branch-less anchor: archives its own photo (same
+    // file-move as the generic 'archive' action, scoped to the 'trunk'
+    // gallery) so it drops off both trunk pages (art-trunk.js's resolve()
+    // skips archived images), then deletes the trunk-data.js anchor entry
+    // itself so no ghost row is left in this tool. Refuses an anchor that
+    // still has a branch — detach it first, same gate the UI enforces.
+    const { trunkId } = action;
+    for (const arr of [TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER]) {
+      const e = arr.find((x) => x.id === trunkId);
+      if (e && (e.related || []).length) throw new Error('delete-trunk-anchor: ' + trunkId + ' still has a branch — detach it first');
+    }
+    const file = (() => {
+      for (const arr of [TRUNK_MANIFEST_CURRENT, TRUNK_MANIFEST_OTHER]) {
+        const e = arr.find((x) => x.id === trunkId);
+        if (e) return e.file;
+      }
+      throw new Error('delete-trunk-anchor: ' + trunkId + ' not found in either manifest');
+    })();
+
+    const im = GALLERY_DATA.trunk.images.find((i) => i.file === file);
+    if (im && !im.archived) {
+      const newG = setArchived(gsrc, 'trunk', file, true);
+      moveFiles(folderFor(GALLERY_DATA, 'trunk'), path.join(ARCHIVE_ROOT, 'trunk'), file);
+      fs.writeFileSync(GALLERY_DATA_PATH, newG);
+    }
+
+    const newT = deleteTrunkAnchor(tsrc, trunkId);
+    fs.writeFileSync(TRUNK_DATA_PATH, newT);
+    return { ok: true };
+  }
+
+  if (action.type === 'replace-anchor-photo') {
+    // Repoints an existing anchor at a different trunk photo — same id,
+    // same position, same related[] branch, only `file:` changes. The
+    // old photo is left as an ordinary unattached trunk photo; archiving
+    // it (or not) is a separate decision, not part of this action.
+    const { trunkId, file } = action;
+    if (!GALLERY_DATA.trunk || !GALLERY_DATA.trunk.images.some((im) => im.file === file)) {
+      throw new Error('replace-anchor-photo: "' + file + '" is not in gallery-data.js\'s trunk.images — upload/place it there first');
+    }
+    const newT = setTrunkAnchorFile(tsrc, trunkId, file);
+    fs.writeFileSync(TRUNK_DATA_PATH, newT);
+    return { ok: true };
+  }
+
+  if (action.type === 'set-trunk-statement') {
+    // The artist-text paragraph shown on a trunk anchor's own page.
+    // statement: {en,fr,es} object, or null to clear it.
+    const { trunkId, statement } = action;
+    let literal = null;
+    if (statement != null) {
+      if (!statement.fr) throw new Error('set-trunk-statement: statement.fr is required (the site falls back to it)');
+      literal = trilingualLiteral({ en: statement.en || statement.fr, fr: statement.fr, es: statement.es || statement.fr });
+    }
+    const newT = setTrunkStatement(tsrc, trunkId, literal);
+    fs.writeFileSync(TRUNK_DATA_PATH, newT);
+    return { ok: true };
+  }
+
+  if (action.type === 'set-gallery-description') {
+    const { gallery, description } = action;
+    if (!description || !description.en || !description.fr || !description.es) throw new Error('set-gallery-description: description (en/fr/es) is required');
+    const newG = setGalleryDescription(gsrc, gallery, description);
+    fs.writeFileSync(GALLERY_DATA_PATH, newG);
+    return { ok: true };
+  }
+
+  if (action.type === 'set-gallery-copy-desc') {
+    // js/art-copy.js's GALLERY_COPY[id].desc — distinct from
+    // gallery-data.js's own description (set-gallery-description above).
+    const { gallery, description } = action;
+    if (!description || !description.en || !description.fr || !description.es) throw new Error('set-gallery-copy-desc: description (en/fr/es) is required');
+    const csrc = fs.readFileSync(GALLERY_COPY_PATH, 'utf8');
+    const newC = setGalleryCopyDesc(csrc, gallery, trilingualLiteral(description));
+    fs.writeFileSync(GALLERY_COPY_PATH, newC);
+    return { ok: true };
+  }
+
+  if (action.type === 'set-gallery-copy-caption') {
+    // Edits an EXISTING caps[idx] in place only — idx must be a real
+    // image's current index (see buildTextState's pairing). Never
+    // changes caps[]'s length, so it can never desync from images[].
+    const { gallery, idx, caption } = action;
+    if (!caption || !caption.en || !caption.fr || !caption.es) throw new Error('set-gallery-copy-caption: caption (en/fr/es) is required');
+    const csrc = fs.readFileSync(GALLERY_COPY_PATH, 'utf8');
+    const existing = readGalleryCopy(csrc, gallery);
+    let newC;
+    if (existing && Number(idx) < existing.caps.length) {
+      newC = setGalleryCopyCaption(csrc, gallery, Number(idx), trilingualLiteral(caption));
+    } else if (existing && Number(idx) === existing.caps.length) {
+      // first caption past the end of today's caps[] — append-only, the
+      // one length-changing case this module allows (see lib/textedit.js).
+      newC = appendGalleryCopyCaption(csrc, gallery, trilingualLiteral(caption));
+    } else {
+      throw new Error('set-gallery-copy-caption: index ' + idx + ' is not the next writable slot for ' + gallery + ' — captions can only be edited in place or appended at the end, never inserted mid-array');
+    }
+    fs.writeFileSync(GALLERY_COPY_PATH, newC);
+    return { ok: true };
+  }
+
+  if (action.type === 'set-site-string') {
+    // js/art-i18n.js's W2B_UI — key-first {en,fr,es}. value: null deletes
+    // the key entirely.
+    const { key, value } = action;
+    if (!/^[A-Za-z_$][\w$]*$/.test(key)) throw new Error('set-site-string: key must be a valid identifier, got "' + key + '"');
+    const src = fs.readFileSync(SITE_STRINGS_PATH, 'utf8');
+    let triObj = null;
+    if (value !== null) {
+      if (!value || !value.en || !value.fr || !value.es) throw new Error('set-site-string: value (en/fr/es) is required unless deleting');
+      triObj = { en: value.en, fr: value.fr, es: value.es };
+    }
+    const newSrc = setKeyFirstField(src, 'W2B_UI', key, triObj);
+    fs.writeFileSync(SITE_STRINGS_PATH, newSrc);
+    return { ok: true };
+  }
+
+  if (action.type === 'set-page-text') {
+    // One of PAGE_TEXT_FILES' lang-first blocks. value: null deletes the
+    // key from every lang the block has.
+    const { pageId, key, value } = action;
+    const page = PAGE_TEXT_FILES.find((p) => p.id === pageId);
+    if (!page) throw new Error('set-page-text: unknown pageId ' + pageId);
+    if (!/^[A-Za-z_$][\w$]*$/.test(key)) throw new Error('set-page-text: key must be a valid identifier, got "' + key + '"');
+    let src = fs.readFileSync(page.file, 'utf8');
+    if (value === null) {
+      src = deletePageTextKey(src, page.varName, key);
+    } else {
+      if (!value || typeof value !== 'object') throw new Error('set-page-text: value must be an object of {lang: text}');
+      for (const lang of page.langs) {
+        if (value[lang] == null) throw new Error('set-page-text: missing value for lang "' + lang + '" (this page has ' + page.langs.join('/') + ')');
+      }
+      for (const lang of page.langs) {
+        src = setPageTextField(src, page.varName, lang, key, value[lang]);
+      }
+    }
+    fs.writeFileSync(page.file, src);
     return { ok: true };
   }
 
@@ -539,7 +965,19 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (!isAuthed(req)) {
-      send(res, 200, LOGIN_PAGE, { 'Content-Type': 'text/html' });
+      /* Sessions are in-memory (see `sessions` above) and get wiped on
+         every server restart. A page already open in the browser keeps
+         running, so its next /api/* call used to get this same 200+HTML
+         login page back — the client's api() does r.json() on it, which
+         throws a cryptic "Unexpected token '<'" instead of anything
+         pointing at the real cause. Give API calls a real 401 + JSON so
+         the existing toast shows something actionable; page loads still
+         get the login page as before. */
+      if (u.pathname.startsWith('/api/')) {
+        sendJson(res, 401, { ok: false, error: 'Session expired (the admin server was restarted) — reload the page and log in again.' });
+      } else {
+        send(res, 200, LOGIN_PAGE, { 'Content-Type': 'text/html' });
+      }
       return;
     }
 
@@ -559,7 +997,7 @@ const server = http.createServer(async (req, res) => {
       let action;
       try { action = JSON.parse(body); } catch (e) { sendJson(res, 400, { ok: false, error: 'bad JSON' }); return; }
       try {
-        const result = applyAction(action);
+        const result = await applyAction(action);
         sendJson(res, 200, Object.assign(result, { state: buildState() }));
       } catch (e) {
         sendJson(res, 400, { ok: false, error: e.message });

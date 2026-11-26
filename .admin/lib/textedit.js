@@ -30,6 +30,19 @@ function scanMatch(src, openIdx, openCh, closeCh, hardEnd) {
   const end = hardEnd == null ? src.length : hardEnd;
   for (let i = openIdx; i < end; i++) {
     const ch = src[i];
+    // Skip comments first: an apostrophe inside prose ("Guillaume's",
+    // "trunk-data.js's") otherwise gets misread as opening a string and
+    // desyncs quote/brace tracking for the rest of the scan.
+    if (ch === '/' && src[i + 1] === '/') {
+      const nl = src.indexOf('\n', i);
+      i = nl === -1 || nl >= end ? end : nl;
+      continue;
+    }
+    if (ch === '/' && src[i + 1] === '*') {
+      const close = src.indexOf('*/', i + 2);
+      i = close === -1 || close + 1 >= end ? end : close + 1;
+      continue;
+    }
     if (ch === '"' || ch === "'") {
       const q = ch;
       let j = i + 1;
@@ -311,22 +324,21 @@ function setArchived(src, galleryId, filename, archived) {
   if (commaIdx === -1) throw new Error('setArchived: no comma after file: for ' + filename);
   const afterComma = commaIdx + 1;
 
-  const altIdx = src.indexOf('alt:', afterComma);
-  if (altIdx === -1 || altIdx > g.imagesEnd) throw new Error('setArchived: no alt: found after file: for ' + filename);
-
-  const archivedIdx = src.indexOf('archived:', afterComma);
-  const hasArchived = archivedIdx !== -1 && archivedIdx < altIdx &&
-    /^\s*$/.test(src.slice(afterComma, archivedIdx));
+  // Whitespace run right after file:'s comma — reused verbatim as the
+  // separator for whatever gets inserted/removed, so this works no
+  // matter which field (archived, wide, title, ...) actually comes next
+  // on this particular entry; it never needs to look as far as alt:.
+  const ws = /^\s*/.exec(src.slice(afterComma))[0];
+  const afterWs = afterComma + ws.length;
+  const hasArchived = src.slice(afterWs, afterWs + 'archived:'.length) === 'archived:';
 
   if (archived && !hasArchived) {
-    const gap = src.slice(afterComma, altIdx);
-    if (!/^\s*$/.test(gap)) throw new Error('setArchived: unexpected content between file: and alt: for ' + filename);
-    const insertion = gap + 'archived: true,' + gap;
-    return src.slice(0, afterComma) + insertion + src.slice(altIdx);
+    return src.slice(0, afterComma) + ws + 'archived: true,' + ws + src.slice(afterWs);
   }
   if (!archived && hasArchived) {
-    const preGap = src.slice(afterComma, archivedIdx);
-    return src.slice(0, afterComma) + preGap + src.slice(altIdx);
+    const afterArchivedField = src.indexOf(',', afterWs) + 1;
+    const ws2 = /^\s*/.exec(src.slice(afterArchivedField))[0];
+    return src.slice(0, afterComma) + ws2 + src.slice(afterArchivedField + ws2.length);
   }
   return src; // already in the requested state
 }
@@ -334,7 +346,7 @@ function setArchived(src, galleryId, filename, archived) {
 /* Canonical field order for an image entry — used only to decide where
    a NEW field goes relative to other fields that already exist (never
    reorders fields that are already present). */
-const META_FIELD_ORDER = ['file', 'archived', 'title', 'medium', 'year', 'alt', 'wide'];
+const META_FIELD_ORDER = ['file', 'archived', 'title', 'medium', 'location', 'year', 'alt', 'wide'];
 
 /* Set (insert or replace), or remove (valueLiteral === null), one
    metadata field on the image entry for `filename` in `galleryId`.
@@ -492,6 +504,7 @@ function insertNewImage(src, galleryId, position, data) {
   if (data.archived) lines.push(indent + '  archived: true,');
   if (data.title) lines.push(indent + '  title: ' + trilingualLiteral(data.title) + ',');
   if (data.medium) lines.push(indent + '  medium: ' + trilingualLiteral(data.medium) + ',');
+  if (data.location) lines.push(indent + '  location: ' + trilingualLiteral(data.location) + ',');
   if (data.year) lines.push(indent + '  year: ' + yearLiteral(data.year) + ',');
   lines.push(indent + '  alt: {');
   lines.push(indent + '    en: "' + esc(data.alt.en) + '",');
@@ -525,6 +538,28 @@ function createGallery(src, galleryId, folder, title) {
   // object as for a `[...]` array (splitTopLevelElements doesn't care which
   // it is) — gd.start is the '{', gd.end-1 is the matching '}'.
   return insertIntoArrayAt(src, gd.start, gd.end - 1, piece, '  ', null);
+}
+
+/* Remove a gallery's entire top-level entry from GALLERY_DATA — the
+   permanent-removal half of deleting a branch (server.js archives the
+   photo files first, this just drops the now-empty data record). Only
+   ever called on an already-emptied gallery in practice, but doesn't
+   assume that — it removes the entry (and whatever images it still has)
+   as one unit either way, the same cut-and-close-the-gap mechanics as
+   reorderTrunkAnchor's removal half. */
+function deleteGallery(src, galleryId) {
+  const g = findGallerySpan(src, galleryId);
+  const needle = '"' + galleryId + '": {';
+  const keyIdx = src.lastIndexOf(needle, g.galleryStart);
+  if (keyIdx === -1) throw new Error('deleteGallery: could not locate the key text for ' + galleryId);
+  const gd = findConstObjectSpan(src, 'GALLERY_DATA');
+
+  let end = g.galleryEnd;
+  if (src[end] === ',') end++;
+  if (src[end] === '\r') end++;
+  if (src[end] === '\n') end++;
+  const start = lineStartOf(src, keyIdx, gd.start);
+  return stripDanglingTrailingComma(src.slice(0, start) + src.slice(end), start);
 }
 
 /* Rename a gallery's own trilingual `title` — the gallery/branch's
@@ -577,6 +612,24 @@ function findTrunkAnchor(src, trunkId) {
     }
   }
   throw new Error('findTrunkAnchor: ' + trunkId + ' not found in either manifest');
+}
+
+/* Repoints a trunk anchor at a different photo already in
+   GALLERY_DATA.trunk.images — same id, same position on the same page,
+   same related[] branch attachment, only the `file:` value changes.
+   The old photo is left as an ordinary unattached trunk photo (caller's
+   choice whether to archive it, not this function's). Pure single-field
+   surgery, deliberately not reusing the object cut/reinsert machinery
+   the full trunk-move functions need — there's nothing to move here. */
+function setTrunkAnchorFile(src, trunkId, newFile) {
+  const found = findTrunkAnchor(src, trunkId);
+  const body = src.slice(found.objStart, found.objEnd);
+  const m = /file:'([^']*)'/.exec(body);
+  if (!m) throw new Error('setTrunkAnchorFile: no file: field found on ' + trunkId);
+  const absStart = found.objStart + m.index;
+  const absEnd = absStart + m[0].length;
+  const newText = "file:'" + newFile.replace(/'/g, "\\'") + "'";
+  return src.slice(0, absStart) + newText + src.slice(absEnd);
 }
 
 /* Next unused 'tNN' id (scans both manifests; ids are not required to be
@@ -731,12 +784,400 @@ function detachBranch(src, trunkId) {
   return src.slice(0, cutStart) + src.slice(cutEnd);
 }
 
+/* Remove a trunk anchor entirely (the whole {id,series,file,related?,
+   statement?} object, plus any comment block directly above it) from
+   whichever of the two manifests it's in. Its own photo in
+   GALLERY_DATA.trunk.images is left alone — it just stops being an
+   anchor and goes back to being an ordinary, unpromoted trunk photo
+   (same as replace-anchor-photo leaves the photo it replaces). Used
+   when deleting a branch also retires the anchor that pointed at it,
+   so Trunk/branches doesn't accumulate empty "no branch yet" anchors. */
+function deleteTrunkAnchor(src, trunkId) {
+  const found = findTrunkAnchor(src, trunkId);
+  let end = found.objEnd;
+  while (src[end] === ' ') end++;
+  if (src[end] === ',') end++;
+  if (src[end] === '\r') end++;
+  if (src[end] === '\n') end++;
+  const start = lineStartOf(src, found.objStart, found.setSpan.start);
+  return stripDanglingTrailingComma(src.slice(0, start) + src.slice(end), start);
+}
+
+/* Write (or clear, if statementLiteral is null) the trilingual
+   `statement:{...}` artist-text paragraph on a trunk anchor's own
+   entry — modeled on setGalleryTitle/setMetaField's find-the-field,
+   replace-or-insert approach. Inserted right after `related:[...]`
+   when present (matching every hand-written anchor's own field order),
+   else right after `file:'...'` for a branch-less anchor. */
+function setTrunkStatement(src, trunkId, statementLiteral) {
+  const found = findTrunkAnchor(src, trunkId);
+  const body = src.slice(found.objStart, found.objEnd);
+  const stIdx = body.indexOf('statement:');
+  if (stIdx !== -1) {
+    const braceStart = found.objStart + stIdx + 'statement:'.length;
+    const braceEnd = scanMatch(src, braceStart, '{', '}', found.objEnd);
+    if (braceEnd === -1) throw new Error('setTrunkStatement: unbalanced statement{} for ' + trunkId);
+    if (statementLiteral === null) {
+      let cutStart = found.objStart + stIdx;
+      let cutEnd = braceEnd;
+      if (src[cutStart - 1] === ' ' && src[cutStart - 2] === ',') cutStart -= 2;
+      else if (src.slice(cutEnd, cutEnd + 2) === ', ') cutEnd += 2;
+      return src.slice(0, cutStart) + src.slice(cutEnd);
+    }
+    return src.slice(0, braceStart) + statementLiteral + src.slice(braceEnd);
+  }
+  if (statementLiteral === null) return src; // already absent
+
+  const relIdx = body.indexOf('related:[');
+  if (relIdx !== -1) {
+    const bracketStart = found.objStart + relIdx + 'related:'.length;
+    const bracketEnd = scanMatch(src, bracketStart, '[', ']', found.objEnd);
+    if (bracketEnd === -1) throw new Error('setTrunkStatement: unbalanced related[] for ' + trunkId);
+    return src.slice(0, bracketEnd) + ', statement:' + statementLiteral + src.slice(bracketEnd);
+  }
+  const fileFieldRe = /file:'[^']*'/;
+  const fm = fileFieldRe.exec(body);
+  if (!fm) throw new Error('setTrunkStatement: no file: field found on ' + trunkId);
+  const insAt = found.objStart + fm.index + fm[0].length;
+  return src.slice(0, insAt) + ', statement:' + statementLiteral + src.slice(insAt);
+}
+
+/* Sets GALLERY_DATA[galleryId].description — modeled line-for-line on
+   setGalleryTitle (same object, sibling field, same find-or-insert-
+   after-title approach). Added 2026-11-26: title had a setter, the
+   longer curatorial description never did. */
+function setGalleryDescription(src, galleryId, description) {
+  const g = findGallerySpan(src, galleryId);
+  const fields = splitTopLevelFields(src, g.galleryStart, g.galleryEnd);
+  const existing = fields.find((f) => f.key === 'description');
+  const newFieldText = 'description: ' + trilingualLiteral(description);
+
+  if (existing) {
+    let start = existing.start;
+    while (/\s/.test(src[start])) start++;
+    return src.slice(0, start) + newFieldText + src.slice(existing.end);
+  }
+
+  // Insert right after `title` if present (canonical hand-authored order
+  // is id/folder/coverIndex/title/description/images), else right before
+  // `images`, same fallback setGalleryTitle uses in reverse.
+  const after = fields.find((f) => f.key === 'title') || null;
+  const before = fields.find((f) => f.key === 'images');
+  const anchor = after || before;
+  if (!anchor) throw new Error('setGalleryDescription: no title/images field found in ' + galleryId);
+  let p = anchor.end;
+  if (after) {
+    // inserting AFTER title's end
+    if (src[p] === ',') p++;
+  } else {
+    // inserting BEFORE images' start
+    p = anchor.start;
+    while (/\s/.test(src[p])) p++;
+  }
+  const lineStart = after ? null : lineStartOf(src, p, g.galleryStart);
+  if (after) {
+    // same-line style check
+    const restOfLine = src.slice(p, src.indexOf('\n', p) === -1 ? src.length : src.indexOf('\n', p));
+    if (!/^\r?\n/.test(src.slice(p, p + 2)) && /\S/.test(restOfLine)) {
+      return src.slice(0, p) + ' ' + newFieldText + ',' + src.slice(p);
+    }
+    const indent = lineIndentOf(src, anchor.start, g.galleryStart);
+    return src.slice(0, p) + '\r\n' + indent + newFieldText + ',' + src.slice(p);
+  }
+  if (lineStart === g.galleryStart) {
+    return src.slice(0, p) + newFieldText + ', ' + src.slice(p);
+  }
+  return src.slice(0, lineStart) + '    ' + newFieldText + ',\r\n' + src.slice(lineStart);
+}
+
+// ---------------------------------------------------------------------
+// Generic site/page text editing (added 2026-11-26) — covers every
+// other hand-authored trilingual (or bilingual) string table in the
+// codebase, which recur in exactly two shapes no matter which file they
+// live in:
+//
+//   KEY-FIRST  (js/art-i18n.js's W2B_UI):
+//     window.W2B_UI = { someKey: { en:"...", fr:"...", es:"..." }, ... }
+//
+//   LANG-FIRST (about.html's A, collaborate.html's BOOK,
+//   expositions.html's GLOSS, shop.html's S, js/legal-footer.js's L,
+//   js/consent.js's T):
+//     var NAME = { fr:{ key:"...", ... }, en:{ ... }, es:{ ... } }
+//
+// Deliberately NOT touching GALLERY_COPY's `caps[]` the same generic
+// way: captions are addressed by array position into a gallery's
+// images[], the exact "idx" footgun trunk-data.js was migrated away
+// from on 2026-11-11 (see top-of-file note) — adding/removing a caption
+// here independent of the images array would silently desync them.
+// setGalleryCopyCaption below only ever edits an EXISTING slot in place
+// (no length change); appendGalleryCopyCaption only ever adds at the
+// end. There is no "delete one caption out of the middle" by design.
+// ---------------------------------------------------------------------
+
+function findVarObjectSpan(src, varName) {
+  const re = new RegExp('(?:var|const|window\\.)\\s*' + varName + '\\s*=\\s*\\{');
+  const m = re.exec(src);
+  if (!m) throw new Error('findVarObjectSpan: ' + varName + ' not found');
+  const braceStart = m.index + m[0].length - 1;
+  const end = scanMatch(src, braceStart, '{', '}');
+  if (end === -1) throw new Error('findVarObjectSpan: unbalanced {} for ' + varName);
+  return { start: braceStart, end };
+}
+
+/* Any top-level `"<key>": {` ... matching `}` entry, anywhere in src —
+   generic version of findGallerySpan's own entry lookup, without the
+   images[]-specific part, for other const-object-of-objects files
+   (GALLERY_COPY). */
+function findKeyedObjectEntry(src, key) {
+  const needle = '"' + key + '": {';
+  const keyIdx = src.indexOf(needle);
+  if (keyIdx === -1) throw new Error('findKeyedObjectEntry: key not found: ' + key);
+  const braceStart = keyIdx + needle.length - 1;
+  const end = scanMatch(src, braceStart, '{', '}');
+  if (end === -1) throw new Error('findKeyedObjectEntry: unbalanced {} for ' + key);
+  return { start: braceStart, end };
+}
+
+function unquote(text) {
+  const t = text.trim();
+  const m = t.match(/^"([\s\S]*)"$/) || t.match(/^'([\s\S]*)'$/);
+  if (!m) return t;
+  const q = t[0];
+  return m[1].replace(new RegExp('\\\\' + q, 'g'), q).replace(/\\\\/g, '\\');
+}
+
+/* Read every lang -> key -> string out of a LANG-FIRST block. */
+function readPageTextBlock(src, varName) {
+  const span = findVarObjectSpan(src, varName);
+  const langFields = splitTopLevelFields(src, span.start, span.end);
+  const out = {};
+  for (const lf of langFields) {
+    const braceRel = src.indexOf('{', lf.start);
+    if (braceRel === -1 || braceRel >= lf.end) continue;
+    const objEnd = scanMatch(src, braceRel, '{', '}', lf.end);
+    if (objEnd === -1) continue;
+    const kv = {};
+    for (const f of splitTopLevelFields(src, braceRel, objEnd)) {
+      const t = src.slice(f.start, f.end);
+      kv[f.key] = unquote(t.slice(t.indexOf(':') + 1));
+    }
+    out[lf.key] = kv;
+  }
+  return out;
+}
+
+/* Upsert one lang+key's string value in a LANG-FIRST block (also how
+   "add a new key" works — call once per lang that should carry it). */
+function setPageTextField(src, varName, lang, key, value) {
+  const span = findVarObjectSpan(src, varName);
+  const lf = splitTopLevelFields(src, span.start, span.end).find((f) => f.key === lang);
+  if (!lf) throw new Error('setPageTextField: lang "' + lang + '" not found in ' + varName);
+  const braceRel = src.indexOf('{', lf.start);
+  const objEnd = scanMatch(src, braceRel, '{', '}', lf.end);
+  if (objEnd === -1) throw new Error('setPageTextField: malformed ' + varName + '.' + lang);
+  const kvFields = splitTopLevelFields(src, braceRel, objEnd);
+  const existing = kvFields.find((f) => f.key === key);
+  const newFieldText = key + ':"' + esc(value) + '"';
+
+  if (existing) {
+    let start = existing.start;
+    while (/\s/.test(src[start])) start++;
+    return src.slice(0, start) + newFieldText + src.slice(existing.end);
+  }
+  const lastField = kvFields[kvFields.length - 1];
+  let insAt = lastField ? lastField.end : braceRel + 1;
+  if (src[insAt] === ',') insAt++;
+  while (src[insAt] === ' ') insAt++;
+  const sep = lastField ? ',' : '';
+  return src.slice(0, insAt) + sep + newFieldText + src.slice(insAt);
+}
+
+/* Remove `key` from every lang sub-object of a LANG-FIRST block that has
+   it. Re-finds spans fresh after each removal (these blocks are small —
+   a handful of KB at most — so this is cheap, and it sidesteps every
+   stale-offset bug a running total would risk). */
+function deletePageTextKey(src, varName, key) {
+  for (;;) {
+    const span = findVarObjectSpan(src, varName);
+    const langFields = splitTopLevelFields(src, span.start, span.end);
+    let removed = false;
+    for (const lf of langFields) {
+      const braceRel = src.indexOf('{', lf.start);
+      if (braceRel === -1 || braceRel >= lf.end) continue;
+      const objEnd = scanMatch(src, braceRel, '{', '}', lf.end);
+      if (objEnd === -1) continue;
+      const existing = splitTopLevelFields(src, braceRel, objEnd).find((f) => f.key === key);
+      if (!existing) continue;
+      let start = existing.start;
+      while (/\s/.test(src[start])) start++;
+      let end = existing.end;
+      if (src[end] === ',') {
+        end++;
+        while (src[end] === ' ') end++;
+      } else {
+        let s2 = start;
+        while (s2 > braceRel && /\s/.test(src[s2 - 1])) s2--;
+        if (src[s2 - 1] === ',') s2--;
+        start = s2;
+      }
+      src = src.slice(0, start) + src.slice(end);
+      removed = true;
+      break;
+    }
+    if (!removed) return src;
+  }
+}
+
+/* Read every key -> {en,fr,es} out of a KEY-FIRST block (W2B_UI). */
+function readKeyFirstBlock(src, varName) {
+  const span = findVarObjectSpan(src, varName);
+  const out = {};
+  for (const f of splitTopLevelFields(src, span.start, span.end)) {
+    const text = src.slice(f.start, f.end);
+    const braceRel = text.indexOf('{');
+    if (braceRel === -1) continue;
+    const objStartAbs = f.start + braceRel;
+    const objEnd = scanMatch(src, objStartAbs, '{', '}', f.end);
+    if (objEnd === -1) continue;
+    const kv = {};
+    for (const lf of splitTopLevelFields(src, objStartAbs, objEnd)) {
+      const t = src.slice(lf.start, lf.end);
+      kv[lf.key] = unquote(t.slice(t.indexOf(':') + 1));
+    }
+    out[f.key] = kv;
+  }
+  return out;
+}
+
+/* Upsert one key's {en,fr,es} in a KEY-FIRST block; set triObj to null
+   to delete the key entirely. */
+function setKeyFirstField(src, varName, key, triObj) {
+  const span = findVarObjectSpan(src, varName);
+  const fields = splitTopLevelFields(src, span.start, span.end);
+  const existing = fields.find((f) => f.key === key);
+
+  if (triObj === null) {
+    if (!existing) return src;
+    let start = existing.start;
+    while (/\s/.test(src[start])) start++;
+    let end = existing.end;
+    if (src[end] === ',') {
+      end++;
+      while (/\s/.test(src[end]) && src[end] !== '\n') end++;
+      if (src[end] === '\r') end++;
+      if (src[end] === '\n') end++;
+    } else {
+      let s2 = start;
+      while (s2 > span.start && /\s/.test(src[s2 - 1])) s2--;
+      if (src[s2 - 1] === ',') s2--;
+      start = s2;
+    }
+    return src.slice(0, start) + src.slice(end);
+  }
+
+  const newFieldText = key + ': ' + trilingualLiteral(triObj);
+  if (existing) {
+    let start = existing.start;
+    while (/\s/.test(src[start])) start++;
+    return src.slice(0, start) + newFieldText + src.slice(existing.end);
+  }
+  const lastField = fields[fields.length - 1];
+  const indent = lineIndentOf(src, span.start, 0) || '    ';
+  let insAt = lastField ? lastField.end : span.start + 1;
+  if (src[insAt] === ',') insAt++;
+  return src.slice(0, insAt) + ',\r\n' + indent + newFieldText + src.slice(insAt);
+}
+
+/* GALLERY_COPY's per-gallery `desc:{en,fr,es}` — same shape/role as
+   setGalleryTitle, different file. */
+function setGalleryCopyDesc(src, galleryId, descLiteral) {
+  const entry = findKeyedObjectEntry(src, galleryId);
+  const fields = splitTopLevelFields(src, entry.start, entry.end);
+  const existing = fields.find((f) => f.key === 'desc');
+  const newFieldText = 'desc: ' + descLiteral;
+  if (existing) {
+    let start = existing.start;
+    while (/\s/.test(src[start])) start++;
+    return src.slice(0, start) + newFieldText + src.slice(existing.end);
+  }
+  let p = entry.start + 1;
+  while (/\s/.test(src[p])) p++;
+  const indent = lineIndentOf(src, p, entry.start) || '    ';
+  return src.slice(0, p) + newFieldText + ',\r\n' + indent + src.slice(p);
+}
+
+/* GALLERY_COPY's `caps[idx]` — edits the trilingual object already at
+   that position only; never changes the array's length (see the
+   caption-addressing note above this section). */
+function setGalleryCopyCaption(src, galleryId, idx, capLiteral) {
+  const entry = findKeyedObjectEntry(src, galleryId);
+  const fields = splitTopLevelFields(src, entry.start, entry.end);
+  const capsField = fields.find((f) => f.key === 'caps');
+  if (!capsField) throw new Error('setGalleryCopyCaption: no caps[] in ' + galleryId);
+  const bracketStart = src.indexOf('[', capsField.start);
+  const bracketEnd = scanMatch(src, bracketStart, '[', ']', capsField.end);
+  const elems = splitTopLevelElements(src, bracketStart, bracketEnd - 1);
+  if (idx < 0 || idx >= elems.length) throw new Error('setGalleryCopyCaption: index ' + idx + ' out of range (0..' + (elems.length - 1) + ') for ' + galleryId);
+  const el = elems[idx];
+  let start = el.start;
+  while (/\s/.test(src[start])) start++;
+  return src.slice(0, start) + capLiteral + src.slice(el.end);
+}
+
+function parseTrilingualLiteral(text) {
+  const braceStart = text.indexOf('{');
+  if (braceStart === -1) return null;
+  const objEnd = scanMatch(text, braceStart, '{', '}');
+  if (objEnd === -1) return null;
+  const out = {};
+  for (const f of splitTopLevelFields(text, braceStart, objEnd)) {
+    const t = text.slice(f.start, f.end);
+    out[f.key] = unquote(t.slice(t.indexOf(':') + 1));
+  }
+  return out;
+}
+
+/* Read GALLERY_COPY[galleryId] = { desc:{en,fr,es}, caps:[{en,fr,es}, ...] }
+   — null if that gallery has no entry in art-copy.js at all (most don't). */
+function readGalleryCopy(src, galleryId) {
+  let entry;
+  try { entry = findKeyedObjectEntry(src, galleryId); } catch (e) { return null; }
+  const fields = splitTopLevelFields(src, entry.start, entry.end);
+  const descField = fields.find((f) => f.key === 'desc');
+  const desc = descField ? parseTrilingualLiteral(src.slice(descField.start, descField.end)) : null;
+  const capsField = fields.find((f) => f.key === 'caps');
+  let caps = [];
+  if (capsField) {
+    const bracketStart = src.indexOf('[', capsField.start);
+    const bracketEnd = scanMatch(src, bracketStart, '[', ']', capsField.end);
+    caps = splitTopLevelElements(src, bracketStart, bracketEnd - 1)
+      .map((el) => parseTrilingualLiteral(src.slice(el.start, el.end)));
+  }
+  return { desc, caps };
+}
+
+/* Appends one new trilingual caption to the END of caps[] only — the
+   one length-changing caption operation this module allows, because
+   appending can only ever correspond to a photo already at the end of
+   the same gallery's images[] (never shifts any existing caption's
+   alignment). */
+function appendGalleryCopyCaption(src, galleryId, capLiteral) {
+  const entry = findKeyedObjectEntry(src, galleryId);
+  const fields = splitTopLevelFields(src, entry.start, entry.end);
+  const capsField = fields.find((f) => f.key === 'caps');
+  if (!capsField) throw new Error('appendGalleryCopyCaption: no caps[] in ' + galleryId);
+  const bracketStart = src.indexOf('[', capsField.start);
+  const bracketEnd = scanMatch(src, bracketStart, '[', ']', capsField.end);
+  const indent = lineIndentOf(src, bracketStart, capsField.start) + '  ';
+  return insertIntoArrayAt(src, bracketStart, bracketEnd - 1, capLiteral, indent, undefined);
+}
+
 module.exports = {
   // scanning
   scanMatch, scanOpenBackward, splitTopLevelElements, splitTopLevelFields,
   lineStartOf, lineIndentOf,
   // location
-  findGallerySpan, findConstArraySpan, findConstObjectSpan, findImageObjectSpan, positionOf,
+  findGallerySpan, findConstArraySpan, findConstObjectSpan, findImageObjectSpan, findKeyedObjectEntry, findVarObjectSpan, positionOf,
   // array surgery
   insertIntoArrayAt, stripDanglingTrailingComma,
   // image entry
@@ -744,8 +1185,13 @@ module.exports = {
   // placement
   placeImage, moveImage, insertNewImage,
   // galleries
-  createGallery, setGalleryTitle,
+  createGallery, setGalleryTitle, setGalleryDescription, deleteGallery,
   // trunk/branch management
   findTrunkAnchor, nextTrunkId, reorderTrunkAnchor, moveTrunkAnchor, createTrunkAnchor,
-  addRelated, removeRelated, reorderRelated, detachBranch
+  addRelated, removeRelated, reorderRelated, detachBranch, deleteTrunkAnchor, setTrunkAnchorFile,
+  setTrunkStatement,
+  // generic site/page text (2026-11-26)
+  readPageTextBlock, setPageTextField, deletePageTextKey,
+  readKeyFirstBlock, setKeyFirstField,
+  readGalleryCopy, setGalleryCopyDesc, setGalleryCopyCaption, appendGalleryCopyCaption
 };
